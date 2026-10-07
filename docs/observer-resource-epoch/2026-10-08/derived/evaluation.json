@@ -1,0 +1,45 @@
+{
+  "base_commit": "c9abf753b5a3060a630ec6b4f19d6de3b9ca610a",
+  "contract_commit": "fccedf01896c7447c7c35527de7c8916983782f2",
+  "response_checkpoint_commit": "fab154c93cf00f245731a27bc5afe30a7a9e0bf5",
+  "response_checkpoint_pushed_and_remote_confirmed_before_comparison": true,
+  "cards_evaluated": 3,
+  "questions_per_card": 3,
+  "results": [
+    {
+      "card": "R1",
+      "reader_answer": "UNBEKANNT",
+      "frozen_expected_answer": "UNBEKANNT",
+      "classification": "KORREKT",
+      "visible_evidence_review": "Nennt resource_binding=null, lehnt Anzeigenamen-/Aliasschluss ausdrücklich ab und begrenzt gültige Actorbindung auf den Actor; Ressourcengleichheit/verschiedenheit bleibt offen.",
+      "unjustified_name_alias_identity_inference": false
+    },
+    {
+      "card": "R2",
+      "reader_answer": "DIESELBE",
+      "frozen_expected_answer": "DIESELBE",
+      "classification": "KORREKT",
+      "visible_evidence_review": "Nennt gültige same_resource-Bindung zwischen ref-alt/Epoche 1 und ref-neu/Epoche 2 innerhalb p-a als Beleg; reale Quellechtheit und Ressourcenzustand bleiben offen.",
+      "unjustified_name_alias_identity_inference": false
+    },
+    {
+      "card": "R3",
+      "reader_answer": "VERSCHIEDEN",
+      "frozen_expected_answer": "VERSCHIEDEN",
+      "classification": "KORREKT",
+      "visible_evidence_review": "Nennt gültige different_resources-Bindung zwischen ref-alt/Epoche 1 und ref-neu/Epoche 2 als Beleg; reale Quellechtheit und Wechselgrund bleiben offen.",
+      "unjustified_name_alias_identity_inference": false
+    }
+  ],
+  "counts": {
+    "KORREKT": 3,
+    "FALSCH": 0,
+    "UNBEURTEILBAR": 0
+  },
+  "hypothesis_result": "SUPPORTED IN THIS TEST",
+  "axis_A": "Keine neue Implementierung bewertet; Standardsuite separat.",
+  "scope": "Isolierter Papiervergleich mit gesetzter Gültigkeit; keine reale Ressourcenidentitätsmessung.",
+  "historical_K14_resource_result": "INCONCLUSIVE; unverändert",
+  "confidence_in_experiment_result": "HIGH within these three frozen paper cards",
+  "confidence_in_generalization": "LOW"
+}
