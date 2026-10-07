@@ -1,0 +1,703 @@
+{
+  "prerequisites": [
+    "Alle Angaben sind künstliche Papierdaten, keine App-, Sensor- oder Produktionsaufzeichnungen.",
+    "Jede Karte nur aus ihren sichtbaren Angaben beurteilen; andere Karten und fehlende Angaben liefern keine Belege.",
+    "Quellenzuverlässigkeit und ausdrücklich genannte Bindungen sind für die Übung gesetzt, nicht empirisch bewiesen.",
+    "Ein Statusbericht ist nur innerhalb seiner angegebenen Bedeutung und Zuordnung ein Beleg. Kein globales Wirkungsversprechen.",
+    "Pseudonyme sind manuell gesetzte Projektbezüge, keine neue Pseudonymisierungstechnik. Tokenwechsel ohne Bindung erklärt keine Identität.",
+    "E5: source_order bezeichnet in dieser Übung die bestätigte Eintrittsordnung einer einzigen Quelle im selben Lauf. arrival ist nur Empfangsordnung.",
+    "E5: source_time stammt, wo vorhanden, aus derselben als zuverlässig gesetzten Uhr. Identische event-Objekte mit derselben id sind Duplikatlieferungen.",
+    "E6: Ausgaben sind nach Konstruktionsvorgabe gleich. Ihr Inhalt, Gateausgaben und Reasoncodes werden nicht gezeigt. Beziehungen zählen nur bei gemeldeter Übernahme.",
+    "E7: Leser A darf nur Projekt p-a sehen; Leser AB darf p-a und p-b sehen. Projekt-b-Existenz und Querbeziehungen sind für A ebenfalls ausgeschlossen.",
+    "E7: Beurteilerkontext ist nicht der Empfängertext. Auch Bedingung, Existenz oder Anzahl der Hinweise können Außenwissen verraten.",
+    "Keine Karte legt Produktrollen, Rechtevergabe, Monitorbefugnisse oder eine implementierte Beobachterpipeline fest."
+  ],
+  "questions_by_experiment": {
+    "E3": [
+      "Was ist über gleiche/verschiedene Agentinstanzen belegt?",
+      "Was ist über gleiche/verschiedene Ressourcen belegt?",
+      "Welche Bindung bleibt offen; welche Aussage gilt nur innerhalb des Projekts?"
+    ],
+    "E4": [
+      "Welcher Status ist ausdrücklich gemeldet?",
+      "Ist für den genannten Versuch Nutzung, Buchung oder Cancel-Vollzug bestätigt oder offen?",
+      "Wie weit reicht der Beleg und welche stärkere Aussage bleibt unbelegt?"
+    ],
+    "E5": [
+      "Wie viele unterschiedliche Ereignisse sind sichtbar?",
+      "Ist der gemeldete Effekt vor/nach dem Laufende einordenbar?",
+      "Ist das Laufende gemeldet; ist die Effekt-bis-Ende-Dauer bestimmbar?",
+      "Was lässt sich über Empfangsfolge und fehlende Meldungen sagen?"
+    ],
+    "E6": [
+      "Welcher Herkunftslabelstatus ist belegt oder unbekannt?",
+      "Ist ein übernommener Kontrollabhängigkeitspfad erklärt?",
+      "Lässt sich der Inhalt semantisch beurteilen oder aus der sichtbaren Ausgabe die Herkunft rekonstruieren?"
+    ],
+    "E7": [
+      "Welche Information über p-b oder eine Querbeziehung erfährt Leser A aus Text oder Ausgabeexistenz?",
+      "Passt diese Empfängersicht zur gesetzten Leseregel; wie ist die Sicht für AB?",
+      "Welche Information geht bei der Begrenzung verloren und was ist nicht technisch bewiesen?"
+    ]
+  },
+  "cards": [
+    {
+      "id": "K01",
+      "experiment": "E3",
+      "phase": "first",
+      "visible": [
+        {
+          "project": "p-a",
+          "actor_name": "Mira",
+          "resource_alias": "fake:/eingang/objekt"
+        },
+        {
+          "project": "p-a",
+          "actor_name": "Mira",
+          "resource_alias": "fake:/ablage/objekt"
+        }
+      ],
+      "assessment_context": "Anzeigenamen sind nicht eindeutig. Keine Instanz- oder Aliasbindung ist sichtbar."
+    },
+    {
+      "id": "K02",
+      "experiment": "E3",
+      "phase": "first",
+      "visible": [
+        {
+          "project": "p-a",
+          "actor_ref": "p-a:a7",
+          "ref_epoch": 1,
+          "resource_ref": "p-a:r2"
+        },
+        {
+          "project": "p-a",
+          "actor_ref": "p-a:a9",
+          "ref_epoch": 2,
+          "resource_ref": "p-a:r2"
+        }
+      ],
+      "assessment_context": "Ressourcenreferenz ist innerhalb p-a stabil. Keine Wechselbindung für Actorrefs sichtbar; Epochen allein erklären keinen Wechsel."
+    },
+    {
+      "id": "K03",
+      "experiment": "E4",
+      "phase": "first",
+      "visible": [
+        {
+          "source": "access_component",
+          "attempt": "t1",
+          "status": "access.denied",
+          "resource_ref": "obj-1"
+        }
+      ]
+    },
+    {
+      "id": "K04",
+      "experiment": "E4",
+      "phase": "first",
+      "visible": [
+        {
+          "source": "cost_component",
+          "check": "bc1",
+          "operation": "op-1",
+          "status": "budget.check.succeeded"
+        }
+      ]
+    },
+    {
+      "id": "K05",
+      "experiment": "E4",
+      "phase": "first",
+      "visible": [
+        {
+          "source": "executor",
+          "attempt": "t1",
+          "status": "cancel.request.received"
+        }
+      ]
+    },
+    {
+      "id": "K06",
+      "experiment": "E5",
+      "phase": "first",
+      "visible": [
+        {
+          "arrival": 1,
+          "event": {
+            "id": "f1",
+            "run": "r1",
+            "kind": "work.finished"
+          }
+        },
+        {
+          "arrival": 2,
+          "event": {
+            "id": "e1",
+            "run": "r1",
+            "kind": "target.effect.reported"
+          }
+        },
+        {
+          "arrival": 3,
+          "event": {
+            "id": "s1",
+            "run": "r1",
+            "kind": "work.started"
+          }
+        }
+      ]
+    },
+    {
+      "id": "K07",
+      "experiment": "E5",
+      "phase": "first",
+      "visible": [
+        {
+          "arrival": 1,
+          "event": {
+            "id": "f1",
+            "run": "r1",
+            "kind": "work.finished"
+          }
+        },
+        {
+          "arrival": 2,
+          "event": {
+            "id": "e1",
+            "run": "r1",
+            "kind": "target.effect.reported"
+          }
+        },
+        {
+          "arrival": 3,
+          "event": {
+            "id": "e1",
+            "run": "r1",
+            "kind": "target.effect.reported"
+          }
+        },
+        {
+          "arrival": 4,
+          "event": {
+            "id": "s1",
+            "run": "r1",
+            "kind": "work.started"
+          }
+        }
+      ]
+    },
+    {
+      "id": "K08",
+      "experiment": "E5",
+      "phase": "first",
+      "visible": [
+        {
+          "arrival": 1,
+          "event": {
+            "id": "e1",
+            "run": "r1",
+            "kind": "target.effect.reported",
+            "source_order": 2,
+            "source_time": "2026-10-07T10:00:10+02:00"
+          }
+        },
+        {
+          "arrival": 2,
+          "event": {
+            "id": "s1",
+            "run": "r1",
+            "kind": "work.started",
+            "source_order": 1,
+            "source_time": "2026-10-07T10:00:00+02:00"
+          }
+        }
+      ],
+      "assessment_context": "Es sind nur diese Meldungen sichtbar; keine vollständige Liefergarantie und kein negativer Endnachweis."
+    },
+    {
+      "id": "K09",
+      "experiment": "E6",
+      "phase": "first",
+      "visible": [
+        {
+          "source": "fixture",
+          "workflow": "w1",
+          "actor": "a",
+          "reported_operation": "state.write.committed",
+          "value_ref": "v1"
+        },
+        {
+          "source": "fixture",
+          "workflow": "w1",
+          "actor": "b",
+          "reported_operation": "state.read.committed",
+          "value_ref": "v1"
+        },
+        {
+          "source": "fixture",
+          "workflow": "w1",
+          "actor": "b",
+          "reported_operation": "egress.intent",
+          "value_ref": "v1"
+        }
+      ]
+    },
+    {
+      "id": "K10",
+      "experiment": "E6",
+      "phase": "first",
+      "visible": [
+        {
+          "source": "fixture",
+          "workflow": "w1",
+          "actor": "a",
+          "reported_operation": "state.write.committed",
+          "value_ref": "v1"
+        },
+        {
+          "source": "fixture",
+          "workflow": "w1",
+          "actor": "b",
+          "reported_operation": "state.read.committed",
+          "value_ref": "v1"
+        },
+        {
+          "source": "fixture",
+          "workflow": "w1",
+          "actor": "b",
+          "reported_operation": "egress.intent",
+          "value_ref": "v1"
+        }
+      ]
+    },
+    {
+      "id": "K11",
+      "experiment": "E7",
+      "phase": "first",
+      "visible": {
+        "world_0_recipient_view": [
+          {
+            "recipient": "A",
+            "project": "p-a",
+            "event_ref": "ea1",
+            "text": "Lokaler Quellbeleg für ea1 ist unvollständig; nur sichtbare Angaben auswertbar."
+          }
+        ],
+        "world_1_recipient_view": [
+          {
+            "recipient": "A",
+            "project": "p-a",
+            "event_ref": "ea1",
+            "text": "Lokaler Quellbeleg für ea1 ist unvollständig; nur sichtbare Angaben auswertbar."
+          }
+        ]
+      },
+      "assessment_context": "In beiden Papierwelten sind p-a-Daten gleich: ea1 hat einen fehlenden lokalen Quellbeleg. Nur die p-b-Querbeziehung unterscheidet sich (W0 fehlt, W1 vorhanden). Dieser Hinweis wird in beiden Welten ausschließlich wegen des gleichen lokalen Mangels ausgegeben. A sieht weder Weltlabel noch Beurteilerkontext."
+    },
+    {
+      "id": "K12",
+      "experiment": "E3",
+      "phase": "second",
+      "visible": [
+        {
+          "project": "p-a",
+          "actor_name": "Mira",
+          "actor_instance": "inst-1",
+          "resource_alias": "fake:/eingang/objekt",
+          "canonical_resource": "obj-1"
+        },
+        {
+          "project": "p-a",
+          "actor_name": "Mira",
+          "actor_instance": "inst-2",
+          "resource_alias": "fake:/ablage/objekt",
+          "canonical_resource": "obj-1"
+        }
+      ],
+      "assessment_context": "Instanz- und kanonische Ressourcenbindungen gelten ausdrücklich innerhalb dieses Projekts."
+    },
+    {
+      "id": "K13",
+      "experiment": "E3",
+      "phase": "second",
+      "visible": [
+        {
+          "project": "p-a",
+          "actor_ref": "p-a:a7",
+          "resource_ref": "p-a:r2"
+        },
+        {
+          "project": "p-a",
+          "actor_ref": "p-a:a8",
+          "resource_ref": "p-a:r2"
+        }
+      ],
+      "assessment_context": "Referenzen sind in p-a stabil und eindeutig pro Instanz beziehungsweise Objekt. Dies ist eine manuell gesetzte opaque Darstellung der Situation K12; kein Algorithmus und keine projektübergreifende Bindung."
+    },
+    {
+      "id": "K14",
+      "experiment": "E3",
+      "phase": "second",
+      "visible": [
+        {
+          "project": "p-a",
+          "actor_ref": "p-a:a7",
+          "ref_epoch": 1,
+          "resource_ref": "p-a:r2"
+        },
+        {
+          "project": "p-a",
+          "actor_ref": "p-a:a9",
+          "ref_epoch": 2,
+          "resource_ref": "p-a:r2"
+        },
+        {
+          "source": "binding_fixture",
+          "project": "p-a",
+          "assertion": "same_instance",
+          "old_ref": "p-a:a7",
+          "old_epoch": 1,
+          "new_ref": "p-a:a9",
+          "new_epoch": 2
+        }
+      ],
+      "assessment_context": "Die Wechselbindung ist für die Papierübung ausdrücklich gültig; Quellenauthentizität wurde nicht getestet."
+    },
+    {
+      "id": "K15",
+      "experiment": "E4",
+      "phase": "second",
+      "visible": [
+        {
+          "source": "access_component",
+          "attempt": "t1",
+          "status": "access.denied",
+          "resource_ref": "obj-1"
+        },
+        {
+          "source": "target_fixture",
+          "attempt": "t1",
+          "status": "access.not_performed",
+          "resource_ref": "obj-1"
+        }
+      ],
+      "assessment_context": "Ziel bestätigt für genau diesen Versuch die Nichtausführung; keine Aussage über andere Zugriffe."
+    },
+    {
+      "id": "K16",
+      "experiment": "E4",
+      "phase": "second",
+      "visible": [
+        {
+          "source": "cost_component",
+          "check": "bc1",
+          "operation": "op-1",
+          "status": "budget.check.succeeded"
+        },
+        {
+          "source": "ledger_fixture",
+          "check": "bc1",
+          "operation": "op-1",
+          "transaction": "tx1",
+          "status": "charge.committed"
+        }
+      ]
+    },
+    {
+      "id": "K17",
+      "experiment": "E4",
+      "phase": "second",
+      "visible": [
+        {
+          "source": "executor",
+          "attempt": "t1",
+          "status": "cancel.request.received"
+        },
+        {
+          "source": "executor_fixture",
+          "attempt": "t1",
+          "status": "cancel.completed"
+        }
+      ],
+      "assessment_context": "Vollzugsmeldung dieses Executors für t1; keine Aussage über entfernte Nachwirkungen oder andere Läufe."
+    },
+    {
+      "id": "K18",
+      "experiment": "E5",
+      "phase": "second",
+      "visible": [
+        {
+          "arrival": 1,
+          "event": {
+            "id": "f1",
+            "run": "r1",
+            "kind": "work.finished",
+            "source_order": 3,
+            "source_time": "2026-10-07T10:00:20+02:00"
+          }
+        },
+        {
+          "arrival": 2,
+          "event": {
+            "id": "e1",
+            "run": "r1",
+            "kind": "target.effect.reported",
+            "source_order": 2,
+            "source_time": "2026-10-07T10:00:10+02:00"
+          }
+        },
+        {
+          "arrival": 3,
+          "event": {
+            "id": "s1",
+            "run": "r1",
+            "kind": "work.started",
+            "source_order": 1,
+            "source_time": "2026-10-07T10:00:00+02:00"
+          }
+        }
+      ]
+    },
+    {
+      "id": "K19",
+      "experiment": "E5",
+      "phase": "second",
+      "visible": [
+        {
+          "arrival": 1,
+          "event": {
+            "id": "f1",
+            "run": "r1",
+            "kind": "work.finished",
+            "source_order": 3,
+            "source_time": "2026-10-07T10:00:20+02:00"
+          }
+        },
+        {
+          "arrival": 2,
+          "event": {
+            "id": "e1",
+            "run": "r1",
+            "kind": "target.effect.reported",
+            "source_order": 2,
+            "source_time": "2026-10-07T10:00:10+02:00"
+          }
+        },
+        {
+          "arrival": 3,
+          "event": {
+            "id": "e1",
+            "run": "r1",
+            "kind": "target.effect.reported",
+            "source_order": 2,
+            "source_time": "2026-10-07T10:00:10+02:00"
+          }
+        },
+        {
+          "arrival": 4,
+          "event": {
+            "id": "s1",
+            "run": "r1",
+            "kind": "work.started",
+            "source_order": 1,
+            "source_time": "2026-10-07T10:00:00+02:00"
+          }
+        }
+      ]
+    },
+    {
+      "id": "K20",
+      "experiment": "E5",
+      "phase": "second",
+      "visible": [
+        {
+          "arrival": 1,
+          "event": {
+            "id": "f1",
+            "run": "r1",
+            "kind": "work.finished",
+            "source_order": 3
+          }
+        },
+        {
+          "arrival": 2,
+          "event": {
+            "id": "e1",
+            "run": "r1",
+            "kind": "target.effect.reported",
+            "source_order": 2
+          }
+        },
+        {
+          "arrival": 3,
+          "event": {
+            "id": "s1",
+            "run": "r1",
+            "kind": "work.started",
+            "source_order": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": "K21",
+      "experiment": "E6",
+      "phase": "second",
+      "visible": [
+        {
+          "source": "fixture",
+          "workflow": "w1",
+          "reported_operation": "source.value.committed",
+          "value_ref": "o1",
+          "origin_label": "SENSITIVE"
+        },
+        {
+          "source": "fixture",
+          "workflow": "w1",
+          "reported_operation": "control.committed",
+          "decision_ref": "d1",
+          "depends_on": [
+            "o1"
+          ]
+        },
+        {
+          "source": "fixture",
+          "workflow": "w1",
+          "actor": "a",
+          "reported_operation": "state.write.committed",
+          "value_ref": "v1",
+          "created_under": "d1"
+        },
+        {
+          "source": "fixture",
+          "workflow": "w1",
+          "actor": "b",
+          "reported_operation": "state.read.committed",
+          "value_ref": "v1"
+        },
+        {
+          "source": "fixture",
+          "workflow": "w1",
+          "actor": "b",
+          "reported_operation": "egress.intent",
+          "value_ref": "v1"
+        }
+      ],
+      "assessment_context": "Synthetische Beschreibung übernommener Beziehungen; kein neuer Sensor oder echter Ereignisexport."
+    },
+    {
+      "id": "K22",
+      "experiment": "E6",
+      "phase": "second",
+      "visible": [
+        {
+          "source": "fixture",
+          "workflow": "w1",
+          "reported_operation": "source.value.committed",
+          "value_ref": "o1",
+          "origin_label": "PUBLIC"
+        },
+        {
+          "source": "fixture",
+          "workflow": "w1",
+          "reported_operation": "control.committed",
+          "decision_ref": "d1",
+          "depends_on": [
+            "o1"
+          ]
+        },
+        {
+          "source": "fixture",
+          "workflow": "w1",
+          "actor": "a",
+          "reported_operation": "state.write.committed",
+          "value_ref": "v1",
+          "created_under": "d1"
+        },
+        {
+          "source": "fixture",
+          "workflow": "w1",
+          "actor": "b",
+          "reported_operation": "state.read.committed",
+          "value_ref": "v1"
+        },
+        {
+          "source": "fixture",
+          "workflow": "w1",
+          "actor": "b",
+          "reported_operation": "egress.intent",
+          "value_ref": "v1"
+        }
+      ],
+      "assessment_context": "Synthetische Beschreibung übernommener Beziehungen; keine Gateausgabe und kein Rohpayload."
+    },
+    {
+      "id": "K23",
+      "experiment": "E7",
+      "phase": "second",
+      "visible": {
+        "to_A": {
+          "project_refs": [
+            "p-a",
+            "p-b"
+          ],
+          "event_refs": [
+            "ea1",
+            "eb1"
+          ],
+          "resource_refs": [
+            "p-a:ra",
+            "p-b:rb"
+          ],
+          "text": "ea1 und eb1 sind über dieselbe Quellreferenz verbunden."
+        },
+        "to_AB": {
+          "project_refs": [
+            "p-a",
+            "p-b"
+          ],
+          "event_refs": [
+            "ea1",
+            "eb1"
+          ],
+          "resource_refs": [
+            "p-a:ra",
+            "p-b:rb"
+          ],
+          "text": "ea1 und eb1 sind über dieselbe Quellreferenz verbunden."
+        }
+      },
+      "assessment_context": "Beide Empfänger erhalten hier denselben Hinweis; ihre Leseregeln unterscheiden sich wie in den Voraussetzungen."
+    },
+    {
+      "id": "K24",
+      "experiment": "E7",
+      "phase": "second",
+      "visible": {
+        "world_0_A_view": [],
+        "world_1_A_view": [
+          {
+            "project_count": 2,
+            "event_refs": [
+              "ea1",
+              "***"
+            ],
+            "text": "Zwei Projekte teilen eine Quellreferenz."
+          }
+        ],
+        "world_1_AB_view": [
+          {
+            "project_count": 2,
+            "event_refs": [
+              "ea1",
+              "***"
+            ],
+            "text": "Zwei Projekte teilen eine Quellreferenz."
+          }
+        ]
+      },
+      "assessment_context": "p-a-Daten sind in beiden Welten gleich. Hinweis wird ausschließlich bei vorhandener p-b-Querbeziehung erzeugt. A sieht weder Weltlabel noch diesen Beurteilerkontext."
+    }
+  ]
+}
