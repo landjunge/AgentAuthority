@@ -29,6 +29,10 @@ im Export erhalten; die zwei Parameterkontrollen fehlen in diesem Export.
 wertet 24 Papierkarten zu Bindung, Status, Ordnung, Herkunft und Hinweissicht aus;
 fehlende Belege und nicht gemessene Produktleistung bleiben ausdrücklich offen.
 
+[Konsolidierung des Forschungsstands nach E1–E7](docs/OBSERVER-RESEARCH-CONSOLIDATION-E1-E7-2026-10-07.md)
+trennt Belege, Nicht-Belege und offene Fragen, gleicht den minimalen Informationsbedarf
+und die Ausschlüsse ab und grenzt die Spezifizierbarkeit ein. Keine neuen Experimente.
+
 ## Historical research baseline
 
 Experimental security lab: can **deterministic workflow-level state and information-flow enforcement** stop **some modeled** composition attacks that per-action authorization misses?
