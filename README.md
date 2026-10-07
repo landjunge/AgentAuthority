@@ -14,6 +14,10 @@ decision authority or an implemented observer integration. The existing
 [practice/research reconciliation](https://github.com/landjunge/KI-Zentralle/blob/main/docs/agent-authority/ABGLEICH-TESTS-UND-BEOBACHTER-RECHERCHE-2026-10-07.md)
 keeps those distinctions explicit.
 
+[Informationsgrenzen für den Beobachter](docs/OBSERVER-INFORMATION-BOUNDARIES-2026-10-07.md)
+ordnet notwendige, hilfreiche und bewusst ausgeschlossene Daten mit Belegen,
+Risiken und offenen Forschungsfragen ein. Keine Implementierung oder neue Befugnisse.
+
 ## Historical research baseline
 
 Experimental security lab: can **deterministic workflow-level state and information-flow enforcement** stop **some modeled** composition attacks that per-action authorization misses?
