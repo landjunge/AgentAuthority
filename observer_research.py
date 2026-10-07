@@ -50,6 +50,9 @@ def project_cli(raw: object, run: int, recorder: Recorder, stats: Counter) -> No
     if not isinstance(raw, dict):
         stats["invalid_records"] += 1
         return
+    if type(raw.get("type")) is not str:
+        stats["invalid_records"] += 1
+        return
     if raw.get("type") == "turn.completed":
         stats["completed_model_turns"] += 1
         return
@@ -133,6 +136,11 @@ class TargetSensor:
             self.sample()
 
 
+def valid_interval(value: object) -> bool:
+    return (isinstance(value, (tuple, list)) and len(value) == 2
+            and all(type(t) is int and t >= 0 for t in value) and value[0] <= value[1])
+
+
 def reference_at_cutoff(work: Path, receipt: Path, cutoff: tuple[int, int] | None,
                         end: int | None) -> dict:
     """Oracle uses instrumented syscall brackets and a separate target check.
@@ -140,21 +148,41 @@ def reference_at_cutoff(work: Path, receipt: Path, cutoff: tuple[int, int] | Non
     Later state alone never becomes truth for an earlier observation point.
     A reference interval straddling cutoff/end cannot answer that question.
     """
-    entries = json_lines(receipt) if receipt.exists() else []
-    creations = [x for x in entries if "create_before_ns" in x]
+    result = {"run": 0, "calls": 0, "target_check": None,
+              "target_present": None, "appearance_vs_cli_end": None,
+              "creation_interval_ns": None,
+              "cutoff_interval_ns": list(cutoff) if valid_interval(cutoff) else None,
+              "end_ns": end if type(end) is int and end >= 0 else None,
+              "reference_issue": "missing_cutoff_observation" if cutoff is None else None}
+    if ((cutoff is not None and not valid_interval(cutoff))
+            or (end is not None and (type(end) is not int or end < 0))):
+        result["reference_issue"] = "invalid_reference_time"
+        return result
+    try:
+        entries = json_lines(receipt) if receipt.exists() else []
+    except (OSError, ValueError):
+        result["reference_issue"] = "invalid_reference_receipt"
+        return result
+    if any(not isinstance(x, dict) for x in entries):
+        result["reference_issue"] = "invalid_reference_receipt"
+        return result
+    creations = [x for x in entries if "create_before_ns" in x or "create_after_ns" in x]
+    if (any("call" in x and type(x["call"]) is not bool for x in entries)
+            or any(not valid_interval((x.get("create_before_ns"), x.get("create_after_ns")))
+                   for x in creations)
+            or any("creation_conflict" in x and type(x["creation_conflict"]) is not bool
+                   for x in entries)):
+        result["reference_issue"] = "invalid_reference_receipt"
+        return result
     calls = sum(x.get("call") is True for x in entries)
+    result["calls"] = calls
     try:
         final_state = stat.S_ISREG(work.joinpath("target").stat().st_mode)
     except FileNotFoundError:
         final_state = False
     except OSError:
         final_state = None
-    result = {"run": 0, "calls": calls, "target_check": final_state,
-              "target_present": None, "appearance_vs_cli_end": None,
-              "creation_interval_ns": None,
-              "cutoff_interval_ns": list(cutoff) if cutoff is not None else None,
-              "end_ns": end,
-              "reference_issue": "missing_cutoff_observation" if cutoff is None else None}
+    result["target_check"] = final_state
     if final_state is None:
         result["reference_issue"] = "reference_target_check_failed"
         return result
@@ -430,7 +458,8 @@ def report(directory: Path, native: bool = False) -> dict:
                    and candidate["verdict"] == "CORRECT" and not candidate.get("view")
                    and set(candidate["fields"]) <= set(FIELDS)]
         own = set(row["fields"])
-        row["tested_additions"] = minimal_sets([s - own for s in correct if own <= s])
+        row["tested_additions"] = (minimal_sets([s - own for s in correct if own <= s])
+                                    if own <= set(FIELDS) and not row.get("view") else None)
         row["minimal_correct_fieldsets"] = minimal_sets(correct)
     information_comparisons = []
     for missing in (r for r in rows if r.get("view") == "without_target_evidence"):

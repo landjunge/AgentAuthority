@@ -267,6 +267,8 @@ def test_native_fixture_and_completion_have_actual_separate_observations(tmp_pat
         assert result["summary"]["full"] == {"CORRECT": 2}
         assert result["summary"]["tool_status_only"]["WRONG"] == 1
         assert result["summary"]["without_target_evidence"] == {"UNKNOWN": 2}
+        assert all(r["tested_additions"] is None for r in result["rows"]
+                   if r.get("view") == "without_target_evidence")
         assert all(c["necessary_in_this_comparison"] for c in result["information_comparisons"])
         assert result["panel_fieldsets"]["target_present"]["minimal_correct_fieldsets"] == [
             ["kind", "run", "value"]]
@@ -303,3 +305,48 @@ def test_native_failed_tool_attempt_is_visible(tmp_path, monkeypatch, failure, s
             state["stop"].set()
             state["watcher"].join()
         session.temp.cleanup()
+
+
+@pytest.mark.parametrize("record_type", [[], {}, None, True, 7])
+def test_invalid_cli_record_type_cannot_kill_reader(record_type):
+    counts, recorder = Counter(), p.Recorder()
+    p.project_cli({"type": record_type, "reason": p.CANARY}, 1, recorder, counts)
+    assert counts["invalid_records"] == 1
+    assert not recorder.events
+    assert p.CANARY not in json.dumps(counts)
+
+
+@pytest.mark.parametrize("entry", [
+    {"create_before_ns": 50, "create_after_ns": 10},
+    {"create_before_ns": 10},
+    {"create_before_ns": p.CANARY, "create_after_ns": 20},
+    {"create_before_ns": True, "create_after_ns": 20},
+    {"create_before_ns": -1, "create_after_ns": 20},
+    {"call": p.CANARY}, {"creation_conflict": p.CANARY}, [], None,
+])
+def test_invalid_receipt_cannot_produce_safe_truth_or_copy_values(tmp_path, entry):
+    receipt = tmp_path / "receipt.jsonl"
+    write_receipt(receipt, [{"call": True}, entry])
+    tmp_path.joinpath("target").touch()
+    result = p.reference_at_cutoff(tmp_path, receipt, (30, 31), 25)
+    assert result["target_present"] is None
+    assert result["appearance_vs_cli_end"] is None
+    assert result["reference_issue"] == "invalid_reference_receipt"
+    assert p.CANARY not in json.dumps(result)
+
+
+def test_partial_receipt_is_explicitly_unjudgeable(tmp_path):
+    receipt = tmp_path / "receipt.jsonl"
+    receipt.write_text('{"call":true}\n{"create_before_ns":')
+    result = p.reference_at_cutoff(tmp_path, receipt, (30, 31), 25)
+    assert p.judge(True, result["target_present"]) == "UNJUDGEABLE"
+    assert result["reference_issue"] == "invalid_reference_receipt"
+
+
+@pytest.mark.parametrize("cutoff,end", [((31, 30), 25), ((p.CANARY, 30), 25),
+                                       ((30, 31), p.CANARY), ((30, 31), True)])
+def test_bad_reference_clock_bounds_are_not_truth(tmp_path, cutoff, end):
+    result = p.reference_at_cutoff(tmp_path, tmp_path / "receipt", cutoff, end)
+    assert result["target_present"] is None and result["appearance_vs_cli_end"] is None
+    assert result["reference_issue"] == "invalid_reference_time"
+    assert p.CANARY not in json.dumps(result)
