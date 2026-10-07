@@ -16,9 +16,9 @@ SOURCE = "agent-authority-lab"
 
 
 def enabled() -> bool:
-    if os.environ.get("PYTEST_CURRENT_TEST"):
-        return bool((os.environ.get("LAB_AUTHORITY_EVENTS") or "").strip())
-    raw = (os.environ.get("LAB_AUTHORITY_EVENTS") or "1").strip().lower()
+    raw = (os.environ.get("LAB_AUTHORITY_EVENTS") or "").strip().lower()
+    if not raw:
+        return not bool(os.environ.get("PYTEST_CURRENT_TEST"))
     return raw not in ("0", "false", "off", "no")
 
 
