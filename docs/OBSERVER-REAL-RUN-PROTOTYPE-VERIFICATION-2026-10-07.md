@@ -100,3 +100,39 @@ Zusätzliche ausdrücklich offene Grenze: fertige `reference.json`-Archive werde
 beim Report nicht gegen böswillige nachträgliche Änderungen authentisiert oder
 erneut aus Originalsyscalls erzeugt. Die geprüften Originalarchive sind konsistent;
 keine allgemeine Archivintegritäts-/Quellechtheitsgarantie entsteht daraus.
+
+## Abschließender Codefreeze und Delta-Verifikation
+
+Geprüft: `cb198818f38ccd92317cb7072d95751b4c16bd25`.
+Code blieb während der abschließenden rein lesenden Reviews unverändert.
+Die private Receiptquelle akzeptiert jetzt ausschließlich die drei vorhandenen
+Formen. Empty-/Unknown-/Zusatz-/gemischte Felder und falsche Markerwerte werden
+vor der Zielprüfung verworfen. Beide Wahrheiten bleiben bei ungültigen Receipts
+unbekannt; der konkrete Gegenfall mit fehlendem Ziel ist eine neue Regression.
+
+Level-1-Review: PASS, kein verbleibender Fehler im geprüften Delta.
+Level-2-Review: PASS des engen Receipt-Korrekturvertrags; kein verbleibender
+Vertragsbruch dieses Receiptpfads gefunden. Beide prüfen den bestehenden begrenzten Vertrag, keinen
+allgemeinen adversarialen Schutz. Die früheren FAILs bleiben als Erstbefunde stehen.
+Reviewer führten weiterhin keine Tests, neuen Agentenläufe oder Änderungen aus.
+
+Vom Autor ausgeführt: **65 neue Messlogiktests**, unveränderte Standardsuite am
+finalen Code zweimal mit **304 passed, 5 deselected**. Die fünf historischen
+RC-Ausschlüsse wurden nicht geändert; ihre Misses bleiben offen.
+Erneute Reportauswertung benutzte dieselben Originaldaten. Unverändert:
+32 Beobachtungen, 420 Ableitungen, 10 CORRECT/2 NOT_APPLICABLE in Vollsicht,
+je 2 WRONG in den zwei Statusvergleichen und 10 UNKNOWN/2 NOT_APPLICABLE ohne
+Zielbelege. Kein erneuter Modelllauf und keine nachträgliche Captureergänzung.
+
+**Achse A:** PASS des begrenzten finalen Mess-/Receiptvertrags nach den dokumentierten
+Korrekturen. **Achse B:** H1 REFUTED, H2/H3 eng SUPPORTED im nativen Panel;
+ursprüngliche CLI-Hypothesen weiterhin INCONCLUSIVE.
+
+**CONFIDENCE IN EXPERIMENT RESULT:** HIGH für statische Fixprüfung, gültige
+Referenzintervalle und relative Informationsvergleiche; MEDIUM für Aufnahme in
+der kleinen instrumentierten Strecke unter vertrauenswürdiger Orchestrierung.
+**CONFIDENCE IN GENERALIZATION:** LOW. Quellechtheit, vollständige Kanalabdeckung,
+Archivauthentisierung, Remote-Stopp, K14 und alle weiteren ausdrücklich nicht
+untersuchten Punkte bleiben offen. Keine Monitoring-/Sicherheitsgarantie.
+
+**STOPP:** Prototypauftrag abgeschlossen, kein automatischer Folgeauftrag.

@@ -1,0 +1,196 @@
+[
+  {
+    "attempt_group": "original_panel",
+    "run": 1,
+    "scenario": "write",
+    "started": true,
+    "real_agent_observed": false,
+    "timeout": false,
+    "process_success": false,
+    "sensor_errors": 0,
+    "stats": {
+      "raw_stderr_bytes": 197,
+      "canary_lines_stderr": 0
+    },
+    "failure": null
+  },
+  {
+    "attempt_group": "original_panel",
+    "run": 2,
+    "scenario": "noop",
+    "started": true,
+    "real_agent_observed": false,
+    "timeout": false,
+    "process_success": false,
+    "sensor_errors": 0,
+    "stats": {
+      "raw_stderr_bytes": 197,
+      "canary_lines_stderr": 0
+    },
+    "failure": null
+  },
+  {
+    "attempt_group": "original_panel",
+    "run": 3,
+    "scenario": "fail",
+    "started": true,
+    "real_agent_observed": false,
+    "timeout": false,
+    "process_success": false,
+    "sensor_errors": 0,
+    "stats": {
+      "raw_stderr_bytes": 197,
+      "canary_lines_stderr": 0
+    },
+    "failure": null
+  },
+  {
+    "attempt_group": "original_panel",
+    "run": 4,
+    "scenario": "write_fail",
+    "started": true,
+    "real_agent_observed": false,
+    "timeout": false,
+    "process_success": false,
+    "sensor_errors": 0,
+    "stats": {
+      "raw_stderr_bytes": 197,
+      "canary_lines_stderr": 0
+    },
+    "failure": null
+  },
+  {
+    "attempt_group": "original_panel",
+    "run": 5,
+    "scenario": "late",
+    "started": true,
+    "real_agent_observed": false,
+    "timeout": false,
+    "process_success": false,
+    "sensor_errors": 0,
+    "stats": {
+      "raw_stderr_bytes": 197,
+      "canary_lines_stderr": 0
+    },
+    "failure": null
+  },
+  {
+    "attempt_group": "original_panel",
+    "run": 6,
+    "scenario": "write",
+    "started": true,
+    "real_agent_observed": false,
+    "timeout": false,
+    "process_success": false,
+    "sensor_errors": 0,
+    "stats": {
+      "raw_stderr_bytes": 197,
+      "canary_lines_stderr": 0
+    },
+    "failure": null
+  },
+  {
+    "attempt_group": "first_case_retry",
+    "run": 1,
+    "scenario": "write",
+    "started": true,
+    "real_agent_observed": false,
+    "timeout": false,
+    "process_success": false,
+    "sensor_errors": 0,
+    "stats": {
+      "raw_stderr_bytes": 197
+    },
+    "failure": null
+  },
+  {
+    "attempt_group": "temporary_state_panel",
+    "run": 1,
+    "scenario": "write",
+    "started": true,
+    "real_agent_observed": false,
+    "timeout": false,
+    "process_success": false,
+    "sensor_errors": 0,
+    "stats": {
+      "raw_stderr_bytes": 197,
+      "canary_lines_stderr": 0
+    },
+    "failure": null
+  },
+  {
+    "attempt_group": "temporary_state_panel",
+    "run": 2,
+    "scenario": "noop",
+    "started": true,
+    "real_agent_observed": false,
+    "timeout": false,
+    "process_success": false,
+    "sensor_errors": 0,
+    "stats": {
+      "raw_stderr_bytes": 197,
+      "canary_lines_stderr": 0
+    },
+    "failure": null
+  },
+  {
+    "attempt_group": "temporary_state_panel",
+    "run": 3,
+    "scenario": "fail",
+    "started": true,
+    "real_agent_observed": false,
+    "timeout": false,
+    "process_success": false,
+    "sensor_errors": 0,
+    "stats": {
+      "raw_stderr_bytes": 197,
+      "canary_lines_stderr": 0
+    },
+    "failure": null
+  },
+  {
+    "attempt_group": "temporary_state_panel",
+    "run": 4,
+    "scenario": "write_fail",
+    "started": true,
+    "real_agent_observed": false,
+    "timeout": false,
+    "process_success": false,
+    "sensor_errors": 0,
+    "stats": {
+      "raw_stderr_bytes": 197,
+      "canary_lines_stderr": 0
+    },
+    "failure": null
+  },
+  {
+    "attempt_group": "temporary_state_panel",
+    "run": 5,
+    "scenario": "late",
+    "started": true,
+    "real_agent_observed": false,
+    "timeout": false,
+    "process_success": false,
+    "sensor_errors": 0,
+    "stats": {
+      "raw_stderr_bytes": 197,
+      "canary_lines_stderr": 0
+    },
+    "failure": null
+  },
+  {
+    "attempt_group": "temporary_state_panel",
+    "run": 6,
+    "scenario": "write",
+    "started": true,
+    "real_agent_observed": false,
+    "timeout": false,
+    "process_success": false,
+    "sensor_errors": 0,
+    "stats": {
+      "raw_stderr_bytes": 197,
+      "canary_lines_stderr": 0
+    },
+    "failure": null
+  }
+]

@@ -33,6 +33,16 @@ fehlende Belege und nicht gemessene Produktleistung bleiben ausdrücklich offen.
 trennt Belege, Nicht-Belege und offene Fragen, gleicht den minimalen Informationsbedarf
 und die Ausschlüsse ab und grenzt die Spezifizierbarkeit ein. Keine neuen Experimente.
 
+[Schlanker Forschungsprototyp: reale Läufe und Minimaldaten](docs/OBSERVER-REAL-RUN-PROTOTYPE-RESULTS-2026-10-07.md)
+enthält Bauplan, ausführbare Befehle und die archivierten Messbelege: sechs kontrollierte
+native Agentenläufe, getrennte Status-/Zielbefunde und alle 32 Feldablationen.
+Direkte CLI-Läufe waren hier blockiert; keine allgemeine Monitoring- oder Sicherheitsgarantie.
+Gespeicherte Daten ohne neuen Agentenlauf auswerten:
+
+```bash
+python observer_research.py report --native --input docs/observer-real-runs/2026-10-07/native
+```
+
 ## Historical research baseline
 
 Experimental security lab: can **deterministic workflow-level state and information-flow enforcement** stop **some modeled** composition attacks that per-action authorization misses?

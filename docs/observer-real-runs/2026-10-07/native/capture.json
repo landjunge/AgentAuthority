@@ -1,0 +1,98 @@
+[
+  {
+    "run": 1,
+    "scenario": "write",
+    "started": true,
+    "real_agent_observed": true,
+    "timeout": false,
+    "backend": "native_collaboration",
+    "completion_received": true,
+    "sensor_errors": 0,
+    "stats": {
+      "tool_reports": 1,
+      "raw_stdout_bytes": 98,
+      "raw_stderr_bytes": 0,
+      "canary_lines_raw": 1
+    }
+  },
+  {
+    "run": 2,
+    "scenario": "noop",
+    "started": true,
+    "real_agent_observed": true,
+    "timeout": false,
+    "backend": "native_collaboration",
+    "completion_received": true,
+    "sensor_errors": 0,
+    "stats": {
+      "tool_reports": 1,
+      "raw_stdout_bytes": 98,
+      "raw_stderr_bytes": 0,
+      "canary_lines_raw": 1
+    }
+  },
+  {
+    "run": 3,
+    "scenario": "fail",
+    "started": true,
+    "real_agent_observed": true,
+    "timeout": false,
+    "backend": "native_collaboration",
+    "completion_received": true,
+    "sensor_errors": 0,
+    "stats": {
+      "tool_reports": 1,
+      "raw_stdout_bytes": 98,
+      "raw_stderr_bytes": 56,
+      "canary_lines_raw": 2
+    }
+  },
+  {
+    "run": 4,
+    "scenario": "write_fail",
+    "started": true,
+    "real_agent_observed": true,
+    "timeout": false,
+    "backend": "native_collaboration",
+    "completion_received": true,
+    "sensor_errors": 0,
+    "stats": {
+      "tool_reports": 1,
+      "raw_stdout_bytes": 98,
+      "raw_stderr_bytes": 56,
+      "canary_lines_raw": 2
+    }
+  },
+  {
+    "run": 5,
+    "scenario": "late",
+    "started": true,
+    "real_agent_observed": true,
+    "timeout": false,
+    "backend": "native_collaboration",
+    "completion_received": true,
+    "sensor_errors": 0,
+    "stats": {
+      "tool_reports": 1,
+      "raw_stdout_bytes": 98,
+      "raw_stderr_bytes": 0,
+      "canary_lines_raw": 1
+    }
+  },
+  {
+    "run": 6,
+    "scenario": "write",
+    "started": true,
+    "real_agent_observed": true,
+    "timeout": false,
+    "backend": "native_collaboration",
+    "completion_received": true,
+    "sensor_errors": 0,
+    "stats": {
+      "tool_reports": 1,
+      "raw_stdout_bytes": 98,
+      "raw_stderr_bytes": 0,
+      "canary_lines_raw": 1
+    }
+  }
+]
