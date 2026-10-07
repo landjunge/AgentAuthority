@@ -1,0 +1,59 @@
+{
+  "tested_base_commit": "2ff7d1497d681f4d7b4be39945ec5688356693f2",
+  "frozen_contract_commit": "9e0efbd0d6ce2f9bd592dc5ef89dfc6a518fb1c1",
+  "actual_probe_invocations": 1,
+  "historical_final_assertion_failed": true,
+  "unexpected_execution_or_reference_errors": 0,
+  "observer_or_original_probe_modified": false,
+  "original_export_records": 2,
+  "original_export_bytes": 1238,
+  "native_observer_accepted_records": 0,
+  "schema_errors": 1,
+  "unsupported_question_calls": 3,
+  "observer_semantic_answers_produced": 0,
+  "ground_truth_sequence_valid": true,
+  "ground_truth_shared_origin_limit": "single original write worker and unchanged FakeAdapter; not shared runtime action/attempt/generation evidence",
+  "persistent_export_unchanged_across_finish_and_effect": true,
+  "answers": [
+    {
+      "question": "A",
+      "ground_truth": "finish returned True before effect; target absent after return then present after release",
+      "observer_statement": null,
+      "interface_exception": {
+        "type": "ValueError",
+        "message": "unknown_research_question"
+      },
+      "external_answer_category": "UNBEKANNT / NICHT BELEGBAR (no implemented interface; not an observer-issued answer)",
+      "classification": "UNBEURTEILBAR"
+    },
+    {
+      "question": "B",
+      "ground_truth": "effect belongs to the sole original write worker/adapter in this synchronized probe",
+      "observer_statement": null,
+      "interface_exception": {
+        "type": "ValueError",
+        "message": "unknown_research_question"
+      },
+      "external_answer_category": "UNBEKANNT / NICHT BELEGBAR (no implemented interface; not an observer-issued answer)",
+      "classification": "UNBEURTEILBAR"
+    },
+    {
+      "question": "C",
+      "ground_truth": "workflow cleanup completed while original effect pending; effect applied after release",
+      "observer_statement": null,
+      "interface_exception": {
+        "type": "ValueError",
+        "message": "unknown_research_question"
+      },
+      "external_answer_category": "UNBEKANNT / NICHT BELEGBAR (no implemented interface; not an observer-issued answer)",
+      "classification": "UNBEURTEILBAR"
+    }
+  ],
+  "classifications": {
+    "KORREKT": 0,
+    "FALSCH": 0,
+    "UNBEURTEILBAR": 3
+  },
+  "result": "INCONCLUSIVE",
+  "scope": "one deterministic original Phase-1 FakeAdapter case; interface availability measured, detection accuracy unmeasured"
+}

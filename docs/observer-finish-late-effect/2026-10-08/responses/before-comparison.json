@@ -1,0 +1,55 @@
+{
+  "input_sha256": "8452ae1f967042c869fbc62fbab4bd1e77c3a81e1f3642019d991e67ed476f0b",
+  "input_records": 2,
+  "input_mapping": "NONE; exact existing G3 event dictionaries",
+  "schema_check": {
+    "returned": null,
+    "exception": {
+      "type": "ValueError",
+      "message": "invalid_observation_schema"
+    }
+  },
+  "responses": [
+    {
+      "question": "A",
+      "question_text": "finish() war abgeschlossen, bevor der Schreibeffekt sichtbar wurde?",
+      "query_run_argument": 1,
+      "query_run_argument_is_correlated_to_workflow": false,
+      "raw_observer_result": {
+        "returned": null,
+        "exception": {
+          "type": "ValueError",
+          "message": "unknown_research_question"
+        }
+      }
+    },
+    {
+      "question": "B",
+      "question_text": "Kann der Observer den später sichtbaren Effekt sicher demselben vorher gestarteten Vorgang zuordnen?",
+      "query_run_argument": 1,
+      "query_run_argument_is_correlated_to_workflow": false,
+      "raw_observer_result": {
+        "returned": null,
+        "exception": {
+          "type": "ValueError",
+          "message": "unknown_research_question"
+        }
+      }
+    },
+    {
+      "question": "C",
+      "question_text": "Kann der Observer unterscheiden zwischen Workflow beendet und alle daraus entstandenen Effekte beendet?",
+      "query_run_argument": 1,
+      "query_run_argument_is_correlated_to_workflow": false,
+      "raw_observer_result": {
+        "returned": null,
+        "exception": {
+          "type": "ValueError",
+          "message": "unknown_research_question"
+        }
+      }
+    }
+  ],
+  "no_answer_fabricated": true,
+  "boundary": "schema/interface availability only; no detector accuracy established"
+}

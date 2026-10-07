@@ -1,0 +1,118 @@
+{
+  "checkpoints": [
+    {
+      "checkpoint": "actual_submitted_request",
+      "actor": "agent-a",
+      "action": "file.write",
+      "resource": "src/late.py",
+      "workflow_id": "wf-finish-effect-gap"
+    },
+    {
+      "checkpoint": "allow_assertion_passed_before_pause",
+      "allow": true
+    },
+    {
+      "checkpoint": "authorized_wait_succeeded_before_finish_call",
+      "probe_line": 47,
+      "target_present": false,
+      "authorized_set": true,
+      "release_set": false,
+      "worker_alive": true,
+      "worker_errors": [],
+      "returned_decisions": [],
+      "live_workflow_registered": true,
+      "live_provenance_count": 1,
+      "original_export_snapshot": {
+        "bytes": 1238,
+        "lines": 2,
+        "sha256": "8452ae1f967042c869fbc62fbab4bd1e77c3a81e1f3642019d991e67ed476f0b"
+      }
+    },
+    {
+      "checkpoint": "actual_finish_return",
+      "returned_value": true,
+      "workflow_id": "wf-finish-effect-gap"
+    },
+    {
+      "checkpoint": "caller_passed_finish_true_assertion",
+      "probe_line": 48,
+      "target_present": false,
+      "authorized_set": true,
+      "release_set": false,
+      "worker_alive": true,
+      "worker_errors": [],
+      "returned_decisions": [],
+      "live_workflow_registered": false,
+      "live_provenance_count": null,
+      "original_export_snapshot": {
+        "bytes": 1238,
+        "lines": 2,
+        "sha256": "8452ae1f967042c869fbc62fbab4bd1e77c3a81e1f3642019d991e67ed476f0b"
+      }
+    },
+    {
+      "checkpoint": "absence_assertion_passed_before_release",
+      "probe_line": 50,
+      "target_present": false,
+      "authorized_set": true,
+      "release_set": false,
+      "worker_alive": true,
+      "worker_errors": [],
+      "returned_decisions": [],
+      "live_workflow_registered": false,
+      "live_provenance_count": null,
+      "original_export_snapshot": {
+        "bytes": 1238,
+        "lines": 2,
+        "sha256": "8452ae1f967042c869fbc62fbab4bd1e77c3a81e1f3642019d991e67ed476f0b"
+      }
+    },
+    {
+      "checkpoint": "release_wait_succeeded_before_adapter_resumes"
+    },
+    {
+      "checkpoint": "worker_join_and_result_assertions_passed",
+      "probe_line": 58,
+      "target_present": true,
+      "authorized_set": true,
+      "release_set": true,
+      "worker_alive": false,
+      "worker_errors": [],
+      "returned_decisions": [
+        true
+      ],
+      "live_workflow_registered": false,
+      "live_provenance_count": null,
+      "original_export_snapshot": {
+        "bytes": 1238,
+        "lines": 2,
+        "sha256": "8452ae1f967042c869fbc62fbab4bd1e77c3a81e1f3642019d991e67ed476f0b"
+      }
+    },
+    {
+      "checkpoint": "original_probe_exception",
+      "function": "test_no_adapter_effect_occurs_after_finish_returns",
+      "probe_line": 58,
+      "exception_type": "AssertionError"
+    }
+  ],
+  "pytest_reports": [
+    {
+      "when": "setup",
+      "outcome": "passed",
+      "exception_type": null
+    },
+    {
+      "when": "call",
+      "outcome": "failed",
+      "exception_type": "AssertionError"
+    },
+    {
+      "when": "teardown",
+      "outcome": "passed",
+      "exception_type": null
+    }
+  ],
+  "pytest_exit_code": 1,
+  "instrumentation": "passive_trace_only; no_mutation_or_synthetic_observer_events"
+}
