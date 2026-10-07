@@ -18,6 +18,9 @@ keeps those distinctions explicit.
 ordnet notwendige, hilfreiche und bewusst ausgeschlossene Daten mit Belegen,
 Risiken und offenen Forschungsfragen ein. Keine Implementierung oder neue Befugnisse.
 
+[E1: begrenzter Feldbedarfstest auf Papier](docs/OBSERVER-E1-FIELD-NECESSITY-2026-10-07.md)
+zeigt den Unterschied zwischen sichtbarer Reihenfolge, Laufzuordnung und Effektbeleg.
+
 ## Historical research baseline
 
 Experimental security lab: can **deterministic workflow-level state and information-flow enforcement** stop **some modeled** composition attacks that per-action authorization misses?

@@ -174,3 +174,80 @@ Die folgende Antwort wird vor Vorlage der vollständigen Karten gesichert.
 | K2 | gemeldet | offen | nicht bestimmbar | Die Zielmeldung nennt keinen Laufbezug; Workflow und Ressource sind nicht eindeutig. Sichtbar liegt die Effektmeldung mit Ordnung 20 vor der Cleanup-Meldung für `v-a / g-1` mit Ordnung 30. |
 | K3 | unbekannt | nicht prüfbar | nicht bestimmbar | Keine Schreibwirkungsmeldung sichtbar. Die Einreichungsmeldungen liegen vor der Cleanup-Meldung; eine Reihenfolge zwischen Effektmeldung und Cleanup ist nicht feststellbar. |
 | K4 | unbekannt | nicht prüfbar | nicht bestimmbar | Keine Schreibwirkungsmeldung sichtbar. Die Einreichungsmeldungen liegen vor der Cleanup-Meldung; eine Reihenfolge zwischen Effektmeldung und Cleanup ist nicht feststellbar. |
+
+### Zweitantwort K5–K6
+
+Die Erstantwort wurde unverändert im Commit
+`57936b62f84ded4360a15792518445b6afa6730d` gesichert und gepusht, bevor derselbe
+Prüfer die separate Vorlage mit K5/K6 erhielt. Auch die zweite Vorlage wurde
+ausschließlich aus dem Freeze-Commit gelesen, ohne Hypothesen/Zuordnungskontrollen.
+
+| Karte | Effektmeldung | Zuordnung | Laufreihenfolge | Begründung |
+|---|---|---|---|---|
+| K5 | gemeldet | eindeutig | vor | Zielmeldung und Cleanup nennen ausdrücklich `v-a / g-1`; die Schreibwirkung liegt mit Ordnung 20 vor dem Cleanup mit Ordnung 30. Auch die sichtbare Meldungsreihenfolge ist entsprechend. |
+| K6 | gemeldet | eindeutig | nach | Zielmeldung und Cleanup nennen ausdrücklich `v-a / g-1`; die Schreibwirkung liegt mit Ordnung 40 nach dem Cleanup mit Ordnung 30. Auch die sichtbare Meldungsreihenfolge ist entsprechend. |
+
+### Was E1 konkret zeigt
+
+1. **Ein zeitlicher Vergleich braucht auch einen passenden Laufbezug.** K1/K2
+   enthalten weiterhin eine Effektmeldung und deren gesetzte Reihenfolge zum
+   Cleanup. Der Effekt kann aber zu `v-a / g-1` oder `v-b / g-2` gehören. Beide
+   Zuordnungen sind mit den sichtbaren Angaben vereinbar. „Nach der Cleanupmeldung
+   sichtbar“ bleibt möglich; „Effekt dieses beendeten Laufs“ bleibt unbelegt.
+2. **Ein Ende ersetzt keinen Effektbeleg.** K3/K4 sind nach Entfernen der
+   Effektmeldung zeilengleich, obwohl sie aus verschiedenen Grundsituationen
+   stammen. Aus derselben sichtbaren Information lässt sich die verschwundene
+   Unterscheidung nicht rekonstruieren. „Effekt unbekannt“ ist begründet,
+   „kein Effekt“ oder „keine spätere Wirkung“ nicht.
+3. **Für die begrenzte Vor-/Nach-Frage sind keine Arbeitsinhalte nötig.** K5/K6
+   tragen die Unterscheidung allein mit Quellmeldung, gemeinsamem Laufbezug,
+   Cleanup-/Effektbeleg und gesetzter Ordnung. Prompts, Dateien, Terminalausgaben,
+   Tokens oder zusätzliche Rechte werden dafür nicht verwendet. Das beweist
+   weder Geheimnisfreiheit der Metadaten noch die Beobachtbarkeit realer Effekte.
+
+Eine eindeutige Versuchsreferenz könnte den gemeinsamen Bezug genauso herstellen.
+E1 entfernt die **gesamte Zuordnungsinformation der Effektmeldung**, nicht ein
+Generationsfeld bei noch vorhandener eindeutiger Versuchs-ID. Eine Pflicht zu
+zwei separaten Feldern, eine konkrete API oder eine neue Datenstruktur folgt
+daraus nicht.
+
+### Erwartungen, Prüfungen und Grenzen
+
+| Vorab-Erwartung / Prüfbereich | Tatsächliches Ergebnis | Reichweite |
+|---|---|---|
+| H1: vollständige Karten unterscheiden Vorher/Nachher. | K5: vor; K6: nach, jeweils ausdrücklich zugeordnet. | Erfüllt innerhalb der gesetzten Quellen-/Ordnungsannahmen. |
+| H2: Laufbezug fehlt, Zuordnung offen, schwächere Zeitvergleichsaussage bleibt möglich. | K1/K2 genau so beurteilt; keine Rekonstruktion über Schwesterkarten. | Keine Aussage, dass eine bestimmte ID überall unverzichtbar ist. |
+| H3: Effektmeldung fehlt, Situationen nicht unterscheidbar. | K3/K4 gleiche Angaben und gleiche Erstantwort „unbekannt“. | Keine Messung von Erkennungsquote, Fehlerfreiheit oder Produzentenabdeckung. |
+| Dokumentprotokolltreue | Vorab-Freeze und gesicherte Erstantwort vor Zweitvorlage; Reduktionen exakt; Vorabtext unverändert. | Getrennte Kontextlektüre einer KI; kein externer Audit und keine Menschenstudie. |
+| Codekonformität / Sicherheitsleistung, Methode Achse A | **Nicht untersucht.** Keine Lab-/App-/Sicherheitstests ausgeführt. | Kein neuer PASS für Code, Gate, Integration oder Detektor. |
+| Hypothesen, Methode Achse B | H1–H3 **SUPPORTED ausschließlich als analytischer Informationsvergleich dieses konstruierten Kartensatzes**. | Reale AA-Erkennungsleistung und Verständlichkeit für Menschen bleiben **INCONCLUSIVE / nicht gemessen**. |
+
+Die Karten wurden gezielt konstruiert; es gibt keine Zufallsstichprobe oder
+Produktnutzung. Die Satzkonstruktion erklärt einen Informationsverlust, liefert
+aber keinen empirischen Sensor- oder Bediennachweis. Der Autor kannte die vollen
+Karten; die getrennte Erstlektüre vermied diese Kenntnis für den ersten
+Prüfausschnitt. Das macht den Versuch nicht zu einem externen Audit.
+
+Weiter offen bleiben Quellenechtheit, fehlende/unvollständige Meldungen, reale
+Uhren-/Reihenfolgenqualität, zuverlässige Bindung über Toolgrenzen, alternative
+hinreichende Belege und notwendige Daten für andere Analysefragen. Keine echte
+Agent-/Generationsidentität oder sichere Aufbewahrung ist nachgewiesen.
+OOS-021 bleibt unverändert offen. Aus einem gemeldeten Effekt nach Cleanup folgt
+weder ein Verstoß gegen eine Freigabe noch Wirkung nach realem Stopp/Widerruf.
+
+### Abschluss und Übergabe
+
+Geändert werden ausschließlich diese neue Dokumentation und ihr README-Verweis.
+Vorabprotokoll und Erstbewertung bleiben gegenüber den genannten Commits
+bytegleich; Kartenablationen und lokale Beleglinks sind mechanisch geprüft.
+Historische Specs, Findings, Tests, Probe und Programmcode bleiben unverändert;
+keine echten Arbeitsdaten, Secrets oder Credentialdateien gelesen. Der bereits
+veröffentlichte Grundlagenbericht wird nicht rückwirkend umgeschrieben.
+
+Abschließende read-only Prüfungen der Protokolltreue und Ergebnisfolgerungen:
+**PASS**. Die Prüfer sind Teil desselben Projektkontexts; keine externe Abnahme.
+
+**Konkrete Schlussfolgerung:** Für diesen Zusammenhang braucht AA einen belegten
+gemeinsamen Laufbezug und unterscheidbare Cleanup-/Effektbelege mit belastbarer
+Ordnung; fehlt etwas, muss die Aussage auf „Zuordnung offen“ oder „Effekt unbekannt“
+begrenzt bleiben. E1 ist beendet. **STOPP – keine Implementierung und kein E2–E7.**
