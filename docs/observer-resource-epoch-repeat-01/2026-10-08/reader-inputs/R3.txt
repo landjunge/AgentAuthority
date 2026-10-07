@@ -1,0 +1,62 @@
+Beurteile ausschließlich diese eine künstliche Informationskarte. Verwende keine Tools, keine Dateien und keine weiteren Kontexte. Ressourcenanzeigenamen und Aliase sind nicht eindeutig.
+
+Karte:
+{
+  "premises": [
+    "Alle Angaben sind künstliche Papierdaten; keine realen Dateien, Accounts, Agentidentitäten oder Sensoraufzeichnungen.",
+    "Jede Ressourcenreferenz bezeichnet innerhalb ihrer jeweiligen Epoche eine Ressource.",
+    "Ressourcenanzeigenamen und Aliase sind nicht eindeutig. Gleicher Text oder gleicher Anzeigename beweist keine Ressourcenidentität.",
+    "Epoche 1 liegt vor Epoche 2. Beide Meldungen betreffen dieselbe Aktionsart und denselben Ressourcentyp.",
+    "Ausdrücklich als gültig bezeichnete Bindungen gelten innerhalb dieser Papierkarte und des Projekts p-a. Ihre reale Quellechtheit ist nicht geprüft.",
+    "Es gibt ausschließlich die hier sichtbaren Informationen. Keine Zusammenhänge aus anderen Karten ergänzen."
+  ],
+  "project": "p-a",
+  "actor_binding": {
+    "old_epoch": 1,
+    "old_ref": "actor-alt",
+    "new_epoch": 2,
+    "new_ref": "actor-neu",
+    "relation": "same_instance",
+    "valid": true
+  },
+  "messages": [
+    {
+      "epoch": 1,
+      "actor_ref": "actor-alt",
+      "action_type": "Beobachtung",
+      "resource_type": "künstliches Objekt",
+      "resource_ref": "ref-alt",
+      "resource_display_name": "Objekt",
+      "resource_alias": "Alias"
+    },
+    {
+      "epoch": 2,
+      "actor_ref": "actor-neu",
+      "action_type": "Beobachtung",
+      "resource_type": "künstliches Objekt",
+      "resource_ref": "ref-neu",
+      "resource_display_name": "Objekt",
+      "resource_alias": "Alias"
+    }
+  ],
+  "resource_binding": {
+    "old_epoch": 1,
+    "old_ref": "ref-alt",
+    "new_epoch": 2,
+    "new_ref": "ref-neu",
+    "relation": "different_resources",
+    "valid": true
+  }
+}
+
+Frage 1
+Bezeichnen die Ressourcen vor und nach dem Epochenwechsel dieselbe Ressource?
+Zulässige Antworten: DIESELBE, VERSCHIEDEN, UNBEKANNT.
+
+Frage 2
+Welcher sichtbare Beleg trägt diese Aussage?
+
+Frage 3
+Was bleibt mit den sichtbaren Informationen ausdrücklich offen?
+
+Antworte nur mit drei nummerierten Antworten auf diese Fragen.

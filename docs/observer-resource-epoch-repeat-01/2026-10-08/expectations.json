@@ -1,0 +1,14 @@
+{
+  "R1": {
+    "answer": "UNBEKANNT",
+    "evidence_requirement": "Keine Ressourcenbindung über die Epochen sichtbar; Name, Alias, Projekt, Actorbindung, Nähe oder Reihenfolge ersetzen sie nicht."
+  },
+  "R2": {
+    "answer": "DIESELBE",
+    "evidence_requirement": "Ausschließlich aufgrund der ausdrücklich gültigen same_resource-Bindung zwischen ref-alt/Epoche 1 und ref-neu/Epoche 2."
+  },
+  "R3": {
+    "answer": "VERSCHIEDEN",
+    "evidence_requirement": "Ausschließlich aufgrund der ausdrücklich gültigen different_resources-Bindung zwischen ref-alt/Epoche 1 und ref-neu/Epoche 2."
+  }
+}
