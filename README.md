@@ -21,6 +21,10 @@ Risiken und offenen Forschungsfragen ein. Keine Implementierung oder neue Befugn
 [E1: begrenzter Feldbedarfstest auf Papier](docs/OBSERVER-E1-FIELD-NECESSITY-2026-10-07.md)
 zeigt den Unterschied zwischen sichtbarer Reihenfolge, Laufzuordnung und Effektbeleg.
 
+[E2: eigene Metadaten- und Exportpfade](docs/OBSERVER-E2-METADATA-MINIMIZATION-2026-10-07.md#gemessene-ergebnisse)
+prüft zehn künstliche Fälle ausschließlich im Agent-Authority-Lab; Metadaten bleiben
+im Export erhalten; die zwei Parameterkontrollen fehlen in diesem Export.
+
 ## Historical research baseline
 
 Experimental security lab: can **deterministic workflow-level state and information-flow enforcement** stop **some modeled** composition attacks that per-action authorization misses?

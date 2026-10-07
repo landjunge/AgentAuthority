@@ -1,0 +1,1312 @@
+{
+  "experiment": "E2 - standalone Agent Authority lab metadata paths",
+  "lab_master": "ef2400fa5fad3c4ff051928b78fcb3093bb23453",
+  "working_base": "b2bb13603cbf88f89f40d07b886cc1781196e07b",
+  "protocol_commit": "59a05aa223e3c33c051462057e9d5a7af551c394",
+  "protocol_sha256": "a7022e06ff1b1e33c258e96677107697c0782c1d35b143d4cc3fbc182c12479b",
+  "python_version": "3.12.14",
+  "script_sha256": "aa02d4a0492c9646f4266c8d20a2d207438c25f6e7dbdde4ce31e1e3514a9968",
+  "synthetic_data_only": true,
+  "cases": [
+    {
+      "case": "C1",
+      "carrier": "actor",
+      "marker": "E2_PRIVATE_CANARY_ACTOR_01",
+      "entrypoint": "Lab.submit",
+      "input_request": {
+        "actor": "E2_PRIVATE_CANARY_ACTOR_01",
+        "action": "file.read",
+        "resource": "e2/object.txt",
+        "parameters": {},
+        "workflow_id": "wf-e2-C1"
+      },
+      "decision_allow": true,
+      "decision_reason": null,
+      "state_view": {
+        "workflow_id": "wf-e2-C1",
+        "action_count": 1,
+        "files_changed": 0,
+        "touched_paths": [],
+        "agents": [
+          "E2_PRIVATE_CANARY_ACTOR_01"
+        ],
+        "delegation_depth": 0,
+        "network_destinations": [],
+        "irreversible_effects": []
+      },
+      "provenance": [
+        {
+          "workflow_id": "wf-e2-C1",
+          "actor": "E2_PRIVATE_CANARY_ACTOR_01",
+          "action": "file.read",
+          "resource": "e2/object.txt",
+          "decision": "ALLOW",
+          "state_before": {
+            "workflow_id": "wf-e2-C1",
+            "action_count": 0,
+            "files_changed": 0,
+            "touched_paths": [],
+            "agents": [],
+            "delegation_depth": 0,
+            "network_destinations": [],
+            "irreversible_effects": []
+          },
+          "state_after": {
+            "workflow_id": "wf-e2-C1",
+            "action_count": 1,
+            "files_changed": 0,
+            "touched_paths": [],
+            "agents": [
+              "E2_PRIVATE_CANARY_ACTOR_01"
+            ],
+            "delegation_depth": 0,
+            "network_destinations": [],
+            "irreversible_effects": []
+          },
+          "timestamp": "2026-10-07T17:03:12.319884Z",
+          "seq": 1
+        }
+      ],
+      "touched_paths": [],
+      "state_marker_paths": [
+        "$.agents[0]"
+      ],
+      "provenance_marker_paths": [
+        "$[0].actor",
+        "$[0].state_after.agents[0]"
+      ],
+      "log_marker_paths": [
+        "$[0].actor.agent_id",
+        "$[1].actor.agent_id"
+      ],
+      "raw_log_contains_marker": true,
+      "events": [
+        {
+          "schema_version": "1",
+          "event_id": "073528db259a410c",
+          "timestamp": "2026-10-07T17:03:12Z",
+          "trace_id": "wf-e2-C1",
+          "span_id": "0d3375fd",
+          "workflow_id": "wf-e2-C1",
+          "project_id": "agent-authority-lab",
+          "source_tool": "agent-authority-lab",
+          "event_type": "authority.requested",
+          "actor": {
+            "agent_id": "E2_PRIVATE_CANARY_ACTOR_01",
+            "role": "lab-agent"
+          },
+          "action": "file.read",
+          "resource": "e2/object.txt",
+          "decision": "ALLOW",
+          "reason_code": null,
+          "previous_event_hash": null,
+          "data_labels": [
+            "PUBLIC"
+          ],
+          "event_hash": "589c26108897b734417f05a2d02fa130f28abe2f423293c77b86c0a0d1190f35"
+        },
+        {
+          "schema_version": "1",
+          "event_id": "dcfa9a854d9f4c4c",
+          "timestamp": "2026-10-07T17:03:12Z",
+          "trace_id": "wf-e2-C1",
+          "span_id": "690a8840",
+          "workflow_id": "wf-e2-C1",
+          "project_id": "agent-authority-lab",
+          "source_tool": "agent-authority-lab",
+          "event_type": "authority.allowed",
+          "actor": {
+            "agent_id": "E2_PRIVATE_CANARY_ACTOR_01",
+            "role": "lab-agent"
+          },
+          "action": "file.read",
+          "resource": "e2/object.txt",
+          "decision": "ALLOW",
+          "reason_code": null,
+          "previous_event_hash": "589c26108897b734417f05a2d02fa130f28abe2f423293c77b86c0a0d1190f35",
+          "data_labels": [
+            "PUBLIC"
+          ],
+          "event_hash": "8a405f15489ab1d7a572bb72cb12ba22e808b806ef41bd79751cc1be09dbfdb0"
+        }
+      ],
+      "event_count": 2,
+      "event_types": [
+        "authority.requested",
+        "authority.allowed"
+      ],
+      "labels": [
+        [
+          "PUBLIC"
+        ],
+        [
+          "PUBLIC"
+        ]
+      ],
+      "hashes_valid": [
+        true,
+        true
+      ],
+      "chain_valid": true,
+      "log_sha256": "27d51e1ca08ceda6c0989bfb854d5c88ddd6d8ba7c383cc2d8a313a3fea265c0"
+    },
+    {
+      "case": "C2",
+      "carrier": "resource",
+      "marker": "E2_PRIVATE_CANARY_RESOURCE_02",
+      "entrypoint": "Lab.submit",
+      "input_request": {
+        "actor": "E2-Agent",
+        "action": "file.read",
+        "resource": "E2_PRIVATE_CANARY_RESOURCE_02",
+        "parameters": {},
+        "workflow_id": "wf-e2-C2"
+      },
+      "decision_allow": true,
+      "decision_reason": null,
+      "state_view": {
+        "workflow_id": "wf-e2-C2",
+        "action_count": 1,
+        "files_changed": 0,
+        "touched_paths": [],
+        "agents": [
+          "E2-Agent"
+        ],
+        "delegation_depth": 0,
+        "network_destinations": [],
+        "irreversible_effects": []
+      },
+      "provenance": [
+        {
+          "workflow_id": "wf-e2-C2",
+          "actor": "E2-Agent",
+          "action": "file.read",
+          "resource": "E2_PRIVATE_CANARY_RESOURCE_02",
+          "decision": "ALLOW",
+          "state_before": {
+            "workflow_id": "wf-e2-C2",
+            "action_count": 0,
+            "files_changed": 0,
+            "touched_paths": [],
+            "agents": [],
+            "delegation_depth": 0,
+            "network_destinations": [],
+            "irreversible_effects": []
+          },
+          "state_after": {
+            "workflow_id": "wf-e2-C2",
+            "action_count": 1,
+            "files_changed": 0,
+            "touched_paths": [],
+            "agents": [
+              "E2-Agent"
+            ],
+            "delegation_depth": 0,
+            "network_destinations": [],
+            "irreversible_effects": []
+          },
+          "timestamp": "2026-10-07T17:03:12.321045Z",
+          "seq": 1
+        }
+      ],
+      "touched_paths": [],
+      "state_marker_paths": [],
+      "provenance_marker_paths": [
+        "$[0].resource"
+      ],
+      "log_marker_paths": [
+        "$[0].resource",
+        "$[1].resource"
+      ],
+      "raw_log_contains_marker": true,
+      "events": [
+        {
+          "schema_version": "1",
+          "event_id": "9046d58f37d742a2",
+          "timestamp": "2026-10-07T17:03:12Z",
+          "trace_id": "wf-e2-C2",
+          "span_id": "59042db3",
+          "workflow_id": "wf-e2-C2",
+          "project_id": "agent-authority-lab",
+          "source_tool": "agent-authority-lab",
+          "event_type": "authority.requested",
+          "actor": {
+            "agent_id": "E2-Agent",
+            "role": "lab-agent"
+          },
+          "action": "file.read",
+          "resource": "E2_PRIVATE_CANARY_RESOURCE_02",
+          "decision": "ALLOW",
+          "reason_code": null,
+          "previous_event_hash": null,
+          "data_labels": [
+            "PUBLIC"
+          ],
+          "event_hash": "55a14192c58b06c2fece7910de2d75726a337dd156501974f2f6f80bb3b9adba"
+        },
+        {
+          "schema_version": "1",
+          "event_id": "22a6f431972d4366",
+          "timestamp": "2026-10-07T17:03:12Z",
+          "trace_id": "wf-e2-C2",
+          "span_id": "ad6c251c",
+          "workflow_id": "wf-e2-C2",
+          "project_id": "agent-authority-lab",
+          "source_tool": "agent-authority-lab",
+          "event_type": "authority.allowed",
+          "actor": {
+            "agent_id": "E2-Agent",
+            "role": "lab-agent"
+          },
+          "action": "file.read",
+          "resource": "E2_PRIVATE_CANARY_RESOURCE_02",
+          "decision": "ALLOW",
+          "reason_code": null,
+          "previous_event_hash": "55a14192c58b06c2fece7910de2d75726a337dd156501974f2f6f80bb3b9adba",
+          "data_labels": [
+            "PUBLIC"
+          ],
+          "event_hash": "ead8b1de1044eede4f8cda6cf72c0320a7f831c24ccebc6999b3fe55f94c166e"
+        }
+      ],
+      "event_count": 2,
+      "event_types": [
+        "authority.requested",
+        "authority.allowed"
+      ],
+      "labels": [
+        [
+          "PUBLIC"
+        ],
+        [
+          "PUBLIC"
+        ]
+      ],
+      "hashes_valid": [
+        true,
+        true
+      ],
+      "chain_valid": true,
+      "log_sha256": "00a4e62f1a9d5c1791a215349afaba8faf314cc9d1cfa3dbc5a22c1f4adf78ae"
+    },
+    {
+      "case": "C3",
+      "carrier": "url",
+      "marker": "E2_PRIVATE_CANARY_URL_03",
+      "entrypoint": "Lab.submit",
+      "input_request": {
+        "actor": "E2-Agent",
+        "action": "file.read",
+        "resource": "https://example.invalid/object?note=E2_PRIVATE_CANARY_URL_03",
+        "parameters": {},
+        "workflow_id": "wf-e2-C3"
+      },
+      "decision_allow": true,
+      "decision_reason": null,
+      "state_view": {
+        "workflow_id": "wf-e2-C3",
+        "action_count": 1,
+        "files_changed": 0,
+        "touched_paths": [],
+        "agents": [
+          "E2-Agent"
+        ],
+        "delegation_depth": 0,
+        "network_destinations": [],
+        "irreversible_effects": []
+      },
+      "provenance": [
+        {
+          "workflow_id": "wf-e2-C3",
+          "actor": "E2-Agent",
+          "action": "file.read",
+          "resource": "https://example.invalid/object?note=E2_PRIVATE_CANARY_URL_03",
+          "decision": "ALLOW",
+          "state_before": {
+            "workflow_id": "wf-e2-C3",
+            "action_count": 0,
+            "files_changed": 0,
+            "touched_paths": [],
+            "agents": [],
+            "delegation_depth": 0,
+            "network_destinations": [],
+            "irreversible_effects": []
+          },
+          "state_after": {
+            "workflow_id": "wf-e2-C3",
+            "action_count": 1,
+            "files_changed": 0,
+            "touched_paths": [],
+            "agents": [
+              "E2-Agent"
+            ],
+            "delegation_depth": 0,
+            "network_destinations": [],
+            "irreversible_effects": []
+          },
+          "timestamp": "2026-10-07T17:03:12.321815Z",
+          "seq": 1
+        }
+      ],
+      "touched_paths": [],
+      "state_marker_paths": [],
+      "provenance_marker_paths": [
+        "$[0].resource"
+      ],
+      "log_marker_paths": [
+        "$[0].resource",
+        "$[1].resource"
+      ],
+      "raw_log_contains_marker": true,
+      "events": [
+        {
+          "schema_version": "1",
+          "event_id": "3bd5e89c457048a9",
+          "timestamp": "2026-10-07T17:03:12Z",
+          "trace_id": "wf-e2-C3",
+          "span_id": "b7ead869",
+          "workflow_id": "wf-e2-C3",
+          "project_id": "agent-authority-lab",
+          "source_tool": "agent-authority-lab",
+          "event_type": "authority.requested",
+          "actor": {
+            "agent_id": "E2-Agent",
+            "role": "lab-agent"
+          },
+          "action": "file.read",
+          "resource": "https://example.invalid/object?note=E2_PRIVATE_CANARY_URL_03",
+          "decision": "ALLOW",
+          "reason_code": null,
+          "previous_event_hash": null,
+          "data_labels": [
+            "PUBLIC"
+          ],
+          "event_hash": "261998b7c988fd8994937386ca242ea3639edc1329c3c095d424a7ec4579dc0e"
+        },
+        {
+          "schema_version": "1",
+          "event_id": "c46d03f86e78421d",
+          "timestamp": "2026-10-07T17:03:12Z",
+          "trace_id": "wf-e2-C3",
+          "span_id": "ef18b7a9",
+          "workflow_id": "wf-e2-C3",
+          "project_id": "agent-authority-lab",
+          "source_tool": "agent-authority-lab",
+          "event_type": "authority.allowed",
+          "actor": {
+            "agent_id": "E2-Agent",
+            "role": "lab-agent"
+          },
+          "action": "file.read",
+          "resource": "https://example.invalid/object?note=E2_PRIVATE_CANARY_URL_03",
+          "decision": "ALLOW",
+          "reason_code": null,
+          "previous_event_hash": "261998b7c988fd8994937386ca242ea3639edc1329c3c095d424a7ec4579dc0e",
+          "data_labels": [
+            "PUBLIC"
+          ],
+          "event_hash": "b4a76523d17b73aa31841d0453add0eb312d3e5670e52b61ad686d81b2478847"
+        }
+      ],
+      "event_count": 2,
+      "event_types": [
+        "authority.requested",
+        "authority.allowed"
+      ],
+      "labels": [
+        [
+          "PUBLIC"
+        ],
+        [
+          "PUBLIC"
+        ]
+      ],
+      "hashes_valid": [
+        true,
+        true
+      ],
+      "chain_valid": true,
+      "log_sha256": "4e08aebcf600a89cecc4caee2db5361e8610c6fc15e4e7494bd942744a4b4a3a"
+    },
+    {
+      "case": "C4",
+      "carrier": "reason",
+      "marker": "E2_PRIVATE_CANARY_REASON_04",
+      "entrypoint": "emit_decision synthetic Decision fixture",
+      "input_request": {
+        "actor": "E2-Agent",
+        "action": "file.read",
+        "resource": "e2/object.txt",
+        "parameters": {},
+        "workflow_id": "wf-e2-C4"
+      },
+      "decision_allow": false,
+      "decision_reason": "synthetic-error:E2_PRIVATE_CANARY_REASON_04",
+      "state_view": null,
+      "provenance": null,
+      "touched_paths": null,
+      "state_marker_paths": null,
+      "provenance_marker_paths": null,
+      "log_marker_paths": [
+        "$[0].reason_code",
+        "$[1].reason_code"
+      ],
+      "raw_log_contains_marker": true,
+      "events": [
+        {
+          "schema_version": "1",
+          "event_id": "1d5c596d4e264191",
+          "timestamp": "2026-10-07T17:03:12Z",
+          "trace_id": "wf-e2-C4",
+          "span_id": "27d775e1",
+          "workflow_id": "wf-e2-C4",
+          "project_id": "agent-authority-lab",
+          "source_tool": "agent-authority-lab",
+          "event_type": "authority.requested",
+          "actor": {
+            "agent_id": "E2-Agent",
+            "role": "lab-agent"
+          },
+          "action": "file.read",
+          "resource": "e2/object.txt",
+          "decision": "DENY",
+          "reason_code": "synthetic-error:E2_PRIVATE_CANARY_REASON_04",
+          "previous_event_hash": null,
+          "data_labels": [
+            "PUBLIC"
+          ],
+          "event_hash": "6dd6f69d0fc8bb5e4e90b0d94557fb5c134d7dd53021c21aafa67280a45bc6bd"
+        },
+        {
+          "schema_version": "1",
+          "event_id": "49e19f5a589a4b73",
+          "timestamp": "2026-10-07T17:03:12Z",
+          "trace_id": "wf-e2-C4",
+          "span_id": "68e32c04",
+          "workflow_id": "wf-e2-C4",
+          "project_id": "agent-authority-lab",
+          "source_tool": "agent-authority-lab",
+          "event_type": "authority.denied",
+          "actor": {
+            "agent_id": "E2-Agent",
+            "role": "lab-agent"
+          },
+          "action": "file.read",
+          "resource": "e2/object.txt",
+          "decision": "DENY",
+          "reason_code": "synthetic-error:E2_PRIVATE_CANARY_REASON_04",
+          "previous_event_hash": "6dd6f69d0fc8bb5e4e90b0d94557fb5c134d7dd53021c21aafa67280a45bc6bd",
+          "data_labels": [
+            "PUBLIC"
+          ],
+          "event_hash": "3606f8820bb4671730ebfd65b98a4fa67beb4c1d710ed252596d3b607bcab636"
+        }
+      ],
+      "event_count": 2,
+      "event_types": [
+        "authority.requested",
+        "authority.denied"
+      ],
+      "labels": [
+        [
+          "PUBLIC"
+        ],
+        [
+          "PUBLIC"
+        ]
+      ],
+      "hashes_valid": [
+        true,
+        true
+      ],
+      "chain_valid": true,
+      "log_sha256": "cd30e491fdbe275697f2583928c43cafb0553c054329a0ac7175282fa5cd82a6"
+    },
+    {
+      "case": "C5",
+      "carrier": "parameters",
+      "marker": "E2_PRIVATE_CANARY_PARAMETERS_05",
+      "entrypoint": "Lab.submit",
+      "input_request": {
+        "actor": "E2-Agent",
+        "action": "file.read",
+        "resource": "e2/object.txt",
+        "parameters": {
+          "e2_probe": "E2_PRIVATE_CANARY_PARAMETERS_05"
+        },
+        "workflow_id": "wf-e2-C5"
+      },
+      "decision_allow": true,
+      "decision_reason": null,
+      "state_view": {
+        "workflow_id": "wf-e2-C5",
+        "action_count": 1,
+        "files_changed": 0,
+        "touched_paths": [],
+        "agents": [
+          "E2-Agent"
+        ],
+        "delegation_depth": 0,
+        "network_destinations": [],
+        "irreversible_effects": []
+      },
+      "provenance": [
+        {
+          "workflow_id": "wf-e2-C5",
+          "actor": "E2-Agent",
+          "action": "file.read",
+          "resource": "e2/object.txt",
+          "decision": "ALLOW",
+          "state_before": {
+            "workflow_id": "wf-e2-C5",
+            "action_count": 0,
+            "files_changed": 0,
+            "touched_paths": [],
+            "agents": [],
+            "delegation_depth": 0,
+            "network_destinations": [],
+            "irreversible_effects": []
+          },
+          "state_after": {
+            "workflow_id": "wf-e2-C5",
+            "action_count": 1,
+            "files_changed": 0,
+            "touched_paths": [],
+            "agents": [
+              "E2-Agent"
+            ],
+            "delegation_depth": 0,
+            "network_destinations": [],
+            "irreversible_effects": []
+          },
+          "timestamp": "2026-10-07T17:03:12.323065Z",
+          "seq": 1
+        }
+      ],
+      "touched_paths": [],
+      "state_marker_paths": [],
+      "provenance_marker_paths": [],
+      "log_marker_paths": [],
+      "raw_log_contains_marker": false,
+      "events": [
+        {
+          "schema_version": "1",
+          "event_id": "f6b64a147ff54a2b",
+          "timestamp": "2026-10-07T17:03:12Z",
+          "trace_id": "wf-e2-C5",
+          "span_id": "29f15735",
+          "workflow_id": "wf-e2-C5",
+          "project_id": "agent-authority-lab",
+          "source_tool": "agent-authority-lab",
+          "event_type": "authority.requested",
+          "actor": {
+            "agent_id": "E2-Agent",
+            "role": "lab-agent"
+          },
+          "action": "file.read",
+          "resource": "e2/object.txt",
+          "decision": "ALLOW",
+          "reason_code": null,
+          "previous_event_hash": null,
+          "data_labels": [
+            "PUBLIC"
+          ],
+          "event_hash": "bcfd64944f59f71028c0e3ebe99f3857e5b9186e5592756af79fe2d0533cb93e"
+        },
+        {
+          "schema_version": "1",
+          "event_id": "f0165bd40fc74961",
+          "timestamp": "2026-10-07T17:03:12Z",
+          "trace_id": "wf-e2-C5",
+          "span_id": "c63ea6a9",
+          "workflow_id": "wf-e2-C5",
+          "project_id": "agent-authority-lab",
+          "source_tool": "agent-authority-lab",
+          "event_type": "authority.allowed",
+          "actor": {
+            "agent_id": "E2-Agent",
+            "role": "lab-agent"
+          },
+          "action": "file.read",
+          "resource": "e2/object.txt",
+          "decision": "ALLOW",
+          "reason_code": null,
+          "previous_event_hash": "bcfd64944f59f71028c0e3ebe99f3857e5b9186e5592756af79fe2d0533cb93e",
+          "data_labels": [
+            "PUBLIC"
+          ],
+          "event_hash": "d57283c2c319c1be05a7c4588041782dc6bf2d1a65c98ed603b9549d4652fa39"
+        }
+      ],
+      "event_count": 2,
+      "event_types": [
+        "authority.requested",
+        "authority.allowed"
+      ],
+      "labels": [
+        [
+          "PUBLIC"
+        ],
+        [
+          "PUBLIC"
+        ]
+      ],
+      "hashes_valid": [
+        true,
+        true
+      ],
+      "chain_valid": true,
+      "log_sha256": "43fa40418c9bd1439734078e2d086868cd5a63c6aebbb82edd58a8bac9235f82"
+    },
+    {
+      "case": "S1",
+      "carrier": "actor",
+      "marker": "api_key=E2_FAKE_NOT_A_CREDENTIAL_ACTOR_06",
+      "entrypoint": "Lab.submit",
+      "input_request": {
+        "actor": "api_key=E2_FAKE_NOT_A_CREDENTIAL_ACTOR_06",
+        "action": "file.read",
+        "resource": "e2/object.txt",
+        "parameters": {},
+        "workflow_id": "wf-e2-S1"
+      },
+      "decision_allow": true,
+      "decision_reason": null,
+      "state_view": {
+        "workflow_id": "wf-e2-S1",
+        "action_count": 1,
+        "files_changed": 0,
+        "touched_paths": [],
+        "agents": [
+          "api_key=E2_FAKE_NOT_A_CREDENTIAL_ACTOR_06"
+        ],
+        "delegation_depth": 0,
+        "network_destinations": [],
+        "irreversible_effects": []
+      },
+      "provenance": [
+        {
+          "workflow_id": "wf-e2-S1",
+          "actor": "api_key=E2_FAKE_NOT_A_CREDENTIAL_ACTOR_06",
+          "action": "file.read",
+          "resource": "e2/object.txt",
+          "decision": "ALLOW",
+          "state_before": {
+            "workflow_id": "wf-e2-S1",
+            "action_count": 0,
+            "files_changed": 0,
+            "touched_paths": [],
+            "agents": [],
+            "delegation_depth": 0,
+            "network_destinations": [],
+            "irreversible_effects": []
+          },
+          "state_after": {
+            "workflow_id": "wf-e2-S1",
+            "action_count": 1,
+            "files_changed": 0,
+            "touched_paths": [],
+            "agents": [
+              "api_key=E2_FAKE_NOT_A_CREDENTIAL_ACTOR_06"
+            ],
+            "delegation_depth": 0,
+            "network_destinations": [],
+            "irreversible_effects": []
+          },
+          "timestamp": "2026-10-07T17:03:12.323552Z",
+          "seq": 1
+        }
+      ],
+      "touched_paths": [],
+      "state_marker_paths": [
+        "$.agents[0]"
+      ],
+      "provenance_marker_paths": [
+        "$[0].actor",
+        "$[0].state_after.agents[0]"
+      ],
+      "log_marker_paths": [
+        "$[0].actor.agent_id",
+        "$[1].actor.agent_id"
+      ],
+      "raw_log_contains_marker": true,
+      "events": [
+        {
+          "schema_version": "1",
+          "event_id": "64ee6cbf4f39477c",
+          "timestamp": "2026-10-07T17:03:12Z",
+          "trace_id": "wf-e2-S1",
+          "span_id": "dc1c7dd4",
+          "workflow_id": "wf-e2-S1",
+          "project_id": "agent-authority-lab",
+          "source_tool": "agent-authority-lab",
+          "event_type": "authority.requested",
+          "actor": {
+            "agent_id": "api_key=E2_FAKE_NOT_A_CREDENTIAL_ACTOR_06",
+            "role": "lab-agent"
+          },
+          "action": "file.read",
+          "resource": "e2/object.txt",
+          "decision": "ALLOW",
+          "reason_code": null,
+          "previous_event_hash": null,
+          "data_labels": [
+            "PUBLIC"
+          ],
+          "event_hash": "ae952e9ad0c0bb348872fb9c946ef332452c72855e6e2053006ea963e65a9c02"
+        },
+        {
+          "schema_version": "1",
+          "event_id": "903abce69f4747e5",
+          "timestamp": "2026-10-07T17:03:12Z",
+          "trace_id": "wf-e2-S1",
+          "span_id": "3e6178ff",
+          "workflow_id": "wf-e2-S1",
+          "project_id": "agent-authority-lab",
+          "source_tool": "agent-authority-lab",
+          "event_type": "authority.allowed",
+          "actor": {
+            "agent_id": "api_key=E2_FAKE_NOT_A_CREDENTIAL_ACTOR_06",
+            "role": "lab-agent"
+          },
+          "action": "file.read",
+          "resource": "e2/object.txt",
+          "decision": "ALLOW",
+          "reason_code": null,
+          "previous_event_hash": "ae952e9ad0c0bb348872fb9c946ef332452c72855e6e2053006ea963e65a9c02",
+          "data_labels": [
+            "PUBLIC"
+          ],
+          "event_hash": "29f2bc1c56519a7451deaefa0855e149a90f267c44c0e21c057c8fd294c39636"
+        }
+      ],
+      "event_count": 2,
+      "event_types": [
+        "authority.requested",
+        "authority.allowed"
+      ],
+      "labels": [
+        [
+          "PUBLIC"
+        ],
+        [
+          "PUBLIC"
+        ]
+      ],
+      "hashes_valid": [
+        true,
+        true
+      ],
+      "chain_valid": true,
+      "log_sha256": "ef8af940dd89cb109017e263c950647610497605f925563d084d18ad012e0df1"
+    },
+    {
+      "case": "S2",
+      "carrier": "resource",
+      "marker": "api_key=E2_FAKE_NOT_A_CREDENTIAL_RESOURCE_07",
+      "entrypoint": "Lab.submit",
+      "input_request": {
+        "actor": "E2-Agent",
+        "action": "file.read",
+        "resource": "api_key=E2_FAKE_NOT_A_CREDENTIAL_RESOURCE_07",
+        "parameters": {},
+        "workflow_id": "wf-e2-S2"
+      },
+      "decision_allow": true,
+      "decision_reason": null,
+      "state_view": {
+        "workflow_id": "wf-e2-S2",
+        "action_count": 1,
+        "files_changed": 0,
+        "touched_paths": [],
+        "agents": [
+          "E2-Agent"
+        ],
+        "delegation_depth": 0,
+        "network_destinations": [],
+        "irreversible_effects": []
+      },
+      "provenance": [
+        {
+          "workflow_id": "wf-e2-S2",
+          "actor": "E2-Agent",
+          "action": "file.read",
+          "resource": "api_key=E2_FAKE_NOT_A_CREDENTIAL_RESOURCE_07",
+          "decision": "ALLOW",
+          "state_before": {
+            "workflow_id": "wf-e2-S2",
+            "action_count": 0,
+            "files_changed": 0,
+            "touched_paths": [],
+            "agents": [],
+            "delegation_depth": 0,
+            "network_destinations": [],
+            "irreversible_effects": []
+          },
+          "state_after": {
+            "workflow_id": "wf-e2-S2",
+            "action_count": 1,
+            "files_changed": 0,
+            "touched_paths": [],
+            "agents": [
+              "E2-Agent"
+            ],
+            "delegation_depth": 0,
+            "network_destinations": [],
+            "irreversible_effects": []
+          },
+          "timestamp": "2026-10-07T17:03:12.324361Z",
+          "seq": 1
+        }
+      ],
+      "touched_paths": [],
+      "state_marker_paths": [],
+      "provenance_marker_paths": [
+        "$[0].resource"
+      ],
+      "log_marker_paths": [
+        "$[0].resource",
+        "$[1].resource"
+      ],
+      "raw_log_contains_marker": true,
+      "events": [
+        {
+          "schema_version": "1",
+          "event_id": "2ad7ff3127e04816",
+          "timestamp": "2026-10-07T17:03:12Z",
+          "trace_id": "wf-e2-S2",
+          "span_id": "998d3fc7",
+          "workflow_id": "wf-e2-S2",
+          "project_id": "agent-authority-lab",
+          "source_tool": "agent-authority-lab",
+          "event_type": "authority.requested",
+          "actor": {
+            "agent_id": "E2-Agent",
+            "role": "lab-agent"
+          },
+          "action": "file.read",
+          "resource": "api_key=E2_FAKE_NOT_A_CREDENTIAL_RESOURCE_07",
+          "decision": "ALLOW",
+          "reason_code": null,
+          "previous_event_hash": null,
+          "data_labels": [
+            "PUBLIC"
+          ],
+          "event_hash": "fa95bf775dd0c70b37c212580890f702ee42ff5350758c6c35e2ec5cbaa4cadc"
+        },
+        {
+          "schema_version": "1",
+          "event_id": "eee115e668774643",
+          "timestamp": "2026-10-07T17:03:12Z",
+          "trace_id": "wf-e2-S2",
+          "span_id": "65b91faa",
+          "workflow_id": "wf-e2-S2",
+          "project_id": "agent-authority-lab",
+          "source_tool": "agent-authority-lab",
+          "event_type": "authority.allowed",
+          "actor": {
+            "agent_id": "E2-Agent",
+            "role": "lab-agent"
+          },
+          "action": "file.read",
+          "resource": "api_key=E2_FAKE_NOT_A_CREDENTIAL_RESOURCE_07",
+          "decision": "ALLOW",
+          "reason_code": null,
+          "previous_event_hash": "fa95bf775dd0c70b37c212580890f702ee42ff5350758c6c35e2ec5cbaa4cadc",
+          "data_labels": [
+            "PUBLIC"
+          ],
+          "event_hash": "877619fd7cd60bdf454b4c4f1badaaaf61cc778f37b35cb8dddf024387ea7bda"
+        }
+      ],
+      "event_count": 2,
+      "event_types": [
+        "authority.requested",
+        "authority.allowed"
+      ],
+      "labels": [
+        [
+          "PUBLIC"
+        ],
+        [
+          "PUBLIC"
+        ]
+      ],
+      "hashes_valid": [
+        true,
+        true
+      ],
+      "chain_valid": true,
+      "log_sha256": "2857ee00bc415d99e29ad910d84184749682df1f8cab622bccbc53eb94af0313"
+    },
+    {
+      "case": "S3",
+      "carrier": "url",
+      "marker": "api_key=E2_FAKE_NOT_A_CREDENTIAL_URL_08",
+      "entrypoint": "Lab.submit",
+      "input_request": {
+        "actor": "E2-Agent",
+        "action": "file.read",
+        "resource": "https://example.invalid/object?note=api_key=E2_FAKE_NOT_A_CREDENTIAL_URL_08",
+        "parameters": {},
+        "workflow_id": "wf-e2-S3"
+      },
+      "decision_allow": true,
+      "decision_reason": null,
+      "state_view": {
+        "workflow_id": "wf-e2-S3",
+        "action_count": 1,
+        "files_changed": 0,
+        "touched_paths": [],
+        "agents": [
+          "E2-Agent"
+        ],
+        "delegation_depth": 0,
+        "network_destinations": [],
+        "irreversible_effects": []
+      },
+      "provenance": [
+        {
+          "workflow_id": "wf-e2-S3",
+          "actor": "E2-Agent",
+          "action": "file.read",
+          "resource": "https://example.invalid/object?note=api_key=E2_FAKE_NOT_A_CREDENTIAL_URL_08",
+          "decision": "ALLOW",
+          "state_before": {
+            "workflow_id": "wf-e2-S3",
+            "action_count": 0,
+            "files_changed": 0,
+            "touched_paths": [],
+            "agents": [],
+            "delegation_depth": 0,
+            "network_destinations": [],
+            "irreversible_effects": []
+          },
+          "state_after": {
+            "workflow_id": "wf-e2-S3",
+            "action_count": 1,
+            "files_changed": 0,
+            "touched_paths": [],
+            "agents": [
+              "E2-Agent"
+            ],
+            "delegation_depth": 0,
+            "network_destinations": [],
+            "irreversible_effects": []
+          },
+          "timestamp": "2026-10-07T17:03:12.324844Z",
+          "seq": 1
+        }
+      ],
+      "touched_paths": [],
+      "state_marker_paths": [],
+      "provenance_marker_paths": [
+        "$[0].resource"
+      ],
+      "log_marker_paths": [
+        "$[0].resource",
+        "$[1].resource"
+      ],
+      "raw_log_contains_marker": true,
+      "events": [
+        {
+          "schema_version": "1",
+          "event_id": "64f09623d0144565",
+          "timestamp": "2026-10-07T17:03:12Z",
+          "trace_id": "wf-e2-S3",
+          "span_id": "5c6cfc3e",
+          "workflow_id": "wf-e2-S3",
+          "project_id": "agent-authority-lab",
+          "source_tool": "agent-authority-lab",
+          "event_type": "authority.requested",
+          "actor": {
+            "agent_id": "E2-Agent",
+            "role": "lab-agent"
+          },
+          "action": "file.read",
+          "resource": "https://example.invalid/object?note=api_key=E2_FAKE_NOT_A_CREDENTIAL_URL_08",
+          "decision": "ALLOW",
+          "reason_code": null,
+          "previous_event_hash": null,
+          "data_labels": [
+            "PUBLIC"
+          ],
+          "event_hash": "e1d733322b787df7e397dc653fd4d5aecc7fafba3d3c843b34283508fa723d1d"
+        },
+        {
+          "schema_version": "1",
+          "event_id": "5c6354002d6345b1",
+          "timestamp": "2026-10-07T17:03:12Z",
+          "trace_id": "wf-e2-S3",
+          "span_id": "4a500e72",
+          "workflow_id": "wf-e2-S3",
+          "project_id": "agent-authority-lab",
+          "source_tool": "agent-authority-lab",
+          "event_type": "authority.allowed",
+          "actor": {
+            "agent_id": "E2-Agent",
+            "role": "lab-agent"
+          },
+          "action": "file.read",
+          "resource": "https://example.invalid/object?note=api_key=E2_FAKE_NOT_A_CREDENTIAL_URL_08",
+          "decision": "ALLOW",
+          "reason_code": null,
+          "previous_event_hash": "e1d733322b787df7e397dc653fd4d5aecc7fafba3d3c843b34283508fa723d1d",
+          "data_labels": [
+            "PUBLIC"
+          ],
+          "event_hash": "4ba98cd3f8552d67fbe57610a5f92b1004ac0a311db184c755d0b5d1ed7ce6be"
+        }
+      ],
+      "event_count": 2,
+      "event_types": [
+        "authority.requested",
+        "authority.allowed"
+      ],
+      "labels": [
+        [
+          "PUBLIC"
+        ],
+        [
+          "PUBLIC"
+        ]
+      ],
+      "hashes_valid": [
+        true,
+        true
+      ],
+      "chain_valid": true,
+      "log_sha256": "4536108f872a800ef4ceece487b2d3c54e2c1c5e46a413ba8a27742f267c6695"
+    },
+    {
+      "case": "S4",
+      "carrier": "reason",
+      "marker": "api_key=E2_FAKE_NOT_A_CREDENTIAL_REASON_09",
+      "entrypoint": "emit_decision synthetic Decision fixture",
+      "input_request": {
+        "actor": "E2-Agent",
+        "action": "file.read",
+        "resource": "e2/object.txt",
+        "parameters": {},
+        "workflow_id": "wf-e2-S4"
+      },
+      "decision_allow": false,
+      "decision_reason": "synthetic-error:api_key=E2_FAKE_NOT_A_CREDENTIAL_REASON_09",
+      "state_view": null,
+      "provenance": null,
+      "touched_paths": null,
+      "state_marker_paths": null,
+      "provenance_marker_paths": null,
+      "log_marker_paths": [
+        "$[0].reason_code",
+        "$[1].reason_code"
+      ],
+      "raw_log_contains_marker": true,
+      "events": [
+        {
+          "schema_version": "1",
+          "event_id": "a2d412fd33a3495b",
+          "timestamp": "2026-10-07T17:03:12Z",
+          "trace_id": "wf-e2-S4",
+          "span_id": "e018662a",
+          "workflow_id": "wf-e2-S4",
+          "project_id": "agent-authority-lab",
+          "source_tool": "agent-authority-lab",
+          "event_type": "authority.requested",
+          "actor": {
+            "agent_id": "E2-Agent",
+            "role": "lab-agent"
+          },
+          "action": "file.read",
+          "resource": "e2/object.txt",
+          "decision": "DENY",
+          "reason_code": "synthetic-error:api_key=E2_FAKE_NOT_A_CREDENTIAL_REASON_09",
+          "previous_event_hash": null,
+          "data_labels": [
+            "PUBLIC"
+          ],
+          "event_hash": "d9cfc5e9223514e8ae6221ec29f2effb85f635c89b0003172bc5509bbfad7c3f"
+        },
+        {
+          "schema_version": "1",
+          "event_id": "58adddb250b64fe7",
+          "timestamp": "2026-10-07T17:03:12Z",
+          "trace_id": "wf-e2-S4",
+          "span_id": "c933daf1",
+          "workflow_id": "wf-e2-S4",
+          "project_id": "agent-authority-lab",
+          "source_tool": "agent-authority-lab",
+          "event_type": "authority.denied",
+          "actor": {
+            "agent_id": "E2-Agent",
+            "role": "lab-agent"
+          },
+          "action": "file.read",
+          "resource": "e2/object.txt",
+          "decision": "DENY",
+          "reason_code": "synthetic-error:api_key=E2_FAKE_NOT_A_CREDENTIAL_REASON_09",
+          "previous_event_hash": "d9cfc5e9223514e8ae6221ec29f2effb85f635c89b0003172bc5509bbfad7c3f",
+          "data_labels": [
+            "PUBLIC"
+          ],
+          "event_hash": "e7abc82d698e02ef6f18ac87ab530318fbd2c45dc97cc27dbb591c496a54f61e"
+        }
+      ],
+      "event_count": 2,
+      "event_types": [
+        "authority.requested",
+        "authority.denied"
+      ],
+      "labels": [
+        [
+          "PUBLIC"
+        ],
+        [
+          "PUBLIC"
+        ]
+      ],
+      "hashes_valid": [
+        true,
+        true
+      ],
+      "chain_valid": true,
+      "log_sha256": "833199333b349b300eb36f31c68dd711070a6589ffb469115c70b91bdbb85aa8"
+    },
+    {
+      "case": "S5",
+      "carrier": "parameters",
+      "marker": "api_key=E2_FAKE_NOT_A_CREDENTIAL_PARAMETERS_10",
+      "entrypoint": "Lab.submit",
+      "input_request": {
+        "actor": "E2-Agent",
+        "action": "file.read",
+        "resource": "e2/object.txt",
+        "parameters": {
+          "e2_probe": "api_key=E2_FAKE_NOT_A_CREDENTIAL_PARAMETERS_10"
+        },
+        "workflow_id": "wf-e2-S5"
+      },
+      "decision_allow": true,
+      "decision_reason": null,
+      "state_view": {
+        "workflow_id": "wf-e2-S5",
+        "action_count": 1,
+        "files_changed": 0,
+        "touched_paths": [],
+        "agents": [
+          "E2-Agent"
+        ],
+        "delegation_depth": 0,
+        "network_destinations": [],
+        "irreversible_effects": []
+      },
+      "provenance": [
+        {
+          "workflow_id": "wf-e2-S5",
+          "actor": "E2-Agent",
+          "action": "file.read",
+          "resource": "e2/object.txt",
+          "decision": "ALLOW",
+          "state_before": {
+            "workflow_id": "wf-e2-S5",
+            "action_count": 0,
+            "files_changed": 0,
+            "touched_paths": [],
+            "agents": [],
+            "delegation_depth": 0,
+            "network_destinations": [],
+            "irreversible_effects": []
+          },
+          "state_after": {
+            "workflow_id": "wf-e2-S5",
+            "action_count": 1,
+            "files_changed": 0,
+            "touched_paths": [],
+            "agents": [
+              "E2-Agent"
+            ],
+            "delegation_depth": 0,
+            "network_destinations": [],
+            "irreversible_effects": []
+          },
+          "timestamp": "2026-10-07T17:03:12.325630Z",
+          "seq": 1
+        }
+      ],
+      "touched_paths": [],
+      "state_marker_paths": [],
+      "provenance_marker_paths": [],
+      "log_marker_paths": [],
+      "raw_log_contains_marker": false,
+      "events": [
+        {
+          "schema_version": "1",
+          "event_id": "e3ae8f23ea2945dd",
+          "timestamp": "2026-10-07T17:03:12Z",
+          "trace_id": "wf-e2-S5",
+          "span_id": "753a148b",
+          "workflow_id": "wf-e2-S5",
+          "project_id": "agent-authority-lab",
+          "source_tool": "agent-authority-lab",
+          "event_type": "authority.requested",
+          "actor": {
+            "agent_id": "E2-Agent",
+            "role": "lab-agent"
+          },
+          "action": "file.read",
+          "resource": "e2/object.txt",
+          "decision": "ALLOW",
+          "reason_code": null,
+          "previous_event_hash": null,
+          "data_labels": [
+            "PUBLIC"
+          ],
+          "event_hash": "81d3790b854b543eebeaea9e296d9135b43d589276274ca65273ee32d09b7b6c"
+        },
+        {
+          "schema_version": "1",
+          "event_id": "a7a5fca873a14e9d",
+          "timestamp": "2026-10-07T17:03:12Z",
+          "trace_id": "wf-e2-S5",
+          "span_id": "ac4b45ae",
+          "workflow_id": "wf-e2-S5",
+          "project_id": "agent-authority-lab",
+          "source_tool": "agent-authority-lab",
+          "event_type": "authority.allowed",
+          "actor": {
+            "agent_id": "E2-Agent",
+            "role": "lab-agent"
+          },
+          "action": "file.read",
+          "resource": "e2/object.txt",
+          "decision": "ALLOW",
+          "reason_code": null,
+          "previous_event_hash": "81d3790b854b543eebeaea9e296d9135b43d589276274ca65273ee32d09b7b6c",
+          "data_labels": [
+            "PUBLIC"
+          ],
+          "event_hash": "238c27a98d4971933edc786e5a1abc7277906812ab0ef3fa25aa815b2ad12b5a"
+        }
+      ],
+      "event_count": 2,
+      "event_types": [
+        "authority.requested",
+        "authority.allowed"
+      ],
+      "labels": [
+        [
+          "PUBLIC"
+        ],
+        [
+          "PUBLIC"
+        ]
+      ],
+      "hashes_valid": [
+        true,
+        true
+      ],
+      "chain_valid": true,
+      "log_sha256": "24dbe1143f5f3dec3019fe04bc8995401440aa6a37fccea39108befa8a550ac6"
+    }
+  ]
+}
