@@ -1,0 +1,177 @@
+[
+  {
+    "run": 1,
+    "scenario": "write",
+    "started": false,
+    "tool_attempts": 0,
+    "real_agent_observed": true,
+    "timeout": true,
+    "failure": "stress_barrier_timeout",
+    "backend": "native_collaboration",
+    "completion_received": true,
+    "sensor_errors": 0,
+    "stats": {}
+  },
+  {
+    "run": 2,
+    "scenario": "noop",
+    "started": true,
+    "tool_attempts": 1,
+    "real_agent_observed": true,
+    "timeout": false,
+    "failure": null,
+    "backend": "native_collaboration",
+    "completion_received": true,
+    "sensor_errors": 0,
+    "stats": {
+      "tool_reports": 1,
+      "raw_stdout_bytes": 98,
+      "raw_stderr_bytes": 0,
+      "canary_lines_raw": 1
+    }
+  },
+  {
+    "run": 3,
+    "scenario": "fail",
+    "started": true,
+    "tool_attempts": 1,
+    "real_agent_observed": true,
+    "timeout": false,
+    "failure": null,
+    "backend": "native_collaboration",
+    "completion_received": true,
+    "sensor_errors": 0,
+    "stats": {
+      "tool_reports": 1,
+      "raw_stdout_bytes": 98,
+      "raw_stderr_bytes": 56,
+      "canary_lines_raw": 2
+    }
+  },
+  {
+    "run": 4,
+    "scenario": "write_fail",
+    "started": true,
+    "tool_attempts": 1,
+    "real_agent_observed": true,
+    "timeout": false,
+    "failure": null,
+    "backend": "native_collaboration",
+    "completion_received": true,
+    "sensor_errors": 0,
+    "stats": {
+      "tool_reports": 1,
+      "raw_stdout_bytes": 98,
+      "raw_stderr_bytes": 56,
+      "canary_lines_raw": 2
+    }
+  },
+  {
+    "run": 5,
+    "scenario": "late",
+    "started": true,
+    "tool_attempts": 1,
+    "real_agent_observed": true,
+    "timeout": false,
+    "failure": null,
+    "backend": "native_collaboration",
+    "completion_received": true,
+    "sensor_errors": 0,
+    "stats": {
+      "tool_reports": 1,
+      "raw_stdout_bytes": 98,
+      "raw_stderr_bytes": 0,
+      "canary_lines_raw": 1
+    }
+  },
+  {
+    "run": 6,
+    "scenario": "write",
+    "started": true,
+    "tool_attempts": 1,
+    "real_agent_observed": true,
+    "timeout": false,
+    "failure": null,
+    "backend": "native_collaboration",
+    "completion_received": true,
+    "sensor_errors": 0,
+    "stats": {
+      "tool_reports": 1,
+      "raw_stdout_bytes": 98,
+      "raw_stderr_bytes": 0,
+      "canary_lines_raw": 1
+    }
+  },
+  {
+    "run": 7,
+    "scenario": "noop",
+    "started": true,
+    "tool_attempts": 1,
+    "real_agent_observed": true,
+    "timeout": false,
+    "failure": null,
+    "backend": "native_collaboration",
+    "completion_received": true,
+    "sensor_errors": 0,
+    "stats": {
+      "tool_reports": 1,
+      "raw_stdout_bytes": 98,
+      "raw_stderr_bytes": 0,
+      "canary_lines_raw": 1
+    }
+  },
+  {
+    "run": 8,
+    "scenario": "fail",
+    "started": true,
+    "tool_attempts": 1,
+    "real_agent_observed": true,
+    "timeout": false,
+    "failure": null,
+    "backend": "native_collaboration",
+    "completion_received": true,
+    "sensor_errors": 0,
+    "stats": {
+      "tool_reports": 1,
+      "raw_stdout_bytes": 98,
+      "raw_stderr_bytes": 56,
+      "canary_lines_raw": 2
+    }
+  },
+  {
+    "run": 9,
+    "scenario": "write_fail",
+    "started": true,
+    "tool_attempts": 1,
+    "real_agent_observed": true,
+    "timeout": false,
+    "failure": null,
+    "backend": "native_collaboration",
+    "completion_received": true,
+    "sensor_errors": 0,
+    "stats": {
+      "tool_reports": 1,
+      "raw_stdout_bytes": 98,
+      "raw_stderr_bytes": 56,
+      "canary_lines_raw": 2
+    }
+  },
+  {
+    "run": 10,
+    "scenario": "late",
+    "started": true,
+    "tool_attempts": 1,
+    "real_agent_observed": true,
+    "timeout": false,
+    "failure": null,
+    "backend": "native_collaboration",
+    "completion_received": true,
+    "sensor_errors": 0,
+    "stats": {
+      "tool_reports": 1,
+      "raw_stdout_bytes": 98,
+      "raw_stderr_bytes": 0,
+      "canary_lines_raw": 1
+    }
+  }
+]

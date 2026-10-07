@@ -1,0 +1,157 @@
+[
+  {
+    "run": 1,
+    "calls": 0,
+    "target_check": false,
+    "target_present": null,
+    "creation_interval_ns": null,
+    "cutoff_interval_ns": [
+      4905538977179,
+      4905539004611
+    ],
+    "end_ns": 4805115089145,
+    "reference_issue": "uncontrolled_or_missing_tool_execution",
+    "appearance_vs_native_end": null
+  },
+  {
+    "run": 2,
+    "calls": 1,
+    "target_check": false,
+    "target_present": false,
+    "creation_interval_ns": null,
+    "cutoff_interval_ns": [
+      4905539300831,
+      4905539306323
+    ],
+    "end_ns": 4805115538045,
+    "reference_issue": null,
+    "appearance_vs_native_end": "not_applicable"
+  },
+  {
+    "run": 3,
+    "calls": 1,
+    "target_check": false,
+    "target_present": false,
+    "creation_interval_ns": null,
+    "cutoff_interval_ns": [
+      4905539564351,
+      4905539571537
+    ],
+    "end_ns": 4805116038424,
+    "reference_issue": null,
+    "appearance_vs_native_end": "not_applicable"
+  },
+  {
+    "run": 4,
+    "calls": 1,
+    "target_check": true,
+    "target_present": true,
+    "creation_interval_ns": [
+      4745959768896,
+      4745959778280
+    ],
+    "cutoff_interval_ns": [
+      4905539839281,
+      4905539846827
+    ],
+    "end_ns": 4805116538473,
+    "reference_issue": null,
+    "appearance_vs_native_end": "before"
+  },
+  {
+    "run": 5,
+    "calls": 1,
+    "target_check": true,
+    "target_present": true,
+    "creation_interval_ns": [
+      4805274965415,
+      4805274998522
+    ],
+    "cutoff_interval_ns": [
+      4905540050809,
+      4905540055250
+    ],
+    "end_ns": 4805116915336,
+    "reference_issue": null,
+    "appearance_vs_native_end": "after"
+  },
+  {
+    "run": 6,
+    "calls": 1,
+    "target_check": true,
+    "target_present": true,
+    "creation_interval_ns": [
+      4745944238895,
+      4745944245349
+    ],
+    "cutoff_interval_ns": [
+      4905540205217,
+      4905540222637
+    ],
+    "end_ns": 4805117363912,
+    "reference_issue": null,
+    "appearance_vs_native_end": "before"
+  },
+  {
+    "run": 7,
+    "calls": 1,
+    "target_check": false,
+    "target_present": false,
+    "creation_interval_ns": null,
+    "cutoff_interval_ns": [
+      4905540346496,
+      4905540367828
+    ],
+    "end_ns": 4904697858304,
+    "reference_issue": null,
+    "appearance_vs_native_end": "not_applicable"
+  },
+  {
+    "run": 8,
+    "calls": 1,
+    "target_check": false,
+    "target_present": false,
+    "creation_interval_ns": null,
+    "cutoff_interval_ns": [
+      4905540450614,
+      4905540456537
+    ],
+    "end_ns": 4904698807510,
+    "reference_issue": null,
+    "appearance_vs_native_end": "not_applicable"
+  },
+  {
+    "run": 9,
+    "calls": 1,
+    "target_check": true,
+    "target_present": true,
+    "creation_interval_ns": [
+      4845799754406,
+      4845799761210
+    ],
+    "cutoff_interval_ns": [
+      4905540612499,
+      4905540616393
+    ],
+    "end_ns": 4904699589938,
+    "reference_issue": null,
+    "appearance_vs_native_end": "before"
+  },
+  {
+    "run": 10,
+    "calls": 1,
+    "target_check": true,
+    "target_present": true,
+    "creation_interval_ns": [
+      4904858963041,
+      4904858990861
+    ],
+    "cutoff_interval_ns": [
+      4905541149958,
+      4905541157422
+    ],
+    "end_ns": 4904701128884,
+    "reference_issue": null,
+    "appearance_vs_native_end": "after"
+  }
+]

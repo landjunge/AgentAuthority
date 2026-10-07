@@ -47,6 +47,9 @@ python observer_research.py report --native --input docs/observer-real-runs/2026
 Agentenkontexte, neun ausgeführte Aufträge. Nicht bestanden wegen eines
 Runner-Barriere-Timeouts; keine falsche beurteilbare Observeraussage.
 
+[Identische Wiederholung 02](docs/OBSERVER-STRESS-10-REPEAT-02-RESULTS-2026-10-07.md):
+erneut nicht bestanden; diesmal Barriere-Timeout in Lauf 1. Erstbefund erhalten.
+
 ## Historical research baseline
 
 Experimental security lab: can **deterministic workflow-level state and information-flow enforcement** stop **some modeled** composition attacks that per-action authorization misses?

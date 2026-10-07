@@ -1,0 +1,292 @@
+[
+  {
+    "run": 1,
+    "question": "target_present",
+    "fields": [
+      "run",
+      "kind",
+      "value"
+    ],
+    "prediction": {
+      "answer": false,
+      "reason": "explicit_local_snapshot",
+      "evidence": []
+    }
+  },
+  {
+    "run": 1,
+    "question": "appearance_vs_native_end",
+    "fields": [
+      "run",
+      "kind",
+      "value",
+      "t_ns"
+    ],
+    "prediction": {
+      "answer": null,
+      "reason": "insufficient_observed_data",
+      "evidence": []
+    }
+  },
+  {
+    "run": 2,
+    "question": "target_present",
+    "fields": [
+      "run",
+      "kind",
+      "value"
+    ],
+    "prediction": {
+      "answer": false,
+      "reason": "explicit_local_snapshot",
+      "evidence": []
+    }
+  },
+  {
+    "run": 2,
+    "question": "appearance_vs_native_end",
+    "fields": [
+      "run",
+      "kind",
+      "value",
+      "t_ns"
+    ],
+    "prediction": {
+      "answer": null,
+      "reason": "insufficient_observed_data",
+      "evidence": []
+    }
+  },
+  {
+    "run": 3,
+    "question": "target_present",
+    "fields": [
+      "run",
+      "kind",
+      "value"
+    ],
+    "prediction": {
+      "answer": false,
+      "reason": "explicit_local_snapshot",
+      "evidence": []
+    }
+  },
+  {
+    "run": 3,
+    "question": "appearance_vs_native_end",
+    "fields": [
+      "run",
+      "kind",
+      "value",
+      "t_ns"
+    ],
+    "prediction": {
+      "answer": null,
+      "reason": "insufficient_observed_data",
+      "evidence": []
+    }
+  },
+  {
+    "run": 4,
+    "question": "target_present",
+    "fields": [
+      "run",
+      "kind",
+      "value"
+    ],
+    "prediction": {
+      "answer": true,
+      "reason": "explicit_local_snapshot",
+      "evidence": []
+    }
+  },
+  {
+    "run": 4,
+    "question": "appearance_vs_native_end",
+    "fields": [
+      "run",
+      "kind",
+      "value",
+      "t_ns"
+    ],
+    "prediction": {
+      "answer": "before",
+      "reason": "presence_upper_bound_before_end",
+      "evidence": []
+    }
+  },
+  {
+    "run": 5,
+    "question": "target_present",
+    "fields": [
+      "run",
+      "kind",
+      "value"
+    ],
+    "prediction": {
+      "answer": true,
+      "reason": "explicit_local_snapshot",
+      "evidence": []
+    }
+  },
+  {
+    "run": 5,
+    "question": "appearance_vs_native_end",
+    "fields": [
+      "run",
+      "kind",
+      "value",
+      "t_ns"
+    ],
+    "prediction": {
+      "answer": "after",
+      "reason": "absence_lower_bound_after_end",
+      "evidence": []
+    }
+  },
+  {
+    "run": 6,
+    "question": "target_present",
+    "fields": [
+      "run",
+      "kind",
+      "value"
+    ],
+    "prediction": {
+      "answer": true,
+      "reason": "explicit_local_snapshot",
+      "evidence": []
+    }
+  },
+  {
+    "run": 6,
+    "question": "appearance_vs_native_end",
+    "fields": [
+      "run",
+      "kind",
+      "value",
+      "t_ns"
+    ],
+    "prediction": {
+      "answer": "before",
+      "reason": "presence_upper_bound_before_end",
+      "evidence": []
+    }
+  },
+  {
+    "run": 7,
+    "question": "target_present",
+    "fields": [
+      "run",
+      "kind",
+      "value"
+    ],
+    "prediction": {
+      "answer": false,
+      "reason": "explicit_local_snapshot",
+      "evidence": []
+    }
+  },
+  {
+    "run": 7,
+    "question": "appearance_vs_native_end",
+    "fields": [
+      "run",
+      "kind",
+      "value",
+      "t_ns"
+    ],
+    "prediction": {
+      "answer": null,
+      "reason": "insufficient_observed_data",
+      "evidence": []
+    }
+  },
+  {
+    "run": 8,
+    "question": "target_present",
+    "fields": [
+      "run",
+      "kind",
+      "value"
+    ],
+    "prediction": {
+      "answer": false,
+      "reason": "explicit_local_snapshot",
+      "evidence": []
+    }
+  },
+  {
+    "run": 8,
+    "question": "appearance_vs_native_end",
+    "fields": [
+      "run",
+      "kind",
+      "value",
+      "t_ns"
+    ],
+    "prediction": {
+      "answer": null,
+      "reason": "insufficient_observed_data",
+      "evidence": []
+    }
+  },
+  {
+    "run": 9,
+    "question": "target_present",
+    "fields": [
+      "run",
+      "kind",
+      "value"
+    ],
+    "prediction": {
+      "answer": true,
+      "reason": "explicit_local_snapshot",
+      "evidence": []
+    }
+  },
+  {
+    "run": 9,
+    "question": "appearance_vs_native_end",
+    "fields": [
+      "run",
+      "kind",
+      "value",
+      "t_ns"
+    ],
+    "prediction": {
+      "answer": "before",
+      "reason": "presence_upper_bound_before_end",
+      "evidence": []
+    }
+  },
+  {
+    "run": 10,
+    "question": "target_present",
+    "fields": [
+      "run",
+      "kind",
+      "value"
+    ],
+    "prediction": {
+      "answer": true,
+      "reason": "explicit_local_snapshot",
+      "evidence": []
+    }
+  },
+  {
+    "run": 10,
+    "question": "appearance_vs_native_end",
+    "fields": [
+      "run",
+      "kind",
+      "value",
+      "t_ns"
+    ],
+    "prediction": {
+      "answer": "after",
+      "reason": "absence_lower_bound_after_end",
+      "evidence": []
+    }
+  }
+]

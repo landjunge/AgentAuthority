@@ -1,0 +1,290 @@
+[
+  {
+    "run": 1,
+    "kind": "queued",
+    "value": true,
+    "t_ns": 4681309027464
+  },
+  {
+    "run": 2,
+    "kind": "queued",
+    "value": true,
+    "t_ns": 4707318646917
+  },
+  {
+    "run": 3,
+    "kind": "queued",
+    "value": true,
+    "t_ns": 4714567217486
+  },
+  {
+    "run": 4,
+    "kind": "queued",
+    "value": true,
+    "t_ns": 4719128392577
+  },
+  {
+    "run": 5,
+    "kind": "queued",
+    "value": true,
+    "t_ns": 4737404273223
+  },
+  {
+    "run": 6,
+    "kind": "queued",
+    "value": true,
+    "t_ns": 4745900456618
+  },
+  {
+    "run": 6,
+    "kind": "tool",
+    "value": true,
+    "t_ns": 4745900507734
+  },
+  {
+    "run": 4,
+    "kind": "tool",
+    "value": true,
+    "t_ns": 4745900984322
+  },
+  {
+    "run": 2,
+    "kind": "tool",
+    "value": true,
+    "t_ns": 4745901450021
+  },
+  {
+    "run": 3,
+    "kind": "tool",
+    "value": true,
+    "t_ns": 4745901647234
+  },
+  {
+    "run": 5,
+    "kind": "tool",
+    "value": true,
+    "t_ns": 4745902523213
+  },
+  {
+    "run": 6,
+    "kind": "tool",
+    "value": false,
+    "t_ns": 4745952206100
+  },
+  {
+    "run": 2,
+    "kind": "tool",
+    "value": false,
+    "t_ns": 4745958830692
+  },
+  {
+    "run": 4,
+    "kind": "tool",
+    "value": false,
+    "t_ns": 4745967445749
+  },
+  {
+    "run": 5,
+    "kind": "tool",
+    "value": false,
+    "t_ns": 4745968193456
+  },
+  {
+    "run": 3,
+    "kind": "tool",
+    "value": false,
+    "t_ns": 4745978113868
+  },
+  {
+    "run": 1,
+    "kind": "agent",
+    "value": true,
+    "t_ns": 4805112670024
+  },
+  {
+    "run": 2,
+    "kind": "agent",
+    "value": true,
+    "t_ns": 4805113537931
+  },
+  {
+    "run": 3,
+    "kind": "agent",
+    "value": true,
+    "t_ns": 4805114086207
+  },
+  {
+    "run": 4,
+    "kind": "agent",
+    "value": true,
+    "t_ns": 4805114375937
+  },
+  {
+    "run": 5,
+    "kind": "agent",
+    "value": true,
+    "t_ns": 4805114590153
+  },
+  {
+    "run": 6,
+    "kind": "agent",
+    "value": true,
+    "t_ns": 4805114876537
+  },
+  {
+    "run": 1,
+    "kind": "agent",
+    "value": false,
+    "t_ns": 4805115225554
+  },
+  {
+    "run": 2,
+    "kind": "agent",
+    "value": false,
+    "t_ns": 4805115737867
+  },
+  {
+    "run": 3,
+    "kind": "agent",
+    "value": false,
+    "t_ns": 4805116264287
+  },
+  {
+    "run": 4,
+    "kind": "agent",
+    "value": false,
+    "t_ns": 4805116625849
+  },
+  {
+    "run": 5,
+    "kind": "agent",
+    "value": false,
+    "t_ns": 4805116958068
+  },
+  {
+    "run": 6,
+    "kind": "agent",
+    "value": false,
+    "t_ns": 4805117419783
+  },
+  {
+    "run": 7,
+    "kind": "agent",
+    "value": true,
+    "t_ns": 4805117864275
+  },
+  {
+    "run": 8,
+    "kind": "agent",
+    "value": true,
+    "t_ns": 4805118112011
+  },
+  {
+    "run": 9,
+    "kind": "agent",
+    "value": true,
+    "t_ns": 4805118403261
+  },
+  {
+    "run": 10,
+    "kind": "agent",
+    "value": true,
+    "t_ns": 4805118641593
+  },
+  {
+    "run": 7,
+    "kind": "queued",
+    "value": true,
+    "t_ns": 4821430759631
+  },
+  {
+    "run": 8,
+    "kind": "queued",
+    "value": true,
+    "t_ns": 4829263479001
+  },
+  {
+    "run": 9,
+    "kind": "queued",
+    "value": true,
+    "t_ns": 4838432633070
+  },
+  {
+    "run": 10,
+    "kind": "queued",
+    "value": true,
+    "t_ns": 4845764165257
+  },
+  {
+    "run": 10,
+    "kind": "tool",
+    "value": true,
+    "t_ns": 4845764209241
+  },
+  {
+    "run": 9,
+    "kind": "tool",
+    "value": true,
+    "t_ns": 4845765359866
+  },
+  {
+    "run": 8,
+    "kind": "tool",
+    "value": true,
+    "t_ns": 4845765453029
+  },
+  {
+    "run": 7,
+    "kind": "tool",
+    "value": true,
+    "t_ns": 4845766046025
+  },
+  {
+    "run": 9,
+    "kind": "tool",
+    "value": false,
+    "t_ns": 4845805425515
+  },
+  {
+    "run": 10,
+    "kind": "tool",
+    "value": false,
+    "t_ns": 4845812639588
+  },
+  {
+    "run": 7,
+    "kind": "tool",
+    "value": false,
+    "t_ns": 4845819306193
+  },
+  {
+    "run": 8,
+    "kind": "tool",
+    "value": false,
+    "t_ns": 4845826784946
+  },
+  {
+    "run": 7,
+    "kind": "agent",
+    "value": false,
+    "t_ns": 4904698092205
+  },
+  {
+    "run": 8,
+    "kind": "agent",
+    "value": false,
+    "t_ns": 4904699003494
+  },
+  {
+    "run": 9,
+    "kind": "agent",
+    "value": false,
+    "t_ns": 4904700731833
+  },
+  {
+    "run": 10,
+    "kind": "agent",
+    "value": false,
+    "t_ns": 4904701180265
+  }
+]
