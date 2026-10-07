@@ -1,5 +1,21 @@
 # Agent Authority Lab
 
+## Current product role
+
+Agent Authority is exclusively an **observer / monitor / analysis layer**, as
+recorded in [KI-Zentrale decision D-012](https://github.com/landjunge/KI-Zentralle/blob/main/DECISIONS.md#d-012--agent-authority-beobachtet-entscheidungen-bleiben-bei-den-zuständigen-tools).
+It reports observations, contradictions, risks and missing evidence. It does not
+grant or revoke rights, approve actions, release secrets or budgets, or stop work.
+
+The ALLOW/DENY, gate and IFC mechanisms below are **historical fake-lab
+experiments**. Their positive results, measured misses, repairs and frozen specs
+remain evidence within their original scope; they do not establish product
+decision authority or an implemented observer integration. The existing
+[practice/research reconciliation](https://github.com/landjunge/KI-Zentralle/blob/main/docs/agent-authority/ABGLEICH-TESTS-UND-BEOBACHTER-RECHERCHE-2026-10-07.md)
+keeps those distinctions explicit.
+
+## Historical research baseline
+
 Experimental security lab: can **deterministic workflow-level state and information-flow enforcement** stop **some modeled** composition attacks that per-action authorization misses?
 
 This is **not** a production system and **not** a proof of general agent safety.
@@ -34,7 +50,15 @@ Latest verified suite is recorded in the most recent review. **PASS ≠ SUPPORTE
 
 The lab is separate from 4AllPass. No real credentials, production systems, or secrets.
 
-Optional G3 producer: set `LAB_AUTHORITY_EVENTS=1` to append Authority Event Envelope JSONL (`authority.requested` / `allowed` / `denied`). Off under pytest unless that flag is set. Never writes a ThreadDesk database. Does not change ALLOW/DENY.
+The G3 producer appends Phase-1 Authority Event Envelope JSONL
+(`authority.requested` / `allowed` / `denied`). It is on by default outside pytest
+and off by default under pytest. `LAB_AUTHORITY_EVENTS=1` enables it explicitly;
+`0`, `false`, `off` or `no` disable it in either context, ignoring case and
+surrounding whitespace. Missing, empty or whitespace-only values retain the
+context default; other nonempty values retain their existing enabled behavior.
+It never writes a ThreadDesk database and does not change lab ALLOW/DENY.
+This is not a Phase-2 or external-effect event stream. Exported metadata is not
+automatically secret-free; complete redaction remains an open limitation.
 
 ## Method (canonical)
 
@@ -43,6 +67,7 @@ Optional G3 producer: set `LAB_AUTHORITY_EVENTS=1` to append Authority Event Env
 - [docs/CONVERGENCE-ATTACK-CATALOG-v1.md](docs/CONVERGENCE-ATTACK-CATALOG-v1.md) — ten attacks; monitor-off frozen
 - [docs/CONVERGENCE-BATTERY-v1-RESULTS.md](docs/CONVERGENCE-BATTERY-v1-RESULTS.md) — scores; `k = 1`; not SUPPORTED
 - [docs/REAL-CASE-TRANSFER-STUDY-v1.md](docs/REAL-CASE-TRANSFER-STUDY-v1.md) — real-case transfer mappings; RC-01–RC-05 are known gaps
+- [docs/OBSERVATION-CASE-FINISH-LATE-EFFECT.md](docs/OBSERVATION-CASE-FINISH-LATE-EFFECT.md) — existing finish/late-effect evidence from the observer perspective; missing events remain explicit
 - [docs/realcase/v1/README.md](docs/realcase/v1/README.md) — archived ZIP + import prompt
 - [docs/PBT-ORACLE-v1.md](docs/PBT-ORACLE-v1.md) — Hypothesis contracts (not I9 default-deny)
 - [docs/THREAT-MODEL.md](docs/THREAT-MODEL.md)
