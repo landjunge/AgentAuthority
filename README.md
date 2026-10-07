@@ -43,6 +43,10 @@ Gespeicherte Daten ohne neuen Agentenlauf auswerten:
 python observer_research.py report --native --input docs/observer-real-runs/2026-10-07/native
 ```
 
+[Belastungsstufe 10](docs/OBSERVER-STRESS-10-RESULTS-2026-10-07.md): zehn echte
+Agentenkontexte, neun ausgeführte Aufträge. Nicht bestanden wegen eines
+Runner-Barriere-Timeouts; keine falsche beurteilbare Observeraussage.
+
 ## Historical research baseline
 
 Experimental security lab: can **deterministic workflow-level state and information-flow enforcement** stop **some modeled** composition attacks that per-action authorization misses?

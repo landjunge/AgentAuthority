@@ -1,0 +1,350 @@
+{
+  "started": 10,
+  "completed": 10,
+  "agent_execution_errors": [
+    7
+  ],
+  "measurement_errors": [
+    7
+  ],
+  "verdicts": {
+    "CORRECT": 15,
+    "NOT_APPLICABLE": 3,
+    "UNJUDGEABLE": 2
+  },
+  "peak_open_agent_requests": 6,
+  "peak_tool_invocations": 6,
+  "level_10": "NICHT BESTANDEN",
+  "rows": [
+    {
+      "run": 1,
+      "question": "target_present",
+      "fields": [
+        "run",
+        "kind",
+        "value"
+      ],
+      "prediction": {
+        "answer": true,
+        "reason": "explicit_local_snapshot",
+        "evidence": []
+      },
+      "reference": true,
+      "verdict": "CORRECT"
+    },
+    {
+      "run": 1,
+      "question": "appearance_vs_native_end",
+      "fields": [
+        "run",
+        "kind",
+        "value",
+        "t_ns"
+      ],
+      "prediction": {
+        "answer": "before",
+        "reason": "presence_upper_bound_before_end",
+        "evidence": []
+      },
+      "reference": "before",
+      "verdict": "CORRECT"
+    },
+    {
+      "run": 2,
+      "question": "target_present",
+      "fields": [
+        "run",
+        "kind",
+        "value"
+      ],
+      "prediction": {
+        "answer": false,
+        "reason": "explicit_local_snapshot",
+        "evidence": []
+      },
+      "reference": false,
+      "verdict": "CORRECT"
+    },
+    {
+      "run": 2,
+      "question": "appearance_vs_native_end",
+      "fields": [
+        "run",
+        "kind",
+        "value",
+        "t_ns"
+      ],
+      "prediction": {
+        "answer": null,
+        "reason": "insufficient_observed_data",
+        "evidence": []
+      },
+      "reference": "not_applicable",
+      "verdict": "NOT_APPLICABLE"
+    },
+    {
+      "run": 3,
+      "question": "target_present",
+      "fields": [
+        "run",
+        "kind",
+        "value"
+      ],
+      "prediction": {
+        "answer": false,
+        "reason": "explicit_local_snapshot",
+        "evidence": []
+      },
+      "reference": false,
+      "verdict": "CORRECT"
+    },
+    {
+      "run": 3,
+      "question": "appearance_vs_native_end",
+      "fields": [
+        "run",
+        "kind",
+        "value",
+        "t_ns"
+      ],
+      "prediction": {
+        "answer": null,
+        "reason": "insufficient_observed_data",
+        "evidence": []
+      },
+      "reference": "not_applicable",
+      "verdict": "NOT_APPLICABLE"
+    },
+    {
+      "run": 4,
+      "question": "target_present",
+      "fields": [
+        "run",
+        "kind",
+        "value"
+      ],
+      "prediction": {
+        "answer": true,
+        "reason": "explicit_local_snapshot",
+        "evidence": []
+      },
+      "reference": true,
+      "verdict": "CORRECT"
+    },
+    {
+      "run": 4,
+      "question": "appearance_vs_native_end",
+      "fields": [
+        "run",
+        "kind",
+        "value",
+        "t_ns"
+      ],
+      "prediction": {
+        "answer": "before",
+        "reason": "presence_upper_bound_before_end",
+        "evidence": []
+      },
+      "reference": "before",
+      "verdict": "CORRECT"
+    },
+    {
+      "run": 5,
+      "question": "target_present",
+      "fields": [
+        "run",
+        "kind",
+        "value"
+      ],
+      "prediction": {
+        "answer": true,
+        "reason": "explicit_local_snapshot",
+        "evidence": []
+      },
+      "reference": true,
+      "verdict": "CORRECT"
+    },
+    {
+      "run": 5,
+      "question": "appearance_vs_native_end",
+      "fields": [
+        "run",
+        "kind",
+        "value",
+        "t_ns"
+      ],
+      "prediction": {
+        "answer": "after",
+        "reason": "absence_lower_bound_after_end",
+        "evidence": []
+      },
+      "reference": "after",
+      "verdict": "CORRECT"
+    },
+    {
+      "run": 6,
+      "question": "target_present",
+      "fields": [
+        "run",
+        "kind",
+        "value"
+      ],
+      "prediction": {
+        "answer": true,
+        "reason": "explicit_local_snapshot",
+        "evidence": []
+      },
+      "reference": true,
+      "verdict": "CORRECT"
+    },
+    {
+      "run": 6,
+      "question": "appearance_vs_native_end",
+      "fields": [
+        "run",
+        "kind",
+        "value",
+        "t_ns"
+      ],
+      "prediction": {
+        "answer": "before",
+        "reason": "presence_upper_bound_before_end",
+        "evidence": []
+      },
+      "reference": "before",
+      "verdict": "CORRECT"
+    },
+    {
+      "run": 7,
+      "question": "target_present",
+      "fields": [
+        "run",
+        "kind",
+        "value"
+      ],
+      "prediction": {
+        "answer": false,
+        "reason": "explicit_local_snapshot",
+        "evidence": []
+      },
+      "reference": null,
+      "verdict": "UNJUDGEABLE"
+    },
+    {
+      "run": 7,
+      "question": "appearance_vs_native_end",
+      "fields": [
+        "run",
+        "kind",
+        "value",
+        "t_ns"
+      ],
+      "prediction": {
+        "answer": null,
+        "reason": "insufficient_observed_data",
+        "evidence": []
+      },
+      "reference": null,
+      "verdict": "UNJUDGEABLE"
+    },
+    {
+      "run": 8,
+      "question": "target_present",
+      "fields": [
+        "run",
+        "kind",
+        "value"
+      ],
+      "prediction": {
+        "answer": false,
+        "reason": "explicit_local_snapshot",
+        "evidence": []
+      },
+      "reference": false,
+      "verdict": "CORRECT"
+    },
+    {
+      "run": 8,
+      "question": "appearance_vs_native_end",
+      "fields": [
+        "run",
+        "kind",
+        "value",
+        "t_ns"
+      ],
+      "prediction": {
+        "answer": null,
+        "reason": "insufficient_observed_data",
+        "evidence": []
+      },
+      "reference": "not_applicable",
+      "verdict": "NOT_APPLICABLE"
+    },
+    {
+      "run": 9,
+      "question": "target_present",
+      "fields": [
+        "run",
+        "kind",
+        "value"
+      ],
+      "prediction": {
+        "answer": true,
+        "reason": "explicit_local_snapshot",
+        "evidence": []
+      },
+      "reference": true,
+      "verdict": "CORRECT"
+    },
+    {
+      "run": 9,
+      "question": "appearance_vs_native_end",
+      "fields": [
+        "run",
+        "kind",
+        "value",
+        "t_ns"
+      ],
+      "prediction": {
+        "answer": "before",
+        "reason": "presence_upper_bound_before_end",
+        "evidence": []
+      },
+      "reference": "before",
+      "verdict": "CORRECT"
+    },
+    {
+      "run": 10,
+      "question": "target_present",
+      "fields": [
+        "run",
+        "kind",
+        "value"
+      ],
+      "prediction": {
+        "answer": true,
+        "reason": "explicit_local_snapshot",
+        "evidence": []
+      },
+      "reference": true,
+      "verdict": "CORRECT"
+    },
+    {
+      "run": 10,
+      "question": "appearance_vs_native_end",
+      "fields": [
+        "run",
+        "kind",
+        "value",
+        "t_ns"
+      ],
+      "prediction": {
+        "answer": "after",
+        "reason": "absence_lower_bound_after_end",
+        "evidence": []
+      },
+      "reference": "after",
+      "verdict": "CORRECT"
+    }
+  ]
+}
