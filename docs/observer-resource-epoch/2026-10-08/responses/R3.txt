@@ -1,0 +1,5 @@
+1. VERSCHIEDEN.
+
+2. Die gültige `resource_binding` verbindet `ref-alt` aus Epoche 1 mit `ref-neu` aus Epoche 2 ausdrücklich als `different_resources`.
+
+3. Die reale Quellechtheit der Bindungen ist nicht geprüft. Gründe für die unterschiedlichen Ressourcen und weitere Zusammenhänge sind nicht angegeben.

@@ -1,0 +1,34 @@
+{
+  "contract_commit": "fccedf01896c7447c7c35527de7c8916983782f2",
+  "sealed_before_expectations_file_comparison": true,
+  "reader_contexts_without_history_fork": true,
+  "reader_tools_or_file_reads": false,
+  "reader_followups_or_replacements": false,
+  "encoding": "UTF-8; final response text without appended newline or edits",
+  "responses": {
+    "R1": {
+      "reader_task": "/root/resource_reader_alpha",
+      "answer_file": "responses/R1.txt",
+      "answer_sha256": "a5587793db48937eba2e350014c4bfb4aee28d7a8ed86bf4e9cf7212c290aead",
+      "answer_bytes": 310,
+      "reader_input_file": "reader-inputs/R1.txt",
+      "reader_input_sha256": "eac69f08922720341177a4e58bfde553baab20a374e790b362648454bc31aa03"
+    },
+    "R2": {
+      "reader_task": "/root/resource_reader_beta",
+      "answer_file": "responses/R2.txt",
+      "answer_sha256": "b1f295be88109df629e0c9aefdf6c4a58ba6d61a212c6a882ae02815900320f3",
+      "answer_bytes": 353,
+      "reader_input_file": "reader-inputs/R2.txt",
+      "reader_input_sha256": "c7ba57073b18a3885eab71598993b2e31c6272fc89d269b9e063e32d88f22526"
+    },
+    "R3": {
+      "reader_task": "/root/resource_reader_gamma",
+      "answer_file": "responses/R3.txt",
+      "answer_sha256": "461bd5848b357de7349430e4ea5597a435e324715fb481a06d8ff5f3dc7c415d",
+      "answer_bytes": 309,
+      "reader_input_file": "reader-inputs/R3.txt",
+      "reader_input_sha256": "aa7796a1ca417983866e3de83713ccd36cf9b05083261d13debf79dde7552cca"
+    }
+  }
+}

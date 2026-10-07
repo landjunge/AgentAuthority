@@ -1,0 +1,5 @@
+1. UNBEKANNT.
+
+2. `resource_binding` ist `null`. Gleicher Anzeigename und Alias beweisen laut Karte keine Ressourcenidentität. Die gültige Akteurbindung betrifft ausschließlich den Akteur.
+
+3. Offen bleibt, ob `ref-alt` in Epoche 1 und `ref-neu` in Epoche 2 dieselbe oder verschiedene Ressourcen bezeichnen.
