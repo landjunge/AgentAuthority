@@ -71,3 +71,32 @@ Vor dem Korrekturbau festgehaltene Abnahme:
 
 Dieser Befund/Korrekturvertrag wird vor der Korrektur separat committed und gepusht.
 Die Erstbefunde werden nicht durch eine spätere positive Prüfung gelöscht.
+
+## Zweiter abgeschlossener Review: verbleibender Schemafehler
+
+Geprüft: `d724ce14d08e1d13fd8cf1ccf0d0d282ce6747d0`. Code blieb während der
+beiden rein lesenden Reviews unverändert; Reviewer führten keine Tests/Läufe aus.
+Typ-/Intervall-/JSONfehler, CLI-Recordtyp und Ergänzungsmetadaten sind korrigiert.
+60 Messlogiktests und zweimal 299 passed/5 deselected wurden vom Autor ausgeführt.
+Originalbeobachtungen, Capture und Referenz sind bytegleich; Hypothesenbefunde
+und 420 Ableitungen bleiben erhalten.
+
+Level-2-Review wertete die geprüften Guardteile als PASS. Der weitere
+Level-1-Review fand einen spezifischeren Restfehler: leere/unbekannte Dicts im
+Receipt werden ignoriert. `{"call":true}` plus `{}` und ein fehlendes Ziel können
+dadurch sichere negative Wahrheit erhalten. Beide Reviewurteile werden erhalten;
+**für den gesamten engen Receiptvertrag gilt wegen dieses Gegenbeispiels FAIL**.
+Das widerlegt keine der sechs gültigen, unveränderten Originalreferenzen.
+
+Der eigene Producer schreibt genau drei Eintragsformen: `call:true`, ein
+vollständiges gültiges Creation-Intervall oder `creation_conflict:true`.
+Der Restfehler wird nach diesem abgeschlossenen Review ausschließlich durch
+Akzeptanz dieser vorhandenen privaten Formen korrigiert. Kein neuer Event,
+Feldbedarf, Prüfpunkt oder Agentenlauf. Neue synthetische Empty-/Unknown-/False-
+Receiptfälle prüfen denselben zuvor eingefrorenen Vertrag. Danach Standardsuite
+zweimal, neuer Codefreeze und abschließender lesender Delta-Review.
+
+Zusätzliche ausdrücklich offene Grenze: fertige `reference.json`-Archive werden
+beim Report nicht gegen böswillige nachträgliche Änderungen authentisiert oder
+erneut aus Originalsyscalls erzeugt. Die geprüften Originalarchive sind konsistent;
+keine allgemeine Archivintegritäts-/Quellechtheitsgarantie entsteht daraus.
