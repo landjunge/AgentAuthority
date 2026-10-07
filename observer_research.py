@@ -163,14 +163,15 @@ def reference_at_cutoff(work: Path, receipt: Path, cutoff: tuple[int, int] | Non
     except (OSError, ValueError):
         result["reference_issue"] = "invalid_reference_receipt"
         return result
-    if any(not isinstance(x, dict) for x in entries):
+    receipt_shapes = ({"call"}, {"create_before_ns", "create_after_ns"}, {"creation_conflict"})
+    if any(not isinstance(x, dict) or set(x) not in receipt_shapes for x in entries):
         result["reference_issue"] = "invalid_reference_receipt"
         return result
     creations = [x for x in entries if "create_before_ns" in x or "create_after_ns" in x]
-    if (any("call" in x and type(x["call"]) is not bool for x in entries)
+    if (any("call" in x and x["call"] is not True for x in entries)
             or any(not valid_interval((x.get("create_before_ns"), x.get("create_after_ns")))
                    for x in creations)
-            or any("creation_conflict" in x and type(x["creation_conflict"]) is not bool
+            or any("creation_conflict" in x and x["creation_conflict"] is not True
                    for x in entries)):
         result["reference_issue"] = "invalid_reference_receipt"
         return result

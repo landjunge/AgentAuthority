@@ -323,6 +323,7 @@ def test_invalid_cli_record_type_cannot_kill_reader(record_type):
     {"create_before_ns": True, "create_after_ns": 20},
     {"create_before_ns": -1, "create_after_ns": 20},
     {"call": p.CANARY}, {"creation_conflict": p.CANARY}, [], None,
+    {}, {"unknown": p.CANARY}, {"call": False}, {"creation_conflict": False},
 ])
 def test_invalid_receipt_cannot_produce_safe_truth_or_copy_values(tmp_path, entry):
     receipt = tmp_path / "receipt.jsonl"
@@ -340,6 +341,15 @@ def test_partial_receipt_is_explicitly_unjudgeable(tmp_path):
     receipt.write_text('{"call":true}\n{"create_before_ns":')
     result = p.reference_at_cutoff(tmp_path, receipt, (30, 31), 25)
     assert p.judge(True, result["target_present"]) == "UNJUDGEABLE"
+    assert result["reference_issue"] == "invalid_reference_receipt"
+
+
+def test_unknown_receipt_entry_cannot_turn_missing_information_into_no_effect(tmp_path):
+    receipt = tmp_path / "receipt.jsonl"
+    write_receipt(receipt, [{"call": True}, {}])
+    result = p.reference_at_cutoff(tmp_path, receipt, (30, 31), 25)
+    assert result["target_present"] is None
+    assert result["appearance_vs_cli_end"] is None
     assert result["reference_issue"] == "invalid_reference_receipt"
 
 
