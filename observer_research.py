@@ -385,6 +385,108 @@ def infer(events: list[dict], run: int, question: str) -> dict:
     return unknown
 
 
+def infer_finish_effect(events: list[dict], run: int, question: str) -> dict:
+    """Bound A/B/C to one source-observed write, without status or oracle input.
+
+    The source sensor supplies the run binding; equal tokens here do not prove
+    source authenticity. Missing timing can preserve B, but never supplies an
+    ordering for A/C. C says nothing about unobserved workflow effects.
+    """
+    if question not in ("A", "B", "C"):
+        raise ValueError("unknown_finish_effect_question")
+    kinds = ("write_started", "finish_return_before", "finish_return",
+             "write_effect_before", "write_effect")
+    write_kinds = ("write_started", "write_effect_before", "write_effect")
+    required = write_kinds if question == "B" else kinds
+    fields = {"run", "kind", "value", "t_ns"}
+    evidence: list[str] = []
+
+    def result(answer: str, reason: str) -> dict:
+        return {"answer": answer, "reason": reason, "evidence": evidence}
+
+    if type(run) is not int or run <= 0:
+        return result("UNBEKANNT", "invalid_query_run")
+    if not isinstance(events, list):
+        return result("UNBEKANNT", "malformed_observation")
+
+    rows: dict[str, list[dict]] = {kind: [] for kind in required}
+    observed = set()
+    issues = set()
+    for row in events:
+        if not isinstance(row, dict):
+            issues.add("malformed_observation")
+            continue
+        kind = row.get("kind")
+        if type(kind) is not str or kind not in kinds:
+            # G3 ALLOW and historical completion/status kinds are not effects.
+            if set(row) <= fields and ("kind" not in row or type(kind) is not str):
+                bound_run = row.get("run")
+                if type(bound_run) is not int or bound_run <= 0 or bound_run == run:
+                    issues.add("malformed_observation")
+            continue
+        if kind not in required:
+            continue
+        bound_run = row.get("run")
+        if type(bound_run) is not int or bound_run <= 0:
+            observed.add(kind)
+            issues.add("unbound_observation")
+            continue
+        if bound_run != run:
+            continue
+        observed.add(kind)
+        if not set(row) <= fields:
+            issues.add("malformed_observation")
+        if type(row.get("value")) is not bool:
+            issues.add("invalid_observation_value")
+        if "t_ns" in row and (type(row["t_ns"]) is not int or row["t_ns"] < 0):
+            issues.add("invalid_observation_time")
+        # Only identical full rows collapse; no replay identity is inferred.
+        if set(row) != fields or row not in rows[kind]:
+            rows[kind].append(row)
+    evidence = [kind for kind in required if kind in observed]
+    for issue in ("unbound_observation", "malformed_observation",
+                  "invalid_observation_value", "invalid_observation_time"):
+        if issue in issues:
+            return result("UNBEKANNT", issue)
+    if any(len(candidates) > 1 for candidates in rows.values()):
+        return result("UNBEKANNT", "contradictory_observation")
+    if any(not rows[kind] for kind in write_kinds):
+        return result("UNBEKANNT", "missing_write_evidence")
+    if (rows["write_started"][0]["value"] is not True
+            or rows["write_effect_before"][0]["value"] is not False
+            or rows["write_effect"][0]["value"] is not True):
+        return result("UNBEKANNT", "invalid_write_evidence")
+    if question == "B":
+        return result("JA", "same_observed_write_binding")
+
+    finish_kinds = ("finish_return_before", "finish_return")
+    if any(not rows[kind] for kind in finish_kinds):
+        return result("UNBEKANNT", "missing_finish_evidence")
+    if any(rows[kind][0]["value"] is not True for kind in finish_kinds):
+        return result("UNBEKANNT", "invalid_finish_evidence")
+    bound_kinds = kinds[1:]
+    if any("t_ns" not in rows[kind][0] for kind in bound_kinds):
+        return result("UNBEKANNT", "missing_time_bounds")
+    f_lo = rows["finish_return_before"][0]["t_ns"]
+    f_hi = rows["finish_return"][0]["t_ns"]
+    e_lo = rows["write_effect_before"][0]["t_ns"]
+    e_hi = rows["write_effect"][0]["t_ns"]
+    start = rows["write_started"][0].get("t_ns")
+    if (f_lo > f_hi or e_lo > e_hi
+            or (start is not None and any(start > bound
+                                         for bound in (f_lo, f_hi, e_lo, e_hi)))):
+        return result("UNBEKANNT", "invalid_time_bounds")
+    if f_hi < e_lo:
+        if question == "C":
+            return result("JA", "one_observed_write_after_finish_other_effects_unknown")
+        return result("JA", "finish_before_observed_write_effect")
+    if e_hi < f_lo:
+        if question == "C":
+            return result("JA", "one_observed_write_before_finish_other_effects_unknown")
+        return result("NEIN", "observed_write_effect_before_finish")
+    return result("UNBEKANNT", "unresolved_time_order")
+
+
 def status_baseline(events: list[dict], run: int, question: str, tool: bool = False) -> dict:
     if question != "target_present":
         return {"answer": None, "reason": "status_has_no_effect_order", "evidence": []}
