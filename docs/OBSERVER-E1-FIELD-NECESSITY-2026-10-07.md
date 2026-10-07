@@ -154,3 +154,23 @@ Einreichungsmeldungen von `Ausführer` belegen hier keine Quellfreigabe.
   E2–E7 und jede Implementierung bleiben unbeauftragt.
 
 <!-- E1-FROZEN-PROTOCOL-END -->
+
+## Ergebnis – nach dem Vorab-Freeze ergänzt
+
+Vorab-Freeze: Commit `d8d190ca500f88ab3d7fa44633bab0e0f07c4828`, vor der Bewertung
+nach `origin/docs/observer-e1-field-necessity-2026-10-07` gepusht und Remote-Commit
+bestätigt. Der vorstehende Protokollteil bleibt unverändert.
+
+### Erstantwort K1–K4
+
+Prüfung in einem getrennten KI-Kontext, ohne die Hypothesen, K5/K6, die
+Zuordnungskontrollen oder die vorherige Konversation. Der Prüfer las ausschließlich
+den im Vorabprotokoll festgelegten Ausschnitt aus dem Freeze-Commit.
+Die folgende Antwort wird vor Vorlage der vollständigen Karten gesichert.
+
+| Karte | Effektmeldung | Zuordnung | Laufreihenfolge | Begründung und schwächere Aussage |
+|---|---|---|---|---|
+| K1 | gemeldet | offen | nicht bestimmbar | Die Zielmeldung nennt keinen Laufbezug; Workflow und Ressource sind nicht eindeutig. Sichtbar liegt die Effektmeldung mit Ordnung 40 nach der Cleanup-Meldung für `v-a / g-1` mit Ordnung 30. |
+| K2 | gemeldet | offen | nicht bestimmbar | Die Zielmeldung nennt keinen Laufbezug; Workflow und Ressource sind nicht eindeutig. Sichtbar liegt die Effektmeldung mit Ordnung 20 vor der Cleanup-Meldung für `v-a / g-1` mit Ordnung 30. |
+| K3 | unbekannt | nicht prüfbar | nicht bestimmbar | Keine Schreibwirkungsmeldung sichtbar. Die Einreichungsmeldungen liegen vor der Cleanup-Meldung; eine Reihenfolge zwischen Effektmeldung und Cleanup ist nicht feststellbar. |
+| K4 | unbekannt | nicht prüfbar | nicht bestimmbar | Keine Schreibwirkungsmeldung sichtbar. Die Einreichungsmeldungen liegen vor der Cleanup-Meldung; eine Reihenfolge zwischen Effektmeldung und Cleanup ist nicht feststellbar. |
