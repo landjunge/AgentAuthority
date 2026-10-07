@@ -25,6 +25,10 @@ zeigt den Unterschied zwischen sichtbarer Reihenfolge, Laufzuordnung und Effektb
 prüft zehn künstliche Fälle ausschließlich im Agent-Authority-Lab; Metadaten bleiben
 im Export erhalten; die zwei Parameterkontrollen fehlen in diesem Export.
 
+[E3–E7: verbleibende Informationsvergleiche](docs/OBSERVER-E3-E7-2026-10-07.md#ergebnisse)
+wertet 24 Papierkarten zu Bindung, Status, Ordnung, Herkunft und Hinweissicht aus;
+fehlende Belege und nicht gemessene Produktleistung bleiben ausdrücklich offen.
+
 ## Historical research baseline
 
 Experimental security lab: can **deterministic workflow-level state and information-flow enforcement** stop **some modeled** composition attacks that per-action authorization misses?
