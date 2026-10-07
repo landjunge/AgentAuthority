@@ -1,0 +1,5 @@
+{"run":1,"kind":"write_started","value":true,"t_ns":3626188892575}
+{"run":1,"kind":"finish_return_before","value":true,"t_ns":3626191827947}
+{"run":1,"kind":"finish_return","value":true,"t_ns":3626191863100}
+{"run":1,"kind":"write_effect_before","value":false,"t_ns":3626191994709}
+{"run":1,"kind":"write_effect","value":true,"t_ns":3626192028100}

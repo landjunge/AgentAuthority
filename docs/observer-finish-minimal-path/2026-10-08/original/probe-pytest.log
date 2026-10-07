@@ -1,0 +1,4 @@
+F                                                                        [100%]
+=========================== short test summary info ============================
+FAILED probes/test_finish_adapter_effect_atomicity_probe.py::test_no_adapter_effect_occurs_after_finish_returns
+1 failed in 0.12s

@@ -1,0 +1,379 @@
+{
+  "input_sha256": "d19989c986ab85d8429593a450266a5a499725fe9e1431736d185daeb26cd936",
+  "run": 1,
+  "answers": {
+    "A": {
+      "answer": "JA",
+      "reason": "finish_before_observed_write_effect",
+      "evidence": [
+        "write_started",
+        "finish_return_before",
+        "finish_return",
+        "write_effect_before",
+        "write_effect"
+      ]
+    },
+    "B": {
+      "answer": "JA",
+      "reason": "same_observed_write_binding",
+      "evidence": [
+        "write_started",
+        "write_effect_before",
+        "write_effect"
+      ]
+    },
+    "C": {
+      "answer": "JA",
+      "reason": "one_observed_write_after_finish_other_effects_unknown",
+      "evidence": [
+        "write_started",
+        "finish_return_before",
+        "finish_return",
+        "write_effect_before",
+        "write_effect"
+      ]
+    }
+  },
+  "controls": {
+    "without_effect": {
+      "input": [
+        {
+          "run": 1,
+          "kind": "write_started",
+          "value": true,
+          "t_ns": 3626188892575
+        },
+        {
+          "run": 1,
+          "kind": "finish_return_before",
+          "value": true,
+          "t_ns": 3626191827947
+        },
+        {
+          "run": 1,
+          "kind": "finish_return",
+          "value": true,
+          "t_ns": 3626191863100
+        }
+      ],
+      "answers": {
+        "A": {
+          "answer": "UNBEKANNT",
+          "reason": "missing_write_evidence",
+          "evidence": [
+            "write_started",
+            "finish_return_before",
+            "finish_return"
+          ]
+        },
+        "B": {
+          "answer": "UNBEKANNT",
+          "reason": "missing_write_evidence",
+          "evidence": [
+            "write_started"
+          ]
+        },
+        "C": {
+          "answer": "UNBEKANNT",
+          "reason": "missing_write_evidence",
+          "evidence": [
+            "write_started",
+            "finish_return_before",
+            "finish_return"
+          ]
+        }
+      }
+    },
+    "without_finish": {
+      "input": [
+        {
+          "run": 1,
+          "kind": "write_started",
+          "value": true,
+          "t_ns": 3626188892575
+        },
+        {
+          "run": 1,
+          "kind": "write_effect_before",
+          "value": false,
+          "t_ns": 3626191994709
+        },
+        {
+          "run": 1,
+          "kind": "write_effect",
+          "value": true,
+          "t_ns": 3626192028100
+        }
+      ],
+      "answers": {
+        "A": {
+          "answer": "UNBEKANNT",
+          "reason": "missing_finish_evidence",
+          "evidence": [
+            "write_started",
+            "write_effect_before",
+            "write_effect"
+          ]
+        },
+        "B": {
+          "answer": "JA",
+          "reason": "same_observed_write_binding",
+          "evidence": [
+            "write_started",
+            "write_effect_before",
+            "write_effect"
+          ]
+        },
+        "C": {
+          "answer": "UNBEKANNT",
+          "reason": "missing_finish_evidence",
+          "evidence": [
+            "write_started",
+            "write_effect_before",
+            "write_effect"
+          ]
+        }
+      }
+    },
+    "without_effect_binding": {
+      "input": [
+        {
+          "run": 1,
+          "kind": "write_started",
+          "value": true,
+          "t_ns": 3626188892575
+        },
+        {
+          "run": 1,
+          "kind": "finish_return_before",
+          "value": true,
+          "t_ns": 3626191827947
+        },
+        {
+          "run": 1,
+          "kind": "finish_return",
+          "value": true,
+          "t_ns": 3626191863100
+        },
+        {
+          "kind": "write_effect_before",
+          "value": false,
+          "t_ns": 3626191994709
+        },
+        {
+          "kind": "write_effect",
+          "value": true,
+          "t_ns": 3626192028100
+        }
+      ],
+      "answers": {
+        "A": {
+          "answer": "UNBEKANNT",
+          "reason": "unbound_observation",
+          "evidence": [
+            "write_started",
+            "finish_return_before",
+            "finish_return",
+            "write_effect_before",
+            "write_effect"
+          ]
+        },
+        "B": {
+          "answer": "UNBEKANNT",
+          "reason": "unbound_observation",
+          "evidence": [
+            "write_started",
+            "write_effect_before",
+            "write_effect"
+          ]
+        },
+        "C": {
+          "answer": "UNBEKANNT",
+          "reason": "unbound_observation",
+          "evidence": [
+            "write_started",
+            "finish_return_before",
+            "finish_return",
+            "write_effect_before",
+            "write_effect"
+          ]
+        }
+      }
+    },
+    "without_times_reversed": {
+      "input": [
+        {
+          "run": 1,
+          "kind": "write_effect",
+          "value": true
+        },
+        {
+          "run": 1,
+          "kind": "write_effect_before",
+          "value": false
+        },
+        {
+          "run": 1,
+          "kind": "finish_return",
+          "value": true
+        },
+        {
+          "run": 1,
+          "kind": "finish_return_before",
+          "value": true
+        },
+        {
+          "run": 1,
+          "kind": "write_started",
+          "value": true
+        }
+      ],
+      "answers": {
+        "A": {
+          "answer": "UNBEKANNT",
+          "reason": "missing_time_bounds",
+          "evidence": [
+            "write_started",
+            "finish_return_before",
+            "finish_return",
+            "write_effect_before",
+            "write_effect"
+          ]
+        },
+        "B": {
+          "answer": "JA",
+          "reason": "same_observed_write_binding",
+          "evidence": [
+            "write_started",
+            "write_effect_before",
+            "write_effect"
+          ]
+        },
+        "C": {
+          "answer": "UNBEKANNT",
+          "reason": "missing_time_bounds",
+          "evidence": [
+            "write_started",
+            "finish_return_before",
+            "finish_return",
+            "write_effect_before",
+            "write_effect"
+          ]
+        }
+      }
+    },
+    "allow_only": {
+      "input": [
+        {
+          "schema_version": "1",
+          "event_id": "0b5a57acc27a420a",
+          "timestamp": "2026-10-07T23:21:54Z",
+          "trace_id": "wf-finish-effect-gap",
+          "span_id": "4192dc7e",
+          "workflow_id": "wf-finish-effect-gap",
+          "project_id": "agent-authority-lab",
+          "source_tool": "agent-authority-lab",
+          "event_type": "authority.allowed",
+          "actor": {
+            "agent_id": "agent-a",
+            "role": "lab-agent"
+          },
+          "action": "file.write",
+          "resource": "src/late.py",
+          "decision": "ALLOW",
+          "reason_code": null,
+          "previous_event_hash": "b96c2f0f4007a9dabfa001ca6d89dad78e6477d71fea5a39fa25ddfa50ae8a4a",
+          "data_labels": [
+            "PUBLIC"
+          ],
+          "event_hash": "bb5b6bdae6291abdda75a60982c7696314f613ec3fef054564b32a709e7c6118"
+        }
+      ],
+      "answers": {
+        "A": {
+          "answer": "UNBEKANNT",
+          "reason": "missing_write_evidence",
+          "evidence": []
+        },
+        "B": {
+          "answer": "UNBEKANNT",
+          "reason": "missing_write_evidence",
+          "evidence": []
+        },
+        "C": {
+          "answer": "UNBEKANNT",
+          "reason": "missing_write_evidence",
+          "evidence": []
+        }
+      }
+    },
+    "delivery_reversed": {
+      "input": [
+        {
+          "run": 1,
+          "kind": "write_effect",
+          "value": true,
+          "t_ns": 3626192028100
+        },
+        {
+          "run": 1,
+          "kind": "write_effect_before",
+          "value": false,
+          "t_ns": 3626191994709
+        },
+        {
+          "run": 1,
+          "kind": "finish_return",
+          "value": true,
+          "t_ns": 3626191863100
+        },
+        {
+          "run": 1,
+          "kind": "finish_return_before",
+          "value": true,
+          "t_ns": 3626191827947
+        },
+        {
+          "run": 1,
+          "kind": "write_started",
+          "value": true,
+          "t_ns": 3626188892575
+        }
+      ],
+      "answers": {
+        "A": {
+          "answer": "JA",
+          "reason": "finish_before_observed_write_effect",
+          "evidence": [
+            "write_started",
+            "finish_return_before",
+            "finish_return",
+            "write_effect_before",
+            "write_effect"
+          ]
+        },
+        "B": {
+          "answer": "JA",
+          "reason": "same_observed_write_binding",
+          "evidence": [
+            "write_started",
+            "write_effect_before",
+            "write_effect"
+          ]
+        },
+        "C": {
+          "answer": "JA",
+          "reason": "one_observed_write_after_finish_other_effects_unknown",
+          "evidence": [
+            "write_started",
+            "finish_return_before",
+            "finish_return",
+            "write_effect_before",
+            "write_effect"
+          ]
+        }
+      }
+    }
+  },
+  "scope": "one_observed_fake_write_attempt; other_effects_unknown"
+}

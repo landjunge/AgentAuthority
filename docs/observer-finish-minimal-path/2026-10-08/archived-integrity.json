@@ -1,0 +1,101 @@
+{
+  "base_commit": "e26b18c5c90761441a9a9d521c8dbbb4c741b700",
+  "contract_commit": "20637194a277584f18ac4d263d4e5833e5a03e4a",
+  "implementation_commit": "0c8388100fda36d39c64b166ac85bb95b1c37883",
+  "files": {
+    "derived/evaluation.json": {
+      "bytes": 3589,
+      "sha256": "c3c242432b9a17a7dad4d5e007fe0d99dd41d5a020275022e872cd8bb2655688"
+    },
+    "frozen-integrity.json": {
+      "bytes": 21461,
+      "sha256": "c7cba24a2650b2674307d62f7051abef09a4fc8f6da8aa65d8dc71d980eb4e9a"
+    },
+    "ground-truth/checkpoints.json": {
+      "bytes": 3269,
+      "sha256": "4cd68bd1e8ec3e93bfb4b0d6ad288a2b6b94c0c8b6699f281d8862c09345f57d"
+    },
+    "original/authority-events.jsonl": {
+      "bytes": 1238,
+      "sha256": "4d622157bf71370220cabc25fc20b2557ea9ad0a8e80df8ed976c55338f9b7a3"
+    },
+    "original/capture.json": {
+      "bytes": 78,
+      "sha256": "e1ba6b9dae278d8260e0083851e3bee559ac149055f0c76f9ac9d26bab3f0ee9"
+    },
+    "original/observations.jsonl": {
+      "bytes": 348,
+      "sha256": "d19989c986ab85d8429593a450266a5a499725fe9e1431736d185daeb26cd936"
+    },
+    "original/probe-pytest.log": {
+      "bytes": 291,
+      "sha256": "f8aba3064bfa4beb111d9f026fdb8fd7c79ac8ffd2881b767d3a41dfebca9da9"
+    },
+    "responses/before-comparison.json": {
+      "bytes": 9196,
+      "sha256": "851bb1dba4f33baa6b644a5812b12220d7f4ae1f4a618a1296510a6cc9fea947"
+    },
+    "responses/sealed-response-sha256.json": {
+      "bytes": 126,
+      "sha256": "205ca1f168e101351136ac89cbfa8b475c78fd97b8cd5445fbce5c52fb779e56"
+    },
+    "standard-suite/run-1.log": {
+      "bytes": 679,
+      "sha256": "ef8324890f39dc770e85b697f0d9a1bb7a24e188d2fa5562be69475f42c5b76a"
+    },
+    "standard-suite/run-2.log": {
+      "bytes": 679,
+      "sha256": "2baced81f74612233ab22bbff76509e66e99ee28bd8c96c58d94a5049b3fa9c3"
+    },
+    "standard-suite/status.json": {
+      "bytes": 612,
+      "sha256": "6143a6d196a99bf6fa40081077be28b6eb9dc42152605080eef5ea9f4540fb39"
+    }
+  },
+  "original_output_comparison": {
+    "original/authority-events.jsonl": {
+      "bytes": 1238,
+      "sha256": "4d622157bf71370220cabc25fc20b2557ea9ad0a8e80df8ed976c55338f9b7a3",
+      "byte_identical_to_test_output": true
+    },
+    "original/capture.json": {
+      "bytes": 78,
+      "sha256": "e1ba6b9dae278d8260e0083851e3bee559ac149055f0c76f9ac9d26bab3f0ee9",
+      "byte_identical_to_test_output": true
+    },
+    "original/observations.jsonl": {
+      "bytes": 348,
+      "sha256": "d19989c986ab85d8429593a450266a5a499725fe9e1431736d185daeb26cd936",
+      "byte_identical_to_test_output": true
+    },
+    "original/probe-pytest.log": {
+      "bytes": 291,
+      "sha256": "f8aba3064bfa4beb111d9f026fdb8fd7c79ac8ffd2881b767d3a41dfebca9da9",
+      "byte_identical_to_test_output": true
+    },
+    "ground-truth/checkpoints.json": {
+      "bytes": 3269,
+      "sha256": "4cd68bd1e8ec3e93bfb4b0d6ad288a2b6b94c0c8b6699f281d8862c09345f57d",
+      "byte_identical_to_test_output": true
+    },
+    "responses/before-comparison.json": {
+      "bytes": 9196,
+      "sha256": "851bb1dba4f33baa6b644a5812b12220d7f4ae1f4a618a1296510a6cc9fea947",
+      "byte_identical_to_test_output": true
+    },
+    "responses/sealed-response-sha256.json": {
+      "bytes": 126,
+      "sha256": "205ca1f168e101351136ac89cbfa8b475c78fd97b8cd5445fbce5c52fb779e56",
+      "byte_identical_to_test_output": true
+    }
+  },
+  "preserved_original_files_checked": 181,
+  "implementation_sources_checked": 6,
+  "preserved_original_files_match_base": true,
+  "implementation_sources_match_freeze": true,
+  "legacy_observer_AST_unchanged_except_additive_infer_finish_effect": true,
+  "contract_unchanged_since_freeze": true,
+  "sealed_response_hash_unchanged": true,
+  "report_sha256": "8402a92ec3a2917bef271a5bd532faca8b0cdac8fa5d1ffc54a7afcdf344d0f0",
+  "scope": "artifact_integrity_only; no_additional_probe_or_experiment"
+}

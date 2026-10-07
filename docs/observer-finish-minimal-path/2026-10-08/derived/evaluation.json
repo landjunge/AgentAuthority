@@ -1,0 +1,160 @@
+{
+  "base_commit": "e26b18c5c90761441a9a9d521c8dbbb4c741b700",
+  "contract_commit": "20637194a277584f18ac4d263d4e5833e5a03e4a",
+  "implementation_commit": "0c8388100fda36d39c64b166ac85bb95b1c37883",
+  "original_probe_invocations": 1,
+  "original_final_assertion_still_failed": true,
+  "recording_errors": 0,
+  "source_records": 5,
+  "source_bytes": 348,
+  "source_fields": [
+    "run",
+    "kind",
+    "value",
+    "t_ns"
+  ],
+  "ground_truth_sequence_valid": true,
+  "answers": [
+    {
+      "question": "A",
+      "ground_truth": "JA",
+      "observer": {
+        "answer": "JA",
+        "reason": "finish_before_observed_write_effect",
+        "evidence": [
+          "write_started",
+          "finish_return_before",
+          "finish_return",
+          "write_effect_before",
+          "write_effect"
+        ]
+      },
+      "classification": "KORREKT"
+    },
+    {
+      "question": "B",
+      "ground_truth": "JA",
+      "observer": {
+        "answer": "JA",
+        "reason": "same_observed_write_binding",
+        "evidence": [
+          "write_started",
+          "write_effect_before",
+          "write_effect"
+        ]
+      },
+      "classification": "KORREKT"
+    },
+    {
+      "question": "C",
+      "ground_truth": "JA",
+      "observer": {
+        "answer": "JA",
+        "reason": "one_observed_write_after_finish_other_effects_unknown",
+        "evidence": [
+          "write_started",
+          "finish_return_before",
+          "finish_return",
+          "write_effect_before",
+          "write_effect"
+        ]
+      },
+      "classification": "KORREKT"
+    }
+  ],
+  "controls": [
+    {
+      "name": "without_effect",
+      "expected_answers": {
+        "A": "UNBEKANNT",
+        "B": "UNBEKANNT",
+        "C": "UNBEKANNT"
+      },
+      "actual_answers": {
+        "A": "UNBEKANNT",
+        "B": "UNBEKANNT",
+        "C": "UNBEKANNT"
+      },
+      "verdict": "PASS"
+    },
+    {
+      "name": "without_finish",
+      "expected_answers": {
+        "A": "UNBEKANNT",
+        "B": "JA",
+        "C": "UNBEKANNT"
+      },
+      "actual_answers": {
+        "A": "UNBEKANNT",
+        "B": "JA",
+        "C": "UNBEKANNT"
+      },
+      "verdict": "PASS"
+    },
+    {
+      "name": "without_effect_binding",
+      "expected_answers": {
+        "A": "UNBEKANNT",
+        "B": "UNBEKANNT",
+        "C": "UNBEKANNT"
+      },
+      "actual_answers": {
+        "A": "UNBEKANNT",
+        "B": "UNBEKANNT",
+        "C": "UNBEKANNT"
+      },
+      "verdict": "PASS"
+    },
+    {
+      "name": "without_times_reversed",
+      "expected_answers": {
+        "A": "UNBEKANNT",
+        "B": "JA",
+        "C": "UNBEKANNT"
+      },
+      "actual_answers": {
+        "A": "UNBEKANNT",
+        "B": "JA",
+        "C": "UNBEKANNT"
+      },
+      "verdict": "PASS"
+    },
+    {
+      "name": "allow_only",
+      "expected_answers": {
+        "A": "UNBEKANNT",
+        "B": "UNBEKANNT",
+        "C": "UNBEKANNT"
+      },
+      "actual_answers": {
+        "A": "UNBEKANNT",
+        "B": "UNBEKANNT",
+        "C": "UNBEKANNT"
+      },
+      "verdict": "PASS"
+    },
+    {
+      "name": "delivery_reversed",
+      "expected_answers": {
+        "A": "JA",
+        "B": "JA",
+        "C": "JA"
+      },
+      "actual_answers": {
+        "A": "JA",
+        "B": "JA",
+        "C": "JA"
+      },
+      "verdict": "PASS"
+    }
+  ],
+  "classifications": {
+    "KORREKT": 3,
+    "FALSCH": 0,
+    "UNBEURTEILBAR": 0
+  },
+  "controls_passed": 6,
+  "controls_failed": 0,
+  "scope": "one_original_synchronized_fake_write; all_other_effects_unknown",
+  "hypothesis_result": "SUPPORTED IN THIS CASE"
+}
