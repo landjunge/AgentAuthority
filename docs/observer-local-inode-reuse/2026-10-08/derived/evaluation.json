@@ -1,0 +1,46 @@
+{
+  "answer_checkpoint_commit": "89dcc359d019fc7cf4382d8a2f0b990c6cc20b57",
+  "remote_checkpoint_confirmed_before_gt_comparison": "89dcc359d019fc7cf4382d8a2f0b990c6cc20b57",
+  "original_hashes_verified_before_comparison": true,
+  "baseline_native_pair": {
+    "st_dev": 34,
+    "st_ino": 5469
+  },
+  "selected_new_pair": {
+    "st_dev": 34,
+    "st_ino": 15469
+  },
+  "frozen_max_new_lifetimes": 10000,
+  "new_lifetimes_created": 10000,
+  "new_native_pairs_recorded": 10000,
+  "first_recurrence_attempt": null,
+  "recurrences_of_baseline_pair_observed": 0,
+  "independent_lifecycle_reference": {
+    "records": 10001,
+    "fully_verified_releases": 10001,
+    "verified_new_creations_after_previous_complete_release": 10000,
+    "baseline_release_verified": true,
+    "native_pairs_used_for_lifecycle_truth": false
+  },
+  "reference_for_analyst_questions": {
+    "A": "NEIN",
+    "B": "NEIN",
+    "A_scope": "The two selected observations do not designate one continuously existing object: controlled complete old release before exclusive new creation. No statement about permanent identifier safety.",
+    "B_scope": "No original pair recurrence in these 10000 observed, independently verified new lifetimes. No statement about future/global reuse."
+  },
+  "analyst_ratings": {
+    "A": "KORREKT",
+    "B": "KORREKT"
+  },
+  "counts": {
+    "correct_judgeable_A_B": 2,
+    "false_judgeable_A_B": 0,
+    "unknown_A_B": 0,
+    "measurement_errors": 0,
+    "cleanup_errors": 0,
+    "temporary_resource_files_remaining": 0
+  },
+  "overall_result": "INCONCLUSIVE",
+  "research_question_permanent_uniqueness": "UNBEKANNT",
+  "no_hit_interpretation": "Reuse not observed within the fixed search, not impossible; no additional search or filesystem intervention."
+}
