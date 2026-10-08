@@ -1,0 +1,31 @@
+{
+  "command": [
+    "/workspace/venvs/authority/bin/python",
+    "-m",
+    "pytest",
+    "-p",
+    "no:cacheprovider",
+    "-o",
+    "addopts=",
+    "-q"
+  ],
+  "PYTHONDONTWRITEBYTECODE": "1",
+  "runs": [
+    {
+      "run": 1,
+      "exit_code": 0,
+      "stdout_bytes": 680,
+      "stderr_bytes": 0,
+      "summary": "383 passed, 5 deselected, 252 subtests passed in 10.11s"
+    },
+    {
+      "run": 2,
+      "exit_code": 0,
+      "stdout_bytes": 679,
+      "stderr_bytes": 0,
+      "summary": "383 passed, 5 deselected, 252 subtests passed in 8.34s"
+    }
+  ],
+  "known_deselections": "RC-01 through RC-05 by unchanged tests/realcase/conftest.py",
+  "separate_red_OOS_021_probe_executed": false
+}
