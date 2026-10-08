@@ -1,0 +1,35 @@
+{
+  "runs": [
+    {
+      "run": 1,
+      "command": [
+        "/workspace/venvs/authority/bin/python",
+        "-m",
+        "pytest",
+        "-p",
+        "no:cacheprovider",
+        "-o",
+        "addopts=",
+        "-q"
+      ],
+      "exit_code": 0,
+      "log": "run-1.log"
+    },
+    {
+      "run": 2,
+      "command": [
+        "/workspace/venvs/authority/bin/python",
+        "-m",
+        "pytest",
+        "-p",
+        "no:cacheprovider",
+        "-o",
+        "addopts=",
+        "-q"
+      ],
+      "exit_code": 0,
+      "log": "run-2.log"
+    }
+  ],
+  "additional_filters_or_exclusions": false
+}

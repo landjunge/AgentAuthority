@@ -1,0 +1,99 @@
+{
+  "base_commit": "c9abf753b5a3060a630ec6b4f19d6de3b9ca610a",
+  "contract_commit": "824ebcfe806894876dc6ded7ba9adb4d0ef16648",
+  "response_checkpoint_commit": "b64014161fa374597be6563f6ebeeb7640b37af3",
+  "preserved_base_files_checked": 202,
+  "all_base_files_byte_identical": true,
+  "frozen_preassessment_files_unchanged": [
+    "docs/OBSERVER-RESOURCE-EPOCH-REPEAT-01-CONTRACT-2026-10-08.md",
+    "docs/observer-resource-epoch-repeat-01/2026-10-08/cards/R1.json",
+    "docs/observer-resource-epoch-repeat-01/2026-10-08/cards/R2.json",
+    "docs/observer-resource-epoch-repeat-01/2026-10-08/cards/R3.json",
+    "docs/observer-resource-epoch-repeat-01/2026-10-08/expectations.json",
+    "docs/observer-resource-epoch-repeat-01/2026-10-08/frozen-integrity.json",
+    "docs/observer-resource-epoch-repeat-01/2026-10-08/reader-inputs/R1.txt",
+    "docs/observer-resource-epoch-repeat-01/2026-10-08/reader-inputs/R2.txt",
+    "docs/observer-resource-epoch-repeat-01/2026-10-08/reader-inputs/R3.txt"
+  ],
+  "sealed_precomparison_files_unchanged": [
+    "docs/observer-resource-epoch-repeat-01/2026-10-08/responses/R1.txt",
+    "docs/observer-resource-epoch-repeat-01/2026-10-08/responses/R2.txt",
+    "docs/observer-resource-epoch-repeat-01/2026-10-08/responses/R3.txt",
+    "docs/observer-resource-epoch-repeat-01/2026-10-08/responses/sealed-sha256.json"
+  ],
+  "only_resource_binding_differs": true,
+  "messages_per_card": 2,
+  "reader_wrapper_equal": true,
+  "response_hashes_unchanged": true,
+  "report_cards_and_answers_equal_to_originals": true,
+  "previous_worktree_commit": "4be9a61d9659d4f36347f0ad705369032b8c0a7c",
+  "previous_worktree_clean": true,
+  "files": {
+    "cards/R1.json": {
+      "bytes": 1510,
+      "sha256": "44d9797bfc2f26e513deea98d4f845dc591175e948f7aef055203ae901f64f2f"
+    },
+    "cards/R2.json": {
+      "bytes": 1654,
+      "sha256": "12a90cfd03e2f32a89de985fa4b86dbfff20a77849e3caaee51e1f7841471e22"
+    },
+    "cards/R3.json": {
+      "bytes": 1660,
+      "sha256": "6db38b1f4bf515fd8f6bfb92f912e9d83e578f69e9ff59a4a8a064946811bc66"
+    },
+    "derived/evaluation.json": {
+      "bytes": 2629,
+      "sha256": "a920b8f14e399e447a212c8409bd3c54c9864c2b3c6266a582f03648c22f004d"
+    },
+    "expectations.json": {
+      "bytes": 603,
+      "sha256": "bc13248ba4e1ece4a378b4044cce274223211ac43f95542a19f8cb4efaf6a0ef"
+    },
+    "frozen-integrity.json": {
+      "bytes": 23552,
+      "sha256": "7c053132cc25951192898e82ff2919b28c0b3ca7e8a5d09fcab7ff964e7a0244"
+    },
+    "reader-inputs/R1.txt": {
+      "bytes": 2043,
+      "sha256": "eac69f08922720341177a4e58bfde553baab20a374e790b362648454bc31aa03"
+    },
+    "reader-inputs/R2.txt": {
+      "bytes": 2187,
+      "sha256": "c7ba57073b18a3885eab71598993b2e31c6272fc89d269b9e063e32d88f22526"
+    },
+    "reader-inputs/R3.txt": {
+      "bytes": 2193,
+      "sha256": "aa7796a1ca417983866e3de83713ccd36cf9b05083261d13debf79dde7552cca"
+    },
+    "responses/R1.txt": {
+      "bytes": 345,
+      "sha256": "11906f09fe5e310fd071c0e50811302dd610dd886d60ef1bac2d8ef80c7a6332"
+    },
+    "responses/R2.txt": {
+      "bytes": 323,
+      "sha256": "dfe80c33393c64b6af5be7cbc22dd0257034d3810e2771177d4d17a091161bde"
+    },
+    "responses/R3.txt": {
+      "bytes": 311,
+      "sha256": "e1f59f3092798f30503df0e32292afe01f44a02ab8f7fb50825ac0162da051bc"
+    },
+    "responses/sealed-sha256.json": {
+      "bytes": 1516,
+      "sha256": "81457564507caf833aebe18c35b24f54294d6f51ba3af8b4494e94de2129be50"
+    },
+    "standard-suite/run-1.log": {
+      "bytes": 679,
+      "sha256": "5d46db470f250526334f8abce60c34d6e491bae57bd6e6517eef8f08cfa33dae"
+    },
+    "standard-suite/run-2.log": {
+      "bytes": 679,
+      "sha256": "8b3b618c3eec73c1ec7ec409eca18690b943c32cfa869aaacf059ccc8dc7a808"
+    },
+    "standard-suite/status.json": {
+      "bytes": 612,
+      "sha256": "6143a6d196a99bf6fa40081077be28b6eb9dc42152605080eef5ea9f4540fb39"
+    }
+  },
+  "report_sha256": "870c92dc00818eae0e13f8aeeb24b3a93d726a5fb1e4621f7cab8ef94df40b08",
+  "scope": "Static artifact integrity only; no further experiment or implementation."
+}

@@ -1,0 +1,49 @@
+{
+  "base_commit": "c9abf753b5a3060a630ec6b4f19d6de3b9ca610a",
+  "contract_commit": "824ebcfe806894876dc6ded7ba9adb4d0ef16648",
+  "response_checkpoint_commit": "b64014161fa374597be6563f6ebeeb7640b37af3",
+  "response_checkpoint_pushed_and_remote_confirmed_before_comparison": true,
+  "cards_evaluated": 3,
+  "questions_per_card": 3,
+  "results": [
+    {
+      "card": "R1",
+      "reader_answer": "UNBEKANNT",
+      "frozen_expected_answer": "UNBEKANNT",
+      "classification": "KORREKT",
+      "visible_evidence_review": "Frage 2 nennt resource_binding=null, verweigert Namens-/Aliasschluss und begrenzt Akteursbindung auf den Akteur. Frage 3 lässt Ressourcenidentität offen; zusätzlicher Ausdruck die Bindung nennt seinen Bezug nicht genauer. Diesen Bezug nicht ergänzen und daraus keine Ressourcenbindung ableiten.",
+      "evidence_supports_identity_answer": true,
+      "unjustified_name_alias_identity_inference": false
+    },
+    {
+      "card": "R2",
+      "reader_answer": "DIESELBE",
+      "frozen_expected_answer": "DIESELBE",
+      "classification": "KORREKT",
+      "visible_evidence_review": "Frage 2 nennt die gültige same_resource-Bindung zwischen ref-alt/Epoche 1 und ref-neu/Epoche 2 innerhalb p-a. Frage 3 hält reale Quellechtheit und Vorgänge außerhalb der Karte offen.",
+      "evidence_supports_identity_answer": true,
+      "unjustified_name_alias_identity_inference": false
+    },
+    {
+      "card": "R3",
+      "reader_answer": "VERSCHIEDEN",
+      "frozen_expected_answer": "VERSCHIEDEN",
+      "classification": "KORREKT",
+      "visible_evidence_review": "Frage 2 nennt die gültige different_resources-Beziehung zwischen ref-alt/Epoche 1 und ref-neu/Epoche 2. Frage 3 hält reale Quellechtheit sowie konkrete Eigenschaften/Identitäten offen.",
+      "evidence_supports_identity_answer": true,
+      "unjustified_name_alias_identity_inference": false
+    }
+  ],
+  "counts": {
+    "KORREKT": 3,
+    "FALSCH": 0,
+    "UNBEURTEILBAR": 0
+  },
+  "hypothesis_result": "SUPPORTED IN THIS TEST",
+  "R1_open_wording": "Frage 3 sagt die Bindung ohne genaueren Bezug; keine nachträgliche Annahme des gemeinten Bindungstyps. Frage 1/2 sind hinsichtlich Ressourcenidentität eindeutig.",
+  "axis_A": "Keine neue Implementierung; unveränderte Standardsuite separat.",
+  "scope": "Isolierter Papiervergleich mit gesetzter Gültigkeit; keine reale Ressourcenidentitätsmessung.",
+  "historical_K14_resource_result": "INCONCLUSIVE; unverändert",
+  "confidence_in_experiment_result": "HIGH only for resource-identity statements in these three frozen paper cards",
+  "confidence_in_generalization": "LOW"
+}
