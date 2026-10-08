@@ -1,0 +1,5 @@
+{
+  "os": "Linux",
+  "filesystem": "tmpfs",
+  "maximum_new_lifetimes": 10000
+}

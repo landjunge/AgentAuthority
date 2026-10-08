@@ -1,0 +1,15 @@
+{
+  "maximum_new_lifetimes": 10000,
+  "baseline_created": true,
+  "new_lifetimes_created": 10000,
+  "new_native_pairs_recorded": 10000,
+  "native_match_attempt": null,
+  "stop_reason": "maximum_reached_without_native_pair_recurrence",
+  "measurement_errors": [],
+  "cleanup_errors": [],
+  "cleanup": {
+    "test_file_absent": true,
+    "own_target_fd_links_after_final_cleanup": 0
+  },
+  "raw_contents_archived": false
+}

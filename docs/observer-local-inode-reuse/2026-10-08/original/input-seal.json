@@ -1,0 +1,8 @@
+{
+  "input_files_sha256": {
+    "original/native-pairs.jsonl": "fd778e4bf257aeca8efd87005b6be9d5d033865e368c9442eacdcf8fd4a23e9b",
+    "original/identity-scope.json": "967975fddb802e9e43537686ce5509ad5e5e73050be8827173a205dd76c255a0"
+  },
+  "saved_before_separate_analyst_execution": true,
+  "ground_truth_handling": "opaque copy and hash only; not parsed or compared"
+}

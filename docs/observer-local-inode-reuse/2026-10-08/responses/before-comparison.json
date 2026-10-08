@@ -1,0 +1,13 @@
+{
+  "input_files_sha256": {
+    "original/native-pairs.jsonl": "fd778e4bf257aeca8efd87005b6be9d5d033865e368c9442eacdcf8fd4a23e9b",
+    "original/identity-scope.json": "967975fddb802e9e43537686ce5509ad5e5e73050be8827173a205dd76c255a0"
+  },
+  "input_errors": [],
+  "answers": {
+    "A": "NEIN",
+    "B": "NEIN",
+    "evidence": "Ausgangspaar {'st_dev': 34, 'st_ino': 5469}, ausgewaehltes neues Paar {'st_dev': 34, 'st_ino': 15469}; 10000 neue native Messpaare. Paarungleichheit verneint nur die Identitaet der beiden Messreferenzen. Keine Ausgangspaarrekurrenz in der vollstaendigen eingefrorenen 10000er-Liste. Kein Beleg fuer dauerhafte Eindeutigkeit, Fortbestand anderswo oder physische Freigabe.",
+    "C": "Keine dauerhafte Eindeutigkeit oder Unmoeglichkeit von Wiederverwendung; keine allgemeine Rate, andere Dateisysteme, Hosts, Neustarts, Cloud- oder Netzwerkressourcen, kryptografische Quellechtheit oder zukuenftige ID-Loesung."
+  }
+}

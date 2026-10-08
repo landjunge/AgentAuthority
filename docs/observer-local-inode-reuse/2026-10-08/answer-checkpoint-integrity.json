@@ -1,0 +1,19 @@
+{
+  "helper_commit": "b994c49a53889a434503d56d9d7f8b5adc98f936",
+  "checkpoint_files_sha256": {
+    "capture-status.json": "06dbefa9f1740a8530c4f387a2da2c3f62fb49162d967adf71a4c81aaccdc047",
+    "ground-truth/capture.stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "ground-truth/lifetimes.jsonl": "b335a96a33f60e4dd37e8ff7572dca243b0369c6bd84d7d690e7ed97415c759f",
+    "original/capture-process.json": "4c88fa29dce6388732ff899542e22d9c4dc865029a129f24dc840986916d4577",
+    "original/capture.stdout.log": "2b0ec55d4cbc51edd410e71309c4ebf8674440b63863f21d554cf47e1fa4f101",
+    "original/identity-scope.json": "967975fddb802e9e43537686ce5509ad5e5e73050be8827173a205dd76c255a0",
+    "original/input-seal.json": "783f9ef43cc0804a4b3a3f018b8db0bb84f6ecd1b5ad0280e3cdf4dac1d0092d",
+    "original/native-pairs.jsonl": "fd778e4bf257aeca8efd87005b6be9d5d033865e368c9442eacdcf8fd4a23e9b",
+    "responses/before-comparison.json": "f1bede8e4763da7f1fac166dc5766b69a36b9e9afa152591537bc231a74254bb",
+    "responses/sealed-sha256.json": "1dd0f3bf495c3c236b77f7825a62de2c0e19ff583ec12ee3f205a81c691d4457",
+    "system.json": "334f3052f7a5165ca2df4e1584b78fde0c06f1d1c7c846d85c930b6ef8dfe34c"
+  },
+  "answers_saved_and_hashed_before_ground_truth_read_or_comparison": true,
+  "ground_truth_handling_before_checkpoint": "opaque byte copy/hash only, including unread stderr bytes",
+  "resource_directories_excluded": true
+}

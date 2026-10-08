@@ -1,0 +1,15 @@
+{
+  "command": [
+    "/workspace/venvs/authority/bin/python",
+    "probes/local_inode_reuse_capture.py",
+    "--out",
+    "/tmp/aa-local-inode-reuse-20261008"
+  ],
+  "returncode": 0,
+  "helper_commit": "b994c49a53889a434503d56d9d7f8b5adc98f936",
+  "remote_helper_commit_confirmed_before_capture": "b994c49a53889a434503d56d9d7f8b5adc98f936",
+  "attempt": 1,
+  "stdout_bytes": 79,
+  "stderr_bytes": 0,
+  "stderr_handling": "opaque bytes only before answer checkpoint; may contain Ground Truth fallback"
+}
