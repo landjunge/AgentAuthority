@@ -1,0 +1,14 @@
+{
+  "command": [
+    "/workspace/venvs/authority/bin/python",
+    "probes/local_file_identity_capture.py",
+    "--out",
+    "/tmp/aa-local-file-identity-20261008"
+  ],
+  "returncode": 0,
+  "helper_commit": "13c62a0ed3cd3d799f98f03bc2d8c6ff086e1a01",
+  "remote_helper_commit_confirmed_before_capture": "13c62a0ed3cd3d799f98f03bc2d8c6ff086e1a01",
+  "stdout": "{\"cases_started\": 3, \"errors\": 0}\n",
+  "stderr": "",
+  "attempt": 1
+}

@@ -1,0 +1,24 @@
+{
+  "helper_commit": "13c62a0ed3cd3d799f98f03bc2d8c6ff086e1a01",
+  "checkpoint_files_sha256": {
+    "capture-process.json": "66fff0c5b91e445c6160e8a7c47d6eb4078f62ee3d76e5d773a8332bc1ceb58b",
+    "capture-status.json": "5d2d98893b2f33146741d904012a818236964772ec85b291e30904e3f659875b",
+    "controls/content_only.json": "cc98d2acc58a982b62f3b8560dd482613bfea94a4f3233209ea3ee678bbe6ead",
+    "controls/hash_only.json": "00be972cd1770f04be03a81f7754246506f3b9041ad6dea69ca2873f158d2b55",
+    "controls/path_only.json": "9e2f7fac5c65dccc139a803f44d332e90c602cce2f6f09d938f854bae6cda293",
+    "ground-truth/L1.json": "6762528428c0517fc4d48eb2b26926a7f01b0a8d985634289d32d61620c2b672",
+    "ground-truth/L2.json": "29bf222eb5a1be035995dfa6861cac7dfc09748e8d1ab6a2e3b6d8b1921e08d5",
+    "ground-truth/L3.json": "cbf0c6d6a428514164b9f33de4fe44640f75b2fd6d9b4ae0266395f1c8e9eace",
+    "input-seal.json": "6b06968499d8289bb001754449702885ae5c556cfa38b73d9015727e6813d527",
+    "observations/P1.json": "720b8b885683195f2b22b42168b4f4f215a927c3f2d5d847c8dc2d076b5f4f66",
+    "observations/P2.json": "604e10a9813fe8c7aab50ff54ac6a1cbc224288b459b2ec7ec9136240a5bc080",
+    "observations/P3.json": "d7eb5823a45086047e10321dc38a3d92d26dae99158bd9522169ab4ea2174d9c",
+    "responses/before-comparison.json": "f3bb7fdfbecacdb654f9c527fcffc26c89972ee9ad75fc22be4ba062c2ee197a",
+    "responses/sealed-sha256.json": "22774718f2d37fea29f5d9f9c9e3c03c20b60fe310b7161deb142ac1ffa22bb8",
+    "system.json": "889f94a8ed18760c880a6bdd89fa809074a7446ad98e448c22d5d7545dcead79"
+  },
+  "input_seal_precedes_separate_analyst_execution": true,
+  "answers_saved_and_hashed_before_ground_truth_read_or_comparison": true,
+  "ground_truth_archive_handling_before_this_checkpoint": "opaque byte copy and digest only; not parsed or compared",
+  "resource_directories_excluded_from_archive": true
+}

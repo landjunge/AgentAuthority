@@ -1,0 +1,37 @@
+{
+  "truth": "DIESELBE",
+  "checks": {
+    "own_a_write_visible": true,
+    "cross_b_matches_a_marker": true,
+    "cross_b_unchanged_from_its_baseline": false,
+    "cross_a_matches_b_marker": true,
+    "cross_a_unchanged_from_its_fresh_baseline": false,
+    "own_b_write_visible": true
+  },
+  "read_lengths": [
+    [
+      32,
+      32
+    ],
+    [
+      64,
+      64
+    ],
+    [
+      96,
+      96
+    ]
+  ],
+  "successful_write_lengths": [
+    64,
+    96
+  ],
+  "offset": 0,
+  "stage": "complete",
+  "full_reads_verified_by_eof_probe": true,
+  "reference_error": null,
+  "operations": [
+    "created_A_and_kept_first_handle_open",
+    "rename_A_to_B_returned"
+  ]
+}

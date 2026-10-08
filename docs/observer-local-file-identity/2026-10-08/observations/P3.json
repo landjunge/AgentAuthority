@@ -1,0 +1,20 @@
+{
+  "scope": {
+    "os": "Linux",
+    "filesystem": "tmpfs",
+    "same_collection_process": true,
+    "live_handle_overlap_confirmed": true
+  },
+  "references": [
+    {
+      "st_dev": 34,
+      "st_ino": 3501,
+      "regular_file": true
+    },
+    {
+      "st_dev": 34,
+      "st_ino": 3502,
+      "regular_file": true
+    }
+  ]
+}

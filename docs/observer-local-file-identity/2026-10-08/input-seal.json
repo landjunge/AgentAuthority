@@ -1,0 +1,11 @@
+{
+  "input_files_sha256": {
+    "observations/P1.json": "720b8b885683195f2b22b42168b4f4f215a927c3f2d5d847c8dc2d076b5f4f66",
+    "observations/P2.json": "604e10a9813fe8c7aab50ff54ac6a1cbc224288b459b2ec7ec9136240a5bc080",
+    "observations/P3.json": "d7eb5823a45086047e10321dc38a3d92d26dae99158bd9522169ab4ea2174d9c",
+    "controls/path_only.json": "9e2f7fac5c65dccc139a803f44d332e90c602cce2f6f09d938f854bae6cda293",
+    "controls/content_only.json": "cc98d2acc58a982b62f3b8560dd482613bfea94a4f3233209ea3ee678bbe6ead",
+    "controls/hash_only.json": "00be972cd1770f04be03a81f7754246506f3b9041ad6dea69ca2873f158d2b55"
+  },
+  "saved_before_analyst_execution": true
+}

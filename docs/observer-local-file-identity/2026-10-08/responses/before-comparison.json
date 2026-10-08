@@ -1,0 +1,50 @@
+{
+  "observations/P1.json": {
+    "input_sha256": "720b8b885683195f2b22b42168b4f4f215a927c3f2d5d847c8dc2d076b5f4f66",
+    "answers": {
+      "A": "DIESELBE",
+      "B": "Native fstat-Paare (34, 3488) und (34, 3488) sind gleich; beide regulaeren Dateien gleichzeitig offen im selben lokalen Scope.",
+      "C": "Nur gleichzeitig lebende regulaere lokale Dateien im selben Linux/tmpfs-Messprozess; keine Pfad-/Inhalts-/Revisionsidentitaet, Persistenz nach Handlefreigabe, Quellechtheit, Neustarts, fremde Maschinen oder Netzwerke."
+    }
+  },
+  "observations/P2.json": {
+    "input_sha256": "604e10a9813fe8c7aab50ff54ac6a1cbc224288b459b2ec7ec9136240a5bc080",
+    "answers": {
+      "A": "VERSCHIEDEN",
+      "B": "Native fstat-Paare (34, 3494) und (34, 3495) sind verschieden; beide regulaeren Dateien gleichzeitig offen im selben lokalen Scope.",
+      "C": "Nur gleichzeitig lebende regulaere lokale Dateien im selben Linux/tmpfs-Messprozess; keine Pfad-/Inhalts-/Revisionsidentitaet, Persistenz nach Handlefreigabe, Quellechtheit, Neustarts, fremde Maschinen oder Netzwerke."
+    }
+  },
+  "observations/P3.json": {
+    "input_sha256": "d7eb5823a45086047e10321dc38a3d92d26dae99158bd9522169ab4ea2174d9c",
+    "answers": {
+      "A": "VERSCHIEDEN",
+      "B": "Native fstat-Paare (34, 3501) und (34, 3502) sind verschieden; beide regulaeren Dateien gleichzeitig offen im selben lokalen Scope.",
+      "C": "Nur gleichzeitig lebende regulaere lokale Dateien im selben Linux/tmpfs-Messprozess; keine Pfad-/Inhalts-/Revisionsidentitaet, Persistenz nach Handlefreigabe, Quellechtheit, Neustarts, fremde Maschinen oder Netzwerke."
+    }
+  },
+  "controls/path_only.json": {
+    "input_sha256": "9e2f7fac5c65dccc139a803f44d332e90c602cce2f6f09d938f854bae6cda293",
+    "answers": {
+      "A": "UNBEKANNT",
+      "B": "Tragfaehige native Identitaet oder lokaler Lebendigkeitsscope fehlt; Pfad/Inhalt/Hash ersetzen sie nicht.",
+      "C": "Nur gleichzeitig lebende regulaere lokale Dateien im selben Linux/tmpfs-Messprozess; keine Pfad-/Inhalts-/Revisionsidentitaet, Persistenz nach Handlefreigabe, Quellechtheit, Neustarts, fremde Maschinen oder Netzwerke."
+    }
+  },
+  "controls/content_only.json": {
+    "input_sha256": "cc98d2acc58a982b62f3b8560dd482613bfea94a4f3233209ea3ee678bbe6ead",
+    "answers": {
+      "A": "UNBEKANNT",
+      "B": "Tragfaehige native Identitaet oder lokaler Lebendigkeitsscope fehlt; Pfad/Inhalt/Hash ersetzen sie nicht.",
+      "C": "Nur gleichzeitig lebende regulaere lokale Dateien im selben Linux/tmpfs-Messprozess; keine Pfad-/Inhalts-/Revisionsidentitaet, Persistenz nach Handlefreigabe, Quellechtheit, Neustarts, fremde Maschinen oder Netzwerke."
+    }
+  },
+  "controls/hash_only.json": {
+    "input_sha256": "00be972cd1770f04be03a81f7754246506f3b9041ad6dea69ca2873f158d2b55",
+    "answers": {
+      "A": "UNBEKANNT",
+      "B": "Tragfaehige native Identitaet oder lokaler Lebendigkeitsscope fehlt; Pfad/Inhalt/Hash ersetzen sie nicht.",
+      "C": "Nur gleichzeitig lebende regulaere lokale Dateien im selben Linux/tmpfs-Messprozess; keine Pfad-/Inhalts-/Revisionsidentitaet, Persistenz nach Handlefreigabe, Quellechtheit, Neustarts, fremde Maschinen oder Netzwerke."
+    }
+  }
+}
