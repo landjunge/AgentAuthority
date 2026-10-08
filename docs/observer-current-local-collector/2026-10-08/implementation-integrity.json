@@ -1,0 +1,49 @@
+{
+  "contract_commit": "f13078e58dba3e5dce9ee0de735bb328b9c2a5bd",
+  "existing_file_count": 362,
+  "changed_existing_files": [
+    "observer_research.py"
+  ],
+  "old_observer_restored_byte_equal": true,
+  "synthetic_checks": [
+    {
+      "group": "observer_error_paths",
+      "passed": 10,
+      "failed": 0
+    },
+    {
+      "group": "analyzer_initial_review_regressions",
+      "passed": 3,
+      "failed": 0
+    },
+    {
+      "group": "analyzer_final_review_regressions",
+      "passed": 4,
+      "failed": 0
+    }
+  ],
+  "unique_new_synthetic_tests": 14,
+  "real_f_cases_executed": 0,
+  "static_reviews": [
+    {
+      "role": "local_collector_design",
+      "level": 1,
+      "blocking_findings_at_freeze": 0
+    },
+    {
+      "role": "separated_context_method",
+      "level": 2,
+      "pre_freeze_analyzer_findings_corrected": true,
+      "blocking_findings_at_freeze": 0
+    }
+  ],
+  "sha256": {
+    "observer_research.py": "9279ceac9912e938fed0965b8d87e0ed311c52c7f15f87bc7292ab786cb2ce27",
+    "probes/current_local_collector_capture.py": "bc4eabff6ad005ede7041f3c61c35b4ba05c441cf20f204a085598073a450543",
+    "probes/current_local_collector_responses.py": "d95f8b128763a3b48c4589303727013d1610761757390be5e0f851aabb29665b",
+    "probes/current_local_collector_analyze.py": "8151584381365a43d0f58341d3552bac4c4d5822d81edc94c22c131f5544781c",
+    "tests/test_observer_current_local_collector.py": "7996ad23f80ab57f531d747515e2091f33fd38d1e05bd5e9bad2d108c2ac158c",
+    "tests/test_current_local_collector_analysis.py": "5209674030b8a638cf9e5cd42f82b687482b9a71f4d71e02ce6b43816610b3d6",
+    "docs/OBSERVER-CURRENT-LOCAL-COLLECTOR-CONTRACT-2026-10-08.md": "a729b98826eaf9c30f629d82e3a09225908f0335e46e7ee91751df0e6588cd7b"
+  }
+}

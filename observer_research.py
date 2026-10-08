@@ -3,6 +3,8 @@ from __future__ import annotations
 
 import argparse
 from collections import Counter
+import errno
+import fcntl
 import itertools
 import json
 import os
@@ -550,6 +552,95 @@ def infer_live_local_file_identity(events: list[dict], run: int) -> dict:
                  + ("gleich" if same else "verschieden")
                  + "; beide regulaeren Handles im bestaetigten lokalen Live-Scope.",
             "C": limits}
+
+
+def infer_current_local_file_identity(events: list[dict], run: int, *,
+                                     handles: list[int] | tuple[int, int] | None = None) -> dict:
+    """Narrow, synchronous Linux/tmpfs research check in the holding process.
+
+    The old parser checks packet shape only. Its flags and identity answer are
+    never sufficient evidence here. Caller retains both descriptors throughout;
+    no concurrent close/rebinding or mount/namespace changes are modeled.
+    """
+    limits = ("Nur aktuell gehaltene regulaere Handles im selben lokalen Linux/tmpfs-"
+              "Prozess ohne konkurrierendes Schliessen/FD-Neubelegung oder Mount-/"
+              "Namespacewechsel; sequenzielle Checks, kein atomarer Lebenszeitbeweis. "
+              "Keine Packetherkunft, historische/permanente Identitaet, Inhalts-/"
+              "Revisionsidentitaet, anderen Hosts oder Ressourcen bewiesen.")
+
+    def unknown(reason: str, validity: str = "NEIN") -> dict:
+        return {"A": "UNBEKANNT", "B": reason, "C": validity, "D": limits}
+
+    parsed = infer_live_local_file_identity(events, run)
+    if parsed["A"] == "UNBEKANNT":
+        return unknown("Angebotene Vergleichsform unzureichend: " + parsed["B"])
+    if handles is None:
+        return unknown("Keine Handles fuer eine aktuelle Collectorpruefung angeboten; "
+                       "gespeicherte true-Werte sind kein Live-Beweis.")
+    if (type(handles) not in (list, tuple) or len(handles) != 2
+            or any(type(fd) is not int or fd < 0 for fd in handles)
+            or handles[0] == handles[1]):
+        return unknown("Zwei verschiedene gueltige lokale FD-Argumente fehlen.")
+    value = next(row["value"] for row in events
+                 if row.get("kind") == "live_local_file_refs" and row.get("run") == run)
+    offered = [(ref["st_dev"], ref["st_ino"]) for ref in value["references"]]
+    stage = "initiale FD-Pruefung"
+    try:
+        measured = []
+        # MUST precede findmnt/pipe creation: a closed number must not alias a
+        # newly allocated collector pipe. No lazy imports or file opens here.
+        for index, fd in enumerate(handles, 1):
+            stage = f"initiales F_GETFD fuer Handle {index}"
+            fcntl.fcntl(fd, fcntl.F_GETFD)
+            stage = f"initiales fstat fuer Handle {index}"
+            native = os.fstat(fd)
+            if not stat.S_ISREG(native.st_mode):
+                return unknown(f"Aktuelles fstat: Handle {index} ist keine regulaere Datei.")
+            measured.append((native.st_dev, native.st_ino))
+        stage = "aktuelles uname"
+        if os.uname().sysname != "Linux":
+            return unknown("Aktuelle Collectorplattform ist nicht Linux.")
+        stage = "aktuelles findmnt fuer /tmp"
+        mount = subprocess.run(["findmnt", "-T", "/tmp", "-n", "-o", "FSTYPE"],
+                               capture_output=True, text=True, timeout=5, check=False)
+        if mount.returncode != 0:
+            return unknown("Aktuelles findmnt ist technisch fehlgeschlagen.", "UNBEKANNT")
+        if set(mount.stdout.split()) != {"tmpfs"}:
+            return unknown("Aktuelles findmnt bestaetigt /tmp nicht als tmpfs.")
+        stage = "aktuelles /tmp-Geraet"
+        device = os.stat("/tmp").st_dev
+        if any(pair[0] != device for pair in measured):
+            return unknown("Aktuelle Handles liegen nicht auf dem gemessenen /tmp-Geraet.")
+        after = []
+        for index, fd in enumerate(handles, 1):
+            stage = f"abschliessendes F_GETFD fuer Handle {index}"
+            fcntl.fcntl(fd, fcntl.F_GETFD)
+            stage = f"abschliessendes fstat fuer Handle {index}"
+            native = os.fstat(fd)
+            if not stat.S_ISREG(native.st_mode):
+                return unknown(f"Abschliessendes fstat: Handle {index} nicht regulaer.")
+            after.append((native.st_dev, native.st_ino))
+        if after != measured:
+            return unknown("Native Paare haben sich waehrend der aktuellen Pruefung geaendert.")
+        if measured != offered:
+            return unknown("Aktuell gemessene geordnete Paare widersprechen dem angebotenen Packet.")
+    except OSError as exc:
+        if exc.errno == errno.EBADF:
+            return unknown(f"Aktuelle Collectorpruefung bei {stage}: EBADF, Handle ungueltig.")
+        return unknown(f"Aktuelle Collectorpruefung bei {stage} technisch nicht beurteilbar "
+                       f"({type(exc).__name__}, errno={exc.errno}).", "UNBEKANNT")
+    except (subprocess.TimeoutExpired, UnicodeError) as exc:
+        return unknown(f"Aktuelle Collectorpruefung bei {stage} nicht abgeschlossen "
+                       f"({type(exc).__name__}).", "UNBEKANNT")
+    except (OverflowError, ValueError):
+        return unknown(f"Aktuelle Collectorpruefung bei {stage}: ungueltiges FD-Argument.")
+    same = measured[0] == measured[1]
+    return {"A": "DIESELBE" if same else "VERSCHIEDEN",
+            "B": f"Jetzt F_GETFD/fstat beider regulaerer Handles vor und nach aktueller "
+                 f"Linux/tmpfs-/tmp-Geraetepruefung erfolgreich; geordnete Paare "
+                 f"{measured[0]} und {measured[1]} unveraendert und passend zum Packet: "
+                 + ("gleich." if same else "verschieden."),
+            "C": "JA", "D": limits}
 
 
 def status_baseline(events: list[dict], run: int, question: str, tool: bool = False) -> dict:
