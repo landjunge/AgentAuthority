@@ -1,0 +1,292 @@
+{
+  "native_pair_snapshots": [
+    {
+      "packet": "P1",
+      "before": {
+        "valid_descriptors": [
+          true,
+          true
+        ],
+        "regular_files": [
+          true,
+          true
+        ]
+      },
+      "after": {
+        "valid_descriptors": [
+          true,
+          true
+        ],
+        "regular_files": [
+          true,
+          true
+        ]
+      },
+      "complete": true
+    },
+    {
+      "packet": "P2",
+      "before": {
+        "valid_descriptors": [
+          true,
+          true
+        ],
+        "regular_files": [
+          true,
+          true
+        ]
+      },
+      "after": {
+        "valid_descriptors": [
+          true,
+          true
+        ],
+        "regular_files": [
+          true,
+          true
+        ]
+      },
+      "complete": true
+    }
+  ],
+  "invocations": [
+    {
+      "packet": "P1",
+      "before": {
+        "valid_descriptors": [
+          true,
+          true
+        ],
+        "regular_files": [
+          true,
+          true
+        ]
+      },
+      "after": {
+        "valid_descriptors": [
+          true,
+          true
+        ],
+        "regular_files": [
+          true,
+          true
+        ]
+      },
+      "live_checked_for_invocation": true,
+      "native_snapshot_count_before": 1,
+      "native_snapshot_count_after": 1,
+      "answer_saved_sha256": "9ab5e180d2cea3087fe3549d01a81a699fc93194eb9c4cda74a2f9a04ac1bc5d",
+      "process_exit": 0,
+      "stdout_bytes": 0,
+      "stderr_bytes": 0
+    },
+    {
+      "packet": "P4",
+      "before": {
+        "valid_descriptors": [
+          true,
+          true
+        ],
+        "regular_files": [
+          true,
+          true
+        ]
+      },
+      "after": {
+        "valid_descriptors": [
+          true,
+          true
+        ],
+        "regular_files": [
+          true,
+          true
+        ]
+      },
+      "live_checked_for_invocation": true,
+      "native_snapshot_count_before": 1,
+      "native_snapshot_count_after": 1,
+      "answer_saved_sha256": "b229dab3041bff8e4506eaa8d1fecbe25ee9a65fbe57f5e46157b694b6d8e7b9",
+      "process_exit": 0,
+      "stdout_bytes": 0,
+      "stderr_bytes": 0
+    },
+    {
+      "packet": "P6",
+      "before": {
+        "valid_descriptors": [
+          true,
+          true
+        ],
+        "regular_files": [
+          true,
+          true
+        ]
+      },
+      "after": {
+        "valid_descriptors": [
+          true,
+          true
+        ],
+        "regular_files": [
+          true,
+          true
+        ]
+      },
+      "live_checked_for_invocation": true,
+      "native_snapshot_count_before": 1,
+      "native_snapshot_count_after": 1,
+      "answer_saved_sha256": "d7d104e9a3442ffeaf838aac10ea42e76cfaa959ae76ca0333c4c0d6f89d5850",
+      "process_exit": 0,
+      "stdout_bytes": 0,
+      "stderr_bytes": 0
+    },
+    {
+      "packet": "P7",
+      "before": {
+        "valid_descriptors": [
+          true,
+          true
+        ],
+        "regular_files": [
+          true,
+          true
+        ]
+      },
+      "after": {
+        "valid_descriptors": [
+          true,
+          true
+        ],
+        "regular_files": [
+          true,
+          true
+        ]
+      },
+      "live_checked_for_invocation": true,
+      "native_snapshot_count_before": 1,
+      "native_snapshot_count_after": 1,
+      "answer_saved_sha256": "7efbcd18742997e2a99b038f4bce1151337d4207a78347dd0b34a8a103bc4b68",
+      "process_exit": 0,
+      "stdout_bytes": 0,
+      "stderr_bytes": 0
+    },
+    {
+      "packet": "P3",
+      "before": {},
+      "after": {},
+      "live_checked_for_invocation": false,
+      "native_snapshot_count_before": 1,
+      "native_snapshot_count_after": 1,
+      "answer_saved_sha256": "9ab5e180d2cea3087fe3549d01a81a699fc93194eb9c4cda74a2f9a04ac1bc5d",
+      "process_exit": 0,
+      "stdout_bytes": 0,
+      "stderr_bytes": 0
+    },
+    {
+      "packet": "P2",
+      "before": {
+        "valid_descriptors": [
+          true,
+          true
+        ],
+        "regular_files": [
+          true,
+          true
+        ]
+      },
+      "after": {
+        "valid_descriptors": [
+          true,
+          true
+        ],
+        "regular_files": [
+          true,
+          true
+        ]
+      },
+      "live_checked_for_invocation": true,
+      "native_snapshot_count_before": 2,
+      "native_snapshot_count_after": 2,
+      "answer_saved_sha256": "5d8ad4e60d1808e97b625423edda7f4929329833568dcaeb680f602d6ad9c8b5",
+      "process_exit": 0,
+      "stdout_bytes": 0,
+      "stderr_bytes": 0
+    },
+    {
+      "packet": "P5",
+      "before": {},
+      "after": {},
+      "live_checked_for_invocation": false,
+      "native_snapshot_count_before": 2,
+      "native_snapshot_count_after": 2,
+      "answer_saved_sha256": "341af9e2640d44515051f53ec1237f24228dda2a03fc9e2eaac54ee0081886b4",
+      "process_exit": 0,
+      "stdout_bytes": 0,
+      "stderr_bytes": 0
+    }
+  ],
+  "releases": {
+    "V1": {
+      "closed_handles": [
+        {
+          "close_returned": true,
+          "closed_fd_is_ebadf": true
+        },
+        {
+          "close_returned": true,
+          "closed_fd_is_ebadf": true
+        }
+      ],
+      "removed_paths": [
+        {
+          "unlink_returned": true,
+          "path_absent": true,
+          "own_target_fd_links": 0
+        }
+      ],
+      "complete": true,
+      "stage": "complete"
+    },
+    "V2": {
+      "closed_handles": [
+        {
+          "close_returned": true,
+          "closed_fd_is_ebadf": true
+        },
+        {
+          "close_returned": true,
+          "closed_fd_is_ebadf": true
+        }
+      ],
+      "removed_paths": [
+        {
+          "unlink_returned": true,
+          "path_absent": true,
+          "own_target_fd_links": 0
+        },
+        {
+          "unlink_returned": true,
+          "path_absent": true,
+          "own_target_fd_links": 0
+        }
+      ],
+      "complete": true,
+      "stage": "complete"
+    }
+  },
+  "replay": {
+    "old_packet": "P1",
+    "replayed_packet": "P3",
+    "old_sha256": "819cebf2f4935d30b3f0dce37d0ae42ebf42ce5b90ec06e83b210f240a4d7088",
+    "replay_sha256": "819cebf2f4935d30b3f0dce37d0ae42ebf42ce5b90ec06e83b210f240a4d7088",
+    "original_query_run": 1,
+    "replay_query_run": 1,
+    "prior_release_complete": true
+  },
+  "synthetic": {
+    "packet": "P5",
+    "source": "handcrafted_unchecked_primitives",
+    "native_collector_called_for_packet": false,
+    "actual_resource_handles_for_packet": 0
+  }
+}

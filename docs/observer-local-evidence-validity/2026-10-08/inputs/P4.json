@@ -1,0 +1,24 @@
+[
+  {
+    "run": 1,
+    "kind": "live_local_file_refs",
+    "value": {
+      "scope": {
+        "os": "Linux",
+        "filesystem": "tmpfs"
+      },
+      "references": [
+        {
+          "st_dev": 34,
+          "st_ino": 18918,
+          "regular_file": true
+        },
+        {
+          "st_dev": 34,
+          "st_ino": 18918,
+          "regular_file": true
+        }
+      ]
+    }
+  }
+]

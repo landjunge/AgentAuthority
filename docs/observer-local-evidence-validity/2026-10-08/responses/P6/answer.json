@@ -1,0 +1,17 @@
+{
+  "input_sha256": "daa38debfe2a34aa4cb9d180c86dd4f837be6f33b22e180b9f99c295a29a3330",
+  "query_run": 1,
+  "raw_observer_abc": {
+    "A": "UNBEKANNT",
+    "B": "Gueltige native Paare zweier regulaerer Dateien fehlen.",
+    "C": "Nur gleichzeitig lebende regulaere Dateien im selben lokalen Linux/tmpfs-Messprozess ohne Mount-/Namespacewechsel; keine dauerhafte Identitaet nach Freigabe, Inhalts-/Revisionsidentitaet oder Quellechtheit; keine anderen Hosts, Neustarts oder Ressourcen."
+  },
+  "requested_abcd": {
+    "A": "UNBEKANNT",
+    "B": "Gueltige native Paare zweier regulaerer Dateien fehlen.",
+    "C": "UNBEKANNT",
+    "D": "Nur gleichzeitig lebende regulaere Dateien im selben lokalen Linux/tmpfs-Messprozess ohne Mount-/Namespacewechsel; keine dauerhafte Identitaet nach Freigabe, Inhalts-/Revisionsidentitaet oder Quellechtheit; keine anderen Hosts, Neustarts oder Ressourcen."
+  },
+  "validity_output_present": false,
+  "validity_output_note": "Der unveraenderte Observer liefert keine gesonderte aktuelle Gueltigkeitsantwort. C=UNBEKANNT ist nur die Kennzeichnung dieser fehlenden Ausgabe, keine neue Ableitung oder erkannte Ungueltigkeit."
+}

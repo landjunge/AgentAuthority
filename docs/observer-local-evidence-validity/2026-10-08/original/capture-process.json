@@ -1,0 +1,14 @@
+{
+  "command": [
+    "/workspace/venvs/authority/bin/python",
+    "-m",
+    "probes.local_evidence_validity_capture",
+    "--out",
+    "/tmp/aa-local-evidence-validity-20261008"
+  ],
+  "calls": 1,
+  "exit": 0,
+  "stdout_bytes": 92,
+  "stderr_bytes": 0,
+  "harness_commit": "2c0bc8ed177012081569acfdad482e982b055856"
+}
