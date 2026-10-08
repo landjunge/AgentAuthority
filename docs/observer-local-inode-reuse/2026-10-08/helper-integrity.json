@@ -1,0 +1,9 @@
+{
+  "contract_commit": "eea95b07605fb38d34158a7d333f7afab7e5f382",
+  "pre_execution_resolution_commit": "5c7105cda5efa282a93af81bb6889e8cce3dd96f",
+  "helper_files_sha256": {
+    "probes/local_inode_reuse_capture.py": "01c7b9f8d421cd1f7532a3773f221e6ace0c1b792cb126a9ebdf896c33f02aa1",
+    "probes/local_inode_reuse_analyze.py": "bcbaf44ed35e9673a2d9a7e37d6968847d5a01f0b73c25c55fb77d62a77f71dc"
+  },
+  "checks_before_execution": "AST syntax parsing and separated-context static source review only; no helper import/execution or resource test"
+}
