@@ -1,0 +1,13 @@
+{
+  "command": [
+    "/workspace/venvs/authority/bin/python",
+    "-m",
+    "probes.current_local_collector_capture",
+    "--out",
+    "/tmp/aa-current-local-collector-20261008"
+  ],
+  "exit_code": 0,
+  "stdout_bytes": 92,
+  "stderr_bytes": 0,
+  "single_capture_attempt": true
+}

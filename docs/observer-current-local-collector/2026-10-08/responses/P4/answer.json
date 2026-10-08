@@ -1,0 +1,10 @@
+{
+  "input_sha256": "f38a9261229ddbc3060dc210d29f6b3eed8643a98dd14923d90d1ba83dfaa58b",
+  "query_run": 1,
+  "raw_observer_abcd": {
+    "A": "UNBEKANNT",
+    "B": "Keine Handles fuer eine aktuelle Collectorpruefung angeboten; gespeicherte true-Werte sind kein Live-Beweis.",
+    "C": "NEIN",
+    "D": "Nur aktuell gehaltene regulaere Handles im selben lokalen Linux/tmpfs-Prozess ohne konkurrierendes Schliessen/FD-Neubelegung oder Mount-/Namespacewechsel; sequenzielle Checks, kein atomarer Lebenszeitbeweis. Keine Packetherkunft, historische/permanente Identitaet, Inhalts-/Revisionsidentitaet, anderen Hosts oder Ressourcen bewiesen."
+  }
+}

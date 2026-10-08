@@ -1,0 +1,595 @@
+{
+  "native_pair_snapshots": [
+    {
+      "packet": "P1",
+      "before": {
+        "valid_descriptors": [
+          true,
+          true
+        ],
+        "regular_files": [
+          true,
+          true
+        ]
+      },
+      "after": {
+        "valid_descriptors": [
+          true,
+          true
+        ],
+        "regular_files": [
+          true,
+          true
+        ]
+      },
+      "complete": true
+    },
+    {
+      "packet": "P2",
+      "before": {
+        "valid_descriptors": [
+          true,
+          true
+        ],
+        "regular_files": [
+          true,
+          true
+        ]
+      },
+      "after": {
+        "valid_descriptors": [
+          true,
+          true
+        ],
+        "regular_files": [
+          true,
+          true
+        ]
+      },
+      "complete": true
+    },
+    {
+      "packet": "P6",
+      "before": {
+        "valid_descriptors": [
+          true,
+          true
+        ],
+        "regular_files": [
+          true,
+          true
+        ]
+      },
+      "after": {
+        "valid_descriptors": [
+          true,
+          true
+        ],
+        "regular_files": [
+          true,
+          true
+        ]
+      },
+      "complete": true
+    },
+    {
+      "packet": "P7",
+      "before": {
+        "valid_descriptors": [
+          true,
+          true
+        ],
+        "regular_files": [
+          true,
+          true
+        ]
+      },
+      "after": {
+        "valid_descriptors": [
+          true,
+          true
+        ],
+        "regular_files": [
+          true,
+          true
+        ]
+      },
+      "complete": true
+    }
+  ],
+  "invocations": [
+    {
+      "packet": "P1",
+      "runtime_handles_supplied": true,
+      "native_calls": [
+        {
+          "operation": "fcntl",
+          "attempted": true,
+          "returned": true,
+          "handle_index": 1,
+          "is_f_getfd": true,
+          "descriptor_flags": 1
+        },
+        {
+          "operation": "fstat",
+          "attempted": true,
+          "returned": true,
+          "handle_index": 1,
+          "native_pair": [
+            34,
+            21419
+          ],
+          "regular": true
+        },
+        {
+          "operation": "fcntl",
+          "attempted": true,
+          "returned": true,
+          "handle_index": 2,
+          "is_f_getfd": true,
+          "descriptor_flags": 1
+        },
+        {
+          "operation": "fstat",
+          "attempted": true,
+          "returned": true,
+          "handle_index": 2,
+          "native_pair": [
+            34,
+            21419
+          ],
+          "regular": true
+        },
+        {
+          "operation": "uname",
+          "attempted": true,
+          "returned": true,
+          "system": "Linux"
+        },
+        {
+          "operation": "run",
+          "attempted": true,
+          "returned": true,
+          "is_fixed_findmnt": true,
+          "exit_code": 0,
+          "filesystem_types": [
+            "tmpfs"
+          ]
+        },
+        {
+          "operation": "stat",
+          "attempted": true,
+          "returned": true,
+          "is_tmp_context": true,
+          "device": 34
+        },
+        {
+          "operation": "fcntl",
+          "attempted": true,
+          "returned": true,
+          "handle_index": 1,
+          "is_f_getfd": true,
+          "descriptor_flags": 1
+        },
+        {
+          "operation": "fstat",
+          "attempted": true,
+          "returned": true,
+          "handle_index": 1,
+          "native_pair": [
+            34,
+            21419
+          ],
+          "regular": true
+        },
+        {
+          "operation": "fcntl",
+          "attempted": true,
+          "returned": true,
+          "handle_index": 2,
+          "is_f_getfd": true,
+          "descriptor_flags": 1
+        },
+        {
+          "operation": "fstat",
+          "attempted": true,
+          "returned": true,
+          "handle_index": 2,
+          "native_pair": [
+            34,
+            21419
+          ],
+          "regular": true
+        }
+      ],
+      "answer_saved_sha256": "0e23aea4cdc211492b958c613dba69df033830c9536e4861edfb4d0c0921705d",
+      "native_snapshot_count_before": 1,
+      "native_snapshot_count_after": 1
+    },
+    {
+      "packet": "P3",
+      "runtime_handles_supplied": false,
+      "native_calls": [],
+      "answer_saved_sha256": "456dbb2ad77a6f38183ccc16e14790871ca61b84b6d6e87247596f872419d013",
+      "native_snapshot_count_before": 1,
+      "native_snapshot_count_after": 1
+    },
+    {
+      "packet": "P5",
+      "runtime_handles_supplied": true,
+      "native_calls": [
+        {
+          "operation": "fcntl",
+          "attempted": true,
+          "returned": false,
+          "handle_index": 1,
+          "is_f_getfd": true,
+          "error": {
+            "type": "OSError",
+            "errno": 9
+          }
+        }
+      ],
+      "answer_saved_sha256": "8cc36e6524a0dac689a387a26e8644e628a040fc2667c2446086dc79e92ca03c",
+      "native_snapshot_count_before": 1,
+      "native_snapshot_count_after": 1
+    },
+    {
+      "packet": "P4",
+      "runtime_handles_supplied": false,
+      "native_calls": [],
+      "answer_saved_sha256": "12b6912c5fe10170b6e2d8956780738577d015d359e1ecaa8428a51cffdcfa88",
+      "native_snapshot_count_before": 1,
+      "native_snapshot_count_after": 1
+    },
+    {
+      "packet": "P2",
+      "runtime_handles_supplied": true,
+      "native_calls": [
+        {
+          "operation": "fcntl",
+          "attempted": true,
+          "returned": true,
+          "handle_index": 1,
+          "is_f_getfd": true,
+          "descriptor_flags": 1
+        },
+        {
+          "operation": "fstat",
+          "attempted": true,
+          "returned": true,
+          "handle_index": 1,
+          "native_pair": [
+            34,
+            21438
+          ],
+          "regular": true
+        },
+        {
+          "operation": "fcntl",
+          "attempted": true,
+          "returned": true,
+          "handle_index": 2,
+          "is_f_getfd": true,
+          "descriptor_flags": 1
+        },
+        {
+          "operation": "fstat",
+          "attempted": true,
+          "returned": true,
+          "handle_index": 2,
+          "native_pair": [
+            34,
+            21439
+          ],
+          "regular": true
+        },
+        {
+          "operation": "uname",
+          "attempted": true,
+          "returned": true,
+          "system": "Linux"
+        },
+        {
+          "operation": "run",
+          "attempted": true,
+          "returned": true,
+          "is_fixed_findmnt": true,
+          "exit_code": 0,
+          "filesystem_types": [
+            "tmpfs"
+          ]
+        },
+        {
+          "operation": "stat",
+          "attempted": true,
+          "returned": true,
+          "is_tmp_context": true,
+          "device": 34
+        },
+        {
+          "operation": "fcntl",
+          "attempted": true,
+          "returned": true,
+          "handle_index": 1,
+          "is_f_getfd": true,
+          "descriptor_flags": 1
+        },
+        {
+          "operation": "fstat",
+          "attempted": true,
+          "returned": true,
+          "handle_index": 1,
+          "native_pair": [
+            34,
+            21438
+          ],
+          "regular": true
+        },
+        {
+          "operation": "fcntl",
+          "attempted": true,
+          "returned": true,
+          "handle_index": 2,
+          "is_f_getfd": true,
+          "descriptor_flags": 1
+        },
+        {
+          "operation": "fstat",
+          "attempted": true,
+          "returned": true,
+          "handle_index": 2,
+          "native_pair": [
+            34,
+            21439
+          ],
+          "regular": true
+        }
+      ],
+      "answer_saved_sha256": "a632f3a86daece33714533f339edb0307f0cb8edb7fe5df17f8c60b37f50837d",
+      "native_snapshot_count_before": 2,
+      "native_snapshot_count_after": 2
+    },
+    {
+      "packet": "P6",
+      "runtime_handles_supplied": true,
+      "native_calls": [
+        {
+          "operation": "fcntl",
+          "attempted": true,
+          "returned": false,
+          "handle_index": 1,
+          "is_f_getfd": true,
+          "error": {
+            "type": "OSError",
+            "errno": 9
+          }
+        }
+      ],
+      "answer_saved_sha256": "4225b4c4b02342827810d3ac846b60fb9988c9488e040dbe560925db026c3acb",
+      "native_snapshot_count_before": 3,
+      "native_snapshot_count_after": 3
+    },
+    {
+      "packet": "P7",
+      "runtime_handles_supplied": true,
+      "native_calls": [
+        {
+          "operation": "fcntl",
+          "attempted": true,
+          "returned": true,
+          "handle_index": 1,
+          "is_f_getfd": true,
+          "descriptor_flags": 1
+        },
+        {
+          "operation": "fstat",
+          "attempted": true,
+          "returned": true,
+          "handle_index": 1,
+          "native_pair": [
+            34,
+            21449
+          ],
+          "regular": true
+        },
+        {
+          "operation": "fcntl",
+          "attempted": true,
+          "returned": true,
+          "handle_index": 2,
+          "is_f_getfd": true,
+          "descriptor_flags": 1
+        },
+        {
+          "operation": "fstat",
+          "attempted": true,
+          "returned": true,
+          "handle_index": 2,
+          "native_pair": [
+            34,
+            21450
+          ],
+          "regular": true
+        },
+        {
+          "operation": "uname",
+          "attempted": true,
+          "returned": true,
+          "system": "Linux"
+        },
+        {
+          "operation": "run",
+          "attempted": true,
+          "returned": true,
+          "is_fixed_findmnt": true,
+          "exit_code": 0,
+          "filesystem_types": [
+            "tmpfs"
+          ]
+        },
+        {
+          "operation": "stat",
+          "attempted": true,
+          "returned": true,
+          "is_tmp_context": true,
+          "device": 34
+        },
+        {
+          "operation": "fcntl",
+          "attempted": true,
+          "returned": true,
+          "handle_index": 1,
+          "is_f_getfd": true,
+          "descriptor_flags": 1
+        },
+        {
+          "operation": "fstat",
+          "attempted": true,
+          "returned": true,
+          "handle_index": 1,
+          "native_pair": [
+            34,
+            21449
+          ],
+          "regular": true
+        },
+        {
+          "operation": "fcntl",
+          "attempted": true,
+          "returned": true,
+          "handle_index": 2,
+          "is_f_getfd": true,
+          "descriptor_flags": 1
+        },
+        {
+          "operation": "fstat",
+          "attempted": true,
+          "returned": true,
+          "handle_index": 2,
+          "native_pair": [
+            34,
+            21450
+          ],
+          "regular": true
+        }
+      ],
+      "answer_saved_sha256": "2062d06f0424966aa66aa7b864fafe450d6ce46d89983a1ed662a4e23b3c083c",
+      "native_snapshot_count_before": 4,
+      "native_snapshot_count_after": 4
+    }
+  ],
+  "releases": {
+    "F1": {
+      "closed_handles": [
+        {
+          "close_returned": true,
+          "closed_fd_is_ebadf": true
+        },
+        {
+          "close_returned": true,
+          "closed_fd_is_ebadf": true
+        }
+      ],
+      "removed_paths": [
+        {
+          "unlink_returned": true,
+          "path_absent": true,
+          "own_target_fd_links": 0
+        }
+      ],
+      "complete": true,
+      "stage": "complete"
+    },
+    "F2": {
+      "closed_handles": [
+        {
+          "close_returned": true,
+          "closed_fd_is_ebadf": true
+        },
+        {
+          "close_returned": true,
+          "closed_fd_is_ebadf": true
+        }
+      ],
+      "removed_paths": [
+        {
+          "unlink_returned": true,
+          "path_absent": true,
+          "own_target_fd_links": 0
+        },
+        {
+          "unlink_returned": true,
+          "path_absent": true,
+          "own_target_fd_links": 0
+        }
+      ],
+      "complete": true,
+      "stage": "complete"
+    },
+    "F6": {
+      "removed_paths": [
+        {
+          "unlink_returned": true,
+          "path_absent": true,
+          "own_target_fd_links": 0
+        }
+      ],
+      "complete": true
+    },
+    "F7": {
+      "closed_handles": [
+        {
+          "close_returned": true,
+          "closed_fd_is_ebadf": true
+        },
+        {
+          "close_returned": true,
+          "closed_fd_is_ebadf": true
+        }
+      ],
+      "removed_paths": [
+        {
+          "unlink_returned": true,
+          "path_absent": true,
+          "own_target_fd_links": 0
+        },
+        {
+          "unlink_returned": true,
+          "path_absent": true,
+          "own_target_fd_links": 0
+        }
+      ],
+      "complete": true,
+      "stage": "complete"
+    }
+  },
+  "replay": {
+    "source_packet": "P1",
+    "replayed_packets": [
+      "P3",
+      "P5"
+    ],
+    "source_sha256": "807fe35e1245b365d5a4dfba9553f34efed85d5434b72a78f7bf3a126725cd62",
+    "release_before_replay_complete": true
+  },
+  "synthetic": {
+    "packet": "P4",
+    "source": "handcrafted_primitives",
+    "actual_resource_handles": 0
+  },
+  "closed_before_check": {
+    "F6": {
+      "close_checks": [
+        {
+          "close_returned": true,
+          "immediate_ebadf": true
+        },
+        {
+          "close_returned": true,
+          "immediate_ebadf": true
+        }
+      ]
+    }
+  }
+}

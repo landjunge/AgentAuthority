@@ -1,0 +1,10 @@
+{
+  "input_sha256": "19af76bee33a3bf874e25af22385c2f2ef5409bca5c40c2151d60e9a8a6c5862",
+  "query_run": 1,
+  "raw_observer_abcd": {
+    "A": "VERSCHIEDEN",
+    "B": "Jetzt F_GETFD/fstat beider regulaerer Handles vor und nach aktueller Linux/tmpfs-/tmp-Geraetepruefung erfolgreich; geordnete Paare (34, 21438) und (34, 21439) unveraendert und passend zum Packet: verschieden.",
+    "C": "JA",
+    "D": "Nur aktuell gehaltene regulaere Handles im selben lokalen Linux/tmpfs-Prozess ohne konkurrierendes Schliessen/FD-Neubelegung oder Mount-/Namespacewechsel; sequenzielle Checks, kein atomarer Lebenszeitbeweis. Keine Packetherkunft, historische/permanente Identitaet, Inhalts-/Revisionsidentitaet, anderen Hosts oder Ressourcen bewiesen."
+  }
+}
