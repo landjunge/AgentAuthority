@@ -1,0 +1,12 @@
+{
+  "contract_commit": "c948474797ea734df5978c466d6db7af9e30f92c",
+  "frozen_before_first_execution": true,
+  "sha256": {
+    "docs/OBSERVER-LOCAL-EVIDENCE-VALIDITY-CONTRACT-2026-10-08.md": "3a8b747ada04e31bee829d6c4fbcabf17c74e0de86d7fad7c3284570cf6c5c07",
+    "probes/local_evidence_validity_capture.py": "6876dd9f3e86197907b61ac4c774f57455af6f36701630a1a5c2359d16ae757d",
+    "probes/local_evidence_validity_responses.py": "41691573022e3c8c074ed41f0c2605505a05b181d442c4b900f5bbc2b93b38ea",
+    "observer_research.py": "14d7170e28139fc0e57fc31caf0a1a292635ef23764ea71c1baa056a472db705",
+    "probes/local_file_identity_capture.py": "782018e7dc76a01b460c280e2907a3432a84130a07884f7b16cca075f321ef67",
+    "probes/local_inode_reuse_capture.py": "01c7b9f8d421cd1f7532a3773f221e6ace0c1b792cb126a9ebdf896c33f02aa1"
+  }
+}
