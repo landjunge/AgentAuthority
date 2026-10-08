@@ -1,0 +1,113 @@
+{
+  "contract_commit": "adb5cfb3a924ac391b71448502bfedfec4b464b5",
+  "implementation_commit": "66967deca13039845b258a62d69876ce12d4e564",
+  "answer_checkpoint_commit": "b06a388b68847f6634332d1005bd15356e1982ab",
+  "answers_sha256": "13fcb3c9a46ca86c94780ca2a305c3f9742e26db6e001c44d22ae4af8c65a3f8",
+  "rows": [
+    {
+      "case": "T1",
+      "answer": "DIESELBE",
+      "expected": "DIESELBE",
+      "independent_resource_truth": "DIESELBE",
+      "scoring_basis": "independent_bidirectional_io",
+      "visible_basis_matches": true,
+      "limit_matches": true,
+      "verdict": "KORREKT"
+    },
+    {
+      "case": "T2",
+      "answer": "VERSCHIEDEN",
+      "expected": "VERSCHIEDEN",
+      "independent_resource_truth": "VERSCHIEDEN",
+      "scoring_basis": "independent_bidirectional_io",
+      "visible_basis_matches": true,
+      "limit_matches": true,
+      "verdict": "KORREKT"
+    },
+    {
+      "case": "T3",
+      "answer": "VERSCHIEDEN",
+      "expected": "VERSCHIEDEN",
+      "independent_resource_truth": "VERSCHIEDEN",
+      "scoring_basis": "independent_bidirectional_io",
+      "visible_basis_matches": true,
+      "limit_matches": true,
+      "verdict": "KORREKT"
+    },
+    {
+      "case": "T4",
+      "answer": "UNBEKANNT",
+      "expected": "UNBEKANNT",
+      "independent_resource_truth": null,
+      "scoring_basis": "frozen_abstention_rule_not_actual_resource_ground_truth",
+      "visible_basis_matches": true,
+      "limit_matches": true,
+      "verdict": "KORREKT"
+    },
+    {
+      "case": "T5",
+      "answer": "UNBEKANNT",
+      "expected": "UNBEKANNT",
+      "independent_resource_truth": null,
+      "scoring_basis": "frozen_abstention_rule_not_actual_resource_ground_truth",
+      "visible_basis_matches": true,
+      "limit_matches": true,
+      "verdict": "KORREKT"
+    },
+    {
+      "case": "T6",
+      "answer": "UNBEKANNT",
+      "expected": "UNBEKANNT",
+      "independent_resource_truth": null,
+      "scoring_basis": "frozen_abstention_rule_not_actual_resource_ground_truth",
+      "visible_basis_matches": true,
+      "limit_matches": true,
+      "verdict": "KORREKT"
+    },
+    {
+      "case": "T7",
+      "answer": "UNBEKANNT",
+      "expected": "UNBEKANNT",
+      "independent_resource_truth": null,
+      "scoring_basis": "frozen_abstention_rule_not_actual_resource_ground_truth",
+      "visible_basis_matches": true,
+      "limit_matches": true,
+      "verdict": "KORREKT"
+    }
+  ],
+  "summary": {
+    "actual_file_pairs_started": 3,
+    "actual_file_pairs_judgeable": 3,
+    "correct_primary_claims": 3,
+    "false_primary_claims": 0,
+    "unknown_primary_claims": 0,
+    "control_views": 4,
+    "controls_unknown": 4,
+    "correct_control_abstentions": 4,
+    "false_controls": 0,
+    "all_case_verdicts": {
+      "KORREKT": 7,
+      "FALSCH": 0,
+      "UNBEURTEILBAR": 0
+    },
+    "capture_or_reference_or_cleanup_errors": 0,
+    "response_input_errors": 0,
+    "remaining_resource_files": 0
+  },
+  "verdict": "SUPPORTED IN THIS CASE SET",
+  "observer_input_bytes": {
+    "T1": 485,
+    "T2": 485,
+    "T3": 485,
+    "T4": 93,
+    "T5": 73,
+    "T6": 227,
+    "T7": 484
+  },
+  "scope": "one_controlled_Linux_tmpfs_process_three_live_pairs_four_controls",
+  "confidence_in_experiment_result": "HIGH within this case set",
+  "confidence_in_generalization": "LOW",
+  "historical_K14": "INCONCLUSIVE in original scope",
+  "E2_metadata_gap": "OPEN",
+  "OOS021": "OPEN"
+}

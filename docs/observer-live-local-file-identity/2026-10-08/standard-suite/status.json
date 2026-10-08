@@ -1,0 +1,40 @@
+[
+  {
+    "run": 1,
+    "command": [
+      "/workspace/venvs/authority/bin/python",
+      "-m",
+      "pytest",
+      "-p",
+      "no:cacheprovider",
+      "-o",
+      "addopts=",
+      "-q"
+    ],
+    "environment_override": {
+      "PYTHONDONTWRITEBYTECODE": "1"
+    },
+    "exit": 0,
+    "stderr_bytes": 0,
+    "new_tests": "29 synthetic parser boundary checks; no additional filesystem scenarios"
+  },
+  {
+    "run": 2,
+    "command": [
+      "/workspace/venvs/authority/bin/python",
+      "-m",
+      "pytest",
+      "-p",
+      "no:cacheprovider",
+      "-o",
+      "addopts=",
+      "-q"
+    ],
+    "environment_override": {
+      "PYTHONDONTWRITEBYTECODE": "1"
+    },
+    "exit": 0,
+    "stderr_bytes": 0,
+    "new_tests": "29 synthetic parser boundary checks; no additional filesystem scenarios"
+  }
+]
