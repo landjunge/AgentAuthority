@@ -1,0 +1,10 @@
+{
+  "branch": "feat/observer-wb-automation",
+  "contract_commit": "0532f31a726b3bb7675555c92bf9f78d00a20874",
+  "contract_resolution_commit": "5e5d4ed06d3ea063c23e6ab10fd2878d26a64e2b",
+  "helper_commit": "43d91aea7f8aca190bf4c70b04a642e80c898a59",
+  "helper_sha256": "dd53c3dfa805b9e93660184219e12aaf3e6274b9dbacba00eaa2de876d938ab3",
+  "observer_sha256": "9279ceac9912e938fed0965b8d87e0ed311c52c7f15f87bc7292ab786cb2ce27",
+  "remote_branch_verified_at_each_freeze": true,
+  "tests_sha256": "a294239665964c1bfeba4936fadaba8f30300aff649d4ec2ba08dfbdb011791f"
+}

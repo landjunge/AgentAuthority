@@ -1,0 +1,21 @@
+{
+  "attempted_command": "python -u probes/collector_manipulation_c1_c7_run02.py --out /tmp/aa-collector-manipulation-c1-c7-run02-20261008 --wait-seconds 7200",
+  "capture_function_entered": false,
+  "error_message": "No module named 'observer_research'",
+  "error_type": "ModuleNotFoundError",
+  "ground_truth_started": false,
+  "helper_changed_after_freeze": false,
+  "launch_attempts": 1,
+  "observer_invocations": 0,
+  "pre_gt_checkpoint_created": false,
+  "rerun_attempted": false,
+  "run_directory_after_failure": "ABSENT",
+  "stage": "module_import_before_capture",
+  "stderr": [
+    "Traceback (most recent call last):",
+    "  File \"/workspace/probes/collector_manipulation_c1_c7_run02.py\", line 26, in <module>",
+    "    from observer_research import infer_current_local_file_identity",
+    "ModuleNotFoundError: No module named 'observer_research'"
+  ],
+  "verdict_effect": "PARTIAL_INCONCLUSIVE_NO_RERUN"
+}

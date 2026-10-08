@@ -1,0 +1,41 @@
+{
+  "command": "PYTHONDONTWRITEBYTECODE=1 python -m pytest -p no:cacheprovider -o addopts='' -q",
+  "environment": {
+    "filesystem": "tmpfs",
+    "hypothesis": "6.168.5",
+    "network_mode": "none",
+    "os": "Linux",
+    "pytest": "8.4.2",
+    "python": "3.12.15"
+  },
+  "helper_relevant_pre_freeze": {
+    "command": "python -m pytest -p no:cacheprovider -o addopts='' -q tests/test_collector_manipulation_c1_c7_run02.py tests/test_observer_current_local_collector.py tests/test_current_local_collector_analysis.py",
+    "passed": 27,
+    "failed": 0,
+    "seconds": 0.11
+  },
+  "in_memory_compile": {
+    "files": 67,
+    "result": "PASS"
+  },
+  "oos_021_executed": false,
+  "run_1": {
+    "deselected": 5,
+    "failed": 0,
+    "passed": 396,
+    "seconds": 10.02
+  },
+  "run_2": {
+    "deselected": 5,
+    "failed": 0,
+    "passed": 396,
+    "seconds": 9.65
+  },
+  "the_five_deselections": [
+    "RC-01",
+    "RC-02",
+    "RC-03",
+    "RC-04",
+    "RC-05"
+  ]
+}
