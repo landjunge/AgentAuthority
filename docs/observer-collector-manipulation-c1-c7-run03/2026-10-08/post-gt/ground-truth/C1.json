@@ -1,0 +1,33 @@
+{
+  "checks": {
+    "cross_a_matches_b_marker": true,
+    "cross_a_unchanged_from_its_fresh_baseline": false,
+    "cross_b_matches_a_marker": true,
+    "cross_b_unchanged_from_its_baseline": false,
+    "own_a_write_visible": true,
+    "own_b_write_visible": true
+  },
+  "full_reads_verified_by_eof_probe": true,
+  "offset": 0,
+  "read_lengths": [
+    [
+      32,
+      32
+    ],
+    [
+      64,
+      64
+    ],
+    [
+      96,
+      96
+    ]
+  ],
+  "reference_error": null,
+  "stage": "complete",
+  "successful_write_lengths": [
+    64,
+    96
+  ],
+  "truth": "DIESELBE"
+}

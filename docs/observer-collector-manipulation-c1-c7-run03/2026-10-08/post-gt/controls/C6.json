@@ -1,0 +1,9 @@
+{
+  "native_calls": 0,
+  "regular_file_missing": true,
+  "second_reference_keys": [
+    "st_dev",
+    "st_ino"
+  ],
+  "wrappers_restored": true
+}

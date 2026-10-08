@@ -1,0 +1,15 @@
+{
+  "active_handles_after_cleanup": 0,
+  "cleanup_errors": [],
+  "ground_truth_errors": [],
+  "ground_truth_started_after_authorization": true,
+  "io_cases": [
+    "C1",
+    "C2",
+    "C3",
+    "C4",
+    "C7"
+  ],
+  "raw_contents_archived": false,
+  "remaining_resource_files": []
+}

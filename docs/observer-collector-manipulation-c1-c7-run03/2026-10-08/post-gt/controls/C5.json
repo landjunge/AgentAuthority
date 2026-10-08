@@ -1,0 +1,10 @@
+{
+  "changed_projection_count": 1,
+  "fstat_returns": 4,
+  "only_final_handle_2_manipulated": true,
+  "per_handle_pre_post_changed": [
+    false,
+    true
+  ],
+  "wrappers_restored": true
+}

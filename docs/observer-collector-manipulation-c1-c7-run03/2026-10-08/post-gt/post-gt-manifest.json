@@ -1,0 +1,13 @@
+{
+  "algorithm": "sha256",
+  "files": {
+    "completion-status.json": "4420c2dd732976004482d22d5cdef346412e316ced34a1ffd30fd030d4dc800b",
+    "controls/C5.json": "6e435cf3f0e3fbb97a51ebbe1333409564c8a66e2514de22ebf2e137e8ada66e",
+    "controls/C6.json": "91d6166d740542998ff5a3617c11a732c129ee48858c0367fe80dc606813ed1f",
+    "ground-truth/C1.json": "c2c1f431ea59a7a2fed1c83595724716679cde8c09f55a2e6c562329ebdb87f3",
+    "ground-truth/C2.json": "16fba5b3f079521aed23fd0239c225b1dbe9241c27cca010d0a6da5be4840d7d",
+    "ground-truth/C3.json": "16fba5b3f079521aed23fd0239c225b1dbe9241c27cca010d0a6da5be4840d7d",
+    "ground-truth/C4.json": "c2c1f431ea59a7a2fed1c83595724716679cde8c09f55a2e6c562329ebdb87f3",
+    "ground-truth/C7.json": "16fba5b3f079521aed23fd0239c225b1dbe9241c27cca010d0a6da5be4840d7d"
+  }
+}
