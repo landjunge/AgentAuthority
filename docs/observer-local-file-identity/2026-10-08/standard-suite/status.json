@@ -1,0 +1,36 @@
+{
+  "runs": [
+    {
+      "run": 1,
+      "command": [
+        "/workspace/venvs/authority/bin/python",
+        "-m",
+        "pytest",
+        "-p",
+        "no:cacheprovider",
+        "-o",
+        "addopts=",
+        "-q"
+      ],
+      "returncode": 0,
+      "log": "docs/observer-local-file-identity/2026-10-08/standard-suite/run-1.log"
+    },
+    {
+      "run": 2,
+      "command": [
+        "/workspace/venvs/authority/bin/python",
+        "-m",
+        "pytest",
+        "-p",
+        "no:cacheprovider",
+        "-o",
+        "addopts=",
+        "-q"
+      ],
+      "returncode": 0,
+      "log": "docs/observer-local-file-identity/2026-10-08/standard-suite/run-2.log"
+    }
+  ],
+  "identical_commands": true,
+  "purpose": "Unchanged historical standard suite; not a repetition of L1-L3 or a security/generalization proof"
+}

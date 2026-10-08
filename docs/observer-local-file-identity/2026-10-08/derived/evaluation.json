@@ -1,0 +1,68 @@
+{
+  "answer_checkpoint_commit": "5e072c92da5864b56b37c783d54985ad422e6e06",
+  "remote_checkpoint_confirmed_before_comparison": "5e072c92da5864b56b37c783d54985ad422e6e06",
+  "original_files_hash_verified_before_comparison": true,
+  "primary_cases": [
+    {
+      "case": "L1",
+      "analyst_input": "observations/P1.json",
+      "ground_truth": "ground-truth/L1.json",
+      "answer": "DIESELBE",
+      "independent_io_truth": "DIESELBE",
+      "classification": "KORREKT"
+    },
+    {
+      "case": "L2",
+      "analyst_input": "observations/P2.json",
+      "ground_truth": "ground-truth/L2.json",
+      "answer": "VERSCHIEDEN",
+      "independent_io_truth": "VERSCHIEDEN",
+      "classification": "KORREKT"
+    },
+    {
+      "case": "L3",
+      "analyst_input": "observations/P3.json",
+      "ground_truth": "ground-truth/L3.json",
+      "answer": "VERSCHIEDEN",
+      "independent_io_truth": "VERSCHIEDEN",
+      "classification": "KORREKT"
+    }
+  ],
+  "negative_controls": [
+    {
+      "input": "controls/path_only.json",
+      "answer": "UNBEKANNT",
+      "required_epistemic_answer": "UNBEKANNT",
+      "no_identity_assertion": true,
+      "data_view_only_not_additional_file_case": true
+    },
+    {
+      "input": "controls/content_only.json",
+      "answer": "UNBEKANNT",
+      "required_epistemic_answer": "UNBEKANNT",
+      "no_identity_assertion": true,
+      "data_view_only_not_additional_file_case": true
+    },
+    {
+      "input": "controls/hash_only.json",
+      "answer": "UNBEKANNT",
+      "required_epistemic_answer": "UNBEKANNT",
+      "no_identity_assertion": true,
+      "data_view_only_not_additional_file_case": true
+    }
+  ],
+  "counts": {
+    "file_cases_started": 3,
+    "file_cases_with_complete_independent_reference": 3,
+    "measurement_cases_with_errors": 0,
+    "primary_correct": 3,
+    "primary_false": 0,
+    "primary_unknown": 0,
+    "primary_unjudgeable": 0,
+    "negative_control_views": 3,
+    "negative_control_unknown": 3,
+    "negative_control_rule_satisfied": 3
+  },
+  "overall_result": "SUPPORTED IN THIS TEST",
+  "scope": "Single Linux 6.18.44 tmpfs study, same local collection process, simultaneous continuously live regular-file handles; L2 retains old unlinked handle. No general resource sensor or historical K14 resolution."
+}
