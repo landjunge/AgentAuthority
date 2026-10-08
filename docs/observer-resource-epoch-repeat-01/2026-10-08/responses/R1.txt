@@ -1,0 +1,3 @@
+1. UNBEKANNT.
+2. `resource_binding` ist `null`. Gleiche Anzeigenamen und Aliase beweisen laut Prämissen keine Ressourcenidentität; die gültige Akteursbindung betrifft nur den Akteur.
+3. Offen bleibt, ob `ref-alt` und `ref-neu` dieselbe oder verschiedene Ressourcen bezeichnen. Die reale Quellechtheit der Bindung ist ebenfalls nicht geprüft.

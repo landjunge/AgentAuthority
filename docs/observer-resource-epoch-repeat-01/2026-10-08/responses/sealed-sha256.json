@@ -1,0 +1,34 @@
+{
+  "contract_commit": "824ebcfe806894876dc6ded7ba9adb4d0ef16648",
+  "saved_and_hashed_before_expectations_comparison": true,
+  "new_reader_contexts_without_history_fork": true,
+  "reader_tool_or_file_reads": false,
+  "reader_followups_or_replacement": false,
+  "encoding": "UTF-8; original final response text, no appended newline or edits",
+  "responses": {
+    "R1": {
+      "reader_task": "/root/resource_repeat_reader_alpha",
+      "answer_file": "responses/R1.txt",
+      "answer_sha256": "11906f09fe5e310fd071c0e50811302dd610dd886d60ef1bac2d8ef80c7a6332",
+      "answer_bytes": 345,
+      "reader_input_file": "reader-inputs/R1.txt",
+      "reader_input_sha256": "eac69f08922720341177a4e58bfde553baab20a374e790b362648454bc31aa03"
+    },
+    "R2": {
+      "reader_task": "/root/resource_repeat_reader_beta",
+      "answer_file": "responses/R2.txt",
+      "answer_sha256": "dfe80c33393c64b6af5be7cbc22dd0257034d3810e2771177d4d17a091161bde",
+      "answer_bytes": 323,
+      "reader_input_file": "reader-inputs/R2.txt",
+      "reader_input_sha256": "c7ba57073b18a3885eab71598993b2e31c6272fc89d269b9e063e32d88f22526"
+    },
+    "R3": {
+      "reader_task": "/root/resource_repeat_reader_gamma",
+      "answer_file": "responses/R3.txt",
+      "answer_sha256": "e1f59f3092798f30503df0e32292afe01f44a02ab8f7fb50825ac0162da051bc",
+      "answer_bytes": 311,
+      "reader_input_file": "reader-inputs/R3.txt",
+      "reader_input_sha256": "aa7796a1ca417983866e3de83713ccd36cf9b05083261d13debf79dde7552cca"
+    }
+  }
+}

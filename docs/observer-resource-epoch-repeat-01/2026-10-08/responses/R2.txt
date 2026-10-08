@@ -1,0 +1,3 @@
+1. DIESELBE.
+2. Die als gültig bezeichnete `resource_binding` verbindet `ref-alt` aus Epoche 1 mit `ref-neu` aus Epoche 2 durch `same_resource` innerhalb des Projekts `p-a`.
+3. Die reale Quellechtheit der Bindung bleibt ungeprüft. Über die künstliche Papierkarte hinausgehende tatsächliche Vorgänge sind nicht belegt.

@@ -1,0 +1,5 @@
+1. VERSCHIEDEN.
+
+2. Die ausdrücklich gültige Ressourcenbindung verbindet `ref-alt` aus Epoche 1 mit `ref-neu` aus Epoche 2 durch `relation: "different_resources"`.
+
+3. Die reale Quellechtheit der Bindungen bleibt ungeprüft. Weitere konkrete Identitäten und Eigenschaften der Ressourcen sind nicht angegeben.
