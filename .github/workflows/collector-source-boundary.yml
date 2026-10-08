@@ -1,0 +1,40 @@
+name: Authority Collector Source Boundary
+
+on:
+  push:
+    branches: [feat/observer-wb-automation, master]
+  pull_request:
+    branches: [master]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  replay-frozen-run03:
+    name: replay frozen evidence, no new capture
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install test dependencies
+        run: python -m pip install -e ".[dev]"
+      - name: Validate source boundary (pass 1)
+        run: python -m pytest -p no:cacheprovider -o addopts='' -q tests/test_collector_source_boundary.py
+      - name: Validate source boundary (pass 2)
+        run: python -m pytest -p no:cacheprovider -o addopts='' -q tests/test_collector_source_boundary.py
+      - name: Generate evidence comparison report
+        run: |
+          python -m probes.collector_source_boundary_analysis \
+            --archive docs/observer-collector-manipulation-c1-c7-run03/2026-10-08 \
+            > collector-source-boundary-result.json
+          python -c 'import json; r=json.load(open("collector-source-boundary-result.json")); assert (r["raw_wrong"],r["guarded_wrong"],r["raw_positive"],r["guarded_positive"],r["guarded_unknown"]) == (3,0,5,0,7); print("raw wrong",r["raw_wrong"],"guarded wrong",r["guarded_wrong"],"raw positive",r["raw_positive"],"guarded positive",r["guarded_positive"],"guarded unknown",r["guarded_unknown"])'
+      - name: Save comparison report
+        uses: actions/upload-artifact@v4
+        with:
+          name: collector-source-boundary-report
+          path: collector-source-boundary-result.json
+          retention-days: 14
