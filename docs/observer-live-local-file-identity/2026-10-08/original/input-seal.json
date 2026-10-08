@@ -1,0 +1,12 @@
+{
+  "sha256": {
+    "inputs/T1.json": "b3fea8f1ce9a8bcad98d9e034e7d802b244ea2018059258b32f017d293399d0c",
+    "inputs/T2.json": "791e41d89da548eca48fd9e6bc090196401c3b2878678efe516cba3ffe66aa92",
+    "inputs/T7.json": "dc1585a25765d3c076244849084998aedea98a3c1fbfa8f9f4cb70a6b655e852",
+    "inputs/T3.json": "da9921321a180e55023c7f6e0197b0c10b99c44beb6977cb4c01e4fc68126766",
+    "inputs/T4.json": "b5b7c56ae4c1ab44598dfae8e06723e8a9383a7764ddccdfa344d8c5f0a663ac",
+    "inputs/T6.json": "4386fbf45f3fbdfd4efc297539f67b3e5f4211547010e27eee2826372b7dba29",
+    "inputs/T5.json": "7652ba3c2151c9e9e25c932e0862394b83118dfb1cccf69f6af8ac3198727bc3"
+  },
+  "ground_truth_not_semantically_read": true
+}

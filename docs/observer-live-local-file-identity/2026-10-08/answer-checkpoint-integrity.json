@@ -1,0 +1,24 @@
+{
+  "implementation_commit": "66967deca13039845b258a62d69876ce12d4e564",
+  "saved_before_ground_truth_comparison": true,
+  "sha256": {
+    "capture-status.json": "401b4dddbb0d68e8966e1a57f9085b4c72d0265b2fd2f7f58fe3f7fabd17c2fa",
+    "system.json": "889f94a8ed18760c880a6bdd89fa809074a7446ad98e448c22d5d7545dcead79",
+    "inputs/T1.json": "b3fea8f1ce9a8bcad98d9e034e7d802b244ea2018059258b32f017d293399d0c",
+    "inputs/T2.json": "791e41d89da548eca48fd9e6bc090196401c3b2878678efe516cba3ffe66aa92",
+    "inputs/T7.json": "dc1585a25765d3c076244849084998aedea98a3c1fbfa8f9f4cb70a6b655e852",
+    "inputs/T3.json": "da9921321a180e55023c7f6e0197b0c10b99c44beb6977cb4c01e4fc68126766",
+    "inputs/T4.json": "b5b7c56ae4c1ab44598dfae8e06723e8a9383a7764ddccdfa344d8c5f0a663ac",
+    "inputs/T6.json": "4386fbf45f3fbdfd4efc297539f67b3e5f4211547010e27eee2826372b7dba29",
+    "inputs/T5.json": "7652ba3c2151c9e9e25c932e0862394b83118dfb1cccf69f6af8ac3198727bc3",
+    "ground-truth/T1.json": "0734d9a8cbf9f039485b9521a6316cffa7a6c9025799dc30fd247533c0b249b2",
+    "ground-truth/T2.json": "156cbc27777ab8f4a0dcbbbdbf3b526dddee4f4b38759f347ad66b7e6577ab16",
+    "ground-truth/T3.json": "9522ac6380bbb1214e1e04cd4fa348e60488b6d84dea6b14ab5133aa8a2ea847",
+    "responses/before-comparison.json": "13fcb3c9a46ca86c94780ca2a305c3f9742e26db6e001c44d22ae4af8c65a3f8",
+    "responses/sealed-sha256.json": "279e4d4c57cb595c44f7669876cb956b0d6ef2fe35f0a07885793ceca514b33c",
+    "original/input-seal.json": "b0f29621a54ab3f6d45feafc79d0279d3cfa650f1c13f0586a2e790b5e2ed1ba",
+    "original/capture-process.json": "2d5fdf55744580220d5b60886b8f497a98a6ea096cf4a389a791bcea7135b98a",
+    "original/capture-stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "original/capture-stdout.log": "bdc80df8e583630622121cbd371c7d25223dff64e463cc28c88891cb3b1c0cc2"
+  }
+}

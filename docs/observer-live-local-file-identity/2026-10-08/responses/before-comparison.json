@@ -1,0 +1,58 @@
+{
+  "T1.json": {
+    "input_sha256": "b3fea8f1ce9a8bcad98d9e034e7d802b244ea2018059258b32f017d293399d0c",
+    "answers": {
+      "A": "DIESELBE",
+      "B": "Native fstat-Paare (34, 17277) und (34, 17277) sind gleich; beide regulaeren Handles im bestaetigten lokalen Live-Scope.",
+      "C": "Nur gleichzeitig lebende regulaere Dateien im selben lokalen Linux/tmpfs-Messprozess ohne Mount-/Namespacewechsel; keine dauerhafte Identitaet nach Freigabe, Inhalts-/Revisionsidentitaet oder Quellechtheit; keine anderen Hosts, Neustarts oder Ressourcen."
+    }
+  },
+  "T2.json": {
+    "input_sha256": "791e41d89da548eca48fd9e6bc090196401c3b2878678efe516cba3ffe66aa92",
+    "answers": {
+      "A": "VERSCHIEDEN",
+      "B": "Native fstat-Paare (34, 17283) und (34, 17284) sind verschieden; beide regulaeren Handles im bestaetigten lokalen Live-Scope.",
+      "C": "Nur gleichzeitig lebende regulaere Dateien im selben lokalen Linux/tmpfs-Messprozess ohne Mount-/Namespacewechsel; keine dauerhafte Identitaet nach Freigabe, Inhalts-/Revisionsidentitaet oder Quellechtheit; keine anderen Hosts, Neustarts oder Ressourcen."
+    }
+  },
+  "T3.json": {
+    "input_sha256": "da9921321a180e55023c7f6e0197b0c10b99c44beb6977cb4c01e4fc68126766",
+    "answers": {
+      "A": "VERSCHIEDEN",
+      "B": "Native fstat-Paare (34, 17288) und (34, 17289) sind verschieden; beide regulaeren Handles im bestaetigten lokalen Live-Scope.",
+      "C": "Nur gleichzeitig lebende regulaere Dateien im selben lokalen Linux/tmpfs-Messprozess ohne Mount-/Namespacewechsel; keine dauerhafte Identitaet nach Freigabe, Inhalts-/Revisionsidentitaet oder Quellechtheit; keine anderen Hosts, Neustarts oder Ressourcen."
+    }
+  },
+  "T4.json": {
+    "input_sha256": "b5b7c56ae4c1ab44598dfae8e06723e8a9383a7764ddccdfa344d8c5f0a663ac",
+    "answers": {
+      "A": "UNBEKANNT",
+      "B": "Genau ein zugeordneter nativer Paarbeleg fehlt; Pfad, Inhalt oder Hash ersetzen ihn nicht.",
+      "C": "Nur gleichzeitig lebende regulaere Dateien im selben lokalen Linux/tmpfs-Messprozess ohne Mount-/Namespacewechsel; keine dauerhafte Identitaet nach Freigabe, Inhalts-/Revisionsidentitaet oder Quellechtheit; keine anderen Hosts, Neustarts oder Ressourcen."
+    }
+  },
+  "T5.json": {
+    "input_sha256": "7652ba3c2151c9e9e25c932e0862394b83118dfb1cccf69f6af8ac3198727bc3",
+    "answers": {
+      "A": "UNBEKANNT",
+      "B": "Genau ein zugeordneter nativer Paarbeleg fehlt; Pfad, Inhalt oder Hash ersetzen ihn nicht.",
+      "C": "Nur gleichzeitig lebende regulaere Dateien im selben lokalen Linux/tmpfs-Messprozess ohne Mount-/Namespacewechsel; keine dauerhafte Identitaet nach Freigabe, Inhalts-/Revisionsidentitaet oder Quellechtheit; keine anderen Hosts, Neustarts oder Ressourcen."
+    }
+  },
+  "T6.json": {
+    "input_sha256": "4386fbf45f3fbdfd4efc297539f67b3e5f4211547010e27eee2826372b7dba29",
+    "answers": {
+      "A": "UNBEKANNT",
+      "B": "Genau ein zugeordneter nativer Paarbeleg fehlt; Pfad, Inhalt oder Hash ersetzen ihn nicht.",
+      "C": "Nur gleichzeitig lebende regulaere Dateien im selben lokalen Linux/tmpfs-Messprozess ohne Mount-/Namespacewechsel; keine dauerhafte Identitaet nach Freigabe, Inhalts-/Revisionsidentitaet oder Quellechtheit; keine anderen Hosts, Neustarts oder Ressourcen."
+    }
+  },
+  "T7.json": {
+    "input_sha256": "dc1585a25765d3c076244849084998aedea98a3c1fbfa8f9f4cb70a6b655e852",
+    "answers": {
+      "A": "UNBEKANNT",
+      "B": "Gleichzeitige lebende Handles im selben Linux/tmpfs-Messprozess sind nicht belegt; historische Kennungen reichen nicht.",
+      "C": "Nur gleichzeitig lebende regulaere Dateien im selben lokalen Linux/tmpfs-Messprozess ohne Mount-/Namespacewechsel; keine dauerhafte Identitaet nach Freigabe, Inhalts-/Revisionsidentitaet oder Quellechtheit; keine anderen Hosts, Neustarts oder Ressourcen."
+    }
+  }
+}

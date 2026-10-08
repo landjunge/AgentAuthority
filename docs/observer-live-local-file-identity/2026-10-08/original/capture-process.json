@@ -1,0 +1,14 @@
+{
+  "command": [
+    "/workspace/venvs/authority/bin/python",
+    "-m",
+    "probes.live_local_file_identity_capture",
+    "--out",
+    "/tmp/aa-observer-live-local-file-identity-20261008"
+  ],
+  "exit": 0,
+  "calls": 1,
+  "stdout_bytes": 65,
+  "stderr_bytes": 0,
+  "implementation_commit": "66967deca13039845b258a62d69876ce12d4e564"
+}

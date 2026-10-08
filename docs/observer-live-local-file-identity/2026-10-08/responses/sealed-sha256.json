@@ -1,0 +1,13 @@
+{
+  "answers_sha256": "13fcb3c9a46ca86c94780ca2a305c3f9742e26db6e001c44d22ae4af8c65a3f8",
+  "saved_before_ground_truth_comparison": true,
+  "input_files": [
+    "T1.json",
+    "T2.json",
+    "T3.json",
+    "T4.json",
+    "T5.json",
+    "T6.json",
+    "T7.json"
+  ]
+}
