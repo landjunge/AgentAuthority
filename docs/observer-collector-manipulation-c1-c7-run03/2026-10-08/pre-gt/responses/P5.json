@@ -1,0 +1,10 @@
+{
+  "packet": "P5",
+  "query_run": 1,
+  "raw_observer_abcd": {
+    "A": "UNBEKANNT",
+    "B": "Native Paare haben sich waehrend der aktuellen Pruefung geaendert.",
+    "C": "NEIN",
+    "D": "Nur aktuell gehaltene regulaere Handles im selben lokalen Linux/tmpfs-Prozess ohne konkurrierendes Schliessen/FD-Neubelegung oder Mount-/Namespacewechsel; sequenzielle Checks, kein atomarer Lebenszeitbeweis. Keine Packetherkunft, historische/permanente Identitaet, Inhalts-/Revisionsidentitaet, anderen Hosts oder Ressourcen bewiesen."
+  }
+}

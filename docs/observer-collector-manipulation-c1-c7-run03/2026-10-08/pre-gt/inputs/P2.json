@@ -1,0 +1,26 @@
+[
+  {
+    "kind": "live_local_file_refs",
+    "run": 1,
+    "value": {
+      "references": [
+        {
+          "regular_file": true,
+          "st_dev": 55,
+          "st_ino": 12
+        },
+        {
+          "regular_file": true,
+          "st_dev": 55,
+          "st_ino": 13
+        }
+      ],
+      "scope": {
+        "filesystem": "tmpfs",
+        "live_handle_overlap_confirmed": true,
+        "os": "Linux",
+        "same_collection_process": true
+      }
+    }
+  }
+]

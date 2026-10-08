@@ -1,0 +1,10 @@
+{
+  "packet": "P6",
+  "query_run": 1,
+  "raw_observer_abcd": {
+    "A": "UNBEKANNT",
+    "B": "Angebotene Vergleichsform unzureichend: Gueltige native Paare zweier regulaerer Dateien fehlen.",
+    "C": "NEIN",
+    "D": "Nur aktuell gehaltene regulaere Handles im selben lokalen Linux/tmpfs-Prozess ohne konkurrierendes Schliessen/FD-Neubelegung oder Mount-/Namespacewechsel; sequenzielle Checks, kein atomarer Lebenszeitbeweis. Keine Packetherkunft, historische/permanente Identitaet, Inhalts-/Revisionsidentitaet, anderen Hosts oder Ressourcen bewiesen."
+  }
+}

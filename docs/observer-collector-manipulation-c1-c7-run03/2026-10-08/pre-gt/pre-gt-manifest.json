@@ -1,0 +1,28 @@
+{
+  "algorithm": "sha256",
+  "files": {
+    "capture-status.json": "1f9606bb1774ee7a5da004daa485dd3c76fd97e6899b95e44787da2f8b17bafa",
+    "inputs/P1.json": "53be89a6ec89307076539459e65a13bac843cad2988ec2e8023271c5bfb8d283",
+    "inputs/P2.json": "e883b2ff2b75d6ab3e6c04d8baa17e339db8fad6f9586fe94e670362f8613440",
+    "inputs/P3.json": "a66af359bcf3e4224919ee909e8d61b9882a2c9e9243f12e30018e25a80017a1",
+    "inputs/P4.json": "cf64926c4b81f0b992ce41bd91136170a4197b5c96592a9e5410a26534587c4a",
+    "inputs/P5.json": "45cb36ec9a170547f7a32f4f4c0dd4676c2dc3f9a67b28bcde4b014844e1dd96",
+    "inputs/P6.json": "5d0500d9d198fb10cf220e95483024320d8337331fb006969b8e7049d0831583",
+    "inputs/P7.json": "68fca6370184c7bcd3593e4450aa70a9e7f1cd1f462f8ca9d6e3b319db03aaad",
+    "journals/P1.json": "0e26f3a258b47d23e219be6cbc0f112336136524519eca30e5766cea69c94f62",
+    "journals/P2.json": "c97f4247f1980a4683dd002b82dd94f63dba652932aaaaed9c715f55764bc384",
+    "journals/P3.json": "a331dd2c4c6ed298963de268b69646deab9f107f644b157c081078a1e526a2ba",
+    "journals/P4.json": "5d0cd0cb1f0bdf1e0d4f4bc062285b62d0a924de0e6ad1545e9208a88025204f",
+    "journals/P5.json": "18d82987665a049339c50832fa67997abbd8c698e6ad06cb1456804ec8b89879",
+    "journals/P6.json": "164a9e61d1ddf6afb76fa0a6a6b431763570a1029216e1be9d36339a31fbc423",
+    "journals/P7.json": "440cc6d7247cda759ce10be62a1d166c12badc5be65769fb26166cbea324b489",
+    "responses/P1.json": "a86f4d40d930e48d4228fbbc9f847fb4989d5af11e37f4913b3d18eddf7a5989",
+    "responses/P2.json": "076e55c14bc8a3b7fc63023e42a16a38866d5dad3f97912e29ea63f081a22d3c",
+    "responses/P3.json": "bdea02f87b76698408812ed52a964e2b5c758864b2c0682f0bb9d55b657e0bda",
+    "responses/P4.json": "08454794df12273d9f49da92107c9ed3b67ff90c9f268eb9526648efb286d027",
+    "responses/P5.json": "a0ac896ed7d34dc0396f9b19f00f42ddd400fcc66b9cf5fe4e4d5d8918395b7c",
+    "responses/P6.json": "6731195aeb185fb2e2ce593c4012c7a7c912ff02f11c2a92d8515dae1854efb1",
+    "responses/P7.json": "597fac0f8381a8bc7c66f9cdb975a6871f78eea67a0019d31da75d45821366f8",
+    "system.json": "f31e0945231017429fd84a8cfcf390d4fbd48890fd6e143d4c91b64452e273de"
+  }
+}

@@ -1,0 +1,131 @@
+{
+  "calls": [
+    {
+      "attempted": true,
+      "descriptor_flags": 1,
+      "handle_index": 1,
+      "is_f_getfd": true,
+      "operation": "fcntl",
+      "returned": true,
+      "sequence": 1,
+      "source": "delegated"
+    },
+    {
+      "attempted": true,
+      "fstat_ordinal": 1,
+      "handle_index": 1,
+      "native_pair": [
+        55,
+        18
+      ],
+      "operation": "fstat",
+      "regular": true,
+      "returned": true,
+      "sequence": 2,
+      "source": "manipulated"
+    },
+    {
+      "attempted": true,
+      "descriptor_flags": 1,
+      "handle_index": 2,
+      "is_f_getfd": true,
+      "operation": "fcntl",
+      "returned": true,
+      "sequence": 3,
+      "source": "delegated"
+    },
+    {
+      "attempted": true,
+      "fstat_ordinal": 2,
+      "handle_index": 2,
+      "native_pair": [
+        55,
+        19
+      ],
+      "operation": "fstat",
+      "regular": true,
+      "returned": true,
+      "sequence": 4,
+      "source": "manipulated"
+    },
+    {
+      "attempted": true,
+      "operation": "uname",
+      "returned": true,
+      "sequence": 5,
+      "source": "delegated",
+      "system": "Linux"
+    },
+    {
+      "attempted": true,
+      "exit_code": 0,
+      "filesystem_types": [
+        "tmpfs"
+      ],
+      "is_fixed_findmnt": true,
+      "operation": "run",
+      "returned": true,
+      "sequence": 6,
+      "source": "delegated"
+    },
+    {
+      "attempted": true,
+      "device": 55,
+      "is_tmp_context": true,
+      "operation": "stat",
+      "returned": true,
+      "sequence": 7,
+      "source": "delegated"
+    },
+    {
+      "attempted": true,
+      "descriptor_flags": 1,
+      "handle_index": 1,
+      "is_f_getfd": true,
+      "operation": "fcntl",
+      "returned": true,
+      "sequence": 8,
+      "source": "delegated"
+    },
+    {
+      "attempted": true,
+      "fstat_ordinal": 3,
+      "handle_index": 1,
+      "native_pair": [
+        55,
+        18
+      ],
+      "operation": "fstat",
+      "regular": true,
+      "returned": true,
+      "sequence": 9,
+      "source": "manipulated"
+    },
+    {
+      "attempted": true,
+      "descriptor_flags": 1,
+      "handle_index": 2,
+      "is_f_getfd": true,
+      "operation": "fcntl",
+      "returned": true,
+      "sequence": 10,
+      "source": "delegated"
+    },
+    {
+      "attempted": true,
+      "fstat_ordinal": 4,
+      "handle_index": 2,
+      "native_pair": [
+        55,
+        19
+      ],
+      "operation": "fstat",
+      "regular": true,
+      "returned": true,
+      "sequence": 11,
+      "source": "manipulated"
+    }
+  ],
+  "packet": "P4",
+  "wrappers_restored": true
+}

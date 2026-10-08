@@ -1,0 +1,16 @@
+{
+  "all_wrappers_restored": true,
+  "failures": [],
+  "ground_truth_started": false,
+  "handles_retained": 14,
+  "observer_invocations": 7,
+  "sequence": [
+    "P1",
+    "P2",
+    "P3",
+    "P4",
+    "P5",
+    "P6",
+    "P7"
+  ]
+}

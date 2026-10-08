@@ -1,0 +1,10 @@
+{
+  "packet": "P3",
+  "query_run": 1,
+  "raw_observer_abcd": {
+    "A": "DIESELBE",
+    "B": "Jetzt F_GETFD/fstat beider regulaerer Handles vor und nach aktueller Linux/tmpfs-/tmp-Geraetepruefung erfolgreich; geordnete Paare (55, 15) und (55, 15) unveraendert und passend zum Packet: gleich.",
+    "C": "JA",
+    "D": "Nur aktuell gehaltene regulaere Handles im selben lokalen Linux/tmpfs-Prozess ohne konkurrierendes Schliessen/FD-Neubelegung oder Mount-/Namespacewechsel; sequenzielle Checks, kein atomarer Lebenszeitbeweis. Keine Packetherkunft, historische/permanente Identitaet, Inhalts-/Revisionsidentitaet, anderen Hosts oder Ressourcen bewiesen."
+  }
+}
