@@ -487,6 +487,71 @@ def infer_finish_effect(events: list[dict], run: int, question: str) -> dict:
     return result("UNBEKANNT", "unresolved_time_order")
 
 
+def infer_live_local_file_identity(events: list[dict], run: int) -> dict:
+    """One paired, source-observed live Linux/tmpfs comparison; never durable ID.
+
+    Separate parser: the historical boolean recorder/schema remain unchanged.
+    Scope and regular-file flags are trusted collector observations, not source
+    authentication. No paths, contents, hashes, status or oracle are consulted.
+    """
+    limits = ("Nur gleichzeitig lebende regulaere Dateien im selben lokalen "
+              "Linux/tmpfs-Messprozess ohne Mount-/Namespacewechsel; keine "
+              "dauerhafte Identitaet nach Freigabe, Inhalts-/Revisionsidentitaet "
+              "oder Quellechtheit; keine anderen Hosts, Neustarts oder Ressourcen.")
+
+    def unknown(reason: str) -> dict:
+        return {"A": "UNBEKANNT", "B": reason, "C": limits}
+
+    if type(run) is not int or run <= 0:
+        return unknown("Gueltige lokale Vergleichszuordnung fehlt.")
+    if not isinstance(events, list):
+        return unknown("Lesbare lokale Beobachtungsliste fehlt.")
+    candidates = []
+    for row in events:
+        if not isinstance(row, dict):
+            return unknown("Beobachtungsform ist ungueltig.")
+        if row.get("kind") != "live_local_file_refs":
+            continue
+        if type(row.get("run")) is not int or row["run"] <= 0:
+            return unknown("Native Beobachtung ohne gueltige Vergleichszuordnung.")
+        if row["run"] != run:
+            continue
+        if set(row) != {"run", "kind", "value"}:
+            return unknown("Native Beobachtungsform ist unvollstaendig oder ungueltig.")
+        candidates.append(row["value"])
+    if len(candidates) != 1:
+        return unknown("Genau ein zugeordneter nativer Paarbeleg fehlt; "
+                       "Pfad, Inhalt oder Hash ersetzen ihn nicht.")
+    value = candidates[0]
+    if not isinstance(value, dict) or set(value) != {"scope", "references"}:
+        return unknown("Nativer Paarbeleg mit sichtbarem Scope fehlt.")
+    scope = value["scope"]
+    if (not isinstance(scope, dict)
+            or set(scope) != {"os", "filesystem", "same_collection_process",
+                              "live_handle_overlap_confirmed"}
+            or scope["os"] != "Linux" or scope["filesystem"] != "tmpfs"
+            or scope["same_collection_process"] is not True
+            or scope["live_handle_overlap_confirmed"] is not True):
+        return unknown("Gleichzeitige lebende Handles im selben Linux/tmpfs-"
+                       "Messprozess sind nicht belegt; historische Kennungen reichen nicht.")
+    refs = value["references"]
+    if not isinstance(refs, list) or len(refs) != 2:
+        return unknown("Zwei vollstaendige native Dateireferenzen fehlen.")
+    for ref in refs:
+        if (not isinstance(ref, dict) or set(ref) != {"st_dev", "st_ino", "regular_file"}
+                or ref["regular_file"] is not True
+                or type(ref["st_dev"]) is not int or ref["st_dev"] < 0
+                or type(ref["st_ino"]) is not int or ref["st_ino"] <= 0):
+            return unknown("Gueltige native Paare zweier regulaerer Dateien fehlen.")
+    pairs = [(ref["st_dev"], ref["st_ino"]) for ref in refs]
+    same = pairs[0] == pairs[1]
+    return {"A": "DIESELBE" if same else "VERSCHIEDEN",
+            "B": f"Native fstat-Paare {pairs[0]} und {pairs[1]} sind "
+                 + ("gleich" if same else "verschieden")
+                 + "; beide regulaeren Handles im bestaetigten lokalen Live-Scope.",
+            "C": limits}
+
+
 def status_baseline(events: list[dict], run: int, question: str, tool: bool = False) -> dict:
     if question != "target_present":
         return {"answer": None, "reason": "status_has_no_effect_order", "evidence": []}

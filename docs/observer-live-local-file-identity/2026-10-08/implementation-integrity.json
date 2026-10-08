@@ -1,0 +1,12 @@
+{
+  "contract_commit": "adb5cfb3a924ac391b71448502bfedfec4b464b5",
+  "frozen_before_first_real_case": true,
+  "sha256": {
+    "docs/OBSERVER-LIVE-LOCAL-FILE-IDENTITY-CONTRACT-2026-10-08.md": "2b566f907035317b2994fe225b166de916b68068a291031ca411951eac36bc15",
+    "observer_research.py": "14d7170e28139fc0e57fc31caf0a1a292635ef23764ea71c1baa056a472db705",
+    "probes/live_local_file_identity_capture.py": "2f0cb5ed1f063f450ea721df806eb9c83708a39a13a97c2d064177c83371ca89",
+    "probes/live_local_file_identity_responses.py": "a2073fecc7c9d299b04d26bbd5d38d1f69e1a27f1e16da7d0a2935bff47bbe3e",
+    "tests/test_observer_live_local_file_identity.py": "3a35adc8ae97bd1e56702621424003b264a9755ed6ba1c21ad984386ec162bc0",
+    "probes/local_file_identity_capture.py": "782018e7dc76a01b460c280e2907a3432a84130a07884f7b16cca075f321ef67"
+  }
+}
