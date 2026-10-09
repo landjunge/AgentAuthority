@@ -1,0 +1,10 @@
+{
+  "verdict": "BELEGT",
+  "target_present": true,
+  "reason": "local_snapshot_only",
+  "evidence": [
+    1,
+    3,
+    4
+  ]
+}

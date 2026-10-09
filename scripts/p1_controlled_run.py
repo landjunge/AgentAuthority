@@ -21,6 +21,11 @@ FIELDS = {"run", "kind", "value", "t_ns", "event"}
 KINDS = {"target_initial", "target_final", "tool_end", "cli_end"}
 MAX_LINE = 65_536
 MAX_STREAM = 1_048_576
+MODEL = "gpt-6.1-sol"
+START_ERROR = (
+    b"Error: failed to initialize in-process app-server client: "
+    b"Operation not permitted (os error 1)"
+)
 
 # This is the only supplied test tool. Its receipt is never analyst input.
 TOOL = """import json, pathlib, sys, time
@@ -182,7 +187,14 @@ def collect(
             "error_records",
         )
     }
-    counts.update(started=False, timeout=False, recording_ok=True, cli_success=False)
+    counts.update(
+        started=False,
+        timeout=False,
+        recording_ok=True,
+        cli_success=False,
+        cli_exit_code=None,
+        startup_error="UNBEKANNT",
+    )
     try:
         process = subprocess.Popen(
             argv,
@@ -197,6 +209,7 @@ def collect(
     counts["started"] = True
     selector = selectors.DefaultSelector()
     pending = b""
+    stderr_tail = b""
     deadline = time.monotonic() + timeout
     try:
         assert (
@@ -220,6 +233,13 @@ def collect(
                 if counts["stdout_bytes"] + counts["stderr_bytes"] > MAX_STREAM:
                     counts["recording_ok"] = False
                     break
+                if key.data == "stderr":
+                    # Match one fixed, known diagnostic even across read boundaries.
+                    # Persist only its enum; never emit or archive error text.
+                    window = stderr_tail + chunk
+                    if START_ERROR in window:
+                        counts["startup_error"] = "app_server_init_eperm"
+                    stderr_tail = window[-(len(START_ERROR) - 1) :]
                 if key.data == "stdout":
                     pending += chunk
                     while b"\n" in pending:
@@ -252,6 +272,7 @@ def collect(
             if pipe is not None:
                 pipe.close()
     counts["cli_success"] = process.returncode == 0
+    counts["cli_exit_code"] = process.returncode
     add(events, run, "cli_end", counts["cli_success"])
     counts["recording_ok"] &= counts["invalid_records"] == 0
     return counts
@@ -288,6 +309,8 @@ def capture(output: Path, codex: str = "codex", timeout: float = 60, mode: str =
             "--sandbox",
             "workspace-write",
             "--skip-git-repo-check",
+            "--model",
+            MODEL,
             "-",
         ]
         counts = collect(argv, prompt, root, run, events, timeout)
@@ -313,6 +336,7 @@ def capture(output: Path, codex: str = "codex", timeout: float = 60, mode: str =
     result = {
         "run": run,
         "mode": mode,
+        "requested_model": MODEL,
         "counts": counts,
         "proven_agent_runs": int(real_run),
         "agent_run": "BELEGT" if real_run else "UNBEKANNT",

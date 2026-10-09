@@ -205,3 +205,60 @@ def test_invalid_timeout_does_not_create_run(tmp_path, timeout):
     with pytest.raises(ValueError):
         p1.capture(tmp_path / "run", timeout=timeout)
     assert not (tmp_path / "run").exists()
+
+
+def test_capture_pins_requested_model_and_keeps_controls(tmp_path, monkeypatch):
+    original = p1.collect
+
+    def checked_collect(argv, *args):
+        assert argv[argv.index("--model") + 1] == "gpt-6.1-sol"
+        assert argv[argv.index("--ask-for-approval") + 1] == "never"
+        assert argv[argv.index("--sandbox") + 1] == "workspace-write"
+        assert "--ephemeral" in argv and "--json" in argv
+        return original(argv, *args)
+
+    monkeypatch.setattr(p1, "collect", checked_collect)
+    result = p1.capture(tmp_path / "run", codex=str(tmp_path / "missing"))
+    assert result["requested_model"] == "gpt-6.1-sol"
+    assert result["counts"]["cli_exit_code"] is None
+    assert result["counts"]["startup_error"] == "UNBEKANNT"
+    assert result["agent_run"] == "UNBEKANNT"
+
+
+@pytest.mark.parametrize("known", [True, False])
+def test_start_error_classification_across_reads_drops_raw_text(tmp_path, known):
+    # A local synthetic process checks diagnostic projection, not model access.
+    raw = (p1.START_ERROR if known else b"unrecognized failure") + b" PRIVATE_RAW_CANARY"
+    code = (
+        "import os, sys, time\n"
+        f"raw = {raw!r}\n"
+        "os.write(2, raw[:20])\n"
+        "time.sleep(0.1)\n"
+        "os.write(2, raw[20:])\n"
+        "sys.exit(7)\n"
+    )
+    rows = []
+    counts = p1.collect([sys.executable, "-c", code], "", tmp_path, 1, rows, 2)
+    assert counts["cli_exit_code"] == 7
+    assert counts["cli_success"] is False
+    assert counts["startup_error"] == ("app_server_init_eperm" if known else "UNBEKANNT")
+    assert counts["model_completions"] == counts["tool_reports"] == 0
+    assert "PRIVATE_RAW_CANARY" not in json.dumps(counts) + json.dumps(rows)
+    assert p1.infer(rows, 1)["verdict"] == "UNBEKANNT"
+
+
+def test_capture_archives_only_known_diagnostic_enum(tmp_path):
+    fake_cli = tmp_path / "synthetic_cli"
+    fake_cli.write_text(
+        "#!" + sys.executable + "\nimport sys\n"
+        "sys.stdin.read()\n"
+        f"sys.stderr.buffer.write({p1.START_ERROR!r} + b' PRIVATE_RAW_CANARY')\n"
+        "sys.exit(1)\n"
+    )
+    fake_cli.chmod(0o700)
+    result = p1.capture(tmp_path / "run", codex=str(fake_cli))
+    assert result["counts"]["startup_error"] == "app_server_init_eperm"
+    assert result["agent_run"] == result["evaluation"] == "UNBEKANNT"
+    archived = "".join(path.read_text() for path in (tmp_path / "run").iterdir())
+    assert "PRIVATE_RAW_CANARY" not in archived
+    assert p1.START_ERROR.decode() not in archived

@@ -1,0 +1,30 @@
+[
+  {
+    "run": 5721701539698059849,
+    "kind": "target_initial",
+    "value": false,
+    "t_ns": 691727390738670,
+    "event": 1
+  },
+  {
+    "run": 5721701539698059849,
+    "kind": "tool_end",
+    "value": true,
+    "t_ns": 691735881139260,
+    "event": 2
+  },
+  {
+    "run": 5721701539698059849,
+    "kind": "cli_end",
+    "value": true,
+    "t_ns": 691743802576728,
+    "event": 3
+  },
+  {
+    "run": 5721701539698059849,
+    "kind": "target_final",
+    "value": true,
+    "t_ns": 691743802740405,
+    "event": 4
+  }
+]
