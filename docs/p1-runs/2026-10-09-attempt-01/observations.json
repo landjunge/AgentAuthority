@@ -1,0 +1,23 @@
+[
+  {
+    "run": 8670980121557811902,
+    "kind": "target_initial",
+    "value": false,
+    "t_ns": 690465454839992,
+    "event": 1
+  },
+  {
+    "run": 8670980121557811902,
+    "kind": "cli_end",
+    "value": false,
+    "t_ns": 690465579810008,
+    "event": 2
+  },
+  {
+    "run": 8670980121557811902,
+    "kind": "target_final",
+    "value": false,
+    "t_ns": 690465579948205,
+    "event": 3
+  }
+]
