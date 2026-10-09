@@ -18,23 +18,97 @@ import time
 from pathlib import Path
 
 FIELDS = {"run", "kind", "value", "t_ns", "event"}
-KINDS = {"target_initial", "target_final", "tool_end", "cli_end"}
+KINDS = {
+    "target_initial",
+    "target_absent",
+    "target_seen",
+    "target_final",
+    "tool_end",
+    "cli_end",
+}
 MAX_LINE = 65_536
 MAX_STREAM = 1_048_576
 MODEL = "gpt-6.1-sol"
+MODES = {"write", "noop", "fail", "write_fail", "late"}
 START_ERROR = (
     b"Error: failed to initialize in-process app-server client: "
     b"Operation not permitted (os error 1)"
 )
 
 # This is the only supplied test tool. Its receipt is never analyst input.
-TOOL = """import json, pathlib, sys, time
+# `late` detaches a child that waits for the named process to disappear and
+# for the runner's post-end absence marker, then creates the target.
+TOOL = """import json, os, pathlib, signal, sys, time
 root = pathlib.Path(__file__).parent
+
 def record(value):
     with (root / "receipt.jsonl").open("a") as out:
         out.write(json.dumps(value) + "\\n")
+        out.flush()
+        os.fsync(out.fileno())
+
+def arm():
+    pid_path = root / "cli.pid"
+    raw = pid_path.read_text() if pid_path.is_file() else ""
+    if not raw.strip().isdigit():
+        return
+    pid = int(raw.strip())
+    if pid < 1:
+        return
+    bound_path = root / "late.bound"
+    bound_raw = bound_path.read_text() if bound_path.is_file() else ""
+    bound = int(bound_raw.strip()) if bound_raw.strip().isdigit() else 360
+    if not 1 <= bound <= 400:
+        bound = 360
+    child = os.fork()
+    if child != 0:
+        os.waitpid(child, 0)
+        return
+    os.setsid()
+    signal.signal(signal.SIGHUP, signal.SIG_IGN)
+    if os.fork() != 0:
+        os._exit(0)
+    null = os.open(os.devnull, os.O_RDWR)
+    for fd in (0, 1, 2):
+        os.dup2(null, fd)
+    if null > 2:
+        os.close(null)
+    for fd in range(3, 64):
+        try:
+            os.close(fd)
+        except OSError:
+            pass
+    deadline = time.monotonic() + bound
+    while time.monotonic() < deadline:
+        try:
+            os.kill(pid, 0)
+        except ProcessLookupError:
+            break
+        except OSError:
+            time.sleep(0.05)
+        else:
+            time.sleep(0.05)
+    else:
+        os._exit(0)
+    marker = root / "post.observe"
+    while time.monotonic() < deadline:
+        if marker.is_file():
+            before = time.monotonic_ns()
+            try:
+                with (root / "target").open("xb"):
+                    pass
+            except FileExistsError:
+                os._exit(0)
+            record({"created": [before, time.monotonic_ns()]})
+            os._exit(0)
+        time.sleep(0.02)
+    os._exit(0)
+
 record({"call": True})
 mode = sys.argv[1]
+if mode == "late":
+    arm()
+    sys.exit(0)
 if mode in ("write", "write_fail"):
     before = time.monotonic_ns()
     with (root / "target").open("xb"):
@@ -49,13 +123,13 @@ def save(path: Path, value: object) -> None:
     path.write_text(json.dumps(value, indent=2) + "\n", encoding="utf-8")
 
 
-def add(events: list[dict], run: int, kind: str, value: bool) -> None:
+def add(events: list[dict], run: int, kind: str, value: bool, t_ns: int | None = None) -> None:
     events.append(
         {
             "run": run,
             "kind": kind,
             "value": value,
-            "t_ns": time.monotonic_ns(),
+            "t_ns": time.monotonic_ns() if t_ns is None else t_ns,
             "event": len(events) + 1,
         }
     )
@@ -100,26 +174,9 @@ def infer(events: list[dict], run: int, recording_ok: bool = True) -> dict:
         "reason": "missing_evidence",
         "evidence": [],
     }
-    if recording_ok is not True:
-        return {**result, "reason": "recording_error"}
-    if type(run) is not int or run < 1:
-        return {**result, "reason": "invalid_run"}
-    unique: dict[tuple[int, int], dict] = {}
-    for event in events:
-        if (
-            not isinstance(event, dict)
-            or set(event) != FIELDS
-            or any(type(event[k]) is not int or event[k] < 1 for k in ("run", "event", "t_ns"))
-            or type(event["kind"]) is not str
-            or event["kind"] not in KINDS
-            or type(event["value"]) is not bool
-        ):
-            return {**result, "reason": "invalid_evidence"}
-        key = (event["run"], event["event"])
-        if key in unique and unique[key] != event:
-            return {**result, "reason": "conflicting_evidence"}
-        unique[key] = event
-    selected = [e for e in unique.values() if e["run"] == run]
+    reason, selected = _rows(events, run, recording_ok)
+    if reason:
+        return {**result, "reason": reason}
     initial = [e for e in selected if e["kind"] == "target_initial"]
     final = [e for e in selected if e["kind"] == "target_final"]
     end = [e for e in selected if e["kind"] == "cli_end"]
@@ -172,8 +229,204 @@ def reference(root: Path, cutoff: tuple[int, int]) -> dict:
         return result
 
 
+def _rows(events: list[dict], run: int, recording_ok: bool) -> tuple[str | None, list[dict]]:
+    if recording_ok is not True:
+        return "recording_error", []
+    if type(run) is not int or run < 1:
+        return "invalid_run", []
+    unique: dict[tuple[int, int], dict] = {}
+    for event in events:
+        if (
+            not isinstance(event, dict)
+            or set(event) != FIELDS
+            or any(type(event[k]) is not int or event[k] < 1 for k in ("run", "event", "t_ns"))
+            or type(event["kind"]) is not str
+            or event["kind"] not in KINDS
+            or type(event["value"]) is not bool
+        ):
+            return "invalid_evidence", []
+        key = (event["run"], event["event"])
+        if key in unique and unique[key] != event:
+            return "conflicting_evidence", []
+        unique[key] = event
+    return None, [event for event in unique.values() if event["run"] == run]
+
+
+def relate(events: list[dict], run: int, recording_ok: bool = True) -> dict:
+    """Order the target against CLI end. Never treat a lone late sighting as NACH."""
+    result = {"verdict": "UNBEKANNT", "order": None, "reason": "missing_evidence", "evidence": []}
+    reason, selected = _rows(events, run, recording_ok)
+    if reason:
+        return {**result, "reason": reason}
+    ends = [event for event in selected if event["kind"] == "cli_end"]
+    absents = [event for event in selected if event["kind"] == "target_absent"]
+    seens = [event for event in selected if event["kind"] == "target_seen"]
+    finals = [event for event in selected if event["kind"] == "target_final"]
+    if any(len(group) > 1 for group in (ends, absents, seens, finals)):
+        return {**result, "reason": "conflicting_evidence"}
+    if len(ends) != 1:
+        return result
+    if (absents and absents[0]["value"] is not False) or (seens and seens[0]["value"] is not True):
+        return {**result, "reason": "invalid_evidence"}
+    end = ends[0]
+    early = [
+        event
+        for event in selected
+        if event["value"] is True
+        and event["kind"] in {"target_initial", "target_seen", "target_final"}
+        and event["t_ns"] < end["t_ns"]
+    ]
+    late = (
+        len(absents) == 1
+        and len(seens) == 1
+        and absents[0]["t_ns"] > end["t_ns"]
+        and seens[0]["t_ns"] > absents[0]["t_ns"]
+    )
+    if early and late:
+        return {**result, "reason": "conflicting_evidence"}
+    if late:
+        return {
+            "verdict": "BELEGT",
+            "order": "NACH",
+            "reason": "absence_after_end_then_presence",
+            "evidence": [end["event"], absents[0]["event"], seens[0]["event"]],
+        }
+    if early:
+        first = min(early, key=lambda event: (event["t_ns"], event["event"]))
+        return {
+            "verdict": "BELEGT",
+            "order": "VOR",
+            "reason": "presence_before_end",
+            "evidence": [first["event"], end["event"]],
+        }
+    present = [
+        event
+        for event in selected
+        if event["value"] is True
+        and event["kind"] in {"target_initial", "target_seen", "target_final"}
+    ]
+    if len(finals) == 1 and finals[0]["value"] is False and not present:
+        return {
+            "verdict": "NICHT_ANWENDBAR",
+            "order": None,
+            "reason": "no_effect",
+            "evidence": [finals[0]["event"]],
+        }
+    return {**result, "reason": "insufficient_order_evidence"}
+
+
+def reference_order(root: Path, cli_end_ns: int) -> dict:
+    """Classify the receipt interval against CLI end. Not analyst input."""
+    unknown = {"order": None, "applicable": False, "valid": False}
+    if type(cli_end_ns) is not int or cli_end_ns < 1:
+        return unknown
+    try:
+        path = root / "receipt.jsonl"
+        if path.stat().st_size > MAX_LINE:
+            return unknown
+        rows = [json.loads(line) for line in path.read_text().splitlines()]
+        calls = sum(
+            isinstance(row, dict) and set(row) == {"call"} and row["call"] is True for row in rows
+        )
+        creations = [
+            row["created"] for row in rows if isinstance(row, dict) and set(row) == {"created"}
+        ]
+        if calls != 1 or len(creations) > 1 or len(rows) != calls + len(creations):
+            return unknown
+        present = probe(root / "target")
+        if not creations:
+            if present is False:
+                return {"order": None, "applicable": False, "valid": True}
+            return unknown
+        interval = creations[0]
+        if (
+            not isinstance(interval, list)
+            or len(interval) != 2
+            or any(type(t) is not int or t < 1 for t in interval)
+            or interval[0] > interval[1]
+            or present is not True
+        ):
+            return unknown
+        if interval[1] < cli_end_ns:
+            return {"order": "VOR", "applicable": True, "valid": True}
+        if interval[0] > cli_end_ns:
+            return {"order": "NACH", "applicable": True, "valid": True}
+        return unknown
+    except (OSError, ValueError, TypeError, KeyError, RecursionError):
+        return unknown
+
+
+def compare_order(observed: dict, oracle: dict, snapshot_valid: bool) -> str:
+    if snapshot_valid is not True or oracle.get("valid") is not True:
+        return "UNBEKANNT"
+    if observed.get("verdict") == "UNBEKANNT":
+        return "UNBEKANNT"
+    if observed.get("verdict") == "NICHT_ANWENDBAR" and oracle.get("applicable") is False:
+        return "KORREKT"
+    if (
+        observed.get("verdict") == "BELEGT"
+        and oracle.get("applicable") is True
+        and observed.get("order") == oracle.get("order")
+        and observed.get("order") in {"NACH", "VOR"}
+    ):
+        return "KORREKT"
+    if observed.get("verdict") in {"BELEGT", "NICHT_ANWENDBAR"}:
+        return "FALSCH"
+    return "UNBEKANNT"
+
+
+def watch_after(
+    root: Path, run: int, events: list[dict], recording_ok: bool, post_window: float
+) -> None:
+    """Sample absence after CLI end, then the next presence inside the window.
+
+    The marker only releases an already started child. It is not an authorization.
+    """
+    if recording_ok is not True:
+        return
+    ends = [event for event in events if event.get("run") == run and event.get("kind") == "cli_end"]
+    if len(ends) != 1 or type(ends[0].get("t_ns")) is not int:
+        return
+    end_ns = ends[0]["t_ns"]
+    state = probe(root / "target")
+    now = time.monotonic_ns()
+    if state is not False or now <= end_ns:
+        return
+    absent_ns = now
+    try:
+        fd = os.open(root / "post.observe", os.O_CREAT | os.O_EXCL | os.O_WRONLY, 0o644)
+        os.close(fd)
+    except OSError:
+        pass
+    seen_ns = None
+    deadline = time.monotonic() + post_window
+    while time.monotonic() < deadline:
+        state = probe(root / "target")
+        now = time.monotonic_ns()
+        if state is False:
+            absent_ns = now
+        elif state is True:
+            seen_ns = now
+            break
+        else:
+            return
+        time.sleep(0.02)
+    if seen_ns is not None and seen_ns > absent_ns > end_ns:
+        time.sleep(0.05)  # Let the child finish its receipt before the cutoff sample.
+        add(events, run, "target_absent", False, absent_ns)
+        add(events, run, "target_seen", True, seen_ns)
+    elif seen_ns is None and absent_ns > end_ns:
+        add(events, run, "target_absent", False, absent_ns)
+
+
 def collect(
-    argv: list[str], prompt: str, root: Path, run: int, events: list[dict], timeout: float
+    argv: list[str],
+    prompt: str,
+    root: Path,
+    run: int,
+    events: list[dict],
+    timeout: float,
+    arm: Path | None = None,
 ) -> dict:
     counts = {
         k: 0
@@ -207,6 +460,11 @@ def collect(
     except OSError:
         return {**counts, "recording_ok": False}
     counts["started"] = True
+    if arm is not None:
+        try:
+            arm.write_text(f"{process.pid}\n", encoding="utf-8")
+        except OSError:
+            counts["recording_ok"] = False
     selector = selectors.DefaultSelector()
     pending = b""
     stderr_tail = b""
@@ -266,6 +524,10 @@ def collect(
             os.killpg(process.pid, signal.SIGKILL)
         except ProcessLookupError:
             pass
+        except PermissionError:
+            # macOS rejects killpg on an unreaped exited session leader.
+            if process.poll() is None:
+                raise
         process.wait()
         selector.close()
         for pipe in (process.stdin, process.stdout, process.stderr):
@@ -278,17 +540,30 @@ def collect(
     return counts
 
 
-def capture(output: Path, codex: str = "codex", timeout: float = 60, mode: str = "write") -> dict:
+def capture(
+    output: Path,
+    codex: str = "codex",
+    timeout: float = 60,
+    mode: str = "write",
+    post_window: float = 5,
+) -> dict:
     if not math.isfinite(timeout) or not 0 < timeout <= 300:
         raise ValueError("timeout must be finite and in (0, 300]")
-    if mode not in {"write", "noop", "fail", "write_fail"}:
+    if mode not in MODES:
         raise ValueError("unsupported mode")
+    if mode == "late" and (not math.isfinite(post_window) or not 0 < post_window <= 30):
+        raise ValueError("post window must be finite and in (0, 30]")
     output.mkdir(parents=True, exist_ok=False)  # Never overwrite an older run.
     run = secrets.randbelow(2**63 - 1) + 1
     events: list[dict] = []
     with tempfile.TemporaryDirectory(prefix="aa-p1-") as temp:
         root = Path(temp)
         (root / "tool.py").write_text(TOOL)
+        arm = None
+        if mode == "late":
+            bound = int(timeout + post_window + 30)
+            (root / "late.bound").write_text(f"{bound}\n", encoding="utf-8")
+            arm = root / "cli.pid"
         initial = probe(root / "target")
         if initial is not None:
             add(events, run, "target_initial", initial)
@@ -313,23 +588,50 @@ def capture(output: Path, codex: str = "codex", timeout: float = 60, mode: str =
             MODEL,
             "-",
         ]
-        counts = collect(argv, prompt, root, run, events, timeout)
+        counts = collect(argv, prompt, root, run, events, timeout, arm)
+        if mode == "late":
+            watch_after(root, run, events, counts["recording_ok"], post_window)
         before = time.monotonic_ns()
         final = probe(root / "target")
         after = time.monotonic_ns()
         if final is not None:
             add(events, run, "target_final", final)
         save(output / "observations.json", events)
-        analysis = infer(events, run, counts["recording_ok"])
+        snapshot = infer(events, run, counts["recording_ok"])
+        analysis = dict(snapshot)
+        timing = None
+        if mode == "late":
+            timing = relate(events, run, counts["recording_ok"])
+            analysis["timing"] = timing
         save(output / "analysis.json", analysis)  # Before opening reference.
         oracle = reference(root, (before, after))
-        save(output / "reference.json", oracle)
+        order_oracle = {"order": None, "applicable": False, "valid": False}
+        if mode == "late":
+            ends = [event for event in events if event["kind"] == "cli_end" and event["run"] == run]
+            if len(ends) == 1:
+                limit = time.monotonic() + 1
+                order_oracle = reference_order(root, ends[0]["t_ns"])
+                while (
+                    not oracle["valid"]
+                    and probe(root / "target") is True
+                    and time.monotonic() < limit
+                ):
+                    time.sleep(0.02)
+                    oracle = reference(root, (before, after))
+                    order_oracle = reference_order(root, ends[0]["t_ns"])
+            archived = dict(oracle)
+            archived["order"] = order_oracle["order"]
+            archived["order_applicable"] = order_oracle["applicable"]
+            archived["order_valid"] = order_oracle["valid"]
+            save(output / "reference.json", archived)
+        else:
+            save(output / "reference.json", oracle)
     real_run = (
         counts["model_completions"] > 0 and counts["tool_reports"] > 0 and counts["recording_ok"]
     )
-    comparable = oracle["valid"] and analysis["verdict"] == "BELEGT"
+    comparable = oracle["valid"] and snapshot["verdict"] == "BELEGT"
     evaluation = (
-        ("KORREKT" if oracle["target_present"] == analysis["target_present"] else "FALSCH")
+        ("KORREKT" if oracle["target_present"] == snapshot["target_present"] else "FALSCH")
         if comparable
         else "UNBEKANNT"
     )
@@ -340,10 +642,14 @@ def capture(output: Path, codex: str = "codex", timeout: float = 60, mode: str =
         "counts": counts,
         "proven_agent_runs": int(real_run),
         "agent_run": "BELEGT" if real_run else "UNBEKANNT",
-        "target": analysis,
+        "target": snapshot,
         "evaluation": evaluation,
         "scope": "local_target_snapshot_at_window_end_only",
     }
+    if timing is not None:
+        result["timing"] = timing
+        result["timing_evaluation"] = compare_order(timing, order_oracle, oracle["valid"])
+        result["scope"] = "local_snapshot_plus_post_end_order"
     save(output / "result.json", result)
     return result
 
@@ -353,11 +659,20 @@ def main() -> None:
     parser.add_argument("--out", type=Path, required=True)
     parser.add_argument("--codex", default="codex")
     parser.add_argument("--timeout", type=float, default=60)
-    parser.add_argument("--mode", choices=("write", "noop", "fail", "write_fail"), default="write")
+    parser.add_argument("--mode", choices=tuple(sorted(MODES)), default="write")
+    parser.add_argument("--post-window", type=float, default=5)
     args = parser.parse_args()
-    result = capture(args.out, args.codex, args.timeout, args.mode)
+    result = capture(args.out, args.codex, args.timeout, args.mode, args.post_window)
+    ok = result["proven_agent_runs"] == 1 and result["evaluation"] == "KORREKT"
+    if args.mode == "late":
+        ok = (
+            ok
+            and result["timing_evaluation"] == "KORREKT"
+            and result["timing"]["verdict"] == "BELEGT"
+            and result["timing"]["order"] == "NACH"
+        )
     print(json.dumps(result, indent=2))
-    sys.exit(0 if result["proven_agent_runs"] == 1 and result["evaluation"] == "KORREKT" else 2)
+    sys.exit(0 if ok else 2)
 
 
 if __name__ == "__main__":
