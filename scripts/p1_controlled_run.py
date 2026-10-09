@@ -868,11 +868,17 @@ def assess(
     observations: object,
     result: object,
     reference: object,
-    evidence_class: object = "current",
+    evidence_class: object = "stale",
     fd_claim: object = None,
 ) -> dict:
-    """Read one P2 flow. Claim text is not copied and no right is granted."""
-    if evidence_class not in _EVIDENCE_CLASSES:
+    """Read one P2 flow without treating an archive as a current capture.
+
+    Explicit ``current`` is a caller precondition: only the controlled local
+    acquisition path may choose it. It is not source authentication. Imported
+    JSON and omitted classes remain historical; bind() alone checks consistency,
+    not the provenance of its counts or reference.
+    """
+    if type(evidence_class) is not str or evidence_class not in _EVIDENCE_CLASSES:
         evidence_class = "forged"
     identity_reason = {
         "current": "no_identity_measurement",
@@ -906,7 +912,7 @@ def assess(
         end_only = relate(ends, run, recording_ok)
         if end_only.get("reason") == "no_effect" or end_only.get("verdict") == "NICHT_ANWENDBAR":
             fehler.append("end_read_as_no_effect")
-        if isinstance(reference, dict):
+        if evidence_class == "current" and isinstance(reference, dict):
             binding = bind(result, observations, reference)
             binding_reason = binding.get("reason", "UNBEKANNT")
             agent = binding.get("agent_run", "UNBEKANNT")
