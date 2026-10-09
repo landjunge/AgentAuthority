@@ -1,0 +1,44 @@
+[
+  {
+    "run": 2847465012503918159,
+    "kind": "target_initial",
+    "value": false,
+    "t_ns": 697461320649074,
+    "event": 1
+  },
+  {
+    "run": 2847465012503918159,
+    "kind": "tool_end",
+    "value": true,
+    "t_ns": 697461503428157,
+    "event": 2
+  },
+  {
+    "run": 2847465012503918159,
+    "kind": "cli_end",
+    "value": true,
+    "t_ns": 697461505046112,
+    "event": 3
+  },
+  {
+    "run": 2847465012503918159,
+    "kind": "target_absent",
+    "value": false,
+    "t_ns": 697461525677777,
+    "event": 4
+  },
+  {
+    "run": 2847465012503918159,
+    "kind": "target_seen",
+    "value": true,
+    "t_ns": 697461552242612,
+    "event": 5
+  },
+  {
+    "run": 2847465012503918159,
+    "kind": "target_final",
+    "value": true,
+    "t_ns": 697461603546561,
+    "event": 6
+  }
+]

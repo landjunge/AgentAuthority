@@ -1,0 +1,22 @@
+{
+  "pinned_sha": "f94f444e383052d04e2ef22bfed4ec03512cb066",
+  "file_sha256": "ace82c48bdc04e9faa707b28fd208378f06836a3b57876d729721c3f9dd6cead",
+  "platform": "darwin",
+  "machine": "x86_64",
+  "return": {
+    "A": "UNBEKANNT",
+    "B": "unsupported_platform",
+    "C": "NEIN",
+    "D": "Nur Relation der zwei tatsaechlich per SCM_RIGHTS empfangenen regulaeren FDs im Messmoment. Keine Authentisierung ihrer urspruenglich gemeinten Ressource; keine Garantie bei kompromittiertem Broker/Verifier/Kernel, FD-Neubelegung oder TOCTOU ausserhalb der Vor-/Nachmessung.",
+    "source_authenticated": false,
+    "fd_set_verified": false,
+    "positive_identity_authorized": false
+  },
+  "projected": {
+    "aussage": "UNBEKANNT",
+    "grund": "verifier_not_positive",
+    "beleg": [],
+    "source_authenticated": false,
+    "recht_uebernommen": false
+  }
+}

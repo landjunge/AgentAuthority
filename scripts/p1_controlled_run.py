@@ -811,6 +811,241 @@ def bind(result: object, observations: object, reference: object) -> dict:
     }
 
 
+_EVIDENCE_CLASSES = {"current", "missing", "stale", "forged"}
+_FD_RELATIONS = {"DIESELBE", "VERSCHIEDEN"}
+
+
+def _row(aussage: object, grund: object, beleg: object = None, **extra: object) -> dict:
+    cited = list(beleg) if isinstance(beleg, list) else []
+    return {"aussage": aussage, "grund": grund, "beleg": cited, **extra}
+
+
+def apply_fd_measurement(verifier: object) -> dict:
+    """Keep a measured local FD relation without adopting origin or a right.
+
+    Caller-supplied packets are not measurements. This function only interprets
+    a return value already produced by the pinned verifier.
+    """
+    unknown = _row(
+        "UNBEKANNT",
+        "unsecured_source",
+        source_authenticated="UNBEKANNT",
+        recht_uebernommen=False,
+    )
+    if not isinstance(verifier, dict):
+        return _row(
+            "UNBEKANNT",
+            "not_measured",
+            source_authenticated="UNBEKANNT",
+            recht_uebernommen=False,
+        )
+    authenticated = verifier.get("source_authenticated")
+    if authenticated is not False:
+        if authenticated is True:
+            unknown["grund"] = "forged_authentication"
+        return unknown
+    relation = verifier.get("A")
+    if (
+        relation in _FD_RELATIONS
+        and verifier.get("C") == "JA"
+        and verifier.get("fd_set_verified") is True
+    ):
+        return _row(
+            relation,
+            "local_relation_not_origin",
+            source_authenticated=False,
+            recht_uebernommen=False,
+        )
+    return _row(
+        "UNBEKANNT",
+        "verifier_not_positive",
+        source_authenticated=False,
+        recht_uebernommen=False,
+    )
+
+
+def assess(
+    observations: object,
+    result: object,
+    reference: object,
+    evidence_class: object = "current",
+    fd_claim: object = None,
+) -> dict:
+    """Read one P2 flow. Claim text is not copied and no right is granted."""
+    if evidence_class not in _EVIDENCE_CLASSES:
+        evidence_class = "forged"
+    identity_reason = {
+        "current": "no_identity_measurement",
+        "missing": "missing_evidence",
+        "stale": "stale_source",
+        "forged": "forged_source",
+    }[evidence_class]
+    snapshot = {
+        "verdict": "UNBEKANNT",
+        "target_present": None,
+        "reason": "missing_evidence",
+        "evidence": [],
+    }
+    timing = {"verdict": "UNBEKANNT", "order": None, "reason": "missing_evidence", "evidence": []}
+    binding_reason = "UNBEKANNT"
+    agent = "UNBEKANNT"
+    fehler: list[str] = []
+    run = result.get("run") if isinstance(result, dict) else None
+    if isinstance(observations, list) and type(run) is int and run >= 1:
+        counts = result.get("counts") if isinstance(result, dict) else None
+        recording_ok = isinstance(counts, dict) and counts.get("recording_ok") is True
+        snapshot = infer(observations, run, recording_ok)
+        timing = relate(observations, run, recording_ok)
+        ends = [
+            event
+            for event in observations
+            if isinstance(event, dict)
+            and event.get("kind") == "cli_end"
+            and event.get("run") == run
+        ]
+        end_only = relate(ends, run, recording_ok)
+        if end_only.get("reason") == "no_effect" or end_only.get("verdict") == "NICHT_ANWENDBAR":
+            fehler.append("end_read_as_no_effect")
+        if isinstance(reference, dict):
+            binding = bind(result, observations, reference)
+            binding_reason = binding.get("reason", "UNBEKANNT")
+            agent = binding.get("agent_run", "UNBEKANNT")
+    fd = _row(
+        "UNBEKANNT",
+        "not_measured_on_this_integration",
+        source_authenticated="UNBEKANNT",
+        recht_uebernommen=False,
+    )
+    if isinstance(fd_claim, dict):
+        # A consistent packet is not a measurement and not an identity.
+        fd["grund"] = (
+            "forged_authentication"
+            if fd_claim.get("source_authenticated") is True
+            else "unmeasured_packet_not_identity"
+        )
+    return {
+        "evidence_class": evidence_class,
+        "wirkung": _row(
+            snapshot.get("verdict", "UNBEKANNT"),
+            snapshot.get("reason", "missing_evidence"),
+            snapshot.get("evidence"),
+            target_present=snapshot.get("target_present"),
+            geltung=(
+                "lokaler_abfragepunkt"
+                if evidence_class == "current" and snapshot.get("verdict") == "BELEGT"
+                else "UNBEKANNT"
+            ),
+        ),
+        "zeitbezug": _row(
+            timing.get("verdict", "UNBEKANNT"),
+            timing.get("reason", "missing_evidence"),
+            timing.get("evidence"),
+            ordnung=timing.get("order"),
+        ),
+        "ende_ist_wirkungsfreiheit": _row("NEIN", "end_is_an_event"),
+        "identitaet": _row("UNBEKANNT", identity_reason),
+        "herkunft": _row("UNBEKANNT", "no_source_field"),
+        "fd_relation": fd,
+        "agent_run": agent,
+        "bindung": binding_reason,
+        "fehler": fehler,
+        "recht_uebernommen": False,
+    }
+
+
+def measure_controlled_late_effect(root: Path, post_window: float = 3) -> dict:
+    """Sample the existing late tool. No model call and no prompt archive."""
+    if not math.isfinite(post_window) or not 0 < post_window <= 30:
+        raise ValueError("post window must be finite and in (0, 30]")
+    root.mkdir(parents=True, exist_ok=False)
+    run = secrets.randbelow(2**63 - 1) + 1
+    events: list[dict] = []
+    sleeper: subprocess.Popen[bytes] | None = None
+    try:
+        (root / "tool.py").write_text(TOOL)
+        (root / "late.bound").write_text("8\n", encoding="utf-8")
+        sleeper = subprocess.Popen([sys.executable, "-c", "import time; time.sleep(30)"])
+        (root / "cli.pid").write_text(f"{sleeper.pid}\n", encoding="utf-8")
+        initial = probe(root / "target")
+        if initial is not None:
+            add(events, run, "target_initial", initial)
+        completed = subprocess.run(
+            [sys.executable, str(root / "tool.py"), "late"],
+            cwd=root,
+            check=False,
+            timeout=5,
+            capture_output=True,
+        )
+        add(events, run, "tool_end", completed.returncode == 0)
+        sleeper.kill()
+        sleeper.wait(timeout=5)
+        sleeper = None
+        add(events, run, "cli_end", True)
+        watch_after(root, run, events, True, post_window)
+        before = time.monotonic_ns()
+        final = probe(root / "target")
+        after = time.monotonic_ns()
+        if final is not None:
+            add(events, run, "target_final", final)
+        snapshot = infer(events, run, True)
+        timing = relate(events, run, True)
+        oracle = reference(root, (before, after))
+        ends = [event for event in events if event["kind"] == "cli_end" and event["run"] == run]
+        order_oracle = (
+            reference_order(root, ends[0]["t_ns"])
+            if len(ends) == 1
+            else {"order": None, "applicable": False, "valid": False}
+        )
+        limit = time.monotonic() + 1
+        while not oracle["valid"] and probe(root / "target") is True and time.monotonic() < limit:
+            time.sleep(0.02)
+            oracle = reference(root, (before, after))
+            if len(ends) == 1:
+                order_oracle = reference_order(root, ends[0]["t_ns"])
+        archived = dict(oracle)
+        archived["order"] = order_oracle["order"]
+        archived["order_applicable"] = order_oracle["applicable"]
+        archived["order_valid"] = order_oracle["valid"]
+        comparable = oracle["valid"] and snapshot["verdict"] == "BELEGT"
+        evaluation = (
+            ("KORREKT" if oracle["target_present"] == snapshot["target_present"] else "FALSCH")
+            if comparable
+            else "UNBEKANNT"
+        )
+        counts = {
+            "stdout_bytes": 0,
+            "stderr_bytes": 0,
+            "raw_lines": 0,
+            "invalid_records": 0,
+            "model_completions": 0,
+            "tool_reports": 1 if completed.returncode == 0 else 0,
+            "error_records": 0,
+            "started": True,
+            "timeout": False,
+            "recording_ok": completed.returncode == 0,
+            "cli_success": completed.returncode == 0,
+            "cli_exit_code": completed.returncode,
+            "startup_error": "UNBEKANNT",
+        }
+        captured = {
+            "run": run,
+            "mode": "late",
+            "counts": counts,
+            "proven_agent_runs": 0,
+            "agent_run": "UNBEKANNT",
+            "target": snapshot,
+            "evaluation": evaluation,
+            "scope": "local_snapshot_plus_post_end_order",
+            "timing": timing,
+            "timing_evaluation": compare_order(timing, order_oracle, oracle["valid"]),
+        }
+        return {"observations": events, "reference": archived, "result": captured}
+    finally:
+        if sleeper is not None and sleeper.poll() is None:
+            sleeper.kill()
+            sleeper.wait(timeout=5)
+
+
 def connect(
     output: Path,
     codex: str = "codex",
