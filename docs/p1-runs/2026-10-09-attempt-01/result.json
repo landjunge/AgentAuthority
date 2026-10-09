@@ -1,0 +1,31 @@
+{
+  "run": 8670980121557811902,
+  "mode": "write",
+  "counts": {
+    "stdout_bytes": 0,
+    "stderr_bytes": 199,
+    "raw_lines": 0,
+    "invalid_records": 0,
+    "model_completions": 0,
+    "tool_reports": 0,
+    "error_records": 0,
+    "started": true,
+    "timeout": false,
+    "recording_ok": true,
+    "cli_success": false
+  },
+  "proven_agent_runs": 0,
+  "agent_run": "UNBEKANNT",
+  "target": {
+    "verdict": "BELEGT",
+    "target_present": false,
+    "reason": "local_snapshot_only",
+    "evidence": [
+      1,
+      2,
+      3
+    ]
+  },
+  "evaluation": "UNBEKANNT",
+  "scope": "local_target_snapshot_at_window_end_only"
+}

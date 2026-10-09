@@ -60,6 +60,23 @@ It never writes a ThreadDesk database and does not change lab ALLOW/DENY.
 This is not a Phase-2 or external-effect event stream. Exported metadata is not
 automatically secret-free; complete redaction remains an open limitation.
 
+## P1: controlled observer attempt
+
+[P1 contract](docs/P1-CONTROLLED-RUN.md) and
+[measured results](docs/P1-CONTROLLED-RUN-RESULTS.md): one standalone research
+script, independent local target snapshot, **UNBEKANNT** for missing evidence.
+Historical enforcement is unchanged. A started CLI process is not a proven
+agent run; P1's recorded attempt has **zero proven agent runs**.
+
+```bash
+.venv/bin/python scripts/p1_controlled_run.py --out /tmp/aa-p1-new-run --timeout 60
+```
+
+The output directory must be new. Exit 2 means the agent run or reference
+comparison is unproven; inspect the separate observations, analysis and result.
+No raw CLI text is archived. This is not a complete execution audit or an
+implementation of the full six-case research panel.
+
 ## Method (canonical)
 
 - [docs/RESEARCH-METHOD.md](docs/RESEARCH-METHOD.md) — PASS vs hypothesis, cycle STOP, program-STOP, CI
