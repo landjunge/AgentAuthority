@@ -1,0 +1,233 @@
+{
+  "step": "P5",
+  "expectation_sha256": "eff432d4c5ee4f305d98d287510273a22e531c09895ae58822dece204c15c0c1",
+  "run": 7027111266611887455,
+  "agent_run": "BELEGT",
+  "package": "PASS",
+  "stop_reason": null,
+  "rows": [
+    {
+      "fall": "aktuell",
+      "status": "PASS",
+      "erwartet": {
+        "wirkung": "BELEGT",
+        "target_present": true,
+        "geltung": "lokaler_abfragepunkt",
+        "wirkungsgrund": "local_snapshot_only",
+        "zeitbezug": "BELEGT",
+        "ordnung": "NACH",
+        "zeitgrund": "absence_after_end_then_presence",
+        "ende": "NEIN",
+        "ende_grund": "end_is_an_event",
+        "identitaet": "UNBEKANNT",
+        "identitaetsgrund": "no_identity_measurement",
+        "herkunft": "UNBEKANNT",
+        "herkunftsgrund": "no_source_field",
+        "agent_run": "BELEGT",
+        "bindung": "independent_local_effect",
+        "recht_uebernommen": false,
+        "fehler": [],
+        "reference_valid": true,
+        "calls": 1,
+        "reference_target_present": true,
+        "reference_order": "NACH",
+        "order_valid": true,
+        "order_applicable": true,
+        "evaluation": "KORREKT",
+        "timing_evaluation": "KORREKT"
+      },
+      "ist": {
+        "wirkung": "BELEGT",
+        "target_present": true,
+        "geltung": "lokaler_abfragepunkt",
+        "wirkungsgrund": "local_snapshot_only",
+        "zeitbezug": "BELEGT",
+        "ordnung": "NACH",
+        "zeitgrund": "absence_after_end_then_presence",
+        "ende": "NEIN",
+        "ende_grund": "end_is_an_event",
+        "identitaet": "UNBEKANNT",
+        "identitaetsgrund": "no_identity_measurement",
+        "herkunft": "UNBEKANNT",
+        "herkunftsgrund": "no_source_field",
+        "agent_run": "BELEGT",
+        "bindung": "independent_local_effect",
+        "recht_uebernommen": false,
+        "fehler": [],
+        "reference_valid": true,
+        "calls": 1,
+        "reference_target_present": true,
+        "reference_order": "NACH",
+        "order_valid": true,
+        "order_applicable": true,
+        "evaluation": "KORREKT",
+        "timing_evaluation": "KORREKT"
+      },
+      "grund": "local_snapshot_only"
+    },
+    {
+      "fall": "fehlend",
+      "status": "PASS",
+      "erwartet": {
+        "wirkung": "UNBEKANNT",
+        "zeitbezug": "UNBEKANNT",
+        "zeitgrund_ist_no_effect": false,
+        "ende": "NEIN",
+        "identitaet": "UNBEKANNT",
+        "identitaetsgrund": "missing_evidence",
+        "herkunft": "UNBEKANNT",
+        "agent_run": "UNBEKANNT",
+        "authentisierte_herkunft": false
+      },
+      "ist": {
+        "wirkung": "UNBEKANNT",
+        "zeitbezug": "UNBEKANNT",
+        "zeitgrund_ist_no_effect": false,
+        "ende": "NEIN",
+        "identitaet": "UNBEKANNT",
+        "identitaetsgrund": "missing_evidence",
+        "herkunft": "UNBEKANNT",
+        "agent_run": "UNBEKANNT",
+        "authentisierte_herkunft": false
+      },
+      "grund": "missing_evidence"
+    },
+    {
+      "fall": "alt_geordnet",
+      "status": "PASS",
+      "erwartet": {
+        "wirkung": "BELEGT",
+        "geltung": "UNBEKANNT",
+        "identitaet": "UNBEKANNT",
+        "identitaetsgrund": "stale_source",
+        "herkunft": "UNBEKANNT"
+      },
+      "ist": {
+        "wirkung": "BELEGT",
+        "geltung": "UNBEKANNT",
+        "identitaet": "UNBEKANNT",
+        "identitaetsgrund": "stale_source",
+        "herkunft": "UNBEKANNT"
+      },
+      "grund": "stale_source"
+    },
+    {
+      "fall": "alt_zusatzfelder",
+      "status": "PASS",
+      "erwartet": {
+        "wirkungsgrund": "invalid_evidence",
+        "geltung": "UNBEKANNT",
+        "identitaet": "UNBEKANNT",
+        "identitaetsgrund": "stale_source",
+        "name_im_json": false
+      },
+      "ist": {
+        "wirkungsgrund": "invalid_evidence",
+        "geltung": "UNBEKANNT",
+        "identitaet": "UNBEKANNT",
+        "identitaetsgrund": "stale_source",
+        "name_im_json": false
+      },
+      "grund": "invalid_evidence"
+    },
+    {
+      "fall": "gefaelscht_agentenlabel",
+      "status": "PASS",
+      "erwartet": {
+        "agent_run": "UNBEKANNT",
+        "identitaet": "UNBEKANNT",
+        "identitaetsgrund": "forged_source",
+        "herkunft": "UNBEKANNT",
+        "recht_uebernommen": false
+      },
+      "ist": {
+        "agent_run": "UNBEKANNT",
+        "identitaet": "UNBEKANNT",
+        "identitaetsgrund": "forged_source",
+        "herkunft": "UNBEKANNT",
+        "recht_uebernommen": false
+      },
+      "grund": "forged_source"
+    },
+    {
+      "fall": "gefaelscht_fd_flag",
+      "status": "PASS",
+      "erwartet": {
+        "aussage": "UNBEKANNT",
+        "grund": "forged_authentication",
+        "source_authenticated": "UNBEKANNT",
+        "als_wahr_uebernommen": false
+      },
+      "ist": {
+        "aussage": "UNBEKANNT",
+        "grund": "forged_authentication",
+        "source_authenticated": "UNBEKANNT",
+        "als_wahr_uebernommen": false
+      },
+      "grund": "forged_authentication"
+    },
+    {
+      "fall": "packet_ohne_messung",
+      "status": "PASS",
+      "erwartet": {
+        "aussage": "UNBEKANNT",
+        "grund": "unmeasured_packet_not_identity",
+        "source_authenticated": "UNBEKANNT",
+        "name_im_json": false
+      },
+      "ist": {
+        "aussage": "UNBEKANNT",
+        "grund": "unmeasured_packet_not_identity",
+        "source_authenticated": "UNBEKANNT",
+        "name_im_json": false
+      },
+      "grund": "unmeasured_packet_not_identity"
+    },
+    {
+      "fall": "fd_format_keine_hostmessung",
+      "status": "PASS",
+      "erwartet": {
+        "aussage": "DIESELBE",
+        "source_authenticated": false,
+        "recht_uebernommen": false,
+        "grund": "local_relation_not_origin",
+        "verschieden": "VERSCHIEDEN",
+        "ist_hostmessung": false,
+        "ist_herkunft": false,
+        "name_im_json": false
+      },
+      "ist": {
+        "aussage": "DIESELBE",
+        "source_authenticated": false,
+        "recht_uebernommen": false,
+        "grund": "local_relation_not_origin",
+        "verschieden": "VERSCHIEDEN",
+        "ist_hostmessung": false,
+        "ist_herkunft": false,
+        "name_im_json": false
+      },
+      "grund": "local_relation_not_origin"
+    },
+    {
+      "fall": "host_verifier",
+      "status": "SKIP",
+      "erwartet": {
+        "status": "SKIP"
+      },
+      "ist": {
+        "status": "SKIP"
+      },
+      "grund": "datei_nicht_in_diesem_checkout"
+    }
+  ],
+  "grenzen": {
+    "RC-01": "offen",
+    "RC-02": "offen",
+    "RC-03": "offen",
+    "RC-04": "offen",
+    "RC-05": "offen",
+    "OOS-021": "offen",
+    "CB-01": "offen",
+    "P4-Pytest-Cache": "offen"
+  }
+}
