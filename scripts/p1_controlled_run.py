@@ -654,6 +654,182 @@ def capture(
     return result
 
 
+UNMAPPED = (
+    "auftrag",
+    "actor",
+    "origin",
+    "process_identity",
+    "resource_path",
+    "resource_content",
+    "source_authenticated",
+)
+ARCHIVED_RUNS = ("2026-10-09-attempt-03", "2026-10-09-attempt-04")
+_P2_KINDS = (
+    "target_initial",
+    "tool_end",
+    "cli_end",
+    "target_absent",
+    "target_seen",
+    "target_final",
+)
+
+
+def _binding(reason: str, run: int | None = None) -> dict:
+    return {
+        "step": "P2",
+        "run": run,
+        "agent_run": "UNBEKANNT",
+        "start": "UNBEKANNT",
+        "tool_report": "UNBEKANNT",
+        "effect": "UNBEKANNT",
+        "end": "UNBEKANNT",
+        "follow_up": "UNBEKANNT",
+        "independent_effect": "UNBEKANNT",
+        "evaluation": "UNBEKANNT",
+        "timing_evaluation": "UNBEKANNT",
+        "unknown": {name: "UNBEKANNT" for name in UNMAPPED},
+        "reason": reason,
+    }
+
+
+def _agent_run(result: dict) -> str:
+    """Keep the capture conjunction. A stored BELEGT label is not enough."""
+    counts = result.get("counts")
+    if (
+        isinstance(counts, dict)
+        and type(counts.get("model_completions")) is int
+        and counts["model_completions"] > 0
+        and type(counts.get("tool_reports")) is int
+        and counts["tool_reports"] > 0
+        and counts.get("recording_ok") is True
+        and result.get("proven_agent_runs") == 1
+        and result.get("agent_run") == "BELEGT"
+    ):
+        return "BELEGT"
+    return "UNBEKANNT"
+
+
+def _cite(event: dict) -> dict:
+    return {"event": event["event"], "kind": event["kind"], "value": event["value"]}
+
+
+def _refuse_archived(output: Path) -> None:
+    resolved = output.resolve()
+    root = Path(__file__).resolve().parents[1] / "docs" / "p1-runs"
+    for name in ARCHIVED_RUNS:
+        archived = (root / name).resolve()
+        if resolved == archived or archived in resolved.parents:
+            raise ValueError("archived run is not a P2 output")
+
+
+def bind(result: object, observations: object, reference: object) -> dict:
+    """Project one late capture onto the accepted P1 fields. Adds no events."""
+    if (
+        not isinstance(result, dict)
+        or not isinstance(observations, list)
+        or not isinstance(reference, dict)
+    ):
+        return _binding("invalid_evidence")
+    run = result.get("run")
+    if type(run) is not int or run < 1:
+        return _binding("invalid_run")
+    if result.get("mode") != "late":
+        return _binding("not_the_p2_flow", run)
+    if any(not isinstance(event, dict) for event in observations):
+        return _binding("invalid_evidence", run)
+    if any(event.get("run") != run for event in observations):
+        return _binding("mixed_run", run)
+    counts = result.get("counts")
+    recording_ok = isinstance(counts, dict) and counts.get("recording_ok") is True
+    row_reason, selected = _rows(observations, run, recording_ok)
+    if row_reason:
+        return _binding(row_reason, run)
+    grouped = {kind: [event for event in selected if event["kind"] == kind] for kind in _P2_KINDS}
+    if any(len(grouped[kind]) != 1 for kind in _P2_KINDS) or len(selected) != len(_P2_KINDS):
+        return _binding("not_one_local_flow", run)
+    if not isinstance(counts, dict) or counts.get("tool_reports") != 1:
+        return _binding("process_report_mismatch", run)
+    snapshot = infer(observations, run, True)
+    timing = relate(observations, run, True)
+    if result.get("target") != snapshot or result.get("timing") != timing:
+        return _binding("result_disagrees_with_observer", run)
+    tool = grouped["tool_end"][0]
+    effect_events = snapshot.get("evidence") if isinstance(snapshot.get("evidence"), list) else []
+    target_confirmed = (
+        snapshot.get("verdict") == "BELEGT"
+        and snapshot.get("target_present") is True
+        and tool["event"] not in effect_events
+        and reference.get("valid") is True
+        and reference.get("calls") == 1
+        and reference.get("target_present") is True
+        and result.get("evaluation") == "KORREKT"
+    )
+    order_confirmed = (
+        timing.get("verdict") == "BELEGT"
+        and timing.get("order") == "NACH"
+        and reference.get("order_valid") is True
+        and reference.get("order_applicable") is True
+        and reference.get("order") == "NACH"
+        and result.get("timing_evaluation") == "KORREKT"
+        and result.get("scope") == "local_snapshot_plus_post_end_order"
+    )
+    target_false = (
+        reference.get("valid") is True
+        and snapshot.get("verdict") == "BELEGT"
+        and reference.get("target_present") is not snapshot.get("target_present")
+    )
+    order_false = (
+        reference.get("order_valid") is True
+        and timing.get("verdict") == "BELEGT"
+        and reference.get("order") != timing.get("order")
+    )
+    independent = "KORREKT" if target_confirmed else ("FALSCH" if target_false else "UNBEKANNT")
+    timing_evaluation = "KORREKT" if order_confirmed else ("FALSCH" if order_false else "UNBEKANNT")
+    agent = _agent_run(result)
+    if agent == "BELEGT" and independent == "KORREKT" and timing_evaluation == "KORREKT":
+        reason = "independent_local_effect"
+    elif agent != "BELEGT":
+        reason = "agent_run_unbekannt"
+    elif independent == "FALSCH" or timing_evaluation == "FALSCH":
+        reason = "reference_disagrees"
+    else:
+        reason = "missing_evidence"
+    return {
+        "step": "P2",
+        "run": run,
+        "agent_run": agent,
+        "start": _cite(grouped["target_initial"][0]),
+        "tool_report": _cite(tool),
+        "effect": snapshot,
+        "end": _cite(grouped["cli_end"][0]),
+        "follow_up": timing,
+        "independent_effect": independent,
+        "evaluation": independent,
+        "timing_evaluation": timing_evaluation,
+        "unknown": {name: "UNBEKANNT" for name in UNMAPPED},
+        "reason": reason,
+    }
+
+
+def connect(
+    output: Path,
+    codex: str = "codex",
+    timeout: float = 60,
+    post_window: float = 5,
+    mode: str = "late",
+) -> dict:
+    """One late local capture bound to the accepted P1 fields. The observer does not steer."""
+    if mode != "late":
+        raise ValueError("P2 connects only the late local run")
+    _refuse_archived(output)
+    result = capture(output, codex, timeout, mode, post_window)
+    observations = json.loads((output / "observations.json").read_text(encoding="utf-8"))
+    reference = json.loads((output / "reference.json").read_text(encoding="utf-8"))
+    binding = bind(result, observations, reference)
+    save(output / "binding.json", binding)
+    return binding
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--out", type=Path, required=True)
@@ -661,7 +837,17 @@ def main() -> None:
     parser.add_argument("--timeout", type=float, default=60)
     parser.add_argument("--mode", choices=tuple(sorted(MODES)), default="write")
     parser.add_argument("--post-window", type=float, default=5)
+    parser.add_argument(
+        "--connect",
+        action="store_true",
+        help="bind one late local run to the accepted P1 fields",
+    )
     args = parser.parse_args()
+    if args.connect:
+        binding = connect(args.out, args.codex, args.timeout, args.post_window, args.mode)
+        print(json.dumps(binding, indent=2))
+        ok = binding["reason"] == "independent_local_effect" and binding["agent_run"] == "BELEGT"
+        sys.exit(0 if ok else 2)
     result = capture(args.out, args.codex, args.timeout, args.mode, args.post_window)
     ok = result["proven_agent_runs"] == 1 and result["evaluation"] == "KORREKT"
     if args.mode == "late":
