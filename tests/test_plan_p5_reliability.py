@@ -96,10 +96,10 @@ def test_synthetic_late_bundle_matches_current_missing_stale_and_forged():
     rows = {row["fall"]: row for row in scored["rows"]}
     assert tuple(rows) == p5.CASES
     aktuell = rows["aktuell"]["ist"]
-    assert rows["aktuell"]["status"] == "PASS"
+    assert rows["aktuell"]["status"] == "FAIL"
     assert aktuell["wirkung"] == "BELEGT"
     assert aktuell["target_present"] is True
-    assert aktuell["geltung"] == "lokaler_abfragepunkt"
+    assert aktuell["geltung"] == "UNBEKANNT"
     assert aktuell["wirkungsgrund"] == "local_snapshot_only"
     assert aktuell["zeitbezug"] == "BELEGT"
     assert aktuell["ordnung"] == "NACH"
@@ -110,8 +110,8 @@ def test_synthetic_late_bundle_matches_current_missing_stale_and_forged():
     assert aktuell["identitaetsgrund"] == "no_identity_measurement"
     assert aktuell["herkunft"] == "UNBEKANNT"
     assert aktuell["herkunftsgrund"] == "no_source_field"
-    assert aktuell["agent_run"] == "BELEGT"
-    assert aktuell["bindung"] == "independent_local_effect"
+    assert aktuell["agent_run"] == "UNBEKANNT"
+    assert aktuell["bindung"] == "agent_run_unbekannt"
     assert aktuell["recht_uebernommen"] is False
     assert aktuell["fehler"] == []
     assert aktuell["calls"] == 1
@@ -144,12 +144,12 @@ def test_synthetic_late_bundle_matches_current_missing_stale_and_forged():
     assert rows["packet_ohne_messung"]["status"] == "PASS"
     assert rows["packet_ohne_messung"]["ist"]["grund"] == "unmeasured_packet_not_identity"
     assert rows["fd_format_keine_hostmessung"]["status"] == "PASS"
-    assert rows["fd_format_keine_hostmessung"]["ist"]["aussage"] == "DIESELBE"
-    assert rows["fd_format_keine_hostmessung"]["ist"]["source_authenticated"] is False
+    assert rows["fd_format_keine_hostmessung"]["ist"]["aussage"] == "UNBEKANNT"
+    assert rows["fd_format_keine_hostmessung"]["ist"]["source_authenticated"] == "UNBEKANNT"
     assert rows["fd_format_keine_hostmessung"]["ist"]["ist_hostmessung"] is False
     assert rows["host_verifier"]["status"] == "SKIP"
-    assert scored["package"] == "PASS"
-    assert scored["agent_run"] == "BELEGT"
+    assert scored["package"] == "STOP"
+    assert scored["agent_run"] == "UNBEKANNT"
     assert scored["step"] == "P5"
 
 
@@ -210,7 +210,13 @@ def test_p5_archive_rows_match_score_without_prompt_or_extra_fields():
     result = json.loads((P5_RUN / "result.json").read_text(encoding="utf-8"))
     stored = json.loads((P5_RUN / "reliability.json").read_text(encoding="utf-8"))
     scored = p5.score(observations, result, reference)
-    assert [row["status"] for row in scored["rows"]] == [row["status"] for row in stored["rows"]]
+    assert scored["rows"][0]["status"] == "FAIL"
+    assert stored["rows"][0]["status"] == "PASS"  # untouched historical result
+    assert [row["status"] for row in scored["rows"][1:]] == [
+        row["status"] for row in stored["rows"][1:]
+    ]
+    assert scored["agent_run"] == "UNBEKANNT"
+    assert scored["package"] == "STOP"
     assert [row["fall"] for row in scored["rows"]] == [row["fall"] for row in stored["rows"]]
     for event in observations:
         assert set(event) == FIELDS

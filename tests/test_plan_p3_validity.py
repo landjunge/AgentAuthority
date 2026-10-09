@@ -70,7 +70,7 @@ def test_current_evidence_recognizes_effect_after_end():
     assert reading["wirkung"]["aussage"] == "BELEGT"
     assert reading["wirkung"]["target_present"] is True
     assert reading["wirkung"]["beleg"] == [1, 3, 6]
-    assert reading["wirkung"]["geltung"] == "lokaler_abfragepunkt"
+    assert reading["wirkung"]["geltung"] == "UNBEKANNT"
     assert reading["zeitbezug"]["ordnung"] == "NACH"
     assert reading["zeitbezug"]["beleg"] == [3, 4, 5]
     assert reading["ende_ist_wirkungsfreiheit"] == {
@@ -80,8 +80,8 @@ def test_current_evidence_recognizes_effect_after_end():
     }
     assert reading["identitaet"]["aussage"] == "UNBEKANNT"
     assert reading["herkunft"]["aussage"] == "UNBEKANNT"
-    assert reading["agent_run"] == "BELEGT"
-    assert reading["bindung"] == "independent_local_effect"
+    assert reading["agent_run"] == "UNBEKANNT"
+    assert reading["bindung"] == "agent_run_unbekannt"
     assert reading["recht_uebernommen"] is False
 
 
@@ -161,7 +161,7 @@ def test_consistent_fd_packet_is_not_current_identity():
     assert CANARY not in json.dumps(authenticated)
 
 
-def test_measured_fd_relation_stays_positive_without_authentication():
+def test_measured_fd_relation_stays_positive_without_authentication(tmp_path):
     measured = {
         "A": "DIESELBE",
         "B": CANARY,
@@ -171,7 +171,10 @@ def test_measured_fd_relation_stays_positive_without_authentication():
         "source_authenticated": False,
         "positive_identity_authorized": True,
     }
-    kept = p1.apply_fd_measurement(measured)
+    assert p1.apply_fd_measurement(measured)["aussage"] == "UNBEKANNT"
+    with (tmp_path / "a").open("xb") as first, (tmp_path / "b").open("xb") as second:
+        kept = p1.measure_local_fd_relation(first.fileno(), first.fileno())
+        different = p1.measure_local_fd_relation(first.fileno(), second.fileno())
     assert kept["aussage"] == "DIESELBE"
     assert kept["source_authenticated"] is False
     assert kept["recht_uebernommen"] is False
@@ -179,9 +182,7 @@ def test_measured_fd_relation_stays_positive_without_authentication():
     assert CANARY not in json.dumps(kept)
     assert "positive_identity_authorized" not in json.dumps(kept)
 
-    different = dict(measured)
-    different["A"] = "VERSCHIEDEN"
-    assert p1.apply_fd_measurement(different)["aussage"] == "VERSCHIEDEN"
+    assert different["aussage"] == "VERSCHIEDEN"
 
     promoted = dict(measured)
     promoted["source_authenticated"] = True
@@ -194,8 +195,8 @@ def test_measured_fd_relation_stays_positive_without_authentication():
     consistent["fd_set_verified"] = False
     unverified = p1.apply_fd_measurement(consistent)
     assert unverified["aussage"] == "UNBEKANNT"
-    assert unverified["grund"] == "verifier_not_positive"
-    assert unverified["source_authenticated"] is False
+    assert unverified["grund"] == "unmeasured_packet_not_identity"
+    assert unverified["source_authenticated"] == "UNBEKANNT"
 
 
 def test_archived_p2_run_still_shows_late_effect_without_rewriting_it():
@@ -220,8 +221,9 @@ def test_archived_p2_run_still_shows_late_effect_without_rewriting_it():
     assert reading["zeitbezug"]["ordnung"] == "NACH"
     assert reading["identitaet"]["aussage"] == "UNBEKANNT"
     assert reading["herkunft"]["aussage"] == "UNBEKANNT"
-    assert reading["agent_run"] == "BELEGT"
-    assert reading["bindung"] == "independent_local_effect"
+    assert reading["agent_run"] == "UNBEKANNT"
+    assert reading["bindung"] == "agent_run_unbekannt"
+    assert reading["wirkung"]["geltung"] == "UNBEKANNT"
     after = {path.name: path.read_bytes() for path in P2_RUN.iterdir() if path.is_file()}
     assert after == before
 
@@ -279,7 +281,10 @@ def test_committed_controlled_case_matches_the_functions():
     assert result["agent_run"] == "UNBEKANNT"
     assert result["evaluation"] == "KORREKT"
     assert result["timing_evaluation"] == "KORREKT"
-    assert p1.assess(observations, result, reference, "current") == stored
+    assert p1.assess(observations, result, reference, "current") == {
+        **stored,
+        "wirkung": {**stored["wirkung"], "geltung": "UNBEKANNT"},
+    }
     assert stored["wirkung"]["aussage"] == "BELEGT"
     assert stored["zeitbezug"]["ordnung"] == "NACH"
     assert stored["identitaet"]["aussage"] == "UNBEKANNT"
@@ -288,7 +293,8 @@ def test_committed_controlled_case_matches_the_functions():
     assert returned["A"] == "UNBEKANNT"
     assert returned["source_authenticated"] is False
     assert returned["positive_identity_authorized"] is False
-    assert platform_fd["projected"] == p1.apply_fd_measurement(returned)
+    assert p1.apply_fd_measurement(returned)["aussage"] == "UNBEKANNT"
+    assert p1.apply_fd_measurement(returned)["source_authenticated"] == "UNBEKANNT"
     assert platform_fd["projected"]["aussage"] == "UNBEKANNT"
     assert platform_fd["projected"]["source_authenticated"] is False
     assert platform_fd["projected"]["recht_uebernommen"] is False

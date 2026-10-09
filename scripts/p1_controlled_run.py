@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import math
 import os
@@ -15,6 +16,7 @@ import subprocess
 import sys
 import tempfile
 import time
+from collections.abc import Callable
 from pathlib import Path
 
 FIELDS = {"run", "kind", "value", "t_ns", "event"}
@@ -34,6 +36,39 @@ START_ERROR = (
     b"Error: failed to initialize in-process app-server client: "
     b"Operation not permitted (os error 1)"
 )
+
+# Capabilities exist only during direct local acquisition/projection. They are
+# never serialized and cannot be issued by a JSON flag, counts or a dataclass.
+# A compromised interpreter/collector/CLI/kernel remains outside this boundary.
+_CAPTURE_CONTEXTS: dict[object, tuple[int, bytes]] = {}
+_FD_MEASUREMENTS: dict[object, tuple[int, str]] = {}
+CaptureConsumer = Callable[[list[dict], dict, dict, object], None]
+
+
+def _capture_digest(observations: object, result: object, reference: object) -> bytes:
+    return hashlib.sha256(
+        json.dumps(
+            [observations, result, reference],
+            sort_keys=True,
+            separators=(",", ":"),
+            allow_nan=False,
+        ).encode("utf-8")
+    ).digest()
+
+
+def _capture_matches(
+    context: object, observations: object, result: object, reference: object
+) -> bool:
+    if type(context) is not object:
+        return False
+    acquired = _CAPTURE_CONTEXTS.get(context)
+    if acquired is None or acquired[0] != os.getpid():
+        return False
+    try:
+        return acquired[1] == _capture_digest(observations, result, reference)
+    except (TypeError, ValueError, RecursionError, UnicodeError):
+        return False
+
 
 # This is the only supplied test tool. Its receipt is never analyst input.
 # `late` detaches a child that waits for the named process to disappear and
@@ -546,6 +581,8 @@ def capture(
     timeout: float = 60,
     mode: str = "write",
     post_window: float = 5,
+    *,
+    on_capture: CaptureConsumer | None = None,
 ) -> dict:
     if not math.isfinite(timeout) or not 0 < timeout <= 300:
         raise ValueError("timeout must be finite and in (0, 300]")
@@ -625,33 +662,47 @@ def capture(
             archived["order_valid"] = order_oracle["valid"]
             save(output / "reference.json", archived)
         else:
+            archived = dict(oracle)
             save(output / "reference.json", oracle)
-    real_run = (
-        counts["model_completions"] > 0 and counts["tool_reports"] > 0 and counts["recording_ok"]
-    )
-    comparable = oracle["valid"] and snapshot["verdict"] == "BELEGT"
-    evaluation = (
-        ("KORREKT" if oracle["target_present"] == snapshot["target_present"] else "FALSCH")
-        if comparable
-        else "UNBEKANNT"
-    )
-    result = {
-        "run": run,
-        "mode": mode,
-        "requested_model": MODEL,
-        "counts": counts,
-        "proven_agent_runs": int(real_run),
-        "agent_run": "BELEGT" if real_run else "UNBEKANNT",
-        "target": snapshot,
-        "evaluation": evaluation,
-        "scope": "local_target_snapshot_at_window_end_only",
-    }
-    if timing is not None:
-        result["timing"] = timing
-        result["timing_evaluation"] = compare_order(timing, order_oracle, oracle["valid"])
-        result["scope"] = "local_snapshot_plus_post_end_order"
-    save(output / "result.json", result)
-    return result
+        real_run = (
+            counts["model_completions"] > 0
+            and counts["tool_reports"] > 0
+            and counts["recording_ok"]
+        )
+        comparable = oracle["valid"] and snapshot["verdict"] == "BELEGT"
+        evaluation = (
+            ("KORREKT" if oracle["target_present"] == snapshot["target_present"] else "FALSCH")
+            if comparable
+            else "UNBEKANNT"
+        )
+        result = {
+            "run": run,
+            "mode": mode,
+            "requested_model": MODEL,
+            "counts": counts,
+            "proven_agent_runs": int(real_run),
+            "agent_run": "BELEGT" if real_run else "UNBEKANNT",
+            "target": snapshot,
+            "evaluation": evaluation,
+            "scope": "local_target_snapshot_at_window_end_only",
+        }
+        if timing is not None:
+            result["timing"] = timing
+            result["timing_evaluation"] = compare_order(timing, order_oracle, oracle["valid"])
+            result["scope"] = "local_snapshot_plus_post_end_order"
+        save(output / "result.json", result)
+        if on_capture is not None:
+            context = object()
+            _CAPTURE_CONTEXTS[context] = (os.getpid(), _capture_digest(events, result, archived))
+            try:
+                # Workspace and measured snapshot still belong to this capture.
+                # Geltung describes that snapshot, never permanent identity.
+                on_capture(events, result, archived, context)
+                if not _capture_matches(context, events, result, archived):
+                    raise ValueError("capture consumer changed measured evidence")
+            finally:
+                del _CAPTURE_CONTEXTS[context]
+        return result
 
 
 UNMAPPED = (
@@ -722,7 +773,9 @@ def _refuse_archived(output: Path) -> None:
             raise ValueError("archived run is not a P2 output")
 
 
-def bind(result: object, observations: object, reference: object) -> dict:
+def bind(
+    result: object, observations: object, reference: object, *, capture_context: object = None
+) -> dict:
     """Project one late capture onto the accepted P1 fields. Adds no events."""
     if (
         not isinstance(result, dict)
@@ -783,15 +836,20 @@ def bind(result: object, observations: object, reference: object) -> dict:
         and timing.get("verdict") == "BELEGT"
         and reference.get("order") != timing.get("order")
     )
-    independent = "KORREKT" if target_confirmed else ("FALSCH" if target_false else "UNBEKANNT")
-    timing_evaluation = "KORREKT" if order_confirmed else ("FALSCH" if order_false else "UNBEKANNT")
-    agent = _agent_run(result)
+    acquired = _capture_matches(capture_context, observations, result, reference)
+    independent = (
+        "KORREKT" if target_confirmed and acquired else ("FALSCH" if target_false else "UNBEKANNT")
+    )
+    timing_evaluation = (
+        "KORREKT" if order_confirmed and acquired else ("FALSCH" if order_false else "UNBEKANNT")
+    )
+    agent = _agent_run(result) if acquired else "UNBEKANNT"
     if agent == "BELEGT" and independent == "KORREKT" and timing_evaluation == "KORREKT":
         reason = "independent_local_effect"
-    elif agent != "BELEGT":
-        reason = "agent_run_unbekannt"
     elif independent == "FALSCH" or timing_evaluation == "FALSCH":
         reason = "reference_disagrees"
+    elif agent != "BELEGT":
+        reason = "agent_run_unbekannt"
     else:
         reason = "missing_evidence"
     return {
@@ -821,58 +879,87 @@ def _row(aussage: object, grund: object, beleg: object = None, **extra: object) 
 
 
 def apply_fd_measurement(verifier: object) -> dict:
-    """Keep a measured local FD relation without adopting origin or a right.
+    """Project only a capability issued while this process holds measured FDs.
 
-    Caller-supplied packets are not measurements. This function only interprets
-    a return value already produced by the pinned verifier.
+    Historical Linux-verifier packets and caller-supplied JSON cannot issue it.
+    This POSIX measurement does not authenticate the intended source resource.
     """
-    unknown = _row(
-        "UNBEKANNT",
-        "unsecured_source",
-        source_authenticated="UNBEKANNT",
-        recht_uebernommen=False,
-    )
-    if not isinstance(verifier, dict):
+    measured = _FD_MEASUREMENTS.get(verifier) if type(verifier) is object else None
+    if measured is not None and measured[0] == os.getpid() and measured[1] in _FD_RELATIONS:
         return _row(
-            "UNBEKANNT",
-            "not_measured",
-            source_authenticated="UNBEKANNT",
-            recht_uebernommen=False,
-        )
-    authenticated = verifier.get("source_authenticated")
-    if authenticated is not False:
-        if authenticated is True:
-            unknown["grund"] = "forged_authentication"
-        return unknown
-    relation = verifier.get("A")
-    if (
-        relation in _FD_RELATIONS
-        and verifier.get("C") == "JA"
-        and verifier.get("fd_set_verified") is True
-    ):
-        return _row(
-            relation,
+            measured[1],
             "local_relation_not_origin",
             source_authenticated=False,
             recht_uebernommen=False,
         )
     return _row(
         "UNBEKANNT",
-        "verifier_not_positive",
-        source_authenticated=False,
+        (
+            "forged_authentication"
+            if isinstance(verifier, dict) and verifier.get("source_authenticated") is True
+            else "unmeasured_packet_not_identity"
+            if isinstance(verifier, dict)
+            else "not_measured"
+        ),
+        source_authenticated="UNBEKANNT",
         recht_uebernommen=False,
     )
+
+
+def measure_local_fd_relation(first: object, second: object) -> dict:
+    """Measure the received regular-file pair under held duplicates, then expire.
+
+    POSIX same-process fstat only, not the Linux/tmpfs/SCM_RIGHTS verifier.
+    No paths, contents, descriptor numbers or dev/inode values are returned.
+    """
+    unknown = _row(
+        "UNBEKANNT", "not_measured", source_authenticated="UNBEKANNT", recht_uebernommen=False
+    )
+    if any(type(fd) is not int or fd < 0 for fd in (first, second)):
+        return unknown
+    held: list[int] = []
+    try:
+        held.append(os.dup(first))
+        held.append(os.dup(second))
+        before = [os.fstat(fd) for fd in held]
+        after = [os.fstat(fd) for fd in held]
+        if not all(stat.S_ISREG(s.st_mode) for s in before + after):
+            return unknown
+        pairs = [(s.st_dev, s.st_ino) for s in before]
+        if pairs != [(s.st_dev, s.st_ino) for s in after]:
+            return unknown
+        context = object()
+        _FD_MEASUREMENTS[context] = (
+            os.getpid(),
+            "DIESELBE" if pairs[0] == pairs[1] else "VERSCHIEDEN",
+        )
+        try:
+            return apply_fd_measurement(context)
+        finally:
+            del _FD_MEASUREMENTS[context]
+    except (OSError, OverflowError):
+        return unknown
+    finally:
+        for fd in held:
+            os.close(fd)
 
 
 def assess(
     observations: object,
     result: object,
     reference: object,
-    evidence_class: object = "current",
+    evidence_class: object = "stale",
     fd_claim: object = None,
+    *,
+    capture_context: object = None,
 ) -> dict:
-    """Read one P2 flow. Claim text is not copied and no right is granted."""
-    if evidence_class not in _EVIDENCE_CLASSES:
+    """Read one P2 flow without treating an archive as a current capture.
+
+    Neither explicit ``current`` nor JSON counts establish acquisition.
+    Only the live capture callback's matching capability supports that local
+    measurement point. Imported JSON and expired contexts remain historical.
+    """
+    if type(evidence_class) is not str or evidence_class not in _EVIDENCE_CLASSES:
         evidence_class = "forged"
     identity_reason = {
         "current": "no_identity_measurement",
@@ -906,8 +993,8 @@ def assess(
         end_only = relate(ends, run, recording_ok)
         if end_only.get("reason") == "no_effect" or end_only.get("verdict") == "NICHT_ANWENDBAR":
             fehler.append("end_read_as_no_effect")
-        if isinstance(reference, dict):
-            binding = bind(result, observations, reference)
+        if evidence_class == "current" and isinstance(reference, dict):
+            binding = bind(result, observations, reference, capture_context=capture_context)
             binding_reason = binding.get("reason", "UNBEKANNT")
             agent = binding.get("agent_run", "UNBEKANNT")
     fd = _row(
@@ -932,7 +1019,9 @@ def assess(
             target_present=snapshot.get("target_present"),
             geltung=(
                 "lokaler_abfragepunkt"
-                if evidence_class == "current" and snapshot.get("verdict") == "BELEGT"
+                if evidence_class == "current"
+                and snapshot.get("verdict") == "BELEGT"
+                and _capture_matches(capture_context, observations, result, reference)
                 else "UNBEKANNT"
             ),
         ),
@@ -1052,16 +1141,23 @@ def connect(
     timeout: float = 60,
     post_window: float = 5,
     mode: str = "late",
+    *,
+    on_capture: CaptureConsumer | None = None,
 ) -> dict:
     """One late local capture bound to the accepted P1 fields. The observer does not steer."""
     if mode != "late":
         raise ValueError("P2 connects only the late local run")
     _refuse_archived(output)
-    result = capture(output, codex, timeout, mode, post_window)
-    observations = json.loads((output / "observations.json").read_text(encoding="utf-8"))
-    reference = json.loads((output / "reference.json").read_text(encoding="utf-8"))
-    binding = bind(result, observations, reference)
-    save(output / "binding.json", binding)
+    binding = _binding("missing_capture")
+
+    def consume(observations: list[dict], result: dict, reference: dict, context: object) -> None:
+        nonlocal binding
+        binding = bind(result, observations, reference, capture_context=context)
+        save(output / "binding.json", binding)
+        if on_capture is not None:
+            on_capture(observations, result, reference, context)
+
+    capture(output, codex, timeout, mode, post_window, on_capture=consume)
     return binding
 
 

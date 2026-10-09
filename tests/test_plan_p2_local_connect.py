@@ -82,9 +82,9 @@ def bundle(run: int = 7) -> tuple[list[dict], dict, dict]:
 def test_one_late_flow_binds_effect_without_unmapped_fields():
     observations, result, reference = bundle()
     binding = p1.bind(result, observations, reference)
-    assert binding["reason"] == "independent_local_effect"
+    assert binding["reason"] == "agent_run_unbekannt"
     assert binding["run"] == 7
-    assert binding["agent_run"] == "BELEGT"
+    assert binding["agent_run"] == "UNBEKANNT"
     assert binding["start"] == {"event": 1, "kind": "target_initial", "value": False}
     assert binding["tool_report"]["event"] == 2
     assert binding["end"] == {"event": 3, "kind": "cli_end", "value": True}
@@ -94,8 +94,8 @@ def test_one_late_flow_binds_effect_without_unmapped_fields():
     assert 2 not in binding["effect"]["evidence"]
     assert binding["follow_up"]["order"] == "NACH"
     assert binding["follow_up"]["evidence"] == [3, 4, 5]
-    assert binding["independent_effect"] == "KORREKT"
-    assert binding["timing_evaluation"] == "KORREKT"
+    assert binding["independent_effect"] == "UNBEKANNT"
+    assert binding["timing_evaluation"] == "UNBEKANNT"
     assert binding["unknown"] == {name: "UNBEKANNT" for name in p1.UNMAPPED}
     dumped = json.dumps(binding)
     assert CANARY not in dumped
@@ -163,17 +163,19 @@ def test_connect_writes_binding_and_leaves_observations(tmp_path, monkeypatch):
     observations, result, reference = bundle()
     output = tmp_path / "p2"
 
-    def fake_capture(path, codex, timeout, mode, post_window):
+    def fake_capture(path, codex, timeout, mode, post_window, *, on_capture):
         assert mode == "late"
         path.mkdir(parents=True, exist_ok=False)
         p1.save(path / "observations.json", observations)
         p1.save(path / "reference.json", reference)
+        # An arbitrary callback token is not an acquired measurement.
+        on_capture(observations, result, reference, object())
         return result
 
     monkeypatch.setattr(p1, "capture", fake_capture)
     before = json.dumps(observations)
     binding = p1.connect(output)
-    assert binding["reason"] == "independent_local_effect"
+    assert binding["reason"] == "agent_run_unbekannt"
     assert json.loads((output / "observations.json").read_text(encoding="utf-8")) == observations
     assert json.dumps(observations) == before
     stored = json.loads((output / "binding.json").read_text(encoding="utf-8"))
