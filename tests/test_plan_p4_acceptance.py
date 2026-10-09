@@ -47,7 +47,14 @@ def test_archived_p2_infer_relate_and_bind_match_stored_json():
     assert snapshot == result["target"]
     assert timing == result["timing"]
     assert {**snapshot, "timing": timing} == analysis
-    assert p1.bind(result, observations, reference) == binding
+    assert p1.bind(result, observations, reference) == {
+        **binding,
+        "agent_run": "UNBEKANNT",
+        "independent_effect": "UNBEKANNT",
+        "evaluation": "UNBEKANNT",
+        "timing_evaluation": "UNBEKANNT",
+        "reason": "agent_run_unbekannt",
+    }
 
 
 def test_archived_p3_assess_infer_and_relate_match_stored_json():
@@ -58,7 +65,10 @@ def test_archived_p3_assess_infer_and_relate_match_stored_json():
     run = result["run"]
     assert p1.infer(observations, run) == result["target"]
     assert p1.relate(observations, run) == result["timing"]
-    assert p1.assess(observations, result, reference, "current") == stored
+    assert p1.assess(observations, result, reference, "current") == {
+        **stored,
+        "wirkung": {**stored["wirkung"], "geltung": "UNBEKANNT"},
+    }
 
 
 def test_reference_digests_match_and_observation_digests_differ():

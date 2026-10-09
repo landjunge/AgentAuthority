@@ -1,4 +1,4 @@
-"""Score one late local archive. The loaded observer functions stay unchanged.
+"""Score one live local capture; archive replay cannot supply acquisition.
 
 `run_once` calls `connect` once. It does not invent events and it does not steer.
 """
@@ -118,11 +118,11 @@ _PACKET = {
     "name_im_json": False,
 }
 _FD_FORMAT = {
-    "aussage": "DIESELBE",
-    "source_authenticated": False,
+    "aussage": "UNBEKANNT",
+    "source_authenticated": "UNBEKANNT",
     "recht_uebernommen": False,
-    "grund": "local_relation_not_origin",
-    "verschieden": "VERSCHIEDEN",
+    "grund": "unmeasured_packet_not_identity",
+    "verschieden": "UNBEKANNT",
     "ist_hostmessung": False,
     "ist_herkunft": False,
     "name_im_json": False,
@@ -205,8 +205,10 @@ def _forged_result(result: object) -> dict | None:
     return forged
 
 
-def _case_aktuell(observations: object, result: object, reference: object) -> dict:
-    reading = p1.assess(observations, result, reference, "current")
+def _case_aktuell(
+    observations: object, result: object, reference: object, capture_context: object = None
+) -> dict:
+    reading = p1.assess(observations, result, reference, "current", capture_context=capture_context)
     ref = reference if isinstance(reference, dict) else {}
     res = result if isinstance(result, dict) else {}
     ist = {
@@ -432,11 +434,13 @@ def _package(agent_run: object, bindung: object, rows: list[dict]) -> tuple[str,
     return "PASS", None
 
 
-def score(observations: object, result: object, reference: object) -> dict:
-    """Score the fixed cases. The canary is an input only."""
-    current = p1.assess(observations, result, reference, "current")
+def score(
+    observations: object, result: object, reference: object, *, capture_context: object = None
+) -> dict:
+    """Score within acquisition; replay cannot manufacture a live context."""
+    current = p1.assess(observations, result, reference, "current", capture_context=capture_context)
     rows = [
-        _case_aktuell(observations, result, reference),
+        _case_aktuell(observations, result, reference, capture_context),
         _case_fehlend(observations, result),
         _case_alt(observations, result, reference),
         _case_alt_extra(observations, result, reference),
@@ -451,6 +455,8 @@ def score(observations: object, result: object, reference: object) -> dict:
     package, stop_reason = _package(agent_run, bindung, rows)
     record = {
         "step": "P5",
+        "evaluator_contract": "p6_live_acquisition",
+        "expectation_role": "historical_p5_reference",
         "expectation_sha256": _expectation_sha(),
         "run": _run_of(result),
         "agent_run": agent_run if type(agent_run) is str else "UNBEKANNT",
@@ -468,6 +474,8 @@ def _scrub(record: dict) -> dict:
     except TypeError:
         return {
             "step": "P5",
+            "evaluator_contract": "p6_live_acquisition",
+            "expectation_role": "historical_p5_reference",
             "expectation_sha256": _expectation_sha(),
             "run": None,
             "agent_run": "UNBEKANNT",
@@ -556,8 +564,7 @@ def run_once(output: Path) -> dict:
         record["package"] = "STOP"
         record["stop_reason"] = "FileExistsError"
         record = _guard_expectation(record)
-        _persist(output, record)
-        return record
+        return _scrub(record)  # An existing run, including its score, is immutable.
 
     original = p1.tempfile.TemporaryDirectory
     kept: list[str] = []
@@ -570,6 +577,13 @@ def run_once(output: Path) -> dict:
     p1.tempfile.TemporaryDirectory = _Remember
     connect_error: Exception | None = None
     binding: object = None
+    measured_records: list[dict] = []
+    measured_digests: list[bytes] = []
+
+    def consume(observations: list[dict], result: dict, reference: dict, context: object) -> None:
+        measured_records.append(score(observations, result, reference, capture_context=context))
+        measured_digests.append(p1._capture_digest(observations, result, reference))
+
     try:
         try:
             binding = p1.connect(
@@ -578,6 +592,7 @@ def run_once(output: Path) -> dict:
                 timeout=60,
                 post_window=5,
                 mode="late",
+                on_capture=consume,
             )
         except Exception as exc:  # noqa: BLE001 — class name is the stop reason
             connect_error = exc
@@ -587,7 +602,13 @@ def run_once(output: Path) -> dict:
             WORKSPACE_PATH.write_text(kept[0] + "\n", encoding="utf-8")
 
     observations, result, reference, stored_binding, load_error = _load_archived(output)
-    record = score(observations, result, reference)
+    # Never upgrade reloaded JSON to a fresh measurement. Only the callback
+    # which ran while the local acquisition was held can supply the score.
+    record = (
+        measured_records[0]
+        if len(measured_records) == 1
+        else score(observations, result, reference)
+    )
     if len(kept) > 1:
         record["package"] = "STOP"
         record["stop_reason"] = "mehr_als_ein_verzeichnis"
@@ -599,6 +620,11 @@ def run_once(output: Path) -> dict:
         elif load_error is not None:
             record["package"] = "STOP"
             record["stop_reason"] = load_error
+        elif len(measured_digests) != 1 or measured_digests[0] != p1._capture_digest(
+            observations, result, reference
+        ):
+            record["package"] = "STOP"
+            record["stop_reason"] = "archive_disagrees_with_capture"
         elif (
             isinstance(binding, dict)
             and isinstance(stored_binding, dict)
