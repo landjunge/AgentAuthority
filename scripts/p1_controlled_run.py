@@ -6,7 +6,6 @@ import argparse
 import json
 import math
 import os
-from pathlib import Path
 import secrets
 import selectors
 import shlex
@@ -16,6 +15,7 @@ import subprocess
 import sys
 import tempfile
 import time
+from pathlib import Path
 
 FIELDS = {"run", "kind", "value", "t_ns", "event"}
 KINDS = {"target_initial", "target_final", "tool_end", "cli_end"}

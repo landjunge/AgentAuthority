@@ -236,12 +236,13 @@ zeigten dasselbe Bild. Authentisierung und Modellablehnung waren nicht die
 Ursache. Eine Aufhebung der Seatbelt, neue Rechte oder ein Ersatz für
 HOME/`CODEX_HOME` wurden nicht vorgenommen und sind hier nicht die Lösung.
 
-Dieselbe CLI `0.162.0` initialisiert außerhalb dieser Seatbelt. Eine
-Strukturprobe ohne Werkzeug lieferte Exit 0 und vier JSONL-Ereignisse:
-`thread.started`, `turn.started`, `item.completed` mit `agent_message`,
-`turn.completed`. Das ist ein beobachteter Modellabschluss, kein bloßer
-Prozessstart. Ohne Werkzeugmeldung ist so ein Probe-Lauf weiterhin kein
-belegter Agentenlauf.
+Dieselbe CLI `0.162.0` initialisiert außerhalb dieser Seatbelt. Der
+beobachtete Probe-Lauf endete mit Exit 0, 347 Byte stdout und 0 Byte stderr.
+Die vier JSONL-Ereignisse sind `thread.started`, `turn.started`,
+`item.completed` mit Item-Typ `agent_message` und `turn.completed`. Das ist
+ein beobachteter Modellabschluss. Eine Werkzeugmeldung vom Typ
+`command_execution` fehlt darin, deshalb zählt P1 den Probe-Lauf nicht als
+belegten Agentenlauf.
 
 ### Kontrollierter Lauf
 
@@ -251,7 +252,7 @@ approval never, workspace-write, `--json` und `--ephemeral`. Archiv:
 
 | Feld | Wert |
 |---|---|
-| stdout / stderr | 1027 / 0 Bytes |
+| stdout / stderr | 1015 / 0 Bytes, 7 JSONL-Zeilen |
 | Modellabschlüsse | 1 |
 | Werkzeugmeldungen | 1, Exit erfolgreich |
 | CLI | gestartet, Exit 0, kein Timeout, Aufzeichnung gültig |
@@ -272,8 +273,9 @@ Remote-Stopp und historische RC-01–05, CB-01 und OOS-021 bleiben offen.
 
 ### Prüfung
 
-39 P1-Tests bestanden. Gesamtsuite zweimal mit Exit 0 und demselben
-Fortschritt; die ausgezählte Wiederholung: **252 passed, 5 deselected**,
-9,60 s. Ruff-Check und Formatprüfung der beiden Python-Dateien bestanden.
-RC-01–05 weiterhin rot (**5 failed, 5 passed**). OOS-021-Probe weiterhin rot
-(**1 failed**). Keine historische Lücke wurde geschlossen.
+39 P1-Tests sind in der Gesamtsuite enthalten. Gesamtsuite zweimal:
+**252 passed, 5 deselected**, 9,30 s und 9,19 s, jeweils Exit 0. Ruff 0.16.1
+und die Formatprüfung der beiden Python-Dateien bestanden. Die Importreihenfolge
+dieser beiden Dateien folgt der Ruff-Isort-Regel. RC-01–05 weiterhin rot (**5 failed, 5 passed**).
+OOS-021-Probe weiterhin rot (**1 failed**). Keine historische Lücke wurde
+geschlossen.
