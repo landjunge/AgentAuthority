@@ -1,6 +1,6 @@
 # P6: Aufnahmebindung und Herkunftsgrenzen
 
-Stand: 9. Oktober 2026. Verbindlicher Auftrag: ThreadDesk `833554dffb6e`,
+Stand: 10. Oktober 2026. Verbindlicher Auftrag: ThreadDesk `833554dffb6e`,
 Eintrag 27; ursprünglicher Befund: Eintrag 36. Der Nutzer hat die offene
 Aufnahme-/Verifiergrenze ausdrücklich zur Behebung freigegeben, einschließlich
 notwendiger Anschlussanpassungen. **Die Korrektur ist lokal geprüft; P6 ist
@@ -32,6 +32,24 @@ keine Modell-Empfangsbestätigung: Retry-Updates nennen DNS-Fehler für
 mit Exit -9. Keine Modellantwort, Teamstarts oder Ergebnisse sind belegt.
 Der Auftrag bleibt ohne Reviewresultat; er erteilt keine Mergefreigabe und
 deckt den nachfolgenden Fehlerfix nicht automatisch ab.
+
+Am 10. Oktober gelang die Übergabe über den direkten Nutzerkanal an die
+aktuell antwortende Sitzung `01a12296-ef98-7aa1-b34a-53aa992005b7`. Grok
+bestätigte Task-ID `authority-p6-grok-review-eb1fe8b-20261009` und tatsächlichen
+HEAD `eb1fe8b3bd38bda51e5848c502e54a8e7d7cf14d`, las den Auftrag und prüfte
+Whiteboard, Git, Produktcode, Tests und Logs. Die dazu gespeicherten Toolresultate
+belegen den Arbeitsbeginn. Es gab keinen Codex-Doppelstart. Nach ausdrücklicher
+neuer Nutzeranweisung wurden keine zusätzlichen Prüfer gestartet; zwei
+Abschlussmeldungen derselben Sitzung sind keine unabhängigen Teamreviews.
+
+Grok bewertete vier Themen lesend als PASS, führte selbst keine Tests aus und
+erteilte keine Paketabschluss- oder Mergefreigabe. Codex begrenzte das Archiv-PASS
+anhand des nachfolgend beschriebenen eigenen Gegenbelegs. Groks weitere
+Belegkritik war zutreffend: Für die zwei in `eb1fe8b` geänderten Python-Dateien
+fehlte im Übergabeordner ein eigener Ruff-Laufbeleg. Check und Format wurden
+am unveränderten `eb1fe8b` mit `--no-cache` erneut ausgeführt, jeweils Exit 0,
+und mit Commit und Logs gespeichert. Dieser Lauf ist keine Prüfung des
+nachfolgenden Binderfixes; dessen eigene Prüfungen sind unten ausgewiesen.
 
 ## Tatsächliche Aufnahme statt Eingangsflag
 
@@ -76,6 +94,24 @@ begrenztes STOP `archive_disagrees_with_capture`, keine Promotion und keine
 Ausgabe der fehlerhaften Eingangswerte. Die endliche Abweichung bleibt STOP.
 Diese Tests injizieren ausschließlich den Anschluss-Fehlerpfad; sie sind weder
 eine tatsächliche Aufnahme noch ein Agenten-/Modellnachweis.
+
+Eine zusätzliche Anschlusskontrolle auf `eb1fe8b` fand eine weitere
+Archivkonsistenzlücke: Nach dem gültigen Live-Unit-Consumer konnte `binding.json`
+durch `null`, eine Liste oder einen String ersetzt werden, ohne den bisherigen
+Vergleich auszulösen. Außerdem akzeptierte Python-Dictgleichheit die Änderung
+`tool_report.value: true` zu `1`. Das Paket blieb in diesen vier Fällen PASS.
+Die unveränderte gültige Bindung und ein abweichendes Dictionary dienten als
+Positiv- beziehungsweise bereits abgewiesene Negativkontrolle.
+
+Der Folgefix verlangt für die gespeicherte Bindung einen Dictionary-Typ und
+denselben kanonischen JSON-Digest wie für die tatsächlich zurückgegebene
+Live-Bindung. Typänderungen, andere Werte und nicht kanonisierbare Daten
+ergeben begrenztes STOP `binding_weicht_ab`. Fehlerpriorität und Prüfung der
+eigentlichen Aufnahmedaten bleiben erhalten. Die sechs Anschlussregressionen
+waren zuerst **4 failed / 2 passed**; nach dem Fix bestehen alle sechs.
+Ihre synthetische CLI-Protokollfixture führt lokale Prozesse aus und prüft
+den echten Anschlusszweig, ist aber kein tatsächlicher Modell-/Agentenbeleg.
+Der Aufnahme-/FD-Quelltext wurde für diesen Fix nicht geändert.
 
 ## FD-Relation aus tatsächlich gehaltenen Deskriptoren
 
@@ -158,6 +194,21 @@ Zusätzliche Auftrags-, Empfangs-, DNS-, Rot-/Grün- und Transportbelege:
 Ein verifiziertes lokales Git-Bundle ist nur ein Transportartefakt, kein
 Remote-Push- oder Mergebeleg. Das Bundle für `b66be94` enthält den nachfolgenden
 Archivfehlerfix nicht und wird durch das Bundle des Folgecommits ergänzt.
+
+Prüfungen des weiteren Binder-Archivfixes auf Basis `eb1fe8b`:
+
+- P6 enthält 37 Regressionen; gezielt P6 und Anschluss: **42 passed**, Exit 0.
+- Gesamtsuite zweimal: jeweils **363 passed, 5 deselected**, Exit 0.
+- Ruff Check und Format der beiden geänderten Python-Dateien mit `--no-cache`: PASS.
+- Historische Archive, Workflows, `lab` und `tests/realcase` bleiben unverändert.
+- Keine neuen echten Modell-/Agentenläufe. Keine allgemeine Sicherheitsfreigabe.
+
+Während Groks Review blieb dessen Worktree auf `eb1fe8b` eingefroren. Codex
+bereitete den bestätigten Folgefix in einem eigenen isolierten Git-Worktree vor.
+Nur Codex integriert ihn nach dem abgeschlossenen Review und grünen Prüfungen.
+Groks Bericht zu `eb1fe8b` gilt nicht automatisch als Review des Folgefixes.
+Auftrags-/Arbeitsbeginn-/Review-, Ruff- und Rot-/Grün-Belege liegen unter
+`/Users/landjunge/.threaddesk/artifacts/agent-authority/p6-resume-20261009T220150Z/`.
 
 Die fünf bestehenden Abwahlen betreffen RC-01–05. Diese historischen Lücken,
 OOS-021 außerhalb der Standardsuite, CB-01 und der P4-Cachebefund bleiben offen.

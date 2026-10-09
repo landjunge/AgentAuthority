@@ -613,10 +613,17 @@ def run_once(output: Path) -> dict:
         record["package"] = "STOP"
         record["stop_reason"] = "mehr_als_ein_verzeichnis"
     archive_matches = False
+    binding_matches = False
     if len(measured_digests) == 1 and load_error is None:
         try:
             archive_matches = measured_digests[0] == p1._capture_digest(
                 observations, result, reference
+            )
+            binding_matches = (
+                isinstance(binding, dict)
+                and isinstance(stored_binding, dict)
+                and p1._capture_digest(None, binding, None)
+                == p1._capture_digest(None, stored_binding, None)
             )
         except (TypeError, ValueError, RecursionError, OverflowError):
             # Parsed archive data may still be invalid for the canonical digest.
@@ -633,11 +640,7 @@ def run_once(output: Path) -> dict:
         elif not archive_matches:
             record["package"] = "STOP"
             record["stop_reason"] = "archive_disagrees_with_capture"
-        elif (
-            isinstance(binding, dict)
-            and isinstance(stored_binding, dict)
-            and binding != stored_binding
-        ):
+        elif not binding_matches:
             record["package"] = "STOP"
             record["stop_reason"] = "binding_weicht_ab"
         elif not _positive(binding):

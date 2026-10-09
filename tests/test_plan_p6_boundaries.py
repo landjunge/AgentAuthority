@@ -337,10 +337,7 @@ def load_p5():
     return module
 
 
-def test_live_protocol_fixture_preserves_binding_but_replay_cannot(tmp_path):
-    # Adapter-protocol fixture only. It launches local processes, not a model.
-    # BELEGT assertions below test the live branch and are not P6 agent evidence.
-    p5 = load_p5()
+def protocol_fixture_cli(tmp_path):
     cli = tmp_path / "synthetic_cli"
     cli.write_text(
         "#!" + sys.executable + "\n"
@@ -352,6 +349,14 @@ def test_live_protocol_fixture_preserves_binding_but_replay_cannot(tmp_path):
         "{'type':'command_execution','exit_code':0}}), flush=True)\n"
     )
     cli.chmod(0o700)
+    return cli
+
+
+def test_live_protocol_fixture_preserves_binding_but_replay_cannot(tmp_path):
+    # Adapter-protocol fixture only. It launches local processes, not a model.
+    # BELEGT assertions below test the live branch and are not P6 agent evidence.
+    p5 = load_p5()
+    cli = protocol_fixture_cli(tmp_path)
     retained = []
 
     def consume(rows, result, reference, context):
@@ -418,3 +423,51 @@ def test_corrupted_archive_digest_returns_bounded_stop(tmp_path, monkeypatch, ta
     assert record["stop_reason"] == "archive_disagrees_with_capture"
     assert record["agent_run"] == "UNBEKANNT"
     assert json.loads((output / "reliability.json").read_text()) == record
+
+
+@pytest.mark.parametrize(
+    "archived",
+    [
+        pytest.param(None, id="null"),
+        pytest.param([], id="list"),
+        pytest.param("damaged", id="string"),
+        pytest.param({"agent_run": "BELEGT"}, id="incomplete_dict"),
+        pytest.param("coerced_boolean", id="boolean_replaced_by_integer"),
+        pytest.param("unchanged", id="valid"),
+    ],
+)
+def test_live_attachment_rejects_corrupted_archived_binding(tmp_path, monkeypatch, archived):
+    import hashlib
+
+    # Actual local adapter-protocol fixture; its PASS branch is not agent proof.
+    p5 = load_p5()
+    cli = protocol_fixture_cli(tmp_path)
+    lock = tmp_path / "expectation-lock"
+    lock.write_text(hashlib.sha256(p5.EXPECTATION.read_bytes()).hexdigest())
+    monkeypatch.setattr(p5, "EXPECTATION_SHA", lock)
+    monkeypatch.setattr(p5, "WORKSPACE_PATH", tmp_path / "workspace")
+    monkeypatch.setattr(p5.p1.tempfile, "tempdir", str(tmp_path))
+    original_connect = p5.p1.connect
+
+    def connect(folder, *, on_capture, **kwargs):
+        binding = original_connect(
+            folder, codex=str(cli), timeout=5, post_window=3, mode="late", on_capture=on_capture
+        )
+        assert binding["reason"] == "independent_local_effect"
+        if archived == "coerced_boolean":
+            assert binding["tool_report"]["value"] is True
+            damaged = json.loads(json.dumps(binding))
+            damaged["tool_report"]["value"] = 1
+            p5.p1.save(folder / "binding.json", damaged)
+        elif archived != "unchanged":
+            p5.p1.save(folder / "binding.json", archived)
+        return binding
+
+    monkeypatch.setattr(p5.p1, "connect", connect)
+    record = p5.run_once(tmp_path / "capture")
+    if archived == "unchanged":
+        assert record["package"] == "PASS"
+        assert record["stop_reason"] is None
+    else:
+        assert record["package"] == "STOP"
+        assert record["stop_reason"] == "binding_weicht_ab"
