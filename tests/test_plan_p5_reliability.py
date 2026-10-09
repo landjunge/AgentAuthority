@@ -189,9 +189,12 @@ def test_expectation_records_limits_and_not_the_new_archive_sha():
     assert PROMPT not in text
     assert "2026-10-09-p5-reliability" not in text
     digest = hashlib.sha256(EXPECTATION.read_bytes()).hexdigest()
+    local_lock = Path("/tmp/aa-p5-expectation-before.txt")
+    if local_lock.is_file():
+        assert local_lock.read_text(encoding="utf-8").strip() == digest
     if P5_RUN.exists():
-        recorded = Path("/tmp/aa-p5-expectation-before.txt").read_text(encoding="utf-8").strip()
-        assert recorded == digest
+        stored = json.loads((P5_RUN / "reliability.json").read_text(encoding="utf-8"))
+        assert stored["expectation_sha256"] == digest
         result = json.loads((P5_RUN / "result.json").read_text(encoding="utf-8"))
         assert str(result["run"]) not in text
         for path in P5_RUN.iterdir():
