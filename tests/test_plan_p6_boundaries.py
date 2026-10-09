@@ -387,3 +387,34 @@ def test_existing_run_score_cannot_be_overwritten(tmp_path, monkeypatch):
     assert record["package"] == "STOP"
     assert record["stop_reason"] == "FileExistsError"
     assert score.read_bytes() == before
+
+
+@pytest.mark.parametrize("tampered", [1, float("nan"), float("inf")])
+def test_corrupted_archive_digest_returns_bounded_stop(tmp_path, monkeypatch, tampered):
+    import hashlib
+
+    p5 = load_p5()
+    lock = tmp_path / "expectation-lock"
+    lock.write_text(hashlib.sha256(p5.EXPECTATION.read_bytes()).hexdigest())
+    monkeypatch.setattr(p5, "EXPECTATION_SHA", lock)
+
+    def fake_connect(folder, *, on_capture, **kwargs):
+        # Evaluator error-path fixture only: no acquisition or agent proof.
+        on_capture([], {}, {}, object())
+        folder.mkdir()
+        for name, data in (
+            ("observations", []),
+            ("result", {"tampered": tampered}),
+            ("reference", {}),
+            ("binding", {}),
+        ):
+            p5.p1.save(folder / (name + ".json"), data)
+        return {}
+
+    monkeypatch.setattr(p5.p1, "connect", fake_connect)
+    output = tmp_path / "capture"
+    record = p5.run_once(output)
+    assert record["package"] == "STOP"
+    assert record["stop_reason"] == "archive_disagrees_with_capture"
+    assert record["agent_run"] == "UNBEKANNT"
+    assert json.loads((output / "reliability.json").read_text()) == record

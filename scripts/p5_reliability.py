@@ -612,6 +612,16 @@ def run_once(output: Path) -> dict:
     if len(kept) > 1:
         record["package"] = "STOP"
         record["stop_reason"] = "mehr_als_ein_verzeichnis"
+    archive_matches = False
+    if len(measured_digests) == 1 and load_error is None:
+        try:
+            archive_matches = measured_digests[0] == p1._capture_digest(
+                observations, result, reference
+            )
+        except (TypeError, ValueError, RecursionError, OverflowError):
+            # Parsed archive data may still be invalid for the canonical digest.
+            # Treat it as a mismatch without exposing data or escaping STOP.
+            pass
     record = _guard_expectation(record)
     if record.get("stop_reason") != "expectation_changed":
         if connect_error is not None:
@@ -620,9 +630,7 @@ def run_once(output: Path) -> dict:
         elif load_error is not None:
             record["package"] = "STOP"
             record["stop_reason"] = load_error
-        elif len(measured_digests) != 1 or measured_digests[0] != p1._capture_digest(
-            observations, result, reference
-        ):
+        elif not archive_matches:
             record["package"] = "STOP"
             record["stop_reason"] = "archive_disagrees_with_capture"
         elif (

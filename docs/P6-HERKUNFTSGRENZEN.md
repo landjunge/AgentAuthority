@@ -23,6 +23,15 @@ Grok erhielt einen ausschließlich lesenden Teamauftrag mit getrennten
 Prüfthemen Aufnahme/Replay und FD-Herkunft/Minimierung. Nach 120 Sekunden lag
 keine auftragsbezogene Antwort vor; der gestartete Versuch wurde beendet.
 Teamstart, unabhängige Prüfer und Review-Abnahme sind nicht belegt.
+Die operative Fortsetzung adressierte die bekannte P5-Sitzung
+`01a12270-21d4-7d23-bf72-65c0dc477bab` direkt mit `--resume` und einem
+abgegrenzten lesenden Auftrag zum Prüfcommit `b66be94`. Die konkrete
+Task-ID wurde in deren User-Historie zurückgelesen. Das belegt CLI-Annahme,
+keine Modell-Empfangsbestätigung: Retry-Updates nennen DNS-Fehler für
+`cli-chat-proxy.grok.com`. Der eigene Versuch endete nach 183,03 Sekunden
+mit Exit -9. Keine Modellantwort, Teamstarts oder Ergebnisse sind belegt.
+Der Auftrag bleibt ohne Reviewresultat; er erteilt keine Mergefreigabe und
+deckt den nachfolgenden Fehlerfix nicht automatisch ab.
 
 ## Tatsächliche Aufnahme statt Eingangsflag
 
@@ -57,6 +66,16 @@ zurückgegeben, ohne seinen historischen Score zu überschreiben.
 Neue Scores nennen ausdrücklich den Auswertervertrag `p6_live_acquisition`.
 Der behaltene P5-Erwartungshash ist als `historical_p5_reference` gekennzeichnet;
 er wird nicht als unveränderter aktueller P6-Auswertungsvertrag ausgegeben.
+
+Eine weitere modellfreie Gegenkontrolle am Zwischenstand `b66be94` fand einen
+Fehler an diesem Archivübergang: Von Python als JSON geladene `NaN`-/`Infinity`-
+Werte lösten bei der kanonischen Digestbildung einen ungefangenen `ValueError`
+aus. Die neuen Regressionen waren zunächst **2 failed / 1 passed**. Der
+Anschluss behandelt nicht kanonisierbare Archivdaten jetzt wie eine Abweichung:
+begrenztes STOP `archive_disagrees_with_capture`, keine Promotion und keine
+Ausgabe der fehlerhaften Eingangswerte. Die endliche Abweichung bleibt STOP.
+Diese Tests injizieren ausschließlich den Anschluss-Fehlerpfad; sie sind weder
+eine tatsächliche Aufnahme noch ein Agenten-/Modellnachweis.
 
 ## FD-Relation aus tatsächlich gehaltenen Deskriptoren
 
@@ -124,6 +143,21 @@ Validierung des finalen Codes, Python 3.12.13, `-B -p no:cacheprovider`:
 - Ruff Check und Format der sieben betroffenen Python-Dateien: PASS.
 - Unveränderter ursprünglicher Diagnose-Runner: **11 PASS / 0 FAIL / 1 SKIP**, Exit 0.
 - Archiv-Diff gegen P5-Merge leer; keine alten Whiteboard-Dateien überschrieben.
+
+Operative Fortsetzung mit dem begrenzten Archivfehlerfix:
+
+- P6 enthält nun 31 Regressionen; gezielt P6 und Anschluss: **36 passed**, Exit 0.
+- Gesamtsuite erneut zweimal: jeweils **357 passed, 5 deselected**, Exit 0.
+- Ruff Check und Format der beiden zusätzlich geänderten Python-Dateien: PASS.
+- Der Aufnahme-/FD-Quelltext ist gegenüber `b66be94` unverändert; der dort
+  belegte ursprüngliche Diagnose-Runner bleibt diesem identischen Quelltext
+  zugeordnet. Keine neue Linux/tmpfs-Messung und kein neues Grok-Review behauptet.
+
+Zusätzliche Auftrags-, Empfangs-, DNS-, Rot-/Grün- und Transportbelege:
+`/Users/landjunge/.threaddesk/artifacts/agent-authority/p6-grok-handoff-20261009T214202Z/`.
+Ein verifiziertes lokales Git-Bundle ist nur ein Transportartefakt, kein
+Remote-Push- oder Mergebeleg. Das Bundle für `b66be94` enthält den nachfolgenden
+Archivfehlerfix nicht und wird durch das Bundle des Folgecommits ergänzt.
 
 Die fünf bestehenden Abwahlen betreffen RC-01–05. Diese historischen Lücken,
 OOS-021 außerhalb der Standardsuite, CB-01 und der P4-Cachebefund bleiben offen.
