@@ -7,6 +7,12 @@ recorded in [KI-Zentrale decision D-012](https://github.com/landjunge/KI-Zentral
 It reports observations, contradictions, risks and missing evidence. It does not
 grant or revoke rights, approve actions, release secrets or budgets, or stop work.
 
+The binding [consolidated status for 9 October 2026](https://github.com/landjunge/KI-Zentralle/blob/main/docs/agent-authority/IST-STAND-2026-10-09.md)
+records the verified research, positive and negative findings, and test and source
+authentication limits. Its initial publication is
+[KI-Zentrale commit 120829b](https://github.com/landjunge/KI-Zentralle/commit/120829be1f47d85a72b555af56c8139b3f28cea7).
+Research integration does not establish a finished monitoring product.
+
 The ALLOW/DENY, gate and IFC mechanisms below are **historical fake-lab
 experiments**. Their positive results, measured misses, repairs and frozen specs
 remain evidence within their original scope; they do not establish product
