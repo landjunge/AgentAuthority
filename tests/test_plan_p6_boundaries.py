@@ -433,6 +433,9 @@ def test_corrupted_archive_digest_returns_bounded_stop(tmp_path, monkeypatch, ta
         pytest.param("damaged", id="string"),
         pytest.param({"agent_run": "BELEGT"}, id="incomplete_dict"),
         pytest.param("coerced_boolean", id="boolean_replaced_by_integer"),
+        pytest.param("nan_inside_dictionary", id="binding_dict_nan"),
+        pytest.param("positive_infinity_inside_dictionary", id="binding_dict_positive_infinity"),
+        pytest.param("negative_infinity_inside_dictionary", id="binding_dict_negative_infinity"),
         pytest.param("unchanged", id="valid"),
     ],
 )
@@ -448,6 +451,27 @@ def test_live_attachment_rejects_corrupted_archived_binding(tmp_path, monkeypatc
     monkeypatch.setattr(p5, "WORKSPACE_PATH", tmp_path / "workspace")
     monkeypatch.setattr(p5.p1.tempfile, "tempdir", str(tmp_path))
     original_connect = p5.p1.connect
+    original_digest = p5.p1._capture_digest
+    nonfinite = {
+        "nan_inside_dictionary": float("nan"),
+        "positive_infinity_inside_dictionary": float("inf"),
+        "negative_infinity_inside_dictionary": -float("inf"),
+    }
+    canonicalization_errors = []
+
+    def observe_digest(observations, result, reference):
+        try:
+            return original_digest(observations, result, reference)
+        except ValueError:
+            if (
+                observations is None
+                and isinstance(result, dict)
+                and "p6_nonfinite_control" in result
+            ):
+                canonicalization_errors.append("ValueError")
+            raise
+
+    monkeypatch.setattr(p5.p1, "_capture_digest", observe_digest)
 
     def connect(folder, *, on_capture, **kwargs):
         binding = original_connect(
@@ -459,6 +483,11 @@ def test_live_attachment_rejects_corrupted_archived_binding(tmp_path, monkeypatc
             damaged = json.loads(json.dumps(binding))
             damaged["tool_report"]["value"] = 1
             p5.p1.save(folder / "binding.json", damaged)
+        elif isinstance(archived, str) and archived in nonfinite:
+            damaged = json.loads(json.dumps(binding))
+            damaged["p6_nonfinite_control"] = nonfinite[archived]
+            p5.p1.save(folder / "binding.json", damaged)
+            assert isinstance(json.loads((folder / "binding.json").read_text()), dict)
         elif archived != "unchanged":
             p5.p1.save(folder / "binding.json", archived)
         return binding
@@ -471,3 +500,9 @@ def test_live_attachment_rejects_corrupted_archived_binding(tmp_path, monkeypatc
     else:
         assert record["package"] == "STOP"
         assert record["stop_reason"] == "binding_weicht_ab"
+    is_nonfinite = isinstance(archived, str) and archived in nonfinite
+    assert canonicalization_errors == (["ValueError"] if is_nonfinite else [])
+    persisted = (tmp_path / "capture" / "reliability.json").read_text()
+    assert json.loads(persisted) == record
+    assert "p6_nonfinite_control" not in persisted
+    assert "NaN" not in persisted and "Infinity" not in persisted

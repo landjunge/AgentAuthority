@@ -1,5 +1,8 @@
 # P6: Aufnahmebindung und Herkunftsgrenzen
 
+Die folgenden Entwicklungsstände bleiben als Verlauf erhalten. Die aktuellen
+Veröffentlichungs- und Abnahmegrenzen stehen im Nachtrag am Ende dieser Datei.
+
 Stand: 10. Oktober 2026. Verbindlicher Auftrag: ThreadDesk `833554dffb6e`,
 Eintrag 27; ursprünglicher Befund: Eintrag 36. Der Nutzer hat die offene
 Aufnahme-/Verifiergrenze ausdrücklich zur Behebung freigegeben, einschließlich
@@ -253,3 +256,76 @@ Schutzregeln und verwendet keinen Admin-Bypass.
 P7 bleibt wartend. P8 und P9 werden nicht gestartet. D-012 bleibt bindend:
 Authority beobachtet, analysiert und warnt; es vergibt keine Rechte, Secrets
 oder Budgets und bildet kein Stop-Gate.
+
+## Nachtrag: versionierte Abnahmebelege, 10. Oktober 2026
+
+Verbindliche Quellen sind Whiteboard `833554dffb6e`, insbesondere Einträge
+27, 77, 79, 82, 126–128. Dieser Nachtrag bearbeitet ausschließlich P6;
+P7–P9 werden dadurch nicht gestartet.
+
+Der tatsächliche P6-Remote-Stand ist inzwischen belegt: PR #22 ist gemergt,
+`master` steht an `674e7fe86e232c1fd8d26d0247bf2ae4cf853c8d`. Parent ist der
+P5-Merge `0f6b601e2212cde9f7d44f14927de39629250b34`. Tree
+`90194321c8d6d3a56240dca3efb6c6d65a9ac5bb` entspricht exakt dem zuvor lokal
+geprüften und veröffentlichten P6-Commit `d0b1a91441ee752be056d7779fba8e65ee1dd02f`.
+Die früheren Aussagen über fehlenden Remote-Push oder Merge beschreiben den
+damaligen Zwischenstand. Sie sind keine aktuelle Statusmeldung.
+
+### Geschlossene lokale Beleglücke
+
+Die drei Dictionary-Gegenkontrollen aus Eintrag 77 waren nur in einem separaten
+Prüfskript samt Laufbelegen archiviert. Sie gehören jetzt zur bestehenden
+Regression `test_live_attachment_rejects_corrupted_archived_binding`.
+Die ursprüngliche gültige Bindung sowie die bisherigen beschädigten Typen
+bleiben als Kontrollen erhalten. Es gibt keinen neuen Produktpatch.
+
+| Änderung an gespeicherter Bindung | Tatsächlich geprüfter Pfad | Erwartet und beobachtet |
+| --- | --- | --- |
+| Dictionary mit `NaN` | Kanonische Digestbildung wirft `ValueError` | Begrenztes STOP `binding_weicht_ab` |
+| Dictionary mit `+Infinity` | Kanonische Digestbildung wirft `ValueError` | Begrenztes STOP `binding_weicht_ab` |
+| Dictionary mit `-Infinity` | Kanonische Digestbildung wirft `ValueError` | Begrenztes STOP `binding_weicht_ab` |
+| Unveränderte Bindung | Kein Kanonisierungsfehler | PASS ausschließlich im synthetischen Protokolltest |
+
+Die Tests messen den tatsächlichen Exception-Pfad des bestehenden Auswerters,
+statt einen Fehler künstlich zu werfen. Sie prüfen zusätzlich das gespeicherte
+Ergebnis gegen den Rückgabewert; Kontrollfeld und nichtendliche Werte fehlen
+im Ergebnisbericht. Die absichtlich beschädigte synthetische Eingangsdatei
+enthält diese Werte weiterhin als Testeingang. Daraus folgt kein allgemeiner
+Minimierungsnachweis für andere Kanäle.
+
+Prüfung am isolierten Codex-Worktree auf Basis des tatsächlichen Remote-Masters,
+Python 3.12.13, `-B -p no:cacheprovider`: gezielt P6 und Anschluss **45 bestanden**;
+Gesamtsuite **366 bestanden, 5 historische Abwahlen**, Exit 0. Ruff Check und
+Format der geänderten Testdatei bestanden. Produktcode, Workflows und alte
+Archive bleiben bytegleich. Es wurden keine neuen echten Modellläufe ausgeführt;
+der positive Protokollfall ist keine echte Agentenabnahme. Keine Wiederholung
+von Groks abgeschlossener H3-Prüfung und keine neue unabhängige Prüfung behauptet.
+
+### Weiterhin offene vollständige Abnahme
+
+Der aktuelle Remote-Job `test` ist grün (Run `38002016327`, Job `114062072638`).
+CodeQL `Analyze (python)` bleibt rot (Run `38002016367`, Job `114062072771`):
+Rohlogs melden deaktiviertes Code Scanning und `configuration error` beim
+Ergebnisupload. Die Artefaktabfrage dieses Runs liefert **null Artefakte**.
+Ein lokales `codeql` ist nicht installiert; ein alternativer vollständiger
+Analysebeleg ist damit nicht vorhanden. Kein CodeQL-PASS und keine Aussage
+über fehlende Schwachstellen.
+
+Der GitHub-Lesezugriff meldet `protected=false`; der Protection-Endpunkt ist
+für die Integration mit HTTP 403 nicht zugänglich. Rulesets liefern HTTP 403
+mit Tarifhinweis. Der normale `gh api`-Leseweg scheitert in diesem
+Arbeitsbereich an der Verbindung zu `api.github.com`. Eine vollständige
+Pflichtcheckliste ist nicht nachgewiesen; CodeQL wird deshalb nicht unbelegt
+als verpflichtender Branch-Schutzcheck bezeichnet. Keine Schutz-, Tarif-,
+Secret- oder Workflowänderung und kein Umgehen des Ergebnisuploads.
+
+Groks früherer Merge außerhalb seines lesenden Auftrags bleibt als historische
+Integratorabweichung dokumentiert. Diese Tests genehmigen ihn nicht nachträglich
+und lösen keinen P6-Nachmerge aus. RC-01–05, OOS-021, CB-01 und der
+P4-Verfahrensvorbehalt bleiben offen. Vollständige P6-Abnahme und die
+Voraussetzung für P7 sind weiterhin nicht erklärt.
+
+Aktuelle Test-, Quellhash-, Remote- und Abschlussbelege:
+`/Users/landjunge/.threaddesk/artifacts/agent-authority/p6-acceptance-20261010T003759561Z/`.
+Commit, Push und mögliche Remote-Nachweise werden dort und append-only im
+Whiteboard getrennt von diesem lokalen Testergebnis dokumentiert.
