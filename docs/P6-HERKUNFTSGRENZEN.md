@@ -330,16 +330,20 @@ Aktuelle Test-, Quellhash-, Remote- und Abschlussbelege:
 Commit, Push und mögliche Remote-Nachweise werden dort und append-only im
 Whiteboard getrennt von diesem lokalen Testergebnis dokumentiert.
 
-## Nachtrag: formale Abnahme des begrenzten P6-Pakets
+## Nachtrag: begrenzter P6-Prüfstand und Integration
 
 Stand: 10. Oktober 2026. Auftrag Whiteboard `833554dffb6e`, Eintrag 527,
-verlangt zuerst die dokumentierte formale P6-Abnahme. Codex hat die Kriterien
-aus Eintrag 27, die begrenzte Entscheidung 386 sowie die unabhängigen
+verlangt zuerst die dokumentierte formale P6-Abnahme. Diese bleibt offen.
+Codex hat die Kriterien aus Eintrag 27, die begrenzte Entscheidung 386 sowie die unabhängigen
 Grok-Prüfungen 295/296, 512 und 549 mit den Originalbelegen abgeglichen.
-**Das geprüfte begrenzte technische P6-Paket ist abgenommen.** Dies ist keine
-allgemeine Sicherheits-, Produktreife- oder Releasefreigabe. Die früheren
-offenen Publikations-, CodeQL- und Abnahmezustände oben bleiben als Verlauf
-erhalten; für dieses Paket gilt der folgende Stand.
+**Der begrenzte technische P6-Prüfstand und seine Integration sind bestanden.
+Die vollständige/formale P6-Paketabnahme bleibt offen wegen RC-01–05, OOS-021,
+CB-01 und P4. Die Voraussetzung für P7 ist nicht erfüllt.** Dies entspricht
+Entscheidung 386, der Gegenprüfung 549 und der anschließenden ausdrücklichen
+Nutzerkorrektur. Die in PR #28 behauptete formale Paketabnahme war eine
+Fehlinterpretation durch Codex und wird hiermit zurückgenommen. Die früheren
+Publikations- und CodeQL-Zustände bleiben als Verlauf erhalten; der erfolgreiche
+Merge-Nachweis aktualisiert diese technischen Punkte, nicht die Paketabnahme.
 
 [PR #27](https://github.com/landjunge/agent-authority-lab/pull/27) wurde von
 Codex regulär per Squash mit gepinntem Kandidaten-HEAD
@@ -348,11 +352,12 @@ Codex regulär per Squash mit gepinntem Kandidaten-HEAD
 `674e7fe86e232c1fd8d26d0247bf2ae4cf853c8d`. Tree
 `589813b713d53717b147a56aefa10d19f9a803b6` ist identisch mit dem geprüften
 Kandidaten und dem unabhängig gerechneten Merge-Tree. Remote-Master zeigte
-bei der Abnahme auf diesen Commit; P5-Merge `0f6b601` ist darin enthalten.
+bei der Integrationsprüfung auf diesen Commit; P5-Merge `0f6b601` ist darin
+enthalten.
 Aktuelle Regeln, Reviews und erfolgreiche Checks wurden vor Ready und vor
 Merge erneut geprüft. Es gab keinen Admin-, Force- oder Auto-Merge-Bypass.
 
-| Kriterium aus dem P6-Auftrag | Abnahme und tatsächlicher Umfang |
+| Kriterium aus dem P6-Auftrag | Prüfstand und tatsächlicher Umfang |
 | --- | --- |
 | Keine falsch authentisierten Quellen; alte/gefälschte Eingänge bleiben unbekannt | 40 P6-Regressionen bestanden; Quellenherkunft bleibt `UNBEKANNT`. |
 | Mindestens ein brauchbarer enger Positivfall | Tatsächlicher lokaler Dateieffekt und gleichzeitig gehaltene FD-Paare sind geprüft; sie authentisieren keinen Provider oder Actor. |
@@ -377,18 +382,24 @@ Fehler; der bestehende CI-Workflow toleriert diese Exit-1-Ergebnisse. Sein
 grüner Jobstatus bezeichnet diese Einzelprüfungen nicht als bestanden.
 P6 enthält **null neue echte Modell-/Agentenläufe**. Die Registry ist keine
 Sicherheitsgrenze gegen kompromittierte Collector-, CLI-, Python- oder
-Kernelprozesse. Diese Paketabnahme schließt keine der genannten Grenzen.
+Kernelprozesse. Die begrenzte technische Akzeptanz schließt keine der
+genannten Grenzen und erfüllt nicht die vollständige Paketabnahme.
 
 Vollständige Originalbelege, JUnit, Quellenhashes, Risikobewertung und
 Abnahmematrix: lokale Ablage
 `/Users/landjunge/.threaddesk/artifacts/agent-authority/product-finalization-20261010/`.
-Die formale Entscheidung und ihre erneute Quellen-/JUnit-/Remote-Prüfung
-liegen unter `formal-p6-acceptance-20261010/`; Mergebefehle, Remote-Belege,
-Original-CI-/CodeQL-Logs und Digests unter `pr27-integration-20261010/`.
+Die frühere fehlerhafte formale Entscheidung und ihre Quellen-/JUnit-/Remote-
+Prüfung liegen unverändert unter `formal-p6-acceptance-20261010/`. Die
+übergeordnete Statuskorrektur liegt unter `p6-status-correction-20261010/`;
+Mergebefehle, Remote-Belege, Original-CI-/CodeQL-Logs und Digests unter `pr27-integration-20261010/`.
 Die Prüfung wiederholt keine unveränderten Tests und keinen P5-Lauf.
 
-P7 bleibt bis zur konkreten Übergabe gemäß Auftrag 527 wartend. Sein echter
-kontrollierter Agentenlauf und seine Gesamtprüfung sind eigene Abnahmepunkte.
-P8 und P9 folgen ausschließlich nach den jeweiligen belegten Voraussetzungen.
+P7 ist nicht freigegeben: Die vollständige P6-Paketabnahme fehlt. Codex hat
+den irrtümlich erteilten P7-Auftrag 590 mit Whiteboard-Eintrag 719 widerrufen.
+Grok hatte bereits einen sauberen Worktree angelegt und Arbeitsbeginn gemeldet.
+Nach dem Widerruf wurden zwei uncommittete P7-Dateien und gezielte Prüfungen
+beobachtet; Codex pausierte daraufhin die bestehende Sitzung. Die Dateien sind
+unverändert gesichert. Diese Arbeiten sind nicht freigegeben oder abgenommen.
+Ein Empfangsnachweis des Widerrufs fehlt weiterhin. P8 und P9 bleiben wartend.
 D-012 bleibt unverändert: Authority beobachtet, analysiert und warnt; es
 vergibt keine Rechte, Secrets, Budgets oder Permits und bildet kein Stop-Gate.
