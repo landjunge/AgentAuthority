@@ -396,8 +396,10 @@ Die Prüfung wiederholt keine unveränderten Tests und keinen P5-Lauf.
 
 P7 ist nicht freigegeben: Die vollständige P6-Paketabnahme fehlt. Codex hat
 den irrtümlich erteilten P7-Auftrag 590 mit Whiteboard-Eintrag 719 widerrufen.
-Grok hatte bereits einen sauberen Worktree angelegt und Arbeitsbeginn gemeldet;
-dies ist keine genehmigte P7-Implementierung oder Abnahme. Ein Empfangsnachweis
-des Widerrufs muss separat belegt werden. P8 und P9 bleiben ebenfalls wartend.
+Grok hatte bereits einen sauberen Worktree angelegt und Arbeitsbeginn gemeldet.
+Nach dem Widerruf wurden zwei uncommittete P7-Dateien und gezielte Prüfungen
+beobachtet; Codex pausierte daraufhin die bestehende Sitzung. Die Dateien sind
+unverändert gesichert. Diese Arbeiten sind nicht freigegeben oder abgenommen.
+Ein Empfangsnachweis des Widerrufs fehlt weiterhin. P8 und P9 bleiben wartend.
 D-012 bleibt unverändert: Authority beobachtet, analysiert und warnt; es
 vergibt keine Rechte, Secrets, Budgets oder Permits und bildet kein Stop-Gate.
