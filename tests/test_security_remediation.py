@@ -2,8 +2,9 @@
 
 from __future__ import annotations
 
-from dataclasses import replace
 import threading
+from concurrent.futures import ThreadPoolExecutor
+from dataclasses import replace
 
 import pytest
 
@@ -300,7 +301,6 @@ def test_finish_waits_for_started_effect_and_other_workflows_progress():
     started = threading.Event()
     release = threading.Event()
     finished = threading.Event()
-    errors = []
     effects = []
 
     def effect():
@@ -308,30 +308,19 @@ def test_finish_waits_for_started_effect_and_other_workflows_progress():
         assert release.wait(5)
         effects.append("before finish")
 
-    def commit():
-        try:
-            assert lab.commit_effect(req, decision, effect)
-        except BaseException as error:
-            errors.append(error)
-
     def finish():
-        try:
-            assert lab.finish("w")
-            finished.set()
-        except BaseException as error:
-            errors.append(error)
+        assert lab.finish("w")
+        finished.set()
 
-    worker = threading.Thread(target=commit)
-    worker.start()
-    assert started.wait(5)
-    finisher = threading.Thread(target=finish)
-    finisher.start()
-    try:
-        assert lab.submit(request("file.read", "README.md", workflow="independent")).allow
-        assert not finished.is_set()
-    finally:
-        release.set()
-        worker.join(10)
-        finisher.join(10)
-    assert not worker.is_alive() and not finisher.is_alive()
-    assert errors == [] and finished.is_set() and effects == ["before finish"]
+    with ThreadPoolExecutor(max_workers=2) as pool:
+        worker = pool.submit(lab.commit_effect, req, decision, effect)
+        try:
+            assert started.wait(5)
+            finisher = pool.submit(finish)
+            assert lab.submit(request("file.read", "README.md", workflow="independent")).allow
+            assert not finished.is_set()
+        finally:
+            release.set()
+        assert worker.result(timeout=10)
+        finisher.result(timeout=10)
+    assert finished.is_set() and effects == ["before finish"]

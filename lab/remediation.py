@@ -15,15 +15,15 @@ from collections.abc import Callable
 from dataclasses import dataclass
 
 from lab.models import (
+    I6_IRREVERSIBLE,
     INVALID_REQUEST,
     IRREVERSIBLE_ACTIONS,
     MUTATING_ACTIONS,
-    I6_IRREVERSIBLE,
     ActionRequest,
     Decision,
 )
 from lab.paths import canonical_path, is_security_test_path
-from lab.validator import Lab, _WorkflowEntry, _emit_decision, validate_request
+from lab.validator import Lab, _emit_decision, _WorkflowEntry, validate_request
 
 BOUND_APPROVAL_REQUIRED = "BOUND_APPROVAL_REQUIRED"
 CONTROL_PATHS = frozenset({".vscode/settings.json", ".cursor/mcp.json", ".cursor/rules/mcp.json"})
