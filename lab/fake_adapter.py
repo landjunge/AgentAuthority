@@ -19,20 +19,29 @@ class FakeAdapter:
         """One identity for the monitor and the repo. T-19."""
         return canonical_path(path) or path
 
-    def write(self, actor: str, path: str, workflow_id: str, content: str = "") -> Decision:
+    def write(
+        self,
+        actor: str,
+        path: str,
+        workflow_id: str,
+        content: str = "",
+        approval_token: Any = None,
+    ) -> Decision:
         _ = content  # not persisted on deny; repo only updates on allow
         key = self._key(path)
-        d = self.lab.submit(
-            ActionRequest(actor, "file.write", key, {}, workflow_id)
-        )
+        params: dict[str, Any] = {"content": content}
+        if approval_token is not None:
+            params["approval_token"] = approval_token
+        req = ActionRequest(actor, "file.write", key, params, workflow_id)
+        d = self.lab.submit(req)
         if d.allow:
-            self.repo.files[key] = content
+            self.lab.commit_effect(req, d, lambda: self.repo.files.__setitem__(key, content))
+        else:
+            d.effect_committed = False
         return d
 
     def read(self, actor: str, path: str, workflow_id: str) -> Decision:
-        return self.lab.submit(
-            ActionRequest(actor, "file.read", self._key(path), {}, workflow_id)
-        )
+        return self.lab.submit(ActionRequest(actor, "file.read", self._key(path), {}, workflow_id))
 
     def delete(
         self, actor: str, path: str, workflow_id: str, approval_token: Any = None
@@ -41,17 +50,20 @@ class FakeAdapter:
         if approval_token is not None:
             params["approval_token"] = approval_token
         key = self._key(path)
-        d = self.lab.submit(
-            ActionRequest(actor, "file.delete", key, params, workflow_id)
-        )
+        req = ActionRequest(actor, "file.delete", key, params, workflow_id)
+        d = self.lab.submit(req)
         if d.allow:
-            self.repo.files.pop(key, None)
+
+            def delete_effect() -> None:
+                self.repo.files.pop(key, None)
+
+            self.lab.commit_effect(req, d, delete_effect)
+        else:
+            d.effect_committed = False
         return d
 
     def delegate(self, actor: str, to: str, workflow_id: str) -> Decision:
-        return self.lab.submit(
-            ActionRequest(actor, "delegate", to, {"to": to}, workflow_id)
-        )
+        return self.lab.submit(ActionRequest(actor, "delegate", to, {"to": to}, workflow_id))
 
     def net_connect(self, actor: str, destination: str, workflow_id: str) -> Decision:
         return self.lab.submit(

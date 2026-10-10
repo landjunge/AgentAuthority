@@ -57,9 +57,7 @@ def _freeze_view(view: dict[str, Any]) -> Mapping[str, Any]:
     what lets ``snapshot()`` share record objects instead of deep-copying the
     whole provenance on every single submit.
     """
-    return MappingProxyType(
-        {k: tuple(v) if isinstance(v, list) else v for k, v in view.items()}
-    )
+    return MappingProxyType({k: tuple(v) if isinstance(v, list) else v for k, v in view.items()})
 
 
 @dataclass(frozen=True)
@@ -137,3 +135,6 @@ class Decision:
     allow: bool
     deny_reason: str | None
     violated_invariants: list[str]
+    # Authorization is separate from a completed in-memory adapter effect.
+    effect_committed: bool | None = None
+    _effect_ticket: object | None = field(default=None, init=False, repr=False, compare=False)
