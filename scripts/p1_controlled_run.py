@@ -429,7 +429,7 @@ def watch_after(
         return
     absent_ns = now
     try:
-        fd = os.open(root / "post.observe", os.O_CREAT | os.O_EXCL | os.O_WRONLY, 0o644)
+        fd = os.open(root / "post.observe", os.O_CREAT | os.O_EXCL | os.O_WRONLY, 0o600)
         os.close(fd)
     except OSError:
         pass
