@@ -23,7 +23,11 @@ agent able to call it could drop its own budget and provenance.
 
 from __future__ import annotations
 
+import hashlib
+import json
 import threading
+from collections.abc import Callable
+from typing import Any
 
 from lab.invariants import evaluate
 from lab.models import (
@@ -64,12 +68,39 @@ def validate_request(req: object) -> str | None:
 class _WorkflowEntry:
     """One registry identity: the lock and the state cannot exist apart."""
 
-    __slots__ = ("lock", "state", "retired")
+    __slots__ = ("lock", "state", "retired", "approvals")
 
     def __init__(self, state: WorkflowState) -> None:
         self.lock = threading.Lock()
         self.state = state
         self.retired = False
+        self.approvals: dict[str, Any] = {}
+
+
+def _effect_fingerprint(req: ActionRequest) -> str | None:
+    try:
+        payload = json.dumps(
+            [req.actor, req.action, req.resource, req.workflow_id, req.parameters],
+            sort_keys=True,
+            allow_nan=False,
+            separators=(",", ":"),
+        )
+    except (TypeError, ValueError, RecursionError):
+        return None
+    return hashlib.sha256(payload.encode()).hexdigest()
+
+
+class _EffectTicket:
+    """Local coordinator bookkeeping, never a source-authentication claim."""
+
+    def __init__(
+        self, owner: Lab, entry: _WorkflowEntry, decision: Decision, fingerprint: str
+    ) -> None:
+        self.owner = owner
+        self.entry = entry
+        self.decision = decision
+        self.fingerprint = fingerprint
+        self.used = False
 
 
 class Lab:
@@ -82,9 +113,7 @@ class Lab:
     def __init__(self, max_tracked: int | None = None) -> None:
         self._entries: dict[str, _WorkflowEntry] = {}
         self._table_lock = threading.Lock()
-        self._max_tracked = (
-            self.MAX_TRACKED_WORKFLOWS if max_tracked is None else max_tracked
-        )
+        self._max_tracked = self.MAX_TRACKED_WORKFLOWS if max_tracked is None else max_tracked
 
     @property
     def _states(self) -> dict[str, WorkflowState]:
@@ -141,10 +170,7 @@ class Lab:
 
     def _at_capacity(self, workflow_id: str) -> bool:
         with self._table_lock:
-            return (
-                workflow_id not in self._entries
-                and len(self._entries) >= self._max_tracked
-            )
+            return workflow_id not in self._entries and len(self._entries) >= self._max_tracked
 
     def _admit(self, workflow_id: str) -> _WorkflowEntry | None:
         """Return a live entry, reserve a new one, or reject at cap.
@@ -182,12 +208,49 @@ class Lab:
             return False
         with entry.lock:
             entry.retired = True
+            entry.approvals.clear()
             self._finish_holding_after_state_removed(workflow_id)
             return True
 
     def tracked_workflows(self) -> int:
         with self._table_lock:
             return len(self._entries)
+
+    def commit_effect(
+        self, req: ActionRequest, decision: Decision, effect: Callable[[], None]
+    ) -> bool:
+        """Commit one trusted FakeAdapter callback in its authorized generation.
+
+        No table-lock acquisition while holding the entry lock. finish() waits
+        for a running callback or retires this identity before a later callback.
+        ALLOW stays an authorization result even when the effect is retired.
+        """
+        ticket = decision._effect_ticket
+        if not isinstance(ticket, _EffectTicket) or ticket.owner is not self:
+            if decision.effect_committed is None:
+                decision.effect_committed = False
+            return False
+        if ticket.decision is not decision:
+            if decision.effect_committed is None:
+                decision.effect_committed = False
+            return False
+        with ticket.entry.lock:
+            if (
+                ticket.used
+                or ticket.entry.retired
+                or decision.allow is not True
+                or decision.deny_reason is not None
+                or decision.violated_invariants
+                or _effect_fingerprint(req) != ticket.fingerprint
+            ):
+                if decision.effect_committed is None:
+                    decision.effect_committed = False
+                return False
+            ticket.used = True
+            decision.effect_committed = False
+            effect()
+            decision.effect_committed = True
+            return True
 
     def _state_unlocked(self, workflow_id: str) -> WorkflowState:
         """Caller holds the live entry lock. Does not allocate."""
@@ -254,6 +317,7 @@ class Lab:
         before = current.snapshot()
         predicted = predict_next(before, req)
         violated = evaluate(req, predicted)
+        violated.extend(self._extra_violations(entry, req))
         if violated:
             # Identity: the live object was never mutated; keep the snapshot.
             entry.state = before
@@ -265,4 +329,16 @@ class Lab:
         rec = record(req=req, before=before, after=predicted, decision="ALLOW")
         predicted.provenance.append(rec)
         entry.state = predicted
-        return Decision(allow=True, deny_reason=None, violated_invariants=[])
+        self._after_allow_locked(entry, req)
+        decision = Decision(allow=True, deny_reason=None, violated_invariants=[])
+        fingerprint = _effect_fingerprint(req)
+        if fingerprint is not None:
+            decision._effect_ticket = _EffectTicket(self, entry, decision, fingerprint)
+        return decision
+
+    def _extra_violations(self, entry: _WorkflowEntry, req: ActionRequest) -> list[str]:
+        """Optional explicitly selected research profile. Frozen Lab adds none."""
+        return []
+
+    def _after_allow_locked(self, entry: _WorkflowEntry, req: ActionRequest) -> None:
+        """Optional profile bookkeeping, inside the same decision transaction."""
