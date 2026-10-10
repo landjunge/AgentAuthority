@@ -303,3 +303,14 @@ def test_failed_cli_protocol_cannot_be_a_model_proof(bad) -> None:
     else:
         result["proven_agent_runs"] = True
     assert p7._proven(result) is False
+
+
+@pytest.mark.parametrize(
+    ("actual", "reason"),
+    [("belegt", "originaler_codex_exec"), ("nicht_belegt", "kein_modellnachweis")],
+)
+def test_model_proof_reason_describes_the_actual_result(actual, reason) -> None:
+    rows = p7._matrix({}, {}, {}, {"ordnung": "UNBEKANNT"}, actual, actual)
+    row = next(row for row in rows if row["fall"] == "modellnachweis")
+    assert row["ist"] == actual
+    assert row["grund"] == reason

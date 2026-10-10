@@ -46,3 +46,24 @@ D-012: ausschließlich beobachten, analysieren und warnen. Keine operative Gate-
 Originalbefehle, UTC, JUnit, Pluginbelege, Provenienz und Hashmanifest: `/Users/landjunge/.threaddesk/artifacts/agent-authority/p7-integration-20261011/`.
 
 WB1605 erlaubt zulässige unabhängige Teilaufgaben parallel. Ihre konkrete [Abhängigkeitszuordnung](P7-P8-P9-ABHAENGIGKEITEN.md) ist dokumentiert. P8-Ausführung benötigt weiterhin abgeschlossenes und integriertes P7 (WB30); P9-Phase entsprechend integriertes P8 (WB34). Keine Phasenabnahme oder pauschale Merge-/Produktionsfreigabe aus WB1605 ableiten.
+
+
+## Ergänzung: unabhängiger Beschriftungsbefund WB1611
+
+Grok bestätigt unabhängig den echten Lauf, Erwartungshash und die originale
+Codex-Datei mit passendem Digest. Dabei findet er einen Berichtscodefehler:
+Die originale Modellnachweis-Zeile nennt bei Ist=belegt den fest verdrahteten
+Fixture-Grund. Das oberste abnahme_grund und die tatsächlichen Modell-/Toolzähler
+nennen korrekt den originalen Codex-Lauf. Der Fehler wird nicht verschwiegen.
+
+Die originale integration.json und alle Messbelege bleiben bytegleich.
+Die separate [Beschriftungskorrektur](p7-runs/2026-10-11-integration/label-korrektur-wb1611.json)
+bezeichnet die betroffene Zeile, den Originalhash und den korrekten Grund
+originaler_codex_exec. Das ist eine Beschriftungskorrektur, keine neue Aufnahme,
+keine rückwirkend ausgestellte Capture-Berechtigung und kein zusätzlicher Modelllauf.
+
+Der P7-Berichtscode wählt den Grund jetzt passend zum tatsächlichen Ergebnis;
+zwei gezielte Regressionstests prüfen belegte und nicht belegte Ergebnisse.
+Beide bestanden. Die unabhängige Gegenprüfung des exakten Korrekturcommits und
+die zugehörigen finalen CI-Prüfungen bleiben separat zu belegen. P7 wird dadurch
+nicht formal abgenommen und nicht automatisch gemergt.

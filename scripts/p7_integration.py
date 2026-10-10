@@ -324,9 +324,8 @@ def _matrix(
     lines.append(_line("herkunft", "UNBEKANNT", "UNBEKANNT", "kein_herkunftsbeleg"))
     lines.append(_line("identitaet", "UNBEKANNT", "UNBEKANNT", "kein_identitaetsbeleg"))
     lines.append(_line("spaeteffekt", "NACH", timing["ordnung"], "nur_aus_der_laufenden_aufnahme"))
-    lines.append(
-        _line("modellnachweis", model_expected, model_actual, "fixture_ist_kein_modelllauf")
-    )
+    model_reason = "originaler_codex_exec" if model_actual == "belegt" else "kein_modellnachweis"
+    lines.append(_line("modellnachweis", model_expected, model_actual, model_reason))
     return lines
 
 
