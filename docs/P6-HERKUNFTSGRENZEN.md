@@ -403,3 +403,87 @@ unverändert gesichert. Diese Arbeiten sind nicht freigegeben oder abgenommen.
 Ein Empfangsnachweis des Widerrufs fehlt weiterhin. P8 und P9 bleiben wartend.
 D-012 bleibt unverändert: Authority beobachtet, analysiert und warnt; es
 vergibt keine Rechte, Secrets, Budgets oder Permits und bildet kein Stop-Gate.
+
+## Nachtrag: integrierte Sicherheitsreparatur und offene Paketentscheidung
+
+Stand: 11. Oktober 2026. Dieser Nachtrag ergänzt die bisherigen Prüfstände;
+ihre damaligen Ergebnisse und Entscheidungen bleiben erhalten. Die technische
+Reparatur aus Nutzerfreigabe WB1098 und die Integration aus WB1549 sind
+abgeschlossen. **Die formale P6-Paketabnahme bleibt OFFEN. P4 bleibt ein
+gesonderter Verfahrensvorbehalt. P7, P8 und P9 sind nicht freigegeben.**
+
+[PR #30](https://github.com/landjunge/agent-authority-lab/pull/30) ist regulär
+gemergt. Squash `ba34d92744553f3504ca7665f4c367f76a5d1013` hat genau einen
+Parent, `21691ae9817f832ecfb111f980b0c8a3e6b63d61`. Sein Tree
+`c056c1630d73c95a29c9950050415f13952a5725` ist identisch zum unabhängig
+geprüften Kandidaten `4a9d42e23ea07b21eeacc228d09889587a1ac329`.
+Remote-master zeigte beim abschließenden Readback auf diesen Squash.
+Regeln, Reviews, HEAD, CI, CodeQL und SARIF wurden vor der Integration frisch
+geprüft; Ready und Squash-Merge mit `--match-head-commit` liefen ohne Admin,
+Force oder Bypass. WB1593 dokumentiert den Abschluss.
+
+Die vor der Umsetzung archivierte
+[Reparaturspezifikation](SECURITY-REMEDIATION-SPEC-20261011.md) definiert
+ausdrücklich das neue Forschungsprofil `RemediationLab`. Die gebundene
+Zustimmung gilt in diesem Profil; der Lifecycle-Fix gilt für `FakeAdapter`.
+Die historischen `Lab`-/MISSED-Referenzen, Kataloge und Assertions bleiben
+unverändert. Ein neuer Schließungsnachweis ändert keinen alten FAIL/MISSED.
+
+| Fall | Neuer technischer Nachweis | Erhaltene Grenze |
+| --- | --- | --- |
+| RC-01 | Unveränderte RC-Assertion besteht mit RemediationLab; ungebundene Mutation der IDE-Steuerdatei wird vor dem Fake-Sink abgewiesen. | Keine Aussage über eine reale IDE; historisches Lab bleibt Referenz. |
+| RC-02 | Unveränderte RC-Assertion besteht; ungebundene Mutation der MCP-Steuerdatei wird abgewiesen. | Kein realer MCP-Start oder allgemeiner Adapterbeweis. |
+| RC-03 | Unveränderte RC-Assertion und zusätzliche Kontrolle mit zuerst gültiger Zustimmung bestehen; geänderte Parameter passen nicht zur Bindung. | Keine kryptographische Herkunfts- oder Identitätsauthentisierung. |
+| RC-04 | Unveränderte RC-Assertion und zusätzliche Kontrolle mit zuerst gültiger Zustimmung bestehen; geänderte Shell-Komposition und Replay werden abgewiesen. | Opaque Fake-Effekte benötigen zusätzliche Zustimmung; kein globales Default-Deny. |
+| RC-05 | Unveränderter Runner wird bei cache.poison gestoppt; zusätzlicher direkter Publish-Test weist den gestohlenen, nicht ausgestellten Handle ab. | Die eingefrorene Runner-Assertion selbst erreicht den späteren Publish-Sink nicht. |
+| OOS-021 | Ursprüngliche unveränderte Probe besteht: nach finish erscheint src/late.py nicht. Einmaliges Commit-Ticket ist an die Generation gebunden. | ALLOW und effect_committed sind getrennt; Callbackfehler haben keinen allgemeinen Rollback. |
+| CB-01 | Neue Kontrollen am unveränderten Katalog weisen fehlende Zustimmung und Replay nach der ersten erlaubten Wirkung ab; gültige neue Zustimmung bleibt nutzbar. | Historischer MISSED-Test bleibt MISSED auf Lab; sein PASS ist kein Reparaturbeleg. |
+
+Grok prüfte den Hauptcommit unabhängig im eigenen sauberen Worktree (WB1442):
+61 Reparaturtests, ursprüngliche OOS-Probe, historische RC-/CB-Kontrollen,
+10 unveränderte RC-Assertions im Reparaturprofil, 47 P6-/Anschlussprüfungen,
+vier P4-Prüfungen und 434 Gesamttests mit fünf historischen RC-Abwahlen.
+WB1525 bestätigt den exakten finalen HEAD mit Diffprüfung und 62
+Reparatur-/OOS-Tests. Codex führte die vollständige Suite wegen der letzten
+Teständerung vor Merge erneut aus: **434 passed, 5 deselected**, Exit 0.
+Die historische RC-Referenz wird dadurch nicht als grün ausgewiesen.
+
+[Push-CI 38093141005](https://github.com/landjunge/agent-authority-lab/actions/runs/38093141005)
+ist am Squash erfolgreich; die Rohlogs enthalten zweimal 434 tatsächliche
+Passpunkte. [CodeQL 38093141018](https://github.com/landjunge/agent-authority-lab/actions/runs/38093141018)
+ist erfolgreich, einschließlich vollständig verarbeitetem Ergebnisupload.
+Vor Merge war das SARIF-Artefakt `11684597801` am identischen Kandidaten
+verfügbar. Bestehende globale Qualitätsaltlasten bleiben sichtbar: 27 Ruff-
+und neun Mypy-Befunde werden von der CI toleriert. Job-SUCCESS bedeutet
+nicht, dass diese Einzelprüfungen fehlerfrei sind.
+
+### Verbleibende konkrete Entscheidung
+
+P4s historischer Prüfer-B-STOP betrifft beschriebene gitignorierte Caches.
+Der damalige Writer bleibt nicht zugeordnet. Die aktuelle Prüfung verwendet
+Python 3.12.13, einen tatsächlich blockierten Cacheprovider ohne Cacheinstanz
+und temporäre Prüfdateien außerhalb des Repository. Die historischen
+Cachehashes sind vor/nach der neuen Vollsuite identisch. Das trägt ein
+aktuelles Verfahrensurteil, rekonstruiert aber keine historischen Prozesstraces.
+Die ursprüngliche [P4-Abnahme](P4-ABNAHME.md) bleibt unverändert.
+
+Die auftraggebende Stelle bzw. der zuständige Verfahrensprüfer muss jetzt
+ausdrücklich entscheiden, ob die belegte heutige Prüfmethodik den P4-Vorbehalt
+für den aktuellen P6-Abnahmestand behandelt, unter Erhaltung des historischen
+STOP und der unbekannten Writer-Zuordnung. Anschließend ist gesondert die
+formale P6-Paketentscheidung nach WB27/386 und der Nutzerkorrektur zu treffen:
+Beobachterkriterien und Reparaturnachweise sind belegt, RC-/CB-Reparaturen
+gelten jedoch ausdrücklich im RemediationLab-Profil. Eine Erfüllung der
+vollständigen Abnahmekriterien wird hier nicht eigenmächtig erklärt.
+WB1098 und WB1549 schließen eine automatische Paketabnahme ausdrücklich aus.
+Weder ein aktuelles P4-Urteil noch die P6-Paketentscheidung erteilt einen
+P7-Auftrag; hierfür ist weiterhin eine eigene ausdrückliche Freigabe nötig.
+
+Originalbefehle, UTC, JUnit, Logs, Quellen-/Cachehashes und Remote-Belege:
+`/Users/landjunge/.threaddesk/artifacts/agent-authority/security-remediation-20261011/`
+und `pr30-merge-20261011/`. Der zweite Ordner enthält `ABSCHLUSS.md`,
+`MERGE-STATUS.json`, `P4-VERFAHRENSVORBEHALT.md` und `SHA256.json`.
+D-012 gilt unverändert: beobachten, analysieren und warnen, keine operative
+Gate-, Rechte-, Secret-, Budget- oder Permit-Befugnis. Herkunft und Actor bleiben
+bei fehlender Authentisierung UNBEKANNT; der aktuelle Nachweis ist ein Fake-Lab-
+und Beobachterprüfstand, keine allgemeine Agentensicherheits- oder Produktfreigabe.
