@@ -329,3 +329,66 @@ Aktuelle Test-, Quellhash-, Remote- und Abschlussbelege:
 `/Users/landjunge/.threaddesk/artifacts/agent-authority/p6-acceptance-20261010T003759561Z/`.
 Commit, Push und mögliche Remote-Nachweise werden dort und append-only im
 Whiteboard getrennt von diesem lokalen Testergebnis dokumentiert.
+
+## Nachtrag: formale Abnahme des begrenzten P6-Pakets
+
+Stand: 10. Oktober 2026. Auftrag Whiteboard `833554dffb6e`, Eintrag 527,
+verlangt zuerst die dokumentierte formale P6-Abnahme. Codex hat die Kriterien
+aus Eintrag 27, die begrenzte Entscheidung 386 sowie die unabhängigen
+Grok-Prüfungen 295/296, 512 und 549 mit den Originalbelegen abgeglichen.
+**Das geprüfte begrenzte technische P6-Paket ist abgenommen.** Dies ist keine
+allgemeine Sicherheits-, Produktreife- oder Releasefreigabe. Die früheren
+offenen Publikations-, CodeQL- und Abnahmezustände oben bleiben als Verlauf
+erhalten; für dieses Paket gilt der folgende Stand.
+
+[PR #27](https://github.com/landjunge/agent-authority-lab/pull/27) wurde von
+Codex regulär per Squash mit gepinntem Kandidaten-HEAD
+`df5100d94ef73b56e744dcbbb8d0d42be3cf5187` integriert. Merge-Commit ist
+`1e500c222e2ca0fa32ecb5192f00a08e82faae6c`, einziger Parent
+`674e7fe86e232c1fd8d26d0247bf2ae4cf853c8d`. Tree
+`589813b713d53717b147a56aefa10d19f9a803b6` ist identisch mit dem geprüften
+Kandidaten und dem unabhängig gerechneten Merge-Tree. Remote-Master zeigte
+bei der Abnahme auf diesen Commit; P5-Merge `0f6b601` ist darin enthalten.
+Aktuelle Regeln, Reviews und erfolgreiche Checks wurden vor Ready und vor
+Merge erneut geprüft. Es gab keinen Admin-, Force- oder Auto-Merge-Bypass.
+
+| Kriterium aus dem P6-Auftrag | Abnahme und tatsächlicher Umfang |
+| --- | --- |
+| Keine falsch authentisierten Quellen; alte/gefälschte Eingänge bleiben unbekannt | 40 P6-Regressionen bestanden; Quellenherkunft bleibt `UNBEKANNT`. |
+| Mindestens ein brauchbarer enger Positivfall | Tatsächlicher lokaler Dateieffekt und gleichzeitig gehaltene FD-Paare sind geprüft; sie authentisieren keinen Provider oder Actor. |
+| Minimierung und Marker | Geprüfte Projektionen erhalten keine sensiblen Rohdaten; sieben Markerregressionen bestanden. Keine umfassende Bereinigung anderer Kanäle oder alter Marker behauptet. |
+| Regression und Quellenbindung | 47 gezielte und 373 Standardtests bestanden, fünf historische RC-Abwahlen separat ausgewiesen. Alle 177 geprüften Quelldateien bytegleich; Groks eigenständige Prüfung stimmt überein. |
+| Reguläre Integration und Remote-Prüfung | Merge/Parent/Tree belegt; beide Pytest-Durchläufe der Merge-CI erfolgreich; originale CodeQL-Analyse und Ergebnisupload erfolgreich verarbeitet. |
+| Grenzen und negative Belege | RC-01–05, OOS-021, CB-01, P4-Vorbehalt und Qualitätsaltlasten sind weiterhin offen und in der begrenzten Risikobewertung ausgewiesen. |
+
+[Merge-CI 38085424077](https://github.com/landjunge/agent-authority-lab/actions/runs/38085424077)
+mit Job `114310802970` und
+[CodeQL 38085424075](https://github.com/landjunge/agent-authority-lab/actions/runs/38085424075)
+mit Job `114310802948` sind am exakten Merge-SHA erfolgreich. Der Originalupload
+ist vollständig verarbeitet; native Analyse `1929667609` gehört zu diesem
+Commit. Der SARIF-Artefaktworkflow lief auf diesem Push nicht. Die vorher
+beschriebene rote CodeQL-Ausführung an `674e7fe` ist ein historischer Befund,
+kein aktueller Uploadblocker dieses Merge-Stands.
+
+Die historischen direkten Gegenprüfungen bleiben **RC: 5 failed / 5 passed**,
+**OOS-021: 1 failed**, **CB-01: MISSED**. Der P4-Verfahrensvorbehalt bleibt
+offen. Ruff meldet weiterhin 27 Fehler, Format 24 Dateien und Mypy neun
+Fehler; der bestehende CI-Workflow toleriert diese Exit-1-Ergebnisse. Sein
+grüner Jobstatus bezeichnet diese Einzelprüfungen nicht als bestanden.
+P6 enthält **null neue echte Modell-/Agentenläufe**. Die Registry ist keine
+Sicherheitsgrenze gegen kompromittierte Collector-, CLI-, Python- oder
+Kernelprozesse. Diese Paketabnahme schließt keine der genannten Grenzen.
+
+Vollständige Originalbelege, JUnit, Quellenhashes, Risikobewertung und
+Abnahmematrix: lokale Ablage
+`/Users/landjunge/.threaddesk/artifacts/agent-authority/product-finalization-20261010/`.
+Die formale Entscheidung und ihre erneute Quellen-/JUnit-/Remote-Prüfung
+liegen unter `formal-p6-acceptance-20261010/`; Mergebefehle, Remote-Belege,
+Original-CI-/CodeQL-Logs und Digests unter `pr27-integration-20261010/`.
+Die Prüfung wiederholt keine unveränderten Tests und keinen P5-Lauf.
+
+P7 bleibt bis zur konkreten Übergabe gemäß Auftrag 527 wartend. Sein echter
+kontrollierter Agentenlauf und seine Gesamtprüfung sind eigene Abnahmepunkte.
+P8 und P9 folgen ausschließlich nach den jeweiligen belegten Voraussetzungen.
+D-012 bleibt unverändert: Authority beobachtet, analysiert und warnt; es
+vergibt keine Rechte, Secrets, Budgets oder Permits und bildet kein Stop-Gate.
