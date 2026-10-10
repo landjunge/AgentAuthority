@@ -448,6 +448,11 @@ Reparatur-/OOS-Tests. Codex führte die vollständige Suite wegen der letzten
 Teständerung vor Merge erneut aus: **434 passed, 5 deselected**, Exit 0.
 Die historische RC-Referenz wird dadurch nicht als grün ausgewiesen.
 
+Grok bestätigte anschließend auch die vollständige Suite am identischen
+gemergten Tree (WB1594): **434 passed, 5 deselected**, Exit 0, eigener sauberer
+Worktree. Original-JUnit und Log sind gegengeprüft; alle 180 Quellenhashes
+stimmen mit dem Kandidaten überein. Auch diese Prüfung hebt P4s STOP nicht auf.
+
 [Push-CI 38093141005](https://github.com/landjunge/agent-authority-lab/actions/runs/38093141005)
 ist am Squash erfolgreich; die Rohlogs enthalten zweimal 434 tatsächliche
 Passpunkte. [CodeQL 38093141018](https://github.com/landjunge/agent-authority-lab/actions/runs/38093141018)
