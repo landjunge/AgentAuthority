@@ -409,8 +409,9 @@ vergibt keine Rechte, Secrets, Budgets oder Permits und bildet kein Stop-Gate.
 Stand: 11. Oktober 2026. Dieser Nachtrag ergänzt die bisherigen Prüfstände;
 ihre damaligen Ergebnisse und Entscheidungen bleiben erhalten. Die technische
 Reparatur aus Nutzerfreigabe WB1098 und die Integration aus WB1549 sind
-abgeschlossen. **Die formale P6-Paketabnahme bleibt OFFEN. P4 bleibt ein
-gesonderter Verfahrensvorbehalt. P7, P8 und P9 sind nicht freigegeben.**
+abgeschlossen. Nutzerentscheidung WB1597 behandelt den historischen
+P4-Verfahrensvorbehalt als akzeptiertes, weiterhin ungeklärtes Restrisiko.
+**Die formale P6-Paketabnahme bleibt OFFEN. P7, P8 und P9 sind nicht freigegeben.**
 
 [PR #30](https://github.com/landjunge/agent-authority-lab/pull/30) ist regulär
 gemergt. Squash `ba34d92744553f3504ca7665f4c367f76a5d1013` hat genau einen
@@ -462,7 +463,7 @@ verfügbar. Bestehende globale Qualitätsaltlasten bleiben sichtbar: 27 Ruff-
 und neun Mypy-Befunde werden von der CI toleriert. Job-SUCCESS bedeutet
 nicht, dass diese Einzelprüfungen fehlerfrei sind.
 
-### Verbleibende konkrete Entscheidung
+### P4-Entscheidung und Abgleich der übrigen P6-Kriterien
 
 P4s historischer Prüfer-B-STOP betrifft beschriebene gitignorierte Caches.
 Der damalige Writer bleibt nicht zugeordnet. Die aktuelle Prüfung verwendet
@@ -472,17 +473,43 @@ Cachehashes sind vor/nach der neuen Vollsuite identisch. Das trägt ein
 aktuelles Verfahrensurteil, rekonstruiert aber keine historischen Prozesstraces.
 Die ursprüngliche [P4-Abnahme](P4-ABNAHME.md) bleibt unverändert.
 
-Die auftraggebende Stelle bzw. der zuständige Verfahrensprüfer muss jetzt
-ausdrücklich entscheiden, ob die belegte heutige Prüfmethodik den P4-Vorbehalt
-für den aktuellen P6-Abnahmestand behandelt, unter Erhaltung des historischen
-STOP und der unbekannten Writer-Zuordnung. Anschließend ist gesondert die
-formale P6-Paketentscheidung nach WB27/386 und der Nutzerkorrektur zu treffen:
-Beobachterkriterien und Reparaturnachweise sind belegt, RC-/CB-Reparaturen
-gelten jedoch ausdrücklich im RemediationLab-Profil. Eine Erfüllung der
-vollständigen Abnahmekriterien wird hier nicht eigenmächtig erklärt.
-WB1098 und WB1549 schließen eine automatische Paketabnahme ausdrücklich aus.
-Weder ein aktuelles P4-Urteil noch die P6-Paketentscheidung erteilt einen
-P7-Auftrag; hierfür ist weiterhin eine eigene ausdrückliche Freigabe nötig.
+Die auftraggebende Stelle hat den historischen P4-Vorbehalt mit WB1597
+ausdrücklich auf Entscheidungsebene behandelt: **akzeptiertes ungeklärtes
+Restrisiko**, keine rückwirkende Entlastung und kein Nachweis des damaligen
+Writers. Diese Entscheidung entwertet die späteren Reparatur-/Testergebnisse
+nicht automatisch. Ein weiteres P4-Verfahrensurteil wird hier nicht verlangt.
+
+Codex gleicht gemäß WB1597 die übrigen ursprünglichen Kriterien aus WB27
+mit den Originalbelegen ab. Die 40 P6- und sieben Markerfälle aus dem
+gezielten 47er-Lauf sind auch in Groks ursprünglichem 434er-JUnit enthalten
+und dort fehlerfrei; die Quellen sind zum integrierten Tree identisch.
+Die folgende Bewertung ist ein technischer Kriterienabgleich, kein Abnahmeurteil.
+
+| Ursprüngliches Kriterium / bestehende Verpflichtung | Originalnachweis und Bewertung |
+| --- | --- |
+| Kein falsch authentisierter Quellenbeleg | Erfundenes Bundle, explizites current, direkte FD-Packets und behauptete Herkunft bleiben unbekannt; 40 P6-Regressionen einschließlich dieser Negativfälle bestanden. |
+| Stale/gefälschte/fehlende Belege bleiben UNBEKANNT | Klassen-/Replayfälle, abgelaufene oder veränderte Kontexte und Fork bestehen; historische Zeilenkonsistenz wird nicht zu aktueller Herkunft umgedeutet. |
+| Mindestens ein brauchbarer enger positiver Relationsfall | Tatsächlicher leerer lokaler Dateieffekt nach Ende sowie gleichzeitig gehaltene gleiche/verschiedene FD-Paare unabhängig am Ziel gemessen; Herkunft und Agentenidentität bleiben UNBEKANNT. |
+| Keine sensiblen Rohdaten im geprüften Beobachterpfad | Minimierte Projektionen weisen künstliche Metadatenmarker und rohe FD-Eingänge ab; sieben Markerfälle prüfen leere private reguläre Dateien und unveränderte vorhandene Marker. Kein allgemeiner E2-Bereinigungsnachweis für andere Kanäle. |
+| Tests belegen das konkrete Ziel, Regressionen bleiben grün | 47 gezielte Tests, 434 Standardtests und separate unveränderte RC-/OOS-Kontrollen mit Original-JUnit/Logs belegt; fünf historische RC-Abwahlen offen ausgewiesen. |
+| Unabhängigkeit von P5 und Erhalt alter Erwartungen | Historische P5-Erwartungen/Archive und ursprüngliche Kataloge/Assertions bleiben unverändert; notwendige Anschlussänderungen gehören zum dokumentierten P6-Auswertungsvertrag. PR30 ändert keine P5-Dateien; kein erneuter P5-Paket-/Modelllauf. |
+| D-012 und Zuständigkeit | Observer bleibt beobachten/analysieren/warnen; gebundene Fake-Zustimmung ist Teil des ausdrücklich genehmigten RemediationLab-Forschungsprofils, keine operative Authority-Befugnis. |
+| Reguläre Integration mit Remote-Nachweis | PR30, Kandidat/Squash/Parent/Tree/master, erfolgreiche Push-CI/CodeQL und vorheriges SARIF-Artefakt belegt; kein Admin/Force/Bypass. |
+| Unabhängige technische Gegenprüfung | Grok WB1442/1525/1594 mit Originalfällen, Kontrollen, finalem Tree und vollständiger Suite bestätigt. Sein gesonderter Kriterienabgleich zum neuen Auftrag WB1597 wird separat dokumentiert. |
+
+Im ursprünglichen P6-Monitoring-Scope hat Codex damit keinen zusätzlichen
+fehlgeschlagenen technischen Abnahmenachweis festgestellt. Die historischen
+RC-/CB-Referenzen bleiben auf Lab rot/MISSED; ihre neuen Reparaturnachweise
+gelten im genehmigten RemediationLab-Profil. Ein neuer echter Modelllauf,
+Linux/tmpfs-Nachweis oder eine allgemeine Quellenauthentisierung ist dadurch
+nicht belegt und wird nicht als zusätzliche erfüllte Fähigkeit ausgegeben.
+
+Noch fehlt die **ausdrückliche formale P6-Paketentscheidung** nach dem
+angeforderten unabhängigen Kriterienabgleich. WB1597 erteilt sie ausdrücklich
+nicht; WB1098 und WB1549 ebenso wenig. Der neue Dokumentationsnachtrag liegt
+zunächst als Draft-PR vor; seine Integration ist gesondert zu behandeln.
+Weder P4s Risikoannahme noch eine spätere P6-Paketentscheidung erteilt einen
+P7-Auftrag; hierfür bleibt eine eigene ausdrückliche Freigabe nötig.
 
 Originalbefehle, UTC, JUnit, Logs, Quellen-/Cachehashes und Remote-Belege:
 `/Users/landjunge/.threaddesk/artifacts/agent-authority/security-remediation-20261011/`
