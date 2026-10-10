@@ -519,3 +519,37 @@ D-012 gilt unverändert: beobachten, analysieren und warnen, keine operative
 Gate-, Rechte-, Secret-, Budget- oder Permit-Befugnis. Herkunft und Actor bleiben
 bei fehlender Authentisierung UNBEKANNT; der aktuelle Nachweis ist ein Fake-Lab-
 und Beobachterprüfstand, keine allgemeine Agentensicherheits- oder Produktfreigabe.
+
+
+## Formale P6-Paketabnahme: Nutzerentscheidung WB1602
+
+Die auftraggebende Stelle hat am 11. Oktober 2026 die **formale P6-Paketabnahme
+für den dokumentierten Umfang ausdrücklich erteilt** (WB1602,
+`eccc0ccab937`, 10. Oktober 2026, 23:17:26 UTC). Dieser spätere Entscheid
+schließt die oben noch offene Paketentscheidung; die bisherigen Prüfstände
+und Originalbelege bleiben als Historie erhalten.
+
+Die Abnahme gilt für den integrierten Stand
+`ba34d92744553f3504ca7665f4c367f76a5d1013`. Grundlage sind Codex' Kriterienabgleich
+WB1598, Groks unabhängiger Abgleich WB1599 und dessen Matrixbestätigung WB1600,
+die integrierte Sicherheitsreparatur PR30 sowie Groks Vollsuite WB1594 mit
+434 bestandenen Fällen und fünf ausdrücklich ausgewiesenen historischen
+RC-Abwahlen. Beide Prüfer haben keinen weiteren fehlenden Nachweis aus dem
+ursprünglichen P6-Auftrag festgestellt. Die dokumentierten RC-/CB-Nachweise
+gelten im genehmigten RemediationLab, OOS-021 im FakeAdapter. Historische
+Lab-FAIL-/MISSED-Referenzen werden nicht umgedeutet.
+
+P4s Verfahrensvorbehalt bleibt gemäß WB1597 ein **akzeptiertes, weiterhin
+ungeklärtes Restrisiko**; der damalige Writer bleibt unbekannt. Es gibt keine
+rückwirkende Entlastung. Die Abnahme beweist weder universelle Sicherheit
+noch reale Agentenüberwachung. D-012 und die dokumentierten Herkunfts-,
+Modell- und Qualitätsgrenzen bleiben erhalten.
+
+**P7, P8 und P9 sind durch diese Entscheidung nicht freigegeben oder gestartet.**
+Separate ausdrückliche Phasenfreigaben bleiben erforderlich. Der
+Dokumentations-PR31 ist weiterhin ein eigener Draft; die Paketabnahme wird
+nicht von seinem Merge abhängig gemacht.
+
+Die wörtliche Nutzerentscheidung, der frühere offene Status, der append-only
+Dokumentationsdiff und die Abschlussbelege sind getrennt archiviert unter
+`/Users/landjunge/.threaddesk/artifacts/agent-authority/formal-p6-acceptance-20261011/`.
