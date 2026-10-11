@@ -17,6 +17,8 @@ KIND_TEXT = {
     "problem": "Problem gemeldet",
     "question": "Frage gemeldet",
     "system": "Systembeitrag gemeldet",
+    "plan": "Plan gemeldet",
+    "handoff": "Übergabe gemeldet",
 }
 DIAGNOSTIC_TEXT = {
     "invalid_thread_id": "Die Thread-ID entspricht keinem ThreadDesk-Bezeichner.",
