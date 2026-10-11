@@ -1,0 +1,42 @@
+{
+  "phase": "P8",
+  "state": "PREPARED_NOT_EXECUTED",
+  "authorization": "WB1605 conditional, WB30 concrete dependencies",
+  "prerequisite": "P7 accepted, successfully completed, and merged, including push proof",
+  "source_plan": "WB30 and original development plan",
+  "implementation_owner": "Codex, single implementation owner, existing continuity with WB1604; Grok independent reviewer",
+  "product_code_changes_planned": false,
+  "observer": "reuse integrated p7 wrapper and p5.p1, no second observer",
+  "experiments": [
+    {
+      "label": "actual-run-01",
+      "timeout": 120,
+      "post_window": 5
+    },
+    {
+      "label": "actual-run-02",
+      "timeout": 120,
+      "post_window": 3
+    }
+  ],
+  "expected_per_run": {
+    "agent_run": "BELEGT",
+    "model_completions": 1,
+    "tool_reports": 1,
+    "cli_exit_code": 0,
+    "target_present": true,
+    "reference_calls": 1,
+    "reference_valid": true,
+    "reference_order": "NACH",
+    "timing_evaluation": "KORREKT",
+    "origin": "UNBEKANNT",
+    "identity": "UNBEKANNT",
+    "replay": "STOP",
+    "expired_capture": "UNBEKANNT",
+    "all_matrix_expectations": "PASS including host_verifier SKIP as expected"
+  },
+  "cohort_consistency": "all independent runs compared individually, disagreement reported, no averaging away errors",
+  "real_attempts_started": 0,
+  "P8_formal_acceptance": false,
+  "P9_phase_execution_authorized": false
+}

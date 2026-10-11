@@ -1,0 +1,16 @@
+{
+  "record_type": "append_only_label_erratum_not_new_measurement",
+  "finding_WB": 1611,
+  "original_code_head": "3144150ca1839ddb40680aa147d124b3aa4dddb7",
+  "original_run": 1119266394168211373,
+  "original_integration_sha256": "2c842519c5f6c1d41e7f5ec9cd222d6fb013aeb38db78b4318d5b4e2cdfa0eb8",
+  "field": "zeilen[fall=modellnachweis].grund",
+  "original_label": "fixture_ist_kein_modelllauf",
+  "correct_label": "originaler_codex_exec",
+  "basis": "original actual CLI execution and result.json counts, top-level abnahme_grund originaler_codex_exec",
+  "observations_or_counts_changed": false,
+  "original_records_changed": false,
+  "additional_model_runs": 0,
+  "regression_tests": "2 passed; exact true and false labels verified",
+  "UTC": "2026-10-10T23:29:59.677141+00:00"
+}

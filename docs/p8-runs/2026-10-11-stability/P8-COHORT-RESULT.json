@@ -1,0 +1,51 @@
+{
+  "stage": "P8",
+  "source_head": "64bf757ee7e32ca3df780b61a698466e2e299899",
+  "planned_runs": 2,
+  "completed_runs": 2,
+  "actual_model_runs": 2,
+  "rows": [
+    {
+      "label": "actual-run-01",
+      "run": 8930311534831620534,
+      "post_window": 5,
+      "actual_model_runs": 1,
+      "model_completions": 1,
+      "tool_reports": 1,
+      "cli_exit_code": 0,
+      "target_present": true,
+      "reference_calls": 1,
+      "reference_order": "NACH",
+      "evaluation": "KORREKT",
+      "timing_evaluation": "KORREKT",
+      "origin": "UNBEKANNT",
+      "identity": "UNBEKANNT",
+      "matrix_rows_passed": 15,
+      "host_verifier": "SKIP as expected",
+      "expectation_sha256": "cf899efd708b99e20e920441b8cb7057950cf483a032661ae6c3dc9419aa44c0",
+      "integration_sha256": "903393e32efc8a77bed5244a68f7037ef8e6004ff43fd81b1986fe1bfb059123"
+    },
+    {
+      "label": "actual-run-02",
+      "run": 3864572638349408912,
+      "post_window": 3,
+      "actual_model_runs": 1,
+      "model_completions": 1,
+      "tool_reports": 1,
+      "cli_exit_code": 0,
+      "target_present": true,
+      "reference_calls": 1,
+      "reference_order": "NACH",
+      "evaluation": "KORREKT",
+      "timing_evaluation": "KORREKT",
+      "origin": "UNBEKANNT",
+      "identity": "UNBEKANNT",
+      "matrix_rows_passed": 15,
+      "host_verifier": "SKIP as expected",
+      "expectation_sha256": "4c832dbbed740de94410edb0c37e734c3f4b6d7744c61a1b608afc83a3ea577f",
+      "integration_sha256": "b42beb57f360198de887f3a4e96ef4eeddf8384db8a38f211629e67f7630cc9b"
+    }
+  ],
+  "all_current_193_sources_unchanged": true,
+  "P8_formal_acceptance": false
+}
