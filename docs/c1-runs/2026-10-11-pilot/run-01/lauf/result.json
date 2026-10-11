@@ -1,0 +1,45 @@
+{
+  "run": 8203361944725398884,
+  "mode": "late",
+  "requested_model": "gpt-6.1-sol",
+  "counts": {
+    "stdout_bytes": 988,
+    "stderr_bytes": 0,
+    "raw_lines": 6,
+    "invalid_records": 0,
+    "model_completions": 1,
+    "tool_reports": 1,
+    "error_records": 0,
+    "started": true,
+    "timeout": false,
+    "recording_ok": true,
+    "cli_success": true,
+    "cli_exit_code": 0,
+    "startup_error": "UNBEKANNT"
+  },
+  "proven_agent_runs": 1,
+  "agent_run": "BELEGT",
+  "target": {
+    "verdict": "BELEGT",
+    "target_present": true,
+    "reason": "local_snapshot_only",
+    "evidence": [
+      1,
+      3,
+      6
+    ]
+  },
+  "evaluation": "KORREKT",
+  "scope": "local_snapshot_plus_post_end_order",
+  "timing": {
+    "verdict": "BELEGT",
+    "order": "NACH",
+    "reason": "absence_after_end_then_presence",
+    "evidence": [
+      3,
+      4,
+      5
+    ]
+  },
+  "timing_evaluation": "KORREKT"
+}

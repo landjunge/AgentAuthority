@@ -1,0 +1,38 @@
+{
+  "after_window_control": {
+    "boundary": 881412085658152,
+    "end": 881412685658152,
+    "first_present": 881412242525693,
+    "last_absent": 881412232193660,
+    "logical_agent_identity": "UNBEKANNT",
+    "oracle": {
+      "write_begin": 881412239460599,
+      "write_end": 881412239675237
+    },
+    "reason": "second_window",
+    "start": 881411885658152,
+    "verdict": "SPAETER",
+    "writer_identity": "UNBEKANNT"
+  },
+  "cohort_counted": false,
+  "fixture_checks": {
+    "expired": true,
+    "fixture_not_model": true,
+    "replay": true,
+    "score": true
+  },
+  "fixture_model": false,
+  "fixture_path": "/tmp/aa-abc-research-StfbeC/fixture",
+  "foreign_capture_test": false,
+  "forged_self_authentication": {
+    "aussage": "UNBEKANNT",
+    "beleg": [],
+    "grund": "forged_authentication",
+    "recht_uebernommen": false,
+    "source_authenticated": "UNBEKANNT"
+  },
+  "independent_writer_test": false,
+  "logical_agent_identity": "UNBEKANNT",
+  "source_head": "fc9964889872d3e5480feb2b1091873eb1a3dd90",
+  "utc": "2026-10-11T21:25:06.158089+00:00"
+}

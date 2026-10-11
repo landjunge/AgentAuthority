@@ -1,0 +1,849 @@
+{
+  "abnahme": "BELEGT",
+  "abnahme_grund": "originaler_codex_exec",
+  "agent_run": "BELEGT",
+  "befehl": "/Users/landjunge/agent-authority-lab/.venv/bin/python scripts/p7_integration.py --parent /tmp/aa-abc-research-StfbeC/cohort/run-03 --codex /Users/landjunge/.local/bin/codex --quelle-sha 3fd4d08b0dfc7bef2fb97656f937d148529ba51c --timeout 120 --post-window 5",
+  "bewertung_aus": "aktiver_aufnahmekontext",
+  "bindung": "independent_local_effect",
+  "capture_score": {
+    "agent_run": "BELEGT",
+    "evaluator_contract": "p6_live_acquisition",
+    "expectation_role": "historical_p5_reference",
+    "expectation_sha256": "eff432d4c5ee4f305d98d287510273a22e531c09895ae58822dece204c15c0c1",
+    "grenzen": {
+      "CB-01": "offen",
+      "OOS-021": "offen",
+      "P4-Pytest-Cache": "offen",
+      "RC-01": "offen",
+      "RC-02": "offen",
+      "RC-03": "offen",
+      "RC-04": "offen",
+      "RC-05": "offen"
+    },
+    "package": "PASS",
+    "rows": [
+      {
+        "erwartet": {
+          "agent_run": "BELEGT",
+          "bindung": "independent_local_effect",
+          "calls": 1,
+          "ende": "NEIN",
+          "ende_grund": "end_is_an_event",
+          "evaluation": "KORREKT",
+          "fehler": [],
+          "geltung": "lokaler_abfragepunkt",
+          "herkunft": "UNBEKANNT",
+          "herkunftsgrund": "no_source_field",
+          "identitaet": "UNBEKANNT",
+          "identitaetsgrund": "no_identity_measurement",
+          "order_applicable": true,
+          "order_valid": true,
+          "ordnung": "NACH",
+          "recht_uebernommen": false,
+          "reference_order": "NACH",
+          "reference_target_present": true,
+          "reference_valid": true,
+          "target_present": true,
+          "timing_evaluation": "KORREKT",
+          "wirkung": "BELEGT",
+          "wirkungsgrund": "local_snapshot_only",
+          "zeitbezug": "BELEGT",
+          "zeitgrund": "absence_after_end_then_presence"
+        },
+        "fall": "aktuell",
+        "grund": "local_snapshot_only",
+        "ist": {
+          "agent_run": "BELEGT",
+          "bindung": "independent_local_effect",
+          "calls": 1,
+          "ende": "NEIN",
+          "ende_grund": "end_is_an_event",
+          "evaluation": "KORREKT",
+          "fehler": [],
+          "geltung": "lokaler_abfragepunkt",
+          "herkunft": "UNBEKANNT",
+          "herkunftsgrund": "no_source_field",
+          "identitaet": "UNBEKANNT",
+          "identitaetsgrund": "no_identity_measurement",
+          "order_applicable": true,
+          "order_valid": true,
+          "ordnung": "NACH",
+          "recht_uebernommen": false,
+          "reference_order": "NACH",
+          "reference_target_present": true,
+          "reference_valid": true,
+          "target_present": true,
+          "timing_evaluation": "KORREKT",
+          "wirkung": "BELEGT",
+          "wirkungsgrund": "local_snapshot_only",
+          "zeitbezug": "BELEGT",
+          "zeitgrund": "absence_after_end_then_presence"
+        },
+        "status": "PASS"
+      },
+      {
+        "erwartet": {
+          "agent_run": "UNBEKANNT",
+          "authentisierte_herkunft": false,
+          "ende": "NEIN",
+          "herkunft": "UNBEKANNT",
+          "identitaet": "UNBEKANNT",
+          "identitaetsgrund": "missing_evidence",
+          "wirkung": "UNBEKANNT",
+          "zeitbezug": "UNBEKANNT",
+          "zeitgrund_ist_no_effect": false
+        },
+        "fall": "fehlend",
+        "grund": "missing_evidence",
+        "ist": {
+          "agent_run": "UNBEKANNT",
+          "authentisierte_herkunft": false,
+          "ende": "NEIN",
+          "herkunft": "UNBEKANNT",
+          "identitaet": "UNBEKANNT",
+          "identitaetsgrund": "missing_evidence",
+          "wirkung": "UNBEKANNT",
+          "zeitbezug": "UNBEKANNT",
+          "zeitgrund_ist_no_effect": false
+        },
+        "status": "PASS"
+      },
+      {
+        "erwartet": {
+          "geltung": "UNBEKANNT",
+          "herkunft": "UNBEKANNT",
+          "identitaet": "UNBEKANNT",
+          "identitaetsgrund": "stale_source",
+          "wirkung": "BELEGT"
+        },
+        "fall": "alt_geordnet",
+        "grund": "stale_source",
+        "ist": {
+          "geltung": "UNBEKANNT",
+          "herkunft": "UNBEKANNT",
+          "identitaet": "UNBEKANNT",
+          "identitaetsgrund": "stale_source",
+          "wirkung": "BELEGT"
+        },
+        "status": "PASS"
+      },
+      {
+        "erwartet": {
+          "geltung": "UNBEKANNT",
+          "identitaet": "UNBEKANNT",
+          "identitaetsgrund": "stale_source",
+          "name_im_json": false,
+          "wirkungsgrund": "invalid_evidence"
+        },
+        "fall": "alt_zusatzfelder",
+        "grund": "invalid_evidence",
+        "ist": {
+          "geltung": "UNBEKANNT",
+          "identitaet": "UNBEKANNT",
+          "identitaetsgrund": "stale_source",
+          "name_im_json": false,
+          "wirkungsgrund": "invalid_evidence"
+        },
+        "status": "PASS"
+      },
+      {
+        "erwartet": {
+          "agent_run": "UNBEKANNT",
+          "herkunft": "UNBEKANNT",
+          "identitaet": "UNBEKANNT",
+          "identitaetsgrund": "forged_source",
+          "recht_uebernommen": false
+        },
+        "fall": "gefaelscht_agentenlabel",
+        "grund": "forged_source",
+        "ist": {
+          "agent_run": "UNBEKANNT",
+          "herkunft": "UNBEKANNT",
+          "identitaet": "UNBEKANNT",
+          "identitaetsgrund": "forged_source",
+          "recht_uebernommen": false
+        },
+        "status": "PASS"
+      },
+      {
+        "erwartet": {
+          "als_wahr_uebernommen": false,
+          "aussage": "UNBEKANNT",
+          "grund": "forged_authentication",
+          "source_authenticated": "UNBEKANNT"
+        },
+        "fall": "gefaelscht_fd_flag",
+        "grund": "forged_authentication",
+        "ist": {
+          "als_wahr_uebernommen": false,
+          "aussage": "UNBEKANNT",
+          "grund": "forged_authentication",
+          "source_authenticated": "UNBEKANNT"
+        },
+        "status": "PASS"
+      },
+      {
+        "erwartet": {
+          "aussage": "UNBEKANNT",
+          "grund": "unmeasured_packet_not_identity",
+          "name_im_json": false,
+          "source_authenticated": "UNBEKANNT"
+        },
+        "fall": "packet_ohne_messung",
+        "grund": "unmeasured_packet_not_identity",
+        "ist": {
+          "aussage": "UNBEKANNT",
+          "grund": "unmeasured_packet_not_identity",
+          "name_im_json": false,
+          "source_authenticated": "UNBEKANNT"
+        },
+        "status": "PASS"
+      },
+      {
+        "erwartet": {
+          "aussage": "UNBEKANNT",
+          "grund": "unmeasured_packet_not_identity",
+          "ist_herkunft": false,
+          "ist_hostmessung": false,
+          "name_im_json": false,
+          "recht_uebernommen": false,
+          "source_authenticated": "UNBEKANNT",
+          "verschieden": "UNBEKANNT"
+        },
+        "fall": "fd_format_keine_hostmessung",
+        "grund": "local_relation_not_origin",
+        "ist": {
+          "aussage": "UNBEKANNT",
+          "grund": "unmeasured_packet_not_identity",
+          "ist_herkunft": false,
+          "ist_hostmessung": false,
+          "name_im_json": false,
+          "recht_uebernommen": false,
+          "source_authenticated": "UNBEKANNT",
+          "verschieden": "UNBEKANNT"
+        },
+        "status": "PASS"
+      },
+      {
+        "erwartet": {
+          "status": "SKIP"
+        },
+        "fall": "host_verifier",
+        "grund": "datei_nicht_in_diesem_checkout",
+        "ist": {
+          "status": "SKIP"
+        },
+        "status": "SKIP"
+      }
+    ],
+    "run": 3456760512119539451,
+    "step": "P5",
+    "stop_reason": null
+  },
+  "erwartung_sha256": "465d4a7739a8d792ab5e3db982758f7effaeba838ea84b971e2b45f986b987ad",
+  "expired_score": {
+    "agent_run": "UNBEKANNT",
+    "evaluator_contract": "p6_live_acquisition",
+    "expectation_role": "historical_p5_reference",
+    "expectation_sha256": "eff432d4c5ee4f305d98d287510273a22e531c09895ae58822dece204c15c0c1",
+    "grenzen": {
+      "CB-01": "offen",
+      "OOS-021": "offen",
+      "P4-Pytest-Cache": "offen",
+      "RC-01": "offen",
+      "RC-02": "offen",
+      "RC-03": "offen",
+      "RC-04": "offen",
+      "RC-05": "offen"
+    },
+    "package": "STOP",
+    "rows": [
+      {
+        "erwartet": {
+          "agent_run": "BELEGT",
+          "bindung": "independent_local_effect",
+          "calls": 1,
+          "ende": "NEIN",
+          "ende_grund": "end_is_an_event",
+          "evaluation": "KORREKT",
+          "fehler": [],
+          "geltung": "lokaler_abfragepunkt",
+          "herkunft": "UNBEKANNT",
+          "herkunftsgrund": "no_source_field",
+          "identitaet": "UNBEKANNT",
+          "identitaetsgrund": "no_identity_measurement",
+          "order_applicable": true,
+          "order_valid": true,
+          "ordnung": "NACH",
+          "recht_uebernommen": false,
+          "reference_order": "NACH",
+          "reference_target_present": true,
+          "reference_valid": true,
+          "target_present": true,
+          "timing_evaluation": "KORREKT",
+          "wirkung": "BELEGT",
+          "wirkungsgrund": "local_snapshot_only",
+          "zeitbezug": "BELEGT",
+          "zeitgrund": "absence_after_end_then_presence"
+        },
+        "fall": "aktuell",
+        "grund": "geltung,agent_run,bindung",
+        "ist": {
+          "agent_run": "UNBEKANNT",
+          "bindung": "agent_run_unbekannt",
+          "calls": 1,
+          "ende": "NEIN",
+          "ende_grund": "end_is_an_event",
+          "evaluation": "KORREKT",
+          "fehler": [],
+          "geltung": "UNBEKANNT",
+          "herkunft": "UNBEKANNT",
+          "herkunftsgrund": "no_source_field",
+          "identitaet": "UNBEKANNT",
+          "identitaetsgrund": "no_identity_measurement",
+          "order_applicable": true,
+          "order_valid": true,
+          "ordnung": "NACH",
+          "recht_uebernommen": false,
+          "reference_order": "NACH",
+          "reference_target_present": true,
+          "reference_valid": true,
+          "target_present": true,
+          "timing_evaluation": "KORREKT",
+          "wirkung": "BELEGT",
+          "wirkungsgrund": "local_snapshot_only",
+          "zeitbezug": "BELEGT",
+          "zeitgrund": "absence_after_end_then_presence"
+        },
+        "status": "FAIL"
+      },
+      {
+        "erwartet": {
+          "agent_run": "UNBEKANNT",
+          "authentisierte_herkunft": false,
+          "ende": "NEIN",
+          "herkunft": "UNBEKANNT",
+          "identitaet": "UNBEKANNT",
+          "identitaetsgrund": "missing_evidence",
+          "wirkung": "UNBEKANNT",
+          "zeitbezug": "UNBEKANNT",
+          "zeitgrund_ist_no_effect": false
+        },
+        "fall": "fehlend",
+        "grund": "missing_evidence",
+        "ist": {
+          "agent_run": "UNBEKANNT",
+          "authentisierte_herkunft": false,
+          "ende": "NEIN",
+          "herkunft": "UNBEKANNT",
+          "identitaet": "UNBEKANNT",
+          "identitaetsgrund": "missing_evidence",
+          "wirkung": "UNBEKANNT",
+          "zeitbezug": "UNBEKANNT",
+          "zeitgrund_ist_no_effect": false
+        },
+        "status": "PASS"
+      },
+      {
+        "erwartet": {
+          "geltung": "UNBEKANNT",
+          "herkunft": "UNBEKANNT",
+          "identitaet": "UNBEKANNT",
+          "identitaetsgrund": "stale_source",
+          "wirkung": "BELEGT"
+        },
+        "fall": "alt_geordnet",
+        "grund": "stale_source",
+        "ist": {
+          "geltung": "UNBEKANNT",
+          "herkunft": "UNBEKANNT",
+          "identitaet": "UNBEKANNT",
+          "identitaetsgrund": "stale_source",
+          "wirkung": "BELEGT"
+        },
+        "status": "PASS"
+      },
+      {
+        "erwartet": {
+          "geltung": "UNBEKANNT",
+          "identitaet": "UNBEKANNT",
+          "identitaetsgrund": "stale_source",
+          "name_im_json": false,
+          "wirkungsgrund": "invalid_evidence"
+        },
+        "fall": "alt_zusatzfelder",
+        "grund": "invalid_evidence",
+        "ist": {
+          "geltung": "UNBEKANNT",
+          "identitaet": "UNBEKANNT",
+          "identitaetsgrund": "stale_source",
+          "name_im_json": false,
+          "wirkungsgrund": "invalid_evidence"
+        },
+        "status": "PASS"
+      },
+      {
+        "erwartet": {
+          "agent_run": "UNBEKANNT",
+          "herkunft": "UNBEKANNT",
+          "identitaet": "UNBEKANNT",
+          "identitaetsgrund": "forged_source",
+          "recht_uebernommen": false
+        },
+        "fall": "gefaelscht_agentenlabel",
+        "grund": "forged_source",
+        "ist": {
+          "agent_run": "UNBEKANNT",
+          "herkunft": "UNBEKANNT",
+          "identitaet": "UNBEKANNT",
+          "identitaetsgrund": "forged_source",
+          "recht_uebernommen": false
+        },
+        "status": "PASS"
+      },
+      {
+        "erwartet": {
+          "als_wahr_uebernommen": false,
+          "aussage": "UNBEKANNT",
+          "grund": "forged_authentication",
+          "source_authenticated": "UNBEKANNT"
+        },
+        "fall": "gefaelscht_fd_flag",
+        "grund": "forged_authentication",
+        "ist": {
+          "als_wahr_uebernommen": false,
+          "aussage": "UNBEKANNT",
+          "grund": "forged_authentication",
+          "source_authenticated": "UNBEKANNT"
+        },
+        "status": "PASS"
+      },
+      {
+        "erwartet": {
+          "aussage": "UNBEKANNT",
+          "grund": "unmeasured_packet_not_identity",
+          "name_im_json": false,
+          "source_authenticated": "UNBEKANNT"
+        },
+        "fall": "packet_ohne_messung",
+        "grund": "unmeasured_packet_not_identity",
+        "ist": {
+          "aussage": "UNBEKANNT",
+          "grund": "unmeasured_packet_not_identity",
+          "name_im_json": false,
+          "source_authenticated": "UNBEKANNT"
+        },
+        "status": "PASS"
+      },
+      {
+        "erwartet": {
+          "aussage": "UNBEKANNT",
+          "grund": "unmeasured_packet_not_identity",
+          "ist_herkunft": false,
+          "ist_hostmessung": false,
+          "name_im_json": false,
+          "recht_uebernommen": false,
+          "source_authenticated": "UNBEKANNT",
+          "verschieden": "UNBEKANNT"
+        },
+        "fall": "fd_format_keine_hostmessung",
+        "grund": "local_relation_not_origin",
+        "ist": {
+          "aussage": "UNBEKANNT",
+          "grund": "unmeasured_packet_not_identity",
+          "ist_herkunft": false,
+          "ist_hostmessung": false,
+          "name_im_json": false,
+          "recht_uebernommen": false,
+          "source_authenticated": "UNBEKANNT",
+          "verschieden": "UNBEKANNT"
+        },
+        "status": "PASS"
+      },
+      {
+        "erwartet": {
+          "status": "SKIP"
+        },
+        "fall": "host_verifier",
+        "grund": "datei_nicht_in_diesem_checkout",
+        "ist": {
+          "status": "SKIP"
+        },
+        "status": "SKIP"
+      }
+    ],
+    "run": 3456760512119539451,
+    "step": "P5",
+    "stop_reason": "agent_run_unbekannt"
+  },
+  "fixture": false,
+  "geschrieben": true,
+  "grenzen": {
+    "CB-01": "offen",
+    "OOS-021": "offen",
+    "P4-Pytest-Cache": "offen",
+    "RC-01": "offen",
+    "RC-02": "offen",
+    "RC-03": "offen",
+    "RC-04": "offen",
+    "RC-05": "offen"
+  },
+  "herkunft": "UNBEKANNT",
+  "identitaet": "UNBEKANNT",
+  "laufpfad": "/tmp/aa-abc-research-StfbeC/cohort/run-03/lauf",
+  "modellnachweis": true,
+  "nachlauf_sekunden": 5,
+  "python": "3.12.13",
+  "quelle_sha": "3fd4d08b0dfc7bef2fb97656f937d148529ba51c",
+  "replay_score": {
+    "agent_run": "UNBEKANNT",
+    "evaluator_contract": "p6_live_acquisition",
+    "expectation_role": "historical_p5_reference",
+    "expectation_sha256": "eff432d4c5ee4f305d98d287510273a22e531c09895ae58822dece204c15c0c1",
+    "grenzen": {
+      "CB-01": "offen",
+      "OOS-021": "offen",
+      "P4-Pytest-Cache": "offen",
+      "RC-01": "offen",
+      "RC-02": "offen",
+      "RC-03": "offen",
+      "RC-04": "offen",
+      "RC-05": "offen"
+    },
+    "package": "STOP",
+    "rows": [
+      {
+        "erwartet": {
+          "agent_run": "BELEGT",
+          "bindung": "independent_local_effect",
+          "calls": 1,
+          "ende": "NEIN",
+          "ende_grund": "end_is_an_event",
+          "evaluation": "KORREKT",
+          "fehler": [],
+          "geltung": "lokaler_abfragepunkt",
+          "herkunft": "UNBEKANNT",
+          "herkunftsgrund": "no_source_field",
+          "identitaet": "UNBEKANNT",
+          "identitaetsgrund": "no_identity_measurement",
+          "order_applicable": true,
+          "order_valid": true,
+          "ordnung": "NACH",
+          "recht_uebernommen": false,
+          "reference_order": "NACH",
+          "reference_target_present": true,
+          "reference_valid": true,
+          "target_present": true,
+          "timing_evaluation": "KORREKT",
+          "wirkung": "BELEGT",
+          "wirkungsgrund": "local_snapshot_only",
+          "zeitbezug": "BELEGT",
+          "zeitgrund": "absence_after_end_then_presence"
+        },
+        "fall": "aktuell",
+        "grund": "geltung,agent_run,bindung",
+        "ist": {
+          "agent_run": "UNBEKANNT",
+          "bindung": "agent_run_unbekannt",
+          "calls": 1,
+          "ende": "NEIN",
+          "ende_grund": "end_is_an_event",
+          "evaluation": "KORREKT",
+          "fehler": [],
+          "geltung": "UNBEKANNT",
+          "herkunft": "UNBEKANNT",
+          "herkunftsgrund": "no_source_field",
+          "identitaet": "UNBEKANNT",
+          "identitaetsgrund": "no_identity_measurement",
+          "order_applicable": true,
+          "order_valid": true,
+          "ordnung": "NACH",
+          "recht_uebernommen": false,
+          "reference_order": "NACH",
+          "reference_target_present": true,
+          "reference_valid": true,
+          "target_present": true,
+          "timing_evaluation": "KORREKT",
+          "wirkung": "BELEGT",
+          "wirkungsgrund": "local_snapshot_only",
+          "zeitbezug": "BELEGT",
+          "zeitgrund": "absence_after_end_then_presence"
+        },
+        "status": "FAIL"
+      },
+      {
+        "erwartet": {
+          "agent_run": "UNBEKANNT",
+          "authentisierte_herkunft": false,
+          "ende": "NEIN",
+          "herkunft": "UNBEKANNT",
+          "identitaet": "UNBEKANNT",
+          "identitaetsgrund": "missing_evidence",
+          "wirkung": "UNBEKANNT",
+          "zeitbezug": "UNBEKANNT",
+          "zeitgrund_ist_no_effect": false
+        },
+        "fall": "fehlend",
+        "grund": "missing_evidence",
+        "ist": {
+          "agent_run": "UNBEKANNT",
+          "authentisierte_herkunft": false,
+          "ende": "NEIN",
+          "herkunft": "UNBEKANNT",
+          "identitaet": "UNBEKANNT",
+          "identitaetsgrund": "missing_evidence",
+          "wirkung": "UNBEKANNT",
+          "zeitbezug": "UNBEKANNT",
+          "zeitgrund_ist_no_effect": false
+        },
+        "status": "PASS"
+      },
+      {
+        "erwartet": {
+          "geltung": "UNBEKANNT",
+          "herkunft": "UNBEKANNT",
+          "identitaet": "UNBEKANNT",
+          "identitaetsgrund": "stale_source",
+          "wirkung": "BELEGT"
+        },
+        "fall": "alt_geordnet",
+        "grund": "stale_source",
+        "ist": {
+          "geltung": "UNBEKANNT",
+          "herkunft": "UNBEKANNT",
+          "identitaet": "UNBEKANNT",
+          "identitaetsgrund": "stale_source",
+          "wirkung": "BELEGT"
+        },
+        "status": "PASS"
+      },
+      {
+        "erwartet": {
+          "geltung": "UNBEKANNT",
+          "identitaet": "UNBEKANNT",
+          "identitaetsgrund": "stale_source",
+          "name_im_json": false,
+          "wirkungsgrund": "invalid_evidence"
+        },
+        "fall": "alt_zusatzfelder",
+        "grund": "invalid_evidence",
+        "ist": {
+          "geltung": "UNBEKANNT",
+          "identitaet": "UNBEKANNT",
+          "identitaetsgrund": "stale_source",
+          "name_im_json": false,
+          "wirkungsgrund": "invalid_evidence"
+        },
+        "status": "PASS"
+      },
+      {
+        "erwartet": {
+          "agent_run": "UNBEKANNT",
+          "herkunft": "UNBEKANNT",
+          "identitaet": "UNBEKANNT",
+          "identitaetsgrund": "forged_source",
+          "recht_uebernommen": false
+        },
+        "fall": "gefaelscht_agentenlabel",
+        "grund": "forged_source",
+        "ist": {
+          "agent_run": "UNBEKANNT",
+          "herkunft": "UNBEKANNT",
+          "identitaet": "UNBEKANNT",
+          "identitaetsgrund": "forged_source",
+          "recht_uebernommen": false
+        },
+        "status": "PASS"
+      },
+      {
+        "erwartet": {
+          "als_wahr_uebernommen": false,
+          "aussage": "UNBEKANNT",
+          "grund": "forged_authentication",
+          "source_authenticated": "UNBEKANNT"
+        },
+        "fall": "gefaelscht_fd_flag",
+        "grund": "forged_authentication",
+        "ist": {
+          "als_wahr_uebernommen": false,
+          "aussage": "UNBEKANNT",
+          "grund": "forged_authentication",
+          "source_authenticated": "UNBEKANNT"
+        },
+        "status": "PASS"
+      },
+      {
+        "erwartet": {
+          "aussage": "UNBEKANNT",
+          "grund": "unmeasured_packet_not_identity",
+          "name_im_json": false,
+          "source_authenticated": "UNBEKANNT"
+        },
+        "fall": "packet_ohne_messung",
+        "grund": "unmeasured_packet_not_identity",
+        "ist": {
+          "aussage": "UNBEKANNT",
+          "grund": "unmeasured_packet_not_identity",
+          "name_im_json": false,
+          "source_authenticated": "UNBEKANNT"
+        },
+        "status": "PASS"
+      },
+      {
+        "erwartet": {
+          "aussage": "UNBEKANNT",
+          "grund": "unmeasured_packet_not_identity",
+          "ist_herkunft": false,
+          "ist_hostmessung": false,
+          "name_im_json": false,
+          "recht_uebernommen": false,
+          "source_authenticated": "UNBEKANNT",
+          "verschieden": "UNBEKANNT"
+        },
+        "fall": "fd_format_keine_hostmessung",
+        "grund": "local_relation_not_origin",
+        "ist": {
+          "aussage": "UNBEKANNT",
+          "grund": "unmeasured_packet_not_identity",
+          "ist_herkunft": false,
+          "ist_hostmessung": false,
+          "name_im_json": false,
+          "recht_uebernommen": false,
+          "source_authenticated": "UNBEKANNT",
+          "verschieden": "UNBEKANNT"
+        },
+        "status": "PASS"
+      },
+      {
+        "erwartet": {
+          "status": "SKIP"
+        },
+        "fall": "host_verifier",
+        "grund": "datei_nicht_in_diesem_checkout",
+        "ist": {
+          "status": "SKIP"
+        },
+        "status": "SKIP"
+      }
+    ],
+    "run": 3456760512119539451,
+    "step": "P5",
+    "stop_reason": "agent_run_unbekannt"
+  },
+  "score_package": "PASS",
+  "step": "P7",
+  "system": "macOS-15.7.4-x86_64-i386-64bit",
+  "timeout_sekunden": 120,
+  "zeilen": [
+    {
+      "erwartet": "PASS",
+      "fall": "aktuell",
+      "grund": "local_snapshot_only",
+      "ist": "PASS",
+      "status": "PASS"
+    },
+    {
+      "erwartet": "PASS",
+      "fall": "fehlend",
+      "grund": "missing_evidence",
+      "ist": "PASS",
+      "status": "PASS"
+    },
+    {
+      "erwartet": "PASS",
+      "fall": "alt_geordnet",
+      "grund": "stale_source",
+      "ist": "PASS",
+      "status": "PASS"
+    },
+    {
+      "erwartet": "PASS",
+      "fall": "alt_zusatzfelder",
+      "grund": "invalid_evidence",
+      "ist": "PASS",
+      "status": "PASS"
+    },
+    {
+      "erwartet": "PASS",
+      "fall": "gefaelscht_agentenlabel",
+      "grund": "forged_source",
+      "ist": "PASS",
+      "status": "PASS"
+    },
+    {
+      "erwartet": "PASS",
+      "fall": "gefaelscht_fd_flag",
+      "grund": "forged_authentication",
+      "ist": "PASS",
+      "status": "PASS"
+    },
+    {
+      "erwartet": "PASS",
+      "fall": "packet_ohne_messung",
+      "grund": "unmeasured_packet_not_identity",
+      "ist": "PASS",
+      "status": "PASS"
+    },
+    {
+      "erwartet": "PASS",
+      "fall": "fd_format_keine_hostmessung",
+      "grund": "local_relation_not_origin",
+      "ist": "PASS",
+      "status": "PASS"
+    },
+    {
+      "erwartet": "SKIP",
+      "fall": "host_verifier",
+      "grund": "datei_nicht_in_diesem_checkout",
+      "ist": "SKIP",
+      "status": "PASS"
+    },
+    {
+      "erwartet": "UNBEKANNT",
+      "fall": "abgelaufener_kontext",
+      "grund": "kontext_nach_aufnahme_ungueltig",
+      "ist": "UNBEKANNT",
+      "status": "PASS"
+    },
+    {
+      "erwartet": "STOP",
+      "fall": "replay",
+      "grund": "agent_run_unbekannt",
+      "ist": "STOP",
+      "status": "PASS"
+    },
+    {
+      "erwartet": "UNBEKANNT",
+      "fall": "herkunft",
+      "grund": "kein_herkunftsbeleg",
+      "ist": "UNBEKANNT",
+      "status": "PASS"
+    },
+    {
+      "erwartet": "UNBEKANNT",
+      "fall": "identitaet",
+      "grund": "kein_identitaetsbeleg",
+      "ist": "UNBEKANNT",
+      "status": "PASS"
+    },
+    {
+      "erwartet": "NACH",
+      "fall": "spaeteffekt",
+      "grund": "nur_aus_der_laufenden_aufnahme",
+      "ist": "NACH",
+      "status": "PASS"
+    },
+    {
+      "erwartet": "belegt",
+      "fall": "modellnachweis",
+      "grund": "originaler_codex_exec",
+      "ist": "belegt",
+      "status": "PASS"
+    }
+  ],
+  "zeitordnung": {
+    "bewertung": "KORREKT",
+    "ordnung": "NACH",
+    "urteil": "BELEGT"
+  }
+}

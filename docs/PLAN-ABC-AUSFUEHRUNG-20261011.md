@@ -82,3 +82,38 @@ cohort positions, independent Writer proof or foreign-capture experiment.
 Evidence/control hashes: PLAN-C1-PRE-RUN-RESULT-20261011.json.
 Next freeze source/CLI/host/N/matrix externally at committed clean source;
 then exactly8 real local CLI attempts with no source change and no retry.
+
+## C1 cohort and conclusions
+
+Source3fd4d08b0dfc7bef2fb97656f937d148529ba51c stayed unchanged through all8
+positions. Manifest SHA256
+feff12758507ddb63a26be5a671aed8ab90f3ab57b605979119a4eaad5fea71e,
+CLI0.162.1/requested gpt-6.1-sol (identifier not independent authentication),
+macOS15.7.4,120s timeout/5s followup, same artificial local scenario, N8.
+8 attempted/8 actual CLI starts/8 existing operational protocol model proofs,
+0 abort/0 timeout/0 missing/0 retry. Old15-row matrix8/8; B1 scope projection
+2/2 rows each. Required A1 three/B2 two rows UNKNOWN in each; full matrix0/8.
+No missing requirement relabeled as N/A or success.
+
+Exact two-sided95% Clopper-Pearson: full0/8 [0,0.3694166476], old8/8
+[0.6305833524,1]. Formula/implementation references in PLAN-C1-RESULT-20261011.json
+and tests/test_c1_cohort.py. Full0/8 is a structural proof gap, not an observed
+CLI runtime failure rate. IID/common-p assumption and representativeness are
+unverified; author/model/conversation, logical agent/process/effect binding
+and general reliability remain UNKNOWN. false_author_belegt0/8.
+C1 A PASS/B SUPPORTED solely for this counted descriptive calculation.
+
+Minimized immutable copies, hash index and test count/name/time projection:
+docs/c1-runs/2026-10-11-pilot/. Raw provider text/prompts/secrets absent.
+240 baseline tracked files checked: only approved additive plan identity question
+differs; every other pre-existing file byte-identical to600a6b1. Historical
+measurements/hypotheses/negative results/tests/p1/p5/p7/provenance/origin untouched.
+B2 original erroneous classification is retained with explicit additive correction.
+D-012 observer/analysis role preserved; no rights/ALLOW/DENY, privilege expansion,
+Ready or merge. Optional identity follow-on experiments were not started.
+
+Remaining decisions: independent permitted Writer channel before positive A1;
+A1 SUPPORTED plus race-safe instance binding before A2; independently defensible
+live append/source signal before B2 foreign capture; separate authorization for
+optional identity research or broader scenario/host samples. No substitute proof.
+This closes the authorized execution round with these explicit incomplete parts.

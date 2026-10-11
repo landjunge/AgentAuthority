@@ -1,0 +1,19 @@
+{
+  "erwartet": {
+    "abgelaufener_kontext": "UNBEKANNT",
+    "aufnahme": "score im aktiven capture_context",
+    "fixture": "kein Modellnachweis",
+    "grenzen": "offen",
+    "herkunft": "UNBEKANNT",
+    "identitaet": "UNBEKANNT",
+    "replay": "STOP",
+    "spaeteffekt": "NACH nur aus der laufenden Aufnahme"
+  },
+  "laufpfad": "/tmp/aa-abc-research-StfbeC/cohort/run-07/lauf",
+  "modus": "late",
+  "nachlauf_sekunden": 5,
+  "phase": "P7",
+  "quelle_sha": "3fd4d08b0dfc7bef2fb97656f937d148529ba51c",
+  "testziel": "ein connect mode=late auf das vorhandene lokale Werkzeug",
+  "timeout_sekunden": 120
+}
