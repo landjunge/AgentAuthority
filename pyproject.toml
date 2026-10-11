@@ -4,19 +4,25 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "agent-authority-lab"
-version = "0.2.0"
-description = "Deterministic composition-monitor prototype (frozen v0.2)"
+dynamic = ["version"]
+description = "Agent Authority observer preview and historical research lab"
 readme = "README.md"
 license = { file = "LICENSE" }
 requires-python = ">=3.12"
 authors = [{ name = "landjunge" }]
 dependencies = []
 
+[project.scripts]
+agent-authority = "agent_authority.cli:main"
+
 [project.optional-dependencies]
 dev = ["pytest>=8", "hypothesis>=6.100"]
 
 [tool.setuptools.packages.find]
-include = ["lab*"]
+include = ["lab*", "agent_authority*"]
+
+[tool.setuptools.dynamic]
+version = {attr = "agent_authority.__version__"}
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

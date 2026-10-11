@@ -10,9 +10,32 @@ grant or revoke rights, approve actions, release secrets or budgets, or stop wor
 The ALLOW/DENY, gate and IFC mechanisms below are **historical fake-lab
 experiments**. Their positive results, measured misses, repairs and frozen specs
 remain evidence within their original scope; they do not establish product
-decision authority or an implemented observer integration. The existing
+decision authority or authenticate the sources of the observer preview. The existing
 [practice/research reconciliation](https://github.com/landjunge/KI-Zentralle/blob/main/docs/agent-authority/ABGLEICH-TESTS-UND-BEOBACHTER-RECHERCHE-2026-10-07.md)
 keeps those distinctions explicit.
+
+## Local product preview
+
+The first product slice provides a read-only ThreadDesk whiteboard report:
+
+```sh
+python3.12 -m venv .venv
+.venv/bin/python -m pip install .
+.venv/bin/agent-authority inspect --thread THREAD_ID
+.venv/bin/agent-authority inspect --thread THREAD_ID --format json --limit 10
+```
+
+Use `--store PATH` to select a local ThreadDesk store; the default is
+`~/.threaddesk`. The report cites the read entries, shows reported task activity
+and structural problems, and makes incomplete input visible. Stored actor,
+success and authentication labels do not establish identity, actual completion
+or effects. It writes no store, cache or report files and imports no historical
+enforcement lab. Exit 2 indicates incomplete input, never an action decision.
+
+[P10-01 contract](docs/P10-01-PRODUKTVERTRAG-20261011.md) and
+[product usage](docs/PRODUCT-PREVIEW.md) describe the bounded local preview.
+This is the start of the product phase; further UI and production deployment
+require their own concrete work. The historical research below retains its scope.
 
 ## Historical research baseline
 

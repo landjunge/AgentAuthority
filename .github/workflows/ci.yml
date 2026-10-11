@@ -30,6 +30,6 @@ jobs:
       - name: Ruff format
         run: ruff format --check .
       - name: Bandit
-        run: bandit -r lab/ -ll
+        run: bandit -r lab/ agent_authority/ -ll
       - name: Mypy strict
-        run: mypy lab/ --strict
+        run: mypy lab/ agent_authority/ --strict
