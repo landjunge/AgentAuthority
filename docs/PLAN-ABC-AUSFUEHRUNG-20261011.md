@@ -32,3 +32,14 @@ Bewertung trennt Achse A, Achse B und Evidenzlabels BELEGT/TEILWEISE BELEGT/
 WIDERLEGT/UNBEKANNT. Technischer PASS ist kein Sicherheitsbeweis.
 Implizite Herkunft aus PID, actor, Zeitnähe oder Laufzähler wird nicht behauptet.
 Weitere Paketresultate werden additiv unten dokumentiert.
+
+## A1/A2
+
+A1 SDK-contract preflight: required independent Writer channel missing.
+A FAIL/B INCONCLUSIVE; positive hypothesis experiment not performed,
+not REFUTED and no claim of universal API impossibility. Contract facts
+BELEGT, Writer/logical agent/effect binding UNBEKANNT. Reproducible SDK paths,
+SHA256 and excerpts: PLAN-A1-PREFLIGHT-RESULT-20261011.json.
+No code or research tests added for a fabricated attribution fallback.
+A2 prerequisite A1 SUPPORTED unmet: not executed, hypothesis unjudged.
+PLAN-A2-STATUS-20261011.md. B1 and B2-window work remain independently executable.
