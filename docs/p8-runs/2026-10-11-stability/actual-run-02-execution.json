@@ -1,0 +1,26 @@
+{
+  "stage": "P8",
+  "underlying_runner_phase": "P7",
+  "argv": [
+    "/Users/landjunge/agent-authority-lab/.venv/bin/python",
+    "-B",
+    "scripts/p7_integration.py",
+    "--parent",
+    "/Users/landjunge/.threaddesk/artifacts/agent-authority/p8-stability-20261011/actual-run-02",
+    "--codex",
+    "/Users/landjunge/.local/bin/codex",
+    "--quelle-sha",
+    "64bf757ee7e32ca3df780b61a698466e2e299899",
+    "--timeout",
+    "120",
+    "--post-window",
+    "3"
+  ],
+  "source_sha": "64bf757ee7e32ca3df780b61a698466e2e299899",
+  "started_UTC": "2026-10-11T04:24:50.881071+00:00",
+  "codex_executable_sha256": "f86b8cfd3de94dc70763d251da3ff292e94f4a53ad41b81faab3619a7bcb626c",
+  "new_actual_attempt": true,
+  "raw_provider_text_archived": false,
+  "completed_UTC": "2026-10-11T04:25:06.383501+00:00",
+  "exit_code": 0
+}
