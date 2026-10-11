@@ -63,3 +63,9 @@ Full implementation SPEC DEVIATION (window only), no full package PASS.
 Foreign capture not executed: live intake/source signal missing, INCONCLUSIVE.
 No dummy intake, no old archive retest, p1/p5/P6 unchanged.
 Timestamps/oracle/suite hashes: PLAN-B2-RESULT-20261011.json.
+
+B2 classification correction: full required contract is A FAIL, not the
+previously written SPEC DEVIATION label. Missing required foreign-capture case
+precludes complete acceptance. Original result and measurements preserved;
+PLAN-B2-ABNAHME-KLARSTELLUNG-20261011.md is the authoritative additive correction.
+No repeated experiment needed for this reporting correction.
