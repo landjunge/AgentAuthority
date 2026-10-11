@@ -43,3 +43,12 @@ SHA256 and excerpts: PLAN-A1-PREFLIGHT-RESULT-20261011.json.
 No code or research tests added for a fabricated attribution fallback.
 A2 prerequisite A1 SUPPORTED unmet: not executed, hypothesis unjudged.
 PLAN-A2-STATUS-20261011.md. B1 and B2-window work remain independently executable.
+
+## B1
+
+One-target coverage module and seven ordinary local writer/error cases.
+Two complete suites: 551 passed,5 historical deselections each, no failures/errors/skips;
+one existing fork deprecation warning. Ruff and strict Mypy of new module PASS.
+A PASS/B SUPPORTED only for scope/output conformance, BELEGT within these cases.
+Unseen sibling detection and host completeness not measured; writer/agent UNKNOWN.
+JUnit paths/hash evidence: PLAN-B1-RESULT-20261011.json.

@@ -1,0 +1,33 @@
+{
+  "package": "B1",
+  "axis_A": "PASS",
+  "axis_B": "SUPPORTED",
+  "evidence": "BELEGT",
+  "scope": "seven local conformance cases; not unseen sibling detection or measured host coverage",
+  "suite_runs": [
+    {
+      "run": 1,
+      "path": "/tmp/aa-abc-research-StfbeC/b1-suite1.xml",
+      "sha256": "c3ba53037e2689640502a84043ac20178ab3fd69f7a91a405f596b4f75fa3e81",
+      "tests": 551,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "run": 2,
+      "path": "/tmp/aa-abc-research-StfbeC/b1-suite2.xml",
+      "sha256": "84fe74c470a8d74d19875feb2e7817eb113e9f2362bbcbe7f12d7a59e5b39916",
+      "tests": 551,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    }
+  ],
+  "historical_deselected": 5,
+  "new_tests": 7,
+  "writer_identity": "UNBEKANNT",
+  "logical_agent_identity": "UNBEKANNT",
+  "confidence_result": "HIGH within target conformance",
+  "confidence_generalization": "LOW"
+}
