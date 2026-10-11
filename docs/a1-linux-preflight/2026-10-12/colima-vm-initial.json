@@ -1,0 +1,435 @@
+{
+  "architecture": "x86_64",
+  "attribution_correct": null,
+  "attribution_unclear": null,
+  "boot_identity_hash": {
+    "errno": 12,
+    "status": "UNBEKANNT"
+  },
+  "causality": "UNBEKANNT",
+  "diagnostic_resources": {
+    "body_elapsed_ns": 12220878,
+    "event_stream_cpu": null,
+    "event_stream_ram": null,
+    "process_cpu_system_seconds": 0.022187,
+    "process_cpu_user_seconds": 0.0474,
+    "process_peak_rss_bytes_linux": 18350080,
+    "scope": "this Python diagnostic process, not compiler/VM/monitor"
+  },
+  "distribution": {
+    "bytes_read": 400,
+    "sha256": "01af466feb100306498c86aa6bad1815e33036019aa34d4362c20f374ea5c829",
+    "status": "BELEGT",
+    "value": {
+      "ID": "ubuntu",
+      "PRETTY_NAME": "Ubuntu 24.04.4 LTS",
+      "VERSION_CODENAME": "noble",
+      "VERSION_ID": "24.04"
+    }
+  },
+  "egid": 1000,
+  "environment_label": "colima-vm",
+  "euid": 501,
+  "event_loss": null,
+  "event_stream_opened": false,
+  "interface_metadata": {
+    "/proc": {
+      "gid": 0,
+      "mode": "0o555",
+      "readable_access_check_only": true,
+      "searchable_access_check_only": true,
+      "size": 0,
+      "status": "BELEGT",
+      "uid": 0
+    },
+    "/sys/fs/bpf": {
+      "gid": 0,
+      "mode": "0o1700",
+      "readable_access_check_only": false,
+      "searchable_access_check_only": false,
+      "size": 0,
+      "status": "BELEGT",
+      "uid": 0
+    },
+    "/sys/kernel/btf/vmlinux": {
+      "gid": 0,
+      "mode": "0o444",
+      "readable_access_check_only": true,
+      "searchable_access_check_only": false,
+      "size": 6089925,
+      "status": "BELEGT",
+      "uid": 0
+    },
+    "/sys/kernel/debug/tracing": {
+      "errno": 13,
+      "status": "UNBEKANNT"
+    },
+    "/sys/kernel/security": {
+      "gid": 0,
+      "mode": "0o755",
+      "readable_access_check_only": true,
+      "searchable_access_check_only": true,
+      "size": 0,
+      "status": "BELEGT",
+      "uid": 0
+    },
+    "/sys/kernel/tracing": {
+      "gid": 0,
+      "mode": "0o700",
+      "readable_access_check_only": false,
+      "searchable_access_check_only": false,
+      "size": 0,
+      "status": "BELEGT",
+      "uid": 0
+    },
+    "/usr/include/linux/audit.h": {
+      "errno": 2,
+      "status": "UNBEKANNT"
+    },
+    "/usr/include/linux/bpf.h": {
+      "errno": 2,
+      "status": "UNBEKANNT"
+    },
+    "/usr/include/linux/fanotify.h": {
+      "errno": 2,
+      "status": "UNBEKANNT"
+    },
+    "/var/log/audit": {
+      "errno": 2,
+      "status": "UNBEKANNT"
+    }
+  },
+  "kernel_config": {
+    "/boot/config-6.8.0-100-generic": {
+      "bytes_read": 287599,
+      "selected": {
+        "CONFIG_AUDIT": "y",
+        "CONFIG_AUDITSYSCALL": "y",
+        "CONFIG_BPF": "y",
+        "CONFIG_BPF_EVENTS": "y",
+        "CONFIG_BPF_SYSCALL": "y",
+        "CONFIG_BPF_UNPRIV_DEFAULT_OFF": "y",
+        "CONFIG_DEBUG_INFO_BTF": "y",
+        "CONFIG_FANOTIFY": "y",
+        "CONFIG_FANOTIFY_ACCESS_PERMISSIONS": "y",
+        "CONFIG_FTRACE": "y",
+        "CONFIG_NAMESPACES": "y",
+        "CONFIG_PERF_EVENTS": "y",
+        "CONFIG_PID_NS": "y",
+        "CONFIG_SECCOMP": "y",
+        "CONFIG_SECCOMP_FILTER": "y",
+        "CONFIG_SECURITY_APPARMOR": "y",
+        "CONFIG_SECURITY_LOCKDOWN_LSM": "y",
+        "CONFIG_SECURITY_SELINUX": "y",
+        "CONFIG_TRACEPOINTS": "y",
+        "CONFIG_USER_NS": "y"
+      },
+      "sha256": "ec4bf8143fd8ae59935cfe586ebacf5dc271bf6e907578e4ec7fb31db30b31c8",
+      "status": "BELEGT"
+    },
+    "/proc/config.gz": {
+      "errno": 2,
+      "status": "UNBEKANNT"
+    }
+  },
+  "logical_agent_identity": "UNBEKANNT",
+  "metadata_reads": {
+    "/proc/self/attr/current": {
+      "bytes_read": 11,
+      "sha256": "059f3fbad9298d09b1364f5cbed86919da8933eb7e12939d89196681f98a6df9",
+      "status": "BELEGT",
+      "value": "unconfined\n"
+    },
+    "/proc/self/gid_map": {
+      "bytes_read": 33,
+      "sha256": "58a6d563e0da53c99b7289c33a814aa9fffee126b9981099b9f77a7ed58d6dc0",
+      "status": "BELEGT",
+      "value": "         0          0 4294967295\n"
+    },
+    "/proc/self/uid_map": {
+      "bytes_read": 33,
+      "sha256": "58a6d563e0da53c99b7289c33a814aa9fffee126b9981099b9f77a7ed58d6dc0",
+      "status": "BELEGT",
+      "value": "         0          0 4294967295\n"
+    },
+    "/proc/sys/fs/fanotify/max_queued_events": {
+      "errno": 12,
+      "status": "UNBEKANNT"
+    },
+    "/proc/sys/fs/fanotify/max_user_groups": {
+      "errno": 12,
+      "status": "UNBEKANNT"
+    },
+    "/proc/sys/fs/fanotify/max_user_marks": {
+      "errno": 12,
+      "status": "UNBEKANNT"
+    },
+    "/proc/sys/kernel/perf_event_paranoid": {
+      "errno": 12,
+      "status": "UNBEKANNT"
+    },
+    "/proc/sys/kernel/unprivileged_bpf_disabled": {
+      "errno": 12,
+      "status": "UNBEKANNT"
+    },
+    "/proc/sys/kernel/unprivileged_userns_clone": {
+      "errno": 12,
+      "status": "UNBEKANNT"
+    },
+    "/proc/sys/kernel/yama/ptrace_scope": {
+      "errno": 12,
+      "status": "UNBEKANNT"
+    },
+    "/sys/fs/selinux/enforce": {
+      "errno": 2,
+      "status": "UNBEKANNT"
+    },
+    "/sys/kernel/security/lockdown": {
+      "bytes_read": 33,
+      "sha256": "18099eee1b7af07fcb76f7927d6afe38a8470d07aa01e0d20eddefd270ecc16f",
+      "status": "BELEGT",
+      "value": "[none] integrity confidentiality\n"
+    },
+    "/sys/kernel/security/lsm": {
+      "bytes_read": 42,
+      "sha256": "0c42e9547061feb3fe3be2d809a064dd13ec0defefc5e8696721bff790646733",
+      "status": "BELEGT",
+      "value": "lockdown,capability,landlock,yama,apparmor"
+    },
+    "/sys/module/apparmor/parameters/enabled": {
+      "bytes_read": 2,
+      "sha256": "d08c5f95ebb8581ee4e5c0a2ee534d5a10d3c8e7f3a18d961adf902602bbd8a3",
+      "status": "BELEGT",
+      "value": "Y\n"
+    }
+  },
+  "namespaces": {
+    "1": {
+      "cgroup": {
+        "errno": 13,
+        "status": "UNBEKANNT"
+      },
+      "mnt": {
+        "errno": 13,
+        "status": "UNBEKANNT"
+      },
+      "net": {
+        "errno": 13,
+        "status": "UNBEKANNT"
+      },
+      "pid": {
+        "errno": 13,
+        "status": "UNBEKANNT"
+      },
+      "user": {
+        "errno": 13,
+        "status": "UNBEKANNT"
+      }
+    },
+    "self": {
+      "cgroup": {
+        "link": "cgroup:[4026531835]",
+        "status": "BELEGT"
+      },
+      "mnt": {
+        "link": "mnt:[4026531841]",
+        "status": "BELEGT"
+      },
+      "net": {
+        "link": "net:[4026531840]",
+        "status": "BELEGT"
+      },
+      "pid": {
+        "link": "pid:[4026531836]",
+        "status": "BELEGT"
+      },
+      "user": {
+        "link": "user:[4026531837]",
+        "status": "BELEGT"
+      }
+    }
+  },
+  "release": "6.8.0-100-generic",
+  "runner_allowlist": {
+    "GITHUB_ACTIONS": null,
+    "GITHUB_RUN_ID": null,
+    "GITHUB_SHA": null,
+    "ImageOS": null,
+    "ImageVersion": null,
+    "RUNNER_ARCH": null,
+    "RUNNER_ENVIRONMENT": null,
+    "RUNNER_OS": null
+  },
+  "schema": "a1-linux-preflight-v1",
+  "selected_effective_capabilities": {
+    "CAP_AUDIT_CONTROL": false,
+    "CAP_AUDIT_READ": false,
+    "CAP_AUDIT_WRITE": false,
+    "CAP_BPF": false,
+    "CAP_CHECKPOINT_RESTORE": false,
+    "CAP_DAC_READ_SEARCH": false,
+    "CAP_PERFMON": false,
+    "CAP_SYS_ADMIN": false,
+    "CAP_SYS_PTRACE": false
+  },
+  "selected_mounts": {
+    "bytes_read": 3219,
+    "sha256": "45a2dd533e00eb04fd72f217d88b130331989bbca082ebc127bcf2137ff64cfe",
+    "status": "BELEGT",
+    "value": [
+      {
+        "filesystem": "ext4",
+        "mountpoint": "/",
+        "options": "rw,relatime",
+        "super_options": "rw,discard,errors=remount-ro,commit=30"
+      },
+      {
+        "filesystem": "proc",
+        "mountpoint": "/proc",
+        "options": "rw,nosuid,nodev,noexec,relatime",
+        "super_options": "rw"
+      },
+      {
+        "filesystem": "sysfs",
+        "mountpoint": "/sys",
+        "options": "rw,nosuid,nodev,noexec,relatime",
+        "super_options": "rw"
+      },
+      {
+        "filesystem": "securityfs",
+        "mountpoint": "/sys/kernel/security",
+        "options": "rw,nosuid,nodev,noexec,relatime",
+        "super_options": "rw"
+      },
+      {
+        "filesystem": "cgroup2",
+        "mountpoint": "/sys/fs/cgroup",
+        "options": "rw,nosuid,nodev,noexec,relatime",
+        "super_options": "rw,nsdelegate,memory_recursiveprot"
+      },
+      {
+        "filesystem": "bpf",
+        "mountpoint": "/sys/fs/bpf",
+        "options": "rw,nosuid,nodev,noexec,relatime",
+        "super_options": "rw,mode=700"
+      },
+      {
+        "filesystem": "debugfs",
+        "mountpoint": "/sys/kernel/debug",
+        "options": "rw,nosuid,nodev,noexec,relatime",
+        "super_options": "rw"
+      },
+      {
+        "filesystem": "tracefs",
+        "mountpoint": "/sys/kernel/tracing",
+        "options": "rw,nosuid,nodev,noexec,relatime",
+        "super_options": "rw"
+      }
+    ]
+  },
+  "self_start_snapshot": {
+    "bytes_read": 290,
+    "sha256": "abeab01284430feabac146263f3b06e17a0637a06d46845f7325fe9d3105560e",
+    "status": "BELEGT",
+    "value": {
+      "causal_writer_record": false,
+      "pid": 585542,
+      "start_ticks_since_boot": 31205837,
+      "ticks_per_second": 100
+    }
+  },
+  "self_status": {
+    "bytes_read": 1497,
+    "sha256": "1619d72cdbd290116a7f85dd1892ca0377b655a6b66ce39e49ebde6afc7ee3e2",
+    "status": "BELEGT",
+    "value": {
+      "CapAmb": "0000000000000000",
+      "CapBnd": "000001ffffffffff",
+      "CapEff": "0000000000000000",
+      "CapInh": "0000000000000000",
+      "CapPrm": "0000000000000000",
+      "Gid": "1000\t1000\t1000\t1000",
+      "NSpid": "585542",
+      "NoNewPrivs": "0",
+      "Seccomp": "0",
+      "Seccomp_filters": "0",
+      "Uid": "501\t501\t501\t501"
+    }
+  },
+  "system": "Linux",
+  "tool_paths_presence_only": {
+    "auditctl": null,
+    "ausearch": null,
+    "bpftool": null,
+    "bpftrace": null,
+    "capsh": "/usr/sbin/capsh",
+    "cc": null,
+    "clang": null,
+    "gcc": null,
+    "getcap": "/usr/sbin/getcap",
+    "perf": null,
+    "python3": "/usr/bin/python3"
+  },
+  "tracepoint_formats": {
+    "/sys/kernel/debug/tracing/events/sched/sched_process_exec/format": {
+      "errno": 13,
+      "status": "UNBEKANNT"
+    },
+    "/sys/kernel/debug/tracing/events/sched/sched_process_exit/format": {
+      "errno": 13,
+      "status": "UNBEKANNT"
+    },
+    "/sys/kernel/debug/tracing/events/sched/sched_process_fork/format": {
+      "errno": 13,
+      "status": "UNBEKANNT"
+    },
+    "/sys/kernel/debug/tracing/events/syscalls/sys_enter_pwrite64/format": {
+      "errno": 13,
+      "status": "UNBEKANNT"
+    },
+    "/sys/kernel/debug/tracing/events/syscalls/sys_enter_write/format": {
+      "errno": 13,
+      "status": "UNBEKANNT"
+    },
+    "/sys/kernel/debug/tracing/events/syscalls/sys_enter_writev/format": {
+      "errno": 13,
+      "status": "UNBEKANNT"
+    },
+    "/sys/kernel/debug/tracing/events/syscalls/sys_exit_write/format": {
+      "errno": 13,
+      "status": "UNBEKANNT"
+    },
+    "/sys/kernel/tracing/events/sched/sched_process_exec/format": {
+      "errno": 13,
+      "status": "UNBEKANNT"
+    },
+    "/sys/kernel/tracing/events/sched/sched_process_exit/format": {
+      "errno": 13,
+      "status": "UNBEKANNT"
+    },
+    "/sys/kernel/tracing/events/sched/sched_process_fork/format": {
+      "errno": 13,
+      "status": "UNBEKANNT"
+    },
+    "/sys/kernel/tracing/events/syscalls/sys_enter_pwrite64/format": {
+      "errno": 13,
+      "status": "UNBEKANNT"
+    },
+    "/sys/kernel/tracing/events/syscalls/sys_enter_write/format": {
+      "errno": 13,
+      "status": "UNBEKANNT"
+    },
+    "/sys/kernel/tracing/events/syscalls/sys_enter_writev/format": {
+      "errno": 13,
+      "status": "UNBEKANNT"
+    },
+    "/sys/kernel/tracing/events/syscalls/sys_exit_write/format": {
+      "errno": 13,
+      "status": "UNBEKANNT"
+    }
+  },
+  "utc": "2026-10-11T22:17:36.451268+00:00",
+  "writer_events": null,
+  "writer_experiments_executed": false,
+  "probe_sha256": "7f29ba11662836c9d7b86c88ec856c9c39dec5867889998359a5124aac6605fc"
+}

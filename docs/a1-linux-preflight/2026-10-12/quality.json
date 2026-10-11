@@ -1,0 +1,46 @@
+{
+  "utc": "2026-10-11T22:25:31.016960+00:00",
+  "checks": [
+    {
+      "command": [
+        "ruff",
+        "check",
+        "/Users/landjunge/agent-authority-a1-linux-preflight/docs/a1-linux-preflight/2026-10-12/probe.py"
+      ],
+      "exit": 0,
+      "stdout": "All checks passed!",
+      "stderr_bytes": 0
+    },
+    {
+      "command": [
+        "ruff",
+        "format",
+        "--check",
+        "/Users/landjunge/agent-authority-a1-linux-preflight/docs/a1-linux-preflight/2026-10-12/probe.py"
+      ],
+      "exit": 0,
+      "stdout": "1 file already formatted",
+      "stderr_bytes": 0
+    },
+    {
+      "command": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "exit": 0,
+      "stdout": "",
+      "stderr_bytes": 0
+    }
+  ],
+  "syntax": "PASS",
+  "json_parse": "PASS",
+  "three_final_diagnostics_same_committed_probe": "PASS",
+  "no_stream_or_writer_flags": "PASS",
+  "same_kernel_boot_container_distinct_namespaces": "PASS",
+  "no_process_caps": "PASS",
+  "historical_baseline_files350": "PASS",
+  "full_tests_not_run": "metadata/doc-only, no research/Writer execution authorized",
+  "initial_lint": "F401 before c5f0019 push; corrected01c4ca2; all final checks pass",
+  "code_changes_at_final_report": "none"
+}

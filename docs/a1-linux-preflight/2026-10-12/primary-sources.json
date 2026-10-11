@@ -1,0 +1,200 @@
+{
+  "utc": "2026-10-11T22:21:52.859132+00:00",
+  "linux_tags_resolved": {
+    "v6.8": "e8f897f4afef0031fe618a8e94127a0934896aba",
+    "v6.17": "e5f0a698b34ed76002dc5cff3804a61c80233a7a"
+  },
+  "sources": [
+    {
+      "version": "v6.8",
+      "upstream_commit": "e8f897f4afef0031fe618a8e94127a0934896aba",
+      "path": "fs/notify/fanotify/fanotify_user.c",
+      "url": "https://raw.githubusercontent.com/torvalds/linux/e8f897f4afef0031fe618a8e94127a0934896aba/fs/notify/fanotify/fanotify_user.c",
+      "sha256": "908d99745cd6893eda7e7331c2e2e3badc757031a82999a5d75908007a37cfac",
+      "bytes": 55163,
+      "status": "BELEGT",
+      "trust": "upstream API/access contract, NOT measured Ubuntu kernel implementation or causal experiment"
+    },
+    {
+      "version": "v6.8",
+      "upstream_commit": "e8f897f4afef0031fe618a8e94127a0934896aba",
+      "path": "include/uapi/linux/fanotify.h",
+      "url": "https://raw.githubusercontent.com/torvalds/linux/e8f897f4afef0031fe618a8e94127a0934896aba/include/uapi/linux/fanotify.h",
+      "sha256": "2fca6aa35b2156f09f3b8305d0793ec11efd7aa795108b49d5c038bde79655d0",
+      "bytes": 8313,
+      "status": "BELEGT",
+      "trust": "upstream API/access contract, NOT measured Ubuntu kernel implementation or causal experiment"
+    },
+    {
+      "version": "v6.8",
+      "upstream_commit": "e8f897f4afef0031fe618a8e94127a0934896aba",
+      "path": "kernel/audit.c",
+      "url": "https://raw.githubusercontent.com/torvalds/linux/e8f897f4afef0031fe618a8e94127a0934896aba/kernel/audit.c",
+      "sha256": "fc5b1e210790fd42e146d432a8a9881a789b2822e0594d4e5eba950dfed8f02f",
+      "bytes": 66740,
+      "status": "BELEGT",
+      "trust": "upstream API/access contract, NOT measured Ubuntu kernel implementation or causal experiment"
+    },
+    {
+      "version": "v6.8",
+      "upstream_commit": "e8f897f4afef0031fe618a8e94127a0934896aba",
+      "path": "kernel/auditsc.c",
+      "url": "https://raw.githubusercontent.com/torvalds/linux/e8f897f4afef0031fe618a8e94127a0934896aba/kernel/auditsc.c",
+      "sha256": "69a9c1422b91ed9d687cc9a369255497b803b7726a894a10412d009e21b39794",
+      "bytes": 83695,
+      "status": "BELEGT",
+      "trust": "upstream API/access contract, NOT measured Ubuntu kernel implementation or causal experiment"
+    },
+    {
+      "version": "v6.8",
+      "upstream_commit": "e8f897f4afef0031fe618a8e94127a0934896aba",
+      "path": "kernel/bpf/syscall.c",
+      "url": "https://raw.githubusercontent.com/torvalds/linux/e8f897f4afef0031fe618a8e94127a0934896aba/kernel/bpf/syscall.c",
+      "sha256": "cde893c570a0d505f03d811c6be27f6e001198b7daa728a30b9962a3db211d4e",
+      "bytes": 145318,
+      "status": "BELEGT",
+      "trust": "upstream API/access contract, NOT measured Ubuntu kernel implementation or causal experiment"
+    },
+    {
+      "version": "v6.8",
+      "upstream_commit": "e8f897f4afef0031fe618a8e94127a0934896aba",
+      "path": "include/trace/events/syscalls.h",
+      "url": "https://raw.githubusercontent.com/torvalds/linux/e8f897f4afef0031fe618a8e94127a0934896aba/include/trace/events/syscalls.h",
+      "sha256": "ca5700839e4b50da66fa726bf7c33d0929c2ebca8ace447a3156522f667c854c",
+      "bytes": 1506,
+      "status": "BELEGT",
+      "trust": "upstream API/access contract, NOT measured Ubuntu kernel implementation or causal experiment"
+    },
+    {
+      "version": "v6.8",
+      "upstream_commit": "e8f897f4afef0031fe618a8e94127a0934896aba",
+      "path": "fs/read_write.c",
+      "url": "https://raw.githubusercontent.com/torvalds/linux/e8f897f4afef0031fe618a8e94127a0934896aba/fs/read_write.c",
+      "sha256": "2a676698ec5172588a543765a3312df562ab56872da9cfb92ea4ea7f13bb55fd",
+      "bytes": 41535,
+      "status": "BELEGT",
+      "trust": "upstream API/access contract, NOT measured Ubuntu kernel implementation or causal experiment"
+    },
+    {
+      "version": "v6.17",
+      "upstream_commit": "e5f0a698b34ed76002dc5cff3804a61c80233a7a",
+      "path": "fs/notify/fanotify/fanotify_user.c",
+      "url": "https://raw.githubusercontent.com/torvalds/linux/e5f0a698b34ed76002dc5cff3804a61c80233a7a/fs/notify/fanotify/fanotify_user.c",
+      "sha256": "d702adea8f629ab8998abf169385511196543aad30226ac72699ecea337ba990",
+      "bytes": 57880,
+      "status": "BELEGT",
+      "trust": "upstream API/access contract, NOT measured Ubuntu kernel implementation or causal experiment"
+    },
+    {
+      "version": "v6.17",
+      "upstream_commit": "e5f0a698b34ed76002dc5cff3804a61c80233a7a",
+      "path": "include/uapi/linux/fanotify.h",
+      "url": "https://raw.githubusercontent.com/torvalds/linux/e5f0a698b34ed76002dc5cff3804a61c80233a7a/include/uapi/linux/fanotify.h",
+      "sha256": "fe9a5ec7502bd11f0f915a00a9bf72618b66f66ae458b1a132cb44a82dcdbf7d",
+      "bytes": 9312,
+      "status": "BELEGT",
+      "trust": "upstream API/access contract, NOT measured Ubuntu kernel implementation or causal experiment"
+    },
+    {
+      "version": "v6.17",
+      "upstream_commit": "e5f0a698b34ed76002dc5cff3804a61c80233a7a",
+      "path": "kernel/audit.c",
+      "url": "https://raw.githubusercontent.com/torvalds/linux/e5f0a698b34ed76002dc5cff3804a61c80233a7a/kernel/audit.c",
+      "sha256": "1b6eba6ade6c4252f27012d0e70804fc4c3fd4063b6b28e7d86fd0da8a31d217",
+      "bytes": 66806,
+      "status": "BELEGT",
+      "trust": "upstream API/access contract, NOT measured Ubuntu kernel implementation or causal experiment"
+    },
+    {
+      "version": "v6.17",
+      "upstream_commit": "e5f0a698b34ed76002dc5cff3804a61c80233a7a",
+      "path": "kernel/auditsc.c",
+      "url": "https://raw.githubusercontent.com/torvalds/linux/e5f0a698b34ed76002dc5cff3804a61c80233a7a/kernel/auditsc.c",
+      "sha256": "b1b9be27602754daae26184637099fa34192a578e6af1ebb1d27bebd02fb4962",
+      "bytes": 83666,
+      "status": "BELEGT",
+      "trust": "upstream API/access contract, NOT measured Ubuntu kernel implementation or causal experiment"
+    },
+    {
+      "version": "v6.17",
+      "upstream_commit": "e5f0a698b34ed76002dc5cff3804a61c80233a7a",
+      "path": "kernel/bpf/syscall.c",
+      "url": "https://raw.githubusercontent.com/torvalds/linux/e5f0a698b34ed76002dc5cff3804a61c80233a7a/kernel/bpf/syscall.c",
+      "sha256": "e9ace3b6933b7a549c74331eb1896bfb6ccc34ef71d8db57dfc28e908ec3ad0d",
+      "bytes": 162561,
+      "status": "BELEGT",
+      "trust": "upstream API/access contract, NOT measured Ubuntu kernel implementation or causal experiment"
+    },
+    {
+      "version": "v6.17",
+      "upstream_commit": "e5f0a698b34ed76002dc5cff3804a61c80233a7a",
+      "path": "include/trace/events/syscalls.h",
+      "url": "https://raw.githubusercontent.com/torvalds/linux/e5f0a698b34ed76002dc5cff3804a61c80233a7a/include/trace/events/syscalls.h",
+      "sha256": "91a2c57b47bfb149c63170cb0f2a52b5e092ad367e693d4baa01cbeee5f4dc80",
+      "bytes": 1516,
+      "status": "BELEGT",
+      "trust": "upstream API/access contract, NOT measured Ubuntu kernel implementation or causal experiment"
+    },
+    {
+      "version": "v6.17",
+      "upstream_commit": "e5f0a698b34ed76002dc5cff3804a61c80233a7a",
+      "path": "fs/read_write.c",
+      "url": "https://raw.githubusercontent.com/torvalds/linux/e5f0a698b34ed76002dc5cff3804a61c80233a7a/fs/read_write.c",
+      "sha256": "aa2aa3f31a9f4fb874af11a0bfd39a23e9011e99ec0fc89a1ebde63c4c6f4c07",
+      "bytes": 44591,
+      "status": "BELEGT",
+      "trust": "upstream API/access contract, NOT measured Ubuntu kernel implementation or causal experiment"
+    },
+    {
+      "version": "docs",
+      "upstream_commit": null,
+      "path": "perf-security",
+      "url": "https://docs.kernel.org/admin-guide/perf-security.html",
+      "sha256": "bb1c5d5178de7baacc2da5be01b1871512216dc899461d5df515d19d214f4c50",
+      "bytes": 37201,
+      "status": "BELEGT",
+      "trust": "upstream API/access contract, NOT measured Ubuntu kernel implementation or causal experiment"
+    },
+    {
+      "version": "docs",
+      "upstream_commit": null,
+      "path": "sysctl",
+      "url": "https://docs.kernel.org/admin-guide/sysctl/kernel.html",
+      "sha256": "7fe23756f55da2399d747034fb254b81b058cb6fc7643556a186ff69d9bcdf46",
+      "bytes": 130603,
+      "status": "BELEGT",
+      "trust": "upstream API/access contract, NOT measured Ubuntu kernel implementation or causal experiment"
+    },
+    {
+      "version": "docs",
+      "upstream_commit": null,
+      "path": "events",
+      "url": "https://docs.kernel.org/trace/events.html",
+      "sha256": "d51ebcd7bf6ea075e4c1b6f9b63b4b135fcc566254e6cf69d3d6f945c6dcf8e1",
+      "bytes": 74085,
+      "status": "BELEGT",
+      "trust": "upstream API/access contract, NOT measured Ubuntu kernel implementation or causal experiment"
+    },
+    {
+      "version": "docs",
+      "upstream_commit": null,
+      "path": "ringbuf",
+      "url": "https://docs.kernel.org/bpf/ringbuf.html",
+      "sha256": "7ebfa520499680647c16fe4205c2d2b186dcf3c0069d87cdfb4846aa576f2bce",
+      "bytes": 26055,
+      "status": "BELEGT",
+      "trust": "upstream API/access contract, NOT measured Ubuntu kernel implementation or causal experiment"
+    },
+    {
+      "version": "docs",
+      "upstream_commit": null,
+      "path": "github-runners",
+      "url": "https://docs.github.com/en/actions/reference/runners/github-hosted-runners",
+      "sha256": "37456624468515421e9479b1acd6d8579da9ba29df939d4331ae5af559596530",
+      "bytes": 432276,
+      "status": "BELEGT",
+      "trust": "upstream API/access contract, NOT measured Ubuntu kernel implementation or causal experiment"
+    }
+  ],
+  "web_man7_fetch": "failed; no claims based on unavailable page; kernel sources used"
+}

@@ -1,0 +1,384 @@
+{
+  "architecture": "x86_64",
+  "attribution_correct": null,
+  "attribution_unclear": null,
+  "boot_identity_hash": {
+    "errno": 12,
+    "status": "UNBEKANNT"
+  },
+  "causality": "UNBEKANNT",
+  "diagnostic_resources": {
+    "body_elapsed_ns": 3475134,
+    "event_stream_cpu": null,
+    "event_stream_ram": null,
+    "process_cpu_system_seconds": 0.044489,
+    "process_cpu_user_seconds": 0.237616,
+    "process_peak_rss_bytes_linux": 21901312,
+    "scope": "this Python diagnostic process, not compiler/VM/monitor"
+  },
+  "distribution": {
+    "bytes_read": 267,
+    "sha256": "59a77b5f2666d9c85c489bd1911a6eebbd91ef22fe48b90a3b75f1b21f3844d4",
+    "status": "BELEGT",
+    "value": {
+      "ID": "debian",
+      "PRETTY_NAME": "Debian GNU/Linux 12 (bookworm)",
+      "VERSION_CODENAME": "bookworm",
+      "VERSION_ID": "12"
+    }
+  },
+  "egid": 1000,
+  "environment_label": "diagnostic-container",
+  "euid": 501,
+  "event_loss": null,
+  "event_stream_opened": false,
+  "interface_metadata": {
+    "/proc": {
+      "gid": 0,
+      "mode": "0o555",
+      "readable_access_check_only": true,
+      "searchable_access_check_only": true,
+      "size": 0,
+      "status": "BELEGT",
+      "uid": 0
+    },
+    "/sys/fs/bpf": {
+      "gid": 0,
+      "mode": "0o555",
+      "readable_access_check_only": true,
+      "searchable_access_check_only": true,
+      "size": 0,
+      "status": "BELEGT",
+      "uid": 0
+    },
+    "/sys/kernel/btf/vmlinux": {
+      "gid": 0,
+      "mode": "0o444",
+      "readable_access_check_only": true,
+      "searchable_access_check_only": false,
+      "size": 6089925,
+      "status": "BELEGT",
+      "uid": 0
+    },
+    "/sys/kernel/debug/tracing": {
+      "errno": 2,
+      "status": "UNBEKANNT"
+    },
+    "/sys/kernel/security": {
+      "gid": 0,
+      "mode": "0o555",
+      "readable_access_check_only": true,
+      "searchable_access_check_only": true,
+      "size": 0,
+      "status": "BELEGT",
+      "uid": 0
+    },
+    "/sys/kernel/tracing": {
+      "gid": 0,
+      "mode": "0o555",
+      "readable_access_check_only": true,
+      "searchable_access_check_only": true,
+      "size": 0,
+      "status": "BELEGT",
+      "uid": 0
+    },
+    "/usr/include/linux/audit.h": {
+      "errno": 2,
+      "status": "UNBEKANNT"
+    },
+    "/usr/include/linux/bpf.h": {
+      "errno": 2,
+      "status": "UNBEKANNT"
+    },
+    "/usr/include/linux/fanotify.h": {
+      "errno": 2,
+      "status": "UNBEKANNT"
+    },
+    "/var/log/audit": {
+      "errno": 2,
+      "status": "UNBEKANNT"
+    }
+  },
+  "kernel_config": {
+    "/boot/config-6.8.0-100-generic": {
+      "errno": 2,
+      "status": "UNBEKANNT"
+    },
+    "/proc/config.gz": {
+      "errno": 2,
+      "status": "UNBEKANNT"
+    }
+  },
+  "logical_agent_identity": "UNBEKANNT",
+  "metadata_reads": {
+    "/proc/self/attr/current": {
+      "bytes_read": 25,
+      "sha256": "74d36193d472554612659e64f91abb0fbb3df2b4bd5838e45743085803a96399",
+      "status": "BELEGT",
+      "value": "docker-default (enforce)\n"
+    },
+    "/proc/self/gid_map": {
+      "bytes_read": 33,
+      "sha256": "58a6d563e0da53c99b7289c33a814aa9fffee126b9981099b9f77a7ed58d6dc0",
+      "status": "BELEGT",
+      "value": "         0          0 4294967295\n"
+    },
+    "/proc/self/uid_map": {
+      "bytes_read": 33,
+      "sha256": "58a6d563e0da53c99b7289c33a814aa9fffee126b9981099b9f77a7ed58d6dc0",
+      "status": "BELEGT",
+      "value": "         0          0 4294967295\n"
+    },
+    "/proc/sys/fs/fanotify/max_queued_events": {
+      "errno": 12,
+      "status": "UNBEKANNT"
+    },
+    "/proc/sys/fs/fanotify/max_user_groups": {
+      "errno": 12,
+      "status": "UNBEKANNT"
+    },
+    "/proc/sys/fs/fanotify/max_user_marks": {
+      "errno": 12,
+      "status": "UNBEKANNT"
+    },
+    "/proc/sys/kernel/perf_event_paranoid": {
+      "errno": 12,
+      "status": "UNBEKANNT"
+    },
+    "/proc/sys/kernel/unprivileged_bpf_disabled": {
+      "errno": 12,
+      "status": "UNBEKANNT"
+    },
+    "/proc/sys/kernel/unprivileged_userns_clone": {
+      "errno": 12,
+      "status": "UNBEKANNT"
+    },
+    "/proc/sys/kernel/yama/ptrace_scope": {
+      "errno": 12,
+      "status": "UNBEKANNT"
+    },
+    "/sys/fs/selinux/enforce": {
+      "errno": 2,
+      "status": "UNBEKANNT"
+    },
+    "/sys/kernel/security/lockdown": {
+      "errno": 2,
+      "status": "UNBEKANNT"
+    },
+    "/sys/kernel/security/lsm": {
+      "errno": 2,
+      "status": "UNBEKANNT"
+    },
+    "/sys/module/apparmor/parameters/enabled": {
+      "bytes_read": 2,
+      "sha256": "d08c5f95ebb8581ee4e5c0a2ee534d5a10d3c8e7f3a18d961adf902602bbd8a3",
+      "status": "BELEGT",
+      "value": "Y\n"
+    }
+  },
+  "namespaces": {
+    "1": {
+      "cgroup": {
+        "link": "cgroup:[4026532405]",
+        "status": "BELEGT"
+      },
+      "mnt": {
+        "link": "mnt:[4026532401]",
+        "status": "BELEGT"
+      },
+      "net": {
+        "link": "net:[4026532406]",
+        "status": "BELEGT"
+      },
+      "pid": {
+        "link": "pid:[4026532404]",
+        "status": "BELEGT"
+      },
+      "user": {
+        "link": "user:[4026531837]",
+        "status": "BELEGT"
+      }
+    },
+    "self": {
+      "cgroup": {
+        "link": "cgroup:[4026532405]",
+        "status": "BELEGT"
+      },
+      "mnt": {
+        "link": "mnt:[4026532401]",
+        "status": "BELEGT"
+      },
+      "net": {
+        "link": "net:[4026532406]",
+        "status": "BELEGT"
+      },
+      "pid": {
+        "link": "pid:[4026532404]",
+        "status": "BELEGT"
+      },
+      "user": {
+        "link": "user:[4026531837]",
+        "status": "BELEGT"
+      }
+    }
+  },
+  "release": "6.8.0-100-generic",
+  "runner_allowlist": {
+    "GITHUB_ACTIONS": null,
+    "GITHUB_RUN_ID": null,
+    "GITHUB_SHA": null,
+    "ImageOS": null,
+    "ImageVersion": null,
+    "RUNNER_ARCH": null,
+    "RUNNER_ENVIRONMENT": null,
+    "RUNNER_OS": null
+  },
+  "schema": "a1-linux-preflight-v1",
+  "selected_effective_capabilities": {
+    "CAP_AUDIT_CONTROL": false,
+    "CAP_AUDIT_READ": false,
+    "CAP_AUDIT_WRITE": false,
+    "CAP_BPF": false,
+    "CAP_CHECKPOINT_RESTORE": false,
+    "CAP_DAC_READ_SEARCH": false,
+    "CAP_PERFMON": false,
+    "CAP_SYS_ADMIN": false,
+    "CAP_SYS_PTRACE": false
+  },
+  "selected_mounts": {
+    "bytes_read": 2710,
+    "sha256": "2ba753ada240bcd1e7b77259c8f5279e2159eaab60f43f561fb0a92559b72cb6",
+    "status": "BELEGT",
+    "value": [
+      {
+        "filesystem": "overlay",
+        "mountpoint": "/",
+        "options": "ro,relatime",
+        "super_options": "rw,lowerdir=/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/105/fs:/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/64/fs:/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/63/fs:/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/62/fs:/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/61/fs,upperdir=/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/106/fs,workdir=/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/106/work,nouserxattr"
+      },
+      {
+        "filesystem": "proc",
+        "mountpoint": "/proc",
+        "options": "rw,nosuid,nodev,noexec,relatime",
+        "super_options": "rw"
+      },
+      {
+        "filesystem": "sysfs",
+        "mountpoint": "/sys",
+        "options": "ro,nosuid,nodev,noexec,relatime",
+        "super_options": "ro"
+      },
+      {
+        "filesystem": "cgroup2",
+        "mountpoint": "/sys/fs/cgroup",
+        "options": "ro,nosuid,nodev,noexec,relatime",
+        "super_options": "rw,nsdelegate,memory_recursiveprot"
+      }
+    ]
+  },
+  "self_start_snapshot": {
+    "bytes_read": 308,
+    "sha256": "002851c10f347fe19537c450bbaebdb4450e9a1284151aa4d8288d217adae91e",
+    "status": "BELEGT",
+    "value": {
+      "causal_writer_record": false,
+      "pid": 1,
+      "start_ticks_since_boot": 31203025,
+      "ticks_per_second": 100
+    }
+  },
+  "self_status": {
+    "bytes_read": 1462,
+    "sha256": "7865024a395c1a78f714e7196e5c74ad15b79dc3d16b3cbee488cbf6dea2e79d",
+    "status": "BELEGT",
+    "value": {
+      "CapAmb": "0000000000000000",
+      "CapBnd": "0000000000000000",
+      "CapEff": "0000000000000000",
+      "CapInh": "0000000000000000",
+      "CapPrm": "0000000000000000",
+      "Gid": "1000\t1000\t1000\t1000",
+      "NSpid": "1",
+      "NoNewPrivs": "1",
+      "Seccomp": "2",
+      "Seccomp_filters": "1",
+      "Uid": "501\t501\t501\t501"
+    }
+  },
+  "system": "Linux",
+  "tool_paths_presence_only": {
+    "auditctl": null,
+    "ausearch": null,
+    "bpftool": null,
+    "bpftrace": null,
+    "capsh": null,
+    "cc": null,
+    "clang": null,
+    "gcc": null,
+    "getcap": null,
+    "perf": null,
+    "python3": "/usr/local/bin/python3"
+  },
+  "tracepoint_formats": {
+    "/sys/kernel/debug/tracing/events/sched/sched_process_exec/format": {
+      "errno": 2,
+      "status": "UNBEKANNT"
+    },
+    "/sys/kernel/debug/tracing/events/sched/sched_process_exit/format": {
+      "errno": 2,
+      "status": "UNBEKANNT"
+    },
+    "/sys/kernel/debug/tracing/events/sched/sched_process_fork/format": {
+      "errno": 2,
+      "status": "UNBEKANNT"
+    },
+    "/sys/kernel/debug/tracing/events/syscalls/sys_enter_pwrite64/format": {
+      "errno": 2,
+      "status": "UNBEKANNT"
+    },
+    "/sys/kernel/debug/tracing/events/syscalls/sys_enter_write/format": {
+      "errno": 2,
+      "status": "UNBEKANNT"
+    },
+    "/sys/kernel/debug/tracing/events/syscalls/sys_enter_writev/format": {
+      "errno": 2,
+      "status": "UNBEKANNT"
+    },
+    "/sys/kernel/debug/tracing/events/syscalls/sys_exit_write/format": {
+      "errno": 2,
+      "status": "UNBEKANNT"
+    },
+    "/sys/kernel/tracing/events/sched/sched_process_exec/format": {
+      "errno": 2,
+      "status": "UNBEKANNT"
+    },
+    "/sys/kernel/tracing/events/sched/sched_process_exit/format": {
+      "errno": 2,
+      "status": "UNBEKANNT"
+    },
+    "/sys/kernel/tracing/events/sched/sched_process_fork/format": {
+      "errno": 2,
+      "status": "UNBEKANNT"
+    },
+    "/sys/kernel/tracing/events/syscalls/sys_enter_pwrite64/format": {
+      "errno": 2,
+      "status": "UNBEKANNT"
+    },
+    "/sys/kernel/tracing/events/syscalls/sys_enter_write/format": {
+      "errno": 2,
+      "status": "UNBEKANNT"
+    },
+    "/sys/kernel/tracing/events/syscalls/sys_enter_writev/format": {
+      "errno": 2,
+      "status": "UNBEKANNT"
+    },
+    "/sys/kernel/tracing/events/syscalls/sys_exit_write/format": {
+      "errno": 2,
+      "status": "UNBEKANNT"
+    }
+  },
+  "utc": "2026-10-11T22:17:09.182054+00:00",
+  "writer_events": null,
+  "writer_experiments_executed": false,
+  "probe_sha256": "f0c3b241eca5d176a347427ab740f9dd3d6579b6cffab9366943c56e97e977db"
+}
