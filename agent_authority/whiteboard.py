@@ -13,7 +13,19 @@ from typing import Any
 
 ID = re.compile(r"[0-9a-f]{12}\Z")
 KINDS = frozenset(
-    {"note", "task", "claimed", "progress", "result", "decision", "problem", "question", "system"}
+    {
+        "note",
+        "task",
+        "claimed",
+        "progress",
+        "result",
+        "decision",
+        "problem",
+        "question",
+        "system",
+        "plan",
+        "handoff",
+    }
 )
 ACTORS = frozenset(
     {"human", "grok", "claude", "codex", "chatgpt", "gnom-hub-v1", "local-assistant", "system"}

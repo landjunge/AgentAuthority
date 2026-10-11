@@ -49,6 +49,20 @@ def report(store: Path, limit: int = 20) -> dict:
     return build_report(read_whiteboard(store, THREAD), limit)
 
 
+def test_historical_plan_and_handoff_are_read_without_a_field_warning(tmp_path):
+    put(tmp_path, 1, "plan")
+    put(tmp_path, 2, "handoff")
+    value = report(tmp_path)
+    text = render_text(value)
+    assert value["source"]["complete_observed_read"] is True
+    assert value["source"]["entries_read"] == 2
+    assert value["summary"]["structural_warning_count"] == 0
+    assert value["summary"]["reported_kind_counts"] == {"handoff": 1, "plan": 1}
+    assert {entry["reported_kind"] for entry in value["recent_entries"]} == {"plan", "handoff"}
+    assert "Übergabe gemeldet" in text
+    assert CANARY not in text
+
+
 def test_normal_workflow_reports_claims_and_results_without_proving_execution(tmp_path):
     put(tmp_path, 1, "task")
     put(tmp_path, 2, "claimed")
