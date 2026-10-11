@@ -19,6 +19,21 @@ lokalen Store. Für Werkzeuge gibt es `--format json`; `--limit 1` bis `--limit 
 begrenzen nur die Anzeige. Ein lesbarer leerer Verlauf wird als leerer Verlauf
 gemeldet, nie als Nachweis, dass keine Agentenaktivität stattgefunden hat.
 
+Für eine übersichtliche Browseransicht lässt sich eine einzelne HTML-Datei
+ausdrücklich speichern:
+
+```sh
+agent-authority inspect --thread THREAD_ID --format html --limit 20 > report.html
+```
+
+`report.html` anschließend im gewünschten Browser öffnen. Die Ansicht funktioniert
+offline und enthält Aufgaben, Warnungen, Beiträge und aufklappbare Eintragsbelege
+mit Dateifingerprints. Sie nutzt dieselben minimierten Berichtsdaten wie Text/JSON.
+Das Kommando startet keinen Server und öffnet keinen Browser. Die Datei ist ein
+Stand des gelesenen Verlaufs und aktualisiert sich nicht automatisch. Auch bei
+Exit 2 wird der Bericht mit den Warnungen ausgegeben; eine Shell-Umleitung legt
+die vom Anwender gewählte Ausgabedatei an.
+
 Ein typischer Bericht nennt Aufgabenaliase wie A1, eine gemeldete Übernahme oder
 ein gemeldetes Ergebnis sowie Belegreferenzen wie WB42 und die Eintrags-ID.
 Damit kann der Anwender den Originalbeitrag in ThreadDesk wiederfinden.
@@ -48,8 +63,10 @@ Sicherheit noch eine Freigabe oder Ablehnung. Quellen können nach dem Lesen
 weitergeschrieben werden; keine atomare Snapshotgarantie. macOS/Linux sind der
 erste Plattformumfang; der POSIX-Leseadapter ist unter Windows nicht verfügbar.
 
-Dies ist Produktpreview 0.3.0a1, keine Produktions- oder allgemeine
+Dies ist Produktpreview 0.3.0a2, keine Produktions- oder allgemeine
 Sicherheitsabnahme. D-012 sowie P4/RC/CB/OOS und unbelegte Herkunftsgrenzen bleiben
 erhalten. Der [vorab veröffentlichte Vertrag](P10-01-PRODUKTVERTRAG-20261011.md)
-definiert genau diesen ersten Schritt. Native Live-Herkunft, UI, weitere
-Konnektoren und laufende Beobachtung sind gesonderte nächste Produktpunkte.
+definiert den ersten Schritt. Der zusätzliche
+[Browservertrag](P10-02-BROWSERBERICHT-VERTRAG-20261011.md) beschreibt die lokale
+HTML-Ansicht. Native Live-Herkunft, ThreadDesk-Anzeige, weitere Konnektoren und
+laufende Beobachtung sind gesonderte nächste Produktpunkte.

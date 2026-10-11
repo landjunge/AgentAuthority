@@ -23,6 +23,7 @@ python3.12 -m venv .venv
 .venv/bin/python -m pip install .
 .venv/bin/agent-authority inspect --thread THREAD_ID
 .venv/bin/agent-authority inspect --thread THREAD_ID --format json --limit 10
+.venv/bin/agent-authority inspect --thread THREAD_ID --format html > report.html
 ```
 
 Use `--store PATH` to select a local ThreadDesk store; the default is
@@ -36,6 +37,12 @@ enforcement lab. Exit 2 indicates incomplete input, never an action decision.
 [product usage](docs/PRODUCT-PREVIEW.md) describe the bounded local preview.
 This is the start of the product phase; further UI and production deployment
 require their own concrete work. The historical research below retains its scope.
+
+The HTML format provides a single offline browser report with task and warning
+tables and expandable entry evidence. Saving it is an explicit shell redirection;
+the command starts no server and opens no browser. Text/JSON and the source
+projection retain their existing semantics. The
+[P10-02 scope](docs/P10-02-BROWSERBERICHT-VERTRAG-20261011.md) describes this display.
 
 ## Historical research baseline
 

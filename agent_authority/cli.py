@@ -8,6 +8,7 @@ from collections.abc import Sequence
 from pathlib import Path
 
 from agent_authority import __version__
+from agent_authority.html_report import render_html
 from agent_authority.report import build_report, render_text
 from agent_authority.whiteboard import read_whiteboard
 
@@ -36,7 +37,7 @@ def main(argv: Sequence[str] | None = None) -> int:
         "--store", type=Path, default=Path.home() / ".threaddesk", help="Lokaler ThreadDesk-Store."
     )
     inspect.add_argument(
-        "--format", choices=["text", "json"], default="text", help="Berichtsformat."
+        "--format", choices=["text", "json", "html"], default="text", help="Berichtsformat."
     )
     inspect.add_argument(
         "--limit",
@@ -46,9 +47,11 @@ def main(argv: Sequence[str] | None = None) -> int:
     )
     args = parser.parse_args(argv)
     report = build_report(read_whiteboard(args.store, args.thread), args.limit)
-    print(
-        json.dumps(report, ensure_ascii=False, indent=2)
-        if args.format == "json"
-        else render_text(report)
-    )
+    if args.format == "html":
+        output = render_html(report)
+    elif args.format == "json":
+        output = json.dumps(report, ensure_ascii=False, indent=2)
+    else:
+        output = render_text(report)
+    print(output)
     return 0 if report["source"]["complete_observed_read"] else 2
