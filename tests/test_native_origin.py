@@ -2,8 +2,10 @@
 
 import hashlib
 import json
+import struct
 import subprocess
 import sys
+import threading
 from concurrent.futures import ThreadPoolExecutor
 
 import pytest
@@ -148,6 +150,108 @@ def test_unimplemented_platform_is_explicitly_unknown(monkeypatch, platform):
 def test_duplicate_json_fields_are_not_accepted():
     with pytest.raises(ValueError, match="duplicate"):
         core._packet(b'{"kind":"hello","protocol":1,"protocol":1}')
+
+
+@pytest.mark.parametrize("parser_failure", [False, True])
+def test_deeply_nested_wire_returns_unknown_and_discards_once(monkeypatch, parser_failure):
+    receiver, transport = simulated(monkeypatch)
+    wire = b"[" * 1500 + b"0" + b"]" * 1500
+    assert len(wire) < 4096
+    transport.frames = [Frame(wire, TOKEN, 1)]
+    discarded = []
+    transport.discard = discarded.append
+    if parser_failure:
+        # Decoder exhaustion is simulated: local Python 3.12 parses this depth.
+        def exhausted(*args, **kwargs):
+            raise RecursionError("decoder exhausted")
+
+        monkeypatch.setattr(core.json, "loads", exhausted)
+    result = receiver.receive()
+    assert result["reason"] == "unavailable_or_invalid_message"
+    assert result["source_authenticated"] is False
+    assert len(discarded) == 1
+    assert transport.replies == []
+
+
+@pytest.mark.parametrize("failure_kind", ["challenge", "receipt"])
+def test_failed_reply_has_one_cleanup_owner(monkeypatch, failure_kind):
+    receiver, transport = simulated(monkeypatch)
+    discarded = []
+    transport.discard = discarded.append
+    original = transport.reply
+
+    def reply(frame, data):
+        is_challenge = json.loads(data).get("kind") == "challenge"
+        if is_challenge == (failure_kind == "challenge"):
+            # Same contract as native reply: it owns the right on failure.
+            transport.discard(frame)
+            raise Unavailable("send_failed")
+        original(frame, data)
+
+    transport.reply = reply
+    result = receiver.receive()
+    assert result["reason"] == "unavailable_or_invalid_message"
+    assert result["source_authenticated"] is False
+    assert len(discarded) == 1
+
+
+def test_concurrent_receive_cannot_validate_same_unused_session(monkeypatch):
+    receiver, transport = simulated(monkeypatch)
+    from lab.origin import macos
+
+    validating, finish = threading.Event(), threading.Event()
+
+    def sender_info(token):
+        validating.set()
+        assert finish.wait(timeout=5)
+        return {"pid": 10, "pid_version": 20}
+
+    monkeypatch.setattr(macos, "sender_info", sender_info)
+    with ThreadPoolExecutor(max_workers=1) as executor:
+        pending = executor.submit(receiver.receive)
+        try:
+            assert validating.wait(timeout=5)
+            transport.frames.append(Frame(transport.wire, TOKEN, 1))
+            competing = receiver.receive()
+            assert competing["reason"] == "receiver_busy"
+            assert competing["source_authenticated"] is False
+        finally:
+            finish.set()
+        assert pending.result(timeout=5)["source_authenticated"] is True
+    assert receiver.receive()["reason"] == "replayed_local_session"
+
+
+@pytest.mark.parametrize("failure", [OSError, AttributeError])
+def test_native_audit_decoder_failure_destroys_received_right(monkeypatch, failure):
+    import ctypes
+
+    from lab.origin import macos
+
+    wire = b'{"kind":"hello","protocol":1}'
+    size = (28 + len(wire) + 3) & ~3
+    received = struct.pack("=7I", 18, size, 123, 456, 0, macos.MESSAGE_ID, len(wire))
+    received += wire + b"\0" * (size - 28 - len(wire))
+    received += struct.pack("=5I", 0, 52, 0, 0, 0) + TOKEN
+    destroyed = []
+
+    class NativeFailure:
+        def mach_msg(self, buffer, *args):
+            ctypes.memmove(buffer, received, len(received))
+            return 0
+
+        def mach_msg_destroy(self, buffer):
+            destroyed.append(bytes(buffer))
+
+    def unavailable(token):
+        raise failure("audit decoder unavailable")
+
+    native = object.__new__(macos.MachTransport)
+    native._lib = NativeFailure()
+    monkeypatch.setattr(macos, "sender_info", unavailable)
+    with pytest.raises(failure):
+        native._receive(456, 10)
+    assert len(destroyed) == 1
+    assert destroyed[0].startswith(received)
 
 
 @pytest.mark.parametrize("lifetime", [0, -1, float("nan"), float("inf"), True, 31])

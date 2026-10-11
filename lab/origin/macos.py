@@ -109,7 +109,7 @@ class MachTransport:
             if not sender_info(token)["pid"]:
                 raise Unavailable("invalid_audit_sender")
             return Frame(bytes(buffer.raw[28 : 28 + length]), token, reply)
-        except Unavailable:
+        except (Unavailable, OSError, AttributeError):
             self._lib.mach_msg_destroy(buffer)
             raise
 
@@ -123,7 +123,7 @@ class MachTransport:
             raise Unavailable("missing_reply_port")
         try:
             self._send(frame.reply_port, data)
-        except (Unavailable, ValueError):
+        except (Unavailable, ValueError, OSError, AttributeError):
             self.discard(frame)
             raise
 

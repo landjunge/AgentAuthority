@@ -5,6 +5,7 @@ import hashlib
 import json
 import math
 import sys
+import threading
 import time
 import uuid
 from dataclasses import dataclass
@@ -100,6 +101,7 @@ class OriginReceiver:
             self._native = UnsupportedTransport(sys.platform)
             self._initial_failure = "native_initialization_failed"
         self._closed = False
+        self._receive_lock = threading.Lock()
 
     @property
     def endpoint(self) -> str:
@@ -169,6 +171,15 @@ class OriginReceiver:
     def receive(self, *, timeout_ms: int = 5000) -> dict[str, Any]:
         if type(timeout_ms) is not int or not 1 <= timeout_ms <= 30_000:
             raise ValueError("invalid timeout")
+        # One consumer owns session validation, consumption and native rights.
+        if not self._receive_lock.acquire(blocking=False):
+            return self._result("receiver_busy")
+        try:
+            return self._receive(timeout_ms)
+        finally:
+            self._receive_lock.release()
+
+    def _receive(self, timeout_ms: int) -> dict[str, Any]:
         if self._closed:
             return self._result("receiver_closed")
         if self._initial_failure:
@@ -197,34 +208,36 @@ class OriginReceiver:
                                 frame.audit_token,
                                 time.monotonic() + self._lifetime,
                             )
-                            self._native.reply(
-                                frame,
-                                json.dumps(
-                                    {
-                                        "kind": "challenge",
-                                        "protocol": 1,
-                                        "session": identifier,
-                                        "challenge": challenge,
-                                    }
-                                ).encode(),
-                            )
+                            reply_data = json.dumps(
+                                {
+                                    "kind": "challenge",
+                                    "protocol": 1,
+                                    "session": identifier,
+                                    "challenge": challenge,
+                                }
+                            ).encode()
+                            reply_frame = frame
                             frame = None
+                            self._native.reply(reply_frame, reply_data)
                             continue
                     else:
                         result = self._evaluate(frame, data)
-                self._native.reply(frame, json.dumps(result).encode())
+                reply_data = json.dumps(result).encode()
+                reply_frame = frame
                 frame = None
+                self._native.reply(reply_frame, reply_data)
                 return result
             return self._result("control_traffic_limit")
-        except (Unavailable, ValueError, UnicodeError, OSError, AttributeError):
+        except (Unavailable, ValueError, UnicodeError, OSError, AttributeError, RecursionError):
             if frame is not None:
                 self._native.discard(frame)
             return self._result("unavailable_or_invalid_message")
 
     def close(self) -> None:
-        self._closed = True
-        self._sessions.clear()
-        self._native.close()
+        with self._receive_lock:
+            self._closed = True
+            self._sessions.clear()
+            self._native.close()
 
     def __enter__(self) -> Self:
         return self
