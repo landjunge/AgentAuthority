@@ -67,3 +67,29 @@ zwei gezielte Regressionstests prüfen belegte und nicht belegte Ergebnisse.
 Beide bestanden. Die unabhängige Gegenprüfung des exakten Korrekturcommits und
 die zugehörigen finalen CI-Prüfungen bleiben separat zu belegen. P7 wird dadurch
 nicht formal abgenommen und nicht automatisch gemergt.
+
+
+## Abschluss: formale P7-Abnahme und reguläre Integration
+
+Die direkte Nutzerfortsetzung auf die konkrete P7-Abnahme-/PR32-Mergefrage
+ist mit ihrem Wortlaut und Kontext in WB1616 dokumentiert; sie wird nicht
+als erfundener wörtlicher ChatGPT-Whiteboard-Entscheid ausgegeben. P7 ist
+im vorgelegten begrenzten Umfang abgenommen und regulär integriert (WB1619).
+
+PR32 ist MERGED, Squash64bf757ee7e32ca3df780b61a698466e2e299899,
+Parentba34d92744553f3504ca7665f4c367f76a5d1013, Tree
+d34aa56d6f038a94983c8c49ab5a5716ed481349 exakt gleich geprüftem Kandidaten
+a945b9dbabc9d7ebc43190cd4c8bd1b87db627a1. Frischer HEAD, Regeln, Reviews,
+Quellenhashes und vier erfolgreiche Checks vor Ready/Squash geprüft;
+--match-head-commit, kein Admin/Force/Bypass. Remote-master bestätigt.
+
+Push-CI38111317985 bestand mit zweimal450 tatsächlichen Passpunkten;
+CodeQL38111317975 ist erfolgreich und der Upload vollständig verarbeitet.
+Groks unabhängige finale Suite WB1617 bestand mit450 Fällen und fünf
+historischen RC-Abwahlen. Originale Logs/API/UTC/Belege archiviert unter
+`/Users/landjunge/.threaddesk/artifacts/agent-authority/pr32-merge-20261011/`.
+
+D-012 und alle dokumentierten Grenzen bleiben erhalten. Diese Abnahme ist
+keine universelle Sicherheits-/Produktionsfreigabe und keine P8/P9-Abnahme.
+Die konkrete P8-Startabhängigkeit WB30 ist nun erfüllt; die bedingte
+Nutzerfreigabe WB1605 erlaubt die bereits vorbereiteten P8-Praxistests.

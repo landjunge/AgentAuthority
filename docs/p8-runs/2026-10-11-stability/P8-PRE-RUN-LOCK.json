@@ -1,0 +1,16 @@
+{
+  "UTC": "2026-10-11T04:24:00.020802+00:00",
+  "source_head": "64bf757ee7e32ca3df780b61a698466e2e299899",
+  "P7_acceptance_and_integration_complete": true,
+  "P7_merge_proof": "/Users/landjunge/.threaddesk/artifacts/agent-authority/pr32-merge-20261011/MERGE-STATUS.json",
+  "conditional_authorization": "WB1605",
+  "dependency": "WB30 satisfied",
+  "underlying_runner": "unchanged P7 integration wrapper; existing phase fields retained, this external cohort is P8",
+  "cohort_expectation_sha256": "3b137851bcae557e23cd0e6fc673aa4e4358a5cc72e0784884f5872a23a7e3cf",
+  "planned_actual_attempts": 2,
+  "implementation_owner": "Codex (single implementation, existing continuity); Grok independent review",
+  "product_changes": false,
+  "worktree": "/Users/landjunge/agent-authority-p8-codex",
+  "branch": "codex/p8-stability-20261011",
+  "P8_formal_acceptance": false
+}
