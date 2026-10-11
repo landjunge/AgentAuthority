@@ -406,6 +406,53 @@ Direktfall, Relay und Replay bleiben getrennte Fälle. Ein kopiertes Receipt
 ist kein frischer Empfang; Replay bleibt `replayed_local_session`, fehlender
 Kernel-Trailer STOP. A2 setzt A1 SUPPORTED und eigene Freigabe voraus.
 
+### Additive Anschlussfrage bei A1/A2: logische Agentenidentität und Wirkung
+
+**UNBEKANNT:** Ob und unter welchen Bedingungen systemeigene macOS-Mechanismen
+eine unabhängig überprüfbare Verbindung zwischen einer logischen KI-Agenteninstanz
+und einer tatsächlich beobachteten Systemwirkung ermöglichen. A1 untersucht den
+Dateischreiber, A2 Sender/Schreiber-Gleichheit; beides authentisiert allein noch
+keine logische Agentenidentität. Diese Anschlussfrage ersetzt keine Hypothese.
+
+| Nachweisebene | Bestehender Stand und Grenze |
+| --- | --- |
+| Prozessidentität | **TEILWEISE BELEGT:** lokale Prozessmerkmale bzw. unmittelbarer Mach-Sender in den dokumentierten Prüfungen; unabhängige Writer-Zuordnung und A2-Instanzverbindung bleiben **UNBEKANNT**. |
+| Logische Agentenidentität | **UNBEKANNT:** welche logisch zugeordnete Agenteninstanz handelt; weder PID noch vom Agenten gelieferte `actor`-/`provenance`-Kennung authentisiert sie unabhängig. Sie ist getrennt von Programm-, Modell-, Personen- und Gesprächsidentität zu prüfen. |
+| Unabhängig belegte Wirkung | **BELEGT:** P7/P8 dokumentieren reale lokale Agentenläufe und unabhängig geprüfte Dateiwirkungen im jeweiligen begrenzten Versuchsrahmen; keine vollständige Hostbeobachtung. |
+| Verbindung Identität–Wirkung | **UNBEKANNT:** weder Laufzähler noch gemeinsame Zeit-/Laufreferenz beweisen allein, welcher logisch identifizierte Agent die konkrete Wirkung verursacht hat. |
+
+**WIDERLEGT:** Die Übernahme eines gesetzten `source_authenticated=true` als
+Herkunftsnachweis in den geprüften gefälschten Claims (P3–P5). P1–P6 liefern
+Wirkungs-/Zeit- und Aufnahmebefunde, keine unabhängige Agentenauthentisierung.
+P7/P8 behalten Identität/Herkunft **UNBEKANNT**; Actor-/Provenance-Felder bleiben
+Angaben. Ressourcenpfad-Identität im FakeAdapter ist eine andere Fragestellung.
+
+Optionale Anschlussfragen **nach A2**, jeweils derzeit **UNBEKANNT**:
+
+| Fall | Zusätzliche, bisher nicht beantwortete Frage |
+| --- | --- |
+| Getrennte Agentenprozesse | Welche unabhängig überprüfbare Zuordnung verbindet eine logische Agenteninstanz mit der gemessenen Prozessinstanz, ohne PID oder Selbstlabel gleichzusetzen? |
+| Mehrere Agenten im selben Prozess | Welcher zusätzliche unabhängige Beleg trennt ihre Wirkungen, wenn eine Prozessidentität mehrere logische Agenten umfasst? |
+| Minimale zusätzliche Metadaten | Welche außerhalb des Agentenclaims nachvollziehbaren Instanz-/Laufzuordnungen sind erforderlich, mit welcher Quelle, Geltungsdauer und Vertrauensgrenze? |
+| Unabhängige Wirkungsbindung | Welche überprüfbare Belegkette verbindet logische Instanz, Prozess und konkrete Wirkung, einschließlich Relay-/Kindprozessfällen, ohne nur Agentenangaben zu bestätigen? |
+| Manipulierte/widersprüchliche Angaben | Wie bleiben falsche, kopierte, fehlende oder widersprüchliche Zuordnungen erkennbar, ohne bestehende Claim-Rückweisungen als neue Forschung zu wiederholen? |
+
+Datenminimierung (Felder, Inhalt, Aufbewahrung) und Nachweisqualität
+(Unabhängigkeit, Instanzbindung, Manipulationsrobustheit) werden getrennt
+bewertet; wenige Metadaten sind kein stärkerer Identitätsbeweis. Ein
+technologischer Vorsprung bleibt **UNBEKANNT** ohne reproduzierbaren Vergleich.
+Die Grenzen von A1/A2, einschließlich ausgeschlossener privilegierter Verfahren,
+gelten weiter. Keine Experimente, neue Phase oder automatische Anschlussfreigabe;
+bei fehlendem Beleg bleibt die Verbindung **UNBEKANNT**. D-012 bleibt Analyse.
+
+Quellen: [P1](P1-CONTROLLED-RUN-RESULTS.md), [P2](P2-LOCAL-RUN.md),
+[P3](P3-VALIDITY-LATE-EFFECT.md), [P4](P4-ABNAHME.md),
+[P5](P5-ZUVERLAESSIGKEIT.md), [P6](P6-HERKUNFTSGRENZEN.md),
+[P7](P7-INTEGRATION-20261011.md), [P8](P8-PRAXISTEST-20261011.md),
+[Prozessbelege](LOKALE-PROZESSBELEGE-20261011.md),
+[Mach-Herkunft](NATIVE-HERKUNFTSMODUL-20261011.md) und
+[FakeAdapter-Pfadidentität](PHASE1-ADAPTER-IDENTITY.md).
+
 ### F4 — B1: technische Scope-Konformität, keine gemessene Hostvollständigkeit
 
 B1 ist eine **technische Konformitätsprüfung des Coverage-Berichts**. H-B1 bleibt
