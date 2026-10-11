@@ -29,6 +29,10 @@ Kernel-Audit-Token tragen. Sequenz eins wird genau einmal verbraucht. Ein andere
 Sender, alte/kopierte Sitzung, falscher Challenge, Replay, fehlender OS-Beleg oder
 ungültiges Framing liefern UNBEKANNT. Höchstens acht Sitzungen, 4096 Framebytes,
 2048 Inhaltsbytes; Empfangsaufruf höchstens 30 Sekunden plus begrenzte Replyzeit.
+Gleichzeitige Aufrufe desselben Empfängers liefern `receiver_busy`, solange ein
+Aufruf die Sitzung prüft und verbraucht. Tief verschachteltes JSON führt ebenfalls
+zu UNBEKANNT. Empfangene Antwortrechte haben genau einen Bereinigungsverantwortlichen;
+auch Fehler beim nativen Audit-Decoder werden vor der Rückgabe bereinigt.
 
 `BELEGT` / `source_authenticated=true` gilt ausschließlich für den **unmittelbaren
 lokalen Sender dieser Mach-Nachricht** und die frische lokale Empfangssitzung.
@@ -59,7 +63,7 @@ Agent-Authority-Aktion. Der Frische-Challenge ist kein Autorisierungscredential.
 
 ## Tatsächlicher Prüfstand
 
-28 gezielte Tests, darunter vier tatsächlich ausgeführte macOS-Tests mit getrennten
+35 gezielte Tests, darunter vier tatsächlich ausgeführte macOS-Tests mit getrennten
 Prozessen: Nachricht/Replay, kopierter Challenge aus anderem Prozess, Proxy mit
 eigener Sitzung und Entfernung des Endpunkts. Die übrigen Tests simulieren
 Session-/Framing-Gegenfälle und werden nicht als OS-Messungen ausgegeben. Ein
@@ -68,8 +72,8 @@ der Vergleich umfasst den gesamten Audit-Token einschließlich PID-Version, ohne
 daraus eine abgenommene Image-/Modellidentität abzuleiten.
 
 Eine tatsächliche, von Codex in dieser Arbeitssitzung übergebene Auftragsnachricht
-(365 Bytes) wurde zusätzlich nativ empfangen. Kernel-Sender PID `49279`,
-PID-Version `2278311`, lokale Empfangssitzung `a790b3d6f5804f8dafe2fc18755c7958`,
+(365 Bytes) wurde zusätzlich nativ empfangen. Kernel-Sender PID `51434`,
+PID-Version `2284290`, lokale Empfangssitzung `d5d68df807774e2ea0ab0922d62cb06a`,
 Empfängerauftrag `authority-native-origin-module-20261011`. Inhalts-SHA256
 `01c6c03e22b943b8b5aab40007b51cca327a6b7432a2733a161d34d1cca09228`.
 Sender- und Empfängerausgaben stimmen überein; dieselben Wirebytes erneut geliefert
@@ -79,11 +83,24 @@ ist lediglich Korrelationskontext, kein OS-authentisierter Gesprächsnachweis.
 Archiv: `~/.threaddesk/artifacts/agent-authority/native-origin-module-20261011/`.
 Es enthält den tatsächlichen Tool-/Empfangsnachweis, ursprünglichen Inhalt, Receipts,
 Quellhashes, JUnit und vollständige Test-/Qualitätsausgaben. Gesamtsuite lokal:
-493 bestanden, fünf unveränderte historische Ausschlüsse. Linux-CI überspringt
+500 bestanden, fünf unveränderte historische Ausschlüsse. Linux-CI überspringt
 die vier neuen Mach-Tests sowie den bereits bestehenden Mac-Prozessdiagnosetest.
 Neue Moduldateien Ruff 0.17 und Mypy 2.4 strict sauber; bestehende 29 Ruff-Befunde,
 21 Format-Dateien und neun Mypy-Fehler werden nicht für erledigt erklärt. Der neue
 UP017 aus PR35 bleibt ausdrücklich offen und wird hier nicht geändert.
+
+Nach dem ersten veröffentlichten Kandidaten wurden Parser- und Rechtebereinigungs-
+Fehler gefunden und korrigiert. Sieben Regressionen prüfen verschachteltes JSON,
+Challenge-/Receipt-Sendefehler, gleichzeitigen Empfang sowie zwei Audit-Decoder-
+Fehler. Die ursprünglichen Nachweise bleiben im Archiv erhalten; `v2/` enthält
+die neuen Prüfungen und den tatsächlichen Empfang auf den korrigierten Runtime-Hashes.
+Ein neuer Handshake mit denselben Inhaltsbytes ist eine neue unmittelbare Sendung;
+das Modul weist keinen globalen Inhalts-Replay oder ursprünglichen Autor nach.
+Das lokale Python 3.12 parst die geprüfte Tiefe noch; die Decoder-Erschöpfung wird
+im zusätzlichen Fehlerfall ausdrücklich simuliert, nicht als nativer Absturz behauptet.
+PR36 wurde trotz des zwischenzeitlich dokumentierten STOPs integriert (WB1675/1677).
+Der vorliegende Korrekturstand benötigt eine eigene Prüfung auf aktuellem `master`;
+der vorherige Grok-PASS ersetzt diese nicht.
 
 Groks Gegenprüfung des tatsächlichen veröffentlichten Kandidaten sowie GitHub-
 Pflichtchecks sind vor einem Merge erforderlich. Diese Dokumentation beschreibt
