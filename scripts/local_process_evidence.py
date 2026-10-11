@@ -8,7 +8,7 @@ import json
 import os
 import sys
 import uuid
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 
 
 class _BSDInfo(c.Structure):
@@ -181,7 +181,7 @@ def observe() -> dict:
     """Take new OS readings only; no input packet or archived receipt is accepted."""
     record = {
         "scope": "local_observer_and_parent_snapshot_only",
-        "captured_at_utc": datetime.now(timezone.utc).isoformat(),
+        "captured_at_utc": datetime.now(UTC).isoformat(),
         "herkunft": "UNBEKANNT",
         "identitaet": "UNBEKANNT",
         "source_authenticated": False,
