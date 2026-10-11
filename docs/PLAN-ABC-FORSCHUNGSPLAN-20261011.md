@@ -275,3 +275,334 @@ Restrisiken: PASS kann als Sicherheitsaussage gelesen werden. Level 1 kann als e
 
 Offen bleiben E1 bis E6 aus Ordinal 1919. Die 12,5-Tage-Rechnung wird erst am Neubewertungspunkt angenommen oder verworfen. STOP.
 ```
+
+## Ergänzung vom 2026-10-11: gezielte Korrektur F1–F7
+
+Diese Ergänzung setzt ausschließlich den Dokumentationsauftrag nach dem Review
+WB1922–1924 um (`b6a0c9abba0d`, `402ae248f103`, `84e97f95570f`). Die 277 Zeilen
+der Abschrift am Commit `958b7e2c29848b87e62695b9cc20f8b2dd5bc7c3` bleiben
+bytegleich. Forschungsfragen, Hypothesenwortlaut und historische Ergebnisse werden
+nicht ersetzt. Dies ist die Klarstellung derselben Planfassung, kein zweiter Plan,
+kein Messergebnis und keine Freigabe von R0, A1–C1, Ready oder Merge.
+
+Für künftige Ausführungs- und Bewertungsregeln haben die ausdrücklich benannten
+Konfliktauflösungen dieser Ergänzung Vorrang vor widersprüchlichen Anweisungen der
+Abschrift. Sie gelten erst innerhalb eines separat freigegebenen Schritts und
+müssen vor dessen erstem Ergebnis in seiner Spec stehen. Die Originale bleiben
+als Quellen erhalten; eine positive eingefrorene Hypothese wird nicht durch eine
+schwächere Ersatzmetrik erfüllt. Nicht auflösbare Voraussetzungen sind unten
+OFFEN/UNBEKANNT und sperren den betroffenen Versuch.
+
+### F1 — R0: acht eindeutige Pins und begrenzte Ausgabe
+
+`B` bezeichnet ausschließlich den historischen Commit
+`3a9c0067a6e59a55b8e578b6ad870ffe6c74cb47` im Repository
+`landjunge/agent-authority-lab`, `T` seinen Tree
+`da6dedbd5c48f8f2b021acbb2999a5631e40ba26`. Git-Dateien werden aus `B` gelesen,
+nicht aus einer beweglichen Arbeitskopie. Ein Blob-OID bindet die erwarteten
+Bytes; der spätere R0-Bericht ergänzt deren SHA-256. Folgende Tabelle definiert
+Prüfobjekte und Sollwerte, keine hier ausgeführte R0-Abnahme.
+
+| Pin | Objekt und Bindung | Vorab festgelegtes Wahrheitsprädikat |
+| --- | --- | --- |
+| R0-01 | Remote `refs/heads/master`, UTC-Zeit der späteren R0-Abfrage | SHA ist exakt `B`; ein inzwischen fortgeschrittener master ist eine Abweichung, kein stiller neuer Basis-Pin. |
+| R0-02 | Git-Objekt `B^{tree}` | Tree ist exakt `T`. |
+| R0-03 | `B:docs/p8-runs/2026-10-11-stability/P8-COHORT-RESULT.json`, Blob `4259c14861c99d7f1e86feaa83fa4944bef66e3c` | Top-Level `P8_formal_acceptance` ist JSON-Boolean `false`: historischer Messflag, keine Aussage gegen die spätere Abnahme. |
+| R0-04 | `B:docs/P8-PRAXISTEST-20261011.md`, Blob `4cdd6d1c76a7e1738cdfddffee6b2a38611f01e4` | Abschnitt „Nachtrag: unabhängige Prüfung, P8-Abnahme und Integration“ nennt die begrenzte Abnahme, WB1628 und Squash `2523568fdca3e629bfba11361c4fefba2cd2d066`; keine allgemeine Zuverlässigkeitsfreigabe. |
+| R0-05 | `B:docs/p8-runs/2026-10-11-stability/actual-run-01/lauf/reference.json`, Blob `c21d237b0977abbeb1209166b2821110ae5d3b04` | Enthält die sechs Felder `calls`, `target_present`, `valid`, `order`, `order_applicable`, `order_valid`, keinen Writer-PID-/Schreiberidentitätsbeleg. |
+| R0-06 | Thread `833554dffb6e`, WB1602, ID `eccc0ccab937`, UTF-8-`content`-SHA256 `fb121950eeef76eae4ee965a37a84a7d1192263eeda208a85e3492f5434ce508` | Gespeicherter Inhalt dokumentiert begrenzte P6-Abnahme und unbekannten historischen P4-Schreiber; keine automatische P7–P9-Freigabe. Git-Querverweis: `B:docs/P6-HERKUNFTSGRENZEN.md`, Blob `91129d8e5775868f5299423fec930b523babf794`, Abschnitt „Formale P6-Paketabnahme: Nutzerentscheidung WB1602“. |
+| R0-07 | Derselbe Thread, WB1628, ID `9bee9bd38144`, UTF-8-`content`-SHA256 `63d8d05680eddb288c31da76c22fd237f48841623154d28d0e35fe2d0d716c15` | Inhalt dokumentiert kontextbezogene begrenzte P8-Abnahme-/PR33-Freigabe, keine Produktions-/P9-Abnahme. Git-Querverweis ist R0-04. |
+| R0-08 | `B:docs/NATIVE-HERKUNFTSMODUL-20261011.md`, Blob `b98a6e7dd068a893700b71bd61104d1817b2fce8` | „Schnittstelle und belegte Aussage“ begrenzt den Nachweis auf unmittelbaren Mach-Sender/frische lokale Sitzung; Autor, Modell, Gespräch und erzwungener PID-Reuse bleiben unbelegt. |
+
+Die WB-Objekte liegen unter
+`/Users/landjunge/.threaddesk/whiteboard/833554dffb6e/<ID>.json`. Ihr Inhalts-Hash
+belegt Bytebindung, nicht den Verfasser oder die unabhängige Rekonstruktion der
+damaligen Nutzeräußerung. Die Git-Querverweise sind zusätzliche Provenienz, keine
+neunte Prüfeinheit. Fehlendes Objekt, falscher Typ, Hash-/OID-Abweichung und
+semantische Abweichung sind jeweils ein fehlgeschlagener Pin.
+
+R0 darf ausschließlich vorhandene Quellen lesen und seinen Ergebnisnachtrag im
+bestehenden Board speichern. Keine Registerdatei, kein Leseskript als neue Datei,
+kein Fetch/Checkout und kein neuer Agenten-/Forschungsprozess. Die erlaubten
+Lesebefehle dürfen laufen. Der Bericht enthält pro Pin Objekt, Soll-/Ist-Bindung,
+UTC-Abfragezeit, Werkzeugquelle, SHA-256 bei gelesenen Inhalten und Abweichung.
+Die Primärreferenzen müssen eine unabhängige Wiederholung erlauben. Ein externes
+versiegeltes Claim-Register wird damit **nicht** hergestellt; diese historische
+Lücke bleibt OFFEN und ist kein behauptetes R0-Ergebnis.
+
+Vorrang für die widersprüchlichen A-Regeln in WB1920: Bei mindestens einem
+fehlgeschlagenen Pin gilt A **FAIL**, B **INCONCLUSIVE**, betroffene Aussage
+UNBEKANNT und STOP vor A1, auch wenn der Fehler korrekt dokumentiert wurde.
+A **PASS** / B **SUPPORTED** nur bei acht passenden Pins und eingehaltenem
+Leseumfang. Ein widersprüchlicher Prüfvertrag ist **SPEC CONFLICT** / B
+INCONCLUSIVE, STOP ohne historische Änderung. Eine unerlaubte Änderung ist
+A FAIL, B INCONCLUSIVE und sofortiger STOP. Nichts wird still ersetzt.
+
+### F2 — A1: begrenzter Machbarkeitsvorcheck und ehrliche Negativbefunde
+
+Belegt sind nur Zielpräsenz/Zeitordnung (`scripts/p1_controlled_run.py`),
+PID/UID/Startzeit als Momentaufnahme (`scripts/local_process_evidence.py`) und
+Mach-Senderidentität (`lab/origin/macos.py`), jeweils an `B`. Keine dieser
+vorhandenen Schnittstellen liefert den unabhängigen kausalen Dateischreiber.
+
+| Kandidat für einen späteren A1-Vorcheck | Dokumentierte Grenze aus dem Review |
+| --- | --- |
+| Apple `FSEventStreamCallback` | Pfad, Flags, Event-ID; keine Writer-PID. |
+| `kqueue`, `EVFILT_VNODE` / `EVFILT_PROC` | Dateiänderungs-/Prozessereignisse; keine nachgewiesene kausale Verknüpfung zum Schreiber. |
+| `proc_pidinfo`-Startzeit-Snapshot | Prozessinstanz-Momentaufnahme; kein Schreibereignis. |
+
+Diese begrenzte Liste ist ein Untersuchungsrahmen, keine bereits ausgeführte
+API-Battery und keine Liste aller denkbaren macOS-Verfahren. Ein zusammengesetzter
+Ansatz bleibt UNBEKANNT, solange sein kausales Quellensignal fehlt. Endpoint
+Security/Root/privilegiertes Audit bleiben ausgeschlossen. Ebenso ausgeschlossen
+sind Selbstreport, Teststeuerungswissen, Instrumentierung des Schreibers oder
+bloße Zeitkorrelation als Ersatz für die unabhängige Beobachterquelle.
+
+Vor einer späteren A1-Implementierung muss die separat freigegebene Spec eine
+abschließende Kandidatenliste mit konkreter API/Version, Benutzerrechten,
+Rückgabefeldern, Uhr/Erfassungsfenster und Herkunft der Writer-Identität fixieren.
+Sie trennt Beobachterdaten vom Soll-Identitätsorakel des kontrollierten Versuchs.
+PID und Kernelstartzeit müssen derselben lebenden Instanz zugeordnet sein;
+fehlende oder rennende Lebenszyklusbindung ergibt UNBEKANNT. Jede Aussage gilt
+nur für diesen Mac, das eine Ziel und die ausgeführten Negativfälle.
+
+**OFFEN:** Es ist kein erlaubter, positiv belegter Writer-Mechanismus benannt.
+Der Vorcheck gehört zum A1-Spec-Budget, nicht zu garantierter Implementierungszeit.
+Ohne ausführbaren unabhängigen Kandidaten STOP vor Implementierung; B
+INCONCLUSIVE, keine Widerlegung sämtlicher Benutzer-APIs. Ein später vollständig
+ausgeführter Versuch kann bei spec-konformem Beobachter A PASS / B REFUTED
+ergeben. Alle Aufrufe, Rückgaben, Identitätsquellen und Negativfälle sind zu
+archivieren; fehlende Fälle bleiben PARTIALLY SUPPORTED oder INCONCLUSIVE gemäß
+F7. Die positive Hypothese wird nicht zur Testpflicht umgedeutet.
+
+### F3 — A2: tatsächliche API, getrennte Identitätsfelder
+
+Der öffentliche Einstieg ist `lab.origin.OriginReceiver(task_id)` mit
+`receiver.receive(*, timeout_ms=5000)`, höchstens 30.000 ms pro Aufruf, nicht
+`lab.origin.receive`. Konstruktion/Bereinigung folgen der vorhandenen
+Receiver-Schnittstelle; `lab/origin/*` bleibt unverändert.
+
+| Quelle | Vorhandene Identitätsfelder | Nicht daraus ableitbar |
+| --- | --- | --- |
+| A1-Hypothese | Writer-PID, Kernelstartzeit; Einheit/Präzision müssen vorab feststehen | PID-Version, Autor oder Modell |
+| Prozessmomentaufnahme | `pid`, `ppid`, `uid`, `start_seconds`, `start_microseconds` | kausaler Schreiber, PID-Version |
+| `receipt.sender` aus Mach-Trailer | `pid`, `pid_version`, `uid`, `os_audit_session` | Startzeit, Dateischreiber, Autor/Modell/Gespräch |
+
+Startzeit und PID-Version sind unterschiedliche Identitätskomponenten und
+werden niemals ineinander umgerechnet. Gleichheit nur der PID ist kein
+Instanznachweis. Ein späterer A2-Vertrag muss eine unabhängig begründete,
+race-sichere Verbindung derselben lebenden Instanz zwischen Writer-Beobachtung
+und Trailer benennen. Eine zusätzliche Prozessabfrage ist ohne diese Verbindung
+nur ein Snapshot. **OFFEN:** Eine solche Verbindung ist derzeit nicht belegt.
+Ohne sie bleibt `effect_sender_same` UNBEKANNT; kein Direktfall-PASS und STOP
+vor A2-Ausführung. Der Hypothesentext bleibt erhalten.
+
+`source_authenticated=true` im gültigen Originalreceipt gilt ausschließlich für
+`source_scope=immediate_kernel_message_sender_only`. Das Receipt wird nicht
+umgeschrieben. `author_identity`, `model_identity`, `conversation_identity`
+bleiben UNBEKANNT, `task_author_authenticated` und `rights_inherited` falsch.
+Eine neue Vergleichszeile übernimmt daraus keine Autor-/Modellauthentisierung.
+Direktfall, Relay und Replay bleiben getrennte Fälle. Ein kopiertes Receipt
+ist kein frischer Empfang; Replay bleibt `replayed_local_session`, fehlender
+Kernel-Trailer STOP. A2 setzt A1 SUPPORTED und eigene Freigabe voraus.
+
+### F4 — B1: technische Scope-Konformität, keine gemessene Hostvollständigkeit
+
+B1 ist eine **technische Konformitätsprüfung des Coverage-Berichts**. H-B1 bleibt
+wörtlich erhalten; ein SUPPORTED für die lokalen Ausgabefälle bedeutet keine
+neue empirische Erkennung unbeobachteter Nebenwirkungen.
+
+Getrennt berichtet werden: vorab benannter beobachteter Zielpfad, tatsächliche
+Zielbeobachtung (präsent/abwesend im Fenster/UNBEKANNT bei Ausfall), Ausfallgrund,
+Scope-Grenze und separat gespeicherte Orakel-Sollwerte. Die Geschwisterwirkung
+ist dem Testorakel bekannt und wird nicht an den Beobachter weitergereicht.
+Die Vollständigkeitszeile darf in allen Ein-Ziel-Fällen UNVOLLSTAENDIG heißen;
+dies ist eine Scope-Aussage, kein Messwert für alle tatsächlichen Wirkungen.
+
+Ein konstanter Scope-Status erfüllt allein nicht die technische Abnahme:
+Ziel-only, Geschwister-only, beide und keines müssen ihre tatsächlichen
+Zielbeobachtungen korrekt unterscheiden; ein unsichtbares Zielverzeichnis oder
+gestörter Zugriff darf nicht als belegte Zielabwesenheit gelten. Keine
+Wirkungsfreiheit, keine Schreiberidentität aus Szenarionamen, kein Umbau von
+`assess`. Die Scope-Zeile braucht A1 nicht; eine positive Schreiberzeile schon.
+Allgemeine Vollständigkeit bleibt UNBEKANNT.
+
+### F5 — B2: zwei begrenzte Phasen; Fremdeingriff bleibt gesperrt
+
+Der spätere Fensterprobe darf nur in der bereits genannten neuen B2-Testdatei
+einen eigenen lokalen Diagnosehelfer verwenden. Das ist ein begrenzter
+Testbeobachter, keine Änderung/Erweiterung der historischen p1-/p5-/P6-Laufzeit
+und kein behauptetes Produktfeature. Jetzt wird kein Helfer und kein Test
+geschrieben oder ausgeführt.
+
+Vor einem späteren Versuch sind Zielpfad, monotone Uhr in Nanosekunden,
+`t_end`, positive Dauern `w1`/`w2`, Poll-/Ereignisverfahren und dessen Auflösung
+zu fixieren. Grenze `c1=t_end+w1`, Ende `c2=c1+w2`: erste Phase bis einschließlich
+`c1`, zweite Diagnosephase strikt nach `c1` bis einschließlich `c2`.
+Phasengleichheit gehört zur ersten Phase. Ein erfasstes Ereignis heißt nur bei
+eindeutiger Bindung an Phase 2 SPAETER; es verändert die historische NACH-Zeile
+der ersten Phase nicht. Bei Polling sind letzter negativer und erster positiver
+Abfragezeitpunkt zu speichern. Überlappt das Entstehungsintervall `c1`, gilt
+UNBEKANNT mit `window_boundary_overlap`, statt Genauigkeit vorzutäuschen.
+Ein erstmaliger positiver Befund in Phase 2 belegt Präsenz dort, allein keine
+exakte Entstehungszeit. Außerhalb beider Phasen oder bei Beobachtungsausfall
+bleibt die Wirkung UNBEKANNT; Zielabwesenheit in Phase 1 ist keine dauerhafte
+Abwesenheit. Die kontrollierte Writer-Zeit ist ein separates Soll-Orakel.
+
+Der Fremdeingriffsteil hat folgenden notwendigen Vertrag, aber noch keinen
+zulässigen Eintrittspunkt:
+
+| Vertragsfeld | Festlegung/Grenze |
+| --- | --- |
+| Angreifer | Zweiter gewöhnlicher lokaler Benutzerprozess, kein Collector-/Interpreter-/Kernel-Kompromiss, keine Privilegien. |
+| Angegriffenes Objekt | Noch offene **lebende** Ereignisaufnahme vor ihrem Digest; nicht bloß die spätere Archivdatei. |
+| Eintrittspunkt | OFFEN: vorhandenes p1 stellt keinen erlaubten Fremd-Append-Eingang für seine Prozessliste bereit. |
+| Beobachterbeleg | Muss unabhängig eine fremde/ungebundene Aufnahmezeile unterscheiden; Angreifer-Selbstlabel oder Testorakel genügt nicht. Quelle/Mechanismus derzeit UNBEKANNT. |
+| Sollausgabe bei tatsächlich erfasstem Fremdeingriff | Betroffene Zeile UNBEKANNT, Grund `foreign_capture`, nie BELEGT; keine Writer-/Autoridentität behaupten. |
+| Nicht gleichwertiger Fall | Fremd-Append zur Ausgabedatei ändert die lebende Liste nicht automatisch. Archiv/Capture-Differenz ist die bereits behandelte P7-Prüfung und kein Ersatzversuch. |
+
+Der Digest bindet Bytes; er authentifiziert keinen vorab eingeschleusten
+Verfasser. Ohne realen erlaubten Eintrittspunkt und unabhängiges Quellensignal
+ist dieser Versuch **nicht ausführbar**, B INCONCLUSIVE und STOP vor dem
+Fremdeingriff. Kein Dummy-Eingang in einem Test darf ihn als erfüllt ausgeben.
+Neue Produktadapter oder Änderungen an p1/p5/P6 sind durch diesen Plan nicht
+erlaubt. Eine dafür nötige spätere Scope-Erweiterung wäre ein eigener Auftrag;
+sie wird hier nicht vorgeschlagen oder ausgeführt. H-B2 insgesamt bleibt ohne
+diesen Teil unbewertet bzw. bei ausgeführtem Fensterteil höchstens PARTIALLY
+SUPPORTED. Kein Nach-Digest-/Replay-Retest als neue Forschung.
+
+### F6 — C1: deskriptiver Pilot mit festem Nenner
+
+C1 ist eine **deskriptive lokale Pilotstudie**, keine Prüfung einer allgemeinen
+Zuverlässigkeitsschwelle. H-C1 und N=8 bleiben erhalten; B SUPPORTED bezieht sich
+nur auf das spezifizierte vollständige Berechnungsverfahren, nicht auf einen
+empirischen Sicherheits-/Zuverlässigkeitsbeweis.
+
+Vor Position 1 enthält die separate C1-Spec die acht festen Ausführungspositionen
+und deren Reihenfolge, künstliches Szenario/Taskverteilung, Quellcommit und
+Matrixhash, Host-/OS-/CLI-Version und konfigurierte Modellkennung (keine
+Providerbeglaubigung), Timeout/Nachlauf und alle Erfolgskriterien. Erwartungsdatei
+und Hash bleiben unverändert. Keine alten P8-Läufe, kein Retry, kein Ersatz,
+keine nachträgliche Szenario-, N- oder Matrixänderung; N=20 bleibt Extraauftrag.
+
+Jede Position erhält genau einen Startversuch. Ein Startfehler verbraucht sie
+und zählt als Fehlschlag; Timeout, Abbruch und ungültige Aufnahme ebenso.
+Getrennt berichten: `N_geplant=8`, `N_Startversuche`, tatsächlich gestartete
+CLI-Prozesse `N_gestartet`, `N_vollstaendig`, `N_abgebrochen`, Startfehler und
+wegen globalem STOP nicht versuchte Positionen. Erst nach acht abgearbeiteten
+Positionen ist `k/8` der deskriptive Anteil vollständig erfüllter **geplanter
+Versuche**. Sind weniger als acht tatsächliche lokale Läufe gestartet, darf
+dies nicht „acht Agentenläufe“ oder H-C1 SUPPORTED heißen; H-C1 bleibt
+INCONCLUSIVE. Bei vorzeitigem globalem STOP keine vollständige Kohorte und
+keine Hochrechnung fehlender Positionen.
+
+Die vorregistrierte Gesamtmatrix enthält die 15 P8-Zeilen und die ursprünglichen
+A1-/B1-/B2-Anforderungen. Ungemessene, negativ abgeschlossene oder nur teilweise
+belegte positive Anforderungen bleiben unerfüllt und werden nicht als N/A aus
+dem Erfolgsnenner entfernt. Das kann trotz technisch korrekter UNKNOWN-Ausgaben
+zu null vollständig erfüllten Läufen führen. Zusätzlich wird technische
+Schutzregel-Konformität separat berichtet: erwarteter Host-SKIP oder korrekte
+Herkunft UNKNOWN können dort passen, ohne positive Host-/Writerbelege zu liefern.
+Diese Trennung schwächt H-C1 nicht. Die zwei Nicht-Modell-Kontrollen bleiben
+außerhalb des Nenners.
+
+Für eine abgeschlossene Kohorte wird das zweiseitige exakte Clopper-Pearson-
+95%-Intervall aus `k` und acht Positionen berichtet. Seine populationsbezogene
+Binomialinterpretation setzt unabhängige Versuche mit gleicher Erfolgswahrscheinlichkeit
+voraus; auf einem Host mit wiederholtem Szenario ist das nicht automatisch
+belegt. Ohne diese Annahmen nur Rechen-/Pilotbefund, Generalisierung UNBEKANNT.
+Bei 8/8 ist das Intervall `[0.025^(1/8),1]`, ungefähr `[0.6306,1]`, kein hoher
+allgemeiner Zuverlässigkeitsnachweis. Ein Startversuchsintervall wird ausdrücklich
+so benannt und erfüllt bei weniger als acht tatsächlichen Läufen nicht H-C1.
+
+Die künftige Laufhülle verwendet das von p7 geladene p5 und dessen identisches
+p1-Modulobjekt mit lebendem Capture-Callback; kein zweiter p1-Import und kein
+Archiv als aktueller Kontext. Frische Laufordner liegen außerhalb des Repos;
+`docs/c1-runs/` nimmt erst minimierte Kopien auf. p5/p7 bleiben unverändert.
+Linux-CI-PASS wird kein positiver macOS-Nativbeleg. Keine Rohprompts/Providertexte
+ins Board und keine Beglaubigung von Autor, Modell oder Gespräch.
+
+### F7 — Vorrangregeln, Abhängigkeiten und STOP
+
+Die folgende prospektive Falltabelle löst insbesondere „Selbstangabe übernimmt“
+aus der ursprünglichen A1-Abnahme versus WB1920 auf. Das positive H-A1 bleibt
+unverändert. Geglaubte Selbstangabe verletzt den Mess-/Abnahmevertrag und ist
+kein unabhängiger wissenschaftlicher Gegenbeleg.
+
+| Fall, in dieser Priorität zu beurteilen | Achse A | Achse B / Folge |
+| --- | --- | --- |
+| Operative Rechte-/ALLOW/DENY-Folge, verbotene Änderung, privilegierter Ausweg, geglaubter Selbstreport oder anderes reproduziertes Messvertragsversagen | FAIL | INCONCLUSIVE, STOP; gestörter Versuch widerlegt nicht sauber die Hypothese. |
+| Vertrag widersprüchlich oder innerhalb des freigegebenen Scopes nicht deterministisch spezifizierbar | SPEC CONFLICT | INCONCLUSIVE, STOP; keine historische Spec nachträglich anpassen. |
+| Geforderte Voraussetzung fehlt; vorgeschriebene Ausführung scheitert vor unabhängiger Messung | FAIL, falls Spec sie verlangt | INCONCLUSIVE, nicht ausgeführt; STOP. Reine dokumentierende Machbarkeitsfeststellung ohne verlangte Ausführung ist kein Experiment-PASS. |
+| Unvollständige API-Liste, Abbruch, fehlender erforderlicher Negativfall ohne auswertbaren Positivfall | FAIL bei Spec-Verstoß, sonst SPEC DEVIATION separat | INCONCLUSIVE, kein Folge-Gate. |
+| Positivfall unabhängig belegt, einzelne erforderliche Negativfälle noch nicht ausgeführt | Spec-Abdeckung unvollständig, kein voller PASS | PARTIALLY SUPPORTED, A2 bleibt gesperrt. |
+| Vollständiger, spec-konformer Versuch mit allen erforderlichen Fällen, unabhängige positive Vorhersage scheitert | PASS | REFUTED für den begrenzten Versuch/Kandidatenumfang; Zuordnung UNBEKANNT, kein universeller Unmöglichkeitsbeweis. |
+| Vollständiger, spec-konformer Versuch; positive Vorhersage und alle Negativfälle halten | PASS | SUPPORTED nur im eingefrorenen Geltungsbereich; keine neue Generalisierung. |
+
+F1 enthält die spezifischen R0-Pinregeln. B1/C1 haben den oben ausdrücklich
+begrenzten Konformitäts-/Analyseumfang; ihr SUPPORTED ist kein zusätzlicher
+empirischer Sicherheitsbefund. Für ungestartete A2/B2-Teile lautet der Status
+„nicht ausgeführt, Hypothese unbewertet“, nicht REFUTED.
+
+Die ursprüngliche strikte Liste ist eine bevorzugte Bearbeitungsreihenfolge,
+keine Pflicht, ein gesperrtes A2 auszuführen. Die tatsächlichen Gates sind:
+
+| Schritt | Voraussetzung und zulässiger Zweig |
+| --- | --- |
+| R0 | Eigene ausdrückliche Nutzerfreigabe; alleiniger erster Schritt. Nach Ergebnis Neubewertung und STOP. |
+| A1 | R0 SUPPORTED und eigene Freigabe; Vorcheck/Spec vor Implementierung, OFFEN aus F2 sperrt den positiven Versuch. |
+| A2 | A1 SUPPORTED, nachgewiesene Identitätsverbindung aus F3, eigene Freigabe. Sonst ausgelassen/unbewertet; keine Mach-Wiederholung. |
+| B1 | R0 SUPPORTED und eigene Freigabe; Scope-Bericht ohne A1 zulässig, positive Schreiberzeile nur mit A1 SUPPORTED. |
+| B2 | R0 SUPPORTED und eigene Freigabe; Fensterteil nach seinem Messvertrag, Fremdteil bis Eintrittspunkt/Quellensignal gesperrt. Kein automatischer Zweigstart nach A2-Auslassung. |
+| C1 | R0 SUPPORTED, ausdrückliche dokumentierte Abschlussstände für A1/B1/B2 (einschließlich negativer/offener Teile), feste vollständige Matrix und eigene Lauf-Freigabe. UNKNOWN-Zeilen werden nicht zu Erfolgen. Ein ungelöster Messvertrag sperrt den betreffenden C1-Teil; nur die ausdrücklich festgelegte Pilot-Auswertung ist zulässig. |
+
+A3, PID-Reuse, andere Hosts/Transporte, P4-Writer und historische RC/CB/OOS-Fragen
+bleiben gesperrt. STOP bedeutet ausschließlich die eigene Forschungsarbeit
+anhalten, keine produktive Agentensteuerung. Fremder Dateiclaim, unerlaubter
+Scope, geänderte Pins, fehlender unabhängiger Messbeleg, Änderungen nach dem
+ersten Ergebnis und fehlende Freigabe stoppen den betroffenen Schritt.
+
+### Aufwand, Quellen und einmalige Abschlussmatrix
+
+Die ursprünglichen Einzelposten ergeben bei acht Stunden täglich 68 Stunden
+(8,5 Tage), der Nachtrag 100 Stunden (12,5 Tage). Das bleibt ein Budget, keine
+Terminzusage. A1-Vorcheck, offene A2-/B2-Mechanismen und reale Suite-/Modellzeiten
+sind nicht durch diese Dokumentkorrektur belegt. Keine neue Tageszahl, kein
+automatisch größeres N. Der Neubewertungspunkt nach R0 bleibt vor jedem
+A1-Spec-Commit; auch dann STOP und eigene Entscheidung, kein weiterer Lauf jetzt.
+
+Quellenbasis dieser Ergänzung: Review WB1922–1924; vorhandene Architekturdateien
+an `B`, insbesondere `lab/origin/{__init__,receiver,macos}.py`,
+`scripts/{local_process_evidence,p1_controlled_run,p5_reliability,p7_integration}.py`
+und `tests/test_plan_p7_integration.py` (nur Quelltext), sowie
+`docs/RESEARCH-METHOD.md`. Die externen Primärreferenzen aus dem Review sind
+[Apple FSEvents](https://developer.apple.com/documentation/coreservices/fseventstreamcallback?language=objc),
+[Apple kqueue](https://developer.apple.com/library/archive/documentation/System/Conceptual/ManPages_iPhoneOS/man2/kqueue.2.html),
+[Apple Endpoint-Security-Rechte](https://developer.apple.com/documentation/endpointsecurity/es_new_client_result_err_not_privileged?changes=latest_m_7&language=objc),
+[Apple Entitlement](https://developer.apple.com/documentation/BundleResources/Entitlements/com.apple.developer.endpoint-security.client?changes=_8)
+und [NIST Binomialintervall](https://www.itl.nist.gov/div898/handbook/prc/section2/prc241.htm).
+Keine neue API-Messung oder Forschungsinventur. D-012 ist an
+`landjunge/KI-Zentralle`, Commit `ee5a1d1683e22294538c0f95268515a2d54357d5`,
+`DECISIONS.md`, Abschnitt D-012 gepinnt.
+
+Die Statuswerte bewerten die **Dokumentationskorrektur**, keine technische oder
+wissenschaftliche Abnahme. TEILWEISE benennt einen behobenen Planfehler mit
+verbleibender technischer Voraussetzung. BEHOBEN bedeutet keine Startfreigabe.
+
+| Befund | Korrektur | Beleg in dieser Ergänzung | Abschlussstatus / Restrisiko |
+| --- | --- | --- | --- |
+| F1 | Acht eindeutige Pins, Zeitpunkt/Bytebindung, Ausgabegrenze und A-Regelpriorität | F1, Tabelle R0-01–08 und R0-Fallregeln | **BEHOBEN**; externes versiegeltes Register ausdrücklich OFFEN, nicht Teil der erlaubten Ausgabe. |
+| F2 | Begrenzter API-Vorcheck, unabhängige Quelle/Orakel getrennt, Negativausgänge | F2 und F7-Falltabelle | **TEILWEISE**; positiver unprivilegierter Writer-Mechanismus UNBEKANNT, Versuch gesperrt. |
+| F3 | Tatsächliche Receiver-API, Feld-/Scope-Vertrag, kein PID-/Zeit-/Versionsersatz | F3 und A2-Gate | **TEILWEISE**; race-sichere Identitätsverbindung OFFEN, A2 gesperrt. |
+| F4 | Technischer Coverage-Bericht; Scope, Ausfall, Zielmessung und Orakel getrennt | F4 | **BEHOBEN**; gemessene allgemeine Vollständigkeit wird nicht behauptet. |
+| F5 | Zweite begrenzte Phase, Grenzüberlappung, Fremdeingriffsobjekt und Stop-Vertrag | F5, Phasenregeln und Vertragsfelder | **TEILWEISE**; realer Fremd-Append-Eingang/Quellensignal OFFEN, kein Ersatz durch Archivmanipulation. |
+| F6 | Deskriptiver Pilot, feste Positionen/Nenner, Startfehler/UNKNOWN/SKIP, statistische Grenzen | F6 | **BEHOBEN**; tatsächliche Laufzeiten und Binomialannahmen bleiben UNBEKANNT. |
+| F7 | Prospektive Vorrang-Falltabelle, verzweigte Gates, kein erzwungenes A2 | F7 | **BEHOBEN**; jede Stufe benötigt eigene Freigabe, kein Start durch Dokumentversionierung. |
+
+Abschluss dieser Korrekturrunde: nur diese Plandokumentation darf geändert,
+regulär auf PR44 committet/gepusht und im bestehenden Board dokumentiert werden.
+Das ist die ausdrückliche Ausnahme für diesen Dokumentationsauftrag, kein
+Commitrecht aus der ursprünglichen Forschungsplanrunde. Historische Texte,
+Produktcode, Tests und Archive bleiben unverändert. PR44 bleibt Draft;
+kein Ready/Merge, kein R0/A1–C1, keine neue Gegenprüfung und kein Agentenauftrag.
+**STOP nach Versionierungs- und Speichernachweis.**
