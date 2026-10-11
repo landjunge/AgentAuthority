@@ -58,14 +58,18 @@ def invented_bundle():
     return rows, result, reference
 
 
-@pytest.mark.parametrize("evidence_class", ["forged", "stale", "missing"])
-def test_invented_complete_bundle_does_not_prove_agent(evidence_class):
+@pytest.mark.parametrize(
+    ("evidence_class", "source_reason"),
+    [("forged", "forged_source"), ("stale", "stale_source"), ("missing", "missing_evidence")],
+)
+def test_invented_complete_bundle_does_not_prove_agent(evidence_class, source_reason):
     rows, result, reference = invented_bundle()
     reading = p1.assess(rows, result, reference, evidence_class)
     assert reading["agent_run"] == "UNBEKANNT"
     assert reading["bindung"] != "independent_local_effect"
     assert reading["wirkung"]["geltung"] == "UNBEKANNT"
     assert reading["herkunft"]["aussage"] == "UNBEKANNT"
+    assert reading["herkunft"]["grund"] == source_reason
 
 
 def test_omitted_class_does_not_promote_archive_to_current():
@@ -73,6 +77,7 @@ def test_omitted_class_does_not_promote_archive_to_current():
     assert reading["evidence_class"] == "stale"
     assert reading["wirkung"]["geltung"] == "UNBEKANNT"
     assert reading["agent_run"] == "UNBEKANNT"
+    assert reading["herkunft"]["grund"] == "stale_source"
     # Historical row consistency and chronology are still available.
     assert reading["wirkung"]["aussage"] == "BELEGT"
     assert reading["zeitbezug"]["ordnung"] == "NACH"
@@ -85,6 +90,7 @@ def test_invalid_class_returns_bounded_unknown(invalid_class):
     assert reading["agent_run"] == "UNBEKANNT"
     assert reading["wirkung"]["geltung"] == "UNBEKANNT"
     assert reading["herkunft"]["aussage"] == "UNBEKANNT"
+    assert reading["herkunft"]["grund"] == "forged_source"
     assert CANARY not in json.dumps(reading)
 
 
@@ -139,7 +145,26 @@ def test_explicit_current_cannot_authenticate_an_invented_bundle():
     assert reading["agent_run"] == "UNBEKANNT"
     assert reading["wirkung"]["geltung"] == "UNBEKANNT"
     assert reading["herkunft"]["aussage"] == "UNBEKANNT"
+    assert reading["herkunft"]["grund"] == "no_source_field"
     assert reading["recht_uebernommen"] is False
+
+
+@pytest.mark.parametrize("evidence_class", ["current", "stale", "forged"])
+def test_copied_process_labels_cannot_authenticate_ingress(evidence_class):
+    claim = {
+        "scope": "local_observer_and_parent_snapshot_only",
+        "observer": {"aussage": "BELEGT", "beleg": {"pid": 1, "cdhash": "a" * 40}},
+        "source_authenticated": True,
+        "actor": CANARY,
+        "session": CANARY,
+    }
+    reading = p1.assess(*invented_bundle(), evidence_class, fd_claim=claim)
+    assert reading["herkunft"]["aussage"] == reading["identitaet"]["aussage"] == "UNBEKANNT"
+    assert reading["herkunft"]["beleg"] == reading["identitaet"]["beleg"] == []
+    assert reading["fd_relation"]["grund"] == "forged_authentication"
+    assert reading["fd_relation"]["source_authenticated"] == "UNBEKANNT"
+    assert reading["recht_uebernommen"] is False
+    assert CANARY not in json.dumps(reading)
 
 
 def test_binder_does_not_promote_invented_counters_and_reference():

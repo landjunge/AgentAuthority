@@ -967,6 +967,8 @@ def assess(
         "stale": "stale_source",
         "forged": "forged_source",
     }[evidence_class]
+    # The input class explains UNKNOWN; it does not authenticate a source.
+    source_reason = "no_source_field" if evidence_class == "current" else identity_reason
     snapshot = {
         "verdict": "UNBEKANNT",
         "target_present": None,
@@ -1033,7 +1035,7 @@ def assess(
         ),
         "ende_ist_wirkungsfreiheit": _row("NEIN", "end_is_an_event"),
         "identitaet": _row("UNBEKANNT", identity_reason),
-        "herkunft": _row("UNBEKANNT", "no_source_field"),
+        "herkunft": _row("UNBEKANNT", source_reason),
         "fd_relation": fd,
         "agent_run": agent,
         "bindung": binding_reason,
