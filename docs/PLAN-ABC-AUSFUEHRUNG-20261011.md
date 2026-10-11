@@ -69,3 +69,16 @@ previously written SPEC DEVIATION label. Missing required foreign-capture case
 precludes complete acceptance. Original result and measurements preserved;
 PLAN-B2-ABNAHME-KLARSTELLUNG-20261011.md is the authoritative additive correction.
 No repeated experiment needed for this reporting correction.
+
+## C1 before cohort
+
+Frozen eight-position spec followed by new wrapper and nine meaningful tests.
+Both complete suites: 569 passed,5 historical deselections,0 failures/errors/skips;
+existing fork warning. Whole-repository Ruff check/format, strict Mypy32 source
+files and Bandit PASS. One synthetic fixture: live score PASS, replay STOP,
+expired UNKNOWN, fixture not model. Two separate controls: false self-auth claim
+UNKNOWN/forged_authentication, after-window actual file SPAETER. These are not
+cohort positions, independent Writer proof or foreign-capture experiment.
+Evidence/control hashes: PLAN-C1-PRE-RUN-RESULT-20261011.json.
+Next freeze source/CLI/host/N/matrix externally at committed clean source;
+then exactly8 real local CLI attempts with no source change and no retry.
