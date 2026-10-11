@@ -13,3 +13,21 @@ Grundlage: Originalplan 09.10.2026, ergänzende Aufträge WB29/30/34; spätere F
 | Ready/Merge bzw. Produktion | WB1603/1604/1605 erteilen keine pauschale Merge- oder Produktionsfreigabe | Kandidat und spätere Draft-PR reviewbar; Regeln unverändert regulär einzuhalten | Technische Vorbereitung erlaubt; tatsächliche Integration erst nach konkreter Freigabe und frischen Checks. Kein Admin/Force/Bypass. |
 
 Der prüfbare P7-Output und die unabhängige Prüfung laufen parallel; abhängige Phasenausführung wird nicht vorweggenommen. Herkunft/Actor bleiben UNBEKANNT, D-012 gilt. P4: akzeptiertes ungeklärtes Restrisiko. Historische RC/CB bleiben negative Referenzen; neue Reparaturbelege nur im RemediationLab, OOS im FakeAdapter.
+
+## Aktualisierter Status nach P8-Integration, 11. Oktober 2026
+
+Die ursprüngliche Zuordnung oben bleibt als Vorbereitungsstand erhalten.
+P7 ist nach konkreter direkter Nutzerantwort abgenommen und mit PR32 integriert
+(`64bf757`, WB1616/1619). Der dortige Beschriftungsbefund WB1611 wurde vor
+Integration gezielt korrigiert und unabhängig geprüft, Original und Erratum
+bleiben getrennt. Die damalige Aussage „keine weiteren Fehler“ ist dadurch
+historisch eingeordnet.
+
+P8 wurde bedingt nach WB1605/WB30 ausgeführt, unabhängig bestätigt und nach
+konkreter Nutzerantwort auf die Paket-/PR33-Frage abgenommen und integriert
+(`2523568`, WB1628/1630). Tatsächliche Push-CI/CodeQL erfolgreich. Damit ist
+die P9-Startvoraussetzung aus WB34 erfüllt. Codex führt P9-Triage/Dokumentation
+mit einem zweiten lesenden Codex-Prüfer gemäß Teamregel aus. Keine weiteren
+reproduzierten neuen P7/P8-Laufzeitfehler; keine zusätzliche ungefragte
+Legacy-Reparatur oder Modellwiederholung. Die formale P9-Paketabnahme und
+konkrete Integration ihres Dokumentationskandidaten bleiben offen.
