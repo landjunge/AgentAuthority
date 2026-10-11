@@ -1,0 +1,101 @@
+{
+  "utc": "2026-10-11T22:58:29.539928+00:00",
+  "commands": [
+    {
+      "name": "vm",
+      "command": [
+        "limactl",
+        "list",
+        "--json"
+      ],
+      "exit": 0,
+      "stdout": "{\"name\":\"a1-research\",\"hostname\":\"lima-a1-research\",\"status\":\"Running\",\"dir\":\"/Users/landjunge/.local/share/agent-authority-a1-linux-vm/a1-research\",\"vmType\":\"vz\",\"arch\":\"x86_64\",\"cpus\":2,\"memory\":2147483648,\"disk\":12884901888,\"sshLocalPort\":51288,\"sshConfigFile\":\"/Users/landjunge/.local/share/agent-authority-a1-linux-vm/a1-research/ssh.config\",\"hostAgentPID\":50337,\"driverPID\":50337,\"config\":{\"minimumLimaVersion\":\"2.0.0\",\"vmType\":\"vz\",\"vmOpts\":{\"vz\":{\"diskImageFormat\":\"raw\",\"rosetta\":{\"binfmt\":false,\"enabled\":false}}},\"os\":\"Linux\",\"arch\":\"x86_64\",\"images\":[{\"location\":\"https://cloud-images.ubuntu.com/releases/noble/release/ubuntu-24.04-server-cloudimg-amd64.img\",\"arch\":\"x86_64\",\"digest\":\"sha256:6a81c37564db9b1ee84e141922625e1d7c5b389b99bb3c572e0243607d5bb4d2\"}],\"cpus\":2,\"memory\":\"2GiB\",\"disk\":\"12GiB\",\"mountType\":\"virtiofs\",\"mountInotify\":false,\"ssh\":{\"localPort\":0,\"loadDotSSHPubKeys\":false,\"forwardAgent\":false,\"forwardX11\":false,\"forwardX11Trusted\":false,\"overVsock\":true},\"firmware\":{\"legacyBIOS\":false},\"audio\":{\"device\":\"\"},\"video\":{\"display\":\"none\"},\"upgradePackages\":false,\"containerd\":{\"system\":false,\"user\":false,\"archives\":[{\"location\":\"https://github.com/containerd/nerdctl/releases/download/v2.2.2/nerdctl-full-2.2.2-linux-amd64.tar.gz\",\"arch\":\"x86_64\",\"digest\":\"sha256:8a477f35533c6cc1120c19558d8142967c74f25a4b952b481f48104e030de914\"},{\"location\":\"https://github.com/containerd/nerdctl/releases/download/v2.2.2/nerdctl-full-2.2.2-linux-arm64.tar.gz\",\"arch\":\"aarch64\",\"digest\":\"sha256:55d68d2613b5f065021146bac21f620cde9e7fdd4bd3eff74cd324f5462e107a\"}]},\"guestInstallPrefix\":\"/usr/local\",\"hostResolver\":{\"enabled\":true,\"ipv6\":false},\"propagateProxyEnv\":true,\"caCerts\":{\"removeDefaults\":false},\"plain\":true,\"timezone\":\"\",\"nestedVirtualization\":false,\"user\":{\"name\":\"landjunge\",\"comment\":\"landjunge\",\"home\":\"/home/landjunge.guest\",\"shell\":\"/bin/bash\",\"uid\":501}},\"sshAddress\":\"127.0.0.1\",\"protected\":false,\"limaVersion\":\"2.1.1\",\"HostOS\":\"darwin\",\"HostArch\":\"x86_64\",\"LimaHome\":\"/Users/landjunge/.local/share/agent-authority-a1-linux-vm\",\"IdentityFile\":\"/Users/landjunge/.local/share/agent-authority-a1-linux-vm/_config/user\"}",
+      "stderr_bytes": 0
+    },
+    {
+      "name": "packages",
+      "command": [
+        "limactl",
+        "shell",
+        "--workdir=/tmp",
+        "a1-research",
+        "dpkg-query",
+        "-W",
+        "python3-bpfcc",
+        "libbpfcc",
+        "auditd",
+        "linux-headers-6.8.0-142-generic",
+        "python3"
+      ],
+      "exit": 0,
+      "stdout": "auditd\t1:3.1.2-2.1ubuntu0.1\nlibbpfcc:amd64\t0.29.1+ds-1ubuntu7\nlinux-headers-6.8.0-142-generic\t6.8.0-142.142\npython3\t3.12.3-0ubuntu2.1\npython3-bpfcc\t0.29.1+ds-1ubuntu7",
+      "stderr_bytes": 0
+    },
+    {
+      "name": "guest-filesystem",
+      "command": [
+        "limactl",
+        "shell",
+        "--workdir=/tmp",
+        "a1-research",
+        "findmnt",
+        "-no",
+        "FSTYPE,OPTIONS",
+        "/var/tmp"
+      ],
+      "exit": 1,
+      "stdout": "",
+      "stderr_bytes": 0
+    },
+    {
+      "name": "guest-source-hashes",
+      "command": [
+        "limactl",
+        "shell",
+        "--workdir=/tmp",
+        "a1-research",
+        "sha256sum",
+        "/opt/a1/observer.py",
+        "/opt/a1/oracle.py",
+        "/opt/a1/driver.py",
+        "/opt/a1/reuse_oracle.py"
+      ],
+      "exit": 0,
+      "stdout": "20cdb32237bd02ba9705dae02b467ee60ca968f742fc1ba7f308d59770b2bcbe  /opt/a1/observer.py\na42453d0662c510d6dbe690884d0fae0d7768aec1b847901de92de2b791843bf  /opt/a1/oracle.py\nad99461fecc0b7a3423e0c71b986dc0ceb428d3a60dd00dff312aeec23631e44  /opt/a1/driver.py\n7b7cfb251f8a00ac39e982853f430f3b4026ce8d15b90754a84476f7888ba251  /opt/a1/reuse_oracle.py",
+      "stderr_bytes": 0
+    },
+    {
+      "name": "colima-unmodified",
+      "command": [
+        "colima",
+        "list",
+        "--json"
+      ],
+      "exit": 0,
+      "stdout": "",
+      "stderr_bytes": 0
+    },
+    {
+      "name": "colima-containers",
+      "command": [
+        "docker",
+        "--context",
+        "colima",
+        "ps",
+        "-a",
+        "--format",
+        "{{.ID}} {{.Image}} {{.Status}}"
+      ],
+      "exit": 0,
+      "stdout": "4564a65814fd aa-run03-python:20261008 Exited (0) 3 days ago\n1dc912e5e03d aa-run03-python:20261008 Exited (0) 3 days ago\n7b5bed8ca23c agent0ai/agent-zero Exited (255) 3 days ago",
+      "stderr_bytes": 0
+    }
+  ],
+  "image": {
+    "url": "https://cloud-images.ubuntu.com/releases/noble/release/ubuntu-24.04-server-cloudimg-amd64.img",
+    "official_sha256": "6a81c37564db9b1ee84e141922625e1d7c5b389b99bb3c572e0243607d5bb4d2",
+    "old_image_archive_redirect_timeout": "BELEGT; only own create process49533 terminated; no Writer experiment involved"
+  },
+  "host_additional_privilege_grants": false,
+  "guest_root_authorized_by_current_user": true
+}

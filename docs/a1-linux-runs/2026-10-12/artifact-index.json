@@ -1,0 +1,107 @@
+{
+  "files": [
+    {
+      "path": "docs/a1-linux-runs/2026-10-12/L1.json",
+      "bytes": 4123,
+      "sha256": "17da9dd34a434f7b3f3e00cc327ca5bac179f4ae340fe13a4c9747a93f2ef657"
+    },
+    {
+      "path": "docs/a1-linux-runs/2026-10-12/L2.json",
+      "bytes": 3104,
+      "sha256": "0210e6bd442d912e917b54bc2a4619cd4bb4fe01bed4d145a933d824daf01c98"
+    },
+    {
+      "path": "docs/a1-linux-runs/2026-10-12/L3.json",
+      "bytes": 3244,
+      "sha256": "0a793c345b35f35dc635ab8b839bf65b99f7cc4184d45fe21b5aeac3d97d8c1d"
+    },
+    {
+      "path": "docs/a1-linux-runs/2026-10-12/L4.json",
+      "bytes": 4101,
+      "sha256": "227bd27d97c1055a9df13bcbeabc83c3ff9520720ba0fef75f11190a8e5395bb"
+    },
+    {
+      "path": "docs/a1-linux-runs/2026-10-12/L5.json",
+      "bytes": 4630,
+      "sha256": "df25bfa1547af3c9f1316ebe43eb20c9fdb2fa78edf36c6d4c81266d76a69fbe"
+    },
+    {
+      "path": "docs/a1-linux-runs/2026-10-12/L6.json",
+      "bytes": 5613,
+      "sha256": "4bb1d8dbbc1626b3287e38a8a22340c3185269fa6dd9fe373a8d7124382dda11"
+    },
+    {
+      "path": "docs/a1-linux-runs/2026-10-12/baseline-preservation.json",
+      "bytes": 57533,
+      "sha256": "489a71560f7df84e7d6c85f79061f5f9ba866af1b6d8ccb3dfeb2052891587a6"
+    },
+    {
+      "path": "docs/a1-linux-runs/2026-10-12/channels.json",
+      "bytes": 3517,
+      "sha256": "888ce35907fb4b59e7e18029a2c1c5416891bc1752995fcd60a57b200118882e"
+    },
+    {
+      "path": "docs/a1-linux-runs/2026-10-12/cohort.json",
+      "bytes": 2777,
+      "sha256": "a2078e0003fba21632d885c942782753a008feb51abb3fb2d28fa0cbc240d649"
+    },
+    {
+      "path": "docs/a1-linux-runs/2026-10-12/ebpf-final-qualification.json",
+      "bytes": 1643,
+      "sha256": "f7e09d9bf4621cd41ad4c17bfa0baa9bdc9807e5da4765f24b2362b4988ef427"
+    },
+    {
+      "path": "docs/a1-linux-runs/2026-10-12/ebpf-qualification.json",
+      "bytes": 1481,
+      "sha256": "680806f5e2fb0c087b1fa22ce5d0d6bd12d651d7032ac11d8ac0be42f8708b6b"
+    },
+    {
+      "path": "docs/a1-linux-runs/2026-10-12/image-proof.json",
+      "bytes": 297,
+      "sha256": "29dea327d512ef93e7afac9c1f0134dedc6ab4bc661745f4ca37452683460ae1"
+    },
+    {
+      "path": "docs/a1-linux-runs/2026-10-12/metrics.json",
+      "bytes": 664,
+      "sha256": "569b12c28aef6079ee1bf7b4ae72d305c3636990c9ad99162e5da8ad5822ba2e"
+    },
+    {
+      "path": "docs/a1-linux-runs/2026-10-12/pid-reuse-control.json",
+      "bytes": 5579,
+      "sha256": "d22ca62b4734a8c18c0b5cad15a76d31740090e057cc6c4cad37f22e8a8a2ced"
+    },
+    {
+      "path": "docs/a1-linux-runs/2026-10-12/post-run-diagnostics.json",
+      "bytes": 4924,
+      "sha256": "8f4a9650c1b656018f9717737866c82db4abcb05c87ccdbd74bf0939f72534e9"
+    },
+    {
+      "path": "docs/a1-linux-runs/2026-10-12/pre-run-lock.json",
+      "bytes": 1179,
+      "sha256": "0533a5f6ad3513f2c539a354e614284f8fdfa13fda431617cfabc620cb253e98"
+    },
+    {
+      "path": "docs/a1-linux-runs/2026-10-12/primary-sources.json",
+      "bytes": 1791,
+      "sha256": "cead5c2628b3c033ac3ee151cf734eb892259b38894c324aedcc9d1164b2f78f"
+    },
+    {
+      "path": "docs/a1-linux-runs/2026-10-12/quality.json",
+      "bytes": 5214,
+      "sha256": "348ce1ef016d5201fdacbdeb4cda2a9c7e72f5bb83503787bfe5d90b79b823c6"
+    },
+    {
+      "path": "docs/a1-linux-runs/2026-10-12/vm-and-installation.json",
+      "bytes": 5271,
+      "sha256": "31df52829dfe46ea29796a92a2682300ca2650beee3fb88fd6d2f5275807f5d1"
+    },
+    {
+      "path": "docs/a1-linux-runs/2026-10-12/vm-final-state.json",
+      "bytes": 3305,
+      "sha256": "8ae80fd0eb2a56a22386928b9138dd64b150b2ab15c35ed9ddf36470a22c1787"
+    }
+  ],
+  "indexed_file_count": 20,
+  "indexed_stored_bytes": 119990,
+  "scope": "new measurement archive excluding index itself/top-level reports/specs/sourcecode"
+}

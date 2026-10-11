@@ -1,0 +1,54 @@
+{
+  "records": [
+    {
+      "boot_hash": "ea23c1eead5c439d96e565f0df8e5f1a6a8d6f543205b4a35842d9bdc070e805",
+      "file": {
+        "dev": 265289729,
+        "inode": 262232
+      },
+      "kernel": "6.8.0-142-generic",
+      "observer_source_sha256": "20cdb32237bd02ba9705dae02b467ee60ca968f742fc1ba7f308d59770b2bcbe",
+      "pid_namespace": "pid:[4026531836]",
+      "program_sha256": "4b1db08a023e49d47285bf8c8e0f30a8b8854be6754ca6b735b0fa6ed7d6cd55",
+      "ready": true,
+      "ready_ns": 505171408134
+    },
+    {
+      "summary": {
+        "cpu_system_seconds": 0.20610499999999998,
+        "cpu_user_seconds": 1.940019,
+        "end_ns": 506178818303,
+        "entry_probe_nmissed": null,
+        "entry_probe_nmissed_limit": "BCC uses perf kprobe entry; tracefs profile covers classic kretprobe only",
+        "kprobe_profile": [
+          [
+            "r_vfs_write_bcc_2279",
+            "4",
+            "0"
+          ]
+        ],
+        "logical_agent_identity": "UNBEKANNT",
+        "pending": 0,
+        "perf_lost": 0,
+        "raw_bytes": 0,
+        "records": 0,
+        "rss_peak_bytes": 177639424,
+        "scope": "observer process including BCC compile, not kernel/VM CPU",
+        "stats": {
+          "0": 0,
+          "1": 0,
+          "2": 0,
+          "3": 0,
+          "4": 0,
+          "5": 0,
+          "6": 0,
+          "7": 0
+        }
+      }
+    }
+  ],
+  "stdout_sha256": "c7b77304b14e8273a40c07862e95df8b4b18c93bb4eb6a13719ca5c73e5c8c44",
+  "stderr_bytes": 0,
+  "writer_experiment": false,
+  "source_limit": "working-copy qualification, actual source hash in ready record; cohort uses committed source"
+}

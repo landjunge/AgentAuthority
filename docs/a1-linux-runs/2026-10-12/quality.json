@@ -1,0 +1,180 @@
+{
+  "full_suites": [
+    {
+      "run": 1,
+      "junit_sha256": "80a693c17ed8a6302ac6dbf1c661d1da23216d03f7f32c0334d80ab1f8c0e024",
+      "log_sha256": "a65a82e635c610be30c5e2b2c809592e31565805f1e00f32eaf8ceb09d1c9850",
+      "attributes": {
+        "name": "pytest",
+        "errors": "0",
+        "failures": "0",
+        "skipped": "0",
+        "tests": "605",
+        "time": "30.676",
+        "timestamp": "2026-10-12T00:53:47.788396+02:00"
+      },
+      "new_scorer_tests": [
+        {
+          "name": "test_valid_fixture_only_process_and_action",
+          "time": "0.001"
+        },
+        {
+          "name": "test_loss_or_unknown_coverage_no_positive[perf_lost-1]",
+          "time": "0.001"
+        },
+        {
+          "name": "test_loss_or_unknown_coverage_no_positive[pending-1]",
+          "time": "0.001"
+        },
+        {
+          "name": "test_loss_or_unknown_coverage_no_positive[kprobe_profile-None]",
+          "time": "0.001"
+        },
+        {
+          "name": "test_kernel_drop_or_collision_no_positive[3]",
+          "time": "0.001"
+        },
+        {
+          "name": "test_kernel_drop_or_collision_no_positive[4]",
+          "time": "0.001"
+        },
+        {
+          "name": "test_kernel_drop_or_collision_no_positive[5]",
+          "time": "0.001"
+        },
+        {
+          "name": "test_kernel_drop_or_collision_no_positive[7]",
+          "time": "0.001"
+        },
+        {
+          "name": "test_kernel_profile_missed_no_positive",
+          "time": "0.000"
+        },
+        {
+          "name": "test_pid_reuse_different_start_not_joined",
+          "time": "0.000"
+        },
+        {
+          "name": "test_file_actor_or_return_mismatch_not_joined[inode-10]",
+          "time": "0.001"
+        },
+        {
+          "name": "test_file_actor_or_return_mismatch_not_joined[tgid-999]",
+          "time": "0.001"
+        },
+        {
+          "name": "test_file_actor_or_return_mismatch_not_joined[result-0]",
+          "time": "0.001"
+        },
+        {
+          "name": "test_missing_start_unknown",
+          "time": "0.000"
+        },
+        {
+          "name": "test_foreign_boot_no_pid_join",
+          "time": "0.000"
+        },
+        {
+          "name": "test_malformed_evidence_unknown",
+          "time": "0.000"
+        },
+        {
+          "name": "test_wrong_time_not_joined",
+          "time": "0.000"
+        }
+      ],
+      "historical_deselections": 5
+    },
+    {
+      "run": 2,
+      "junit_sha256": "5ad594e54316ea5ae94b932b32a4ab630120e43131f093a6192cf66ca40e7a99",
+      "log_sha256": "61460a0838b7fee4a00fee2d982f7b0a930d82a1c2f54151a4c5853caa57ea09",
+      "attributes": {
+        "name": "pytest",
+        "errors": "0",
+        "failures": "0",
+        "skipped": "0",
+        "tests": "605",
+        "time": "28.112",
+        "timestamp": "2026-10-12T00:56:36.164352+02:00"
+      },
+      "new_scorer_tests": [
+        {
+          "name": "test_valid_fixture_only_process_and_action",
+          "time": "0.001"
+        },
+        {
+          "name": "test_loss_or_unknown_coverage_no_positive[perf_lost-1]",
+          "time": "0.001"
+        },
+        {
+          "name": "test_loss_or_unknown_coverage_no_positive[pending-1]",
+          "time": "0.001"
+        },
+        {
+          "name": "test_loss_or_unknown_coverage_no_positive[kprobe_profile-None]",
+          "time": "0.001"
+        },
+        {
+          "name": "test_kernel_drop_or_collision_no_positive[3]",
+          "time": "0.001"
+        },
+        {
+          "name": "test_kernel_drop_or_collision_no_positive[4]",
+          "time": "0.001"
+        },
+        {
+          "name": "test_kernel_drop_or_collision_no_positive[5]",
+          "time": "0.001"
+        },
+        {
+          "name": "test_kernel_drop_or_collision_no_positive[7]",
+          "time": "0.001"
+        },
+        {
+          "name": "test_kernel_profile_missed_no_positive",
+          "time": "0.000"
+        },
+        {
+          "name": "test_pid_reuse_different_start_not_joined",
+          "time": "0.000"
+        },
+        {
+          "name": "test_file_actor_or_return_mismatch_not_joined[inode-10]",
+          "time": "0.001"
+        },
+        {
+          "name": "test_file_actor_or_return_mismatch_not_joined[tgid-999]",
+          "time": "0.001"
+        },
+        {
+          "name": "test_file_actor_or_return_mismatch_not_joined[result-0]",
+          "time": "0.001"
+        },
+        {
+          "name": "test_missing_start_unknown",
+          "time": "0.000"
+        },
+        {
+          "name": "test_foreign_boot_no_pid_join",
+          "time": "0.000"
+        },
+        {
+          "name": "test_malformed_evidence_unknown",
+          "time": "0.000"
+        },
+        {
+          "name": "test_wrong_time_not_joined",
+          "time": "0.000"
+        }
+      ],
+      "historical_deselections": 5
+    }
+  ],
+  "ruff_check": "PASS",
+  "ruff_format": "PASS",
+  "mypy_existing_core32": "PASS",
+  "bandit_existing_core": "PASS",
+  "new_research_native_kernel_test": "actual new VM measurements, not mocked fixtures",
+  "host_python3_12_pytest_missing": "initial harmless tool attempt; existing main venv3.12.13 used without host installation"
+}
