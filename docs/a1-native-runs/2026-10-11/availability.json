@@ -1,0 +1,236 @@
+{
+  "binary_sha256": "4820871df7c48ef7a434fffe169bb65674d806b551c570c0df64f0c2f592c1f2",
+  "commands": [
+    {
+      "argv": [
+        "xcrun",
+        "clang",
+        "-std=c11",
+        "-fblocks",
+        "-Wall",
+        "-Wextra",
+        "-Werror",
+        "-Wno-deprecated-declarations",
+        "/Users/landjunge/agent-authority-research-abc/scripts/a1_native_probe.c",
+        "-lproc",
+        "-lbsm",
+        "-lEndpointSecurity",
+        "-o",
+        "/private/tmp/aa-a1-native-nFf2S4/attempt-02/native-probe"
+      ],
+      "cpu_seconds": null,
+      "elapsed_ns": 780312942,
+      "peak_rss_bytes": null,
+      "raw_output_saved": false,
+      "returncode": 0,
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_bytes": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "/private/tmp/aa-a1-native-nFf2S4/attempt-02/native-probe",
+        "/private/tmp/aa-a1-native-nFf2S4/attempt-02/empty-artificial-file"
+      ],
+      "cpu_seconds": null,
+      "elapsed_ns": 75336036,
+      "peak_rss_bytes": null,
+      "raw_output_saved": false,
+      "returncode": 0,
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_bytes": 963,
+      "stdout_sha256": "1c218fed474385aad0f3f6f3be48404559846df54e2b756e9fdb34818a635c07"
+    },
+    {
+      "argv": [
+        "/usr/bin/fs_usage",
+        "-t",
+        "1",
+        "42163"
+      ],
+      "cpu_seconds": null,
+      "elapsed_ns": 78867363,
+      "executable_sha256": "c8b458ffa7e7c0ca6ec961f81ea887d616d5995928578852430c81c154718ee5",
+      "peak_rss_bytes": null,
+      "raw_output_saved": false,
+      "returncode": 1,
+      "root_or_privilege_rejection": true,
+      "stderr_bytes": 34,
+      "stderr_sha256": "d282965c010697444e5517a53fa7d73cd47c2a25c3a56cb40855b1ba4dba2f07",
+      "stdout_bytes": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "writer_events_measured": false
+    },
+    {
+      "argv": [
+        "/usr/sbin/dtrace",
+        "-l",
+        "-n",
+        "syscall::write:entry"
+      ],
+      "cpu_seconds": null,
+      "elapsed_ns": 79395864,
+      "executable_sha256": "790b45170e210522d964c6811e80c7546124a897242996b39d439ae6a288f964",
+      "peak_rss_bytes": null,
+      "raw_output_saved": false,
+      "returncode": 1,
+      "root_or_privilege_rejection": true,
+      "stderr_bytes": 154,
+      "stderr_sha256": "d796a664c23616253ca24eaf21492fcef9f55d6e844ae52683fe03b150b7fc76",
+      "stdout_bytes": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "writer_events_measured": false
+    }
+  ],
+  "diagnostic_stdout_stderr_bytes": 1151,
+  "euid": 501,
+  "event_stream_resources": "UNBEKANNT; no Writer stream qualified or consumed",
+  "headers_sha256": {
+    "System/Library/Frameworks/CoreServices.framework/Frameworks/FSEvents.framework/Headers/FSEvents.h": "07df9bbe9a1f42e387f7cbe841a7c4f1e7baf188f3d6e205ce1f28d6c75ae0d4",
+    "usr/include/EndpointSecurity/ESClient.h": "a2d46bd1d7361378036680f4f365c8c33de289c4fb3fa8c720351c4eefb6dd46",
+    "usr/include/EndpointSecurity/ESMessage.h": "c218b9a3450b60f2df71e17698a022e72a8061b864627da5c54f994ab0076a03",
+    "usr/include/EndpointSecurity/ESTypes.h": "ed3b17abeb44e7636e60f69fbcc466106a8ef4709fc7c9f3580f643a161fe4e1",
+    "usr/include/bsm/audit.h": "3bac25ab2d4dd6a440517b737f262cbfb6382049d618f01ad3856c23233adf04",
+    "usr/include/bsm/libbsm.h": "103f140eeeb89cfe35f0f5b8f6c5dd27e53d01c2ae13e82514777c2e6f33de2b",
+    "usr/include/libproc.h": "246d87709fc6b9157ce5cf3c475656ac48e0e1ae8bbdc46cf45acd34294448cd",
+    "usr/include/mach/message.h": "580ce0dd5ffb98281cdd81e249df8f64bdd8cec5066e76c77b25f56b2eed1b7c",
+    "usr/include/mach/task_info.h": "790b0ab598d4656050a534add78df24b79c81d0aa17ac3c5be5adcb1df63a25e",
+    "usr/include/sys/event.h": "b09a4fdd9e88a5c1c9a29bded36a6f8b96b39a3054f0075a07c19da587f0e062",
+    "usr/include/sys/proc_info.h": "9548e28972bd1653a6adb673d17beb975ae26a79e673a697434945bcb79d4059"
+  },
+  "host": "macOS-15.7.4-x86_64-i386-64bit",
+  "native": {
+    "audit": {
+      "condition": 0,
+      "errno": 1,
+      "return": -1
+    },
+    "auditpipe": {
+      "errno": 13,
+      "mode": 384,
+      "opened": false,
+      "owner_uid": 0,
+      "records_read": 0,
+      "stat_errno": 0,
+      "stat_return": 0
+    },
+    "bsd": {
+      "after_errno": 0,
+      "after_returned": 136,
+      "errno": 0,
+      "expected": 136,
+      "pid": 42177,
+      "returned": 136,
+      "stable": true,
+      "start_microseconds": 498809,
+      "start_seconds": 1791755308,
+      "uid": 501
+    },
+    "es": {
+      "callbacks": 0,
+      "cleanup_return": -1,
+      "connected": false,
+      "not_entitled_code": 3,
+      "not_permitted_code": 4,
+      "not_privileged_code": 5,
+      "result": 5,
+      "subscriptions": 0
+    },
+    "euid": 501,
+    "fd": {
+      "device": 16777222,
+      "errno": 0,
+      "expected": 1200,
+      "generation": 0,
+      "inode": 878345155,
+      "kernel_openflags": 1,
+      "read_only": true,
+      "returned": 1200,
+      "same_file": true
+    },
+    "mach": {
+      "count": 8,
+      "expected_count": 8,
+      "pid": 42177,
+      "pid_version": 2528695,
+      "return": 0
+    },
+    "metrics": {
+      "api_response_bytes": 1504,
+      "clock_ok": true,
+      "cpu_system_seconds": 0.000557,
+      "cpu_user_seconds": 0.000225,
+      "elapsed_ns": 1238000,
+      "peak_rss_bytes": 7294976,
+      "resource_ok": true
+    },
+    "schema": "a1-native-availability-v1"
+  },
+  "native_metrics_scope": "self-reported getrusage of this fresh native probe, CPU during calls; macOS ru_maxrss peak bytes, excludes compiler/tool/wrapper costs",
+  "old_A1_result_changed": false,
+  "python": "3.12.13",
+  "raw_struct_bytes_scope": "successful explicit output structures; not total IPC/kernel traffic; no raw memory saved",
+  "sdk": "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk",
+  "source_head": "6d562e67404c5b068d9a4ff5775213bd7798c0d7",
+  "source_sha256": {
+    "scripts/a1_native_availability.py": "748d191119980cfaa7d7c7c83dfec582851ade9fb947fb22143ebd180d9492fc",
+    "scripts/a1_native_probe.c": "b5f07ca8297c1e70db332557d774fa752d95a85b4d13c7a1a1024694f67792d2"
+  },
+  "status": "COMPLETED",
+  "utc": "2026-10-11T21:48:27.505919+00:00",
+  "verdict": {
+    "attribution_denominator": 0,
+    "auditpipe_opened": false,
+    "auditpipe_readable_is_not_yet_qualified": true,
+    "correct_attributions": null,
+    "durable_file_state": "UNBEKANNT",
+    "logical_agent_identity": "UNBEKANNT",
+    "process_snapshot": "BELEGT",
+    "read_only_fd_file_identity": "BELEGT",
+    "reason": "no_accessible_kernel_action_to_file_actor_record",
+    "rights_inherited": false,
+    "scenarios": [
+      {
+        "attribution": "UNBEKANNT",
+        "case": "A_writes_target",
+        "executed": false
+      },
+      {
+        "attribution": "UNBEKANNT",
+        "case": "B_idle",
+        "executed": false
+      },
+      {
+        "attribution": "UNBEKANNT",
+        "case": "C_writes_other_file",
+        "executed": false
+      },
+      {
+        "attribution": "UNBEKANNT",
+        "case": "child_writes_target",
+        "executed": false
+      },
+      {
+        "attribution": "UNBEKANNT",
+        "case": "forged_PID",
+        "executed": false
+      },
+      {
+        "attribution": "UNBEKANNT",
+        "case": "two_sequential_writers_same_file",
+        "executed": false
+      }
+    ],
+    "selected_writer_channel": null,
+    "self_task_audit_snapshot": "BELEGT",
+    "source_authenticated_for_agent": false,
+    "status": "COMPLETED",
+    "unclear_attributions": null,
+    "writer_event_count": null,
+    "writer_identity": "UNBEKANNT",
+    "writer_raw_event_bytes": null
+  },
+  "writer_hypothesis": "UNBEKANNT"
+}
