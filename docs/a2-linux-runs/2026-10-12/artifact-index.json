@@ -1,0 +1,92 @@
+{
+  "files": [
+    {
+      "path": "docs/a2-linux-runs/2026-10-12/baseline-preservation.json",
+      "bytes": 62845,
+      "sha256": "97f673ad79eb2e4b572ecddcddefe6c59132ac882a52803da488ec765c77651b"
+    },
+    {
+      "path": "docs/a2-linux-runs/2026-10-12/case-1.json",
+      "bytes": 8738,
+      "sha256": "fbecf6132c66c57b71234db5ad88d78e4e52ec8aad597532503a627befdd0c3b"
+    },
+    {
+      "path": "docs/a2-linux-runs/2026-10-12/case-2.json",
+      "bytes": 8729,
+      "sha256": "66e499a689269c8a94f5d849235365988a45d13e6fd25705c47df450a2a8bfd6"
+    },
+    {
+      "path": "docs/a2-linux-runs/2026-10-12/case-3.json",
+      "bytes": 8748,
+      "sha256": "afc87d6ee6d5e46fc2db91c37d8a277359402e87713d063fc7dc4cf5b7f28569"
+    },
+    {
+      "path": "docs/a2-linux-runs/2026-10-12/case-4.json",
+      "bytes": 9124,
+      "sha256": "51d11e77128a875c06e1c63321db86cfa7550d067e542a3e223ad6e7837349a6"
+    },
+    {
+      "path": "docs/a2-linux-runs/2026-10-12/case-5.json",
+      "bytes": 8950,
+      "sha256": "a771cfaaf974a7a79d2745cf088d4d5ecec2f6aadb37a8d9311ca88e99969580"
+    },
+    {
+      "path": "docs/a2-linux-runs/2026-10-12/case-6.json",
+      "bytes": 13731,
+      "sha256": "8cbb08df3be2a6db96df20a29e40fba9c8969577273ca89b28a3d26c2a6f25b9"
+    },
+    {
+      "path": "docs/a2-linux-runs/2026-10-12/case-7.json",
+      "bytes": 13481,
+      "sha256": "8f2f49e73e0c8bd21628911d1cdf12f076fb8b2557ae3128a207c5784ef93c2a"
+    },
+    {
+      "path": "docs/a2-linux-runs/2026-10-12/case-8.json",
+      "bytes": 13400,
+      "sha256": "33e969b5f6ce77cd6406b00b74478ad3b3611eab588aabc4de704d4e2e82d67a"
+    },
+    {
+      "path": "docs/a2-linux-runs/2026-10-12/cleanup-and-environment.json",
+      "bytes": 1518,
+      "sha256": "e87ecb830222344d883d6c4f5ef09d4c52d1714d3d7c6ffa67ce54e3a386b7ed"
+    },
+    {
+      "path": "docs/a2-linux-runs/2026-10-12/cohort.json",
+      "bytes": 8069,
+      "sha256": "0174452e0c12c759e5ee7902299507dd053fa54be1d2f010177e283d74aa109f"
+    },
+    {
+      "path": "docs/a2-linux-runs/2026-10-12/enrollment.json",
+      "bytes": 1069,
+      "sha256": "d136c1a8632a4fc9d71da4b84114435f06e9f0928decf456ba92adf2dad7d01b"
+    },
+    {
+      "path": "docs/a2-linux-runs/2026-10-12/metrics.json",
+      "bytes": 889,
+      "sha256": "2892ee48f069f9e698d0da7480ebe06ee35e4be8156a58f17df28d4151de373e"
+    },
+    {
+      "path": "docs/a2-linux-runs/2026-10-12/pre-run-lock.json",
+      "bytes": 379,
+      "sha256": "ef2823e5e5be089162f44866b3639f02fe347912450d6bfb7c3842b799e74d5d"
+    },
+    {
+      "path": "docs/a2-linux-runs/2026-10-12/primary-sources.json",
+      "bytes": 1233,
+      "sha256": "509275234eec29b60e8ec3e739becc67028a5387b65956ece1cfbc45a9a86324"
+    },
+    {
+      "path": "docs/a2-linux-runs/2026-10-12/quality.json",
+      "bytes": 5915,
+      "sha256": "9767a08e2996486913dc68003c3a358b0dcbbcbf131215e067f9936fe3ee5fd2"
+    },
+    {
+      "path": "docs/a2-linux-runs/2026-10-12/vm-final-state.json",
+      "bytes": 3036,
+      "sha256": "67fbcd6ec0015e7a3fa83deb8684d51499847f208ac1f94ab2510cc5fcf1bf0c"
+    }
+  ],
+  "indexed_count": 17,
+  "indexed_stored_bytes": 169854,
+  "scope": "new public measurement archive; excludes index/top-level report/source; no private CA/vault"
+}

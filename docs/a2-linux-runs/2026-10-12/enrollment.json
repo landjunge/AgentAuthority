@@ -1,0 +1,28 @@
+{
+  "ca_public_key": "448L12KmeaHWxGIJ4y+WabXS2LdRFfFw3M1wOQ7wv4w=",
+  "enrollment": {
+    "body": {
+      "agent_entry_sha256": "4e71c47c976aba8e0e1855c9730eb7c057a89bd49ef5d7a4d3bb1216ce85dbd2",
+      "agents": {
+        "TestAlpha": {
+          "public_key": "/O6nN0xYxjHDykSH2nTZKEkZDpAzOwk4sJ8mx7X/WWQ=",
+          "scope": "controlled_test_identity_only",
+          "uid": 61001
+        },
+        "TestBeta": {
+          "public_key": "ekjMwgF9g43aNtBGgCwuikeUVvg27i+cUqTF8/q9w0s=",
+          "scope": "controlled_test_identity_only",
+          "uid": 61002
+        }
+      },
+      "boot_hash": "9a38a0e5dc4a5b912a071fdade93a6df9114d48eddc2d9bf7acc7941a728ab52",
+      "codex_authenticated": false,
+      "domain": "A2-ENROLLMENT-v1",
+      "grok_authenticated": false,
+      "pid_namespace": "pid:[4026531836]",
+      "run_id": "a23b7da6c5e6e003790bdeb60bd761d0",
+      "starter_public_key": "vrv5pKj800QIjDMiN+b5aQkwRhGcQhLq80LwGjPHX7I="
+    },
+    "signature": "xY6ZzyrUYQRzXuwA/Q7PAGhYkf8QpLfzIX9FjfEKihNsq45sAo5ORvyruqgOtj3eq3Q3Dd3ph3s0jqobU7/UAA=="
+  }
+}

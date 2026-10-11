@@ -1,0 +1,16 @@
+{
+  "source_commit": "5d763c85bb9504f70fd6e306718c8ada9143b95e",
+  "cases": [
+    "alpha",
+    "beta",
+    "false-claim",
+    "child",
+    "exec",
+    "reuse",
+    "takeover",
+    "replay"
+  ],
+  "attempts_each": 1,
+  "ca_public_key_pin": "448L12KmeaHWxGIJ4y+WabXS2LdRFfFw3M1wOQ7wv4w=",
+  "enrollment_sha256": "d136c1a8632a4fc9d71da4b84114435f06e9f0928decf456ba92adf2dad7d01b"
+}

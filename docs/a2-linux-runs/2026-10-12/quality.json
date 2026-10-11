@@ -1,0 +1,141 @@
+{
+  "suites": [
+    {
+      "run": 1,
+      "counts": {
+        "errors": "0",
+        "failures": "0",
+        "skipped": "0",
+        "tests": "619",
+        "time": "44.149",
+        "timestamp": "2026-10-12T01:34:31.992118+02:00"
+      },
+      "junit_sha256": "d9676c9109e87aeb729d1530be8f56f7aa8a6884c25ab20f481e9954f6322df6",
+      "log_sha256": "efdd4da45cb2a80a2e91e05c269a920e7c2b7ef3fc6aafd0f8bd06aa45327a3f",
+      "failed_tests": [],
+      "new_crypto_scorer_tests": [
+        "test_independent_signatures_and_exact_chain",
+        "test_mutated_enrollment_rejected",
+        "test_actor_instance_file_return_expiry_mismatch[tgid-9]",
+        "test_actor_instance_file_return_expiry_mismatch[start_ns-51]",
+        "test_actor_instance_file_return_expiry_mismatch[inode-5]",
+        "test_actor_instance_file_return_expiry_mismatch[result-0]",
+        "test_actor_instance_file_return_expiry_mismatch[entry_ns-700]",
+        "test_exec_generation_invalidates_previous_binding",
+        "test_signature_alteration_cannot_authenticate",
+        "test_wrong_ca_pin_no_chain",
+        "test_lifecycle_loss_unknown",
+        "test_public_copy_not_signature",
+        "test_incomplete_evidence_conservative",
+        "test_proof_message_is_not_silently_modified"
+      ]
+    },
+    {
+      "run": 2,
+      "counts": {
+        "errors": "0",
+        "failures": "4",
+        "skipped": "0",
+        "tests": "619",
+        "time": "40.339",
+        "timestamp": "2026-10-12T01:35:58.847987+02:00"
+      },
+      "junit_sha256": "b037233a7a47bc2fb9b87fb3361bfc4cb63a4ffe50c46d89d713bb142630fdd0",
+      "log_sha256": "bf404b242f252a9137619113b633dd016ca388d752782c05344ea8539899f04c",
+      "failed_tests": [
+        "test_run_scores_inside_connect_and_does_not_touch_p5_locks",
+        "test_changed_evidence_or_failed_matrix_cannot_pass[expectation]",
+        "test_changed_evidence_or_failed_matrix_cannot_pass[archive]",
+        "test_changed_evidence_or_failed_matrix_cannot_pass[matrix]"
+      ],
+      "new_crypto_scorer_tests": [
+        "test_independent_signatures_and_exact_chain",
+        "test_mutated_enrollment_rejected",
+        "test_actor_instance_file_return_expiry_mismatch[tgid-9]",
+        "test_actor_instance_file_return_expiry_mismatch[start_ns-51]",
+        "test_actor_instance_file_return_expiry_mismatch[inode-5]",
+        "test_actor_instance_file_return_expiry_mismatch[result-0]",
+        "test_actor_instance_file_return_expiry_mismatch[entry_ns-700]",
+        "test_exec_generation_invalidates_previous_binding",
+        "test_signature_alteration_cannot_authenticate",
+        "test_wrong_ca_pin_no_chain",
+        "test_lifecycle_loss_unknown",
+        "test_public_copy_not_signature",
+        "test_incomplete_evidence_conservative",
+        "test_proof_message_is_not_silently_modified"
+      ]
+    },
+    {
+      "run": 3,
+      "counts": {
+        "errors": "0",
+        "failures": "0",
+        "skipped": "0",
+        "tests": "619",
+        "time": "42.616",
+        "timestamp": "2026-10-12T01:38:04.532703+02:00"
+      },
+      "junit_sha256": "46ecdf499e5fb5763c390377596b259ec1ff2f2023d8230012c962f6e66dda43",
+      "log_sha256": "70b5dcab4ba11f07f813a824e0eb5774629b8e216e845169f34864d6e2bbdc49",
+      "failed_tests": [],
+      "new_crypto_scorer_tests": [
+        "test_independent_signatures_and_exact_chain",
+        "test_mutated_enrollment_rejected",
+        "test_actor_instance_file_return_expiry_mismatch[tgid-9]",
+        "test_actor_instance_file_return_expiry_mismatch[start_ns-51]",
+        "test_actor_instance_file_return_expiry_mismatch[inode-5]",
+        "test_actor_instance_file_return_expiry_mismatch[result-0]",
+        "test_actor_instance_file_return_expiry_mismatch[entry_ns-700]",
+        "test_exec_generation_invalidates_previous_binding",
+        "test_signature_alteration_cannot_authenticate",
+        "test_wrong_ca_pin_no_chain",
+        "test_lifecycle_loss_unknown",
+        "test_public_copy_not_signature",
+        "test_incomplete_evidence_conservative",
+        "test_proof_message_is_not_silently_modified"
+      ]
+    },
+    {
+      "run": 4,
+      "counts": {
+        "errors": "0",
+        "failures": "0",
+        "skipped": "0",
+        "tests": "619",
+        "time": "41.941",
+        "timestamp": "2026-10-12T01:39:22.908742+02:00"
+      },
+      "junit_sha256": "a13d06c5701eee7cce05ee4941a2188610bd2f2e0a58f3c9f9ffd8cb59fbbb1d",
+      "log_sha256": "d59f60cb1b018026f9f9e54ac5575d9e8451869101656f0784638f9fe545041b",
+      "failed_tests": [],
+      "new_crypto_scorer_tests": [
+        "test_independent_signatures_and_exact_chain",
+        "test_mutated_enrollment_rejected",
+        "test_actor_instance_file_return_expiry_mismatch[tgid-9]",
+        "test_actor_instance_file_return_expiry_mismatch[start_ns-51]",
+        "test_actor_instance_file_return_expiry_mismatch[inode-5]",
+        "test_actor_instance_file_return_expiry_mismatch[result-0]",
+        "test_actor_instance_file_return_expiry_mismatch[entry_ns-700]",
+        "test_exec_generation_invalidates_previous_binding",
+        "test_signature_alteration_cannot_authenticate",
+        "test_wrong_ca_pin_no_chain",
+        "test_lifecycle_loss_unknown",
+        "test_public_copy_not_signature",
+        "test_incomplete_evidence_conservative",
+        "test_proof_message_is_not_silently_modified"
+      ]
+    }
+  ],
+  "final_fixed_source_suites": [
+    3,
+    4
+  ],
+  "source_head": "5d763c85bb9504f70fd6e306718c8ada9143b95e",
+  "test2_failure_cause": "commit HEAD changed while historical P7 source pin tests running; expected source_head_mismatch STOP; not weakened or reclassified as passing",
+  "old_test_deselections": 5,
+  "ruff_check": "PASS",
+  "ruff_format": "PASS",
+  "mypy32_existing_core": "PASS",
+  "bandit_existing_core": "PASS",
+  "14_new_tests": "real temporary OpenSSL primitives and offline fixtures, not kernel evidence"
+}

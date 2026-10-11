@@ -1,0 +1,444 @@
+{
+  "position": 6,
+  "case": "reuse",
+  "source_commit": "5d763c85bb9504f70fd6e306718c8ada9143b95e",
+  "observer_exit": 0,
+  "starter_exit": 0,
+  "capture": [
+    {
+      "boot_hash": "9a38a0e5dc4a5b912a071fdade93a6df9114d48eddc2d9bf7acc7941a728ab52",
+      "file": {
+        "dev": 265289729,
+        "inode": 262846
+      },
+      "kernel": "6.8.0-142-generic",
+      "observer_source_sha256": "20cdb32237bd02ba9705dae02b467ee60ca968f742fc1ba7f308d59770b2bcbe",
+      "pid_namespace": "pid:[4026531836]",
+      "program_sha256": "6d68b957501f4d803611b2612f7cb410f7a345de7aa56bc4051ce424a02dedce",
+      "ready": true,
+      "ready_ns": 1379858316899
+    },
+    {
+      "record": {
+        "boot_hash": "9a38a0e5dc4a5b912a071fdade93a6df9114d48eddc2d9bf7acc7941a728ab52",
+        "count": 16,
+        "cpu": 0,
+        "dev": 265289729,
+        "entry_ns": 1381786312042,
+        "exit_ns": 1381786343621,
+        "inode": 262846,
+        "kind": 1,
+        "ppid": 1291,
+        "raw_bytes": 76,
+        "result": 16,
+        "start_ns": 1381661997003,
+        "tgid": 1292,
+        "tid": 1292
+      }
+    },
+    {
+      "record": {
+        "boot_hash": "9a38a0e5dc4a5b912a071fdade93a6df9114d48eddc2d9bf7acc7941a728ab52",
+        "count": 0,
+        "cpu": 0,
+        "dev": 0,
+        "entry_ns": 0,
+        "exit_ns": 1381906577906,
+        "inode": 0,
+        "kind": 2,
+        "ppid": 0,
+        "raw_bytes": 76,
+        "result": 0,
+        "start_ns": 1381661997003,
+        "tgid": 1292,
+        "tid": 1292
+      }
+    },
+    {
+      "summary": {
+        "cpu_system_seconds": 0.182679,
+        "cpu_user_seconds": 1.943131,
+        "end_ns": 1391907849754,
+        "entry_probe_nmissed": null,
+        "entry_probe_nmissed_limit": "BCC uses perf kprobe entry; tracefs profile covers classic kretprobe only",
+        "kprobe_profile": [
+          [
+            "r_vfs_write_bcc_1286",
+            "87",
+            "0"
+          ]
+        ],
+        "logical_agent_identity": "UNBEKANNT",
+        "pending": 0,
+        "perf_lost": 0,
+        "raw_bytes": 152,
+        "records": 2,
+        "rss_peak_bytes": 177598464,
+        "scope": "observer process including BCC compile, not kernel/VM CPU",
+        "stats": {
+          "0": 1,
+          "1": 1,
+          "2": 1,
+          "3": 0,
+          "4": 0,
+          "5": 0,
+          "6": 1,
+          "7": 0
+        }
+      }
+    }
+  ],
+  "trial": {
+    "case": "reuse",
+    "extra": {
+      "pid_reuse_actual": true
+    },
+    "handshakes": [
+      {
+        "proof": {
+          "body": {
+            "challenge": {
+              "boot_hash": "9a38a0e5dc4a5b912a071fdade93a6df9114d48eddc2d9bf7acc7941a728ab52",
+              "domain": "A2-CHALLENGE-v1",
+              "expires_in_ns": 5000000000,
+              "file": {
+                "dev": 265289729,
+                "inode": 262846
+              },
+              "instance": {
+                "exec_ns": 1381366631333,
+                "exit_ns": 0,
+                "generation": 1,
+                "parent": 1291,
+                "pid": 1292,
+                "start_ns": 1381363801782
+              },
+              "issued_ns": 1381478216141,
+              "nonce": "b2e0cd9ca9e881886ddbb3bc4995e812f63adc47c76f0ca8e4abf9b5011cca25",
+              "pid_namespace": "pid:[4026531836]",
+              "run_id": "a23b7da6c5e6e003790bdeb60bd761d0"
+            },
+            "claimed_identity": "TestAlpha",
+            "details": {},
+            "domain": "A2-TEST-POP-v1"
+          },
+          "signature": "rxr06bxZFaWognUgvkppU8KeCLWmZhKuBvV+k+r8+8thPjOwu2B7jqYQmdVRkA1U7rwi54uJC+3fFlPhp2z9BQ=="
+        },
+        "receipt": {
+          "body": {
+            "attested_ns": 1381489735887,
+            "authenticated_identity": "TestAlpha",
+            "boot_hash": "9a38a0e5dc4a5b912a071fdade93a6df9114d48eddc2d9bf7acc7941a728ab52",
+            "challenge": {
+              "boot_hash": "9a38a0e5dc4a5b912a071fdade93a6df9114d48eddc2d9bf7acc7941a728ab52",
+              "domain": "A2-CHALLENGE-v1",
+              "expires_in_ns": 5000000000,
+              "file": {
+                "dev": 265289729,
+                "inode": 262846
+              },
+              "instance": {
+                "exec_ns": 1381366631333,
+                "exit_ns": 0,
+                "generation": 1,
+                "parent": 1291,
+                "pid": 1292,
+                "start_ns": 1381363801782
+              },
+              "issued_ns": 1381478216141,
+              "nonce": "b2e0cd9ca9e881886ddbb3bc4995e812f63adc47c76f0ca8e4abf9b5011cca25",
+              "pid_namespace": "pid:[4026531836]",
+              "run_id": "a23b7da6c5e6e003790bdeb60bd761d0"
+            },
+            "claimed_identity": "TestAlpha",
+            "connection_peer": {
+              "gid": 61001,
+              "pid": 1292,
+              "uid": 61001
+            },
+            "credential_identity": "TestAlpha",
+            "domain": "A2-START-BINDING-v1",
+            "fresh_challenge": true,
+            "instance_bound": true,
+            "message_sender": {
+              "exec_ns": 1381366631333,
+              "exit_ns": 0,
+              "generation": 1,
+              "gid": 61001,
+              "parent": 1291,
+              "pid": 1292,
+              "start_ns": 1381363801782,
+              "uid": 61001
+            },
+            "pid_namespace": "pid:[4026531836]",
+            "proof_sha256": "dbeb9bf3775981bc0c5360553440d231558699e08b055910e29d4cf9d23ad0a6",
+            "registered_identity": "TestAlpha",
+            "run_id": "a23b7da6c5e6e003790bdeb60bd761d0",
+            "test_identity_only": true
+          },
+          "signature": "nlXvN4RvPpisDzvoL18oEGpDMPGQTFLG4XUoPEfcKuNO2RTlwlL5NRPOtF+Nr0biaeRjLacNnQ0bEuKrVjelAg=="
+        }
+      },
+      {
+        "proof": {
+          "body": {
+            "challenge": {
+              "boot_hash": "9a38a0e5dc4a5b912a071fdade93a6df9114d48eddc2d9bf7acc7941a728ab52",
+              "domain": "A2-CHALLENGE-v1",
+              "expires_in_ns": 5000000000,
+              "file": {
+                "dev": 265289729,
+                "inode": 262846
+              },
+              "instance": {
+                "exec_ns": 1381366631333,
+                "exit_ns": 0,
+                "generation": 1,
+                "parent": 1291,
+                "pid": 1292,
+                "start_ns": 1381363801782
+              },
+              "issued_ns": 1381774113030,
+              "nonce": "fb228b7d229c1e5f33d289d38399507368ff3165508e08741de7b9d4380501ce",
+              "pid_namespace": "pid:[4026531836]",
+              "run_id": "a23b7da6c5e6e003790bdeb60bd761d0"
+            },
+            "claimed_identity": "TestAlpha",
+            "details": {},
+            "domain": "A2-TEST-POP-v1"
+          },
+          "signature": "L8jQ8v/2SQls+yFi+sLepGw3ghKYiq4qVu/wa8+1+flcKxZSh9ByATBgyCIpPqSNDo6Muf8KNCoMyKg5ljmHBQ=="
+        },
+        "receipt": {
+          "body": {
+            "attested_ns": 1381785799931,
+            "authenticated_identity": null,
+            "boot_hash": "9a38a0e5dc4a5b912a071fdade93a6df9114d48eddc2d9bf7acc7941a728ab52",
+            "challenge": {
+              "boot_hash": "9a38a0e5dc4a5b912a071fdade93a6df9114d48eddc2d9bf7acc7941a728ab52",
+              "domain": "A2-CHALLENGE-v1",
+              "expires_in_ns": 5000000000,
+              "file": {
+                "dev": 265289729,
+                "inode": 262846
+              },
+              "instance": {
+                "exec_ns": 1381366631333,
+                "exit_ns": 0,
+                "generation": 1,
+                "parent": 1291,
+                "pid": 1292,
+                "start_ns": 1381363801782
+              },
+              "issued_ns": 1381774113030,
+              "nonce": "fb228b7d229c1e5f33d289d38399507368ff3165508e08741de7b9d4380501ce",
+              "pid_namespace": "pid:[4026531836]",
+              "run_id": "a23b7da6c5e6e003790bdeb60bd761d0"
+            },
+            "claimed_identity": "TestAlpha",
+            "connection_peer": {
+              "gid": 61001,
+              "pid": 1292,
+              "uid": 61001
+            },
+            "credential_identity": "TestAlpha",
+            "domain": "A2-START-BINDING-v1",
+            "fresh_challenge": true,
+            "instance_bound": false,
+            "message_sender": {
+              "exec_ns": 1381664491854,
+              "exit_ns": 0,
+              "generation": 1,
+              "gid": 61001,
+              "parent": 1291,
+              "pid": 1292,
+              "start_ns": 1381661997003,
+              "uid": 61001
+            },
+            "pid_namespace": "pid:[4026531836]",
+            "proof_sha256": "8cac62f792a72e9ffc50f82cb72a5cc32dbf1aa41618a282e80f5fca5d1ffbb0",
+            "registered_identity": "TestAlpha",
+            "run_id": "a23b7da6c5e6e003790bdeb60bd761d0",
+            "test_identity_only": true
+          },
+          "signature": "w/YzMVYOLuoSbbmIsNjL1ojw2bggA/n33fe4gwfuupHMd5VEbydn2lLFBLqI7Bmx9RTa7Jr8aph46QOERntNDw=="
+        }
+      }
+    ],
+    "lifecycle": {
+      "callback_raw_bytes": 264,
+      "fork_entry_nmissed": null,
+      "perf_lost": 0,
+      "records": [
+        {
+          "generation": 1,
+          "kind": 2,
+          "parent": 1291,
+          "pid": 1292,
+          "stamp": 1381366631366,
+          "start": 1381363801782,
+          "uid": 61001
+        },
+        {
+          "generation": 0,
+          "kind": 1,
+          "parent": 1291,
+          "pid": 1292,
+          "stamp": 1381363810380,
+          "start": 1381363801782,
+          "uid": 0
+        },
+        {
+          "generation": 1,
+          "kind": 3,
+          "parent": 1291,
+          "pid": 1292,
+          "stamp": 1381609781958,
+          "start": 1381363801782,
+          "uid": 61001
+        },
+        {
+          "generation": 1,
+          "kind": 2,
+          "parent": 1291,
+          "pid": 1292,
+          "stamp": 1381664491888,
+          "start": 1381661997003,
+          "uid": 61001
+        },
+        {
+          "generation": 0,
+          "kind": 1,
+          "parent": 1291,
+          "pid": 1292,
+          "stamp": 1381662003833,
+          "start": 1381661997003,
+          "uid": 0
+        },
+        {
+          "generation": 1,
+          "kind": 3,
+          "parent": 1291,
+          "pid": 1292,
+          "stamp": 1381906657808,
+          "start": 1381661997003,
+          "uid": 61001
+        }
+      ],
+      "scope": "starter descendants; missing fork/exec means unknown binding",
+      "submit_failures": 0
+    },
+    "oracle": [
+      {
+        "exit": 0,
+        "identity_provisioned": "TestAlpha",
+        "kernel_start_at_spawn": {
+          "exec_ns": 1381366631333,
+          "exit_ns": 0,
+          "generation": 1,
+          "parent": 1291,
+          "pid": 1292,
+          "start_ns": 1381363801782
+        },
+        "key_material_archived": false,
+        "mode": "no-write",
+        "registered": true,
+        "spawn_pid": 1292,
+        "stderr_bytes": 0,
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout_records": [
+          {
+            "action": {
+              "begin_ns": 1381786300115,
+              "end_ns": 1381786427850,
+              "file": {
+                "dev": 265289729,
+                "inode": 262846
+              },
+              "result": 16
+            }
+          }
+        ],
+        "uid": 61001
+      },
+      {
+        "exit": 0,
+        "identity_provisioned": "TestAlpha",
+        "kernel_start_at_spawn": {
+          "exec_ns": 1381664491854,
+          "exit_ns": 0,
+          "generation": 1,
+          "parent": 1291,
+          "pid": 1292,
+          "start_ns": 1381661997003
+        },
+        "key_material_archived": false,
+        "mode": "write",
+        "registered": false,
+        "spawn_pid": 1292,
+        "stderr_bytes": 0,
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout_records": [
+          {
+            "action": {
+              "begin_ns": 1381786300115,
+              "end_ns": 1381786427850,
+              "file": {
+                "dev": 265289729,
+                "inode": 262846
+              },
+              "result": 16
+            }
+          }
+        ],
+        "uid": 61001
+      }
+    ],
+    "resources": {
+      "cpu_system_seconds": 0.13527999999999998,
+      "cpu_user_seconds": 0.834576,
+      "peak_rss_bytes": 164872192,
+      "scope": "starter process including lifecycle compile; child/kernel CPU unknown"
+    }
+  },
+  "capture_sha256": "2d2850bb293e485dd7c1674cecf3770bde4751478311761ab4dfb370ec1d567b",
+  "trial_sha256": "45d7ad0341bb3d5bf3c2668efc0ba11cc22f8845e61089640ddacb599915b4bc",
+  "starter_stderr_bytes": 0,
+  "observer_stderr_bytes": 0,
+  "host_collection_ns": 12160231071,
+  "evaluation": {
+    "enrollment_signature": true,
+    "proof_checks": [
+      {
+        "starter_signature": true,
+        "agent_signature_identity": "TestAlpha",
+        "receipt_credential_matches": true,
+        "proof_hash_matches": true,
+        "fresh_challenge": true
+      },
+      {
+        "starter_signature": true,
+        "agent_signature_identity": "TestAlpha",
+        "receipt_credential_matches": true,
+        "proof_hash_matches": true,
+        "fresh_challenge": true
+      }
+    ],
+    "known_loss_checks": true,
+    "chains": [
+      {
+        "process": {
+          "tgid": 1292,
+          "start_ns": 1381661997003,
+          "ppid": 1291
+        },
+        "independent_write": "BELEGT",
+        "acting_authenticated_identity": null,
+        "identity_effect_chain": "UNBEKANNT"
+      }
+    ],
+    "codex_authenticated": false,
+    "grok_authenticated": false,
+    "real_model_or_person_identity": "UNBEKANNT"
+  }
+}
