@@ -553,3 +553,22 @@ nicht von seinem Merge abhängig gemacht.
 Die wörtliche Nutzerentscheidung, der frühere offene Status, der append-only
 Dokumentationsdiff und die Abschlussbelege sind getrennt archiviert unter
 `/Users/landjunge/.threaddesk/artifacts/agent-authority/formal-p6-acceptance-20261011/`.
+
+### Aktualisierter Dokumentationsstand nach P8-Integration
+
+Stand: 11. Oktober 2026. Die ursprüngliche formale P6-Entscheidung WB1602
+bleibt unverändert; sie ist nicht erneut zu erteilen. Die damaligen Aussagen
+zu P7/P8/P9 beschreiben ausschließlich den Umfang dieser P6-Entscheidung.
+Spätere konkrete Nutzerentscheidungen erlaubten P7 und P8: PR32 wurde auf
+`64bf757` integriert (WB1616/1619), PR33 auf `2523568` (WB1628/1630), jeweils
+mit erfolgreicher tatsächlicher Push-CI und CodeQL. P9s Voraussetzung aus
+WB34 ist erfüllt; seine bedingte Arbeit nach WB1605 und Teamprüfung ist
+begonnen, ohne automatische P9-Paketabnahme oder weitere Mergefreigabe.
+
+PR31 wurde durch einen gewöhnlichen Merge des bestätigten master-Standes
+`2523568` aktualisiert, ohne History-Rewrite oder Force-Push. Gegen master
+bleibt ausschließlich dieser ergänzende P6-Dokumentationsnachtrag. Alle
+früheren Textpräfixe und Originalbelege bleiben erhalten. Die konkrete
+Integration dieses eigenen Dokumentations-PRs ist noch nicht freigegeben;
+er bleibt Draft. D-012, historische Referenzen, profilgebundene Remediation,
+unbekannte Herkunft und P4s akzeptiertes ungeklärtes Restrisiko gelten weiter.
