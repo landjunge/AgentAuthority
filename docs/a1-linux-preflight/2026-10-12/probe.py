@@ -52,7 +52,15 @@ def read(path):
     """Only callers' fixed metadata paths, bounded bytes; never raw errors."""
     try:
         with open(path, "rb") as stream:
-            data = stream.read(LIMIT + 1)
+            chunks = []
+            size = 0
+            while size <= LIMIT:
+                block = stream.read(4096)
+                if not block:
+                    break
+                chunks.append(block)
+                size += len(block)
+            data = b"".join(chunks)
         if len(data) > LIMIT:
             return {"status": "UNBEKANNT", "reason": "size_limit"}
         return {
@@ -173,9 +181,11 @@ def collect(label):
             for line in process["value"].splitlines()
             if line.split(":", 1)[0] in allowed
         }
-        effective = int(process["value"].get("CapEff", "0"), 16)
+        value = process["value"].get("CapEff")
+        effective = int(value, 16) if value is not None else None
         result["selected_effective_capabilities"] = {
-            name: bool(effective & (1 << bit)) for name, bit in CAPABILITIES.items()
+            name: bool(effective & (1 << bit)) if effective is not None else None
+            for name, bit in CAPABILITIES.items()
         }
     result["self_status"] = process
     ownstat = read("/proc/self/stat")
