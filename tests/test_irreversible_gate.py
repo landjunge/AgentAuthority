@@ -23,9 +23,7 @@ def test_irreversible_with_token_allowed():
     lab = Lab()
     wid = "wf-irr-token"
     token = "APPROVE-TOKEN-XYZ"
-    d = lab.submit(
-        ActionRequest("A", "repo.delete", "repo", {"approval_token": token}, wid)
-    )
+    d = lab.submit(ActionRequest("A", "repo.delete", "repo", {"approval_token": token}, wid))
     assert d.allow is True
     st = lab.state(wid)
     assert "repo.delete" in st.irreversible_effects

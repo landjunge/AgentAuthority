@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from lab.models import (
+    DELETE_ACTIONS,
     I1_ACTION_BUDGET,
     I2_FILE_LIMIT,
     I3_PROTECTED_PATH,
@@ -10,7 +11,6 @@ from lab.models import (
     I7_SECURITY_TEST_DELETE,
     I8_PROTECTED_MUTATION,
     I9_UNKNOWN_ACTION_PROTECTED,
-    DELETE_ACTIONS,
     IRREVERSIBLE_ACTIONS,
     KNOWN_ACTIONS,
     MAX_ACTIONS,
@@ -70,8 +70,7 @@ def evaluate(req: ActionRequest, predicted: WorkflowState) -> list[str]:
             violated.append(I8_PROTECTED_MUTATION)
 
     if req.action not in KNOWN_ACTIONS and (
-        is_protected_path(req.resource, PROTECTED_PATH)
-        or is_security_test_path(req.resource)
+        is_protected_path(req.resource, PROTECTED_PATH) or is_security_test_path(req.resource)
     ):
         # Fail closed at the protected boundary. Do not interpret the verb.
         violated.append(I9_UNKNOWN_ACTION_PROTECTED)

@@ -1,5 +1,6 @@
 """Phase 2 Experiment 03. Does not modify Phase 1 or Experiments 01–02."""
 
+from lab.models import I1_ACTION_BUDGET, ActionRequest
 from lab.phase2.authority import AGENT_A, AGENT_B, CUSTOMERS
 from lab.phase2.communication_gate import CommunicationGate
 from lab.phase2.experiment03_control_flow import (
@@ -10,7 +11,6 @@ from lab.phase2.experiment03_control_flow import (
 from lab.phase2.gated_runtime import GatedLab
 from lab.phase2.labels import PUBLIC, SENSITIVE
 from lab.phase2.workflow import Experiment
-from lab.models import ActionRequest, I1_ACTION_BUDGET
 from lab.validator import Lab
 
 
@@ -97,9 +97,7 @@ def test_new_public_value_under_sensitive_control_remains_tainted():
     exp = ImplicitFlowExperiment(ifc=True, control_deps=True)
     exp.customer_read(AGENT_A, "C1")
     exp.control_decide(AGENT_A, "D1", ["C1"])
-    w = exp.state_write(
-        AGENT_A, "X", "1", created_under="D1", claimed_label=PUBLIC
-    )
+    w = exp.state_write(AGENT_A, "X", "1", created_under="D1", claimed_label=PUBLIC)
     assert w.value is not None and w.value.label == SENSITIVE
     exp.state_read(AGENT_B, "X")
     d = exp.external_send(AGENT_B, "X")

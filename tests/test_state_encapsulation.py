@@ -27,6 +27,6 @@ def test_tampering_snapshot_provenance_does_not_rewrite_the_log():
     snap = lab.state(wid)
     try:
         snap.provenance[0].action = "tampered"
-    except Exception:
+    except Exception:  # noqa: BLE001, S110  a frozen snapshot may raise; the live log must stay
         pass
     assert lab.state(wid).provenance[0].action == "file.write"

@@ -22,6 +22,4 @@ def file_limit_split(workflow_id: str) -> list[ActionRequest]:
 
 
 def slow_drift(workflow_id: str, n: int = 101) -> list[ActionRequest]:
-    return [
-        ActionRequest("A", "file.read", f"drift/{i}", {}, workflow_id) for i in range(n)
-    ]
+    return [ActionRequest("A", "file.read", f"drift/{i}", {}, workflow_id) for i in range(n)]

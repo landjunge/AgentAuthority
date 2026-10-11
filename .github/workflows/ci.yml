@@ -24,17 +24,12 @@ jobs:
       - name: Pytest again (determinism check)
         run: pytest -q
       - name: Install quality tools
-        run: pip install ruff bandit mypy
-      # Non-blocking until a clean run has been seen; then drop continue-on-error.
+        run: pip install ruff==0.17.0 bandit==1.9.4 mypy==2.4.0
       - name: Ruff check
-        continue-on-error: true
         run: ruff check .
       - name: Ruff format
-        continue-on-error: true
         run: ruff format --check .
       - name: Bandit
-        continue-on-error: true
         run: bandit -r lab/ -ll
       - name: Mypy strict
-        continue-on-error: true
         run: mypy lab/ --strict

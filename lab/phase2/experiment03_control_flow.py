@@ -2,12 +2,16 @@
 
 from __future__ import annotations
 
+from typing import Any
+
 from lab.phase2.authority import (
     AGENT_A,
     AGENT_B,
     CONTROL_DECIDE,
+    COPY,
     CUSTOMER_READ,
     CUSTOMERS,
+    DERIVE,
     EXTERNAL,
     EXTERNAL_SEND,
     PUBLIC_WRITE,
@@ -16,8 +20,6 @@ from lab.phase2.authority import (
     WORKFLOW_MSG,
     WORKFLOW_STATE,
     WRAP,
-    COPY,
-    DERIVE,
     authority_ok,
     known_actor,
 )
@@ -47,7 +49,7 @@ class ImplicitFlowExperiment:
         self.workflow_state: dict[str, DataValue] = {}
         self.decisions: dict[str, ControlDecision] = {}
         self.external: list[str] = []
-        self.attempts: list[dict] = []
+        self.attempts: list[dict[str, Any]] = []
 
     def customer_read(self, actor: str, value_id: str = "C1") -> Phase2Decision:
         if not known_actor(actor):
@@ -64,7 +66,9 @@ class ImplicitFlowExperiment:
         )
         return self._commit_hold(actor, value, auth)
 
-    def public_write(self, actor: str, value_id: str, payload: str = "hello world") -> Phase2Decision:
+    def public_write(
+        self, actor: str, value_id: str, payload: str = "hello world"
+    ) -> Phase2Decision:
         if not known_actor(actor):
             return self._deny(False, True, REASON_ACTOR)
         auth = authority_ok(actor, PUBLIC_WRITE, WORKFLOW_MSG)
@@ -174,7 +178,9 @@ class ImplicitFlowExperiment:
     def derive(self, actor: str, dst_id: str, from_ids: list[str]) -> Phase2Decision:
         return self._transform(actor, DERIVE, dst_id, tuple(from_ids))
 
-    def wrap(self, actor: str, dst_id: str, src_id: str, claimed_label: str = PUBLIC) -> Phase2Decision:
+    def wrap(
+        self, actor: str, dst_id: str, src_id: str, claimed_label: str = PUBLIC
+    ) -> Phase2Decision:
         _ = claimed_label
         return self._transform(actor, WRAP, dst_id, (src_id,))
 
@@ -199,7 +205,9 @@ class ImplicitFlowExperiment:
         explanation["decision"] = "DENY"
         return Phase2Decision(False, True, False, reason, explanation, held)
 
-    def _transform(self, actor: str, action: str, dst_id: str, from_ids: tuple[str, ...]) -> Phase2Decision:
+    def _transform(
+        self, actor: str, action: str, dst_id: str, from_ids: tuple[str, ...]
+    ) -> Phase2Decision:
         if not known_actor(actor):
             return self._deny(False, True, REASON_ACTOR)
         auth = authority_ok(actor, action, WORKFLOW_MSG)
@@ -223,7 +231,8 @@ class ImplicitFlowExperiment:
             label=label,
             origin=origin,
             derived_from=from_ids,
-            provenance=tuple(e for v in inputs for e in v.provenance) + (f"{actor}:{action}:{dst_id}",),
+            provenance=tuple(e for v in inputs for e in v.provenance)
+            + (f"{actor}:{action}:{dst_id}",),
             payload=inputs[0].payload if inputs else "derived",
         )
         return self._commit_hold(actor, value, auth)
@@ -284,7 +293,7 @@ class ImplicitFlowExperiment:
                 stack.extend(node.derived_from)
         return None
 
-    def _explain(self, value: DataValue, auth: bool, flow_ok: bool) -> dict:
+    def _explain(self, value: DataValue, auth: bool, flow_ok: bool) -> dict[str, Any]:
         origin, path = None, []
         if self._depends_on_sensitive(value):
             origin = CUSTOMERS

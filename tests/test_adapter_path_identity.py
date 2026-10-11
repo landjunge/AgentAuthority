@@ -30,8 +30,6 @@ def test_alias_delete_pops_the_canonical_key():
 def test_alias_delete_of_seeded_security_test_uses_canonical_key():
     ad = FakeAdapter()
     ad.repo.files["tests/security/check.py"] = "important"
-    d = ad.delete(
-        "A", "tests/other/../security/check.py", "wf-canonical-adapter", "approved"
-    )
+    d = ad.delete("A", "tests/other/../security/check.py", "wf-canonical-adapter", "approved")
     assert d.allow is True
     assert "tests/security/check.py" not in ad.repo.files

@@ -6,8 +6,8 @@ from lab.phase2.gated_runtime import GatedLab
 from lab.phase2.labels import SENSITIVE
 from lab.phase2.workflow import (
     REASON_COLLISION,
-    REASON_EMPTY,
     REASON_EGRESS,
+    REASON_EMPTY,
     Experiment,
 )
 

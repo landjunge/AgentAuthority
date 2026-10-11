@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+from typing import Any
+
 from lab.phase2.authority import (
     AGENT_A,
     AGENT_B,
@@ -18,9 +20,9 @@ from lab.phase2.authority import (
     known_actor,
 )
 from lab.phase2.communication_gate import (
+    REASON_ACTOR,
     CommunicationGate,
     GateDecision,
-    REASON_ACTOR,
     SecurityEnvelope,
 )
 from lab.phase2.labels import PUBLIC, SENSITIVE, join_labels
@@ -28,8 +30,8 @@ from lab.phase2.values import merge_provenance
 from lab.phase2.workflow import (
     REASON_AUTHORITY,
     REASON_COLLISION,
-    REASON_EMPTY,
     REASON_EGRESS,
+    REASON_EMPTY,
     REASON_HOLDING,
     REASON_INBOX,
 )
@@ -39,7 +41,7 @@ CHECKPOINT = "CommunicationGate"
 
 
 class _View:
-    def __init__(self, lab: "GatedLab") -> None:
+    def __init__(self, lab: GatedLab) -> None:
         self._lab = lab
 
     def get_envelope(self, workflow_id: str, value_id: str) -> SecurityEnvelope | None:
@@ -70,7 +72,7 @@ class GatedLab:
         self.workflows: dict[str, GatedWorkflow] = {}
         self._seq = 0
 
-    def workflow(self, workflow_id: str = "wf-1") -> "GatedWorkflow":
+    def workflow(self, workflow_id: str = "wf-1") -> GatedWorkflow:
         if workflow_id not in self.workflows:
             self.workflows[workflow_id] = GatedWorkflow(self, workflow_id)
         return self.workflows[workflow_id]
@@ -90,14 +92,16 @@ class GatedWorkflow:
         self.inbox: dict[str, dict[str, str]] = {AGENT_A: {}, AGENT_B: {}}
         self.consumed: set[str] = set()
         self.external: list[str] = []
-        self.attempts: list[dict] = []
+        self.attempts: list[dict[str, Any]] = []
 
     def customer_read(self, actor: str, value_id: str = "C1") -> GateDecision:
         if not known_actor(actor):
             return GateDecision(False, REASON_ACTOR, actor, actor, self.workflow_id, value_id)
         if not authority_ok(actor, CUSTOMER_READ, CUSTOMERS):
             return GateDecision(False, REASON_AUTHORITY, actor, actor, self.workflow_id, value_id)
-        env = SecurityEnvelope(self.workflow_id, value_id, SENSITIVE, CUSTOMERS, (), (f"{actor}:{CUSTOMER_READ}",))
+        env = SecurityEnvelope(
+            self.workflow_id, value_id, SENSITIVE, CUSTOMERS, (), (f"{actor}:{CUSTOMER_READ}",)
+        )
         if not self._put(actor, env, "CUSTOMER_001"):
             return GateDecision(False, REASON_COLLISION, actor, actor, self.workflow_id, value_id)
         return GateDecision(True, None, actor, actor, self.workflow_id, value_id, SENSITIVE)
@@ -107,7 +111,9 @@ class GatedWorkflow:
             return GateDecision(False, REASON_ACTOR, actor, actor, self.workflow_id, value_id)
         if not authority_ok(actor, PUBLIC_WRITE, WORKFLOW_MSG):
             return GateDecision(False, REASON_AUTHORITY, actor, actor, self.workflow_id, value_id)
-        env = SecurityEnvelope(self.workflow_id, value_id, PUBLIC, WORKFLOW_MSG, (), (f"{actor}:{PUBLIC_WRITE}",))
+        env = SecurityEnvelope(
+            self.workflow_id, value_id, PUBLIC, WORKFLOW_MSG, (), (f"{actor}:{PUBLIC_WRITE}",)
+        )
         if not self._put(actor, env, payload):
             return GateDecision(False, REASON_COLLISION, actor, actor, self.workflow_id, value_id)
         return GateDecision(True, None, actor, actor, self.workflow_id, value_id, PUBLIC)
@@ -118,11 +124,15 @@ class GatedWorkflow:
     def derive(self, actor: str, dst_id: str, from_ids: list[str]) -> GateDecision:
         return self._transform(actor, DERIVE, dst_id, tuple(from_ids))
 
-    def wrap(self, actor: str, dst_id: str, src_id: str, claimed_label: str = PUBLIC) -> GateDecision:
+    def wrap(
+        self, actor: str, dst_id: str, src_id: str, claimed_label: str = PUBLIC
+    ) -> GateDecision:
         _ = claimed_label
         return self._transform(actor, WRAP, dst_id, (src_id,))
 
-    def request_transfer(self, sender: str, receiver: str, value_id: str, **claimed) -> GateDecision:
+    def request_transfer(
+        self, sender: str, receiver: str, value_id: str, **claimed: object
+    ) -> GateDecision:
         _ = claimed
         if not known_actor(sender) or not known_actor(receiver):
             return GateDecision(False, REASON_ACTOR, sender, receiver, self.workflow_id, value_id)
@@ -144,7 +154,9 @@ class GatedWorkflow:
             or updated.origin != env.origin
             or updated.derived_from != env.derived_from
         ):
-            return GateDecision(False, REASON_COLLISION, sender, receiver, self.workflow_id, value_id)
+            return GateDecision(
+                False, REASON_COLLISION, sender, receiver, self.workflow_id, value_id
+            )
         self.envelopes[value_id] = updated
         self.inbox[receiver][message_id] = value_id
         return GateDecision(
@@ -171,7 +183,9 @@ class GatedWorkflow:
         del self.inbox[actor][message_id]
         self.holdings[actor].add(value_id)
         env = self.envelopes[value_id]
-        return GateDecision(True, None, actor, actor, self.workflow_id, value_id, env.label, message_id=message_id)
+        return GateDecision(
+            True, None, actor, actor, self.workflow_id, value_id, env.label, message_id=message_id
+        )
 
     def external_send(self, actor: str, value_id: str) -> GateDecision:
         if not known_actor(actor):
@@ -182,11 +196,12 @@ class GatedWorkflow:
         env = self.envelopes[value_id]
         sensitive = self._depends_on_sensitive(env)
         flow_ok = not sensitive
-        expl = {
+        reason = None if (auth and flow_ok) else (REASON_AUTHORITY if not auth else REASON_EGRESS)
+        expl: dict[str, Any] = {
             "decision": "ALLOW" if (auth and flow_ok) else "DENY",
             "authority_ok": auth,
             "flow_ok": flow_ok,
-            "reason": None if (auth and flow_ok) else (REASON_AUTHORITY if not auth else REASON_EGRESS),
+            "reason": reason,
             "value_id": value_id,
             "sensitive_origin": CUSTOMERS if sensitive else None,
             "path": self._path(env) if sensitive else [],
@@ -197,7 +212,7 @@ class GatedWorkflow:
             return GateDecision(True, None, actor, actor, self.workflow_id, value_id, env.label)
         return GateDecision(
             False,
-            expl["reason"],
+            reason,
             actor,
             actor,
             self.workflow_id,
@@ -205,7 +220,9 @@ class GatedWorkflow:
             env.label,
         )
 
-    def _transform(self, actor: str, action: str, dst_id: str, from_ids: tuple[str, ...]) -> GateDecision:
+    def _transform(
+        self, actor: str, action: str, dst_id: str, from_ids: tuple[str, ...]
+    ) -> GateDecision:
         if not known_actor(actor):
             return GateDecision(False, REASON_ACTOR, actor, actor, self.workflow_id, dst_id)
         if not authority_ok(actor, action, WORKFLOW_MSG):

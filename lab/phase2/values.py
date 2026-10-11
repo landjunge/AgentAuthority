@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
+from typing import Any
 
 
 @dataclass(frozen=True)
@@ -37,5 +38,5 @@ class Phase2Decision:
     authority_ok: bool
     flow_ok: bool
     reason: str | None
-    explanation: dict | None = None
+    explanation: dict[str, Any] | None = None
     value: DataValue | None = None

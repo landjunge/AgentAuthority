@@ -2,7 +2,7 @@
 
 from lab.phase2.authority import AGENT_A, AGENT_B, CUSTOMERS
 from lab.phase2.labels import PUBLIC, SENSITIVE
-from lab.phase2.workflow import Experiment, REASON_AUTHORITY, REASON_EGRESS
+from lab.phase2.workflow import REASON_AUTHORITY, REASON_EGRESS, Experiment
 
 
 def _attack(exp: Experiment) -> tuple:

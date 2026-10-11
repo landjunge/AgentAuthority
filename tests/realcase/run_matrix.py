@@ -13,11 +13,7 @@ def main() -> None:
         off = run_phase1_off(case)
         on = run_phase1_on(case)
         classification = (
-            "INVALID"
-            if not off.outcome
-            else "MISSED"
-            if on.outcome
-            else "CAUGHT-OTHER"
+            "INVALID" if not off.outcome else "MISSED" if on.outcome else "CAUGHT-OTHER"
         )
         rows.append(
             {

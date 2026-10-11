@@ -35,7 +35,5 @@ def test_security_test_delete_with_token_allowed():
 
 def test_non_security_delete_does_not_need_token():
     lab = Lab()
-    d = lab.submit(
-        ActionRequest("A", "file.delete", "src/app.py", {}, "wf-i7-other")
-    )
+    d = lab.submit(ActionRequest("A", "file.delete", "src/app.py", {}, "wf-i7-other"))
     assert d.allow is True

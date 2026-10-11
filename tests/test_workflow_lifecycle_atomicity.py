@@ -107,7 +107,9 @@ def test_finish_does_not_orphan_state_on_stale_lock_reference():
         after_ref_hits.append(workflow_id)
         stale_lock["lock"] = lock
         got_ref.set()
-        assert finish_done.wait(timeout=HOOK_TIMEOUT), "finish() never completed while submit held only a ref"
+        assert finish_done.wait(timeout=HOOK_TIMEOUT), (
+            "finish() never completed while submit held only a ref"
+        )
 
     def finish_hold(workflow_id: str) -> None:
         if workflow_id != wid:

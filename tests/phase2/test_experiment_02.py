@@ -3,8 +3,8 @@
 import inspect
 
 from lab.phase2.authority import AGENT_A, AGENT_B, CUSTOMERS
-from lab.phase2.communication_gate import CommunicationGate, POLICY_INTERNAL, REASON_CROSS_WORKFLOW
-from lab.phase2.gated_runtime import CHECKPOINT, GatedLab, REASON_REPLAY
+from lab.phase2.communication_gate import POLICY_INTERNAL, REASON_CROSS_WORKFLOW, CommunicationGate
+from lab.phase2.gated_runtime import CHECKPOINT, REASON_REPLAY, GatedLab
 from lab.phase2.labels import PUBLIC, SENSITIVE
 from lab.phase2.workflow import REASON_EGRESS
 
