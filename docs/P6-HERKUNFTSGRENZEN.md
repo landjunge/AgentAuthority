@@ -403,3 +403,172 @@ unverändert gesichert. Diese Arbeiten sind nicht freigegeben oder abgenommen.
 Ein Empfangsnachweis des Widerrufs fehlt weiterhin. P8 und P9 bleiben wartend.
 D-012 bleibt unverändert: Authority beobachtet, analysiert und warnt; es
 vergibt keine Rechte, Secrets, Budgets oder Permits und bildet kein Stop-Gate.
+
+## Nachtrag: integrierte Sicherheitsreparatur und offene Paketentscheidung
+
+Stand: 11. Oktober 2026. Dieser Nachtrag ergänzt die bisherigen Prüfstände;
+ihre damaligen Ergebnisse und Entscheidungen bleiben erhalten. Die technische
+Reparatur aus Nutzerfreigabe WB1098 und die Integration aus WB1549 sind
+abgeschlossen. Nutzerentscheidung WB1597 behandelt den historischen
+P4-Verfahrensvorbehalt als akzeptiertes, weiterhin ungeklärtes Restrisiko.
+**Die formale P6-Paketabnahme bleibt OFFEN. P7, P8 und P9 sind nicht freigegeben.**
+
+[PR #30](https://github.com/landjunge/agent-authority-lab/pull/30) ist regulär
+gemergt. Squash `ba34d92744553f3504ca7665f4c367f76a5d1013` hat genau einen
+Parent, `21691ae9817f832ecfb111f980b0c8a3e6b63d61`. Sein Tree
+`c056c1630d73c95a29c9950050415f13952a5725` ist identisch zum unabhängig
+geprüften Kandidaten `4a9d42e23ea07b21eeacc228d09889587a1ac329`.
+Remote-master zeigte beim abschließenden Readback auf diesen Squash.
+Regeln, Reviews, HEAD, CI, CodeQL und SARIF wurden vor der Integration frisch
+geprüft; Ready und Squash-Merge mit `--match-head-commit` liefen ohne Admin,
+Force oder Bypass. WB1593 dokumentiert den Abschluss.
+
+Die vor der Umsetzung archivierte
+[Reparaturspezifikation](SECURITY-REMEDIATION-SPEC-20261011.md) definiert
+ausdrücklich das neue Forschungsprofil `RemediationLab`. Die gebundene
+Zustimmung gilt in diesem Profil; der Lifecycle-Fix gilt für `FakeAdapter`.
+Die historischen `Lab`-/MISSED-Referenzen, Kataloge und Assertions bleiben
+unverändert. Ein neuer Schließungsnachweis ändert keinen alten FAIL/MISSED.
+
+| Fall | Neuer technischer Nachweis | Erhaltene Grenze |
+| --- | --- | --- |
+| RC-01 | Unveränderte RC-Assertion besteht mit RemediationLab; ungebundene Mutation der IDE-Steuerdatei wird vor dem Fake-Sink abgewiesen. | Keine Aussage über eine reale IDE; historisches Lab bleibt Referenz. |
+| RC-02 | Unveränderte RC-Assertion besteht; ungebundene Mutation der MCP-Steuerdatei wird abgewiesen. | Kein realer MCP-Start oder allgemeiner Adapterbeweis. |
+| RC-03 | Unveränderte RC-Assertion und zusätzliche Kontrolle mit zuerst gültiger Zustimmung bestehen; geänderte Parameter passen nicht zur Bindung. | Keine kryptographische Herkunfts- oder Identitätsauthentisierung. |
+| RC-04 | Unveränderte RC-Assertion und zusätzliche Kontrolle mit zuerst gültiger Zustimmung bestehen; geänderte Shell-Komposition und Replay werden abgewiesen. | Opaque Fake-Effekte benötigen zusätzliche Zustimmung; kein globales Default-Deny. |
+| RC-05 | Unveränderter Runner wird bei cache.poison gestoppt; zusätzlicher direkter Publish-Test weist den gestohlenen, nicht ausgestellten Handle ab. | Die eingefrorene Runner-Assertion selbst erreicht den späteren Publish-Sink nicht. |
+| OOS-021 | Ursprüngliche unveränderte Probe besteht: nach finish erscheint src/late.py nicht. Einmaliges Commit-Ticket ist an die Generation gebunden. | ALLOW und effect_committed sind getrennt; Callbackfehler haben keinen allgemeinen Rollback. |
+| CB-01 | Neue Kontrollen am unveränderten Katalog weisen fehlende Zustimmung und Replay nach der ersten erlaubten Wirkung ab; gültige neue Zustimmung bleibt nutzbar. | Historischer MISSED-Test bleibt MISSED auf Lab; sein PASS ist kein Reparaturbeleg. |
+
+Grok prüfte den Hauptcommit unabhängig im eigenen sauberen Worktree (WB1442):
+61 Reparaturtests, ursprüngliche OOS-Probe, historische RC-/CB-Kontrollen,
+10 unveränderte RC-Assertions im Reparaturprofil, 47 P6-/Anschlussprüfungen,
+vier P4-Prüfungen und 434 Gesamttests mit fünf historischen RC-Abwahlen.
+WB1525 bestätigt den exakten finalen HEAD mit Diffprüfung und 62
+Reparatur-/OOS-Tests. Codex führte die vollständige Suite wegen der letzten
+Teständerung vor Merge erneut aus: **434 passed, 5 deselected**, Exit 0.
+Die historische RC-Referenz wird dadurch nicht als grün ausgewiesen.
+
+Grok bestätigte anschließend auch die vollständige Suite am identischen
+gemergten Tree (WB1594): **434 passed, 5 deselected**, Exit 0, eigener sauberer
+Worktree. Original-JUnit und Log sind gegengeprüft; alle 180 Quellenhashes
+stimmen mit dem Kandidaten überein. Auch diese Prüfung hebt P4s STOP nicht auf.
+
+[Push-CI 38093141005](https://github.com/landjunge/agent-authority-lab/actions/runs/38093141005)
+ist am Squash erfolgreich; die Rohlogs enthalten zweimal 434 tatsächliche
+Passpunkte. [CodeQL 38093141018](https://github.com/landjunge/agent-authority-lab/actions/runs/38093141018)
+ist erfolgreich, einschließlich vollständig verarbeitetem Ergebnisupload.
+Vor Merge war das SARIF-Artefakt `11684597801` am identischen Kandidaten
+verfügbar. Bestehende globale Qualitätsaltlasten bleiben sichtbar: 27 Ruff-
+und neun Mypy-Befunde werden von der CI toleriert. Job-SUCCESS bedeutet
+nicht, dass diese Einzelprüfungen fehlerfrei sind.
+
+### P4-Entscheidung und Abgleich der übrigen P6-Kriterien
+
+P4s historischer Prüfer-B-STOP betrifft beschriebene gitignorierte Caches.
+Der damalige Writer bleibt nicht zugeordnet. Die aktuelle Prüfung verwendet
+Python 3.12.13, einen tatsächlich blockierten Cacheprovider ohne Cacheinstanz
+und temporäre Prüfdateien außerhalb des Repository. Die historischen
+Cachehashes sind vor/nach der neuen Vollsuite identisch. Das trägt ein
+aktuelles Verfahrensurteil, rekonstruiert aber keine historischen Prozesstraces.
+Die ursprüngliche [P4-Abnahme](P4-ABNAHME.md) bleibt unverändert.
+
+Die auftraggebende Stelle hat den historischen P4-Vorbehalt mit WB1597
+ausdrücklich auf Entscheidungsebene behandelt: **akzeptiertes ungeklärtes
+Restrisiko**, keine rückwirkende Entlastung und kein Nachweis des damaligen
+Writers. Diese Entscheidung entwertet die späteren Reparatur-/Testergebnisse
+nicht automatisch. Ein weiteres P4-Verfahrensurteil wird hier nicht verlangt.
+
+Codex gleicht gemäß WB1597 die übrigen ursprünglichen Kriterien aus WB27
+mit den Originalbelegen ab. Die 40 P6- und sieben Markerfälle aus dem
+gezielten 47er-Lauf sind auch in Groks ursprünglichem 434er-JUnit enthalten
+und dort fehlerfrei; die Quellen sind zum integrierten Tree identisch.
+Die folgende Bewertung ist ein technischer Kriterienabgleich, kein Abnahmeurteil.
+
+| Ursprüngliches Kriterium / bestehende Verpflichtung | Originalnachweis und Bewertung |
+| --- | --- |
+| Kein falsch authentisierter Quellenbeleg | Erfundenes Bundle, explizites current, direkte FD-Packets und behauptete Herkunft bleiben unbekannt; 40 P6-Regressionen einschließlich dieser Negativfälle bestanden. |
+| Stale/gefälschte/fehlende Belege bleiben UNBEKANNT | Klassen-/Replayfälle, abgelaufene oder veränderte Kontexte und Fork bestehen; historische Zeilenkonsistenz wird nicht zu aktueller Herkunft umgedeutet. |
+| Mindestens ein brauchbarer enger positiver Relationsfall | Tatsächlicher leerer lokaler Dateieffekt nach Ende sowie gleichzeitig gehaltene gleiche/verschiedene FD-Paare unabhängig am Ziel gemessen; Herkunft und Agentenidentität bleiben UNBEKANNT. |
+| Keine sensiblen Rohdaten im geprüften Beobachterpfad | Minimierte Projektionen weisen künstliche Metadatenmarker und rohe FD-Eingänge ab; sieben Markerfälle prüfen leere private reguläre Dateien und unveränderte vorhandene Marker. Kein allgemeiner E2-Bereinigungsnachweis für andere Kanäle. |
+| Tests belegen das konkrete Ziel, Regressionen bleiben grün | 47 gezielte Tests, 434 Standardtests und separate unveränderte RC-/OOS-Kontrollen mit Original-JUnit/Logs belegt; fünf historische RC-Abwahlen offen ausgewiesen. |
+| Unabhängigkeit von P5 und Erhalt alter Erwartungen | Historische P5-Erwartungen/Archive und ursprüngliche Kataloge/Assertions bleiben unverändert; notwendige Anschlussänderungen gehören zum dokumentierten P6-Auswertungsvertrag. PR30 ändert keine P5-Dateien; kein erneuter P5-Paket-/Modelllauf. |
+| D-012 und Zuständigkeit | Observer bleibt beobachten/analysieren/warnen; gebundene Fake-Zustimmung ist Teil des ausdrücklich genehmigten RemediationLab-Forschungsprofils, keine operative Authority-Befugnis. |
+| Reguläre Integration mit Remote-Nachweis | PR30, Kandidat/Squash/Parent/Tree/master, erfolgreiche Push-CI/CodeQL und vorheriges SARIF-Artefakt belegt; kein Admin/Force/Bypass. |
+| Unabhängige technische Gegenprüfung | Grok WB1442/1525/1594 mit Originalfällen, Kontrollen, finalem Tree und vollständiger Suite bestätigt. Sein gesonderter Kriterienabgleich zum neuen Auftrag WB1597 wird separat dokumentiert. |
+
+Im ursprünglichen P6-Monitoring-Scope hat Codex damit keinen zusätzlichen
+fehlgeschlagenen technischen Abnahmenachweis festgestellt. Die historischen
+RC-/CB-Referenzen bleiben auf Lab rot/MISSED; ihre neuen Reparaturnachweise
+gelten im genehmigten RemediationLab-Profil. Ein neuer echter Modelllauf,
+Linux/tmpfs-Nachweis oder eine allgemeine Quellenauthentisierung ist dadurch
+nicht belegt und wird nicht als zusätzliche erfüllte Fähigkeit ausgegeben.
+
+Noch fehlt die **ausdrückliche formale P6-Paketentscheidung** nach dem
+angeforderten unabhängigen Kriterienabgleich. WB1597 erteilt sie ausdrücklich
+nicht; WB1098 und WB1549 ebenso wenig. Der neue Dokumentationsnachtrag liegt
+zunächst als Draft-PR vor; seine Integration ist gesondert zu behandeln.
+Weder P4s Risikoannahme noch eine spätere P6-Paketentscheidung erteilt einen
+P7-Auftrag; hierfür bleibt eine eigene ausdrückliche Freigabe nötig.
+
+Originalbefehle, UTC, JUnit, Logs, Quellen-/Cachehashes und Remote-Belege:
+`/Users/landjunge/.threaddesk/artifacts/agent-authority/security-remediation-20261011/`
+und `pr30-merge-20261011/`. Der zweite Ordner enthält `ABSCHLUSS.md`,
+`MERGE-STATUS.json`, `P4-VERFAHRENSVORBEHALT.md` und `SHA256.json`.
+D-012 gilt unverändert: beobachten, analysieren und warnen, keine operative
+Gate-, Rechte-, Secret-, Budget- oder Permit-Befugnis. Herkunft und Actor bleiben
+bei fehlender Authentisierung UNBEKANNT; der aktuelle Nachweis ist ein Fake-Lab-
+und Beobachterprüfstand, keine allgemeine Agentensicherheits- oder Produktfreigabe.
+
+
+## Formale P6-Paketabnahme: Nutzerentscheidung WB1602
+
+Die auftraggebende Stelle hat am 11. Oktober 2026 die **formale P6-Paketabnahme
+für den dokumentierten Umfang ausdrücklich erteilt** (WB1602,
+`eccc0ccab937`, 10. Oktober 2026, 23:17:26 UTC). Dieser spätere Entscheid
+schließt die oben noch offene Paketentscheidung; die bisherigen Prüfstände
+und Originalbelege bleiben als Historie erhalten.
+
+Die Abnahme gilt für den integrierten Stand
+`ba34d92744553f3504ca7665f4c367f76a5d1013`. Grundlage sind Codex' Kriterienabgleich
+WB1598, Groks unabhängiger Abgleich WB1599 und dessen Matrixbestätigung WB1600,
+die integrierte Sicherheitsreparatur PR30 sowie Groks Vollsuite WB1594 mit
+434 bestandenen Fällen und fünf ausdrücklich ausgewiesenen historischen
+RC-Abwahlen. Beide Prüfer haben keinen weiteren fehlenden Nachweis aus dem
+ursprünglichen P6-Auftrag festgestellt. Die dokumentierten RC-/CB-Nachweise
+gelten im genehmigten RemediationLab, OOS-021 im FakeAdapter. Historische
+Lab-FAIL-/MISSED-Referenzen werden nicht umgedeutet.
+
+P4s Verfahrensvorbehalt bleibt gemäß WB1597 ein **akzeptiertes, weiterhin
+ungeklärtes Restrisiko**; der damalige Writer bleibt unbekannt. Es gibt keine
+rückwirkende Entlastung. Die Abnahme beweist weder universelle Sicherheit
+noch reale Agentenüberwachung. D-012 und die dokumentierten Herkunfts-,
+Modell- und Qualitätsgrenzen bleiben erhalten.
+
+**P7, P8 und P9 sind durch diese Entscheidung nicht freigegeben oder gestartet.**
+Separate ausdrückliche Phasenfreigaben bleiben erforderlich. Der
+Dokumentations-PR31 ist weiterhin ein eigener Draft; die Paketabnahme wird
+nicht von seinem Merge abhängig gemacht.
+
+Die wörtliche Nutzerentscheidung, der frühere offene Status, der append-only
+Dokumentationsdiff und die Abschlussbelege sind getrennt archiviert unter
+`/Users/landjunge/.threaddesk/artifacts/agent-authority/formal-p6-acceptance-20261011/`.
+
+### Aktualisierter Dokumentationsstand nach P8-Integration
+
+Stand: 11. Oktober 2026. Die ursprüngliche formale P6-Entscheidung WB1602
+bleibt unverändert; sie ist nicht erneut zu erteilen. Die damaligen Aussagen
+zu P7/P8/P9 beschreiben ausschließlich den Umfang dieser P6-Entscheidung.
+Spätere konkrete Nutzerentscheidungen erlaubten P7 und P8: PR32 wurde auf
+`64bf757` integriert (WB1616/1619), PR33 auf `2523568` (WB1628/1630), jeweils
+mit erfolgreicher tatsächlicher Push-CI und CodeQL. P9s Voraussetzung aus
+WB34 ist erfüllt; seine bedingte Arbeit nach WB1605 und Teamprüfung ist
+begonnen, ohne automatische P9-Paketabnahme oder weitere Mergefreigabe.
+
+PR31 wurde durch einen gewöhnlichen Merge des bestätigten master-Standes
+`2523568` aktualisiert, ohne History-Rewrite oder Force-Push. Gegen master
+bleibt ausschließlich dieser ergänzende P6-Dokumentationsnachtrag. Alle
+früheren Textpräfixe und Originalbelege bleiben erhalten. Die konkrete
+Integration dieses eigenen Dokumentations-PRs ist noch nicht freigegeben;
+er bleibt Draft. D-012, historische Referenzen, profilgebundene Remediation,
+unbekannte Herkunft und P4s akzeptiertes ungeklärtes Restrisiko gelten weiter.
