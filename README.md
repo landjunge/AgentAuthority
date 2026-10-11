@@ -77,6 +77,10 @@ comparison is unproven; inspect the separate observations, analysis and result.
 No raw CLI text is archived. This is not a complete execution audit or an
 implementation of the full six-case research panel.
 
+Historical PR19 research and the PR17 service reference are inventoried in the
+[current research reconciliation](docs/RESEARCH-PR-ABGLEICH-20261011.md), with
+pinned original sources, reproduced integration conflicts and separate scopes.
+
 ## Method (canonical)
 
 - [docs/RESEARCH-METHOD.md](docs/RESEARCH-METHOD.md) — PASS vs hypothesis, cycle STOP, program-STOP, CI
