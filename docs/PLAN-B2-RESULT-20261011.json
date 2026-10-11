@@ -1,0 +1,84 @@
+{
+  "package": "B2",
+  "window_axis_A": "PASS",
+  "window_axis_B": "SUPPORTED",
+  "full_axis_A": "SPEC DEVIATION: window-only implementation; foreign prerequisite unmet",
+  "full_axis_B": "PARTIALLY SUPPORTED",
+  "evidence": "TEILWEISE BELEGT",
+  "foreign_capture": "not executed / INCONCLUSIVE; live entrypoint and source signal missing",
+  "suite_runs": [
+    {
+      "run": 1,
+      "path": "/tmp/aa-abc-research-StfbeC/b2-suite1.xml",
+      "sha256": "2839537fa9d81bdc3f0e970d9c42b0e7be33aefb1a05acfa5f127d88f4df6244",
+      "tests": 560,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "run": 2,
+      "path": "/tmp/aa-abc-research-StfbeC/b2-suite2.xml",
+      "sha256": "f63d317049bbb41cfe4745be11a4295508af9095373b97f64916953aaa06a24c",
+      "tests": 560,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    }
+  ],
+  "new_tests": 9,
+  "historical_deselected": 5,
+  "actual_probes": [
+    {
+      "delay_seconds": 0.08,
+      "verdict": "NACH",
+      "reason": "first_window",
+      "start": 880940689127339,
+      "boundary": 880940889127339,
+      "end": 880941489127339,
+      "last_absent": 880940767231568,
+      "first_present": 880940777471898,
+      "oracle": {
+        "write_begin": 880940773150974,
+        "write_end": 880940773382427
+      },
+      "writer_identity": "UNBEKANNT",
+      "logical_agent_identity": "UNBEKANNT"
+    },
+    {
+      "delay_seconds": 0.35,
+      "verdict": "SPAETER",
+      "reason": "second_window",
+      "start": 880940949207497,
+      "boundary": 880941149207497,
+      "end": 880941749207497,
+      "last_absent": 880941302955043,
+      "first_present": 880941314496851,
+      "oracle": {
+        "write_begin": 880941302960399,
+        "write_end": 880941303229703
+      },
+      "writer_identity": "UNBEKANNT",
+      "logical_agent_identity": "UNBEKANNT"
+    },
+    {
+      "delay_seconds": 0.9,
+      "verdict": "UNBEKANNT",
+      "reason": "not_observed_in_windows",
+      "start": 880941482781279,
+      "boundary": 880941682781279,
+      "end": 880942282781279,
+      "last_absent": 880942275934179,
+      "first_present": null,
+      "oracle": {
+        "write_begin": 880942386367783,
+        "write_end": 880942386577594
+      },
+      "writer_identity": "UNBEKANNT",
+      "logical_agent_identity": "UNBEKANNT"
+    }
+  ],
+  "scope": "two bounded diagnostic windows, no independent writer/agent identity",
+  "confidence_result": "HIGH within diagnostic controls",
+  "confidence_generalization": "LOW"
+}

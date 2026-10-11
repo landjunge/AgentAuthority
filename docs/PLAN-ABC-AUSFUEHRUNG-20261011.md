@@ -52,3 +52,14 @@ one existing fork deprecation warning. Ruff and strict Mypy of new module PASS.
 A PASS/B SUPPORTED only for scope/output conformance, BELEGT within these cases.
 Unseen sibling detection and host completeness not measured; writer/agent UNKNOWN.
 JUnit paths/hash evidence: PLAN-B1-RESULT-20261011.json.
+
+## B2
+
+Nine new test-only diagnostic window cases; both full suites560PASS/5 historical
+deselections, no failure/error/skip; existing fork warning retained.
+Three separately recorded actual controls: NACH, SPAETER, UNKNOWN beyond both.
+Window A PASS/B SUPPORTED; full B2 only PARTIALLY SUPPORTED, TEILWEISE BELEGT.
+Full implementation SPEC DEVIATION (window only), no full package PASS.
+Foreign capture not executed: live intake/source signal missing, INCONCLUSIVE.
+No dummy intake, no old archive retest, p1/p5/P6 unchanged.
+Timestamps/oracle/suite hashes: PLAN-B2-RESULT-20261011.json.
