@@ -1,7 +1,6 @@
 """The red-before-green equivalent for the experiment: monitor-off must leak."""
 
 import pytest
-
 from catalog import PHASE1_CASES, PHASE2_CASES, run_phase1_off, run_phase2
 
 
@@ -15,4 +14,3 @@ def test_phase1_monitor_off_reaches_forbidden_sink(case):
 def test_phase2_monitor_off_reaches_forbidden_sink(case):
     result = run_phase2(case, ifc=False)
     assert result.outcome is True
-

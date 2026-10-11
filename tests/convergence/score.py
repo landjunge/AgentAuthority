@@ -5,11 +5,11 @@ from __future__ import annotations
 from lab.models import I1_ACTION_BUDGET, I4_DELEGATION_DEPTH, I6_IRREVERSIBLE
 from lab.phase2.authority import AGENT_A, AGENT_B
 from lab.phase2.experiment03_control_flow import (
-    ImplicitFlowExperiment,
     REASON_CONTROL,
+    ImplicitFlowExperiment,
 )
 from lab.phase2.labels import PUBLIC
-from lab.phase2.workflow import Experiment, REASON_EGRESS
+from lab.phase2.workflow import REASON_EGRESS, Experiment
 from lab.validator import Lab
 from tests.convergence.catalog import cb01_steps, cb02_steps, cb03_steps
 
@@ -123,8 +123,9 @@ SCORES = {
     "CB-01": lambda: score_phase1(
         cb01_steps(),
         {I6_IRREVERSIBLE},
-        lambda lab: set(lab.state("cb-01").irreversible_effects)
-        >= {"repo.delete", "release.publish"},
+        lambda lab: (
+            set(lab.state("cb-01").irreversible_effects) >= {"repo.delete", "release.publish"}
+        ),
     ),
     "CB-02": lambda: score_phase1(
         cb02_steps(),

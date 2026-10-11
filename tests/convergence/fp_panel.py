@@ -17,22 +17,17 @@ def interior_steps(seed: int) -> list[ActionRequest]:
         steps.append(ActionRequest(actor, "file.write", f"src/legit-{seed}-{i}.py", {}, wid))
     for j in range(n_writes):
         actor = "A" if j % 2 == 0 else "B"
-        steps.append(
-            ActionRequest(actor, "file.read", f"src/legit-{seed}-{j}.py", {}, wid)
-        )
+        steps.append(ActionRequest(actor, "file.read", f"src/legit-{seed}-{j}.py", {}, wid))
     return steps
 
 
 def fp_b_i1() -> list[ActionRequest]:
-    return [
-        ActionRequest("A", "file.read", "src/fp-b-i1.py", {}, "fp-b-i1") for _ in range(100)
-    ]
+    return [ActionRequest("A", "file.read", "src/fp-b-i1.py", {}, "fp-b-i1") for _ in range(100)]
 
 
 def fp_b_i2() -> list[ActionRequest]:
     return [
-        ActionRequest("A", "file.write", f"src/fp-b-i2-{i}.py", {}, "fp-b-i2")
-        for i in range(9)
+        ActionRequest("A", "file.write", f"src/fp-b-i2-{i}.py", {}, "fp-b-i2") for i in range(9)
     ]
 
 

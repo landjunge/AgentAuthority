@@ -2,12 +2,13 @@
 
 from __future__ import annotations
 
-from hypothesis import given, strategies as st
+from hypothesis import given
+from hypothesis import strategies as st
 
 from lab.phase2.authority import AGENT_A
 from lab.phase2.experiment03_control_flow import ImplicitFlowExperiment
 from lab.phase2.gated_runtime import GatedLab
-from lab.phase2.workflow import Experiment, REASON_ACTOR
+from lab.phase2.workflow import REASON_ACTOR, Experiment
 
 UNKNOWN_ACTORS = ("agent-evil", "agent-x", "AGENT-A", "")
 

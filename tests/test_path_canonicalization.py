@@ -29,9 +29,7 @@ def test_same_file_aliases_count_as_one_unique():
         assert d.allow is True, path
     assert lab.state(wid).files_changed == 1
     for i in range(9):
-        assert lab.submit(
-            ActionRequest("B", "file.write", f"src/n{i}.py", {}, wid)
-        ).allow
+        assert lab.submit(ActionRequest("B", "file.write", f"src/n{i}.py", {}, wid)).allow
     denied = lab.submit(ActionRequest("B", "file.write", "src/n9.py", {}, wid))
     assert denied.allow is False
     assert denied.deny_reason == I2_FILE_LIMIT

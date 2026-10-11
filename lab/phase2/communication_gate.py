@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
-from typing import Protocol
+from typing import Any, Protocol
 
 from lab.phase2.authority import known_actor
 
@@ -47,7 +47,7 @@ class CommunicationGate:
     """Reference monitor: metadata in, ALLOW/DENY out. No payload, tools, or writes."""
 
     def __init__(self) -> None:
-        self.decisions: list[dict] = []
+        self.decisions: list[dict[str, Any]] = []
 
     def evaluate_transfer(
         self,

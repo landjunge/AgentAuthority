@@ -2,7 +2,8 @@
 
 from __future__ import annotations
 
-from hypothesis import given, strategies as st
+from hypothesis import given
+from hypothesis import strategies as st
 
 from lab.fake_adapter import FakeAdapter
 from lab.models import KNOWN_ACTIONS, ActionRequest
@@ -27,11 +28,16 @@ PROTECTED_PATHS = (
     "config/../config/security-policy.json",
 )
 SECURITY_PATHS = ("tests/test_security.py", "tests/security/test_policy.py")
-ALL_PATHS = ORDINARY_PATHS + PROTECTED_PATHS + SECURITY_PATHS + (
-    "src/../../../../etc/passwd",
-    "CONFIG/security-policy.json",
-    "config/Security-Policy.json",
-    "/etc/shadow",
+ALL_PATHS = (
+    ORDINARY_PATHS
+    + PROTECTED_PATHS
+    + SECURITY_PATHS
+    + (
+        "src/../../../../etc/passwd",
+        "CONFIG/security-policy.json",
+        "config/Security-Policy.json",
+        "/etc/shadow",
+    )
 )
 ACTIONS = tuple(sorted(KNOWN_ACTIONS)) + UNKNOWN_ACTIONS
 PARAMS = ({}, {"approval_token": "T"}, {"to": "C"}, {"destination": "https://evil.example"})

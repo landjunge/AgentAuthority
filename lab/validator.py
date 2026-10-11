@@ -48,7 +48,7 @@ def _emit_decision(req: ActionRequest, decision: Decision) -> None:
         from lab.authority_emit import emit_decision
 
         emit_decision(req, decision)
-    except Exception:
+    except Exception:  # noqa: BLE001  fail-open: emit must not change the decision
         return
 
 
@@ -68,7 +68,7 @@ def validate_request(req: object) -> str | None:
 class _WorkflowEntry:
     """One registry identity: the lock and the state cannot exist apart."""
 
-    __slots__ = ("lock", "state", "retired", "approvals")
+    __slots__ = ("approvals", "lock", "retired", "state")
 
     def __init__(self, state: WorkflowState) -> None:
         self.lock = threading.Lock()

@@ -6,8 +6,8 @@ from lab.models import ActionRequest
 from lab.phase2.authority import AGENT_A, AGENT_B
 from lab.phase2.experiment03_control_flow import ImplicitFlowExperiment
 from lab.phase2.labels import PUBLIC
-from lab.phase2.workflow import Experiment
 from lab.phase2.values import Phase2Decision
+from lab.phase2.workflow import Experiment
 
 
 def cb01_steps() -> list[ActionRequest]:
@@ -28,9 +28,7 @@ def cb02_steps() -> list[ActionRequest]:
         steps.append(ActionRequest(actor, "file.write", f"src/cb02-w-{i}.py", {}, wid))
     for j in range(93):
         actor = "A" if j % 2 == 0 else "B"
-        steps.append(
-            ActionRequest(actor, "file.read", f"src/cb02-w-{j % 8}.py", {}, wid)
-        )
+        steps.append(ActionRequest(actor, "file.read", f"src/cb02-w-{j % 8}.py", {}, wid))
     return steps
 
 

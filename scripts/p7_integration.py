@@ -10,6 +10,7 @@ import argparse
 import hashlib
 import importlib.util
 import json
+import math
 import platform
 import shlex
 import subprocess
@@ -37,7 +38,7 @@ OPEN_LIMITS = tuple(p5.GRENZEN)
 def _window(value: object, limit: float) -> bool:
     if type(value) is bool or type(value) not in (int, float):
         return False
-    if isinstance(value, float) and (value != value or abs(value) == float("inf")):
+    if isinstance(value, float) and (math.isnan(value) or math.isinf(value)):
         return False
     return 0 < value <= limit
 

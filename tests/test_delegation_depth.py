@@ -13,16 +13,12 @@ def test_delegation_depth_boundary():
     assert root.allow
     assert lab.state(wid).actor_depth["root"] == 0
 
-    to_a = lab.submit(
-        ActionRequest("root", "delegate", "A", {"to": "A"}, wid)
-    )
+    to_a = lab.submit(ActionRequest("root", "delegate", "A", {"to": "A"}, wid))
     assert to_a.allow is True
     assert lab.state(wid).delegation_depth == 1
     assert lab.state(wid).actor_depth["A"] == 1
 
-    to_b = lab.submit(
-        ActionRequest("A", "delegate", "B", {"to": "B"}, wid)
-    )
+    to_b = lab.submit(ActionRequest("A", "delegate", "B", {"to": "B"}, wid))
     assert to_b.allow is False
     assert to_b.deny_reason == I4_DELEGATION_DEPTH
     assert lab.state(wid).delegation_depth == 1

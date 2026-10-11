@@ -6,7 +6,7 @@ import hashlib
 import json
 import os
 import uuid
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
 
@@ -30,7 +30,7 @@ def events_path() -> Path:
 
 
 def _iso() -> str:
-    return datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace("+00:00", "Z")
+    return datetime.now(UTC).replace(microsecond=0).isoformat().replace("+00:00", "Z")
 
 
 def _canonical(event: dict[str, Any]) -> bytes:
@@ -96,5 +96,5 @@ def emit_decision(req: ActionRequest, decision: Decision) -> None:
         _append("authority.requested", req, decision)
         kind = "authority.allowed" if decision.allow else "authority.denied"
         _append(kind, req, decision)
-    except Exception:
+    except Exception:  # noqa: BLE001  fail-open: emit must not raise into submit
         return

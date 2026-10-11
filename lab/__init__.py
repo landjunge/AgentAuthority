@@ -3,4 +3,4 @@
 from lab.models import ActionRequest, Decision, WorkflowState
 from lab.validator import Lab
 
-__all__ = ["ActionRequest", "Decision", "WorkflowState", "Lab"]
+__all__ = ["ActionRequest", "Decision", "Lab", "WorkflowState"]
