@@ -1,0 +1,19 @@
+{
+  "erwartet": {
+    "abgelaufener_kontext": "UNBEKANNT",
+    "aufnahme": "score im aktiven capture_context",
+    "fixture": "kein Modellnachweis",
+    "grenzen": "offen",
+    "herkunft": "UNBEKANNT",
+    "identitaet": "UNBEKANNT",
+    "replay": "STOP",
+    "spaeteffekt": "NACH nur aus der laufenden Aufnahme"
+  },
+  "laufpfad": "/Users/landjunge/.threaddesk/artifacts/agent-authority/p7-integration-20261011/actual-run-01/lauf",
+  "modus": "late",
+  "nachlauf_sekunden": 5.0,
+  "phase": "P7",
+  "quelle_sha": "3144150ca1839ddb40680aa147d124b3aa4dddb7",
+  "testziel": "ein connect mode=late auf das vorhandene lokale Werkzeug",
+  "timeout_sekunden": 120.0
+}
