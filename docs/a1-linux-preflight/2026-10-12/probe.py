@@ -11,7 +11,6 @@ import resource
 import shutil
 import stat
 import time
-from pathlib import Path
 
 LIMIT = 8 * 1024 * 1024
 CAPABILITIES = {
