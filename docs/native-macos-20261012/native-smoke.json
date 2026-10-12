@@ -1,0 +1,104 @@
+{
+  "agents" : 50,
+  "chain_contains_process" : true,
+  "chain_focus" : true,
+  "graph_nodes" : 8,
+  "language" : "de",
+  "main_children" : [
+    {
+      "class" : "NSTextField",
+      "frame" : "{{16, 16}, {928, 29}}"
+    },
+    {
+      "class" : "NSTextField",
+      "frame" : "{{16, 48}, {928, 16}}"
+    },
+    {
+      "class" : "NSTextField",
+      "frame" : "{{16, 171}, {1046, 17}}"
+    },
+    {
+      "class" : "NSTextField",
+      "frame" : "{{16, 537.237037037037}, {1226, 20}}"
+    },
+    {
+      "class" : "MetricView",
+      "frame" : "{{16, 77}, {299, 86}}"
+    },
+    {
+      "class" : "MetricView",
+      "frame" : "{{325, 77}, {299, 86}}"
+    },
+    {
+      "class" : "MetricView",
+      "frame" : "{{634, 77}, {299, 86}}"
+    },
+    {
+      "class" : "MetricView",
+      "frame" : "{{943, 77}, {299, 86}}"
+    },
+    {
+      "class" : "NSButton",
+      "frame" : "{{976, 20}, {142, 25}}"
+    },
+    {
+      "class" : "NSButton",
+      "frame" : "{{1125, 20}, {117, 25}}"
+    },
+    {
+      "class" : "NSButton",
+      "frame" : "{{1070, 168}, {172, 24}}"
+    },
+    {
+      "class" : "NSSegmentedControl",
+      "frame" : "{{16, 199}, {228, 25}}"
+    },
+    {
+      "class" : "NSPopUpButton",
+      "frame" : "{{252, 199}, {155, 25}}"
+    },
+    {
+      "class" : "NSSearchField",
+      "frame" : "{{971, 199}, {271, 25}}"
+    },
+    {
+      "class" : "GraphCanvas",
+      "frame" : "{{16, 232}, {1226, 265.237037037037}}"
+    },
+    {
+      "class" : "NSButton",
+      "frame" : "{{1052, 502.237037037037}, {27, 24}}"
+    },
+    {
+      "class" : "NSButton",
+      "frame" : "{{1132, 502.237037037037}, {27, 24}}"
+    },
+    {
+      "class" : "NSButton",
+      "frame" : "{{1165, 502.237037037037}, {77, 24}}"
+    },
+    {
+      "class" : "NSTextField",
+      "frame" : "{{1084, 506.237037037037}, {46, 18}}"
+    },
+    {
+      "class" : "NSButton",
+      "frame" : "{{16, 502.237037037037}, {120, 24}}"
+    },
+    {
+      "class" : "NSScrollView",
+      "frame" : "{{16, 562.237037037037}, {1226, 425.762962962963}}"
+    }
+  ],
+  "main_frame" : "{{0, 0}, {1258, 1000}}",
+  "mode" : "clustered",
+  "native" : true,
+  "permission_requests_executed" : false,
+  "screen" : {
+    "backing_scale" : 2,
+    "height" : 900,
+    "width" : 1600
+  },
+  "window_content_width" : 1728,
+  "zoom_finite" : true
+}

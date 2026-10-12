@@ -1,0 +1,34 @@
+[
+  {
+    "file": "Contents/Resources/Runtime/lib/python3.12/lib-dynload/_tkinter.cpython-312-darwin.so",
+    "minimum_os": "10.15"
+  },
+  {
+    "file": "Contents/Resources/Runtime/lib/python3.12/lib-dynload/_dbm.cpython-312-darwin.so",
+    "minimum_os": "10.15"
+  },
+  {
+    "file": "Contents/Resources/Runtime/lib/python3.12/lib-dynload/_crypt.cpython-312-darwin.so",
+    "minimum_os": "10.15"
+  },
+  {
+    "file": "Contents/Resources/Runtime/lib/libtcl9.0.dylib",
+    "minimum_os": "10.15"
+  },
+  {
+    "file": "Contents/Resources/Runtime/lib/libpython3.12.dylib",
+    "minimum_os": "10.15"
+  },
+  {
+    "file": "Contents/Resources/Runtime/lib/libtcl9tk9.0.dylib",
+    "minimum_os": "10.15"
+  },
+  {
+    "file": "Contents/Resources/Runtime/bin/python3.12",
+    "minimum_os": "10.15"
+  },
+  {
+    "file": "Contents/MacOS/AgentAuthorityMac",
+    "minimum_os": "12.0"
+  }
+]

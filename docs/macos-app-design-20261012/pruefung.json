@@ -1,0 +1,36 @@
+{
+  "darkOverflow": {
+    "scrollWidth": 1728,
+    "viewport": 1728,
+    "scrollHeight": 1240,
+    "height": 1240
+  },
+  "partialSelection": true,
+  "keyboardSelection": true,
+  "zoom": true,
+  "fit": true,
+  "search": true,
+  "filter": true,
+  "light": true,
+  "permissionsNoAction": true,
+  "escape": true,
+  "masterUnknown": true,
+  "masterNoLiveMetric": true,
+  "rawTab": true,
+  "inspectorToggle": true,
+  "sidebarToggle": true,
+  "contextMenu": true,
+  "compact": {
+    "viewport": 1280,
+    "scrollWidth": 1280
+  },
+  "fiveK": {
+    "viewport": 2560,
+    "height": 1440,
+    "devicePixelRatio": 2,
+    "scrollWidth": 2560,
+    "scrollHeight": 1440
+  },
+  "pageErrors": [],
+  "scope": "Browser-Entwurf geprüft; keine native oder R9-M380-Performance-Messung"
+}

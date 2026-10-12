@@ -1,0 +1,4 @@
+import AppKit
+let x=Double(CommandLine.arguments[1])!,y=Double(CommandLine.arguments[2])!
+let a=CGPoint(x:x,y:y),b=CGPoint(x:x-23,y:y+17)
+for (type,p) in [(CGEventType.leftMouseDown,a),(.leftMouseDragged,b),(.leftMouseUp,b)] {CGEvent(mouseEventSource:nil,mouseType:type,mouseCursorPosition:p,mouseButton:.left)?.post(tap:.cghidEventTap);usleep(80000)}

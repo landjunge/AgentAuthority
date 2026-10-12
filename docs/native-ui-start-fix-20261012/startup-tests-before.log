@@ -1,0 +1,27 @@
+[0/1] Planning build
+Building for debugging...
+[0/6] Write sources
+[1/6] Write swift-version--58304C5D6DBC2206.txt
+[3/6] Emitting module MacAppTests
+[4/6] Compiling MacAppTests StartupTests.swift
+[5/8] Emitting module AgentAuthorityNativePackageTests
+[6/8] Compiling AgentAuthorityNativePackageTests runner.swift
+[6/8] Write Objects.LinkFileList
+[7/8] Linking AgentAuthorityNativePackageTests
+Build complete! (5.45s)
+Test Suite 'Selected tests' started at 2026-10-12 22:25:48.170.
+Test Suite 'AgentAuthorityNativePackageTests.xctest' started at 2026-10-12 22:25:48.173.
+Test Suite 'StartupTests' started at 2026-10-12 22:25:48.173.
+Test Case '-[MacAppTests.StartupTests testInitialViewLoadsGraphWithoutExplicitRebuild]' started.
+Test Case '-[MacAppTests.StartupTests testInitialViewLoadsGraphWithoutExplicitRebuild]' passed (0.160 seconds).
+Test Case '-[MacAppTests.StartupTests testNormalAppLaunchAndSidebarNavigationWithoutDiagnosticRebuild]' started.
+Test Case '-[MacAppTests.StartupTests testNormalAppLaunchAndSidebarNavigationWithoutDiagnosticRebuild]' passed (0.334 seconds).
+Test Suite 'StartupTests' passed at 2026-10-12 22:25:48.667.
+	 Executed 2 tests, with 0 failures (0 unexpected) in 0.494 (0.494) seconds
+Test Suite 'AgentAuthorityNativePackageTests.xctest' passed at 2026-10-12 22:25:48.667.
+	 Executed 2 tests, with 0 failures (0 unexpected) in 0.494 (0.494) seconds
+Test Suite 'Selected tests' passed at 2026-10-12 22:25:48.667.
+	 Executed 2 tests, with 0 failures (0 unexpected) in 0.494 (0.496) seconds
+◇ Test run started.
+↳ Testing Library Version: 94 (x86_64-apple-macos13.0)
+✔ Test run with 0 tests passed after 0.001 seconds.

@@ -1,0 +1,11 @@
+[0/1] Planning build
+Building for production...
+[0/6] Write sources
+[1/6] Copying Strings.json
+[3/6] Write swift-version--58304C5D6DBC2206.txt
+[5/7] Compiling AuthorityCore GraphNavigation.swift
+[6/8] Compiling AgentAuthorityMac CollectorClient.swift
+[6/8] Write Objects.LinkFileList
+[7/8] Linking AgentAuthorityMac
+Build complete! (40.12s)
+/Users/landjunge/agent-authority-macos-design-20261012/native/macos/build/navigation-warnings-review/Agent Authority.app

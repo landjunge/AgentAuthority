@@ -46,6 +46,17 @@ the command starts no server and opens no browser. Text/JSON and the source
 projection retain their existing semantics. The
 [P10-02 scope](docs/P10-02-BROWSERBERICHT-VERTRAG-20261011.md) describes this display.
 
+## Native macOS application
+
+The standalone [native application](native/macos/README.md) provides a compact
+dashboard, Authority Graph, evidence inspector, German/English localization and
+a separate macOS permission/test host. It consumes the unchanged neutral product
+report; reported entries do not become authenticated identities or effects.
+Its explicitly marked 50-agent sample is for UI exploration. The local Intel
+bundle includes Python 3.12 and targets macOS 12. Live Endpoint Security testing
+requires Apple-approved entitlement, signing, extension activation and the
+collector's own Full Disk Access. The development build cannot substitute these.
+
 ## Historical research baseline
 
 Experimental security lab: can **deterministic workflow-level state and information-flow enforcement** stop **some modeled** composition attacks that per-action authorization misses?

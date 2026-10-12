@@ -6,9 +6,9 @@ import fcntl
 import hashlib
 import json
 import os
-import select
-import secrets
 import resource
+import secrets
+import select
 import socket
 import stat
 import struct
@@ -18,7 +18,6 @@ from pathlib import Path
 
 from cryptography.hazmat.primitives import serialization
 from cryptography.hazmat.primitives.asymmetric.ed25519 import Ed25519PrivateKey
-
 from lifecycle import Lifecycle
 from protocol import canonical, envelope, public, verify
 
@@ -148,7 +147,8 @@ class Starter:
             args,
             pass_fds=fds,
             close_fds=True,
-            preexec_fn=unprivileged,
+            # This guest launcher has no Python threads; prctl must precede exec.
+            preexec_fn=unprivileged,  # noqa: PLW1509
             env={"PATH": "/usr/bin:/bin", "LANG": "C"},
             stdout=subprocess.PIPE,
             stderr=subprocess.PIPE,

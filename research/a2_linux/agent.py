@@ -8,7 +8,6 @@ import socket
 import time
 
 from cryptography.hazmat.primitives.asymmetric.ed25519 import Ed25519PrivateKey
-
 from protocol import canonical, envelope
 
 

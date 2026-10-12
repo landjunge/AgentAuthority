@@ -1,0 +1,74 @@
+{
+  "KONZEPT.txt": {
+    "bytes": 25659,
+    "sha256": "b3139436bfa7ed4b0ea01da8d7ad20ab4eae0214ed206d6c427b8b79b8fa944e"
+  },
+  "aktueller-vertrag-dark.png": {
+    "bytes": 276740,
+    "sha256": "24aa7ce7bbe2ef6337b8de0b560951054f00c74be7964c808e238360f28eacba"
+  },
+  "entwurf.css": {
+    "bytes": 20641,
+    "sha256": "ff84d5f404b5d07ee1685daaf40fd565612de6cc662e11a557b8562727ca3157"
+  },
+  "entwurf.html": {
+    "bytes": 19527,
+    "sha256": "3dc002ef4c95962f05b416aa58a8c398d79ad03a3b23eeebac489af4f6c185f1"
+  },
+  "entwurf.js": {
+    "bytes": 27715,
+    "sha256": "0f7ed1ba0f1dc04785d147ea06a3e82cf1038825e998fb4f68f5d15beb14f87e"
+  },
+  "hauptansicht-dark-5k.png": {
+    "bytes": 867041,
+    "sha256": "4efd180db1a832ecf2b97a708b1120771e43e34d06e516eb21a0e83a8b0daee3"
+  },
+  "hauptansicht-dark.png": {
+    "bytes": 327799,
+    "sha256": "abc1ce99b21d829d741c544a6cfa76efc3cbedf84610a10fc74c860672ca68ed"
+  },
+  "hauptansicht-light.png": {
+    "bytes": 329474,
+    "sha256": "97225e3573db3211c56cd4edd8619c5e0aac7b96f25055a0590a474aa036eea4"
+  },
+  "kompakt-dark.png": {
+    "bytes": 240673,
+    "sha256": "6470e7e148b75f2d6770dcc668342f2d754914fbeb332cafb4532cb048035ea8"
+  },
+  "master-bericht-beispiel.json": {
+    "bytes": 2634,
+    "sha256": "41dd608efce4f0e7cd33ce875db3b00410b1f0c3dc56d176ae9b16933db726c3"
+  },
+  "nachweisluecke-dark.png": {
+    "bytes": 326351,
+    "sha256": "338079339bea88fc1083ab972f9df5284606fff816fa0ace5ef4d52e03f62148"
+  },
+  "pruefung.json": {
+    "bytes": 767,
+    "sha256": "e840afc9f54a20e6d599a33b7422dddefe23eb308bfcb6a929a2159e4cb49870"
+  },
+  "quellen-und-tokens.json": {
+    "bytes": 5642,
+    "sha256": "7b06854d2038bf1e30713fd402db13ec22166db868babef2e82f3f0426e9d994"
+  },
+  "render-check.cjs": {
+    "bytes": 4969,
+    "sha256": "11fb618418a8df0eaaf466ad415b26c18c755ba623543ec810649fff302c0bc4"
+  },
+  "testhost-light.png": {
+    "bytes": 350935,
+    "sha256": "bf5ceb8096b57cad0f13a2e7f483534ec5fcd43625fe8dc3fba672dc2fe8ab94"
+  },
+  "vertragsbeispiel/event-1.json": {
+    "bytes": 214,
+    "sha256": "8806df54e79556e0f570b5a5829b40c8fd5779c53009d835d9dfabf7c3994cf2"
+  },
+  "vertragsbeispiel/event-2.json": {
+    "bytes": 217,
+    "sha256": "23753bee95be517fa1ab7ad961bf0754f76c6ee459655f4a14e914a830a6a911"
+  },
+  "vertragsbeispiel/event-3.json": {
+    "bytes": 216,
+    "sha256": "2881a867caec9c1e88d38eb0fcea94a2bbf7840d54275a7644d7fb6e71e7c337"
+  }
+}

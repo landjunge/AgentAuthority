@@ -1,0 +1,95 @@
+{
+  "schema_version": "agent-authority-observation-report-v1",
+  "role": "observer_only",
+  "source": {
+    "scope": "selected_local_observations",
+    "kind": "json-directory",
+    "source_id": "local-design-fixture",
+    "files_seen": 3,
+    "files_examined": 3,
+    "files_seen_is_lower_bound": false,
+    "directory_entries_seen": 3,
+    "directory_scan_complete": true,
+    "bytes_read": 647,
+    "entries_read": 3,
+    "complete_observed_read": true,
+    "coverage_of_all_agent_activity": "UNBEKANNT",
+    "source_authenticated": false,
+    "identity": "UNBEKANNT",
+    "effect": "UNBEKANNT"
+  },
+  "summary": {
+    "reported_kind_counts": {
+      "claimed": 1,
+      "result": 1,
+      "task": 1
+    },
+    "tasks_with_reported_association": 1,
+    "claims_without_later_result_in_read_entries": 0,
+    "structural_warning_count": 0
+  },
+  "tasks": [
+    {
+      "task_alias": "A1",
+      "association_basis": "reported_task_id_only",
+      "last_reported_kind": "result",
+      "order_ambiguous": false,
+      "entry_count": 3,
+      "reported_kind_counts": {
+        "claimed": 1,
+        "result": 1,
+        "task": 1
+      },
+      "claim_without_later_result": false,
+      "evidence": [
+        {
+          "entry_id": "event-1",
+          "ordinal": 1,
+          "file_sha256": "8806df54e79556e0f570b5a5829b40c8fd5779c53009d835d9dfabf7c3994cf2"
+        },
+        {
+          "entry_id": "event-2",
+          "ordinal": 2,
+          "file_sha256": "23753bee95be517fa1ab7ad961bf0754f76c6ee459655f4a14e914a830a6a911"
+        },
+        {
+          "entry_id": "event-3",
+          "ordinal": 3,
+          "file_sha256": "2881a867caec9c1e88d38eb0fcea94a2bbf7840d54275a7644d7fb6e71e7c337"
+        }
+      ]
+    }
+  ],
+  "recent_entries": [
+    {
+      "entry_id": "event-3",
+      "ordinal": 3,
+      "file_sha256": "2881a867caec9c1e88d38eb0fcea94a2bbf7840d54275a7644d7fb6e71e7c337",
+      "reported_kind": "result",
+      "reported_actor_type": "local-client"
+    },
+    {
+      "entry_id": "event-2",
+      "ordinal": 2,
+      "file_sha256": "23753bee95be517fa1ab7ad961bf0754f76c6ee459655f4a14e914a830a6a911",
+      "reported_kind": "claimed",
+      "reported_actor_type": "local-client"
+    },
+    {
+      "entry_id": "event-1",
+      "ordinal": 1,
+      "file_sha256": "8806df54e79556e0f570b5a5829b40c8fd5779c53009d835d9dfabf7c3994cf2",
+      "reported_kind": "task",
+      "reported_actor_type": "local-client"
+    }
+  ],
+  "warnings": [],
+  "display": {
+    "limit": 20,
+    "tasks_omitted": 0,
+    "entries_omitted": 0,
+    "warnings_omitted": 0
+  },
+  "task_completion_proven": false,
+  "rights_inherited": false
+}

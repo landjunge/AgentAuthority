@@ -1,0 +1,223 @@
+{
+  "master_sha": "9eda80de0844b89c348728377f8930b7c3a25ff3",
+  "master_worktree_status": "",
+  "product_version": "0.3.0a2",
+  "threadDesk_head": "65aafdf54c6bd0997ea9904dedcf2493eacefd13",
+  "sources": [
+    {
+      "path": "agent_authority/observations.py",
+      "sha256": "1b7eba40bd683da462599f5ba957957060bac7ad2d6abc8cea9eb083eb10c4f0"
+    },
+    {
+      "path": "agent_authority/report.py",
+      "sha256": "dbd78d06892769e9ea84cf8738d84c4f89d954f9163fb0b87af24ff5bee080c3"
+    },
+    {
+      "path": "agent_authority/cli.py",
+      "sha256": "801c4b8bf352953bbe1e6f30610e30934d997d350c6156b165404f927273fc56"
+    },
+    {
+      "path": "agent_authority/file_reader.py",
+      "sha256": "b2194de63a8c69b692f8af4afe3092ed29b298888141c67a37e572c0e6312a16"
+    },
+    {
+      "path": "docs/PRODUCT-OBSERVATION-CONTRACT.md",
+      "sha256": "d5e8b2ecaaf25aebb0f83f3f1d03c58723357ac02d91c0e05395e50500a47227"
+    },
+    {
+      "path": "docs/PLAN-A1-NATIVE-RESULT-20261011.md",
+      "sha256": "6f1995ecff9efd5820279a7de3e53f8bdc6e9d7ae4efbdf8bbad8eb1654f1b35"
+    },
+    {
+      "path": "docs/PLAN-A31-SESSION-JOB-RESULT-20261012.md",
+      "sha256": "1af2149d5e0d2e042ffc1cc90d120329ae4eda874db35859cb23c620883e8774"
+    },
+    {
+      "path": "docs/PLAN-A4-FINAL-RESULT-20261012.md",
+      "sha256": "9141f67de92965a969a4eecdb4290d3b6514b030e7658bc6c08046304d1b1546"
+    }
+  ],
+  "color_sources": [
+    {
+      "path": "/Users/landjunge/threaddesk/src/threaddesk/ui/static/style.css",
+      "sha256": "4d89fa1b10fe6b4ba4ca950c62c6e135f653307d669d2c2a55d35aa48749c6c5",
+      "tokens": [
+        {
+          "token": "--bg",
+          "value": "#121316",
+          "line": 4
+        },
+        {
+          "token": "--bg-elevated",
+          "value": "#1a1b1f",
+          "line": 5
+        },
+        {
+          "token": "--bg-subtle",
+          "value": "#1e1f24",
+          "line": 6
+        },
+        {
+          "token": "--bg-card",
+          "value": "#1e1f24",
+          "line": 7
+        },
+        {
+          "token": "--bg-raised",
+          "value": "#24262d",
+          "line": 8
+        },
+        {
+          "token": "--bg-strip",
+          "value": "#15171b",
+          "line": 9
+        },
+        {
+          "token": "--fg",
+          "value": "#e2e4e9",
+          "line": 10
+        },
+        {
+          "token": "--fg-muted",
+          "value": "#8b909a",
+          "line": 11
+        },
+        {
+          "token": "--fg-subtle",
+          "value": "#6b7280",
+          "line": 12
+        },
+        {
+          "token": "--border",
+          "value": "#2e3138",
+          "line": 17
+        },
+        {
+          "token": "--border-strong",
+          "value": "#5c616a",
+          "line": 18
+        },
+        {
+          "token": "--border-hover",
+          "value": "#6b7280",
+          "line": 19
+        },
+        {
+          "token": "--brand",
+          "value": "#b99cff",
+          "line": 23
+        },
+        {
+          "token": "--accent",
+          "value": "#8f98a8",
+          "line": 24
+        },
+        {
+          "token": "--accent-fg",
+          "value": "#121316",
+          "line": 25
+        },
+        {
+          "token": "--ok",
+          "value": "#3d9b6a",
+          "line": 26
+        },
+        {
+          "token": "--warn",
+          "value": "#c9a227",
+          "line": 27
+        },
+        {
+          "token": "--idle",
+          "value": "#85887e",
+          "line": 28
+        },
+        {
+          "token": "--done",
+          "value": "#8aa4b5",
+          "line": 29
+        },
+        {
+          "token": "--risk",
+          "value": "#c45c5c",
+          "line": 30
+        }
+      ]
+    },
+    {
+      "path": "/Users/landjunge/threaddesk/src/threaddesk/ui/static/networkpunkt.css",
+      "sha256": "98371bd9edc96fb940a0e0de34933740fed1062b510aa516498fcb53e112591e",
+      "tokens": [
+        {
+          "token": "--np-gray-950",
+          "value": "#121316",
+          "line": 5
+        },
+        {
+          "token": "--np-gray-900",
+          "value": "#1a1c20",
+          "line": 6
+        },
+        {
+          "token": "--np-gray-800",
+          "value": "#25282e",
+          "line": 7
+        },
+        {
+          "token": "--np-gray-700",
+          "value": "#353940",
+          "line": 8
+        },
+        {
+          "token": "--np-gray-500",
+          "value": "#808996",
+          "line": 9
+        },
+        {
+          "token": "--np-gray-300",
+          "value": "#afb6c1",
+          "line": 10
+        },
+        {
+          "token": "--np-gray-100",
+          "value": "#edf0f4",
+          "line": 11
+        },
+        {
+          "token": "--np-green",
+          "value": "#7bdaa7",
+          "line": 12
+        },
+        {
+          "token": "--np-amber",
+          "value": "#e4be70",
+          "line": 13
+        },
+        {
+          "token": "--np-red",
+          "value": "#f49b9b",
+          "line": 14
+        }
+      ]
+    }
+  ],
+  "new_light_tokens": {
+    "bg": "#f5f6f8",
+    "surface": "#ffffff",
+    "fg": "#23262d",
+    "lavender": "#685091",
+    "green_text": "#246943",
+    "amber_text": "#805f15"
+  },
+  "artifact_scope": "Synthetischer Browser-Interaktionsentwurf. Keine native UI, kein Collector, keine Engineänderung.",
+  "tooling": {
+    "Xcode": "16.0 (16A242d)",
+    "Swift": "6.0",
+    "SDK": "macOS 15.0",
+    "host": "macOS 15.7.4 x86_64",
+    "Playwright": "1.62.1",
+    "Node": "v25.9.0",
+    "Python": "Python 3.12.13",
+    "MCP": "Figma-Tools in Sitzung vorhanden, nicht verwendet; Imagegen vorhanden, nicht verwendet; web.run, exec_command, apply_patch, view_image tatsächlich verwendet"
+  }
+}

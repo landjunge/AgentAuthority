@@ -1,0 +1,31 @@
+{
+  "native-source-en.png": [
+    3456,
+    2000
+  ],
+  "native-dark.png": [
+    3456,
+    2000
+  ],
+  "native-light-en.png": [
+    3456,
+    2000
+  ],
+  "native-50-agents-5k.png": [
+    5120,
+    2880
+  ],
+  "app_child_process_verified": true,
+  "engine_files_byte_identical": true,
+  "collector_live_activated": false,
+  "signing": "ad-hoc development; no approved ES identity/profile",
+  "gpu": {
+    "model": "AMD Radeon R9 M380",
+    "vram": "2 GB",
+    "host_os": "15.7.4",
+    "monterey_execution_verified": false
+  },
+  "product_tests": 61,
+  "swift_tests": 12,
+  "localized_keys": 272
+}

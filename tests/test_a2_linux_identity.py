@@ -32,7 +32,7 @@ def signed_case(tmp_path):
     ca, ca_pub = HOST.create_ca(tmp_path / "ca")
     issuer, issuer_pub = HOST.create_ca(tmp_path / "issuer")
     alpha, alpha_pub = HOST.create_ca(tmp_path / "alpha")
-    beta, beta_pub = HOST.create_ca(tmp_path / "beta")
+    _beta, beta_pub = HOST.create_ca(tmp_path / "beta")
     instance = {"pid": 8, "start_ns": 50, "generation": 1}
     file = {"dev": 3, "inode": 4}
     challenge = {

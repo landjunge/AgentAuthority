@@ -2,13 +2,14 @@
 
 import hashlib
 import os
+import shutil
 import subprocess
 import tempfile
 from pathlib import Path
 
 from protocol import b64, canonical, unb64
 
-OPENSSL = "/usr/local/opt/openssl@3/bin/openssl"
+OPENSSL = shutil.which("openssl") or "openssl"
 SPKI_ED25519 = bytes.fromhex("302a300506032b6570032100")
 
 
@@ -68,6 +69,7 @@ def verify(public_key, signed):
                 ],
                 capture_output=True,
                 timeout=10,
+                check=False,
             )
             return run.returncode == 0
     except (ValueError, TypeError, KeyError):

@@ -1,0 +1,63 @@
+{
+  "arguments": [
+    "/Users/landjunge/agent-authority-macos-design-20261012/native/macos/build/navigation-warnings-review/Agent Authority.app/Contents/MacOS/AgentAuthorityMac",
+    "--normal-state-json",
+    "/Users/landjunge/agent-authority-macos-design-20261012/docs/native-ui-start-fix-20261012/live-current.json"
+  ],
+  "back_enabled": false,
+  "bundle": "/Users/landjunge/agent-authority-macos-design-20261012/native/macos/build/navigation-warnings-review/Agent Authority.app",
+  "canvas_attached": true,
+  "canvas_bounds": "{{0, 0}, {1028, 229.30370370370372}}",
+  "canvas_frame": "{{16, 282}, {1028, 229.30370370370372}}",
+  "canvas_hidden": false,
+  "critical_message_visible": true,
+  "demo": true,
+  "demo_cases": 6,
+  "display_nodes": [
+    "authority-root",
+    "cluster:branch-0",
+    "cluster:branch-1",
+    "cluster:branch-2",
+    "cluster:branch-3",
+    "cluster:branch-4",
+    "identity-root",
+    "root"
+  ],
+  "empty_message": "",
+  "history_count": 0,
+  "last_draw_visible_count": 8,
+  "main_frame": "{{0, 0}, {1060, 776}}",
+  "main_loaded": true,
+  "pid": 19819,
+  "pulse_enabled": true,
+  "pulse_layers": 1,
+  "reduce_motion": false,
+  "schema": "agent-authority-live-ui-state-v1",
+  "snapshot": {
+    "anchor": "agent-001",
+    "filter": 0,
+    "groups": [],
+    "mode": 2,
+    "pan_x": 33.77551020408157,
+    "pan_y": 20,
+    "query": "",
+    "selection": "agent-001",
+    "zoom": 0.8893046107331822
+  },
+  "source": "AA-SAMPLE",
+  "source_nodes": 150,
+  "split_frames": [
+    "{{0, 0}, {176, 776}}",
+    "{{177, 0}, {1060, 776}}",
+    "{{1238, 0}, {292, 776}}",
+    "{{1235, 0}, {5, 776}}",
+    "{{173, 0}, {4, 776}}",
+    "{{0, 0}, {15, 776}}",
+    "{{1515, 0}, {15, 776}}"
+  ],
+  "time": 1791838058.484515,
+  "visible_rect": "{{0, 0}, {1028, 229.30370370370372}}",
+  "window_minimized": false,
+  "window_title": "Agent Authority · Lokaler Review · startup-check-20261012",
+  "window_visible": true
+}

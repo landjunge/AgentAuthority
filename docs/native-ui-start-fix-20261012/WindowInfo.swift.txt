@@ -1,0 +1,6 @@
+import AppKit
+let pid=Int(CommandLine.arguments[1])!
+let windows=CGWindowListCopyWindowInfo([.optionOnScreenOnly,.excludeDesktopElements],kCGNullWindowID) as? [[String:Any]] ?? []
+let matching=windows.filter{($0[kCGWindowOwnerPID as String] as? Int)==pid && ($0[kCGWindowLayer as String] as? Int)==0}
+let data=try! JSONSerialization.data(withJSONObject:matching,options:[.sortedKeys])
+print(String(data:data,encoding:.utf8)!)

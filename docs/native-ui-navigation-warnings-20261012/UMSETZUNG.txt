@@ -1,0 +1,94 @@
+Agent Authority – zwei native UI-Ergänzungen, 12.10.2026
+
+Basis und Grenzen
+Native Worktree: /Users/landjunge/agent-authority-macos-design-20261012
+Repository: landjunge/agent-authority-lab
+Referenz und Remote feat/native-macos-20261012 geprüft:
+4f2ed976421f553237a617e1ad36a5456014fddc
+Arbeitsbranch: fix/native-navigation-warnings-20261012 (nur lokal).
+Keine anwendbare AGENTS.md gefunden. Ungetracktes design/ unangetastet.
+Keine Engine-, Collector-, Testhost- oder Rechteentscheidungsänderungen.
+Kein Forschungsversuch, keine Integration, kein Commit, Push oder Merge.
+
+Zurück
+Sichtbarer Button im Graph-Bereich. Vor Fokus, Modus, Filter und
+Gruppenöffnung werden Modus, Kettenanker, Auswahl, Filter, Suche,
+aufgeklappte Gruppen und exakte Zoom-/Pan-Werte gespeichert.
+LIFO-Wiederherstellung ohne Auto-Fit und ohne neuen Verlaufseintrag.
+Zoomen, Verschieben und Tippen erzeugen keine Einzel-Navigationsschritte.
+Jeder neue Datenquellen-Snapshot setzt den Verlauf zurück, auch Refresh.
+
+Warnanzeige
+Eigene Zustände außerhalb ProofStatus und außerhalb des Engine-Reports.
+Vier Schweregrade mit Symbol/Text: Blau, Gelb, Orange, Rot.
+Beurteilbarkeit setzt eine explizite Prüfung und ausreichende aktuelle Daten
+voraus. Fehlend/veraltet/unausgewertet bleibt neutral nicht beurteilbar.
+Keine Warnung erkannt ist nur der explizite aktuelle Prüfumfang.
+Es gibt keine allgemeine Sicherheitszusage oder produktive Risikoerkennung.
+Sechs eindeutig synthetische UI-Fixtures über das Warn-Demo-Menü erreichbar.
+Reale Quellen ohne Warnprüfung bleiben nicht beurteilbar; synthetische
+Warnungen gelangen nicht in Evidence-Exports oder importierte Berichte.
+Der Inspector zeigt Grund, Beurteilbarkeit, Knoten/Beziehung, Zeitpunkt,
+Quelle und Belegverweise. Fehlende Referenzen bleiben ausdrücklich unbekannt.
+Kritisch hat eine dauerhafte, auswählbare Meldung, auch bei ausgeblendeten Knoten.
+Aufgeklappte/geschlossene Gruppen behalten zugängliche Warninformationen.
+
+Animation und Palette
+Kleine lokale Border-Layer; keine fortlaufende Graph- oder Layoutberechnung.
+Nur sichtbare betroffene Warn-/Kritisch-Knoten oder deren Gruppen pulsieren.
+Warnung 2,8 s, kritisch 1,8 s je Animationshälfte, dann zurück.
+Ausgeschaltete Pulse, reduzierte Bewegung, Offscreen-Knoten und verdeckte/
+minimierte Fenster entfernen Animationslayer. Alle statischen Signale bleiben.
+Originalpalette geprüft in threaddesk/src/threaddesk/ui/static/style.css
+und networkpunkt.css. Nachweisfarben unverändert. Warn-Blau/-Orange sind
+native Systemfarben; Amber/Rot nutzen die bestehende Palette.
+NSWorkspace-Reduce-Motion-Property und Änderungsnotification im SDK geprüft.
+
+Tatsächliche Prüfungen
+swift test: 17 Tests, 0 Fehler; davon 5 neue Navigation-/Warnzustandstests.
+AppKit-Regressionen: jeweils 25/25 bei DE 1680×960 und EN 1150×730.
+Drei Fokuswechsel und drei Rückschritte mit Gleichheit aller Snapshot-Felder,
+kein Auto-Fit, keine neuen Einträge, leeres Zurück, Gruppenöffnung/-wiederherstellung,
+Datenquellenreset, sechs Demostufen, unverändertes grünes Proof bei kritisch,
+dauerhafte kritische Meldung, Puls-Toggle, erzwungene reduzierte Bewegung,
+Offscreen-Culling und reale nicht beurteilbare Daten erfolgreich geprüft.
+System Reduce Motion war false; die echte Systemeinstellung wurde nicht umgestellt.
+Erzwungene reduzierte Bewegung läuft durch dieselbe Abschaltlogik und kann
+niemals die echte macOS-Einstellung deaktivieren.
+check_sources.py: 303 vollständige DE/EN-Schlüssel, UTF-8, UI-Referenzen,
+NOTIFY-only Collector erfolgreich. Ruff und git diff --check erfolgreich.
+Release-Bundle erfolgreich gebaut; codesign --verify --deep --strict erfolgreich.
+Anfangs aufgetretener Layout-Namenskonflikt korrigiert. Ein zwischenzeitlicher
+Release-Build wurde durch einen parallel gespeicherten UI-Edit abgebrochen;
+der vollständige Build wurde anschließend ohne Dateiänderungen erfolgreich wiederholt.
+Finale Unit- und AppKit-Prüfungen stammen vom korrigierten Quellstand/Release-Bundle.
+
+Visuelle Prüfung und Messgrenzen
+Die drei PNGs wurden als tatsächliche native AppKit-Eigenansicht erzeugt und
+angesehen: dark-demo.png (DE, grün belegt und getrennt rot kritisch),
+light-reduced-motion-5k.png (EN, 2560×1440 logisch / 5120×2880 Pixel,
+Warnsymbol/Text ohne Pulse), real-report.png (importierter vorhandener
+Quellenbericht, keine Live-Messung; neutral nicht beurteilbar, unbekannte Belege).
+Kein Screenshot-Mockup. Die Aufnahmen prüfen statisches Layout und Lesbarkeit;
+der zeitliche Pulseindruck wurde nicht manuell visuell bewertet.
+12 eigene Bitmap-Renderdurchgänge: Median 23,79 ms, Maximum 44,74 ms,
+52 dargestellte Knoten, 51 Kanten, 2× Backing Scale.
+Dies ist keine GPU-Frametime- oder Animationsflüssigkeitsmessung.
+Prüfhost ist der vorhandene Intel-iMac mit R9 M380 / 2 GB unter macOS 15.7.4.
+Keine aktuelle Prüfung unter Monterey oder auf Apple Silicon durchgeführt.
+
+Dateien
+Geändert: native/macos/README.md;
+Sources/AgentAuthorityMac/{Controllers,GraphCanvas,Theme,main}.swift;
+Sources/AuthorityCore/Resources/Strings.json.
+Neu: Sources/AuthorityCore/{GraphNavigation,UIWarnings}.swift;
+Sources/AgentAuthorityMac/UIRegression.swift;
+Tests/AuthorityCoreTests/NavigationWarningTests.swift;
+scripts/check_ui_regressions.py; dieses Prüfverzeichnis.
+Alle Source-/Test-/Script-Pfade relativ zu native/macos.
+
+Review-Bundle (bisheriges App-Bundle nicht überschrieben):
+native/macos/build/navigation-warnings-review/Agent Authority.app
+Lokale Ad-hoc-Signatur; keine notarisierten Distribution oder Veröffentlichung.
+Die vorhandenen produktiven Collector-Signierungs-/Entitlementgrenzen bleiben
+unverändert und wurden in dieser UI-Aufgabe nicht neu getestet.

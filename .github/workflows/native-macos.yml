@@ -1,0 +1,21 @@
+name: Native macOS
+on:
+  push:
+    paths: ['native/macos/**', '.github/workflows/native-macos.yml']
+  pull_request:
+    paths: ['native/macos/**', '.github/workflows/native-macos.yml']
+jobs:
+  native:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: '3.12'
+      - run: swift test --package-path native/macos
+      - run: python native/macos/scripts/check_sources.py
+      - name: Compile native test helpers and observer
+        run: |
+          xcrun clang -Wall -Wextra -Werror -O2 -fblocks -mmacosx-version-min=12.0 native/macos/Support/ProcessProbe.c -lEndpointSecurity -o /tmp/AAProcessProbe
+          xcrun clang -Wall -Wextra -Werror -O2 -mmacosx-version-min=12.0 native/macos/Support/Writer.c -o /tmp/AAWriter
+          xcrun clang -Wall -Wextra -Werror -O2 -fobjc-arc -fblocks -mmacosx-version-min=12.0 native/macos/Collector/main.m -framework Foundation -framework Security -lEndpointSecurity -lbsm -o /tmp/AACollector

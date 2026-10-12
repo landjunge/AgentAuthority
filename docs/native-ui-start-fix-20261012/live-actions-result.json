@@ -1,0 +1,16 @@
+{
+  "checks": {
+    "normal_start_nodes_visible": true,
+    "normal_start_default_state": true,
+    "actual_pan_changes_viewport": true,
+    "actual_focus_targets": true,
+    "actual_back_1_exact_state": true,
+    "actual_back_2_exact_state": true,
+    "actual_back_3_exact_state": true,
+    "warning_and_critical_visible_pulses": true,
+    "disable_pulses_keeps_nodes_and_message": true
+  },
+  "passed": true,
+  "method": "external AX controls and authorized WindowServer captures; passive state reads do not rebuild or fit",
+  "pid": 19819
+}
