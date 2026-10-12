@@ -1,0 +1,419 @@
+{
+  "ca_public_key": "4WYuvN0vi5NNkx+F9PXgMvxAM2g1lC7uHep0L4V9uzs=",
+  "registry": {
+    "body": {
+      "agents": {
+        "Agent000": {
+          "public_key": "7enTUpyhr4dDpshIiq2edcg+Tkcr5tRGTSIWBSASQ9s=",
+          "uid": 62000
+        },
+        "Agent001": {
+          "public_key": "FS42Lg5r6/ALoepylQcpzbZf+eTNKoVeAa5FBMdb9TQ=",
+          "uid": 62001
+        },
+        "Agent002": {
+          "public_key": "KAPU8cJfAzHTR71jlNx9LKrrRmv3SBXVovHlVTYgzrM=",
+          "uid": 62002
+        },
+        "Agent003": {
+          "public_key": "K9YUKeF6SugSBDx+veOIT0KCzuQAAcbbVVkJ2MnBKZg=",
+          "uid": 62003
+        },
+        "Agent004": {
+          "public_key": "Ph+PmzGuExEouVt6phJfCE8RzV6HVJAMsTGkiuxmsCw=",
+          "uid": 62004
+        },
+        "Agent005": {
+          "public_key": "vjtobDOhKNyMEsFaBhKDAs6avjA7c+GO8cdWaaE2eeM=",
+          "uid": 62005
+        },
+        "Agent006": {
+          "public_key": "whtuYOA/KTpz3PgKaxa5TLkf6SUkgKB96cfQm1UqVi8=",
+          "uid": 62006
+        },
+        "Agent007": {
+          "public_key": "u3y5DZdooW/GLG7QquGcxJqWlT/4yspVsKzo58t+6IU=",
+          "uid": 62007
+        },
+        "Agent008": {
+          "public_key": "vgfgzYnR5vqe16lRcuOu6mMTMlUu1acIvaAkUHsDxcI=",
+          "uid": 62008
+        },
+        "Agent009": {
+          "public_key": "czHovRblN7m39XfYQ/3fKysvPqc0+pDOnhHWSaaCoyc=",
+          "uid": 62009
+        },
+        "Agent010": {
+          "public_key": "62WeG3cZKjDWbr8UiKQnqXrjJeu1Q3Zw8Cm3q5XdRRw=",
+          "uid": 62010
+        },
+        "Agent011": {
+          "public_key": "Vz7qomgwkZVkb29QDdm69/bfd4u8lznD6A6nel8p3yM=",
+          "uid": 62011
+        },
+        "Agent012": {
+          "public_key": "PiFBEmoI6s+Tw1qWTBDezuswqgq2klJEvLYIIAGQuSg=",
+          "uid": 62012
+        },
+        "Agent013": {
+          "public_key": "kj2+jEP2EIXrwJN84lzRiWBglx0FX34q9WgZ6aF7IIQ=",
+          "uid": 62013
+        },
+        "Agent014": {
+          "public_key": "gg65VTa90QLf0YetVs2prmuSBwsPMYNNXZsdeUNw8/Y=",
+          "uid": 62014
+        },
+        "Agent015": {
+          "public_key": "NzM+46Xx2BK7WMXRfljK7M9JT+Fv5J5XTjueFSZKgx0=",
+          "uid": 62015
+        },
+        "Agent016": {
+          "public_key": "IZ9yDY2ndL/CTFXF7shWPwA8U5lb1Xmx5qQLH4xuSgY=",
+          "uid": 62016
+        },
+        "Agent017": {
+          "public_key": "Q9CSajuBnmLsQeSHomX5yxbArvMprych/oITCFwZT54=",
+          "uid": 62017
+        },
+        "Agent018": {
+          "public_key": "uLPZSbliIEuqgli4UU6vSQJt0lHWSjUoxZ38IIpgHSg=",
+          "uid": 62018
+        },
+        "Agent019": {
+          "public_key": "zn1AYN3XAG/Y3PKk+0CxsRfy12ZmC4s22nSelSRBkKw=",
+          "uid": 62019
+        },
+        "Agent020": {
+          "public_key": "NUdD48Pm58I75lErTf79sv/UKPsGhftdnuX+ecydtUA=",
+          "uid": 62020
+        },
+        "Agent021": {
+          "public_key": "0ms3V0FvnlAFAAiPWkXcUh1g7M9lA/kOM7U5MwMzUTs=",
+          "uid": 62021
+        },
+        "Agent022": {
+          "public_key": "bn3hWfovG0saJ9H5AyDn3Q9PWspRLMGMv4pinzkImkY=",
+          "uid": 62022
+        },
+        "Agent023": {
+          "public_key": "OIMeR9yidjzafrM3aNeIPHLOKEtMe0oYD8xO82Lmtm0=",
+          "uid": 62023
+        },
+        "Agent024": {
+          "public_key": "qn0sreUQ9o3QEbNXqMxGxPnGCyL/icv4o1XOQtMQdcM=",
+          "uid": 62024
+        },
+        "Agent025": {
+          "public_key": "XK8a4IHtQdB4NwIwdWO7MlKwcs28oYLwM2Mg17xvKbM=",
+          "uid": 62025
+        },
+        "Agent026": {
+          "public_key": "nhtxuNfMj+YUcDn9WqmUE/k7MaAlIi2OC60kpLCfigo=",
+          "uid": 62026
+        },
+        "Agent027": {
+          "public_key": "3P2j3/FUaneDjV5W6JXx2GYmKgAGpLgLay2M1m9k/qw=",
+          "uid": 62027
+        },
+        "Agent028": {
+          "public_key": "z4vSOrzZkRPcP4Rf0ybsj0EEZnVlYyFOngvNw8jJKCU=",
+          "uid": 62028
+        },
+        "Agent029": {
+          "public_key": "ft2l9/QkuR5SGT31r4EniOA/ysMu/HsjhiJOdQ8qnvM=",
+          "uid": 62029
+        },
+        "Agent030": {
+          "public_key": "QJA+zI2+NWgyEUUvwAIMhxQNV8NUBNvkH+HPYpujKrM=",
+          "uid": 62030
+        },
+        "Agent031": {
+          "public_key": "WD6Bl+/o5O+1tEOcmO6qBN6CozaC+yGENFBBcmsTbbc=",
+          "uid": 62031
+        },
+        "Agent032": {
+          "public_key": "cGzl673sFfsJc96l2GSaR5Fgf6xWtjqN8pef+SCR4oI=",
+          "uid": 62032
+        },
+        "Agent033": {
+          "public_key": "AZjAjirqnpNKrPiu7pkFxO0n2kAC8WfmfephXk2ojro=",
+          "uid": 62033
+        },
+        "Agent034": {
+          "public_key": "ZH58YeftbmZ4WpN1ajlZX4unAn7Znm1+UhCST/KEuJk=",
+          "uid": 62034
+        },
+        "Agent035": {
+          "public_key": "viK5yGQA9WzK0i2qXhmJLALoy1O+4nRKSKf/qQvYOkk=",
+          "uid": 62035
+        },
+        "Agent036": {
+          "public_key": "1e3Hxb4Dg8DEo5lTsLg65X9WAM38/9uvv/wdZK4fjXo=",
+          "uid": 62036
+        },
+        "Agent037": {
+          "public_key": "D77ZAyBNgl/wGUSe4tC21DyPIz0HxZ8wTeroFe7jyf8=",
+          "uid": 62037
+        },
+        "Agent038": {
+          "public_key": "N30UAn5IMwaOuD9EYnyYiQDy3bCItD/1bUvlA5wx2Pg=",
+          "uid": 62038
+        },
+        "Agent039": {
+          "public_key": "1r4yNzO0i4b/5ivBq32KdXq8sb6M6LqXJ+TCqbP458s=",
+          "uid": 62039
+        },
+        "Agent040": {
+          "public_key": "DTxQgU/5FDgMtgEvmwOI/g0W4szlWGa64XEToyNB1C8=",
+          "uid": 62040
+        },
+        "Agent041": {
+          "public_key": "6ID0ygR35r8uxTZ7eblT+F7oumyXzshcmd0dFIzflPg=",
+          "uid": 62041
+        },
+        "Agent042": {
+          "public_key": "p1UGakVrd6/sz7hl5NkvVPte39D7uoVkODPdmKybKAA=",
+          "uid": 62042
+        },
+        "Agent043": {
+          "public_key": "AHXRzvNBkPtVNWJwC59zrwY3sAjRf4FlVDl/IjTmkOk=",
+          "uid": 62043
+        },
+        "Agent044": {
+          "public_key": "c58jab7Ru5q6JWn3RyxIuuFRfrhpECVCotBynkZGqm0=",
+          "uid": 62044
+        },
+        "Agent045": {
+          "public_key": "fTYjJ4eu5GxNi/1YELXx49KVlpSIAGk7udQD7YvBbrM=",
+          "uid": 62045
+        },
+        "Agent046": {
+          "public_key": "8NsRgT4iu5jJ9/Dk8nxEVO8jA/dCW90QZcKit9BgA0Q=",
+          "uid": 62046
+        },
+        "Agent047": {
+          "public_key": "zWppcXJsmN04DMUidxJs7AAqjJhhotLf28AyXoOci8w=",
+          "uid": 62047
+        },
+        "Agent048": {
+          "public_key": "Sa0KoZlpvYL1Rjr9wRSrJslpcx88K7Q+OvFNJ82Bz4U=",
+          "uid": 62048
+        },
+        "Agent049": {
+          "public_key": "h5MUcrLHUK/CaZ/o9CbuKkiNv3TCu6mex3A6DkwLgPg=",
+          "uid": 62049
+        },
+        "Agent050": {
+          "public_key": "cNop+ZVeiSUBmnL97sCpsnz7ppUX/Iy5c9cPhDbGlH4=",
+          "uid": 62050
+        },
+        "Agent051": {
+          "public_key": "4oyXNO7CMF2eBuCsdsiozYPoz2UJyYu0cttJsZl+vy0=",
+          "uid": 62051
+        },
+        "Agent052": {
+          "public_key": "q9krE9y6wL+FvATFQlSycIYndSEVciY3JG/yxlhetlI=",
+          "uid": 62052
+        },
+        "Agent053": {
+          "public_key": "uRWrbyMlJAx88gcWNvng3eOfXhDdcryCPoN+Lb7DOWg=",
+          "uid": 62053
+        },
+        "Agent054": {
+          "public_key": "CIDdspehzs5/Pe1b+6ekvkrL4dQggYLbpQKNbdl/kjc=",
+          "uid": 62054
+        },
+        "Agent055": {
+          "public_key": "CYAgF7l/OvvWrqrDUcLcyYadIZDuJZBeBP2nBrpLvpM=",
+          "uid": 62055
+        },
+        "Agent056": {
+          "public_key": "HG7O3vIJs7fgl+s/zZzDdODL6wVMPdkMAOvP3BZzWFM=",
+          "uid": 62056
+        },
+        "Agent057": {
+          "public_key": "RTYJkw5h187SUdnt+EAB/k5QZt5FlqJEWI1BU1ZWR7s=",
+          "uid": 62057
+        },
+        "Agent058": {
+          "public_key": "C3s2swx3HG0hdlHq970mOlPfGsF+SbiGPi8VLQJSdko=",
+          "uid": 62058
+        },
+        "Agent059": {
+          "public_key": "5rhC0ssKNlxob8IkSZeILqAd4AHPlA5QcbcUt6F7uxw=",
+          "uid": 62059
+        },
+        "Agent060": {
+          "public_key": "4/f+nxS95538C/wB4BlVlF+YYNGiYlLitpR5vclfBDQ=",
+          "uid": 62060
+        },
+        "Agent061": {
+          "public_key": "/nF8B11J0aLQx2L7Hh0InS4TtT676kb0i4FdwW0Mk6I=",
+          "uid": 62061
+        },
+        "Agent062": {
+          "public_key": "lEhZiHcJivdOyVT1Btu1gfB9VaIQb8IC6RNNJ7Qjy2E=",
+          "uid": 62062
+        },
+        "Agent063": {
+          "public_key": "ww+/GHBoEnaCikWFc2WjcxyghC5OD1ZsyiqQJEoyc8E=",
+          "uid": 62063
+        },
+        "Agent064": {
+          "public_key": "fD3VcIabM5wheiEM9+ShQG1NGrDxK5vJet5iQcg5tmM=",
+          "uid": 62064
+        },
+        "Agent065": {
+          "public_key": "SfZ8YTFVTTW8ZcMkbF9zauCyM7TeoAztdzGCtUywBsY=",
+          "uid": 62065
+        },
+        "Agent066": {
+          "public_key": "r95vJeFVzLgbq044jyMeAbKlC56ZKcvwmZf+zEWn3aY=",
+          "uid": 62066
+        },
+        "Agent067": {
+          "public_key": "t64PQPV307xLXca1nVelLdbet2N88OJCyuICM/yz+UM=",
+          "uid": 62067
+        },
+        "Agent068": {
+          "public_key": "C9mAy8eqZ39QXOow4cQmt0sqm6BjOPbuNhYmS1/f52Y=",
+          "uid": 62068
+        },
+        "Agent069": {
+          "public_key": "AoZaSeW/7gEu7iEl263OXTUV2aXfscDpx+ogsS11xQ0=",
+          "uid": 62069
+        },
+        "Agent070": {
+          "public_key": "HNFv+EJOeIKbcWoaUqqJaeohvxS6QsGNJtJJz4YsvvI=",
+          "uid": 62070
+        },
+        "Agent071": {
+          "public_key": "PPFg3YjbW6vMqOsZWB/ppHIdklLhZxTHqpYGFlT2e3k=",
+          "uid": 62071
+        },
+        "Agent072": {
+          "public_key": "/U8kzWhVMxaNIsEvNnQuEfpTr5vmLHHUJrFsUrYNDkc=",
+          "uid": 62072
+        },
+        "Agent073": {
+          "public_key": "2wdR0CkmMAKmDusTk+pQXYB+JXa6U6+EPLtvP9wm/xo=",
+          "uid": 62073
+        },
+        "Agent074": {
+          "public_key": "bNTBz+Mc3kGhGWBncZtTn+hb6LLMdHnB3Hww6tXSYQg=",
+          "uid": 62074
+        },
+        "Agent075": {
+          "public_key": "k3E1DVy1JxRFcyDvgrloo5eh0zAFywbL9jv/RUVpPLA=",
+          "uid": 62075
+        },
+        "Agent076": {
+          "public_key": "2DyyjdPZFhR8cVgjexrEQ+2xhkahW8xK443yBvHe+Kc=",
+          "uid": 62076
+        },
+        "Agent077": {
+          "public_key": "qY23pCrjjt5uOj0pVs/rCULzLAWLTA9CwA4YfS/RFgo=",
+          "uid": 62077
+        },
+        "Agent078": {
+          "public_key": "IWshY/EXpc6cABq9m9hx44u27oXorSxlxON5nt+tXeQ=",
+          "uid": 62078
+        },
+        "Agent079": {
+          "public_key": "G+ip8aBxHZ9V48WCM+qurQ1R66jG8jeJdC4/XTaj48Q=",
+          "uid": 62079
+        },
+        "Agent080": {
+          "public_key": "uXlaSyune9tbqyIL3CD4qLaAKrGtWEAemlRgUU4lVbQ=",
+          "uid": 62080
+        },
+        "Agent081": {
+          "public_key": "ZksH2KSBWStHf4mu7DyQnWh/GVbJxYCAtLik4DytTVM=",
+          "uid": 62081
+        },
+        "Agent082": {
+          "public_key": "VqXysu4lHbl9c0VgINXVUDiZAwVBTU/G7s+1/QCbhhM=",
+          "uid": 62082
+        },
+        "Agent083": {
+          "public_key": "fiD+g4hPLbns2OL99QaXh0ioCytJwKXF5kWo6Q670xQ=",
+          "uid": 62083
+        },
+        "Agent084": {
+          "public_key": "4VIGETiD/ZVE1eL2ZAesZ5JUO1lMss0gfIfyZOeC2ZQ=",
+          "uid": 62084
+        },
+        "Agent085": {
+          "public_key": "k1Z3Ds3OG1XU2LSrJEno91JJXGhi+3Gfi3rVm4zNvbI=",
+          "uid": 62085
+        },
+        "Agent086": {
+          "public_key": "/UCc/nKMs7OMuwz4xNWWjhoOpkZ86sxLgOwkV1wp9pI=",
+          "uid": 62086
+        },
+        "Agent087": {
+          "public_key": "jFYk23rPHq8OG6RisTNUFvpJmidrtfTUqZW4lJtC19k=",
+          "uid": 62087
+        },
+        "Agent088": {
+          "public_key": "0nOFUvm6TMQGmjugZ0PqboJfkZHj9IhGa2ulA3wpVdw=",
+          "uid": 62088
+        },
+        "Agent089": {
+          "public_key": "iytPGnNr4aK5hkfFg5EQclE5vdZ5A6GEOjpe939GngQ=",
+          "uid": 62089
+        },
+        "Agent090": {
+          "public_key": "Z/VgKKCK6wOES+TI+YJjmrhqXAp7yW62reXKnymJsQI=",
+          "uid": 62090
+        },
+        "Agent091": {
+          "public_key": "emW+RILHh6Qa6beXq6ZW/sZXVoU0XPPb8ouKm8iWGtc=",
+          "uid": 62091
+        },
+        "Agent092": {
+          "public_key": "yI2SigN1tX4uGdcCfmwsE+VuE6rdMEnlfpDqsj4PsFA=",
+          "uid": 62092
+        },
+        "Agent093": {
+          "public_key": "B6MNA6o1YjmOwxYtIu7mpNSkUviI5WyQP8Mof2xRnvw=",
+          "uid": 62093
+        },
+        "Agent094": {
+          "public_key": "igBb23Mh32G8FNk54UhtzS2orV/32ZNOYf/1jMTWlbI=",
+          "uid": 62094
+        },
+        "Agent095": {
+          "public_key": "AyWsHdJU80tnvTh3I6AMNDET1Tz8Bu8uAriqsURgU1k=",
+          "uid": 62095
+        },
+        "Agent096": {
+          "public_key": "jathDTDhnnkwZCUs2kuc2yrL1ZiTjZVYGY2GC6wC0Ko=",
+          "uid": 62096
+        },
+        "Agent097": {
+          "public_key": "ZSEuHG8s6uL1fsk9hQhDZO2XEpPxKWI4fMO2L3kbElE=",
+          "uid": 62097
+        },
+        "Agent098": {
+          "public_key": "eInwlKL2OKkH7RiZCweTAh6OR/aruMaUPA5AZTpYuX0=",
+          "uid": 62098
+        },
+        "Agent099": {
+          "public_key": "H1NJm0XL+pzz+/3i5zqDXR+zGcZ1ouyg8utZof3pW/g=",
+          "uid": 62099
+        }
+      },
+      "boot_hash": "66da5378ad4ffc0e4d646460d363409954cec13e7913551f640ceb2be304067d",
+      "clock_ticks": 100,
+      "domain": "A4-SCALE-REGISTRY-v1",
+      "pid_namespace": "pid:[4026531836]",
+      "provider_model_identity": "UNBEKANNT",
+      "registrar_public_key": "RSPHnDgDlsnr52+nQ5VVuBXxqN8BUKiGI/iXaUG+YWg=",
+      "run_id": "c403b794eb80a92d5863eb4c6416ee22",
+      "test_identities_only": true,
+      "worker_sha256": "5b9cfeeabf690e4e3960df22ce719fa8b7b35d3bf00a36c9f7dc422b67d5e798"
+    },
+    "signature": "5YzHfCuQDtMiOisTNIyzdZXHF6JATNZt6t8qQothED2EyjBp+c/vsRSU1XZwxzTxmMjuE/zxxvWyrgU1b5cwBw=="
+  }
+}
