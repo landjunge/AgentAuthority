@@ -1,0 +1,33 @@
+{
+  "positions": 10,
+  "attempts": 10,
+  "execution_failures": 0,
+  "independent_write_actions": 12,
+  "authenticated_local_wrapper_chains": 9,
+  "fresh_host_dispatch_and_wrapper_chains": 8,
+  "authenticated_real_agent_chains": 0,
+  "a1_callback_raw_bytes": 1672,
+  "a1_records": 22,
+  "lifecycle_callback_raw_bytes": 1672,
+  "lifecycle_records": 38,
+  "known_perf_losses": 0,
+  "entry_nmissed": null,
+  "lifecycle_fork_entry_nmissed": null,
+  "actor_proofs": 13,
+  "a1_cpu_user_s": 20.221154,
+  "a1_cpu_system_s": 2.102414,
+  "a1_peak_rss_max_B": 177590272,
+  "adapter_cpu_user_s": 9.008080999999999,
+  "adapter_cpu_system_s": 1.745079,
+  "adapter_peak_rss_max_B": 164560896,
+  "kernel_CPU": null,
+  "VM_total_RAM_cost": null,
+  "client_CPU_RAM": null,
+  "ground_truth_actions": 12,
+  "ground_truth_not_sent_to_a1": true,
+  "postprocessing_failure": {
+    "error": "KeyError peak_rss_bytes in first aggregation; actual A1 field rss_peak_bytes",
+    "measurement_repeated": false,
+    "fixed_only_aggregation": true
+  }
+}
