@@ -1,0 +1,7 @@
+{"action":"record","time":1791838059.8689241,"values":{"anchor":"agent-001","mode":2,"pan_x":33.77551020408157,"pan_y":20,"zoom":0.88930461073318223}}
+{"action":"zoom","time":1791838060.2669001,"values":{"multiplier":1.1499999999999999,"zoom_before":0.38115942028985506}}
+{"action":"record","time":1791838062.0671279,"values":{"anchor":"agent-001","mode":1,"pan_x":295.71000000000004,"pan_y":-0.84999999999999432,"zoom":0.4383333333333333}}
+{"action":"zoom","time":1791838062.6605091,"values":{"multiplier":1.1499999999999999,"zoom_before":1.0625955227906141}}
+{"action":"record","time":1791838065.8249769,"values":{"anchor":"agent-002","mode":0,"pan_x":-63.781122448979659,"pan_y":20.254845814977955,"zoom":1.2219848512092062}}
+{"action":"zoom","time":1791838066.7985029,"values":{"multiplier":1.1499999999999999,"zoom_before":1.0625955227906141}}
+{"action":"record","time":1791838068.5617561,"values":{"anchor":"agent-003","mode":0,"pan_x":-40.781122448979659,"pan_y":3.2548458149779549,"zoom":1.2219848512092062}}

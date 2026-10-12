@@ -1,0 +1,58 @@
+import subprocess,time,json,re,os
+from pathlib import Path
+root=Path('/Users/landjunge/agent-authority-macos-design-20261012');out=root/'docs/native-ui-start-fix-20261012'
+pid=json.loads((out/'live-pid.json').read_text())['pid']
+checks={}
+def press(title):
+    subprocess.run(['/tmp/aa-live-controls',str(pid),title],check=True)
+    time.sleep(.2)
+def state(name):
+    requested=time.time()
+    time.sleep(.65)
+    value=json.loads((out/'live-current.json').read_text())
+    assert value['pid']==pid and value['time']>requested, 'passive trace expired or stale; never accept stale assertions'
+    (out/(name+'.json')).write_text(json.dumps(value,ensure_ascii=False,indent=2))
+    return value
+def case(text):
+    press('Synthetische Warn-Demo · 6 Fälle');press('UI-Demo · '+text)
+    target={'⚠︎ Warnung':'agent-002','‼︎ Kritisch':'agent-003','○ Keine Warnung erkannt':'agent-005'}[text]
+    deadline=time.time()+3
+    while time.time()<deadline:
+        current=json.loads((out/'live-current.json').read_text())
+        if current['snapshot']['anchor']==target and current['snapshot']['selection']==target and current['snapshot']['mode']==0:
+            time.sleep(.4)
+            return
+        time.sleep(.05)
+    raise AssertionError('menu focus action did not complete before next input')
+def capture(name):
+    meta=json.loads(subprocess.check_output(['/tmp/aa-window-json',str(pid)]))[0]
+    subprocess.run(['/usr/sbin/screencapture','-x','-o','-l',str(meta['kCGWindowNumber']),str(out/(name+'.png'))],check=True)
+    return meta
+initial=state('live-start')
+checks['normal_start_nodes_visible']=len(initial['display_nodes'])>0 and initial['last_draw_visible_count']>0 and initial['canvas_attached'] and not initial['canvas_hidden']
+checks['normal_start_default_state']=initial['snapshot']['filter']==0 and initial['snapshot']['query']=='' and initial['snapshot']['mode']==2 and initial['demo']
+press('Übersicht');press('Authority Graph');press('Agenten');press('Vergrößern')
+first=state('live-before-focus-1')
+case('⚠︎ Warnung');press('Vergrößern')
+s=state('live-before-pan');meta=capture('live-warning-before-pan')
+rect=list(map(float,re.findall(r'-?\d+(?:\.\d+)?',s['canvas_frame'])));main=list(map(float,re.findall(r'-?\d+(?:\.\d+)?',s['main_frame'])));bounds=meta['kCGWindowBounds']
+x=bounds['X']+main[0]+rect[0]+rect[2]/2;y=bounds['Y']+bounds['Height']-main[3]+rect[1]+rect[3]-28
+subprocess.run(['/tmp/aa-pan',str(x),str(y)],check=True)
+second=state('live-before-focus-2')
+checks['actual_pan_changes_viewport']=second['snapshot']['pan_x']!=s['snapshot']['pan_x'] or second['snapshot']['pan_y']!=s['snapshot']['pan_y']
+case('‼︎ Kritisch');press('Vergrößern')
+third=state('live-before-focus-3')
+case('○ Keine Warnung erkannt')
+fourth=state('live-after-focus-3')
+checks['actual_focus_targets']=second['snapshot']['anchor']=='agent-002' and third['snapshot']['anchor']=='agent-003' and fourth['snapshot']['anchor']=='agent-005'
+for index,expected in enumerate([third,second,first],1):
+    press('Zurück');actual=state('live-back-'+str(index));checks['actual_back_'+str(index)+'_exact_state']=actual['snapshot']==expected['snapshot'] and actual['history_count']==expected['history_count']
+press('Agenten')
+pulsing=state('live-pulses-on');capture('live-pulse-frame-1');time.sleep(.75);capture('live-pulse-frame-2')
+checks['warning_and_critical_visible_pulses']=pulsing['pulse_layers']==(0 if pulsing['reduce_motion'] or not pulsing['pulse_enabled'] else 2)
+if pulsing['pulse_enabled']:press('Warnpulsieren')
+off=state('live-pulses-off');capture('live-static-signals')
+checks['disable_pulses_keeps_nodes_and_message']=off['pulse_layers']==0 and off['display_nodes']==pulsing['display_nodes'] and off['critical_message_visible']
+if pulsing['pulse_enabled']:press('Warnpulsieren')
+result={'checks':checks,'passed':all(checks.values()),'method':'external AX controls and authorized WindowServer captures; passive state reads do not rebuild or fit','pid':pid}
+(out/'live-actions-result.json').write_text(json.dumps(result,indent=2));print(json.dumps(result,indent=2))

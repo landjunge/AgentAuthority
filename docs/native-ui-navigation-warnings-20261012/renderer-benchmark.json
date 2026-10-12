@@ -1,0 +1,12 @@
+{
+  "backing_scale" : 2,
+  "edges" : 51,
+  "iterations" : 12,
+  "logical_height" : 502,
+  "logical_width" : 1178,
+  "maximum_ms" : 44.740479000000001,
+  "median_ms" : 23.785464000000001,
+  "method" : "native AppKit own-view bitmap rendering; not a GPU frame-time measurement",
+  "nodes" : 52,
+  "permanent_render_timer" : false
+}

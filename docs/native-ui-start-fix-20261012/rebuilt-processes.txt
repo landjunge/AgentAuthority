@@ -1,0 +1,22 @@
+accessibility_trusted true
+screen_capture_allowed true
+app 18148 /Users/landjunge/agent-authority-macos-design-20261012/native/macos/build/navigation-warnings-review/Agent Authority.app true
+app 18255 /Users/landjunge/agent-authority-macos-design-20261012/native/macos/build/Agent Authority.app false
+["kCGWindowSharingState": 1, "kCGWindowName": Item-0, "kCGWindowLayer": 25, "kCGWindowIsOnscreen": 1, "kCGWindowBounds": {
+    Height = 24;
+    Width = 35;
+    X = 1340;
+    Y = 0;
+}, "kCGWindowOwnerName": TextInputMenuAgent, "kCGWindowMemoryUsage": 2288, "kCGWindowOwnerPID": 591, "kCGWindowStoreType": 1, "kCGWindowAlpha": 1, "kCGWindowNumber": 66]
+["kCGWindowBounds": {
+    Height = 813;
+    Width = 1530;
+    X = 35;
+    Y = 35;
+}, "kCGWindowMemoryUsage": 2288, "kCGWindowSharingState": 1, "kCGWindowOwnerPID": 18148, "kCGWindowStoreType": 1, "kCGWindowLayer": 0, "kCGWindowName": Agent Authority · Lokaler Review · startup-check-20261012, "kCGWindowAlpha": 1, "kCGWindowOwnerName": Agent Authority, "kCGWindowNumber": 14875, "kCGWindowIsOnscreen": 1]
+["kCGWindowNumber": 14880, "kCGWindowStoreType": 1, "kCGWindowAlpha": 1, "kCGWindowBounds": {
+    Height = 814;
+    Width = 1530;
+    X = 35;
+    Y = 35;
+}, "kCGWindowSharingState": 1, "kCGWindowOwnerName": Agent Authority, "kCGWindowOwnerPID": 18255, "kCGWindowIsOnscreen": 1, "kCGWindowMemoryUsage": 2288, "kCGWindowLayer": 0, "kCGWindowName": Agent Authority]

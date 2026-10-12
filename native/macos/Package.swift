@@ -8,6 +8,7 @@ let package = Package(
         .target(name: "NativeSupport", publicHeadersPath: "include", cSettings: [.unsafeFlags(["-fobjc-arc"])], linkerSettings: [.linkedFramework("Security")]),
         .target(name: "AuthorityCore", resources: [.process("Resources")]),
         .executableTarget(name: "AgentAuthorityMac", dependencies: ["AuthorityCore", "NativeSupport"]),
-        .testTarget(name: "AuthorityCoreTests", dependencies: ["AuthorityCore"])
+        .testTarget(name: "AuthorityCoreTests", dependencies: ["AuthorityCore"]),
+        .testTarget(name: "MacAppTests", dependencies: ["AgentAuthorityMac"])
     ]
 )

@@ -6,7 +6,8 @@ final class LayoutView:SurfaceView {
     override func layout(){super.layout();arrange?(bounds)}
 }
 final class AppState {
-    var document=DemoData.make()
+    var history=GraphNavigationHistory()
+    var document=DemoData.make(){didSet{history.reset();expandedGroups=[];query="";filter=0;chainAnchor=document.nodes.first?.id ?? ""}}
     var selected="agent-001"
     var chainAnchor="agent-001"
     var page="graph"
@@ -65,6 +66,8 @@ final class MainPanelController:NSViewController,NSTableViewDataSource,NSTableVi
     private var tableChainStatus:[String:ProofStatus]=[:]
     private var table=NSTableView(),scroll=NSScrollView(),search=NSSearchField(),mode=NSSegmentedControl(),filter=NSPopUpButton(),zoomLabel=NSTextField(labelWithString:"")
     private var heading: NSTextField!,scope: NSTextField!,coverage:NSTextField!,activity:NSTextField!
+    private var backButton=NSButton(),warningCases=NSPopUpButton(),pulseButton=NSButton(),criticalBanner=NSButton()
+    var didNavigate:(()->Void)?
     private var fitAfterLayout=true
     private var selectedChange=false
     var busy=false{didSet{updateContent()}}
@@ -83,8 +86,19 @@ final class MainPanelController:NSViewController,NSTableViewDataSource,NSTableVi
         search=NSSearchField();search.placeholderString=L("graph.search");search.stringValue=state.query;search.delegate=self;search.controlSize = .small
         let minus=button("button.zoomOut",target:self,action:#selector(zoomOut),symbol:"minus"),plus=button("button.zoomIn",target:self,action:#selector(zoomIn),symbol:"plus"),fit=button("button.fit",target:self,action:#selector(fitPressed))
         minus.title="";plus.title="";zoomLabel.font = .systemFont(ofSize:10);zoomLabel.textColor=Palette.muted
+        backButton=button("button.back",target:self,action:#selector(goBack),symbol:"chevron.left");backButton.isEnabled=state.history.canGoBack
+        warningCases=NSPopUpButton();warningCases.controlSize = .small
+        warningCases.addItem(withTitle:L(state.document.isDemo ? "warning.demoMenu":"warning.notAssessable"))
+        for id in UIWarningDemo.nodeIDs where state.document.nodes.contains(where:{$0.id==id}) && state.document.isDemo {
+            let a=UIWarningDemo.assessment(nodeID:id,in:state.document)
+            warningCases.addItem(withTitle:L("warning.demoPrefix")+" · "+a.outcome.text)
+            warningCases.lastItem?.representedObject=id
+        }
+        warningCases.target=self;warningCases.action=#selector(warningCaseChanged);warningCases.isEnabled=state.document.isDemo
+        pulseButton=NSButton(checkboxWithTitle:L("warning.pulse"),target:self,action:#selector(pulseChanged));pulseButton.controlSize = .small;pulseButton.state=canvas.pulseEnabled ? .on:.off;pulseButton.toolTip=L("warning.motionHint")
+        criticalBanner=button("warning.criticalMessage",target:self,action:#selector(criticalPressed),symbol:"exclamationmark.triangle.fill");criticalBanner.isBordered=false;criticalBanner.alignment = .left;criticalBanner.font = .systemFont(ofSize:10);criticalBanner.contentTintColor=Palette.warning(.critical);criticalBanner.toolTip=L("warning.criticalMessage")
         let stop=button("button.cancel",target:self,action:#selector(cancelPressed));stop.isHidden = !busy
-        for v in [open,reload,save,mode,filter,search,canvas,minus,plus,fit,zoomLabel,stop] as [NSView]{view.addSubview(v)}
+        for v in [open,reload,save,mode,filter,search,canvas,minus,plus,fit,zoomLabel,stop,backButton,warningCases,pulseButton,criticalBanner] as [NSView]{view.addSubview(v)}
         table=NSTableView();table.headerView=NSTableHeaderView();table.rowHeight=24;table.style = .inset;table.usesAlternatingRowBackgroundColors=false;table.backgroundColor=Palette.surface
         for (id,key,width) in [("kind","activity.kind",95.0),("name","activity.name",220.0),("status","activity.status",165.0),("id","field.instance",135.0),("evidence","activity.evidence",135.0)] {
             let c=NSTableColumn(identifier:NSUserInterfaceItemIdentifier(id));c.title=L(key);c.width=width;c.minWidth=65;c.resizingMask = .autoresizingMask;table.addTableColumn(c)
@@ -92,8 +106,8 @@ final class MainPanelController:NSViewController,NSTableViewDataSource,NSTableVi
         table.dataSource=self;table.delegate=self;table.columnAutoresizingStyle = .uniformColumnAutoresizingStyle;table.setAccessibilityLabel(L("activity.title"))
         scroll=NSScrollView();scroll.documentView=table;scroll.hasVerticalScroller=true;scroll.autohidesScrollers=true;scroll.scrollerStyle = .overlay;scroll.borderType = .noBorder;view.addSubview(scroll)
         canvas.onSelect={ [weak self] id in self?.select?(id) }
-        canvas.onFocus={ [weak self] id in self?.state.selected=id;self?.state.chainAnchor=id;self?.state.graphMode=0;self?.mode.selectedSegment=0;self?.updateGraph(fit:true) }
-        canvas.onExpand={ [weak self] id in self?.state.expandedGroups.insert(id.replacingOccurrences(of:"cluster:",with:""));self?.updateGraph(fit:true) }
+        canvas.onFocus={ [weak self] id in self?.focus(id) }
+        canvas.onExpand={ [weak self] id in guard let self else{return};let group=id.replacingOccurrences(of:"cluster:",with:"");guard !self.state.expandedGroups.contains(group)else{return};self.recordNavigation();self.state.expandedGroups.insert(group);self.updateGraph(fit:true);self.didNavigate?() }
         canvas.onChange={ [weak self] in self?.zoomLabel.stringValue="\(Int((self?.canvas.scale ?? 1)*100)) %" }
         (view as? LayoutView)?.arrange={ [weak self] r in guard let self else{return};let w=r.width-32
             self.heading.frame=NSRect(x:16,y:16,width:w-298,height:29);self.scope.frame=NSRect(x:16,y:48,width:w-298,height:16)
@@ -101,13 +115,18 @@ final class MainPanelController:NSViewController,NSTableViewDataSource,NSTableVi
             for (i,m) in self.metrics.enumerated(){m.frame=NSRect(x:16+CGFloat(i)*(w+10)/4,y:77,width:(w-30)/4,height:86)}
             self.coverage.frame=NSRect(x:16,y:171,width:w-180,height:17);save.frame=NSRect(x:r.width-188,y:168,width:172,height:24)
             self.mode.frame=NSRect(x:16,y:199,width:228,height:25);self.filter.frame=NSRect(x:252,y:199,width:155,height:25);self.search.frame=NSRect(x:max(414,r.width-287),y:199,width:min(271,max(140,r.width-430)),height:25)
-            let available=max(180,r.height-408)
-            if self.canvas.agentOverview{self.canvas.useColumns(max(4,min(10,Int(w/164))))}
+            self.backButton.frame=NSRect(x:16,y:230,width:87,height:24)
+            self.warningCases.frame=NSRect(x:111,y:230,width:max(210,min(340,w-285)),height:25)
+            self.pulseButton.frame=NSRect(x:self.warningCases.frame.maxX+12,y:230,width:160,height:24)
+            self.criticalBanner.frame=NSRect(x:16,y:257,width:w,height:22)
+            let graphTop:CGFloat=self.criticalBanner.isHidden ? 258:282
+            let available=max(150,r.height-graphTop-176)
+            if self.canvas.agentOverview{self.canvas.useColumns(max(4,min(10,Int(w/164))),fit:self.fitAfterLayout)}
             let fitScale=min(1.15,max(0.15,(w-40)/self.canvas.layout.width))
-            let preferred=max(225,self.canvas.layout.height*fitScale+50)
+            let preferred=max(195,self.canvas.layout.height*fitScale+50)
             let graphHeight=min(available,preferred)
-            self.canvas.frame=NSRect(x:16,y:232,width:w,height:graphHeight)
-            let footer=232+graphHeight+5
+            self.canvas.frame=NSRect(x:16,y:graphTop,width:w,height:graphHeight)
+            let footer=graphTop+graphHeight+5
             self.zoomLabel.frame=NSRect(x:r.width-174,y:footer+4,width:46,height:18);minus.frame=NSRect(x:r.width-206,y:footer,width:27,height:24);plus.frame=NSRect(x:r.width-126,y:footer,width:27,height:24);fit.frame=NSRect(x:r.width-93,y:footer,width:77,height:24)
             stop.frame=NSRect(x:16,y:footer,width:120,height:24)
             self.activity.frame=NSRect(x:16,y:footer+35,width:w,height:20)
@@ -117,6 +136,9 @@ final class MainPanelController:NSViewController,NSTableViewDataSource,NSTableVi
         updateContent();canvas.scale=oldScale;canvas.offset=oldOffset;view.needsLayout=true
     }
     func updateContent(){guard isViewLoaded else{return};let d=state.document
+        backButton.isEnabled=state.history.canGoBack
+        let critical=UIWarningDemo.assessments(for:d).values.contains{$0.outcome == .finding(.critical)}
+        criticalBanner.isHidden = !critical
         tableChainStatus=d.chainStatuses()
         heading.stringValue=L("nav."+state.page)
         scope.stringValue=d.isDemo ? L("mode.sample"):(d.reportJSON != nil ? L("mode.product"):L("mode.live"))
@@ -139,7 +161,7 @@ final class MainPanelController:NSViewController,NSTableViewDataSource,NSTableVi
         rows=d.nodes.filter{n in switch state.page{case "agents":return n.kind == .agent || n.kind == .identity;case "delegations":return d.edges.contains{$0.to==n.id&&$0.relation=="delegates"};case "evidence":return !n.evidence.isEmpty;case "findings":return [.incomplete,.unknown,.contradictory].contains(n.status);default:return [.action,.entry,.process].contains(n.kind)}}
         table.reloadData();updateGraph(fit:false)
     }
-    func updateGraph(fit:Bool){let d=state.document;var nodes=d.nodes,edges=d.edges
+    func updateGraph(fit:Bool){backButton.isEnabled=state.history.canGoBack;let d=state.document;var nodes=d.nodes,edges=d.edges
         if state.graphMode==0 {let anchor=d.nodes.contains{$0.id==state.chainAnchor} ? state.chainAnchor:state.selected;let ids=d.trace(anchor);nodes=nodes.filter{ids.contains($0.id)};edges=edges.filter{ids.contains($0.from)&&ids.contains($0.to)}}
         else if d.isDemo && state.graphMode==1 {if d.nodes.filter({$0.kind == .agent}).count>80{let result=clustered(d);nodes=result.0;edges=result.1}else{nodes=nodes.filter{[.agent,.identity,.authority].contains($0.kind)};let ids=Set(nodes.map(\.id));edges=edges.filter{ids.contains($0.from)&&ids.contains($0.to)}}}
         else if d.isDemo && state.graphMode==2 {
@@ -166,6 +188,34 @@ final class MainPanelController:NSViewController,NSTableViewDataSource,NSTableVi
         }
         return(nodes.sorted{$0.id<$1.id},edges)
     }
+    var backEnabled:Bool{backButton.isEnabled}
+    var criticalMessageVisible:Bool{!criticalBanner.isHidden}
+    var demoCaseCount:Int{warningCases.numberOfItems-1}
+    func navigationSnapshot()->GraphNavigationState {
+        GraphNavigationState(mode:state.graphMode,chainAnchor:state.chainAnchor,selection:state.selected,
+            filter:state.filter,query:state.query,expandedGroups:state.expandedGroups,
+            zoom:Double(canvas.scale),panX:Double(canvas.offset.x),panY:Double(canvas.offset.y))
+    }
+    func recordNavigation(){view.layoutSubtreeIfNeeded();traceUIEvent("record",["mode":state.graphMode,"anchor":state.chainAnchor,"zoom":Double(canvas.scale),"pan_x":Double(canvas.offset.x),"pan_y":Double(canvas.offset.y)]);state.history.record(navigationSnapshot());backButton.isEnabled=true}
+    func focus(_ id:String){
+        guard state.document.nodes.contains(where:{$0.id==id})else{return}
+        guard state.graphMode != 0 || state.chainAnchor != id else{select?(id);return}
+        recordNavigation();state.selected=id;state.chainAnchor=id;state.graphMode=0;mode.selectedSegment=0
+        updateGraph(fit:true);didNavigate?()
+    }
+    @objc func goBack(){
+        guard let previous=state.history.back()else{return}
+        fitAfterLayout=false
+        state.graphMode=previous.mode;state.chainAnchor=previous.chainAnchor;state.selected=previous.selection
+        state.filter=previous.filter;state.query=previous.query;state.expandedGroups=previous.expandedGroups
+        mode.selectedSegment=previous.mode;filter.selectItem(at:previous.filter);search.stringValue=previous.query
+        updateGraph(fit:false);view.layoutSubtreeIfNeeded()
+        canvas.scale=previous.zoom;canvas.offset=NSPoint(x:previous.panX,y:previous.panY)
+        canvas.needsDisplay=true;canvas.updateAccessibility();canvas.onChange?();didNavigate?()
+    }
+    @objc private func warningCaseChanged(){if let id=warningCases.selectedItem?.representedObject as? String{focus(id)};warningCases.selectItem(at:0)}
+    @objc private func pulseChanged(){canvas.pulseEnabled=pulseButton.state == .on;UserDefaults.standard.set(canvas.pulseEnabled,forKey:"warningPulseEnabled")}
+    @objc private func criticalPressed(){focus("agent-003")}
     func focusSearch(){view.window?.makeFirstResponder(search)}
     func selectedUpdated(){canvas.selected=state.selected;canvas.needsDisplay=true;canvas.updateAccessibility()}
     func numberOfRows(in tableView:NSTableView)->Int{rows.count}
@@ -176,8 +226,8 @@ final class MainPanelController:NSViewController,NSTableViewDataSource,NSTableVi
     @objc func fitPressed(){canvas.fitGraph()}
     @objc private func zoomIn(){canvas.zoom(1.15)}
     @objc private func zoomOut(){canvas.zoom(1/1.15)}
-    @objc private func modeChanged(){state.graphMode=mode.selectedSegment;updateGraph(fit:true)}
-    @objc private func filterChanged(){state.filter=filter.indexOfSelectedItem;updateGraph(fit:true)}
+    @objc private func modeChanged(){guard state.graphMode != mode.selectedSegment else{return};recordNavigation();state.graphMode=mode.selectedSegment;updateGraph(fit:true);didNavigate?()}
+    @objc private func filterChanged(){guard state.filter != filter.indexOfSelectedItem else{return};recordNavigation();state.filter=filter.indexOfSelectedItem;updateGraph(fit:true)}
     @objc private func openPressed(){openSource?()}
     @objc private func refreshPressed(){refresh?()}
     @objc private func exportPressed(){export?()}
@@ -197,6 +247,8 @@ final class InspectorController:NSViewController {
         guard let node=state.document.nodes.first(where:{$0.id==state.selected}) else{
             if state.selected.hasPrefix("cluster:"){add(label("kind.cluster",size:18,weight:.semibold),32);let group=state.selected.replacingOccurrences(of:"cluster:",with:"");let members=state.document.nodes.filter{$0.kind == .agent&&$0.group==group};let ids=Set(members.map(\.id));let internalCount=state.document.edges.filter{$0.relation=="delegates"&&ids.contains($0.from)&&ids.contains($0.to)}.count;let externalCount=state.document.edges.filter{$0.relation=="delegates"&&(ids.contains($0.from) != ids.contains($0.to))}.count
                 add(wrapping(L("graph.clusterCount",["count":String(members.count)])),32);add(wrapping(L("field.internalDelegations")+": \(internalCount)"),32);add(wrapping(L("field.externalRelationships")+": \(externalCount)"),32);add(wrapping(L("graph.openCluster")),30);add(wrapping(members.map(\.title).joined(separator:", ")),100);add(wrapping(L("boundary.sample")),65)
+                add(label("warning.title",size:12,weight:.medium),26)
+                for member in members where UIWarningDemo.assessments(for:state.document)[member.id] != nil {let a=UIWarningDemo.assessment(nodeID:member.id,in:state.document);let b=NSButton(title:L("warning.demoPrefix")+" · "+member.title+" · "+a.outcome.text,target:self,action:#selector(chainPressed(_:)));b.identifier=NSUserInterfaceItemIdentifier(member.id);b.isBordered=false;b.alignment = .left;b.font = .systemFont(ofSize:10);b.contentTintColor=Palette.warningOutcome(a.outcome);b.toolTip=b.title;add(b,27)}
             }else{add(wrapping(L("inspector.empty")),60)}
             scroll.documentView=doc;layoutDocument(width:view.bounds.width);return
         }
@@ -205,6 +257,7 @@ final class InspectorController:NSViewController {
         let name=NSTextField(labelWithString:node.title);name.font = .systemFont(ofSize:21,weight:.medium);name.lineBreakMode = .byTruncatingTail;name.toolTip=node.title;add(name,30)
         let verdict=node.kind == .agent ? state.document.chainStatuses()[node.id] ?? node.status:node.status
         let status=NSTextField(labelWithString:verdict.label);status.font = .systemFont(ofSize:11);status.textColor=Palette.status(verdict);add(status,23)
+        addWarning(node.id)
         let tabs=NSSegmentedControl(labels:[L("inspector.chain"),L("inspector.raw")],trackingMode:.selectOne,target:self,action:#selector(tabChanged));tabs.selectedSegment=raw ? 1:0;tabs.controlSize = .small;add(tabs,32)
         if raw {
             let text=NSTextView();text.isEditable=false;text.isSelectable=true;text.font = .monospacedSystemFont(ofSize:11,weight:.regular);text.backgroundColor=Palette.background
@@ -229,6 +282,18 @@ final class InspectorController:NSViewController {
         }
         scroll.documentView=doc;layoutDocument(width:view.bounds.width)
     }
+    private func addWarning(_ id:String){
+        let a=UIWarningDemo.assessment(nodeID:id,in:state.document)
+        add(label("warning.title",size:12,weight:.medium),26)
+        add(wrapping((a.isSynthetic ? L("warning.demoPrefix")+" · ":"")+a.outcome.text,size:11,color:Palette.warningOutcome(a.outcome)),40)
+        add(wrapping(L("warning.assessability")+": "+L(a.isAssessable ? "warning.assessed":"warning.notAssessable"),size:10),35)
+        add(wrapping(L(a.reasonKey),size:11),58)
+        let fields=[("warning.node",id),("warning.relationship",a.relationship ?? L("warning.notApplicable")),
+            ("warning.time",a.timestamp ?? L("status.unknown")),("warning.source",L(a.sourceKey)),
+            ("warning.evidence",a.evidence.isEmpty ? L("status.unknown"):a.evidence.joined(separator:", "))]
+        for (key,value) in fields {let text=wrapping(L(key)+": "+value,size:10);text.toolTip=text.stringValue;add(text,key=="warning.source" ? 37:29)}
+        add(wrapping(L("warning.scope"),size:10),46)
+    }
     private func layoutDocument(width:CGFloat){guard width>0 else{return};var y:CGFloat=16;for (v,h) in layoutItems{v.frame=NSRect(x:16,y:y,width:max(10,width-32),height:h);y+=h+3};doc.frame=NSRect(x:0,y:0,width:width,height:max(y,view.bounds.height))}
     @objc private func tabChanged(_ sender:NSSegmentedControl){raw=sender.selectedSegment==1;reload()}
     @objc private func chainPressed(_ sender:NSButton){if let id=sender.identifier?.rawValue{select?(id)}}
@@ -243,9 +308,10 @@ final class MainSplitController:NSSplitViewController {
         let m=NSSplitViewItem(viewController:main);m.minimumThickness=670
         let i=NSSplitViewItem(viewController:inspector);i.minimumThickness=292;i.maximumThickness=370;i.canCollapse=true;i.preferredThicknessFraction=0.18
         addSplitViewItem(s);addSplitViewItem(m);addSplitViewItem(i);sidebar.navigate={ [weak self] key in self?.navigate?(key) }
+        main.didNavigate={ [weak self] in self?.inspector.reload() }
         main.select={ [weak self] id in self?.select(id) };inspector.select={ [weak self] id in self?.select(id) }
     }
-    func select(_ id:String){if !state.document.trace(state.chainAnchor).contains(id){state.chainAnchor=id};state.selected=id;main.selectedUpdated();if state.graphMode==0{main.updateGraph(fit:false)};inspector.reload()}
+    func select(_ id:String){if !state.document.trace(state.chainAnchor).contains(id){if state.graphMode==0{main.recordNavigation()};state.chainAnchor=id};state.selected=id;main.selectedUpdated();if state.graphMode==0{main.updateGraph(fit:false)};inspector.reload()}
     func refresh(){sidebar.reload();main.updateContent();inspector.reload()}
     func localize(){sidebar.reload();main.build();inspector.reload()}
     func toggleInspector(){splitViewItems[2].isCollapsed.toggle()}

@@ -10,6 +10,16 @@ enum Palette {
     static let background=adaptive("121316","f5f6f8"),surface=adaptive("1a1b1f","ffffff"),raised=adaptive("24262d","eceef2")
     static let border=adaptive("2e3138","d8dce4"),accent=adaptive("b99cff","685091"),muted=adaptive("a4a9b4","5b6370")
     static let green=adaptive("7bdaa7","246943"),amber=adaptive("e4be70","805f15"),risk=adaptive("f49b9b","963737")
+    // Additional warning hues are native system colors, alongside existing ThreadDesk tokens.
+    // Proof colors and their meaning are deliberately unchanged.
+    static func warning(_ severity:WarningSeverity)->NSColor {
+        switch severity {case .information:return .systemBlue;case .attention:return amber
+        case .warning:return .systemOrange;case .critical:return risk}
+    }
+    static func warningOutcome(_ outcome:WarningOutcome)->NSColor {
+        if case .finding(let severity)=outcome{return warning(severity)}
+        return muted
+    }
     static func status(_ value:ProofStatus)->NSColor {switch value{case .verified,.observed:return green;case .incomplete:return amber;case .contradictory:return risk;case .reported,.unknown:return muted}}
 }
 func label(_ key:String,size:CGFloat=12,weight:NSFont.Weight = .regular,color:NSColor = .labelColor)->NSTextField {

@@ -113,6 +113,7 @@ def main():
     parser.add_argument("--configuration", choices=["debug", "release"], default="release")
     parser.add_argument("--output", type=Path, default=ROOT / "build")
     parser.add_argument("--sign", default="-")
+    parser.add_argument("--review-label", default="")
     parser.add_argument("--team", default="")
     parser.add_argument("--host-profile", type=Path)
     parser.add_argument("--collector-profile", type=Path)
@@ -177,6 +178,9 @@ def main():
         "NSAppleEventsUsageDescription": "Agent Authority requests permission for explicitly selected app automation tests.",
         "AAExpectedTeam": args.team if provisioned else "",
     }
+    if args.review_label:
+        info["AAReviewBuildLabel"] = args.review_label
+
     (app / "Contents/Info.plist").write_bytes(plistlib.dumps(info))
     strings = json.loads((resources / "AuthorityCore/Strings.json").read_text(encoding="utf-8"))
     for lang in ["de", "en"]:

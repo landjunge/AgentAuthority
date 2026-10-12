@@ -1,0 +1,17 @@
+import AppKit
+import ApplicationServices
+let pid=pid_t(CommandLine.arguments[1])!
+let app=AXUIElementCreateApplication(pid)
+func attr(_ e:AXUIElement,_ name:String)->Any?{var value:CFTypeRef?;return AXUIElementCopyAttributeValue(e,name as CFString,&value) == .success ? value:nil}
+func find(_ e:AXUIElement,_ needle:String,_ depth:Int=0)->AXUIElement?{guard depth<12 else{return nil};let role=attr(e,kAXRoleAttribute) as? String ?? "";let strings=[kAXTitleAttribute,kAXDescriptionAttribute,kAXValueAttribute].compactMap{attr(e,$0) as? String}
+    if [kAXButtonRole,kAXRadioButtonRole,kAXPopUpButtonRole,kAXCheckBoxRole,kAXMenuItemRole].contains(role),strings.contains(where:{$0.replacingOccurrences(of:"\u{fe0e}",with:"")==needle.replacingOccurrences(of:"\u{fe0e}",with:"")}){return e}
+    for c in attr(e,kAXChildrenAttribute) as? [AXUIElement] ?? []{if let result=find(c,needle,depth+1){return result}}
+    return nil
+}
+if let running=NSRunningApplication(processIdentifier:pid),!running.isActive{running.activate(options:[])}
+if CommandLine.arguments.count>2 {
+    let needle=CommandLine.arguments[2]
+    let action=CommandLine.arguments.count>3 ? CommandLine.arguments[3]:kAXPressAction
+    guard let found=find(app,needle)else{print("NOT FOUND",needle);exit(2)}
+    print("ACTION",needle,AXUIElementPerformAction(found,action as CFString).rawValue)
+}

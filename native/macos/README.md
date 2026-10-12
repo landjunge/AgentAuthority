@@ -131,3 +131,77 @@ Actual UI checks were run on the R9 M380 / 2 GB host, running macOS 15.7.4.
 macOS 12 compatibility is checked through API availability and Mach-O deployment
 targets; an actual Monterey run is still needed. The local package is Intel;
 an Apple Silicon distribution needs a corresponding runtime and signing build.
+
+## Graph Back and separate warning demo
+
+The visible Back button restores one previous focused view, including graph mode,
+chain anchor, selection, proof filter, search, expanded groups and the exact zoom
+and pan. Focus, mode, filter and group expansion record navigation; typing, zoom
+and pan alone do not. Restoration never records a new entry or fits the viewport.
+Replacing the source document clears history, including on refresh.
+
+Warnings are separate from `ProofStatus` and its unchanged palette. The clearly
+marked synthetic warning menu provides information, elevated attention, warning,
+critical, not assessable and an explicitly checked clear case. The Inspector
+shows reason, assessability, node/relationship, time, source and evidence references.
+Absent references remain unknown. Critical has a persistent selectable message.
+These fixtures are not part of engine reports or evidence exports. Imported
+reports and kernel observations have no warning evaluation and remain neutral
+not assessable; no production risk detection or safety assurance is implemented.
+
+Only visible warning/critical node borders animate in local Core Animation layers
+(2.8/1.8 second legs, autoreversing). They stop offscreen or when the window is
+occluded/minimized. The graph has no animation render timer or repeated layout.
+The Warning pulses checkbox persists its choice; the official NSWorkspace Reduce
+Motion setting always overrides it. Static symbols, colors, labels and the critical
+message remain. Blue/orange use native system colors; existing ThreadDesk-derived
+amber/red and all proof colors remain unchanged.
+
+In a logged-in graphical macOS session, run the actual-controller regressions:
+
+```sh
+python3.12 scripts/check_ui_regressions.py \
+  --executable "build/navigation-warnings-review/Agent Authority.app/Contents/MacOS/AgentAuthorityMac" \
+  --output /tmp/authority-ui-regression
+```
+
+The runner checks DE 1680×960 and EN 1150×730, fails for any failed assertion,
+and starts no permission prompts or experiments. New unit tests cover history,
+assessability, synthetic/real separation and motion policy. Final results and
+inspected native captures are in `docs/native-ui-navigation-warnings-20261012`.
+`--reduce-motion` only forces reduction for capture diagnostics; it cannot disable
+the system setting. The real system preference was read, not changed in this task.
+
+## Normal startup investigation
+
+The reported blank graph on normal review startup could not be reproduced in
+the subsequent controlled launches. The original failing process had already
+exited. A confirmed fix for that original symptom is therefore still open.
+Normal Launch Services starts without diagnostic arguments, sidebar interaction,
+and simultaneous operation with the older bundle were inspected through existing
+authorized Accessibility access and real WindowServer captures, separately from
+bitmap diagnostics. Results are in `docs/native-ui-start-fix-20261012`.
+
+New AppKit XCTest cases cover initial view loading and application startup without
+an explicit rebuild, sidebar navigation, distinct empty-source/filter messages,
+and passive diagnostics that must not load missing views. Existing Back and warning
+logic and proof colors are retained. Empty sources now have a distinct explanation;
+they never cause an automatic switch to synthetic data.
+
+A review build can identify itself visibly while retaining the same product:
+
+```sh
+python3.12 scripts/build_app.py --output build/navigation-warnings-review \
+  --review-label startup-check-20261012
+```
+
+To capture a future failing state, start the exact bundle with the optional
+`--normal-state-json /tmp/authority-live-state.json` argument. For 30 seconds the
+app passively records source, filters, graph mode, selection, geometry, viewport,
+draw count, history and animation state. It never rebuilds, lays out, fits,
+renders, changes preferences or terminates the app; diagnostic event traces go
+to stdout only with this argument. Without it no observer or event logging runs.
+The investigation also exercised actual menu actions, zoom, mouse pan and three
+Back steps; automation must wait for menu focus completion before sending its
+next zoom action. Static capture comparisons are not a claim of continuous manual
+visual testing of the running animation.

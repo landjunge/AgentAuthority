@@ -1,0 +1,123 @@
+Agent Authority – Untersuchung des gemeldeten leeren Starts
+12.10.2026, lokaler Branch fix/native-navigation-warnings-20261012
+Projekt: /Users/landjunge/agent-authority-macos-design-20261012
+HEAD unverändert 4f2ed976421f553237a617e1ad36a5456014fddc.
+Vorhandene uncommittete Zurück-/Warn-Änderungen und design/ bewahrt.
+
+Ergebnis und offener Blocker
+Die ursprünglich gemeldete leere Ansicht wurde nicht reproduziert.
+Ein bestätigter Fix ihrer Ursache ist deshalb NICHT nachgewiesen.
+Beim ersten Prozesscheck lief der ursprüngliche fehlerhafte Prozess nicht mehr.
+Sein damaliger Daten-/Filter-/Viewport-/Fensterzustand ist nicht verfügbar.
+Der alte gleichzeitig laufende Build wird nicht als Ursache behauptet.
+Die untersuchten frischen Starts desselben Review-Bundles zeigten einen Graphen,
+auch bei gleichzeitig laufendem alten Bundle. Das schließt einen anderen,
+noch unbekannten auslösenden Zustand nicht aus.
+MacOS-Logs enthalten Cache-/State-Restoration-Meldungen, aber keinen Beleg für
+ deren Zusammenhang mit einer leeren Graph-Ansicht. Kein spekulativer Umbau.
+
+Tatsächlicher normaler Start
+Mehrere Starts des exakten Review-Bundles: Launch Services (open -n), ohne
+Diagnoseargumente, sowie direktes Starten des unveränderten Executables ohne
+Argumente. Vor Navigation zeigte die AX-Hierarchie acht gezeichnete Knoten
+im initialen Gruppenmodus, 50 eindeutig gekennzeichnete Beispielagenten,
+leere Suche, ungefilterte Ansicht, sichtbare Canvas, endlichen Zoom/Versatz.
+Das normale laufende Fenster wurde über WindowServer aufgenommen und angesehen.
+Übersicht und Authority Graph wurden über die offizielle AX-Schnittstelle betätigt.
+Die Kombination mit dem alten Bundle wurde ebenfalls gestartet und geprüft.
+Die final geöffneten Prozesse stehen in final-running-build.txt:
+Review PID 20196, alter Build PID 18255. Es wurden nur eigene diagnostische
+Review-Instanzen für notwendige Neubauten/saubere Wiederholungen beendet.
+Andere App-Prozesse wurden nicht beendet. Der alte Build bleibt geöffnet.
+
+Kleine Änderungen dieser Untersuchung
+- Eindeutige Fensterkennung aus optionaler Build-Metadatenzeile:
+  Agent Authority · Lokaler Review · startup-check-20261012.
+  Keine zweite Produktidentität, Installation oder Produktübernahme.
+- Verschiedene menschenverständliche Leermeldungen für leere Quellen und
+  durch Suche/Filter/Kettenfokus leere Ansichten. Keine automatische Demo-Umschaltung.
+- Optionaler passiver Live-Zustand (--normal-state-json), 60 halbe Sekunden.
+  Kein build(), kein Layout/Auto-Fit, kein Eigenrendering, keine Navigation,
+  keine Änderung von Daten oder Einstellungen. Ein Test belegt, dass dadurch
+  fehlende Views nicht nachgeladen werden. Opt-in-Ereignisprotokoll für Zoom/Verlauf.
+- Vier zusätzliche AppKit-XCTest-Fälle für Initialisierung, normalen Start mit
+  Sidebar-Navigation, Leermeldungen und unverändernde Diagnose.
+Keine Engine-/Collector-/Testhost-Architekturänderung, kein Forschungsexperiment.
+
+Automatisierte Prüfungen
+swift test: 21 Tests, 0 Fehler (17 bisherige plus 4 AppKit-Startup-Fälle).
+Die ersten zwei Startup-Tests bestanden bereits VOR diesen kleinen Änderungen;
+sie werden deshalb nicht als Regression einer behobenen Originalursache ausgegeben.
+Release-Build erfolgreich. codesign --verify --deep --strict erfolgreich.
+check_sources.py: 306 vollständige DE/EN-Schlüssel, UTF-8, UI-Referenzen und
+NOTIFY-only-Kontrolle erfolgreich. Ruff und git diff --check erfolgreich.
+Bisherige interne UI-Prüfung: DE 1680×960 und EN 1150×730 jeweils 25/25.
+Zusätzliche externe Aktionen am echten laufenden Review-Fenster: 9/9.
+- normaler Aufbau/sichtbare Knoten und initialer unverfälschter Demo-Zustand;
+- echter Maus-Pan ändert den Versatz;
+- tatsächliche Menü-Fokusziele Warnung, Kritisch, explizit geprüfter Klarfall;
+- drei Zurück-Schritte mit exakter Gleichheit aller Snapshot-Felder und Stacklänge;
+- lokale Pulse an zwei sichtbaren betroffenen Knoten bei aktivierter Bewegung;
+- deaktivierte Pulse entfernen Animation, erhalten Knoten/Text und kritische Meldung.
+Normale Bedienung erfolgte über AX/CGEvent mit bereits bestehenden regulären
+Freigaben. Keine TCC-Änderung oder Berechtigungsumgehung. System Reduce Motion
+war false; die reduzierten Bewegungsfälle wurden zusätzlich in den internen
+25 Prüfungen mit der gemeinsamen Abschaltlogik erzwungen.
+
+Korrigierte Prüfprobleme
+Ein erster externer Versuch verwendete einen abgelaufenen 30-s-Zustandstrace;
+diese Aussagen wurden verworfen. Danach wurde Frische und PID geprüft.
+Zwei nachfolgende Rückvergleiche wichen wegen zu früher Automatisierung ab:
+Ein Zoom wurde gesendet, bevor die Menü-Fokusaktion abgeschlossen war.
+Das Ereignislog zeigt den Zoom noch VOR dem tatsächlichen Verlaufseintrag.
+Der Verlauf speicherte korrekt den zu diesem Zeitpunkt veränderten Zustand.
+Die Automatisierung wartet jetzt auf die tatsächliche neue Auswahl/Kettenanker
+und anschließend das normale Layout. Der wiederholte externe Versuch besteht 9/9.
+Es wurde keine spekulative Änderung an der Zurück-Zustandslogik vorgenommen.
+
+Visuelle Belege und klare Grenzen
+final-normal-running-window.png und rebuilt-normal-with-old-build.png sind echte
+WindowServer-Aufnahmen des laufenden Fensters mit Titel/Toolbar, keine eigenen
+Bitmap-Renderings. Sie wurden angesehen; Graph und Demo-Menü sind sichtbar.
+live-pulse-frame-1.png und -2.png wurden im Abstand aufgenommen und angesehen:
+Orange-/Rot-Rahmen ändern ihren Zustand lokal. live-static-signals.png zeigt
+beide Warntexte/Farben ohne animierte Rahmen. Die Nachweisfarben bleiben unverändert.
+Das ist eine Sichtprüfung statischer Bildschirmaufnahmen und eine automatisierte
+Interaktion mit dem laufenden Fenster. KEINE kontinuierliche manuelle visuelle
+Prüfung oder menschliche manuelle Mausbedienung/Beurteilung des Pulsierens.
+Ein optionaler numerischer Bildvergleich wurde nicht ausgeführt (Pillow fehlte);
+es werden keine Pixel-Differenz-Messzahlen behauptet.
+Keine aktuelle Monterey-/Apple-Silicon-Prüfung. Die Untersuchung ist nicht der
+Nachweis, dass der unbekannte ursprüngliche Startausfall dauerhaft beseitigt ist.
+
+Einstellungen und Daten
+Die gespeicherten Preferences des App-Bundle-Identifiers wurden vor und nach
+allen Kontrollen verglichen: identisch. Pulseinstellung wieder wie zuvor true.
+Keine Nutzerdaten gelöscht, keine gespeicherten Fensterarchive zurückgesetzt.
+Demo-Warnungen und synthetische Nachweise bleiben als solche bezeichnet;
+reale Daten ohne Warnprüfung bleiben neutral nicht beurteilbar.
+
+Genaues finales Bundle
+/Users/landjunge/agent-authority-macos-design-20261012/native/macos/build/navigation-warnings-review/Agent Authority.app
+Final normal über open -n geöffnet, ohne --snapshot/--ui-regression-json/
+--normal-state-json. argv und PID stehen in final-argv.txt.
+Es ersetzt nicht native/macos/build/Agent Authority.app.
+Ad-hoc-Signatur, keine notarisierten Distribution oder Veröffentlichung.
+
+Dateien dieser Untersuchung (zusätzlich zu bewahrten bisherigen Änderungen)
+native/macos/Package.swift
+native/macos/Sources/AgentAuthorityMac/{main,GraphCanvas,Controllers}.swift
+native/macos/Sources/AgentAuthorityMac/LiveUIState.swift (neu)
+native/macos/Sources/AuthorityCore/Resources/Strings.json
+native/macos/Tests/MacAppTests/StartupTests.swift (neu)
+native/macos/scripts/build_app.py
+native/macos/README.md
+Dieses Prüfverzeichnis (Logs, Zustände, Aufnahmen und Diagnose-Helfer).
+Kein Commit, Push, Merge oder Veröffentlichung.
+
+Nachträglicher Auftrag zur Versionskontrolle
+Der Nutzer hat anschließend mit „push“ Commit und Push dieses Arbeitsstands
+autorisiert. Die vorherigen Angaben zu nicht erfolgten Commits/Pushes beschreiben
+den Stand zum Abschluss der jeweiligen Untersuchung. Kein Merge, kein App-Release.
+Für den Commit wurden Zeilenenden der Diagnoseartefakte normalisiert und
+unbeteiligte System-Menüs aus AX-Dumps entfernt; die Fensterhierarchie bleibt erhalten.

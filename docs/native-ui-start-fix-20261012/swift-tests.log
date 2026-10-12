@@ -1,0 +1,78 @@
+[0/1] Planning build
+Building for debugging...
+[0/5] Write sources
+[1/5] Write swift-version--58304C5D6DBC2206.txt
+[3/9] Compiling AgentAuthorityMac LiveUIState.swift
+[4/10] Compiling AgentAuthorityMac UIRegression.swift
+[5/11] Compiling AgentAuthorityMac main.swift
+[6/11] Compiling AgentAuthorityMac GraphCanvas.swift
+[7/11] Emitting module AgentAuthorityMac
+[8/11] Compiling AgentAuthorityMac Controllers.swift
+[8/13] Write Objects.LinkFileList
+[9/13] Linking AgentAuthorityMac
+[10/13] Applying AgentAuthorityMac
+[12/15] Compiling MacAppTests StartupTests.swift
+[13/15] Emitting module MacAppTests
+[13/15] Write Objects.LinkFileList
+[14/15] Linking AgentAuthorityNativePackageTests
+Build complete! (20.52s)
+Test Suite 'All tests' started at 2026-10-12 22:44:44.040.
+Test Suite 'AgentAuthorityNativePackageTests.xctest' started at 2026-10-12 22:44:44.042.
+Test Suite 'CoreTests' started at 2026-10-12 22:44:44.042.
+Test Case '-[AuthorityCoreTests.CoreTests testCompactAgentOverviewPreservesAllNodesAndEdges]' started.
+Test Case '-[AuthorityCoreTests.CoreTests testCompactAgentOverviewPreservesAllNodesAndEdges]' passed (0.003 seconds).
+Test Case '-[AuthorityCoreTests.CoreTests testDemoRemainsExplicitAndScales]' started.
+Test Case '-[AuthorityCoreTests.CoreTests testDemoRemainsExplicitAndScales]' passed (0.026 seconds).
+Test Case '-[AuthorityCoreTests.CoreTests testKernelEventsNeverAuthenticateLogicalAgent]' started.
+Test Case '-[AuthorityCoreTests.CoreTests testKernelEventsNeverAuthenticateLogicalAgent]' passed (0.002 seconds).
+Test Case '-[AuthorityCoreTests.CoreTests testLanguagePriorityAndSystemAdaptation]' started.
+Test Case '-[AuthorityCoreTests.CoreTests testLanguagePriorityAndSystemAdaptation]' passed (0.000 seconds).
+Test Case '-[AuthorityCoreTests.CoreTests testLanguagesCompleteAndPlaceholdersMatch]' started.
+Test Case '-[AuthorityCoreTests.CoreTests testLanguagesCompleteAndPlaceholdersMatch]' passed (0.012 seconds).
+Test Case '-[AuthorityCoreTests.CoreTests testLayoutStableAndFiniteWithCycle]' started.
+Test Case '-[AuthorityCoreTests.CoreTests testLayoutStableAndFiniteWithCycle]' passed (0.103 seconds).
+Test Case '-[AuthorityCoreTests.CoreTests testProductMeldungenNeverBecomeIdentityOrEffects]' started.
+Test Case '-[AuthorityCoreTests.CoreTests testProductMeldungenNeverBecomeIdentityOrEffects]' passed (0.001 seconds).
+Test Case '-[AuthorityCoreTests.CoreTests testRejectsBrokenReferencesAndDuplicateIDs]' started.
+Test Case '-[AuthorityCoreTests.CoreTests testRejectsBrokenReferencesAndDuplicateIDs]' passed (0.002 seconds).
+Test Case '-[AuthorityCoreTests.CoreTests testStructuralWarningsHaveInspectableReferences]' started.
+Test Case '-[AuthorityCoreTests.CoreTests testStructuralWarningsHaveInspectableReferences]' passed (0.002 seconds).
+Test Case '-[AuthorityCoreTests.CoreTests testTraceIncludesProofAndDoesNotIncludeUnrelatedBranches]' started.
+Test Case '-[AuthorityCoreTests.CoreTests testTraceIncludesProofAndDoesNotIncludeUnrelatedBranches]' passed (0.001 seconds).
+Test Case '-[AuthorityCoreTests.CoreTests testUnknownSchemasAndOversizedInputRejected]' started.
+Test Case '-[AuthorityCoreTests.CoreTests testUnknownSchemasAndOversizedInputRejected]' passed (0.005 seconds).
+Test Case '-[AuthorityCoreTests.CoreTests testVerifiedLocalIdentityDoesNotRepairMissingParentAuthority]' started.
+Test Case '-[AuthorityCoreTests.CoreTests testVerifiedLocalIdentityDoesNotRepairMissingParentAuthority]' passed (0.004 seconds).
+Test Suite 'CoreTests' passed at 2026-10-12 22:44:44.205.
+	 Executed 12 tests, with 0 failures (0 unexpected) in 0.162 (0.163) seconds
+Test Suite 'NavigationWarningTests' started at 2026-10-12 22:44:44.205.
+Test Case '-[AuthorityCoreTests.NavigationWarningTests testClearRequiresExplicitCheckAndCurrentRequiredDataForEverySeverity]' started.
+Test Case '-[AuthorityCoreTests.NavigationWarningTests testClearRequiresExplicitCheckAndCurrentRequiredDataForEverySeverity]' passed (0.001 seconds).
+Test Case '-[AuthorityCoreTests.NavigationWarningTests testMultipleBackStepsRestoreEveryFieldWithoutRecordingRestores]' started.
+Test Case '-[AuthorityCoreTests.NavigationWarningTests testMultipleBackStepsRestoreEveryFieldWithoutRecordingRestores]' passed (0.000 seconds).
+Test Case '-[AuthorityCoreTests.NavigationWarningTests testPulsePolicyPreservesAllLabelsAndRespectsVisibilityAndReducedMotion]' started.
+Test Case '-[AuthorityCoreTests.NavigationWarningTests testPulsePolicyPreservesAllLabelsAndRespectsVisibilityAndReducedMotion]' passed (0.000 seconds).
+Test Case '-[AuthorityCoreTests.NavigationWarningTests testSixSyntheticCasesRemainSeparateFromRealDataAndProof]' started.
+Test Case '-[AuthorityCoreTests.NavigationWarningTests testSixSyntheticCasesRemainSeparateFromRealDataAndProof]' passed (0.015 seconds).
+Test Case '-[AuthorityCoreTests.NavigationWarningTests testViewportChangesDoNotImplicitlyRecordAndSourceResetInvalidatesHistory]' started.
+Test Case '-[AuthorityCoreTests.NavigationWarningTests testViewportChangesDoNotImplicitlyRecordAndSourceResetInvalidatesHistory]' passed (0.000 seconds).
+Test Suite 'NavigationWarningTests' passed at 2026-10-12 22:44:44.223.
+	 Executed 5 tests, with 0 failures (0 unexpected) in 0.017 (0.018) seconds
+Test Suite 'StartupTests' started at 2026-10-12 22:44:44.223.
+Test Case '-[MacAppTests.StartupTests testEmptySourceAndFilteredDemoRemainDistinguishable]' started.
+Test Case '-[MacAppTests.StartupTests testEmptySourceAndFilteredDemoRemainDistinguishable]' passed (0.134 seconds).
+Test Case '-[MacAppTests.StartupTests testInitialViewLoadsGraphWithoutExplicitRebuild]' started.
+Test Case '-[MacAppTests.StartupTests testInitialViewLoadsGraphWithoutExplicitRebuild]' passed (0.062 seconds).
+Test Case '-[MacAppTests.StartupTests testNormalAppLaunchAndSidebarNavigationWithoutDiagnosticRebuild]' started.
+Test Case '-[MacAppTests.StartupTests testNormalAppLaunchAndSidebarNavigationWithoutDiagnosticRebuild]' passed (0.330 seconds).
+Test Case '-[MacAppTests.StartupTests testPassiveDiagnosticsDoNotLoadOrBuildMissingViews]' started.
+Test Case '-[MacAppTests.StartupTests testPassiveDiagnosticsDoNotLoadOrBuildMissingViews]' passed (0.005 seconds).
+Test Suite 'StartupTests' passed at 2026-10-12 22:44:44.754.
+	 Executed 4 tests, with 0 failures (0 unexpected) in 0.531 (0.531) seconds
+Test Suite 'AgentAuthorityNativePackageTests.xctest' passed at 2026-10-12 22:44:44.754.
+	 Executed 21 tests, with 0 failures (0 unexpected) in 0.710 (0.712) seconds
+Test Suite 'All tests' passed at 2026-10-12 22:44:44.754.
+	 Executed 21 tests, with 0 failures (0 unexpected) in 0.710 (0.714) seconds
+◇ Test run started.
+↳ Testing Library Version: 94 (x86_64-apple-macos13.0)
+✔ Test run with 0 tests passed after 0.001 seconds.

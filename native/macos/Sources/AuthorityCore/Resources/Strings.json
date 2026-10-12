@@ -1086,5 +1086,141 @@
   "field.externalRelationships": {
     "de": "Äußere Verbindungen",
     "en": "External relationships"
+  },
+  "button.back": {
+    "de": "Zurück",
+    "en": "Back"
+  },
+  "warning.title": {
+    "de": "Warnanzeige · getrennt vom Nachweis",
+    "en": "Warnings · separate from proof"
+  },
+  "warning.information": {
+    "de": "Hinweis",
+    "en": "Information"
+  },
+  "warning.attention": {
+    "de": "Erhöhte Aufmerksamkeit",
+    "en": "Elevated attention"
+  },
+  "warning.warning": {
+    "de": "Warnung",
+    "en": "Warning"
+  },
+  "warning.critical": {
+    "de": "Kritisch",
+    "en": "Critical"
+  },
+  "warning.notAssessable": {
+    "de": "Nicht beurteilbar",
+    "en": "Not assessable"
+  },
+  "warning.checkedClear": {
+    "de": "Keine Warnung erkannt",
+    "en": "No warning detected"
+  },
+  "warning.pulse": {
+    "de": "Warnpulsieren",
+    "en": "Warning pulses"
+  },
+  "warning.motionHint": {
+    "de": "Pulsieren abschalten. Die macOS-Einstellung für reduzierte Bewegung hat immer Vorrang.",
+    "en": "Disable pulses. The macOS Reduce Motion setting always takes precedence."
+  },
+  "warning.demoMenu": {
+    "de": "Synthetische Warn-Demo · 6 Fälle",
+    "en": "Synthetic warning demo · 6 cases"
+  },
+  "warning.demoPrefix": {
+    "de": "UI-Demo",
+    "en": "UI demo"
+  },
+  "warning.criticalMessage": {
+    "de": "‼ UI-Demo: Kritisch bei AA-003 · synthetischer Fall · keine Risikoerkennung (Details öffnen)",
+    "en": "‼ UI demo: Critical at AA-003 · synthetic case · no risk detection (open details)"
+  },
+  "warning.scope": {
+    "de": "Nur diese Prüfung und ihr Datenumfang. Keine allgemeine Sicherheitszusage; Nachweisfarben bleiben unabhängig.",
+    "en": "Only this check and its data scope. No general safety assurance; proof colors remain independent."
+  },
+  "warning.noCheck": {
+    "de": "Keine Warnprüfung durchgeführt",
+    "en": "No warning check performed"
+  },
+  "warning.uncheckedReason": {
+    "de": "Erforderliche Daten wurden nicht für eine Warnprüfung ausgewertet. Eine Schwere ist unbekannt.",
+    "en": "Required data has not been evaluated for a warning check. Severity is unknown."
+  },
+  "warning.node": {
+    "de": "Betroffener Knoten",
+    "en": "Affected node"
+  },
+  "warning.relationship": {
+    "de": "Beziehung",
+    "en": "Relationship"
+  },
+  "warning.notApplicable": {
+    "de": "Keine Beziehung angegeben",
+    "en": "No relationship specified"
+  },
+  "warning.time": {
+    "de": "Zeitpunkt",
+    "en": "Time"
+  },
+  "warning.source": {
+    "de": "Quelle",
+    "en": "Source"
+  },
+  "warning.evidence": {
+    "de": "Belegverweise",
+    "en": "Evidence references"
+  },
+  "warning.syntheticSource": {
+    "de": "Synthetische UI-Fixture · kein reales Ereignis",
+    "en": "Synthetic UI fixture · no real event"
+  },
+  "warning.demoReason.0": {
+    "de": "Synthetischer Hinweis zur Darstellung. Keine gemessene Auffälligkeit.",
+    "en": "Synthetic information case for presentation. No measured anomaly."
+  },
+  "warning.demoReason.1": {
+    "de": "Synthetischer Aufmerksamkeitsfall. Keine produktive Risikoprüfung.",
+    "en": "Synthetic attention case. No production risk check."
+  },
+  "warning.demoReason.2": {
+    "de": "Synthetische Warnung für eine Beispielbeziehung. Der Belegverweis ist ebenfalls synthetisch.",
+    "en": "Synthetic warning for a sample relationship. Its evidence reference is also synthetic."
+  },
+  "warning.demoReason.3": {
+    "de": "Synthetischer kritischer Fall mit dauerhafter Meldung. Fehlende Belege bleiben unbekannt.",
+    "en": "Synthetic critical case with a persistent message. Missing evidence remains unknown."
+  },
+  "warning.demoReason.4": {
+    "de": "Synthetischer Fall: erforderliche Daten fehlen. Keine Beurteilung möglich.",
+    "en": "Synthetic case: required data is missing. Assessment is unavailable."
+  },
+  "warning.demoReason.5": {
+    "de": "Synthetische Prüfung explizit ausgeführt, ausreichende aktuelle Beispieldaten, keine Warnung in genau diesem Prüfumfang.",
+    "en": "Synthetic check explicitly performed with sufficient current sample data; no warning in this specific check scope."
+  },
+  "warning.assessability": {
+    "de": "Beurteilbarkeit",
+    "en": "Assessability"
+  },
+  "warning.assessed": {
+    "de": "Ausgewertet · aktuelle Daten im Prüfumfang",
+    "en": "Evaluated · current data within check scope"
+  },
+  "build.review": {
+    "de": "Lokaler Review · {label}",
+    "en": "Local review · {label}"
+  },
+  "graph.sourceEmpty": {
+    "de": "Diese Quelle enthält keine darstellbaren Beobachtungen. Quelle öffnen oder unter Ansicht ausdrücklich Beispieldaten wählen.",
+    "en": "This source contains no displayable observations. Open a source or explicitly choose sample data in View."
+  },
+  "graph.filteredEmpty": {
+    "de": "Keine Knoten für diese Suche, diesen Filter oder Kettenfokus. Suche und Filter prüfen oder eine andere Kette wählen.",
+    "en": "No nodes for this search, filter or chain focus. Check search and filters or choose another chain."
   }
 }

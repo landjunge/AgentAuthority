@@ -1,0 +1,1233 @@
+ AXApplication Agent Authority
+  AXWindow Agent Authority – Beobachtung & Nachweis
+   AXSplitGroup
+    AXStaticText   Agent Authority
+    AXStaticText   Beobachtung & Nachweis
+    AXButton Übersicht Übersicht
+    AXButton Authority Graph Authority Graph
+PRESS 0
+
+
+
+
+
+
+
+
+
+    AXSplitter   176
+    AXStaticText   Authority Graph
+    AXStaticText   BEISPIELDATEN · KEINE LIVE-MESSUNG
+    AXStaticText   Beobachtung und Analyse · keine Rechtevergabe
+    AXStaticText   Handlungen & Meldungen im Fokus
+    AXStaticText   Aktive Agenten
+    AXStaticText   50
+    AXStaticText   Registrierte Testidentitäten
+    AXStaticText   Delegationen
+    AXStaticText   49
+    AXStaticText   Beispielwert
+    AXStaticText   Nachweisketten
+    AXStaticText   40
+    AXStaticText   40 belegt · 9 offen
+    AXStaticText   Systemhandlungen
+    AXStaticText   49
+    AXStaticText   Beispielwert
+    AXButton Quelle öffnen … Quelle öffnen …
+    AXButton Aktualisieren Aktualisieren
+    AXButton Nachweise exportieren … Nachweise exportieren …
+    AXRadioGroup   <AXUIElement 0x600001d1c7e0> {pid=17099}
+     AXRadioButton  Kette 0
+     AXRadioButton  Agenten 0
+     AXRadioButton  Gruppen 1
+    AXPopUpButton   Alle Zustände
+    AXTextField
+     AXButton  Suchen
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    AXButton  Verkleinern
+    AXButton  Vergrößern
+    AXButton Einpassen
+    AXStaticText   27 %
+    AXButton Zurück Zurück
+    AXPopUpButton   Synthetische Warn-Demo · 6 Fälle
+    AXCheckBox Warnpulsieren  1
+    AXButton ‼ UI-Demo: Kritisch bei AA-003 · synthetischer Fall · keine Risikoerkennung (Details öffnen) ‼ UI-Demo: Kritisch bei AA-003 · synthetischer Fall · keine Risikoerkennung (Details öffnen)
+    AXScrollArea
+     AXTable  Handlungen & Meldungen im Fokus
+      AXRow
+       AXCell
+        AXStaticText   Prozessinstanz
+       AXCell
+        AXStaticText   python3.12
+       AXCell
+        AXStaticText   Beobachtet
+       AXCell
+        AXStaticText   process-1
+       AXCell
+        AXStaticText   E-1-P
+      AXRow
+       AXCell
+        AXStaticText   Systemhandlung
+       AXCell
+        AXStaticText   Datei schreiben
+       AXCell
+        AXStaticText   Beobachtet
+       AXCell
+        AXStaticText   action-1
+       AXCell
+        AXStaticText   E-1-W
+      AXRow
+       AXCell
+        AXStaticText   Prozessinstanz
+       AXCell
+        AXStaticText   python3.12
+       AXCell
+        AXStaticText   Beobachtet
+       AXCell
+        AXStaticText   process-2
+       AXCell
+        AXStaticText   E-2-P
+      AXRow
+       AXCell
+        AXStaticText   Systemhandlung
+       AXCell
+        AXStaticText   Datei schreiben
+       AXCell
+        AXStaticText   Beobachtet
+       AXCell
+        AXStaticText   action-2
+       AXCell
+        AXStaticText   E-2-W
+      AXRow
+       AXCell
+        AXStaticText   Prozessinstanz
+       AXCell
+        AXStaticText   python3.12
+       AXCell
+        AXStaticText   Beobachtet
+       AXCell
+        AXStaticText   process-3
+       AXCell
+        AXStaticText   E-3-P
+      AXRow
+       AXCell
+        AXStaticText   Systemhandlung
+       AXCell
+        AXStaticText   Datei schreiben
+       AXCell
+        AXStaticText   Beobachtet
+       AXCell
+        AXStaticText   action-3
+       AXCell
+        AXStaticText   E-3-W
+      AXRow
+       AXCell
+        AXStaticText   Prozessinstanz
+       AXCell
+        AXStaticText   python3.12
+       AXCell
+        AXStaticText   Beobachtet
+       AXCell
+        AXStaticText   process-4
+       AXCell
+        AXStaticText   E-4-P
+      AXRow
+       AXCell
+        AXStaticText   Systemhandlung
+       AXCell
+        AXStaticText   Datei schreiben
+       AXCell
+        AXStaticText   Beobachtet
+       AXCell
+        AXStaticText   action-4
+       AXCell
+        AXStaticText   E-4-W
+      AXRow
+       AXCell
+        AXStaticText   Prozessinstanz
+       AXCell
+        AXStaticText   python3.12
+       AXCell
+        AXStaticText   Beobachtet
+       AXCell
+        AXStaticText   process-5
+       AXCell
+        AXStaticText   E-5-P
+      AXRow
+       AXCell
+        AXStaticText   Systemhandlung
+       AXCell
+        AXStaticText   Datei schreiben
+       AXCell
+        AXStaticText   Beobachtet
+       AXCell
+        AXStaticText   action-5
+       AXCell
+        AXStaticText   E-5-W
+      AXRow
+       AXCell
+        AXStaticText   Prozessinstanz
+       AXCell
+        AXStaticText   python3.12
+       AXCell
+        AXStaticText   Beobachtet
+       AXCell
+        AXStaticText   process-6
+       AXCell
+        AXStaticText   E-6-P
+      AXRow
+       AXCell
+        AXStaticText   Systemhandlung
+       AXCell
+        AXStaticText   Datei schreiben
+       AXCell
+        AXStaticText   Beobachtet
+       AXCell
+        AXStaticText   action-6
+       AXCell
+        AXStaticText   E-6-W
+      AXRow
+       AXCell
+        AXStaticText   Prozessinstanz
+       AXCell
+        AXStaticText   python3.12
+       AXCell
+        AXStaticText   Beobachtet
+       AXCell
+        AXStaticText   process-7
+       AXCell
+        AXStaticText   E-7-P
+      AXRow
+       AXCell
+        AXStaticText   Systemhandlung
+       AXCell
+        AXStaticText   Datei schreiben
+       AXCell
+        AXStaticText   Beobachtet
+       AXCell
+        AXStaticText   action-7
+       AXCell
+        AXStaticText   E-7-W
+      AXRow
+       AXCell
+        AXStaticText   Prozessinstanz
+       AXCell
+        AXStaticText   python3.12
+       AXCell
+        AXStaticText   Beobachtet
+       AXCell
+        AXStaticText   process-8
+       AXCell
+        AXStaticText   E-8-P
+      AXRow
+       AXCell
+        AXStaticText   Systemhandlung
+       AXCell
+        AXStaticText   Datei schreiben
+       AXCell
+        AXStaticText   Beobachtet
+       AXCell
+        AXStaticText   action-8
+       AXCell
+        AXStaticText   E-8-W
+      AXRow
+       AXCell
+        AXStaticText   Prozessinstanz
+       AXCell
+        AXStaticText   python3.12
+       AXCell
+        AXStaticText   Beobachtet
+       AXCell
+        AXStaticText   process-9
+       AXCell
+        AXStaticText   E-9-P
+      AXRow
+       AXCell
+        AXStaticText   Systemhandlung
+       AXCell
+        AXStaticText   Datei schreiben
+       AXCell
+        AXStaticText   Beobachtet
+       AXCell
+        AXStaticText   action-9
+       AXCell
+        AXStaticText   E-9-W
+      AXRow
+       AXCell
+        AXStaticText   Prozessinstanz
+       AXCell
+        AXStaticText   python3.12
+       AXCell
+        AXStaticText   Beobachtet
+       AXCell
+        AXStaticText   process-10
+       AXCell
+        AXStaticText   E-10-P
+      AXRow
+       AXCell
+        AXStaticText   Systemhandlung
+       AXCell
+        AXStaticText   Datei schreiben
+       AXCell
+        AXStaticText   Beobachtet
+       AXCell
+        AXStaticText   action-10
+       AXCell
+        AXStaticText   E-10-W
+      AXRow
+       AXCell
+        AXStaticText   Prozessinstanz
+       AXCell
+        AXStaticText   python3.12
+       AXCell
+        AXStaticText   Beobachtet
+       AXCell
+        AXStaticText   process-11
+       AXCell
+        AXStaticText   E-11-P
+      AXRow
+       AXCell
+        AXStaticText   Systemhandlung
+       AXCell
+        AXStaticText   Datei schreiben
+       AXCell
+        AXStaticText   Beobachtet
+       AXCell
+        AXStaticText   action-11
+       AXCell
+        AXStaticText   E-11-W
+      AXRow
+       AXCell
+        AXStaticText   Prozessinstanz
+       AXCell
+        AXStaticText   python3.12
+       AXCell
+        AXStaticText   Beobachtet
+       AXCell
+        AXStaticText   process-12
+       AXCell
+        AXStaticText   E-12-P
+      AXRow
+       AXCell
+        AXStaticText   Systemhandlung
+       AXCell
+        AXStaticText   Datei schreiben
+       AXCell
+        AXStaticText   Beobachtet
+       AXCell
+        AXStaticText   action-12
+       AXCell
+        AXStaticText   E-12-W
+      AXRow
+       AXCell
+        AXStaticText   Prozessinstanz
+       AXCell
+        AXStaticText   python3.12
+       AXCell
+        AXStaticText   Unbekannt
+       AXCell
+        AXStaticText   process-13
+       AXCell
+        AXStaticText   E-13-P
+      AXRow
+       AXCell
+        AXStaticText   Systemhandlung
+       AXCell
+        AXStaticText   Datei schreiben
+       AXCell
+        AXStaticText   Gemeldet
+       AXCell
+        AXStaticText   action-13
+       AXCell
+        AXStaticText   E-13-W
+      AXRow
+       AXCell
+        AXStaticText   Prozessinstanz
+       AXCell
+        AXStaticText   python3.12
+       AXCell
+        AXStaticText   Beobachtet
+       AXCell
+        AXStaticText   process-14
+       AXCell
+        AXStaticText   E-14-P
+      AXRow
+       AXCell
+        AXStaticText   Systemhandlung
+       AXCell
+        AXStaticText   Datei schreiben
+       AXCell
+        AXStaticText   Beobachtet
+       AXCell
+        AXStaticText   action-14
+       AXCell
+        AXStaticText   E-14-W
+      AXRow
+       AXCell
+        AXStaticText   Prozessinstanz
+       AXCell
+        AXStaticText   python3.12
+       AXCell
+        AXStaticText   Beobachtet
+       AXCell
+        AXStaticText   process-15
+       AXCell
+        AXStaticText   E-15-P
+      AXRow
+       AXCell
+        AXStaticText   Systemhandlung
+       AXCell
+        AXStaticText   Datei schreiben
+       AXCell
+        AXStaticText   Beobachtet
+       AXCell
+        AXStaticText   action-15
+       AXCell
+        AXStaticText   E-15-W
+      AXRow
+       AXCell
+        AXStaticText   Prozessinstanz
+       AXCell
+        AXStaticText   python3.12
+       AXCell
+        AXStaticText   Beobachtet
+       AXCell
+        AXStaticText   process-16
+       AXCell
+        AXStaticText   E-16-P
+      AXRow
+       AXCell
+        AXStaticText   Systemhandlung
+       AXCell
+        AXStaticText   Datei schreiben
+       AXCell
+        AXStaticText   Beobachtet
+       AXCell
+        AXStaticText   action-16
+       AXCell
+        AXStaticText   E-16-W
+      AXRow
+       AXCell
+        AXStaticText   Prozessinstanz
+       AXCell
+        AXStaticText   python3.12
+       AXCell
+        AXStaticText   Unbekannt
+       AXCell
+        AXStaticText   process-17
+       AXCell
+        AXStaticText   E-17-P
+      AXRow
+       AXCell
+        AXStaticText   Systemhandlung
+       AXCell
+        AXStaticText   Datei schreiben
+       AXCell
+        AXStaticText   Gemeldet
+       AXCell
+        AXStaticText   action-17
+       AXCell
+        AXStaticText   E-17-W
+      AXRow
+       AXCell
+        AXStaticText   Prozessinstanz
+       AXCell
+        AXStaticText   python3.12
+       AXCell
+        AXStaticText   Beobachtet
+       AXCell
+        AXStaticText   process-18
+       AXCell
+        AXStaticText   E-18-P
+      AXRow
+       AXCell
+        AXStaticText   Systemhandlung
+       AXCell
+        AXStaticText   Datei schreiben
+       AXCell
+        AXStaticText   Beobachtet
+       AXCell
+        AXStaticText   action-18
+       AXCell
+        AXStaticText   E-18-W
+      AXRow
+       AXCell
+        AXStaticText   Prozessinstanz
+       AXCell
+        AXStaticText   python3.12
+       AXCell
+        AXStaticText   Beobachtet
+       AXCell
+        AXStaticText   process-19
+       AXCell
+        AXStaticText   E-19-P
+      AXRow
+       AXCell
+        AXStaticText   Systemhandlung
+       AXCell
+        AXStaticText   Datei schreiben
+       AXCell
+        AXStaticText   Beobachtet
+       AXCell
+        AXStaticText   action-19
+       AXCell
+        AXStaticText   E-19-W
+      AXRow
+       AXCell
+        AXStaticText   Prozessinstanz
+       AXCell
+        AXStaticText   python3.12
+       AXCell
+        AXStaticText   Beobachtet
+       AXCell
+        AXStaticText   process-20
+       AXCell
+        AXStaticText   E-20-P
+      AXRow
+       AXCell
+        AXStaticText   Systemhandlung
+       AXCell
+        AXStaticText   Datei schreiben
+       AXCell
+        AXStaticText   Beobachtet
+       AXCell
+        AXStaticText   action-20
+       AXCell
+        AXStaticText   E-20-W
+      AXRow
+       AXCell
+        AXStaticText   Prozessinstanz
+       AXCell
+        AXStaticText   python3.12
+       AXCell
+        AXStaticText   Beobachtet
+       AXCell
+        AXStaticText   process-21
+       AXCell
+        AXStaticText   E-21-P
+      AXRow
+       AXCell
+        AXStaticText   Systemhandlung
+       AXCell
+        AXStaticText   Datei schreiben
+       AXCell
+        AXStaticText   Beobachtet
+       AXCell
+        AXStaticText   action-21
+       AXCell
+        AXStaticText   E-21-W
+      AXRow
+       AXCell
+        AXStaticText   Prozessinstanz
+       AXCell
+        AXStaticText   python3.12
+       AXCell
+        AXStaticText   Beobachtet
+       AXCell
+        AXStaticText   process-22
+       AXCell
+        AXStaticText   E-22-P
+      AXRow
+       AXCell
+        AXStaticText   Systemhandlung
+       AXCell
+        AXStaticText   Datei schreiben
+       AXCell
+        AXStaticText   Beobachtet
+       AXCell
+        AXStaticText   action-22
+       AXCell
+        AXStaticText   E-22-W
+      AXRow
+       AXCell
+        AXStaticText   Prozessinstanz
+       AXCell
+        AXStaticText   python3.12
+       AXCell
+        AXStaticText   Beobachtet
+       AXCell
+        AXStaticText   process-23
+       AXCell
+        AXStaticText   E-23-P
+      AXRow
+       AXCell
+        AXStaticText   Systemhandlung
+       AXCell
+        AXStaticText   Datei schreiben
+       AXCell
+        AXStaticText   Beobachtet
+       AXCell
+        AXStaticText   action-23
+       AXCell
+        AXStaticText   E-23-W
+      AXRow
+       AXCell
+        AXStaticText   Prozessinstanz
+       AXCell
+        AXStaticText   python3.12
+       AXCell
+        AXStaticText   Beobachtet
+       AXCell
+        AXStaticText   process-24
+       AXCell
+        AXStaticText   E-24-P
+      AXRow
+       AXCell
+        AXStaticText   Systemhandlung
+       AXCell
+        AXStaticText   Datei schreiben
+       AXCell
+        AXStaticText   Beobachtet
+       AXCell
+        AXStaticText   action-24
+       AXCell
+        AXStaticText   E-24-W
+      AXRow
+       AXCell
+        AXStaticText   Prozessinstanz
+       AXCell
+        AXStaticText   python3.12
+       AXCell
+        AXStaticText   Beobachtet
+       AXCell
+        AXStaticText   process-25
+       AXCell
+        AXStaticText   E-25-P
+      AXRow
+       AXCell
+        AXStaticText   Systemhandlung
+       AXCell
+        AXStaticText   Datei schreiben
+       AXCell
+        AXStaticText   Beobachtet
+       AXCell
+        AXStaticText   action-25
+       AXCell
+        AXStaticText   E-25-W
+      AXRow
+       AXCell
+        AXStaticText   Prozessinstanz
+       AXCell
+        AXStaticText   python3.12
+       AXCell
+        AXStaticText   Unbekannt
+       AXCell
+        AXStaticText   process-26
+       AXCell
+        AXStaticText   E-26-P
+      AXRow
+       AXCell
+        AXStaticText   Systemhandlung
+       AXCell
+        AXStaticText   Datei schreiben
+       AXCell
+        AXStaticText   Gemeldet
+       AXCell
+        AXStaticText   action-26
+       AXCell
+        AXStaticText   E-26-W
+      AXRow
+       AXCell
+        AXStaticText   Prozessinstanz
+       AXCell
+        AXStaticText   python3.12
+       AXCell
+        AXStaticText   Beobachtet
+       AXCell
+        AXStaticText   process-27
+       AXCell
+        AXStaticText   E-27-P
+      AXRow
+       AXCell
+        AXStaticText   Systemhandlung
+       AXCell
+        AXStaticText   Datei schreiben
+       AXCell
+        AXStaticText   Beobachtet
+       AXCell
+        AXStaticText   action-27
+       AXCell
+        AXStaticText   E-27-W
+      AXRow
+       AXCell
+        AXStaticText   Prozessinstanz
+       AXCell
+        AXStaticText   python3.12
+       AXCell
+        AXStaticText   Beobachtet
+       AXCell
+        AXStaticText   process-28
+       AXCell
+        AXStaticText   E-28-P
+      AXRow
+       AXCell
+        AXStaticText   Systemhandlung
+       AXCell
+        AXStaticText   Datei schreiben
+       AXCell
+        AXStaticText   Beobachtet
+       AXCell
+        AXStaticText   action-28
+       AXCell
+        AXStaticText   E-28-W
+      AXRow
+       AXCell
+        AXStaticText   Prozessinstanz
+       AXCell
+        AXStaticText   python3.12
+       AXCell
+        AXStaticText   Beobachtet
+       AXCell
+        AXStaticText   process-29
+       AXCell
+        AXStaticText   E-29-P
+      AXRow
+       AXCell
+        AXStaticText   Systemhandlung
+       AXCell
+        AXStaticText   Datei schreiben
+       AXCell
+        AXStaticText   Beobachtet
+       AXCell
+        AXStaticText   action-29
+       AXCell
+        AXStaticText   E-29-W
+      AXRow
+       AXCell
+        AXStaticText   Prozessinstanz
+       AXCell
+        AXStaticText   python3.12
+       AXCell
+        AXStaticText   Beobachtet
+       AXCell
+        AXStaticText   process-30
+       AXCell
+        AXStaticText   E-30-P
+      AXRow
+       AXCell
+        AXStaticText   Systemhandlung
+       AXCell
+        AXStaticText   Datei schreiben
+       AXCell
+        AXStaticText   Beobachtet
+       AXCell
+        AXStaticText   action-30
+       AXCell
+        AXStaticText   E-30-W
+      AXRow
+       AXCell
+        AXStaticText   Prozessinstanz
+       AXCell
+        AXStaticText   python3.12
+       AXCell
+        AXStaticText   Beobachtet
+       AXCell
+        AXStaticText   process-31
+       AXCell
+        AXStaticText   E-31-P
+      AXRow
+       AXCell
+        AXStaticText   Systemhandlung
+       AXCell
+        AXStaticText   Datei schreiben
+       AXCell
+        AXStaticText   Beobachtet
+       AXCell
+        AXStaticText   action-31
+       AXCell
+        AXStaticText   E-31-W
+      AXRow
+       AXCell
+        AXStaticText   Prozessinstanz
+       AXCell
+        AXStaticText   python3.12
+       AXCell
+        AXStaticText   Beobachtet
+       AXCell
+        AXStaticText   process-32
+       AXCell
+        AXStaticText   E-32-P
+      AXRow
+       AXCell
+        AXStaticText   Systemhandlung
+       AXCell
+        AXStaticText   Datei schreiben
+       AXCell
+        AXStaticText   Beobachtet
+       AXCell
+        AXStaticText   action-32
+       AXCell
+        AXStaticText   E-32-W
+      AXRow
+       AXCell
+        AXStaticText   Prozessinstanz
+       AXCell
+        AXStaticText   python3.12
+       AXCell
+        AXStaticText   Beobachtet
+       AXCell
+        AXStaticText   process-33
+       AXCell
+        AXStaticText   E-33-P
+      AXRow
+       AXCell
+        AXStaticText   Systemhandlung
+       AXCell
+        AXStaticText   Datei schreiben
+       AXCell
+        AXStaticText   Beobachtet
+       AXCell
+        AXStaticText   action-33
+       AXCell
+        AXStaticText   E-33-W
+      AXRow
+       AXCell
+        AXStaticText   Prozessinstanz
+       AXCell
+        AXStaticText   python3.12
+       AXCell
+        AXStaticText   Unbekannt
+       AXCell
+        AXStaticText   process-34
+       AXCell
+        AXStaticText   E-34-P
+      AXRow
+       AXCell
+        AXStaticText   Systemhandlung
+       AXCell
+        AXStaticText   Datei schreiben
+       AXCell
+        AXStaticText   Gemeldet
+       AXCell
+        AXStaticText   action-34
+       AXCell
+        AXStaticText   E-34-W
+      AXRow
+       AXCell
+        AXStaticText   Prozessinstanz
+       AXCell
+        AXStaticText   python3.12
+       AXCell
+        AXStaticText   Beobachtet
+       AXCell
+        AXStaticText   process-35
+       AXCell
+        AXStaticText   E-35-P
+      AXRow
+       AXCell
+        AXStaticText   Systemhandlung
+       AXCell
+        AXStaticText   Datei schreiben
+       AXCell
+        AXStaticText   Beobachtet
+       AXCell
+        AXStaticText   action-35
+       AXCell
+        AXStaticText   E-35-W
+      AXRow
+       AXCell
+        AXStaticText   Prozessinstanz
+       AXCell
+        AXStaticText   python3.12
+       AXCell
+        AXStaticText   Beobachtet
+       AXCell
+        AXStaticText   process-36
+       AXCell
+        AXStaticText   E-36-P
+      AXRow
+       AXCell
+        AXStaticText   Systemhandlung
+       AXCell
+        AXStaticText   Datei schreiben
+       AXCell
+        AXStaticText   Beobachtet
+       AXCell
+        AXStaticText   action-36
+       AXCell
+        AXStaticText   E-36-W
+      AXRow
+       AXCell
+        AXStaticText   Prozessinstanz
+       AXCell
+        AXStaticText   python3.12
+       AXCell
+        AXStaticText   Beobachtet
+       AXCell
+        AXStaticText   process-37
+       AXCell
+        AXStaticText   E-37-P
+      AXRow
+       AXCell
+        AXStaticText   Systemhandlung
+       AXCell
+        AXStaticText   Datei schreiben
+       AXCell
+        AXStaticText   Beobachtet
+       AXCell
+        AXStaticText   action-37
+       AXCell
+        AXStaticText   E-37-W
+      AXRow
+       AXCell
+        AXStaticText   Prozessinstanz
+       AXCell
+        AXStaticText   python3.12
+       AXCell
+        AXStaticText   Beobachtet
+       AXCell
+        AXStaticText   process-38
+       AXCell
+        AXStaticText   E-38-P
+      AXRow
+       AXCell
+        AXStaticText   Systemhandlung
+       AXCell
+        AXStaticText   Datei schreiben
+       AXCell
+        AXStaticText   Beobachtet
+       AXCell
+        AXStaticText   action-38
+       AXCell
+        AXStaticText   E-38-W
+      AXRow
+       AXCell
+        AXStaticText   Prozessinstanz
+       AXCell
+        AXStaticText   python3.12
+       AXCell
+        AXStaticText   Unbekannt
+       AXCell
+        AXStaticText   process-39
+       AXCell
+        AXStaticText   E-39-P
+      AXRow
+       AXCell
+        AXStaticText   Systemhandlung
+       AXCell
+        AXStaticText   Datei schreiben
+       AXCell
+        AXStaticText   Gemeldet
+       AXCell
+        AXStaticText   action-39
+       AXCell
+        AXStaticText   E-39-W
+      AXRow
+       AXCell
+        AXStaticText   Prozessinstanz
+       AXCell
+        AXStaticText   python3.12
+       AXCell
+        AXStaticText   Beobachtet
+       AXCell
+        AXStaticText   process-40
+       AXCell
+        AXStaticText   E-40-P
+      AXRow
+       AXCell
+        AXStaticText   Systemhandlung
+       AXCell
+        AXStaticText   Datei schreiben
+       AXCell
+        AXStaticText   Beobachtet
+       AXCell
+        AXStaticText   action-40
+       AXCell
+        AXStaticText   E-40-W
+      AXRow
+       AXCell
+        AXStaticText   Prozessinstanz
+       AXCell
+        AXStaticText   python3.12
+       AXCell
+        AXStaticText   Beobachtet
+       AXCell
+        AXStaticText   process-41
+       AXCell
+        AXStaticText   E-41-P
+      AXRow
+       AXCell
+        AXStaticText   Systemhandlung
+       AXCell
+        AXStaticText   Datei schreiben
+       AXCell
+        AXStaticText   Beobachtet
+       AXCell
+        AXStaticText   action-41
+       AXCell
+        AXStaticText   E-41-W
+      AXRow
+       AXCell
+        AXStaticText   Prozessinstanz
+       AXCell
+        AXStaticText   python3.12
+       AXCell
+        AXStaticText   Beobachtet
+       AXCell
+        AXStaticText   process-42
+       AXCell
+        AXStaticText   E-42-P
+      AXRow
+       AXCell
+        AXStaticText   Systemhandlung
+       AXCell
+        AXStaticText   Datei schreiben
+       AXCell
+        AXStaticText   Beobachtet
+       AXCell
+        AXStaticText   action-42
+       AXCell
+        AXStaticText   E-42-W
+      AXRow
+       AXCell
+        AXStaticText   Prozessinstanz
+       AXCell
+        AXStaticText   python3.12
+       AXCell
+        AXStaticText   Beobachtet
+       AXCell
+        AXStaticText   process-43
+       AXCell
+        AXStaticText   E-43-P
+      AXRow
+       AXCell
+        AXStaticText   Systemhandlung
+       AXCell
+        AXStaticText   Datei schreiben
+       AXCell
+        AXStaticText   Beobachtet
+       AXCell
+        AXStaticText   action-43
+       AXCell
+        AXStaticText   E-43-W
+      AXRow
+       AXCell
+        AXStaticText   Prozessinstanz
+       AXCell
+        AXStaticText   python3.12
+       AXCell
+        AXStaticText   Beobachtet
+       AXCell
+        AXStaticText   process-44
+       AXCell
+        AXStaticText   E-44-P
+      AXRow
+       AXCell
+        AXStaticText   Systemhandlung
+       AXCell
+        AXStaticText   Datei schreiben
+       AXCell
+        AXStaticText   Beobachtet
+       AXCell
+        AXStaticText   action-44
+       AXCell
+        AXStaticText   E-44-W
+      AXRow
+       AXCell
+        AXStaticText   Prozessinstanz
+       AXCell
+        AXStaticText   python3.12
+       AXCell
+        AXStaticText   Beobachtet
+       AXCell
+        AXStaticText   process-45
+       AXCell
+        AXStaticText   E-45-P
+      AXRow
+       AXCell
+        AXStaticText   Systemhandlung
+       AXCell
+        AXStaticText   Datei schreiben
+       AXCell
+        AXStaticText   Beobachtet
+       AXCell
+        AXStaticText   action-45
+       AXCell
+        AXStaticText   E-45-W
+      AXRow
+       AXCell
+        AXStaticText   Prozessinstanz
+       AXCell
+        AXStaticText   python3.12
+       AXCell
+        AXStaticText   Beobachtet
+       AXCell
+        AXStaticText   process-46
+       AXCell
+        AXStaticText   E-46-P
+      AXRow
+       AXCell
+        AXStaticText   Systemhandlung
+       AXCell
+        AXStaticText   Datei schreiben
+       AXCell
+        AXStaticText   Beobachtet
+       AXCell
+        AXStaticText   action-46
+       AXCell
+        AXStaticText   E-46-W
+      AXRow
+       AXCell
+        AXStaticText   Prozessinstanz
+       AXCell
+        AXStaticText   python3.12
+       AXCell
+        AXStaticText   Beobachtet
+       AXCell
+        AXStaticText   process-47
+       AXCell
+        AXStaticText   E-47-P
+      AXRow
+       AXCell
+        AXStaticText   Systemhandlung
+       AXCell
+        AXStaticText   Datei schreiben
+       AXCell
+        AXStaticText   Beobachtet
+       AXCell
+        AXStaticText   action-47
+       AXCell
+        AXStaticText   E-47-W
+      AXRow
+       AXCell
+        AXStaticText   Prozessinstanz
+       AXCell
+        AXStaticText   python3.12
+       AXCell
+        AXStaticText   Beobachtet
+       AXCell
+        AXStaticText   process-48
+       AXCell
+        AXStaticText   E-48-P
+      AXRow
+       AXCell
+        AXStaticText   Systemhandlung
+       AXCell
+        AXStaticText   Datei schreiben
+       AXCell
+        AXStaticText   Beobachtet
+       AXCell
+        AXStaticText   action-48
+       AXCell
+        AXStaticText   E-48-W
+      AXRow
+       AXCell
+        AXStaticText   Prozessinstanz
+       AXCell
+        AXStaticText   python3.12
+       AXCell
+        AXStaticText   Beobachtet
+       AXCell
+        AXStaticText   process-49
+       AXCell
+        AXStaticText   E-49-P
+      AXRow
+       AXCell
+        AXStaticText   Systemhandlung
+       AXCell
+        AXStaticText   Datei schreiben
+       AXCell
+        AXStaticText   Beobachtet
+       AXCell
+        AXStaticText   action-49
+       AXCell
+        AXStaticText   E-49-W
+      AXColumn
+      AXColumn
+      AXColumn
+      AXColumn
+      AXColumn
+      AXGroup
+       AXButton Typ
+       AXButton Handlung / Meldung
+       AXButton Nachweisstatus
+       AXButton Prozessinstanz
+       AXButton Evidence
+     AXScrollBar   0
+      AXValueIndicator   0
+      AXButton
+      AXButton
+      AXButton
+      AXButton
+    AXSplitter   1060
+    AXScrollArea
+     AXStaticText   INSPECTOR
+     AXStaticText   AUTHORITY
+     AXStaticText   Testauftrag J-024
+     AXStaticText   Belegt im Testscope
+     AXStaticText   Warnanzeige · getrennt vom Nachweis
+     AXStaticText   ? Nicht beurteilbar
+     AXStaticText   Beurteilbarkeit: Nicht beurteilbar
+     AXStaticText   Erforderliche Daten wurden nicht für eine Warnprüfung ausgewertet. Eine Schwere ist unbekannt.
+     AXStaticText   Betroffener Knoten: authority-root
+     AXStaticText   Beziehung: Keine Beziehung angegeben
+     AXStaticText   Zeitpunkt: Unbekannt
+     AXStaticText   Quelle: Keine Warnprüfung durchgeführt
+     AXStaticText   Belegverweise: Unbekannt
+     AXStaticText   Nur diese Prüfung und ihr Datenumfang. Keine allgemeine Sicherheitszusage; Nachweisfarben bleiben unabhängig.
+     AXRadioGroup   <AXUIElement 0x600001d1c870> {pid=17099}
+      AXRadioButton  Nachweiskette 1
+      AXRadioButton  Rohdaten 0
+     AXStaticText   Synthetische Testidentitäten und Nachweise. Die ausgewählte Kette erklärt Herkunft, Delegation und Prozess-Handlung-Bezug.
+     AXStaticText   AUSWAHL
+     AXStaticText   Aussteller: Test-Controller
+     AXStaticText   Scope: Dateischreibzugriff · Testziel
+     AXStaticText   HERKUNFT DER ZUORDNUNG
+     AXButton Testauftrag J-024  ·  Authority
+     AXStaticText   Integrität & Abdeckung
+     AXStaticText   Signaturen / Auftragsscope: Synthetisches Beispiel
+     AXStaticText   Prozessinstanz / Objektbindung: Synthetisches Beispiel
+     AXStaticText   Verlustkontrolle: Synthetisches Beispiel
+     AXStaticText   Grenze des Nachweises
+     AXStaticText   Beispieldaten. Keine verifizierte Provider- oder Modellsitzung, keine echte Messung.
+     AXScrollBar   0
+      AXValueIndicator   0
+      AXButton
+      AXButton
+      AXButton
+      AXButton
+   AXToolbar
+    AXButton  Seitenleiste
+    AXButton  macOS-Testhost
+    AXButton  Einstellungen
+    AXButton  Inspector
+   AXButton
+   AXButton
+    AXGroup
+     AXGroup
+   AXButton
+   AXStaticText   Agent Authority
+   AXStaticText   Beobachtung & Nachweis
+[Unrelated system menu bar omitted; window hierarchy above retained.]
