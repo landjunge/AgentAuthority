@@ -1,0 +1,17 @@
+{
+  "certificate": "/opt/a4c-69963f13141d92137877ae64536175a8/certificate.json",
+  "pinned_ca_public_key": "bTZZclkIR7q7owzyTb6KaFCp2rfA4e69hSLe8Ugf2co=",
+  "prepared_source_commit": "a56553a9ebf86bbda34de4641677f38b468c3820",
+  "run_id": "69963f13141d92137877ae64536175a8",
+  "scope": "/opt/a4c-69963f13141d92137877ae64536175a8",
+  "source_sha256": {
+    "research/a2_linux/protocol.py": "63ee8c01a210a918852cfd0ddc036e68a732e73988822b362dce3244496e3def",
+    "research/a2_linux/starter.py": "22229e170da5478455878f468803d0926aabcd5c8f33e8254c3c7dfced5eecf5",
+    "research/a4_completion/agent.py": "3cb8814ad4186f443c278c21711f728680dea35dbe5475dc3d606e76e5b3fa37",
+    "research/a4_completion/guest.py": "48e7a209f37b5bdfceab37d23c74c74325530de8ce088a232d2836c3162790ea",
+    "research/a4_completion/lifecycle.py": "33a12d7f70ac7cc34530c2b11d8607bfc5db6ef7f749db25fa55e219eaae70d3",
+    "research/a4_completion/observer.py": "a9b374891f7b0cfd26b40a6faefbdfb43cb60cffcec0375a9d840ff987d4ffde",
+    "research/a4_completion/probes.py": "153fa71c3896eebbeed85e4257d2e218d475471e3c1b9b91fbe61683b18ab977"
+  },
+  "vault": "/var/tmp/a4c-private-69963f13141d92137877ae64536175a8"
+}
