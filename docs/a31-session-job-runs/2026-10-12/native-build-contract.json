@@ -1,0 +1,32 @@
+{
+  "compiler": "Apple clang version 16.0.0 (clang-1600.0.26.3)\nTarget: x86_64-apple-darwin24.6.0\nThread model: posix\nInstalledDir: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin\n",
+  "command": [
+    "xcrun",
+    "clang",
+    "-Wall",
+    "-Wextra",
+    "-Werror",
+    "research/a31_binding/process_probe.c",
+    "-framework",
+    "Security",
+    "-framework",
+    "CoreFoundation",
+    "-o",
+    "/tmp/aa-a31-process-probe"
+  ],
+  "headers": [
+    {
+      "path": "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/sys/proc_info.h",
+      "sha256": "9548e28972bd1653a6adb673d17beb975ae26a79e673a697434945bcb79d4059"
+    },
+    {
+      "path": "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/libproc.h",
+      "sha256": "246d87709fc6b9157ce5cf3c475656ac48e0e1ae8bbdc46cf45acd34294448cd"
+    },
+    {
+      "path": "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks/Security.framework/Headers/SecCode.h",
+      "sha256": "cb81c3ac38dd3285432c14fdefd170aa63f7c2e1be99bd0686a71ce406d53ed0"
+    }
+  ],
+  "host_native_code_no_extra_privileges": true
+}

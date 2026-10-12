@@ -1,0 +1,44 @@
+{
+  "suites": [
+    {
+      "run": 1,
+      "source_commit": "4cbb1655134f5b62647562b6746c9683c68eea5c",
+      "counts": {
+        "tests": "648",
+        "failures": "0",
+        "errors": "0",
+        "skipped": "0",
+        "time": "51.361",
+        "timestamp": "2026-10-12T03:47:50.229229+02:00"
+      },
+      "junit_sha256": "8192c666e3f373b8a998990b6690fb021cb1660fcb4efd4ac5179d7433befadf",
+      "log_sha256": "b4474eebdf215a949394ae9acfb07d35bcdac94a1bad53ad00e3ad2415584933",
+      "historical_fork_warning_preserved": true
+    },
+    {
+      "run": 2,
+      "source_commit": "4cbb1655134f5b62647562b6746c9683c68eea5c",
+      "counts": {
+        "tests": "648",
+        "failures": "0",
+        "errors": "0",
+        "skipped": "0",
+        "time": "47.619",
+        "timestamp": "2026-10-12T03:51:44.513670+02:00"
+      },
+      "junit_sha256": "9c3055e9774440517fe0b03e7dec97dd302d670013a0ab57c9d0d72959e7f923",
+      "log_sha256": "585ee7adf7b8b3510a7e77d605a5f33dfcf7835f33989ceaf6a19c1d3ac579a1",
+      "historical_fork_warning_preserved": true
+    }
+  ],
+  "new_regressions": 16,
+  "new_sources_Ruff": "PASS",
+  "repo_format": "PASS 235 files",
+  "broad_Ruff": "16 identical historical findings, zero new",
+  "mypy": "PASS existing32 core files",
+  "bandit": "PASS existing core",
+  "native_compile": "PASS -Wall -Wextra -Werror; real runtime signature probes qualified",
+  "independent_joins": 2,
+  "remote_CI": "no runs observed; not claimed green",
+  "invalid_time_field_preserved_and_disregarded": true
+}
