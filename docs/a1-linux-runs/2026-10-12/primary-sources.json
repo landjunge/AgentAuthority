@@ -1,0 +1,42 @@
+{
+  "sources": [
+    {
+      "url": "https://raw.githubusercontent.com/iovisor/bcc/v0.29.1/src/cc/libbpf.c",
+      "sha256": "907b5619572cb40ace62eba8cef6680507b8e10090454280ab24b871fe1b32f3",
+      "bytes": 56965,
+      "status": "BELEGT",
+      "scope": "contract/source, not exact Ubuntu142 downstream kernel source"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/torvalds/linux/e8f897f4afef0031fe618a8e94127a0934896aba/fs/read_write.c",
+      "sha256": "2a676698ec5172588a543765a3312df562ab56872da9cfb92ea4ea7f13bb55fd",
+      "bytes": 41535,
+      "status": "BELEGT",
+      "scope": "contract/source, not exact Ubuntu142 downstream kernel source"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/torvalds/linux/e8f897f4afef0031fe618a8e94127a0934896aba/include/linux/sched.h",
+      "sha256": "be70b3be89004663fc7a2a242d8ad38bdc9fc31a4870a42a9a8c159b214b5409",
+      "bytes": 62909,
+      "status": "BELEGT",
+      "scope": "contract/source, not exact Ubuntu142 downstream kernel source"
+    },
+    {
+      "url": "https://lima-vm.io/docs/config/plain/",
+      "sha256": "546287fde48dd2e2ed4c78e30569fbeaaaf2cc5c02032a21be4eaa8a89f48b5d",
+      "bytes": 70587,
+      "status": "BELEGT",
+      "scope": "contract/source, not exact Ubuntu142 downstream kernel source"
+    },
+    {
+      "url": "https://lima-vm.io/docs/config/vmtype/vz/",
+      "sha256": "38d98db5d99ea388899e99b5df4b07d6fdd5295c6eaa8422388b8fc327e94b6e",
+      "bytes": 68647,
+      "status": "BELEGT",
+      "scope": "contract/source, not exact Ubuntu142 downstream kernel source"
+    }
+  ],
+  "installed_kernel_headers_package": "linux-headers-6.8.0-142-generic 6.8.0-142.142",
+  "bcc_package": "0.29.1+ds-1ubuntu7",
+  "native_measurement_source": "7ca496e3ba5b5078bde701f2a16b37b9eb12f8e9"
+}

@@ -1,0 +1,38 @@
+{
+  "suites": [
+    {
+      "position": 1,
+      "exit_code": 0,
+      "seconds": 92.80022428801749,
+      "fixed_head": "28cc05b0fd86f2be4c07a8a9e9576a5d2a7322f3",
+      "head_unchanged": true,
+      "tests": 708,
+      "failures": 0,
+      "errors": 0
+    },
+    {
+      "position": 2,
+      "exit_code": 0,
+      "seconds": 90.24095850996673,
+      "fixed_head": "28cc05b0fd86f2be4c07a8a9e9576a5d2a7322f3",
+      "head_unchanged": true,
+      "tests": 708,
+      "failures": 0,
+      "errors": 0
+    }
+  ],
+  "new_regressions": 25,
+  "new_ruff_exit": 0,
+  "new_format_exit": 0,
+  "full_format_exit": 0,
+  "formatted_files": 260,
+  "full_ruff_exit": 1,
+  "historic_ruff_findings": 16,
+  "new_ruff_findings": 0,
+  "ruff_identical_to_base": true,
+  "mypy_core_exit": 0,
+  "mypy_core_source_files": 32,
+  "bandit_core_exit": 0,
+  "bandit_core_issues": 0,
+  "diff_check_exit": 0
+}

@@ -1,0 +1,53 @@
+{
+  "host_diagnostics": [
+    {
+      "command": [
+        "codex",
+        "--version"
+      ],
+      "exit": 0,
+      "stdout": "codex-cli 0.162.1",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "grok",
+        "--version"
+      ],
+      "exit": 0,
+      "stdout": "grok 1.0.50 (c58f321264ba)",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "codex",
+        "login",
+        "status"
+      ],
+      "exit": 0,
+      "stdout": "",
+      "stderr": "Logged in using ChatGPT"
+    }
+  ],
+  "credential_env_presence": {
+    "OPENAI_API_KEY": false,
+    "CODEX_API_KEY": false,
+    "CODEX_ACCESS_TOKEN": false,
+    "XAI_API_KEY": false,
+    "GROK_API_KEY": false
+  },
+  "native_guest_precheck": {
+    "time": "before all A3 Linux writer cases",
+    "kernel": "6.8.0-142-generic",
+    "codex_binary_available": false,
+    "grok_binary_available": false,
+    "codex_auth_cache_exists": false,
+    "grok_auth_cache_exists": false,
+    "cryptography": "41.0.7",
+    "bcc_import_succeeded": true,
+    "recording_source": "initial harmless limactl diagnostics in this task; no native writer client fabricated"
+  },
+  "available_route": "authenticated existing host CLI access; signed synthetic-job execution adapter in isolated Linux VM",
+  "host_credential_copy": false,
+  "new_login_or_scope_elevation": false
+}

@@ -1,0 +1,147 @@
+{
+  "baseline": "f87157a044b308901083067d2f606b39bd52f875",
+  "project_sources": [
+    {
+      "path": "docs/PLAN-ABC-FORSCHUNGSPLAN-20261011.md",
+      "commit": "f87157a044b308901083067d2f606b39bd52f875",
+      "sha256": "d3e4bece4fbe011d66bf60465bd44ffaea296dbf9cab672db75e2c59a73197ae",
+      "bytes": 64756,
+      "read_scope": "full file or relevant schema/sections; no historical result reclassification"
+    },
+    {
+      "path": "docs/PLAN-A1-SPEC-20261011.md",
+      "commit": "f87157a044b308901083067d2f606b39bd52f875",
+      "sha256": "bdb86ee37034272eb62ef1aabd014dc56c9a94b411e4af7aba0a76efa4590537",
+      "bytes": 1815,
+      "read_scope": "full file or relevant schema/sections; no historical result reclassification"
+    },
+    {
+      "path": "docs/PLAN-A1-NATIVE-SPEC-20261011.md",
+      "commit": "f87157a044b308901083067d2f606b39bd52f875",
+      "sha256": "0d562d972d55b7af010f7795c32d3b5ec0147016de3c0b301c77fb1493629c19",
+      "bytes": 5311,
+      "read_scope": "full file or relevant schema/sections; no historical result reclassification"
+    },
+    {
+      "path": "docs/PLAN-A1-PREFLIGHT-RESULT-20261011.json",
+      "commit": "f87157a044b308901083067d2f606b39bd52f875",
+      "sha256": "a75a25b3656711b4f7ea4ee7e54ca62a8e0130da1f0b1baf8fae933765e77aa8",
+      "bytes": 2248,
+      "read_scope": "full file or relevant schema/sections; no historical result reclassification"
+    },
+    {
+      "path": "docs/PLAN-A1-NATIVE-RESULT-20261011.md",
+      "commit": "f87157a044b308901083067d2f606b39bd52f875",
+      "sha256": "6f1995ecff9efd5820279a7de3e53f8bdc6e9d7ae4efbdf8bbad8eb1654f1b35",
+      "bytes": 11608,
+      "read_scope": "full file or relevant schema/sections; no historical result reclassification"
+    },
+    {
+      "path": "docs/PLAN-A1-NATIVE-RESULT-20261011.json",
+      "commit": "f87157a044b308901083067d2f606b39bd52f875",
+      "sha256": "e35781b44e82bd0094a4239d38cdb0e5b7331f7b073ece14e26a85b276bbeca4",
+      "bytes": 6529,
+      "read_scope": "full file or relevant schema/sections; no historical result reclassification"
+    },
+    {
+      "path": "docs/PLAN-ABC-AUSFUEHRUNG-20261011.md",
+      "commit": "f87157a044b308901083067d2f606b39bd52f875",
+      "sha256": "d99388722fdd97cf6678e7eee9f991a1c4dbf262f0d13ef1b1b8fb7dffed887f",
+      "bytes": 6921,
+      "read_scope": "full file or relevant schema/sections; no historical result reclassification"
+    },
+    {
+      "path": "docs/PLAN-A2-STATUS-20261011.md",
+      "commit": "f87157a044b308901083067d2f606b39bd52f875",
+      "sha256": "521834677f11833ce7db87026535170d694c813142ee11eb96a8c36547941f78",
+      "bytes": 506,
+      "read_scope": "full file or relevant schema/sections; no historical result reclassification"
+    },
+    {
+      "path": "docs/PLAN-C1-RESULT-20261011.json",
+      "commit": "f87157a044b308901083067d2f606b39bd52f875",
+      "sha256": "4c52307afdff4afb7e6d58a95221775308c29971e8e7176dd534b909c17950d4",
+      "bytes": 22768,
+      "read_scope": "full file or relevant schema/sections; no historical result reclassification"
+    },
+    {
+      "path": "docs/LOKALE-PROZESSBELEGE-20261011.md",
+      "commit": "f87157a044b308901083067d2f606b39bd52f875",
+      "sha256": "95b95c93453a0169a6d4b81efa00aa64c8e2b8029eabb46bcc59e6224c2881eb",
+      "bytes": 2997,
+      "read_scope": "full file or relevant schema/sections; no historical result reclassification"
+    },
+    {
+      "path": "docs/NATIVE-HERKUNFTSMODUL-20261011.md",
+      "commit": "f87157a044b308901083067d2f606b39bd52f875",
+      "sha256": "0daea0c8d5e1d3cbc3ff52d26bb5cd2b1a5a2728329a65ffdfc7decdafe837d0",
+      "bytes": 7869,
+      "read_scope": "full file or relevant schema/sections; no historical result reclassification"
+    },
+    {
+      "path": "docs/RESEARCH-METHOD.md",
+      "commit": "f87157a044b308901083067d2f606b39bd52f875",
+      "sha256": "049960f6bf28841f1f6a576ca74216c1870c100a6fb0fb38b6ea07f71627e473",
+      "bytes": 12074,
+      "read_scope": "full file or relevant schema/sections; no historical result reclassification"
+    }
+  ],
+  "whiteboard_sources": [
+    {
+      "thread": "833554dffb6e",
+      "id": "1d183de16715",
+      "ordinal": 1917,
+      "content_sha256": "3cd80b9e08ecb9983187d44c6f9f242da0e15c25b4f5e63e9dbbd03b1387b635",
+      "read_scope": "A1/identity/method/history and remote context; storage is not causal OS evidence"
+    },
+    {
+      "thread": "833554dffb6e",
+      "id": "b6a0c9abba0d",
+      "ordinal": 1922,
+      "content_sha256": "99d85bba734c5991cdaf4fac1e3e2dd5dacb5524018e4433f27efd339b3f215c",
+      "read_scope": "A1/identity/method/history and remote context; storage is not causal OS evidence"
+    },
+    {
+      "thread": "833554dffb6e",
+      "id": "402ae248f103",
+      "ordinal": 1923,
+      "content_sha256": "e7a8b061cc62ebb0084aa5ba2cea1023dd3b9bb9c0ba2dd76c72b791bedc00d4",
+      "read_scope": "A1/identity/method/history and remote context; storage is not causal OS evidence"
+    },
+    {
+      "thread": "833554dffb6e",
+      "id": "84e97f95570f",
+      "ordinal": 1924,
+      "content_sha256": "0ae65928032823234d3add545cfc819fb6da056d6b83a0a5204eb519b4c6ea8c",
+      "read_scope": "A1/identity/method/history and remote context; storage is not causal OS evidence"
+    },
+    {
+      "thread": "833554dffb6e",
+      "id": "712bc016440a",
+      "ordinal": 1927,
+      "content_sha256": "79928fc4e373a3c8549f524e5e2d79f834a2234378221f87295125e6407bf0d9",
+      "read_scope": "A1/identity/method/history and remote context; storage is not causal OS evidence"
+    },
+    {
+      "thread": "833554dffb6e",
+      "id": "41cf71344b26",
+      "ordinal": 1928,
+      "content_sha256": "1a63ae8f28610c58b77c74390d91ea9660f5974f38590b8898102b00f670e930",
+      "read_scope": "A1/identity/method/history and remote context; storage is not causal OS evidence"
+    },
+    {
+      "thread": "833554dffb6e",
+      "id": "87a38ebea8c0",
+      "ordinal": 1929,
+      "content_sha256": "c35a692bb078377950825bc8f5738d3c7febfa868154662f8176c89928a6a8e0",
+      "read_scope": "A1/identity/method/history and remote context; storage is not causal OS evidence"
+    },
+    {
+      "thread": "833554dffb6e",
+      "id": "b6e713754c66",
+      "ordinal": 1930,
+      "content_sha256": "7b4de476bcee27bec1ef9ea794763c7b35b7db9422b069aa539054d0201ece40",
+      "read_scope": "A1/identity/method/history and remote context; storage is not causal OS evidence"
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "source_commit": "7ca496e3ba5b5078bde701f2a16b37b9eb12f8e9",
+  "started_utc": "2026-10-11T22:58:00.648954+00:00",
+  "source_pins": {
+    "pre_writer_source_sha256": {
+      "research/a1_linux/channels.py": "3356ab663f7484c0916ee765fb17798be329c7126c677363e661fc5131bf8eb3",
+      "research/a1_linux/driver.py": "ad99461fecc0b7a3423e0c71b986dc0ceb428d3a60dd00dff312aeec23631e44",
+      "research/a1_linux/observer.py": "20cdb32237bd02ba9705dae02b467ee60ca968f742fc1ba7f308d59770b2bcbe",
+      "research/a1_linux/oracle.py": "a42453d0662c510d6dbe690884d0fae0d7768aec1b847901de92de2b791843bf",
+      "research/a1_linux/reuse_oracle.py": "7b7cfb251f8a00ac39e982853f430f3b4026ce8d15b90754a84476f7888ba251",
+      "research/a1_linux/score.py": "f68a80125d942a2acca4bdba126584c9d65b908c9f3b537ae88d25355fe7c7db",
+      "research/a1_linux/writer.py": "aa77798e2a4401d3435bfcd70c1f4c9c82a35530f1486af50ca3ea4f8d688d88"
+    },
+    "kernel": "6.8.0-142-generic",
+    "boot_hash": "ea23c1eead5c439d96e565f0df8e5f1a6a8d6f543205b4a35842d9bdc070e805",
+    "writer_cases_started": false
+  },
+  "cases": 6,
+  "retry": false,
+  "pid_reuse_separate_control": true,
+  "oracle_host_only": true
+}

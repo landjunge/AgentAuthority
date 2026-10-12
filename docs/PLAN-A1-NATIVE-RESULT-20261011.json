@@ -1,0 +1,119 @@
+{
+  "answer": "UNBEKANNT: no accessible qualifying channel under measured unprivileged macOS conditions. Not a universal macOS impossibility result.",
+  "archive_metrics_sha256": "ba44a3e8de472ffd7bb5b804eb053fb561edbe623013638721698d4e8e905f47",
+  "artifact_index_sha256": "89be45521d018a3b2f2359c34b290fcce83fe01118eafe0e20d90964f61a5a53",
+  "baseline": "2ac7e1d8050a0e0f0cdf796f714183c702fe8783",
+  "confidence_experiment_result": "HIGH for recorded narrow access facts; Writer hypothesis unjudged",
+  "confidence_generalization": "UNBEKANNT",
+  "durable_state": "UNBEKANNT",
+  "evidence_directory": "docs/a1-native-runs/2026-10-11",
+  "fields_and_limits": {
+    "FSEvents_kqueue": "same pinned SDK contracts as old preflight; read only, no new unsuccessful attribution experiment",
+    "Mach": "self task token read; historical message trailer identifies immediate sender, not Writer. No old handshake replay as new research.",
+    "audit": "SDK subject PID/user/session; kernel write/vnode records documented in pinned external XNU source. No start-time/PID-version from subject alone; preselection, lifecycle, kernel/userspace record origin and drops need proof. No record consumed.",
+    "endpoint_security": "SDK process audit_token, start_time version>=3; write.target.stat; time/mach_time, seq_num>=2/global_seq_num>=4. NOTIFY/action records would need gaps/version/status checks and separate state check; not experimentally validated here",
+    "file": "dev/inode/generation from held FD versus fstat; gen observed0, not an independently tested persistent generation ID; paths/contents omitted",
+    "proc_pid_rusage": "process aggregate counters, no causal per-file event; contract only, not executed",
+    "process": "PID UID start seconds/usec; PID-version is different, exec can change it without changing fork start; no remote atomic join inferred"
+  },
+  "host": {
+    "SDK_version": "15.0",
+    "architecture": "x86_64",
+    "build": "24G517",
+    "clang": "Apple clang version 16.0.0 (clang-1600.0.26.3)",
+    "euid": 501,
+    "macOS": "15.7.4"
+  },
+  "implementation_commit": "56f03555f2e7ca09508609de083d283bd9609212",
+  "independent_identity_effect_binding": "UNBEKANNT",
+  "logical_agent_identity": "UNBEKANNT",
+  "measured_access": {
+    "DTrace": "list-only exit1, privilege rejection; no provider enabled",
+    "EndpointSecurity": "ES_NEW_CLIENT_RESULT_ERR_NOT_PRIVILEGED(5), zero callbacks/subscriptions; no connection",
+    "Mach_task": "own TASK_AUDIT_TOKEN32 bytes, pid/version; no receive/Writer event",
+    "audit_getcond": "return-1/EPERM(1); audit enabled/disabled status UNKNOWN, not condition0",
+    "auditpipe": "root-owned0600, open EACCES(13), zero records read",
+    "fs_usage": "exit1, root rejection",
+    "libproc": "two stable own BSD records136 bytes each, start microseconds; read-only vnode FD1200 bytes matches dev/inode"
+  },
+  "measurement_source_limit": "Calls were made at spec HEAD with uncommitted probe source. Exact C hashes match committed implementation. Original Python and failed C are reproducible from stored reverse source diffs; later Python guard/error handling changes did not alter API selection/interpretation. Measurement not mislabeled as committed runtime execution.",
+  "metrics": {
+    "api_bytes_scope": "successful explicit output structures; not total IPC/kernel traffic; no raw memory saved",
+    "archive_files": 9,
+    "archived_bytes": 68095,
+    "attribution_denominator": 0,
+    "compiler_tools_wrapper_cpu_ram": "UNBEKANNT; not substituted with native body values",
+    "correct_attributions": null,
+    "event_stream_cpu_ram": "UNBEKANNT",
+    "failed_compile_diagnostic_bytes": 967,
+    "native_body_elapsed_ns": 1238000,
+    "native_cpu_system_seconds": 0.000557,
+    "native_cpu_user_seconds": 0.000225,
+    "native_peak_rss_bytes": 7294976,
+    "native_process_elapsed_ns": 75336036,
+    "resource_scope": "self-reported getrusage of this fresh native probe, CPU during calls; macOS ru_maxrss peak bytes, excludes compiler/tool/wrapper costs",
+    "rights_query_diagnostic_bytes": 83,
+    "scenarios_executed": 0,
+    "successful_api_struct_bytes": 1504,
+    "successful_round_diagnostic_bytes": 1151,
+    "unclear_attributions": null,
+    "writer_events": null,
+    "writer_raw_event_bytes": null
+  },
+  "missing_prerequisite": "permitted independent live kernel action-to-file actor record plus process instance/lifecycle and file identity; ES actual root gate, unsigned binary lacks ES entitlement, TCC UNKNOWN; auditpipe denied and audit configuration unknown",
+  "new_round_axis_A": "PASS:availability spec, conditional no-source STOP before Writer cases",
+  "new_round_axis_B": "INCONCLUSIVE for Writer hypothesis",
+  "old_A1_unchanged": {
+    "axis_A": "FAIL",
+    "axis_B": "INCONCLUSIVE",
+    "experiment_executed": false,
+    "source": "docs/PLAN-A1-PREFLIGHT-RESULT-20261011.json"
+  },
+  "ordinary_failure": "First strict compile rejected size_t macro formatted as unsigned int; corrected explicit cast only, kept initial failure/hashes/reconstruction. No positive experiment failure hidden.",
+  "primary_source_file": "docs/a1-native-runs/2026-10-11/primary-sources.json",
+  "process_identity": "BELEGT only for observer self snapshots/held read-only FD",
+  "round": "A1-native bounded availability; separate from historical A1",
+  "scope": "No audit/ES/tracing activation, signing, entitlement/TCC/SIP changes, subscriptions/AUTH/rights decisions, model calls, six Writer trials, old A2/R0/B1/B2/C1 changes or PR44 updates. Existing Mach/provenance/product code unchanged.",
+  "selection": null,
+  "six_cases": [
+    {
+      "attribution": "UNBEKANNT",
+      "case": "A_writes_target",
+      "executed": false
+    },
+    {
+      "attribution": "UNBEKANNT",
+      "case": "B_idle",
+      "executed": false
+    },
+    {
+      "attribution": "UNBEKANNT",
+      "case": "C_writes_other_file",
+      "executed": false
+    },
+    {
+      "attribution": "UNBEKANNT",
+      "case": "child_writes_target",
+      "executed": false
+    },
+    {
+      "attribution": "UNBEKANNT",
+      "case": "forged_PID",
+      "executed": false
+    },
+    {
+      "attribution": "UNBEKANNT",
+      "case": "two_sequential_writers_same_file",
+      "executed": false
+    }
+  ],
+  "spec_commit": "6d562e67404c5b068d9a4ff5775213bd7798c0d7",
+  "tests": {
+    "failure_error_skip": 0,
+    "full_suites_twice": 588,
+    "historical_deselections": 5,
+    "new": 19,
+    "warning": "one existing fork DeprecationWarning"
+  },
+  "writer_identity": "UNBEKANNT"
+}

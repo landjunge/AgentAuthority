@@ -1,0 +1,167 @@
+{
+  "package": "A1-LINUX-PREFLIGHT",
+  "utc": "2026-10-11T22:25:30.711558+00:00",
+  "baseline": "f87157a044b308901083067d2f606b39bd52f875",
+  "spec_commit": "1cff776b09d79582bb7689d24ab13f3475eeadf8",
+  "probe_commit": "44f714049a80dbc44549c642004f36cf89f3eea3",
+  "probe_sha256": "bbdbcd465ca421281e3e1c13fd864e4bb40159f9d179d4fb6c03d279d34b73d0",
+  "branch": "codex/a1-linux-preflight-20261012",
+  "origin": "https://github.com/landjunge/agent-authority-lab.git",
+  "environments": [
+    {
+      "artifact": "colima-vm.json",
+      "kernel": "6.8.0-100-generic",
+      "distribution": {
+        "ID": "ubuntu",
+        "PRETTY_NAME": "Ubuntu 24.04.4 LTS",
+        "VERSION_CODENAME": "noble",
+        "VERSION_ID": "24.04"
+      },
+      "architecture": "x86_64",
+      "euid": 501,
+      "cap_eff": "0000000000000000",
+      "seccomp": "0",
+      "no_new_privs": "0",
+      "facts": "BELEGT",
+      "causality": "UNBEKANNT",
+      "writer_channel_selected": null,
+      "diagnostic_resources": {
+        "body_elapsed_ns": 10683989,
+        "event_stream_cpu": null,
+        "event_stream_ram": null,
+        "process_cpu_system_seconds": 0.028338,
+        "process_cpu_user_seconds": 0.055494999999999996,
+        "process_peak_rss_bytes_linux": 18219008,
+        "scope": "this Python diagnostic process, not compiler/VM/monitor"
+      }
+    },
+    {
+      "artifact": "diagnostic-container.json",
+      "kernel": "6.8.0-100-generic",
+      "distribution": {
+        "ID": "debian",
+        "PRETTY_NAME": "Debian GNU/Linux 12 (bookworm)",
+        "VERSION_CODENAME": "bookworm",
+        "VERSION_ID": "12"
+      },
+      "architecture": "x86_64",
+      "euid": 501,
+      "cap_eff": "0000000000000000",
+      "seccomp": "2",
+      "no_new_privs": "1",
+      "facts": "BELEGT",
+      "causality": "UNBEKANNT",
+      "writer_channel_selected": null,
+      "diagnostic_resources": {
+        "body_elapsed_ns": 3013726,
+        "event_stream_cpu": null,
+        "event_stream_ram": null,
+        "process_cpu_system_seconds": 0.038909,
+        "process_cpu_user_seconds": 0.218492,
+        "process_peak_rss_bytes_linux": 21037056,
+        "scope": "this Python diagnostic process, not compiler/VM/monitor"
+      }
+    },
+    {
+      "artifact": "github-actions-38179870080.json",
+      "kernel": "6.17.0-1022-azure",
+      "distribution": {
+        "ID": "ubuntu",
+        "PRETTY_NAME": "Ubuntu 24.04.5 LTS",
+        "VERSION_CODENAME": "noble",
+        "VERSION_ID": "24.04"
+      },
+      "architecture": "x86_64",
+      "euid": 1001,
+      "cap_eff": "0000000000000000",
+      "seccomp": "0",
+      "no_new_privs": "0",
+      "facts": "BELEGT",
+      "causality": "UNBEKANNT",
+      "writer_channel_selected": null,
+      "diagnostic_resources": {
+        "body_elapsed_ns": 12605486,
+        "event_stream_cpu": null,
+        "event_stream_ram": null,
+        "process_cpu_system_seconds": 0.008256,
+        "process_cpu_user_seconds": 0.02064,
+        "process_peak_rss_bytes_linux": 21684224,
+        "scope": "this Python diagnostic process, not compiler/VM/monitor"
+      }
+    }
+  ],
+  "linux_simulation": false,
+  "colima_container_shared_kernel_boot": true,
+  "writer_channel_selected": null,
+  "documented_api_suitability": "potential candidates, not demonstrated causal suitability",
+  "effective_authorized_access": "no qualifying independent Writer stream established; metadata facts measured; no live interfaces called",
+  "writer_experiments_executed": false,
+  "six_writer_cases": [
+    {
+      "case": "A target",
+      "execution": "NOT EXECUTED",
+      "evidence": "UNBEKANNT"
+    },
+    {
+      "case": "B idle",
+      "execution": "NOT EXECUTED",
+      "evidence": "UNBEKANNT"
+    },
+    {
+      "case": "C sibling",
+      "execution": "NOT EXECUTED",
+      "evidence": "UNBEKANNT"
+    },
+    {
+      "case": "child target",
+      "execution": "NOT EXECUTED",
+      "evidence": "UNBEKANNT"
+    },
+    {
+      "case": "forged PID",
+      "execution": "NOT EXECUTED",
+      "evidence": "UNBEKANNT"
+    },
+    {
+      "case": "two sequential writers",
+      "execution": "NOT EXECUTED",
+      "evidence": "UNBEKANNT"
+    }
+  ],
+  "experimental_causality": "UNBEKANNT",
+  "logical_agent_identity": "UNBEKANNT",
+  "attribution_correct": null,
+  "attribution_unclear": null,
+  "attribution_denominator": 0,
+  "attribution_rate": null,
+  "event_count": null,
+  "raw_event_bytes": null,
+  "event_loss": null,
+  "historical_A1_unchanged": true,
+  "historical_A2_unexecuted": true,
+  "preflight_axis_A": "PASS for metadata/documentation conformance only",
+  "writer_hypothesis_axis_B": "INCONCLUSIVE/not executed; historical hypothesis not rejudged",
+  "future_protocol": "docs/PLAN-A1-LINUX-PROTOKOLL-ENTWURF-20261012.md; draft not sealed, not executed",
+  "actions_source_run": 38179870080,
+  "actions_source_conclusion": "success",
+  "final_report_only_commit_has_no_new_workflow_run": "expected due path filter; verify no diagnostic code change",
+  "scope_exclusions": [
+    "no sudo/capability grants",
+    "no installs/pulls",
+    "no event subscriptions or kernel program load/attach",
+    "no privilege/user namespace workaround",
+    "no production access",
+    "no stopped container restart",
+    "no P7/PR44/PR45/foreign branch changes",
+    "no Writer experiments",
+    "no merge/Ready/force push"
+  ],
+  "ordinary_failures_preserved": [
+    "orbstack unavailable socket initial inventory",
+    "Colima SSH cwd not guest mounted before diagnostic",
+    "8MiB proc sysctl read ENOMEM12 corrected to4KiB; not a privilege blocker",
+    "Ruff unused import F401 versioned at c5f0019 before separate correction01c4ca2"
+  ],
+  "missing_prerequisite": "explicitly authorized independent kernel action/file/actor-instance record with clock/lifecycle/loss contract; source qualification and separate future experiment authorization",
+  "generalization": "UNBEKANNT"
+}

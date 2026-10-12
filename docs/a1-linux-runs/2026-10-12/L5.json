@@ -1,0 +1,175 @@
+{
+  "position": 5,
+  "target_path": "/var/tmp/a1-research-runs-001/2bfae980cfa24b9c",
+  "mode": "forged",
+  "observer_exit": 0,
+  "oracle_exit": 0,
+  "observer_stderr_bytes": 0,
+  "observer_stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "oracle_stderr_bytes": 0,
+  "host_collection_ns": 6128919858,
+  "capture": [
+    {
+      "boot_hash": "ea23c1eead5c439d96e565f0df8e5f1a6a8d6f543205b4a35842d9bdc070e805",
+      "file": {
+        "dev": 265289729,
+        "inode": 262245
+      },
+      "kernel": "6.8.0-142-generic",
+      "observer_source_sha256": "20cdb32237bd02ba9705dae02b467ee60ca968f742fc1ba7f308d59770b2bcbe",
+      "pid_namespace": "pid:[4026531836]",
+      "program_sha256": "398961ca0afa57245f3cf637ed4a1b31cc7dd06ebe1598d775e849cdd82158a5",
+      "ready": true,
+      "ready_ns": 755837550289
+    },
+    {
+      "record": {
+        "boot_hash": "ea23c1eead5c439d96e565f0df8e5f1a6a8d6f543205b4a35842d9bdc070e805",
+        "count": 16,
+        "cpu": 0,
+        "dev": 265289729,
+        "entry_ns": 756607266097,
+        "exit_ns": 756607292852,
+        "inode": 262245,
+        "kind": 1,
+        "ppid": 2399,
+        "raw_bytes": 76,
+        "result": 16,
+        "start_ns": 756605823990,
+        "tgid": 2404,
+        "tid": 2404
+      }
+    },
+    {
+      "record": {
+        "boot_hash": "ea23c1eead5c439d96e565f0df8e5f1a6a8d6f543205b4a35842d9bdc070e805",
+        "count": 0,
+        "cpu": 0,
+        "dev": 0,
+        "entry_ns": 0,
+        "exit_ns": 756908215524,
+        "inode": 0,
+        "kind": 2,
+        "ppid": 0,
+        "raw_bytes": 76,
+        "result": 0,
+        "start_ns": 756605823990,
+        "tgid": 2404,
+        "tid": 2404
+      }
+    },
+    {
+      "summary": {
+        "cpu_system_seconds": 0.160303,
+        "cpu_user_seconds": 1.8343699999999998,
+        "end_ns": 761852814714,
+        "entry_probe_nmissed": null,
+        "entry_probe_nmissed_limit": "BCC uses perf kprobe entry; tracefs profile covers classic kretprobe only",
+        "kprobe_profile": [
+          [
+            "r_vfs_write_bcc_2398",
+            "36",
+            "0"
+          ]
+        ],
+        "logical_agent_identity": "UNBEKANNT",
+        "pending": 0,
+        "perf_lost": 0,
+        "raw_bytes": 152,
+        "records": 2,
+        "rss_peak_bytes": 177631232,
+        "scope": "observer process including BCC compile, not kernel/VM CPU",
+        "stats": {
+          "0": 1,
+          "1": 1,
+          "2": 1,
+          "3": 0,
+          "4": 0,
+          "5": 0,
+          "6": 1,
+          "7": 0
+        }
+      }
+    }
+  ],
+  "oracle": {
+    "controller": {
+      "boot_hash": "ea23c1eead5c439d96e565f0df8e5f1a6a8d6f543205b4a35842d9bdc070e805",
+      "clock_ticks": 100,
+      "pid": 2399,
+      "pid_namespace": "pid:[4026531836]",
+      "ppid": 1164,
+      "start_ticks": 75625,
+      "uid": 501
+    },
+    "forged_claim_pid": 2403,
+    "rows": [
+      {
+        "action": "idle",
+        "creator_child": 2403,
+        "exit_status": 0,
+        "file": null,
+        "grandchild": false,
+        "pidfd_exit_seen": true,
+        "process": {
+          "clock_ticks": 100,
+          "pid": 2403,
+          "ppid": 2399,
+          "start_ticks": 75630
+        },
+        "process_after": {
+          "clock_ticks": 100,
+          "pid": 2403,
+          "ppid": 2399,
+          "start_ticks": 75630
+        },
+        "result": null,
+        "stable": true
+      },
+      {
+        "action": "write",
+        "begin_ns": 756607258994,
+        "creator_child": 2404,
+        "end_ns": 756607371109,
+        "exit_status": 0,
+        "file": {
+          "dev": 265289729,
+          "inode": 262245
+        },
+        "grandchild": false,
+        "pidfd_exit_seen": true,
+        "process": {
+          "clock_ticks": 100,
+          "pid": 2404,
+          "ppid": 2399,
+          "start_ticks": 75660
+        },
+        "process_after": {
+          "clock_ticks": 100,
+          "pid": 2404,
+          "ppid": 2399,
+          "start_ticks": 75660
+        },
+        "result": 16,
+        "stable": true
+      }
+    ]
+  },
+  "capture_sha256": "7f7445aee24e7c74781cac14c3b80965804c4fbdbb395f33111084afc45a8d18",
+  "oracle_sha256": "c7709b09f458de39cbd0a5badd525c1309457fe837e185f764635ea30c806847",
+  "evaluation": {
+    "evidence": "BELEGT",
+    "correct": 1,
+    "wrong": 0,
+    "unclear": 0,
+    "logical_agent_identity": "UNBEKANNT",
+    "reasons": [],
+    "expected_actions": 1,
+    "observed_actions": 1,
+    "loss_checks": true,
+    "false_claim_used": false,
+    "sequential_order": true,
+    "exit_records": 1,
+    "distinct_process_instances": 1
+  }
+}

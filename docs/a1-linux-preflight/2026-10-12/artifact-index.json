@@ -1,0 +1,77 @@
+{
+  "scope": "this new archive excluding index itself, excluding top-level specs/reports/workflow",
+  "files": [
+    {
+      "path": "docs/a1-linux-preflight/2026-10-12/baseline-preservation.json",
+      "bytes": 54185,
+      "sha256": "43ff14a78085da0e3b35b2e72b1fac786dd9c505607a1b66d2b4c4f0b79b6b86"
+    },
+    {
+      "path": "docs/a1-linux-preflight/2026-10-12/colima-vm-initial.json",
+      "bytes": 11955,
+      "sha256": "8cbe5e63f1e7d4346406802e3f2e22250d4e4ce0730ad36a179ac14a3c05732b"
+    },
+    {
+      "path": "docs/a1-linux-preflight/2026-10-12/colima-vm.json",
+      "bytes": 12875,
+      "sha256": "0d8c40650b6d6da556dd0046197f817c25086c63f7d9df120eb51b4be9d8dbac"
+    },
+    {
+      "path": "docs/a1-linux-preflight/2026-10-12/commands.json",
+      "bytes": 3174,
+      "sha256": "60ee0cae206e8e112dceeb3be1a6bee39096bcbe0aecc60ba2eabe1799468e59"
+    },
+    {
+      "path": "docs/a1-linux-preflight/2026-10-12/diagnostic-container-initial.json",
+      "bytes": 10701,
+      "sha256": "b8c56659610c1d72fdb733a7651d22f35562e46056ccaca90f7b06c3466db158"
+    },
+    {
+      "path": "docs/a1-linux-preflight/2026-10-12/diagnostic-container.json",
+      "bytes": 11607,
+      "sha256": "4cd46565c92dbc7a083151ba7ae4977e4b803b149717c2b9d83109db0556a9ee"
+    },
+    {
+      "path": "docs/a1-linux-preflight/2026-10-12/github-actions-38179804573.json",
+      "bytes": 12643,
+      "sha256": "9d8db6287781b14e73ff062e49673d073b1919f01e773da4f120e62f2bbd418c"
+    },
+    {
+      "path": "docs/a1-linux-preflight/2026-10-12/github-actions-38179831533.json",
+      "bytes": 12630,
+      "sha256": "caffe089b25ff019809699aa39fd52c05a0b68eadc91d6d57247ede0d631abc3"
+    },
+    {
+      "path": "docs/a1-linux-preflight/2026-10-12/github-actions-38179870080.json",
+      "bytes": 13473,
+      "sha256": "3bf1a08f54db4386b2a427d98918c061553f520ef9321e447e236208b749fb33"
+    },
+    {
+      "path": "docs/a1-linux-preflight/2026-10-12/inventory.json",
+      "bytes": 5139,
+      "sha256": "9c8c7a55cbaf6eb9ea79a615097e219bfa1578b576f71aa1ce3c60029964c5d0"
+    },
+    {
+      "path": "docs/a1-linux-preflight/2026-10-12/primary-sources.json",
+      "bytes": 9617,
+      "sha256": "75e83ad4f2150e32ba8ba706fbd78d128438f0f6acbc9c7bb36bd9793776fe45"
+    },
+    {
+      "path": "docs/a1-linux-preflight/2026-10-12/probe.py",
+      "bytes": 11261,
+      "sha256": "bbdbcd465ca421281e3e1c13fd864e4bb40159f9d179d4fb6c03d279d34b73d0"
+    },
+    {
+      "path": "docs/a1-linux-preflight/2026-10-12/quality.json",
+      "bytes": 1248,
+      "sha256": "9e3010367961737d81fcf96c719021c8106fdf9ee4b15f83dd13d25835a5a685"
+    },
+    {
+      "path": "docs/a1-linux-preflight/2026-10-12/read-sources.json",
+      "bytes": 6414,
+      "sha256": "ae818791811d3f5d1d243cd17223ba7363ae4bbaf1f8f4648e2d29bbf77db72b"
+    }
+  ],
+  "indexed_file_count": 14,
+  "indexed_stored_bytes": 176922
+}

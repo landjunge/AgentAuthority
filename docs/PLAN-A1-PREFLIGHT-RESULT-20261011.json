@@ -1,0 +1,41 @@
+{
+  "package": "A1",
+  "utc": "2026-10-11T21:10:09.206832+00:00",
+  "method": "installed SDK contract preflight; no effect observation/API experiment",
+  "sdk_root": "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk",
+  "sources": [
+    {
+      "path": "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks/CoreServices.framework/Frameworks/FSEvents.framework/Headers/FSEvents.h",
+      "sha256": "07df9bbe9a1f42e387f7cbe841a7c4f1e7baf188f3d6e205ce1f28d6c75ae0d4",
+      "excerpt": "typedef CALLBACK_API_C( void , FSEventStreamCallback )(ConstFSEventStreamRef streamRef, void * __nullable clientCallBackInfo, size_t numEvents, void *eventPaths,  const FSEventStreamEventFlags  * _Nonnull eventFlags, const FSEventStreamEventId * _Nonnull eventIds);"
+    },
+    {
+      "path": "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/sys/event.h",
+      "sha256": "b09a4fdd9e88a5c1c9a29bded36a6f8b96b39a3054f0075a07c19da587f0e062",
+      "excerpt": "struct kevent {\n\tuintptr_t       ident;  /* identifier for this event */\n\tint16_t         filter; /* filter for event */\n\tuint16_t        flags;  /* general flags */\n\tuint32_t        fflags; /* filter-specific flags */\n\tintptr_t        data;   /* filter-specific data */\n\tvoid            *udata; /* opaque user data identifier */\n};"
+    }
+  ],
+  "candidate_results": [
+    {
+      "api": "FSEventStreamCallback",
+      "writer_channel": "absent in callback contract"
+    },
+    {
+      "api": "kqueue EVFILT_VNODE/PROC",
+      "writer_channel": "descriptor changes / process lifecycle, no demonstrated causal join"
+    },
+    {
+      "api": "proc_pidinfo",
+      "writer_channel": "snapshot only, per existing process evidence source"
+    }
+  ],
+  "axis_A": "FAIL",
+  "axis_A_reason": "required independent writer channel prerequisite not met",
+  "axis_B": "INCONCLUSIVE",
+  "hypothesis_experiment_executed": false,
+  "writer_identity": "UNBEKANNT",
+  "logical_agent_identity": "UNBEKANNT",
+  "process_to_effect_binding": "UNBEKANNT",
+  "all_macos_methods_impossible": false,
+  "A2": "not executed; A1 not SUPPORTED"
+}

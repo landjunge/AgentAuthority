@@ -1,0 +1,44 @@
+{
+  "utc": "2026-10-11T21:51:47.998844+00:00",
+  "sources": [
+    {
+      "repo": "apple-oss-distributions/xnu",
+      "git_sha": "f6217f891ac0bb64f3d375211650a4c1ff8ca1ea",
+      "file": "bsd/security/audit/audit_syscalls.c",
+      "url": "https://raw.githubusercontent.com/apple-oss-distributions/xnu/f6217f891ac0bb64f3d375211650a4c1ff8ca1ea/bsd/security/audit/audit_syscalls.c",
+      "bytes": 33103,
+      "sha256": "e79b27335e5dee159f515fab4bc6ca9f28eff095a9fe1cb94b09c1da903b2378",
+      "role": "external Apple reference; not claimed to be running host kernel source"
+    },
+    {
+      "repo": "apple-oss-distributions/xnu",
+      "git_sha": "f6217f891ac0bb64f3d375211650a4c1ff8ca1ea",
+      "file": "bsd/security/audit/audit_bsm.c",
+      "url": "https://raw.githubusercontent.com/apple-oss-distributions/xnu/f6217f891ac0bb64f3d375211650a4c1ff8ca1ea/bsd/security/audit/audit_bsm.c",
+      "bytes": 58655,
+      "sha256": "981b3d797e8649cb631ea8fb93f36ed93bb8fc6959cef5751950464ed48b8eea",
+      "role": "external Apple reference; not claimed to be running host kernel source"
+    },
+    {
+      "repo": "apple-oss-distributions/xnu",
+      "git_sha": "f6217f891ac0bb64f3d375211650a4c1ff8ca1ea",
+      "file": "libsyscall/wrappers/libproc/libproc.h",
+      "url": "https://raw.githubusercontent.com/apple-oss-distributions/xnu/f6217f891ac0bb64f3d375211650a4c1ff8ca1ea/libsyscall/wrappers/libproc/libproc.h",
+      "bytes": 7580,
+      "sha256": "37c7629819a18c5ef10d19a9bea00eb7e0bd31e0b127ecd2ae108c74f47c39e2",
+      "role": "external Apple reference; not claimed to be running host kernel source"
+    },
+    {
+      "repo": "apple-oss-distributions/system_cmds",
+      "git_sha": "408bba7453608006b89772db185defbac8fe2fd0",
+      "file": "fs_usage/fs_usage.c",
+      "url": "https://raw.githubusercontent.com/apple-oss-distributions/system_cmds/408bba7453608006b89772db185defbac8fe2fd0/fs_usage/fs_usage.c",
+      "bytes": 91994,
+      "sha256": "a8a03a9cd1375740249ed513150ab6e78c8f791efd2186fe521ed59a6d052c81",
+      "role": "external Apple reference; not claimed to be running host kernel source"
+    }
+  ],
+  "SDK_version": "15.0",
+  "clang_version": "Apple clang version 16.0.0 (clang-1600.0.26.3)",
+  "macOS_build": "24G517"
+}

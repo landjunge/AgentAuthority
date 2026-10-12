@@ -1,0 +1,7 @@
+{
+  "host_ca_absent": true,
+  "old_writer_pid_absent": true,
+  "owned_processes": [],
+  "remaining_kprobe_events": "",
+  "vault_absent": true
+}

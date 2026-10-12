@@ -1,0 +1,151 @@
+{
+  "baseline": "28ff798e2548a82dbf787cbba0399c5a1857437f",
+  "identical_historical_findings": 16,
+  "new_findings": 0,
+  "findings": [
+    {
+      "path": "docs/a1-linux-preflight/2026-10-12/probe.py",
+      "code": "UP017",
+      "location": {
+        "column": 38,
+        "row": 135
+      },
+      "message": "Use `datetime.UTC` alias"
+    },
+    {
+      "path": "research/a1_linux/channels.py",
+      "code": "PLW1510",
+      "location": {
+        "column": 9,
+        "row": 47
+      },
+      "message": "`subprocess.run` without explicit `check` argument"
+    },
+    {
+      "path": "research/a1_linux/driver.py",
+      "code": "I001",
+      "location": {
+        "column": 1,
+        "row": 3
+      },
+      "message": "Import block is un-sorted or un-formatted"
+    },
+    {
+      "path": "research/a1_linux/driver.py",
+      "code": "UP017",
+      "location": {
+        "column": 46,
+        "row": 31
+      },
+      "message": "Use `datetime.UTC` alias"
+    },
+    {
+      "path": "research/a1_linux/driver.py",
+      "code": "PLW1510",
+      "location": {
+        "column": 17,
+        "row": 58
+      },
+      "message": "`subprocess.run` without explicit `check` argument"
+    },
+    {
+      "path": "research/a1_linux/driver.py",
+      "code": "UP017",
+      "location": {
+        "column": 49,
+        "row": 89
+      },
+      "message": "Use `datetime.UTC` alias"
+    },
+    {
+      "path": "research/a1_linux/driver.py",
+      "code": "PLW1510",
+      "location": {
+        "column": 13,
+        "row": 109
+      },
+      "message": "`subprocess.run` without explicit `check` argument"
+    },
+    {
+      "path": "research/a1_linux/observer.py",
+      "code": "SIM115",
+      "location": {
+        "column": 27,
+        "row": 99
+      },
+      "message": "Use a context manager for opening files"
+    },
+    {
+      "path": "research/a1_linux/observer.py",
+      "code": "SIM115",
+      "location": {
+        "column": 54,
+        "row": 147
+      },
+      "message": "Use a context manager for opening files"
+    },
+    {
+      "path": "research/a1_linux/observer.py",
+      "code": "SIM115",
+      "location": {
+        "column": 25,
+        "row": 161
+      },
+      "message": "Use a context manager for opening files"
+    },
+    {
+      "path": "research/a2_linux/agent.py",
+      "code": "I001",
+      "location": {
+        "column": 1,
+        "row": 3
+      },
+      "message": "Import block is un-sorted or un-formatted"
+    },
+    {
+      "path": "research/a2_linux/driver.py",
+      "code": "PLW1510",
+      "location": {
+        "column": 17,
+        "row": 57
+      },
+      "message": "`subprocess.run` without explicit `check` argument"
+    },
+    {
+      "path": "research/a2_linux/host_crypto.py",
+      "code": "PLW1510",
+      "location": {
+        "column": 19,
+        "row": 53
+      },
+      "message": "`subprocess.run` without explicit `check` argument"
+    },
+    {
+      "path": "research/a2_linux/starter.py",
+      "code": "I001",
+      "location": {
+        "column": 1,
+        "row": 3
+      },
+      "message": "Import block is un-sorted or un-formatted"
+    },
+    {
+      "path": "research/a2_linux/starter.py",
+      "code": "PLW1509",
+      "location": {
+        "column": 13,
+        "row": 151
+      },
+      "message": "`preexec_fn` argument is unsafe when using threads"
+    },
+    {
+      "path": "tests/test_a2_linux_identity.py",
+      "code": "RUF059",
+      "location": {
+        "column": 5,
+        "row": 35
+      },
+      "message": "Unpacked variable `beta` is never used"
+    }
+  ]
+}

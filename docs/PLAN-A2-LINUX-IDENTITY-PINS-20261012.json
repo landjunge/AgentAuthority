@@ -1,0 +1,20 @@
+{
+  "pre_case_source_hashes": {
+    "research/a2_linux/agent.py": "4e71c47c976aba8e0e1855c9730eb7c057a89bd49ef5d7a4d3bb1216ce85dbd2",
+    "research/a2_linux/driver.py": "aede1e41a6ce77079e63609e64980810d62e1d07ac851f5ec2969ae4a04b28a7",
+    "research/a2_linux/host_crypto.py": "e8427cd2e2cefc3e13d68e9104f8f1dac8bb22827b0c4240cb50cdbabbf786df",
+    "research/a2_linux/lifecycle.py": "995464fa70be6417024623f5bebb4259988a73fe6f50542e7c75a75e33d14912",
+    "research/a2_linux/protocol.py": "63ee8c01a210a918852cfd0ddc036e68a732e73988822b362dce3244496e3def",
+    "research/a2_linux/starter.py": "22229e170da5478455878f468803d0926aabcd5c8f33e8254c3c7dfced5eecf5"
+  },
+  "a1_observer_unchanged_sha256": "20cdb32237bd02ba9705dae02b467ee60ca968f742fc1ba7f308d59770b2bcbe",
+  "enrollment_public_sha256": "d136c1a8632a4fc9d71da4b84114435f06e9f0928decf456ba92adf2dad7d01b",
+  "ca_public_key_pin": "448L12KmeaHWxGIJ4y+WabXS2LdRFfFw3M1wOQ7wv4w=",
+  "kernel": "6.8.0-142-generic",
+  "boot_hash": "9a38a0e5dc4a5b912a071fdade93a6df9114d48eddc2d9bf7acc7941a728ab52",
+  "agent_identity_scope": "controlled_test_identities_only",
+  "cases_started": false,
+  "lifecycle_zero_action_load_attach": "actual success, no A1 Writer repetition",
+  "host_openssl": "3.6.2",
+  "guest_cryptography": "41.0.7"
+}

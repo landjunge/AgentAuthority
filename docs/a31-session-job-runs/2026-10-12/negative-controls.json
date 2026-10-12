@@ -1,0 +1,242 @@
+{
+  "controls": [
+    {
+      "case": "valid",
+      "result": {
+        "qualified": true,
+        "checks": {
+          "host_signature": true,
+          "domain": true,
+          "trust_scope": true,
+          "client": true,
+          "channel": true,
+          "challenge": true,
+          "job_digest": true,
+          "instance": true,
+          "owned_spawn": true,
+          "dynamic_code_valid": true,
+          "kernel_start_stable": true,
+          "code_pin": true,
+          "time": true,
+          "anti_replay": true,
+          "job_kind": true,
+          "successful_client": true
+        },
+        "reasons": [],
+        "local_client_job_binding": "BELEGT",
+        "provider_session_job_binding": "UNBEKANNT",
+        "model_identity": "UNBEKANNT"
+      },
+      "verification_clock_ns": 896049467908942,
+      "clock_scope": "recorded synthetic-verifier input over real public receipt, not replayed provider inference"
+    },
+    {
+      "case": "receipt_replay",
+      "result": {
+        "qualified": false,
+        "checks": {
+          "host_signature": true,
+          "domain": true,
+          "trust_scope": true,
+          "client": true,
+          "channel": true,
+          "challenge": true,
+          "job_digest": true,
+          "instance": true,
+          "owned_spawn": true,
+          "dynamic_code_valid": true,
+          "kernel_start_stable": true,
+          "code_pin": true,
+          "time": true,
+          "anti_replay": false,
+          "job_kind": true,
+          "successful_client": true
+        },
+        "reasons": [
+          "anti_replay"
+        ],
+        "local_client_job_binding": "UNBEKANNT",
+        "provider_session_job_binding": "UNBEKANNT",
+        "model_identity": "UNBEKANNT"
+      },
+      "verification_clock_ns": 896049467908943,
+      "clock_scope": "recorded synthetic-verifier input over real public receipt, not replayed provider inference"
+    },
+    {
+      "case": "foreign_session",
+      "result": {
+        "qualified": false,
+        "checks": {
+          "host_signature": true,
+          "domain": true,
+          "trust_scope": true,
+          "client": false,
+          "channel": false,
+          "challenge": false,
+          "job_digest": false,
+          "instance": false,
+          "owned_spawn": false,
+          "dynamic_code_valid": true,
+          "kernel_start_stable": true,
+          "code_pin": false,
+          "time": true,
+          "anti_replay": true,
+          "job_kind": true,
+          "successful_client": true
+        },
+        "reasons": [
+          "client",
+          "channel",
+          "challenge",
+          "job_digest",
+          "instance",
+          "owned_spawn",
+          "code_pin"
+        ],
+        "local_client_job_binding": "UNBEKANNT",
+        "provider_session_job_binding": "UNBEKANNT",
+        "model_identity": "UNBEKANNT"
+      },
+      "verification_clock_ns": 896061494053332,
+      "clock_scope": "recorded synthetic-verifier input over real public receipt, not replayed provider inference"
+    },
+    {
+      "case": "mutated_job_digest",
+      "result": {
+        "qualified": false,
+        "checks": {
+          "host_signature": true,
+          "domain": true,
+          "trust_scope": true,
+          "client": true,
+          "channel": true,
+          "challenge": true,
+          "job_digest": false,
+          "instance": true,
+          "owned_spawn": true,
+          "dynamic_code_valid": true,
+          "kernel_start_stable": true,
+          "code_pin": true,
+          "time": true,
+          "anti_replay": true,
+          "job_kind": false,
+          "successful_client": true
+        },
+        "reasons": [
+          "job_digest",
+          "job_kind"
+        ],
+        "local_client_job_binding": "UNBEKANNT",
+        "provider_session_job_binding": "UNBEKANNT",
+        "model_identity": "UNBEKANNT"
+      },
+      "verification_clock_ns": 896049467908942,
+      "clock_scope": "recorded synthetic-verifier input over real public receipt, not replayed provider inference"
+    },
+    {
+      "case": "session_switch",
+      "result": {
+        "qualified": false,
+        "checks": {
+          "host_signature": true,
+          "domain": true,
+          "trust_scope": true,
+          "client": true,
+          "channel": false,
+          "challenge": false,
+          "job_digest": false,
+          "instance": false,
+          "owned_spawn": false,
+          "dynamic_code_valid": true,
+          "kernel_start_stable": true,
+          "code_pin": true,
+          "time": true,
+          "anti_replay": true,
+          "job_kind": true,
+          "successful_client": true
+        },
+        "reasons": [
+          "channel",
+          "challenge",
+          "job_digest",
+          "instance",
+          "owned_spawn"
+        ],
+        "local_client_job_binding": "UNBEKANNT",
+        "provider_session_job_binding": "UNBEKANNT",
+        "model_identity": "UNBEKANNT"
+      },
+      "verification_clock_ns": 896049467908942,
+      "clock_scope": "recorded synthetic-verifier input over real public receipt, not replayed provider inference"
+    },
+    {
+      "case": "delegate_attempt_parent_binding",
+      "result": {
+        "qualified": false,
+        "checks": {
+          "host_signature": true,
+          "domain": true,
+          "trust_scope": true,
+          "client": true,
+          "channel": false,
+          "challenge": false,
+          "job_digest": false,
+          "instance": false,
+          "owned_spawn": false,
+          "dynamic_code_valid": true,
+          "kernel_start_stable": true,
+          "code_pin": true,
+          "time": true,
+          "anti_replay": true,
+          "job_kind": true,
+          "successful_client": true
+        },
+        "reasons": [
+          "channel",
+          "challenge",
+          "job_digest",
+          "instance",
+          "owned_spawn"
+        ],
+        "local_client_job_binding": "UNBEKANNT",
+        "provider_session_job_binding": "UNBEKANNT",
+        "model_identity": "UNBEKANNT"
+      },
+      "verification_clock_ns": 896081812589975,
+      "clock_scope": "recorded synthetic-verifier input over real public receipt, not replayed provider inference"
+    },
+    {
+      "case": "expired_receipt",
+      "result": {
+        "qualified": false,
+        "checks": {
+          "host_signature": true,
+          "domain": true,
+          "trust_scope": true,
+          "client": true,
+          "channel": true,
+          "challenge": true,
+          "job_digest": true,
+          "instance": true,
+          "owned_spawn": true,
+          "dynamic_code_valid": true,
+          "kernel_start_stable": true,
+          "code_pin": true,
+          "time": false,
+          "anti_replay": true,
+          "job_kind": true,
+          "successful_client": true
+        },
+        "reasons": [
+          "time"
+        ],
+        "local_client_job_binding": "UNBEKANNT",
+        "provider_session_job_binding": "UNBEKANNT",
+        "model_identity": "UNBEKANNT"
+      },
+      "verification_clock_ns": 896229467908941,
+      "clock_scope": "recorded synthetic-verifier input over real public receipt, not replayed provider inference"
+    }
+  ],
+  "no_faked_provider_attestation": true
+}

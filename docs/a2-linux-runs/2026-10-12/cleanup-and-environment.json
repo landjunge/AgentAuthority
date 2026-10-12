@@ -1,0 +1,63 @@
+{
+  "guest_private_vault_deleted": true,
+  "host_ca_private_directory_deleted": true,
+  "memory_secure_zeroization": "UNBEKANNT; no claim of guaranteed RAM erasure",
+  "public_proofs_retained": true,
+  "checks": [
+    {
+      "command": [
+        "limactl",
+        "shell",
+        "--workdir=/tmp",
+        "a1-research",
+        "sudo",
+        "-n",
+        "cat",
+        "/sys/kernel/tracing/kprobe_events"
+      ],
+      "exit": 0,
+      "stdout": "",
+      "stderr_bytes": 0
+    },
+    {
+      "command": [
+        "limactl",
+        "shell",
+        "--workdir=/tmp",
+        "a1-research",
+        "dpkg-query",
+        "-W",
+        "python3-cryptography",
+        "python3-bpfcc",
+        "linux-headers-6.8.0-142-generic"
+      ],
+      "exit": 0,
+      "stdout": "linux-headers-6.8.0-142-generic\t6.8.0-142.142\npython3-bpfcc\t0.29.1+ds-1ubuntu7\npython3-cryptography\t41.0.7-4ubuntu0.4",
+      "stderr_bytes": 0
+    },
+    {
+      "command": [
+        "colima",
+        "list",
+        "--json"
+      ],
+      "exit": 0,
+      "stdout": "",
+      "stderr_bytes": 0
+    },
+    {
+      "command": [
+        "docker",
+        "--context",
+        "colima",
+        "ps",
+        "-a",
+        "--format",
+        "{{.ID}} {{.Image}} {{.Status}}"
+      ],
+      "exit": 0,
+      "stdout": "4564a65814fd aa-run03-python:20261008 Exited (0) 3 days ago\n1dc912e5e03d aa-run03-python:20261008 Exited (0) 3 days ago\n7b5bed8ca23c agent0ai/agent-zero Exited (255) 3 days ago",
+      "stderr_bytes": 0
+    }
+  ]
+}

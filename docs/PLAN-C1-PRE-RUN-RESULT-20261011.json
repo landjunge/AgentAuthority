@@ -1,0 +1,85 @@
+{
+  "control_source_note": "Fixture and controls at committed fc99648; the historical p1/p5/p7 implementations are byte-identical to future cohort source; C1 orchestration was local/uncommitted and not used to generate fixture events. Controls are not N positions and do not authenticate writer/agent.",
+  "controls": {
+    "after_window_control": {
+      "boundary": 881412085658152,
+      "end": 881412685658152,
+      "first_present": 881412242525693,
+      "last_absent": 881412232193660,
+      "logical_agent_identity": "UNBEKANNT",
+      "oracle": {
+        "write_begin": 881412239460599,
+        "write_end": 881412239675237
+      },
+      "reason": "second_window",
+      "start": 881411885658152,
+      "verdict": "SPAETER",
+      "writer_identity": "UNBEKANNT"
+    },
+    "cohort_counted": false,
+    "fixture_checks": {
+      "expired": true,
+      "fixture_not_model": true,
+      "replay": true,
+      "score": true
+    },
+    "fixture_model": false,
+    "fixture_path": "/tmp/aa-abc-research-StfbeC/fixture",
+    "foreign_capture_test": false,
+    "forged_self_authentication": {
+      "aussage": "UNBEKANNT",
+      "beleg": [],
+      "grund": "forged_authentication",
+      "recht_uebernommen": false,
+      "source_authenticated": "UNBEKANNT"
+    },
+    "independent_writer_test": false,
+    "logical_agent_identity": "UNBEKANNT",
+    "source_head": "fc9964889872d3e5480feb2b1091873eb1a3dd90",
+    "utc": "2026-10-11T21:25:06.158089+00:00"
+  },
+  "controls_sha256": "a72061c77d23eab6d54b67af7944567ab85ac5527ea8fe0b9ecb8ffe0571b18f",
+  "phase": "C1 pre-run verification",
+  "quality": {
+    "bandit": "PASS, no issues",
+    "mypy_strict": "PASS, 32 source files",
+    "ruff_check": "PASS",
+    "ruff_format": "PASS"
+  },
+  "two_full_suites": [
+    {
+      "counts": {
+        "errors": "0",
+        "failures": "0",
+        "hostname": "landjungeMac.local",
+        "name": "pytest",
+        "skipped": "0",
+        "tests": "569",
+        "time": "28.965",
+        "timestamp": "2026-10-11T23:24:03.971421+02:00"
+      },
+      "historical_deselections": 5,
+      "log_path": "/tmp/aa-abc-research-StfbeC/c1-suite1.log",
+      "log_sha256": "769eb9d40bd461d31e1db9760d3b0a00c97e6027b614f24a16a1d5e241c7e55f",
+      "path": "/tmp/aa-abc-research-StfbeC/c1-suite1.xml",
+      "sha256": "04190104d6c4d186f60da5d46fe056610aad51f34029067f29ce28c82afdd835"
+    },
+    {
+      "counts": {
+        "errors": "0",
+        "failures": "0",
+        "hostname": "landjungeMac.local",
+        "name": "pytest",
+        "skipped": "0",
+        "tests": "569",
+        "time": "29.038",
+        "timestamp": "2026-10-11T23:24:47.333507+02:00"
+      },
+      "historical_deselections": 5,
+      "log_path": "/tmp/aa-abc-research-StfbeC/c1-suite2.log",
+      "log_sha256": "9eebbeb168f02e8023da13818483d5af5bc3762aa6da772fe8ae8c271b7e78b7",
+      "path": "/tmp/aa-abc-research-StfbeC/c1-suite2.xml",
+      "sha256": "93879feb8948944cded77c7a7c7c5855d925c74281c9f77cc8c7079e3ba5ec5d"
+    }
+  ]
+}

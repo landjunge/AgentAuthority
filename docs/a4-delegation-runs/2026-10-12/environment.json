@@ -1,0 +1,15 @@
+{
+  "diagnostic_command": [
+    "python3",
+    "-c",
+    "import platform,os,json; print(json.dumps({\"kernel\":platform.release(),\"arch\":platform.machine(),\"distribution\":open(\"/etc/os-release\").read(),\"pid_namespace\":os.readlink(\"/proc/self/ns/pid\"),\"clock_ticks\":os.sysconf(\"SC_CLK_TCK\")}))"
+  ],
+  "observer_scope": "isolated file only; no identity/oracle supplied",
+  "result": {
+    "arch": "x86_64",
+    "clock_ticks": 100,
+    "distribution": "PRETTY_NAME=\"Ubuntu 24.04.5 LTS\"\nNAME=\"Ubuntu\"\nVERSION_ID=\"24.04\"\nVERSION=\"24.04.5 LTS (Noble Numbat)\"\nVERSION_CODENAME=noble\nID=ubuntu\nID_LIKE=debian\nHOME_URL=\"https://www.ubuntu.com/\"\nSUPPORT_URL=\"https://help.ubuntu.com/\"\nBUG_REPORT_URL=\"https://bugs.launchpad.net/ubuntu/\"\nPRIVACY_POLICY_URL=\"https://www.ubuntu.com/legal/terms-and-policies/privacy-policy\"\nUBUNTU_CODENAME=noble\nLOGO=ubuntu-logo\n",
+    "kernel": "6.8.0-142-generic",
+    "pid_namespace": "pid:[4026531836]"
+  }
+}

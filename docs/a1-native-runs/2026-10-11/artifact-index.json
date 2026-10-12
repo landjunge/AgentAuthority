@@ -1,0 +1,9 @@
+{
+  "availability.json": "9ac43e6e9efb593304d5c6a40765f2d236e177db9212e29d47c137ab1b39267f",
+  "baseline-preservation.json": "d75aa8dc716147346c49bf2a8082d092d63b0afc0e3d8672a554b653985654ca",
+  "compile-failure.json": "979a33b77e1f5a837824be2e1cf91e3e380e3b472a57f782d859b9d388a52928",
+  "primary-sources.json": "f8c569c5fbff832a39aaa73c8d889a576501d161bc757f3b7014c2c6d70f2524",
+  "rights-metadata.json": "532840efebd85fb8ee57ef21c87fef69ebe88e7eabfa642ffb7a921431805845",
+  "source-reconstruction.json": "6450ad9bb62bcd763a53c7fa87e60d2ec9c6ea2fb5d80b1e0b8137f1dc6ff079",
+  "tests.json": "2bf58f357e5aaf39ed126540bd9990a500c8eb65cd9e745d837c0701eed8662c"
+}

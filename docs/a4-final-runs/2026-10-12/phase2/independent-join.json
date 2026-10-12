@@ -1,0 +1,3045 @@
+{
+  "agent_count": 100,
+  "bindings": {
+    "Agent000": {
+      "challenge_scope": true,
+      "credentials_oracle_instance": true,
+      "exit_reference": true,
+      "lifecycle": true,
+      "proof_signature": true
+    },
+    "Agent001": {
+      "challenge_scope": true,
+      "credentials_oracle_instance": true,
+      "exit_reference": true,
+      "lifecycle": true,
+      "proof_signature": true
+    },
+    "Agent002": {
+      "challenge_scope": true,
+      "credentials_oracle_instance": true,
+      "exit_reference": true,
+      "lifecycle": true,
+      "proof_signature": true
+    },
+    "Agent003": {
+      "challenge_scope": true,
+      "credentials_oracle_instance": true,
+      "exit_reference": true,
+      "lifecycle": true,
+      "proof_signature": true
+    },
+    "Agent004": {
+      "challenge_scope": true,
+      "credentials_oracle_instance": true,
+      "exit_reference": true,
+      "lifecycle": true,
+      "proof_signature": true
+    },
+    "Agent005": {
+      "challenge_scope": true,
+      "credentials_oracle_instance": true,
+      "exit_reference": true,
+      "lifecycle": true,
+      "proof_signature": true
+    },
+    "Agent006": {
+      "challenge_scope": true,
+      "credentials_oracle_instance": true,
+      "exit_reference": true,
+      "lifecycle": true,
+      "proof_signature": true
+    },
+    "Agent007": {
+      "challenge_scope": true,
+      "credentials_oracle_instance": true,
+      "exit_reference": true,
+      "lifecycle": true,
+      "proof_signature": true
+    },
+    "Agent008": {
+      "challenge_scope": true,
+      "credentials_oracle_instance": true,
+      "exit_reference": true,
+      "lifecycle": true,
+      "proof_signature": true
+    },
+    "Agent009": {
+      "challenge_scope": true,
+      "credentials_oracle_instance": true,
+      "exit_reference": true,
+      "lifecycle": true,
+      "proof_signature": true
+    },
+    "Agent010": {
+      "challenge_scope": true,
+      "credentials_oracle_instance": true,
+      "exit_reference": true,
+      "lifecycle": true,
+      "proof_signature": true
+    },
+    "Agent011": {
+      "challenge_scope": true,
+      "credentials_oracle_instance": true,
+      "exit_reference": true,
+      "lifecycle": true,
+      "proof_signature": true
+    },
+    "Agent012": {
+      "challenge_scope": true,
+      "credentials_oracle_instance": true,
+      "exit_reference": true,
+      "lifecycle": true,
+      "proof_signature": true
+    },
+    "Agent013": {
+      "challenge_scope": true,
+      "credentials_oracle_instance": true,
+      "exit_reference": true,
+      "lifecycle": true,
+      "proof_signature": true
+    },
+    "Agent014": {
+      "challenge_scope": true,
+      "credentials_oracle_instance": true,
+      "exit_reference": true,
+      "lifecycle": true,
+      "proof_signature": true
+    },
+    "Agent015": {
+      "challenge_scope": true,
+      "credentials_oracle_instance": true,
+      "exit_reference": true,
+      "lifecycle": true,
+      "proof_signature": true
+    },
+    "Agent016": {
+      "challenge_scope": true,
+      "credentials_oracle_instance": true,
+      "exit_reference": true,
+      "lifecycle": true,
+      "proof_signature": true
+    },
+    "Agent017": {
+      "challenge_scope": true,
+      "credentials_oracle_instance": true,
+      "exit_reference": true,
+      "lifecycle": true,
+      "proof_signature": true
+    },
+    "Agent018": {
+      "challenge_scope": true,
+      "credentials_oracle_instance": true,
+      "exit_reference": true,
+      "lifecycle": true,
+      "proof_signature": true
+    },
+    "Agent019": {
+      "challenge_scope": true,
+      "credentials_oracle_instance": true,
+      "exit_reference": true,
+      "lifecycle": true,
+      "proof_signature": true
+    },
+    "Agent020": {
+      "challenge_scope": true,
+      "credentials_oracle_instance": true,
+      "exit_reference": true,
+      "lifecycle": true,
+      "proof_signature": true
+    },
+    "Agent021": {
+      "challenge_scope": true,
+      "credentials_oracle_instance": true,
+      "exit_reference": true,
+      "lifecycle": true,
+      "proof_signature": true
+    },
+    "Agent022": {
+      "challenge_scope": true,
+      "credentials_oracle_instance": true,
+      "exit_reference": true,
+      "lifecycle": true,
+      "proof_signature": true
+    },
+    "Agent023": {
+      "challenge_scope": true,
+      "credentials_oracle_instance": true,
+      "exit_reference": true,
+      "lifecycle": true,
+      "proof_signature": true
+    },
+    "Agent024": {
+      "challenge_scope": true,
+      "credentials_oracle_instance": true,
+      "exit_reference": true,
+      "lifecycle": true,
+      "proof_signature": true
+    },
+    "Agent025": {
+      "challenge_scope": true,
+      "credentials_oracle_instance": true,
+      "exit_reference": true,
+      "lifecycle": true,
+      "proof_signature": true
+    },
+    "Agent026": {
+      "challenge_scope": true,
+      "credentials_oracle_instance": true,
+      "exit_reference": true,
+      "lifecycle": true,
+      "proof_signature": true
+    },
+    "Agent027": {
+      "challenge_scope": true,
+      "credentials_oracle_instance": true,
+      "exit_reference": true,
+      "lifecycle": true,
+      "proof_signature": true
+    },
+    "Agent028": {
+      "challenge_scope": true,
+      "credentials_oracle_instance": true,
+      "exit_reference": true,
+      "lifecycle": true,
+      "proof_signature": true
+    },
+    "Agent029": {
+      "challenge_scope": true,
+      "credentials_oracle_instance": true,
+      "exit_reference": true,
+      "lifecycle": true,
+      "proof_signature": true
+    },
+    "Agent030": {
+      "challenge_scope": true,
+      "credentials_oracle_instance": true,
+      "exit_reference": true,
+      "lifecycle": true,
+      "proof_signature": true
+    },
+    "Agent031": {
+      "challenge_scope": true,
+      "credentials_oracle_instance": true,
+      "exit_reference": true,
+      "lifecycle": true,
+      "proof_signature": true
+    },
+    "Agent032": {
+      "challenge_scope": true,
+      "credentials_oracle_instance": true,
+      "exit_reference": true,
+      "lifecycle": true,
+      "proof_signature": true
+    },
+    "Agent033": {
+      "challenge_scope": true,
+      "credentials_oracle_instance": true,
+      "exit_reference": true,
+      "lifecycle": true,
+      "proof_signature": true
+    },
+    "Agent034": {
+      "challenge_scope": true,
+      "credentials_oracle_instance": true,
+      "exit_reference": true,
+      "lifecycle": true,
+      "proof_signature": true
+    },
+    "Agent035": {
+      "challenge_scope": true,
+      "credentials_oracle_instance": true,
+      "exit_reference": true,
+      "lifecycle": true,
+      "proof_signature": true
+    },
+    "Agent036": {
+      "challenge_scope": true,
+      "credentials_oracle_instance": true,
+      "exit_reference": true,
+      "lifecycle": true,
+      "proof_signature": true
+    },
+    "Agent037": {
+      "challenge_scope": true,
+      "credentials_oracle_instance": true,
+      "exit_reference": true,
+      "lifecycle": true,
+      "proof_signature": true
+    },
+    "Agent038": {
+      "challenge_scope": true,
+      "credentials_oracle_instance": true,
+      "exit_reference": true,
+      "lifecycle": true,
+      "proof_signature": true
+    },
+    "Agent039": {
+      "challenge_scope": true,
+      "credentials_oracle_instance": true,
+      "exit_reference": true,
+      "lifecycle": true,
+      "proof_signature": true
+    },
+    "Agent040": {
+      "challenge_scope": true,
+      "credentials_oracle_instance": true,
+      "exit_reference": true,
+      "lifecycle": true,
+      "proof_signature": true
+    },
+    "Agent041": {
+      "challenge_scope": true,
+      "credentials_oracle_instance": true,
+      "exit_reference": true,
+      "lifecycle": true,
+      "proof_signature": true
+    },
+    "Agent042": {
+      "challenge_scope": true,
+      "credentials_oracle_instance": true,
+      "exit_reference": true,
+      "lifecycle": true,
+      "proof_signature": true
+    },
+    "Agent043": {
+      "challenge_scope": true,
+      "credentials_oracle_instance": true,
+      "exit_reference": true,
+      "lifecycle": true,
+      "proof_signature": true
+    },
+    "Agent044": {
+      "challenge_scope": true,
+      "credentials_oracle_instance": true,
+      "exit_reference": true,
+      "lifecycle": true,
+      "proof_signature": true
+    },
+    "Agent045": {
+      "challenge_scope": true,
+      "credentials_oracle_instance": true,
+      "exit_reference": true,
+      "lifecycle": true,
+      "proof_signature": true
+    },
+    "Agent046": {
+      "challenge_scope": true,
+      "credentials_oracle_instance": true,
+      "exit_reference": true,
+      "lifecycle": true,
+      "proof_signature": true
+    },
+    "Agent047": {
+      "challenge_scope": true,
+      "credentials_oracle_instance": true,
+      "exit_reference": true,
+      "lifecycle": true,
+      "proof_signature": true
+    },
+    "Agent048": {
+      "challenge_scope": true,
+      "credentials_oracle_instance": true,
+      "exit_reference": true,
+      "lifecycle": true,
+      "proof_signature": true
+    },
+    "Agent049": {
+      "challenge_scope": true,
+      "credentials_oracle_instance": true,
+      "exit_reference": true,
+      "lifecycle": true,
+      "proof_signature": true
+    },
+    "Agent050": {
+      "challenge_scope": true,
+      "credentials_oracle_instance": true,
+      "exit_reference": true,
+      "lifecycle": true,
+      "proof_signature": true
+    },
+    "Agent051": {
+      "challenge_scope": true,
+      "credentials_oracle_instance": true,
+      "exit_reference": true,
+      "lifecycle": true,
+      "proof_signature": true
+    },
+    "Agent052": {
+      "challenge_scope": true,
+      "credentials_oracle_instance": true,
+      "exit_reference": true,
+      "lifecycle": true,
+      "proof_signature": true
+    },
+    "Agent053": {
+      "challenge_scope": true,
+      "credentials_oracle_instance": true,
+      "exit_reference": true,
+      "lifecycle": true,
+      "proof_signature": true
+    },
+    "Agent054": {
+      "challenge_scope": true,
+      "credentials_oracle_instance": true,
+      "exit_reference": true,
+      "lifecycle": true,
+      "proof_signature": true
+    },
+    "Agent055": {
+      "challenge_scope": true,
+      "credentials_oracle_instance": true,
+      "exit_reference": true,
+      "lifecycle": true,
+      "proof_signature": true
+    },
+    "Agent056": {
+      "challenge_scope": true,
+      "credentials_oracle_instance": true,
+      "exit_reference": true,
+      "lifecycle": true,
+      "proof_signature": true
+    },
+    "Agent057": {
+      "challenge_scope": true,
+      "credentials_oracle_instance": true,
+      "exit_reference": true,
+      "lifecycle": true,
+      "proof_signature": true
+    },
+    "Agent058": {
+      "challenge_scope": true,
+      "credentials_oracle_instance": true,
+      "exit_reference": true,
+      "lifecycle": true,
+      "proof_signature": true
+    },
+    "Agent059": {
+      "challenge_scope": true,
+      "credentials_oracle_instance": true,
+      "exit_reference": true,
+      "lifecycle": true,
+      "proof_signature": true
+    },
+    "Agent060": {
+      "challenge_scope": true,
+      "credentials_oracle_instance": true,
+      "exit_reference": true,
+      "lifecycle": true,
+      "proof_signature": true
+    },
+    "Agent061": {
+      "challenge_scope": true,
+      "credentials_oracle_instance": true,
+      "exit_reference": true,
+      "lifecycle": true,
+      "proof_signature": true
+    },
+    "Agent062": {
+      "challenge_scope": true,
+      "credentials_oracle_instance": true,
+      "exit_reference": true,
+      "lifecycle": true,
+      "proof_signature": true
+    },
+    "Agent063": {
+      "challenge_scope": true,
+      "credentials_oracle_instance": true,
+      "exit_reference": true,
+      "lifecycle": true,
+      "proof_signature": true
+    },
+    "Agent064": {
+      "challenge_scope": true,
+      "credentials_oracle_instance": true,
+      "exit_reference": true,
+      "lifecycle": true,
+      "proof_signature": true
+    },
+    "Agent065": {
+      "challenge_scope": true,
+      "credentials_oracle_instance": true,
+      "exit_reference": true,
+      "lifecycle": true,
+      "proof_signature": true
+    },
+    "Agent066": {
+      "challenge_scope": true,
+      "credentials_oracle_instance": true,
+      "exit_reference": true,
+      "lifecycle": true,
+      "proof_signature": true
+    },
+    "Agent067": {
+      "challenge_scope": true,
+      "credentials_oracle_instance": true,
+      "exit_reference": true,
+      "lifecycle": true,
+      "proof_signature": true
+    },
+    "Agent068": {
+      "challenge_scope": true,
+      "credentials_oracle_instance": true,
+      "exit_reference": true,
+      "lifecycle": true,
+      "proof_signature": true
+    },
+    "Agent069": {
+      "challenge_scope": true,
+      "credentials_oracle_instance": true,
+      "exit_reference": true,
+      "lifecycle": true,
+      "proof_signature": true
+    },
+    "Agent070": {
+      "challenge_scope": true,
+      "credentials_oracle_instance": true,
+      "exit_reference": true,
+      "lifecycle": true,
+      "proof_signature": true
+    },
+    "Agent071": {
+      "challenge_scope": true,
+      "credentials_oracle_instance": true,
+      "exit_reference": true,
+      "lifecycle": true,
+      "proof_signature": true
+    },
+    "Agent072": {
+      "challenge_scope": true,
+      "credentials_oracle_instance": true,
+      "exit_reference": true,
+      "lifecycle": true,
+      "proof_signature": true
+    },
+    "Agent073": {
+      "challenge_scope": true,
+      "credentials_oracle_instance": true,
+      "exit_reference": true,
+      "lifecycle": true,
+      "proof_signature": true
+    },
+    "Agent074": {
+      "challenge_scope": true,
+      "credentials_oracle_instance": true,
+      "exit_reference": true,
+      "lifecycle": true,
+      "proof_signature": true
+    },
+    "Agent075": {
+      "challenge_scope": true,
+      "credentials_oracle_instance": true,
+      "exit_reference": true,
+      "lifecycle": true,
+      "proof_signature": true
+    },
+    "Agent076": {
+      "challenge_scope": true,
+      "credentials_oracle_instance": true,
+      "exit_reference": true,
+      "lifecycle": true,
+      "proof_signature": true
+    },
+    "Agent077": {
+      "challenge_scope": true,
+      "credentials_oracle_instance": true,
+      "exit_reference": true,
+      "lifecycle": true,
+      "proof_signature": true
+    },
+    "Agent078": {
+      "challenge_scope": true,
+      "credentials_oracle_instance": true,
+      "exit_reference": true,
+      "lifecycle": true,
+      "proof_signature": true
+    },
+    "Agent079": {
+      "challenge_scope": true,
+      "credentials_oracle_instance": true,
+      "exit_reference": true,
+      "lifecycle": true,
+      "proof_signature": true
+    },
+    "Agent080": {
+      "challenge_scope": true,
+      "credentials_oracle_instance": true,
+      "exit_reference": true,
+      "lifecycle": true,
+      "proof_signature": true
+    },
+    "Agent081": {
+      "challenge_scope": true,
+      "credentials_oracle_instance": true,
+      "exit_reference": true,
+      "lifecycle": true,
+      "proof_signature": true
+    },
+    "Agent082": {
+      "challenge_scope": true,
+      "credentials_oracle_instance": true,
+      "exit_reference": true,
+      "lifecycle": true,
+      "proof_signature": true
+    },
+    "Agent083": {
+      "challenge_scope": true,
+      "credentials_oracle_instance": true,
+      "exit_reference": true,
+      "lifecycle": true,
+      "proof_signature": true
+    },
+    "Agent084": {
+      "challenge_scope": true,
+      "credentials_oracle_instance": true,
+      "exit_reference": true,
+      "lifecycle": true,
+      "proof_signature": true
+    },
+    "Agent085": {
+      "challenge_scope": true,
+      "credentials_oracle_instance": true,
+      "exit_reference": true,
+      "lifecycle": true,
+      "proof_signature": true
+    },
+    "Agent086": {
+      "challenge_scope": true,
+      "credentials_oracle_instance": true,
+      "exit_reference": true,
+      "lifecycle": true,
+      "proof_signature": true
+    },
+    "Agent087": {
+      "challenge_scope": true,
+      "credentials_oracle_instance": true,
+      "exit_reference": true,
+      "lifecycle": true,
+      "proof_signature": true
+    },
+    "Agent088": {
+      "challenge_scope": true,
+      "credentials_oracle_instance": true,
+      "exit_reference": true,
+      "lifecycle": true,
+      "proof_signature": true
+    },
+    "Agent089": {
+      "challenge_scope": true,
+      "credentials_oracle_instance": true,
+      "exit_reference": true,
+      "lifecycle": true,
+      "proof_signature": true
+    },
+    "Agent090": {
+      "challenge_scope": true,
+      "credentials_oracle_instance": true,
+      "exit_reference": true,
+      "lifecycle": true,
+      "proof_signature": true
+    },
+    "Agent091": {
+      "challenge_scope": true,
+      "credentials_oracle_instance": true,
+      "exit_reference": true,
+      "lifecycle": true,
+      "proof_signature": true
+    },
+    "Agent092": {
+      "challenge_scope": true,
+      "credentials_oracle_instance": true,
+      "exit_reference": true,
+      "lifecycle": true,
+      "proof_signature": true
+    },
+    "Agent093": {
+      "challenge_scope": true,
+      "credentials_oracle_instance": true,
+      "exit_reference": true,
+      "lifecycle": true,
+      "proof_signature": true
+    },
+    "Agent094": {
+      "challenge_scope": true,
+      "credentials_oracle_instance": true,
+      "exit_reference": true,
+      "lifecycle": true,
+      "proof_signature": true
+    },
+    "Agent095": {
+      "challenge_scope": true,
+      "credentials_oracle_instance": true,
+      "exit_reference": true,
+      "lifecycle": true,
+      "proof_signature": true
+    },
+    "Agent096": {
+      "challenge_scope": true,
+      "credentials_oracle_instance": true,
+      "exit_reference": true,
+      "lifecycle": true,
+      "proof_signature": true
+    },
+    "Agent097": {
+      "challenge_scope": true,
+      "credentials_oracle_instance": true,
+      "exit_reference": true,
+      "lifecycle": true,
+      "proof_signature": true
+    },
+    "Agent098": {
+      "challenge_scope": true,
+      "credentials_oracle_instance": true,
+      "exit_reference": true,
+      "lifecycle": true,
+      "proof_signature": true
+    },
+    "Agent099": {
+      "challenge_scope": true,
+      "credentials_oracle_instance": true,
+      "exit_reference": true,
+      "lifecycle": true,
+      "proof_signature": true
+    }
+  },
+  "chains": [
+    {
+      "checks": {
+        "accepts_exact_job": true,
+        "actual_senders": true,
+        "fresh_digest_nonce": true,
+        "handover_time": true,
+        "one_independent_effect": true,
+        "recipient_signature": true,
+        "scope_and_instances": true,
+        "sender_signature": true,
+        "tree_parent": true,
+        "unique_event_assignment": true,
+        "verified_multistage_parent": true,
+        "witness_signature_and_content": true,
+        "write_file_return_time_reference": true
+      },
+      "component_chain_verified": true,
+      "delegation_id": "b70a1ab4c2854da72e112fb89d69c61b31e4231d1b87d745361d6b003141c794",
+      "depth": 1,
+      "receiver": "Agent001",
+      "sender": "Agent000"
+    },
+    {
+      "checks": {
+        "accepts_exact_job": true,
+        "actual_senders": true,
+        "fresh_digest_nonce": true,
+        "handover_time": true,
+        "one_independent_effect": true,
+        "recipient_signature": true,
+        "scope_and_instances": true,
+        "sender_signature": true,
+        "tree_parent": true,
+        "unique_event_assignment": true,
+        "verified_multistage_parent": true,
+        "witness_signature_and_content": true,
+        "write_file_return_time_reference": true
+      },
+      "component_chain_verified": true,
+      "delegation_id": "c07fb14fce8a247005602b270fcd50ec5b7eb64c4a583de823ae661f8ad319a8",
+      "depth": 1,
+      "receiver": "Agent002",
+      "sender": "Agent000"
+    },
+    {
+      "checks": {
+        "accepts_exact_job": true,
+        "actual_senders": true,
+        "fresh_digest_nonce": true,
+        "handover_time": true,
+        "one_independent_effect": true,
+        "recipient_signature": true,
+        "scope_and_instances": true,
+        "sender_signature": true,
+        "tree_parent": true,
+        "unique_event_assignment": true,
+        "verified_multistage_parent": true,
+        "witness_signature_and_content": true,
+        "write_file_return_time_reference": true
+      },
+      "component_chain_verified": true,
+      "delegation_id": "8fd87dfffc96a6831831ef1f067e56657665e88db7b7cb1410213414dcdbe2c5",
+      "depth": 2,
+      "receiver": "Agent003",
+      "sender": "Agent001"
+    },
+    {
+      "checks": {
+        "accepts_exact_job": true,
+        "actual_senders": true,
+        "fresh_digest_nonce": true,
+        "handover_time": true,
+        "one_independent_effect": true,
+        "recipient_signature": true,
+        "scope_and_instances": true,
+        "sender_signature": true,
+        "tree_parent": true,
+        "unique_event_assignment": true,
+        "verified_multistage_parent": true,
+        "witness_signature_and_content": true,
+        "write_file_return_time_reference": true
+      },
+      "component_chain_verified": true,
+      "delegation_id": "1f95400e440fa06d774f5297a6763730d080407e8ef29924d9e60e0180c51cd0",
+      "depth": 2,
+      "receiver": "Agent004",
+      "sender": "Agent001"
+    },
+    {
+      "checks": {
+        "accepts_exact_job": true,
+        "actual_senders": true,
+        "fresh_digest_nonce": true,
+        "handover_time": true,
+        "one_independent_effect": true,
+        "recipient_signature": true,
+        "scope_and_instances": true,
+        "sender_signature": true,
+        "tree_parent": true,
+        "unique_event_assignment": true,
+        "verified_multistage_parent": true,
+        "witness_signature_and_content": true,
+        "write_file_return_time_reference": true
+      },
+      "component_chain_verified": true,
+      "delegation_id": "6df492f050d8b561be17c71a9d05151eea14934c4472d8503a734365e5547133",
+      "depth": 2,
+      "receiver": "Agent005",
+      "sender": "Agent002"
+    },
+    {
+      "checks": {
+        "accepts_exact_job": true,
+        "actual_senders": true,
+        "fresh_digest_nonce": true,
+        "handover_time": true,
+        "one_independent_effect": true,
+        "recipient_signature": true,
+        "scope_and_instances": true,
+        "sender_signature": true,
+        "tree_parent": true,
+        "unique_event_assignment": true,
+        "verified_multistage_parent": true,
+        "witness_signature_and_content": true,
+        "write_file_return_time_reference": true
+      },
+      "component_chain_verified": true,
+      "delegation_id": "1ef58ac0f1930b4a871692ac004b3423d32407c253c83eecfa1cdae13b20420a",
+      "depth": 2,
+      "receiver": "Agent006",
+      "sender": "Agent002"
+    },
+    {
+      "checks": {
+        "accepts_exact_job": true,
+        "actual_senders": true,
+        "fresh_digest_nonce": true,
+        "handover_time": true,
+        "one_independent_effect": true,
+        "recipient_signature": true,
+        "scope_and_instances": true,
+        "sender_signature": true,
+        "tree_parent": true,
+        "unique_event_assignment": true,
+        "verified_multistage_parent": true,
+        "witness_signature_and_content": true,
+        "write_file_return_time_reference": true
+      },
+      "component_chain_verified": true,
+      "delegation_id": "0bab3ac32c08e5950490cfff63ac944b743261ad8103d53f19afc75a1076f4dc",
+      "depth": 3,
+      "receiver": "Agent007",
+      "sender": "Agent003"
+    },
+    {
+      "checks": {
+        "accepts_exact_job": true,
+        "actual_senders": true,
+        "fresh_digest_nonce": true,
+        "handover_time": true,
+        "one_independent_effect": true,
+        "recipient_signature": true,
+        "scope_and_instances": true,
+        "sender_signature": true,
+        "tree_parent": true,
+        "unique_event_assignment": true,
+        "verified_multistage_parent": true,
+        "witness_signature_and_content": true,
+        "write_file_return_time_reference": true
+      },
+      "component_chain_verified": true,
+      "delegation_id": "245209f06a0b6e0e68403da7f2eb9d5348eee49e490154ed42854d52887a39f4",
+      "depth": 3,
+      "receiver": "Agent008",
+      "sender": "Agent003"
+    },
+    {
+      "checks": {
+        "accepts_exact_job": true,
+        "actual_senders": true,
+        "fresh_digest_nonce": true,
+        "handover_time": true,
+        "one_independent_effect": true,
+        "recipient_signature": true,
+        "scope_and_instances": true,
+        "sender_signature": true,
+        "tree_parent": true,
+        "unique_event_assignment": true,
+        "verified_multistage_parent": true,
+        "witness_signature_and_content": true,
+        "write_file_return_time_reference": true
+      },
+      "component_chain_verified": true,
+      "delegation_id": "a878fd9679362d80286461fe93e940390ed7765a7f59006f7bc966c79febc341",
+      "depth": 3,
+      "receiver": "Agent009",
+      "sender": "Agent004"
+    },
+    {
+      "checks": {
+        "accepts_exact_job": true,
+        "actual_senders": true,
+        "fresh_digest_nonce": true,
+        "handover_time": true,
+        "one_independent_effect": true,
+        "recipient_signature": true,
+        "scope_and_instances": true,
+        "sender_signature": true,
+        "tree_parent": true,
+        "unique_event_assignment": true,
+        "verified_multistage_parent": true,
+        "witness_signature_and_content": true,
+        "write_file_return_time_reference": true
+      },
+      "component_chain_verified": true,
+      "delegation_id": "9a9e92771447dd387ff346dfa5b6e00b4489ba67801cc678fe6530099c604f13",
+      "depth": 3,
+      "receiver": "Agent010",
+      "sender": "Agent004"
+    },
+    {
+      "checks": {
+        "accepts_exact_job": true,
+        "actual_senders": true,
+        "fresh_digest_nonce": true,
+        "handover_time": true,
+        "one_independent_effect": true,
+        "recipient_signature": true,
+        "scope_and_instances": true,
+        "sender_signature": true,
+        "tree_parent": true,
+        "unique_event_assignment": true,
+        "verified_multistage_parent": true,
+        "witness_signature_and_content": true,
+        "write_file_return_time_reference": true
+      },
+      "component_chain_verified": true,
+      "delegation_id": "1e93e631de8fcd8ce78cd82d7b82fe8be4d87add88cd36d487bb3c082aef01b8",
+      "depth": 3,
+      "receiver": "Agent011",
+      "sender": "Agent005"
+    },
+    {
+      "checks": {
+        "accepts_exact_job": true,
+        "actual_senders": true,
+        "fresh_digest_nonce": true,
+        "handover_time": true,
+        "one_independent_effect": true,
+        "recipient_signature": true,
+        "scope_and_instances": true,
+        "sender_signature": true,
+        "tree_parent": true,
+        "unique_event_assignment": true,
+        "verified_multistage_parent": true,
+        "witness_signature_and_content": true,
+        "write_file_return_time_reference": true
+      },
+      "component_chain_verified": true,
+      "delegation_id": "acad9c9599fa4d76c58dcfc21e8dea53916dff1f9077422d669b46be8f06b95a",
+      "depth": 3,
+      "receiver": "Agent012",
+      "sender": "Agent005"
+    },
+    {
+      "checks": {
+        "accepts_exact_job": true,
+        "actual_senders": true,
+        "fresh_digest_nonce": true,
+        "handover_time": true,
+        "one_independent_effect": true,
+        "recipient_signature": true,
+        "scope_and_instances": true,
+        "sender_signature": true,
+        "tree_parent": true,
+        "unique_event_assignment": true,
+        "verified_multistage_parent": true,
+        "witness_signature_and_content": true,
+        "write_file_return_time_reference": true
+      },
+      "component_chain_verified": true,
+      "delegation_id": "e1d4bc8471ea9a8d603b320cc5644dca82e8d20fddb13c8142ea332de8d95975",
+      "depth": 3,
+      "receiver": "Agent013",
+      "sender": "Agent006"
+    },
+    {
+      "checks": {
+        "accepts_exact_job": true,
+        "actual_senders": true,
+        "fresh_digest_nonce": true,
+        "handover_time": true,
+        "one_independent_effect": true,
+        "recipient_signature": true,
+        "scope_and_instances": true,
+        "sender_signature": true,
+        "tree_parent": true,
+        "unique_event_assignment": true,
+        "verified_multistage_parent": true,
+        "witness_signature_and_content": true,
+        "write_file_return_time_reference": true
+      },
+      "component_chain_verified": true,
+      "delegation_id": "7362d8b9020a6521a9269d62a0f31f7d951fbede064b058970aea05d91069f67",
+      "depth": 3,
+      "receiver": "Agent014",
+      "sender": "Agent006"
+    },
+    {
+      "checks": {
+        "accepts_exact_job": true,
+        "actual_senders": true,
+        "fresh_digest_nonce": true,
+        "handover_time": true,
+        "one_independent_effect": true,
+        "recipient_signature": true,
+        "scope_and_instances": true,
+        "sender_signature": true,
+        "tree_parent": true,
+        "unique_event_assignment": true,
+        "verified_multistage_parent": true,
+        "witness_signature_and_content": true,
+        "write_file_return_time_reference": true
+      },
+      "component_chain_verified": true,
+      "delegation_id": "ecaa66f7e96a40cb6e43992de8d612d040acb4e9cc89f34d2fb9591f4f37c335",
+      "depth": 4,
+      "receiver": "Agent015",
+      "sender": "Agent007"
+    },
+    {
+      "checks": {
+        "accepts_exact_job": true,
+        "actual_senders": true,
+        "fresh_digest_nonce": true,
+        "handover_time": true,
+        "one_independent_effect": true,
+        "recipient_signature": true,
+        "scope_and_instances": true,
+        "sender_signature": true,
+        "tree_parent": true,
+        "unique_event_assignment": true,
+        "verified_multistage_parent": true,
+        "witness_signature_and_content": true,
+        "write_file_return_time_reference": true
+      },
+      "component_chain_verified": true,
+      "delegation_id": "bca2eb9476e23210afe1628dfb393d5d908f8a8240dfb5c29e933ad59c655725",
+      "depth": 4,
+      "receiver": "Agent016",
+      "sender": "Agent007"
+    },
+    {
+      "checks": {
+        "accepts_exact_job": true,
+        "actual_senders": true,
+        "fresh_digest_nonce": true,
+        "handover_time": true,
+        "one_independent_effect": true,
+        "recipient_signature": true,
+        "scope_and_instances": true,
+        "sender_signature": true,
+        "tree_parent": true,
+        "unique_event_assignment": true,
+        "verified_multistage_parent": true,
+        "witness_signature_and_content": true,
+        "write_file_return_time_reference": true
+      },
+      "component_chain_verified": true,
+      "delegation_id": "26913a7c0fef8149bb2227f080b688b286ff2ecc21a93aa544c4d87d5cc23f45",
+      "depth": 4,
+      "receiver": "Agent017",
+      "sender": "Agent008"
+    },
+    {
+      "checks": {
+        "accepts_exact_job": true,
+        "actual_senders": true,
+        "fresh_digest_nonce": true,
+        "handover_time": true,
+        "one_independent_effect": true,
+        "recipient_signature": true,
+        "scope_and_instances": true,
+        "sender_signature": true,
+        "tree_parent": true,
+        "unique_event_assignment": true,
+        "verified_multistage_parent": true,
+        "witness_signature_and_content": true,
+        "write_file_return_time_reference": true
+      },
+      "component_chain_verified": true,
+      "delegation_id": "0e6c12c44fa27d6f088697ca9c8b82b2293584f54bbfd141548d9cd5b0ed959f",
+      "depth": 4,
+      "receiver": "Agent018",
+      "sender": "Agent008"
+    },
+    {
+      "checks": {
+        "accepts_exact_job": true,
+        "actual_senders": true,
+        "fresh_digest_nonce": true,
+        "handover_time": true,
+        "one_independent_effect": true,
+        "recipient_signature": true,
+        "scope_and_instances": true,
+        "sender_signature": true,
+        "tree_parent": true,
+        "unique_event_assignment": true,
+        "verified_multistage_parent": true,
+        "witness_signature_and_content": true,
+        "write_file_return_time_reference": true
+      },
+      "component_chain_verified": true,
+      "delegation_id": "a1a4d13b58133554fa6da98edfe0c00369b324e5c64c88d18065e3ea76bf4321",
+      "depth": 4,
+      "receiver": "Agent019",
+      "sender": "Agent009"
+    },
+    {
+      "checks": {
+        "accepts_exact_job": true,
+        "actual_senders": true,
+        "fresh_digest_nonce": true,
+        "handover_time": true,
+        "one_independent_effect": true,
+        "recipient_signature": true,
+        "scope_and_instances": true,
+        "sender_signature": true,
+        "tree_parent": true,
+        "unique_event_assignment": true,
+        "verified_multistage_parent": true,
+        "witness_signature_and_content": true,
+        "write_file_return_time_reference": true
+      },
+      "component_chain_verified": true,
+      "delegation_id": "7fc4ce2576211e6272f323b723a7eb8a19d8a417d68c0fb99eed706938044c4c",
+      "depth": 4,
+      "receiver": "Agent020",
+      "sender": "Agent009"
+    },
+    {
+      "checks": {
+        "accepts_exact_job": true,
+        "actual_senders": true,
+        "fresh_digest_nonce": true,
+        "handover_time": true,
+        "one_independent_effect": true,
+        "recipient_signature": true,
+        "scope_and_instances": true,
+        "sender_signature": true,
+        "tree_parent": true,
+        "unique_event_assignment": true,
+        "verified_multistage_parent": true,
+        "witness_signature_and_content": true,
+        "write_file_return_time_reference": true
+      },
+      "component_chain_verified": true,
+      "delegation_id": "f2b8c6636a2d7ecb025e5a111a2e2ef38e73deac6d58001062f12c78f7fee54d",
+      "depth": 4,
+      "receiver": "Agent021",
+      "sender": "Agent010"
+    },
+    {
+      "checks": {
+        "accepts_exact_job": true,
+        "actual_senders": true,
+        "fresh_digest_nonce": true,
+        "handover_time": true,
+        "one_independent_effect": true,
+        "recipient_signature": true,
+        "scope_and_instances": true,
+        "sender_signature": true,
+        "tree_parent": true,
+        "unique_event_assignment": true,
+        "verified_multistage_parent": true,
+        "witness_signature_and_content": true,
+        "write_file_return_time_reference": true
+      },
+      "component_chain_verified": true,
+      "delegation_id": "4e5ff73de79988463cab5d5e84eccb92d6e5e40e5c2f62731e239aa0d77632d2",
+      "depth": 4,
+      "receiver": "Agent022",
+      "sender": "Agent010"
+    },
+    {
+      "checks": {
+        "accepts_exact_job": true,
+        "actual_senders": true,
+        "fresh_digest_nonce": true,
+        "handover_time": true,
+        "one_independent_effect": true,
+        "recipient_signature": true,
+        "scope_and_instances": true,
+        "sender_signature": true,
+        "tree_parent": true,
+        "unique_event_assignment": true,
+        "verified_multistage_parent": true,
+        "witness_signature_and_content": true,
+        "write_file_return_time_reference": true
+      },
+      "component_chain_verified": true,
+      "delegation_id": "ccea9e3359e101821d1b27087f27dd12a5672a2754eb4e18d8a8076430603aae",
+      "depth": 4,
+      "receiver": "Agent023",
+      "sender": "Agent011"
+    },
+    {
+      "checks": {
+        "accepts_exact_job": true,
+        "actual_senders": true,
+        "fresh_digest_nonce": true,
+        "handover_time": true,
+        "one_independent_effect": true,
+        "recipient_signature": true,
+        "scope_and_instances": true,
+        "sender_signature": true,
+        "tree_parent": true,
+        "unique_event_assignment": true,
+        "verified_multistage_parent": true,
+        "witness_signature_and_content": true,
+        "write_file_return_time_reference": true
+      },
+      "component_chain_verified": true,
+      "delegation_id": "df65b32196135b558e7997131070a7aa4653feb6d1122d61d4b02c179544867c",
+      "depth": 4,
+      "receiver": "Agent024",
+      "sender": "Agent011"
+    },
+    {
+      "checks": {
+        "accepts_exact_job": true,
+        "actual_senders": true,
+        "fresh_digest_nonce": true,
+        "handover_time": true,
+        "one_independent_effect": true,
+        "recipient_signature": true,
+        "scope_and_instances": true,
+        "sender_signature": true,
+        "tree_parent": true,
+        "unique_event_assignment": true,
+        "verified_multistage_parent": true,
+        "witness_signature_and_content": true,
+        "write_file_return_time_reference": true
+      },
+      "component_chain_verified": true,
+      "delegation_id": "dccb1e940a0307754004dfc05984e1636cb95ef05b3fb18a990276859bff00e9",
+      "depth": 4,
+      "receiver": "Agent025",
+      "sender": "Agent012"
+    },
+    {
+      "checks": {
+        "accepts_exact_job": true,
+        "actual_senders": true,
+        "fresh_digest_nonce": true,
+        "handover_time": true,
+        "one_independent_effect": true,
+        "recipient_signature": true,
+        "scope_and_instances": true,
+        "sender_signature": true,
+        "tree_parent": true,
+        "unique_event_assignment": true,
+        "verified_multistage_parent": true,
+        "witness_signature_and_content": true,
+        "write_file_return_time_reference": true
+      },
+      "component_chain_verified": true,
+      "delegation_id": "7aa47ecb7ee1e62921414ac90d9890da745eed557b96e305822acb5a9bf761d8",
+      "depth": 4,
+      "receiver": "Agent026",
+      "sender": "Agent012"
+    },
+    {
+      "checks": {
+        "accepts_exact_job": true,
+        "actual_senders": true,
+        "fresh_digest_nonce": true,
+        "handover_time": true,
+        "one_independent_effect": true,
+        "recipient_signature": true,
+        "scope_and_instances": true,
+        "sender_signature": true,
+        "tree_parent": true,
+        "unique_event_assignment": true,
+        "verified_multistage_parent": true,
+        "witness_signature_and_content": true,
+        "write_file_return_time_reference": true
+      },
+      "component_chain_verified": true,
+      "delegation_id": "cd983109ff9d7bcdefeca5cd40bff552f8fbd4b215607db02d773f1b57a9beab",
+      "depth": 4,
+      "receiver": "Agent027",
+      "sender": "Agent013"
+    },
+    {
+      "checks": {
+        "accepts_exact_job": true,
+        "actual_senders": true,
+        "fresh_digest_nonce": true,
+        "handover_time": true,
+        "one_independent_effect": true,
+        "recipient_signature": true,
+        "scope_and_instances": true,
+        "sender_signature": true,
+        "tree_parent": true,
+        "unique_event_assignment": true,
+        "verified_multistage_parent": true,
+        "witness_signature_and_content": true,
+        "write_file_return_time_reference": true
+      },
+      "component_chain_verified": true,
+      "delegation_id": "cc63a5d74a226ff6e352eebc0e25f0f774c6b48f16a8241ef149f75edcc2b764",
+      "depth": 4,
+      "receiver": "Agent028",
+      "sender": "Agent013"
+    },
+    {
+      "checks": {
+        "accepts_exact_job": true,
+        "actual_senders": true,
+        "fresh_digest_nonce": true,
+        "handover_time": true,
+        "one_independent_effect": true,
+        "recipient_signature": true,
+        "scope_and_instances": true,
+        "sender_signature": true,
+        "tree_parent": true,
+        "unique_event_assignment": true,
+        "verified_multistage_parent": true,
+        "witness_signature_and_content": true,
+        "write_file_return_time_reference": true
+      },
+      "component_chain_verified": true,
+      "delegation_id": "23d508d1af536bcd7a37d1e0f34b0a2a362ea3b470bbfe65d7c65eaccd846102",
+      "depth": 4,
+      "receiver": "Agent029",
+      "sender": "Agent014"
+    },
+    {
+      "checks": {
+        "accepts_exact_job": true,
+        "actual_senders": true,
+        "fresh_digest_nonce": true,
+        "handover_time": true,
+        "one_independent_effect": true,
+        "recipient_signature": true,
+        "scope_and_instances": true,
+        "sender_signature": true,
+        "tree_parent": true,
+        "unique_event_assignment": true,
+        "verified_multistage_parent": true,
+        "witness_signature_and_content": true,
+        "write_file_return_time_reference": true
+      },
+      "component_chain_verified": true,
+      "delegation_id": "fc5c8812a61708f1622b9859b1dcf4b23597bbc237d1e7e9919ac064c1703869",
+      "depth": 4,
+      "receiver": "Agent030",
+      "sender": "Agent014"
+    },
+    {
+      "checks": {
+        "accepts_exact_job": true,
+        "actual_senders": true,
+        "fresh_digest_nonce": true,
+        "handover_time": true,
+        "one_independent_effect": true,
+        "recipient_signature": true,
+        "scope_and_instances": true,
+        "sender_signature": true,
+        "tree_parent": true,
+        "unique_event_assignment": true,
+        "verified_multistage_parent": true,
+        "witness_signature_and_content": true,
+        "write_file_return_time_reference": true
+      },
+      "component_chain_verified": true,
+      "delegation_id": "a6020cca41560095c2b6896cb4fe327c033a75259c5f56b1f9c9d5000cc154b1",
+      "depth": 5,
+      "receiver": "Agent031",
+      "sender": "Agent015"
+    },
+    {
+      "checks": {
+        "accepts_exact_job": true,
+        "actual_senders": true,
+        "fresh_digest_nonce": true,
+        "handover_time": true,
+        "one_independent_effect": true,
+        "recipient_signature": true,
+        "scope_and_instances": true,
+        "sender_signature": true,
+        "tree_parent": true,
+        "unique_event_assignment": true,
+        "verified_multistage_parent": true,
+        "witness_signature_and_content": true,
+        "write_file_return_time_reference": true
+      },
+      "component_chain_verified": true,
+      "delegation_id": "639fa711708f94f793b4ce7a867067aea675ddebdc513b15978ea42d41f3ad53",
+      "depth": 5,
+      "receiver": "Agent032",
+      "sender": "Agent015"
+    },
+    {
+      "checks": {
+        "accepts_exact_job": true,
+        "actual_senders": true,
+        "fresh_digest_nonce": true,
+        "handover_time": true,
+        "one_independent_effect": true,
+        "recipient_signature": true,
+        "scope_and_instances": true,
+        "sender_signature": true,
+        "tree_parent": true,
+        "unique_event_assignment": true,
+        "verified_multistage_parent": true,
+        "witness_signature_and_content": true,
+        "write_file_return_time_reference": true
+      },
+      "component_chain_verified": true,
+      "delegation_id": "620363ea3e421888ef0e6bde106f89b2bfb11aa0b6840aa7afcbab5af6493b48",
+      "depth": 5,
+      "receiver": "Agent033",
+      "sender": "Agent016"
+    },
+    {
+      "checks": {
+        "accepts_exact_job": true,
+        "actual_senders": true,
+        "fresh_digest_nonce": true,
+        "handover_time": true,
+        "one_independent_effect": true,
+        "recipient_signature": true,
+        "scope_and_instances": true,
+        "sender_signature": true,
+        "tree_parent": true,
+        "unique_event_assignment": true,
+        "verified_multistage_parent": true,
+        "witness_signature_and_content": true,
+        "write_file_return_time_reference": true
+      },
+      "component_chain_verified": true,
+      "delegation_id": "7c6dfdb32cf324f5a231e5664d857b9c1c678089e27137f656257389a0492507",
+      "depth": 5,
+      "receiver": "Agent034",
+      "sender": "Agent016"
+    },
+    {
+      "checks": {
+        "accepts_exact_job": true,
+        "actual_senders": true,
+        "fresh_digest_nonce": true,
+        "handover_time": true,
+        "one_independent_effect": true,
+        "recipient_signature": true,
+        "scope_and_instances": true,
+        "sender_signature": true,
+        "tree_parent": true,
+        "unique_event_assignment": true,
+        "verified_multistage_parent": true,
+        "witness_signature_and_content": true,
+        "write_file_return_time_reference": true
+      },
+      "component_chain_verified": true,
+      "delegation_id": "6ecb5acd9113fcea69ec0e6930d7036ce2b62cc5c90a4a850bc23310ceae417f",
+      "depth": 5,
+      "receiver": "Agent035",
+      "sender": "Agent017"
+    },
+    {
+      "checks": {
+        "accepts_exact_job": true,
+        "actual_senders": true,
+        "fresh_digest_nonce": true,
+        "handover_time": true,
+        "one_independent_effect": true,
+        "recipient_signature": true,
+        "scope_and_instances": true,
+        "sender_signature": true,
+        "tree_parent": true,
+        "unique_event_assignment": true,
+        "verified_multistage_parent": true,
+        "witness_signature_and_content": true,
+        "write_file_return_time_reference": true
+      },
+      "component_chain_verified": true,
+      "delegation_id": "dd8eb22f20972a2306b880986fb53aefd9afee4a87a6de261e32682fcfb7bd86",
+      "depth": 5,
+      "receiver": "Agent036",
+      "sender": "Agent017"
+    },
+    {
+      "checks": {
+        "accepts_exact_job": true,
+        "actual_senders": true,
+        "fresh_digest_nonce": true,
+        "handover_time": true,
+        "one_independent_effect": true,
+        "recipient_signature": true,
+        "scope_and_instances": true,
+        "sender_signature": true,
+        "tree_parent": true,
+        "unique_event_assignment": true,
+        "verified_multistage_parent": true,
+        "witness_signature_and_content": true,
+        "write_file_return_time_reference": true
+      },
+      "component_chain_verified": true,
+      "delegation_id": "fd5d02959d6cd617445b12b1d2346a2ccf82258ebd467a3aaa5962826a1c57fb",
+      "depth": 5,
+      "receiver": "Agent037",
+      "sender": "Agent018"
+    },
+    {
+      "checks": {
+        "accepts_exact_job": true,
+        "actual_senders": true,
+        "fresh_digest_nonce": true,
+        "handover_time": true,
+        "one_independent_effect": true,
+        "recipient_signature": true,
+        "scope_and_instances": true,
+        "sender_signature": true,
+        "tree_parent": true,
+        "unique_event_assignment": true,
+        "verified_multistage_parent": true,
+        "witness_signature_and_content": true,
+        "write_file_return_time_reference": true
+      },
+      "component_chain_verified": true,
+      "delegation_id": "55947e26935c3f4af5a284e6c36088b200fab4820abba6c2cb8aa6f64a41461a",
+      "depth": 5,
+      "receiver": "Agent038",
+      "sender": "Agent018"
+    },
+    {
+      "checks": {
+        "accepts_exact_job": true,
+        "actual_senders": true,
+        "fresh_digest_nonce": true,
+        "handover_time": true,
+        "one_independent_effect": true,
+        "recipient_signature": true,
+        "scope_and_instances": true,
+        "sender_signature": true,
+        "tree_parent": true,
+        "unique_event_assignment": true,
+        "verified_multistage_parent": true,
+        "witness_signature_and_content": true,
+        "write_file_return_time_reference": true
+      },
+      "component_chain_verified": true,
+      "delegation_id": "639d34164d9e557a70e13c2735bc6f5d1ec7accb39301e5a1394455f2788947e",
+      "depth": 5,
+      "receiver": "Agent039",
+      "sender": "Agent019"
+    },
+    {
+      "checks": {
+        "accepts_exact_job": true,
+        "actual_senders": true,
+        "fresh_digest_nonce": true,
+        "handover_time": true,
+        "one_independent_effect": true,
+        "recipient_signature": true,
+        "scope_and_instances": true,
+        "sender_signature": true,
+        "tree_parent": true,
+        "unique_event_assignment": true,
+        "verified_multistage_parent": true,
+        "witness_signature_and_content": true,
+        "write_file_return_time_reference": true
+      },
+      "component_chain_verified": true,
+      "delegation_id": "31ff660d76402d39d376361a470773f6e10297181bbecc2f2cf099d90a4f5769",
+      "depth": 5,
+      "receiver": "Agent040",
+      "sender": "Agent019"
+    },
+    {
+      "checks": {
+        "accepts_exact_job": true,
+        "actual_senders": true,
+        "fresh_digest_nonce": true,
+        "handover_time": true,
+        "one_independent_effect": true,
+        "recipient_signature": true,
+        "scope_and_instances": true,
+        "sender_signature": true,
+        "tree_parent": true,
+        "unique_event_assignment": true,
+        "verified_multistage_parent": true,
+        "witness_signature_and_content": true,
+        "write_file_return_time_reference": true
+      },
+      "component_chain_verified": true,
+      "delegation_id": "32c4b8a0dbe241324b720b5d285347e8c1930691f2d822800dd3031a3a13bc48",
+      "depth": 5,
+      "receiver": "Agent041",
+      "sender": "Agent020"
+    },
+    {
+      "checks": {
+        "accepts_exact_job": true,
+        "actual_senders": true,
+        "fresh_digest_nonce": true,
+        "handover_time": true,
+        "one_independent_effect": true,
+        "recipient_signature": true,
+        "scope_and_instances": true,
+        "sender_signature": true,
+        "tree_parent": true,
+        "unique_event_assignment": true,
+        "verified_multistage_parent": true,
+        "witness_signature_and_content": true,
+        "write_file_return_time_reference": true
+      },
+      "component_chain_verified": true,
+      "delegation_id": "4eae387913f28bfcd39875d9a54df608b2e278a747eab551084400c4f26c7d34",
+      "depth": 5,
+      "receiver": "Agent042",
+      "sender": "Agent020"
+    },
+    {
+      "checks": {
+        "accepts_exact_job": true,
+        "actual_senders": true,
+        "fresh_digest_nonce": true,
+        "handover_time": true,
+        "one_independent_effect": true,
+        "recipient_signature": true,
+        "scope_and_instances": true,
+        "sender_signature": true,
+        "tree_parent": true,
+        "unique_event_assignment": true,
+        "verified_multistage_parent": true,
+        "witness_signature_and_content": true,
+        "write_file_return_time_reference": true
+      },
+      "component_chain_verified": true,
+      "delegation_id": "da627a499f97ff4a41cae21c64cd3a0dc040ac2953ac9a21ccd4fe69c842121d",
+      "depth": 5,
+      "receiver": "Agent043",
+      "sender": "Agent021"
+    },
+    {
+      "checks": {
+        "accepts_exact_job": true,
+        "actual_senders": true,
+        "fresh_digest_nonce": true,
+        "handover_time": true,
+        "one_independent_effect": true,
+        "recipient_signature": true,
+        "scope_and_instances": true,
+        "sender_signature": true,
+        "tree_parent": true,
+        "unique_event_assignment": true,
+        "verified_multistage_parent": true,
+        "witness_signature_and_content": true,
+        "write_file_return_time_reference": true
+      },
+      "component_chain_verified": true,
+      "delegation_id": "24168c6a52f4051bc2675a9c25d378dcbda79e9bc7a9a1147e8c27bfb83ce3c0",
+      "depth": 5,
+      "receiver": "Agent044",
+      "sender": "Agent021"
+    },
+    {
+      "checks": {
+        "accepts_exact_job": true,
+        "actual_senders": true,
+        "fresh_digest_nonce": true,
+        "handover_time": true,
+        "one_independent_effect": true,
+        "recipient_signature": true,
+        "scope_and_instances": true,
+        "sender_signature": true,
+        "tree_parent": true,
+        "unique_event_assignment": true,
+        "verified_multistage_parent": true,
+        "witness_signature_and_content": true,
+        "write_file_return_time_reference": true
+      },
+      "component_chain_verified": true,
+      "delegation_id": "457b9b81f57672a37bc4f624ca36c101e81e2dd374a73fbd49c3321ab926d661",
+      "depth": 5,
+      "receiver": "Agent045",
+      "sender": "Agent022"
+    },
+    {
+      "checks": {
+        "accepts_exact_job": true,
+        "actual_senders": true,
+        "fresh_digest_nonce": true,
+        "handover_time": true,
+        "one_independent_effect": true,
+        "recipient_signature": true,
+        "scope_and_instances": true,
+        "sender_signature": true,
+        "tree_parent": true,
+        "unique_event_assignment": true,
+        "verified_multistage_parent": true,
+        "witness_signature_and_content": true,
+        "write_file_return_time_reference": true
+      },
+      "component_chain_verified": true,
+      "delegation_id": "8f35cc6dde2c45e3211d1fa83a92b635505648e26cff3b4a78f62d328ff7a1e3",
+      "depth": 5,
+      "receiver": "Agent046",
+      "sender": "Agent022"
+    },
+    {
+      "checks": {
+        "accepts_exact_job": true,
+        "actual_senders": true,
+        "fresh_digest_nonce": true,
+        "handover_time": true,
+        "one_independent_effect": true,
+        "recipient_signature": true,
+        "scope_and_instances": true,
+        "sender_signature": true,
+        "tree_parent": true,
+        "unique_event_assignment": true,
+        "verified_multistage_parent": true,
+        "witness_signature_and_content": true,
+        "write_file_return_time_reference": true
+      },
+      "component_chain_verified": true,
+      "delegation_id": "6d24e159ade2ebb65e5b41dd94319b59732443bf0080792adfe1b35553458820",
+      "depth": 5,
+      "receiver": "Agent047",
+      "sender": "Agent023"
+    },
+    {
+      "checks": {
+        "accepts_exact_job": true,
+        "actual_senders": true,
+        "fresh_digest_nonce": true,
+        "handover_time": true,
+        "one_independent_effect": true,
+        "recipient_signature": true,
+        "scope_and_instances": true,
+        "sender_signature": true,
+        "tree_parent": true,
+        "unique_event_assignment": true,
+        "verified_multistage_parent": true,
+        "witness_signature_and_content": true,
+        "write_file_return_time_reference": true
+      },
+      "component_chain_verified": true,
+      "delegation_id": "2a707d8da64960dababf72c4bb0fb69f01adc051ee67f1816e154f56abda8ad4",
+      "depth": 5,
+      "receiver": "Agent048",
+      "sender": "Agent023"
+    },
+    {
+      "checks": {
+        "accepts_exact_job": true,
+        "actual_senders": true,
+        "fresh_digest_nonce": true,
+        "handover_time": true,
+        "one_independent_effect": true,
+        "recipient_signature": true,
+        "scope_and_instances": true,
+        "sender_signature": true,
+        "tree_parent": true,
+        "unique_event_assignment": true,
+        "verified_multistage_parent": true,
+        "witness_signature_and_content": true,
+        "write_file_return_time_reference": true
+      },
+      "component_chain_verified": true,
+      "delegation_id": "2a784c57159f37594fcd9c99218e7a9e041d767cfcbc6485a81f9c926e91989a",
+      "depth": 5,
+      "receiver": "Agent049",
+      "sender": "Agent024"
+    },
+    {
+      "checks": {
+        "accepts_exact_job": true,
+        "actual_senders": true,
+        "fresh_digest_nonce": true,
+        "handover_time": true,
+        "one_independent_effect": true,
+        "recipient_signature": true,
+        "scope_and_instances": true,
+        "sender_signature": true,
+        "tree_parent": true,
+        "unique_event_assignment": true,
+        "verified_multistage_parent": true,
+        "witness_signature_and_content": true,
+        "write_file_return_time_reference": true
+      },
+      "component_chain_verified": true,
+      "delegation_id": "4576b64de5f2bc9b22b4dd5dee887f22c58d1cb832220002684e3a7ef0583ada",
+      "depth": 5,
+      "receiver": "Agent050",
+      "sender": "Agent024"
+    },
+    {
+      "checks": {
+        "accepts_exact_job": true,
+        "actual_senders": true,
+        "fresh_digest_nonce": true,
+        "handover_time": true,
+        "one_independent_effect": true,
+        "recipient_signature": true,
+        "scope_and_instances": true,
+        "sender_signature": true,
+        "tree_parent": true,
+        "unique_event_assignment": true,
+        "verified_multistage_parent": true,
+        "witness_signature_and_content": true,
+        "write_file_return_time_reference": true
+      },
+      "component_chain_verified": true,
+      "delegation_id": "705ae3e4a066ae36a3446cd7f30bb85a19e2af52f3ed359de007b603e8e6b0fc",
+      "depth": 5,
+      "receiver": "Agent051",
+      "sender": "Agent025"
+    },
+    {
+      "checks": {
+        "accepts_exact_job": true,
+        "actual_senders": true,
+        "fresh_digest_nonce": true,
+        "handover_time": true,
+        "one_independent_effect": true,
+        "recipient_signature": true,
+        "scope_and_instances": true,
+        "sender_signature": true,
+        "tree_parent": true,
+        "unique_event_assignment": true,
+        "verified_multistage_parent": true,
+        "witness_signature_and_content": true,
+        "write_file_return_time_reference": true
+      },
+      "component_chain_verified": true,
+      "delegation_id": "86e6e53795f0a77f47102e19c08eb081e7412188c68db8c2a41d4050d9ca0b2e",
+      "depth": 5,
+      "receiver": "Agent052",
+      "sender": "Agent025"
+    },
+    {
+      "checks": {
+        "accepts_exact_job": true,
+        "actual_senders": true,
+        "fresh_digest_nonce": true,
+        "handover_time": true,
+        "one_independent_effect": true,
+        "recipient_signature": true,
+        "scope_and_instances": true,
+        "sender_signature": true,
+        "tree_parent": true,
+        "unique_event_assignment": true,
+        "verified_multistage_parent": true,
+        "witness_signature_and_content": true,
+        "write_file_return_time_reference": true
+      },
+      "component_chain_verified": true,
+      "delegation_id": "275a7981831bb443a86e9b5fac5503d6fdc3c5f5eea94d140cc6b07f6067578d",
+      "depth": 5,
+      "receiver": "Agent053",
+      "sender": "Agent026"
+    },
+    {
+      "checks": {
+        "accepts_exact_job": true,
+        "actual_senders": true,
+        "fresh_digest_nonce": true,
+        "handover_time": true,
+        "one_independent_effect": true,
+        "recipient_signature": true,
+        "scope_and_instances": true,
+        "sender_signature": true,
+        "tree_parent": true,
+        "unique_event_assignment": true,
+        "verified_multistage_parent": true,
+        "witness_signature_and_content": true,
+        "write_file_return_time_reference": true
+      },
+      "component_chain_verified": true,
+      "delegation_id": "b81885c9319d572deba2d7685ec2849c4de8cd61003c9f7c4acf50e2e4dc62cd",
+      "depth": 5,
+      "receiver": "Agent054",
+      "sender": "Agent026"
+    },
+    {
+      "checks": {
+        "accepts_exact_job": true,
+        "actual_senders": true,
+        "fresh_digest_nonce": true,
+        "handover_time": true,
+        "one_independent_effect": true,
+        "recipient_signature": true,
+        "scope_and_instances": true,
+        "sender_signature": true,
+        "tree_parent": true,
+        "unique_event_assignment": true,
+        "verified_multistage_parent": true,
+        "witness_signature_and_content": true,
+        "write_file_return_time_reference": true
+      },
+      "component_chain_verified": true,
+      "delegation_id": "740c5d488a110f1ccbe310d1b677e69680fb02547a3d5e5bb4896120e34f8e00",
+      "depth": 5,
+      "receiver": "Agent055",
+      "sender": "Agent027"
+    },
+    {
+      "checks": {
+        "accepts_exact_job": true,
+        "actual_senders": true,
+        "fresh_digest_nonce": true,
+        "handover_time": true,
+        "one_independent_effect": true,
+        "recipient_signature": true,
+        "scope_and_instances": true,
+        "sender_signature": true,
+        "tree_parent": true,
+        "unique_event_assignment": true,
+        "verified_multistage_parent": true,
+        "witness_signature_and_content": true,
+        "write_file_return_time_reference": true
+      },
+      "component_chain_verified": true,
+      "delegation_id": "d3f3807f0f810927c2c1a20c918e2f6629af355144bc42dec6d0c061c3d23022",
+      "depth": 5,
+      "receiver": "Agent056",
+      "sender": "Agent027"
+    },
+    {
+      "checks": {
+        "accepts_exact_job": true,
+        "actual_senders": true,
+        "fresh_digest_nonce": true,
+        "handover_time": true,
+        "one_independent_effect": true,
+        "recipient_signature": true,
+        "scope_and_instances": true,
+        "sender_signature": true,
+        "tree_parent": true,
+        "unique_event_assignment": true,
+        "verified_multistage_parent": true,
+        "witness_signature_and_content": true,
+        "write_file_return_time_reference": true
+      },
+      "component_chain_verified": true,
+      "delegation_id": "ed4d7aa5ad841af7eb7adc30dd48bdc22747fb5481beb54e77427d9393154067",
+      "depth": 5,
+      "receiver": "Agent057",
+      "sender": "Agent028"
+    },
+    {
+      "checks": {
+        "accepts_exact_job": true,
+        "actual_senders": true,
+        "fresh_digest_nonce": true,
+        "handover_time": true,
+        "one_independent_effect": true,
+        "recipient_signature": true,
+        "scope_and_instances": true,
+        "sender_signature": true,
+        "tree_parent": true,
+        "unique_event_assignment": true,
+        "verified_multistage_parent": true,
+        "witness_signature_and_content": true,
+        "write_file_return_time_reference": true
+      },
+      "component_chain_verified": true,
+      "delegation_id": "6515d7ba89ab6906fcd2f9d962458e694a4d9f92c9b0196d2307fc0402a29c4a",
+      "depth": 5,
+      "receiver": "Agent058",
+      "sender": "Agent028"
+    },
+    {
+      "checks": {
+        "accepts_exact_job": true,
+        "actual_senders": true,
+        "fresh_digest_nonce": true,
+        "handover_time": true,
+        "one_independent_effect": true,
+        "recipient_signature": true,
+        "scope_and_instances": true,
+        "sender_signature": true,
+        "tree_parent": true,
+        "unique_event_assignment": true,
+        "verified_multistage_parent": true,
+        "witness_signature_and_content": true,
+        "write_file_return_time_reference": true
+      },
+      "component_chain_verified": true,
+      "delegation_id": "66bf62124be33521ebb715acf560351b83c4d7ed54437db119019d2570d34a7c",
+      "depth": 5,
+      "receiver": "Agent059",
+      "sender": "Agent029"
+    },
+    {
+      "checks": {
+        "accepts_exact_job": true,
+        "actual_senders": true,
+        "fresh_digest_nonce": true,
+        "handover_time": true,
+        "one_independent_effect": true,
+        "recipient_signature": true,
+        "scope_and_instances": true,
+        "sender_signature": true,
+        "tree_parent": true,
+        "unique_event_assignment": true,
+        "verified_multistage_parent": true,
+        "witness_signature_and_content": true,
+        "write_file_return_time_reference": true
+      },
+      "component_chain_verified": true,
+      "delegation_id": "f7f2d4efd0c4b19a98a2c04d1554b07cbac9649ac1bedb5531a13e0764133f64",
+      "depth": 5,
+      "receiver": "Agent060",
+      "sender": "Agent029"
+    },
+    {
+      "checks": {
+        "accepts_exact_job": true,
+        "actual_senders": true,
+        "fresh_digest_nonce": true,
+        "handover_time": true,
+        "one_independent_effect": true,
+        "recipient_signature": true,
+        "scope_and_instances": true,
+        "sender_signature": true,
+        "tree_parent": true,
+        "unique_event_assignment": true,
+        "verified_multistage_parent": true,
+        "witness_signature_and_content": true,
+        "write_file_return_time_reference": true
+      },
+      "component_chain_verified": true,
+      "delegation_id": "ab9c433113e17dfeb2c114957d2fef9e823d1a74fa866141e2e972da85b9dafd",
+      "depth": 5,
+      "receiver": "Agent061",
+      "sender": "Agent030"
+    },
+    {
+      "checks": {
+        "accepts_exact_job": true,
+        "actual_senders": true,
+        "fresh_digest_nonce": true,
+        "handover_time": true,
+        "one_independent_effect": true,
+        "recipient_signature": true,
+        "scope_and_instances": true,
+        "sender_signature": true,
+        "tree_parent": true,
+        "unique_event_assignment": true,
+        "verified_multistage_parent": true,
+        "witness_signature_and_content": true,
+        "write_file_return_time_reference": true
+      },
+      "component_chain_verified": true,
+      "delegation_id": "6b49c3c003ca876a384c3eb4868123b7819aa4673735898ef56d876b67dfd3e0",
+      "depth": 5,
+      "receiver": "Agent062",
+      "sender": "Agent030"
+    },
+    {
+      "checks": {
+        "accepts_exact_job": true,
+        "actual_senders": true,
+        "fresh_digest_nonce": true,
+        "handover_time": true,
+        "one_independent_effect": true,
+        "recipient_signature": true,
+        "scope_and_instances": true,
+        "sender_signature": true,
+        "tree_parent": true,
+        "unique_event_assignment": true,
+        "verified_multistage_parent": true,
+        "witness_signature_and_content": true,
+        "write_file_return_time_reference": true
+      },
+      "component_chain_verified": true,
+      "delegation_id": "900c69b03ddab7989af8430bf891d4056acfb1bb63ebdb79790f39ac5566c6de",
+      "depth": 6,
+      "receiver": "Agent063",
+      "sender": "Agent031"
+    },
+    {
+      "checks": {
+        "accepts_exact_job": true,
+        "actual_senders": true,
+        "fresh_digest_nonce": true,
+        "handover_time": true,
+        "one_independent_effect": true,
+        "recipient_signature": true,
+        "scope_and_instances": true,
+        "sender_signature": true,
+        "tree_parent": true,
+        "unique_event_assignment": true,
+        "verified_multistage_parent": true,
+        "witness_signature_and_content": true,
+        "write_file_return_time_reference": true
+      },
+      "component_chain_verified": true,
+      "delegation_id": "3d0edafff0d29e8ee5098c3cc748ba89d28ff4ed10b74bbdb31f1401f38b69f8",
+      "depth": 6,
+      "receiver": "Agent064",
+      "sender": "Agent031"
+    },
+    {
+      "checks": {
+        "accepts_exact_job": true,
+        "actual_senders": true,
+        "fresh_digest_nonce": true,
+        "handover_time": true,
+        "one_independent_effect": true,
+        "recipient_signature": true,
+        "scope_and_instances": true,
+        "sender_signature": true,
+        "tree_parent": true,
+        "unique_event_assignment": true,
+        "verified_multistage_parent": true,
+        "witness_signature_and_content": true,
+        "write_file_return_time_reference": true
+      },
+      "component_chain_verified": true,
+      "delegation_id": "43e34a7e4585e44976a65047010be930aff4fe4eac091e72612f2d0dfe40e709",
+      "depth": 6,
+      "receiver": "Agent065",
+      "sender": "Agent032"
+    },
+    {
+      "checks": {
+        "accepts_exact_job": true,
+        "actual_senders": true,
+        "fresh_digest_nonce": true,
+        "handover_time": true,
+        "one_independent_effect": true,
+        "recipient_signature": true,
+        "scope_and_instances": true,
+        "sender_signature": true,
+        "tree_parent": true,
+        "unique_event_assignment": true,
+        "verified_multistage_parent": true,
+        "witness_signature_and_content": true,
+        "write_file_return_time_reference": true
+      },
+      "component_chain_verified": true,
+      "delegation_id": "337d68f117c88635e49ae02e7e2b1b39d53ad3249f1e0acfb58761f2a24a07e8",
+      "depth": 6,
+      "receiver": "Agent066",
+      "sender": "Agent032"
+    },
+    {
+      "checks": {
+        "accepts_exact_job": true,
+        "actual_senders": true,
+        "fresh_digest_nonce": true,
+        "handover_time": true,
+        "one_independent_effect": true,
+        "recipient_signature": true,
+        "scope_and_instances": true,
+        "sender_signature": true,
+        "tree_parent": true,
+        "unique_event_assignment": true,
+        "verified_multistage_parent": true,
+        "witness_signature_and_content": true,
+        "write_file_return_time_reference": true
+      },
+      "component_chain_verified": true,
+      "delegation_id": "f3994e1a2cb3f55db17537eecb577fce171d3f1b691bcc0e22c99042e6705472",
+      "depth": 6,
+      "receiver": "Agent067",
+      "sender": "Agent033"
+    },
+    {
+      "checks": {
+        "accepts_exact_job": true,
+        "actual_senders": true,
+        "fresh_digest_nonce": true,
+        "handover_time": true,
+        "one_independent_effect": true,
+        "recipient_signature": true,
+        "scope_and_instances": true,
+        "sender_signature": true,
+        "tree_parent": true,
+        "unique_event_assignment": true,
+        "verified_multistage_parent": true,
+        "witness_signature_and_content": true,
+        "write_file_return_time_reference": true
+      },
+      "component_chain_verified": true,
+      "delegation_id": "c003429322050ddc2f9873b665c6ad5193ecc16e992e07c11606ef4a649d8fb9",
+      "depth": 6,
+      "receiver": "Agent068",
+      "sender": "Agent033"
+    },
+    {
+      "checks": {
+        "accepts_exact_job": true,
+        "actual_senders": true,
+        "fresh_digest_nonce": true,
+        "handover_time": true,
+        "one_independent_effect": true,
+        "recipient_signature": true,
+        "scope_and_instances": true,
+        "sender_signature": true,
+        "tree_parent": true,
+        "unique_event_assignment": true,
+        "verified_multistage_parent": true,
+        "witness_signature_and_content": true,
+        "write_file_return_time_reference": true
+      },
+      "component_chain_verified": true,
+      "delegation_id": "f44952301d7aa4eb13cd49d5714f0dfdff5708fd4748c607e12cad2712bdbe07",
+      "depth": 6,
+      "receiver": "Agent069",
+      "sender": "Agent034"
+    },
+    {
+      "checks": {
+        "accepts_exact_job": true,
+        "actual_senders": true,
+        "fresh_digest_nonce": true,
+        "handover_time": true,
+        "one_independent_effect": true,
+        "recipient_signature": true,
+        "scope_and_instances": true,
+        "sender_signature": true,
+        "tree_parent": true,
+        "unique_event_assignment": true,
+        "verified_multistage_parent": true,
+        "witness_signature_and_content": true,
+        "write_file_return_time_reference": true
+      },
+      "component_chain_verified": true,
+      "delegation_id": "6d24bb669f8e2f54427cd8a37f968941ec250363663de0eb62fe3fb8c6f1aa29",
+      "depth": 6,
+      "receiver": "Agent070",
+      "sender": "Agent034"
+    },
+    {
+      "checks": {
+        "accepts_exact_job": true,
+        "actual_senders": true,
+        "fresh_digest_nonce": true,
+        "handover_time": true,
+        "one_independent_effect": true,
+        "recipient_signature": true,
+        "scope_and_instances": true,
+        "sender_signature": true,
+        "tree_parent": true,
+        "unique_event_assignment": true,
+        "verified_multistage_parent": true,
+        "witness_signature_and_content": true,
+        "write_file_return_time_reference": true
+      },
+      "component_chain_verified": true,
+      "delegation_id": "fc9f97a6926629d40d070ddc114b7121ce179e739643e943236242cf96d73e66",
+      "depth": 6,
+      "receiver": "Agent071",
+      "sender": "Agent035"
+    },
+    {
+      "checks": {
+        "accepts_exact_job": true,
+        "actual_senders": true,
+        "fresh_digest_nonce": true,
+        "handover_time": true,
+        "one_independent_effect": true,
+        "recipient_signature": true,
+        "scope_and_instances": true,
+        "sender_signature": true,
+        "tree_parent": true,
+        "unique_event_assignment": true,
+        "verified_multistage_parent": true,
+        "witness_signature_and_content": true,
+        "write_file_return_time_reference": true
+      },
+      "component_chain_verified": true,
+      "delegation_id": "0681c27b9543931cc4532dec995f71aa750d02659cad852b8c3d6b0e869e1f3d",
+      "depth": 6,
+      "receiver": "Agent072",
+      "sender": "Agent035"
+    },
+    {
+      "checks": {
+        "accepts_exact_job": true,
+        "actual_senders": true,
+        "fresh_digest_nonce": true,
+        "handover_time": true,
+        "one_independent_effect": true,
+        "recipient_signature": true,
+        "scope_and_instances": true,
+        "sender_signature": true,
+        "tree_parent": true,
+        "unique_event_assignment": true,
+        "verified_multistage_parent": true,
+        "witness_signature_and_content": true,
+        "write_file_return_time_reference": true
+      },
+      "component_chain_verified": true,
+      "delegation_id": "79e3576d9c62eb0b558ac653e5a8262eec62bae57ba949a8508fe66487886e01",
+      "depth": 6,
+      "receiver": "Agent073",
+      "sender": "Agent036"
+    },
+    {
+      "checks": {
+        "accepts_exact_job": true,
+        "actual_senders": true,
+        "fresh_digest_nonce": true,
+        "handover_time": true,
+        "one_independent_effect": true,
+        "recipient_signature": true,
+        "scope_and_instances": true,
+        "sender_signature": true,
+        "tree_parent": true,
+        "unique_event_assignment": true,
+        "verified_multistage_parent": true,
+        "witness_signature_and_content": true,
+        "write_file_return_time_reference": true
+      },
+      "component_chain_verified": true,
+      "delegation_id": "18113cc5e2186fba5dd4d75c5ba78366d82bcac39b9a5d8d45e71122f78f49a9",
+      "depth": 6,
+      "receiver": "Agent074",
+      "sender": "Agent036"
+    },
+    {
+      "checks": {
+        "accepts_exact_job": true,
+        "actual_senders": true,
+        "fresh_digest_nonce": true,
+        "handover_time": true,
+        "one_independent_effect": true,
+        "recipient_signature": true,
+        "scope_and_instances": true,
+        "sender_signature": true,
+        "tree_parent": true,
+        "unique_event_assignment": true,
+        "verified_multistage_parent": true,
+        "witness_signature_and_content": true,
+        "write_file_return_time_reference": true
+      },
+      "component_chain_verified": true,
+      "delegation_id": "e1df5622b915c1572abd9a89291ece32af862499e5323386a9c14a5c8ac79317",
+      "depth": 6,
+      "receiver": "Agent075",
+      "sender": "Agent037"
+    },
+    {
+      "checks": {
+        "accepts_exact_job": true,
+        "actual_senders": true,
+        "fresh_digest_nonce": true,
+        "handover_time": true,
+        "one_independent_effect": true,
+        "recipient_signature": true,
+        "scope_and_instances": true,
+        "sender_signature": true,
+        "tree_parent": true,
+        "unique_event_assignment": true,
+        "verified_multistage_parent": true,
+        "witness_signature_and_content": true,
+        "write_file_return_time_reference": true
+      },
+      "component_chain_verified": true,
+      "delegation_id": "d3e5d1003c13701186af3dbcf7eab2a1febcb987dd756dde83844f6d41a6cb05",
+      "depth": 6,
+      "receiver": "Agent076",
+      "sender": "Agent037"
+    },
+    {
+      "checks": {
+        "accepts_exact_job": true,
+        "actual_senders": true,
+        "fresh_digest_nonce": true,
+        "handover_time": true,
+        "one_independent_effect": true,
+        "recipient_signature": true,
+        "scope_and_instances": true,
+        "sender_signature": true,
+        "tree_parent": true,
+        "unique_event_assignment": true,
+        "verified_multistage_parent": true,
+        "witness_signature_and_content": true,
+        "write_file_return_time_reference": true
+      },
+      "component_chain_verified": true,
+      "delegation_id": "a11241bd64a3ab62fc246673ebe0b03008ba3fff1505fd20ee9d489456af76e0",
+      "depth": 6,
+      "receiver": "Agent077",
+      "sender": "Agent038"
+    },
+    {
+      "checks": {
+        "accepts_exact_job": true,
+        "actual_senders": true,
+        "fresh_digest_nonce": true,
+        "handover_time": true,
+        "one_independent_effect": true,
+        "recipient_signature": true,
+        "scope_and_instances": true,
+        "sender_signature": true,
+        "tree_parent": true,
+        "unique_event_assignment": true,
+        "verified_multistage_parent": true,
+        "witness_signature_and_content": true,
+        "write_file_return_time_reference": true
+      },
+      "component_chain_verified": true,
+      "delegation_id": "0747852f6db8bb12eadb24f4ae89eb52f94dbc74225b17a354e019da6b12598e",
+      "depth": 6,
+      "receiver": "Agent078",
+      "sender": "Agent038"
+    },
+    {
+      "checks": {
+        "accepts_exact_job": true,
+        "actual_senders": true,
+        "fresh_digest_nonce": true,
+        "handover_time": true,
+        "one_independent_effect": true,
+        "recipient_signature": true,
+        "scope_and_instances": true,
+        "sender_signature": true,
+        "tree_parent": true,
+        "unique_event_assignment": true,
+        "verified_multistage_parent": true,
+        "witness_signature_and_content": true,
+        "write_file_return_time_reference": true
+      },
+      "component_chain_verified": true,
+      "delegation_id": "78646a999534162a4b4413a7c0b72eae5b3452666d11bfee3b7ef6cf839122dd",
+      "depth": 6,
+      "receiver": "Agent079",
+      "sender": "Agent039"
+    },
+    {
+      "checks": {
+        "accepts_exact_job": true,
+        "actual_senders": true,
+        "fresh_digest_nonce": true,
+        "handover_time": true,
+        "one_independent_effect": true,
+        "recipient_signature": true,
+        "scope_and_instances": true,
+        "sender_signature": true,
+        "tree_parent": true,
+        "unique_event_assignment": true,
+        "verified_multistage_parent": true,
+        "witness_signature_and_content": true,
+        "write_file_return_time_reference": true
+      },
+      "component_chain_verified": true,
+      "delegation_id": "f863871744beda5108988a1638fae6fd290ebf526657c028dfbc796a4ccaa38f",
+      "depth": 6,
+      "receiver": "Agent080",
+      "sender": "Agent039"
+    },
+    {
+      "checks": {
+        "accepts_exact_job": true,
+        "actual_senders": true,
+        "fresh_digest_nonce": true,
+        "handover_time": true,
+        "one_independent_effect": true,
+        "recipient_signature": true,
+        "scope_and_instances": true,
+        "sender_signature": true,
+        "tree_parent": true,
+        "unique_event_assignment": true,
+        "verified_multistage_parent": true,
+        "witness_signature_and_content": true,
+        "write_file_return_time_reference": true
+      },
+      "component_chain_verified": true,
+      "delegation_id": "839d174713369c92d3e891587fab143f4b844f63417d3ea64707475378f72ea1",
+      "depth": 6,
+      "receiver": "Agent081",
+      "sender": "Agent040"
+    },
+    {
+      "checks": {
+        "accepts_exact_job": true,
+        "actual_senders": true,
+        "fresh_digest_nonce": true,
+        "handover_time": true,
+        "one_independent_effect": true,
+        "recipient_signature": true,
+        "scope_and_instances": true,
+        "sender_signature": true,
+        "tree_parent": true,
+        "unique_event_assignment": true,
+        "verified_multistage_parent": true,
+        "witness_signature_and_content": true,
+        "write_file_return_time_reference": true
+      },
+      "component_chain_verified": true,
+      "delegation_id": "46978ecb4ff329e457f67826f1b278bd65320a49104a4035305679f774620a85",
+      "depth": 6,
+      "receiver": "Agent082",
+      "sender": "Agent040"
+    },
+    {
+      "checks": {
+        "accepts_exact_job": true,
+        "actual_senders": true,
+        "fresh_digest_nonce": true,
+        "handover_time": true,
+        "one_independent_effect": true,
+        "recipient_signature": true,
+        "scope_and_instances": true,
+        "sender_signature": true,
+        "tree_parent": true,
+        "unique_event_assignment": true,
+        "verified_multistage_parent": true,
+        "witness_signature_and_content": true,
+        "write_file_return_time_reference": true
+      },
+      "component_chain_verified": true,
+      "delegation_id": "5aabff4434606d0ac825c8d3a84dcb6b956ea4c1cdd4217f31937b70b40aad9a",
+      "depth": 6,
+      "receiver": "Agent083",
+      "sender": "Agent041"
+    },
+    {
+      "checks": {
+        "accepts_exact_job": true,
+        "actual_senders": true,
+        "fresh_digest_nonce": true,
+        "handover_time": true,
+        "one_independent_effect": true,
+        "recipient_signature": true,
+        "scope_and_instances": true,
+        "sender_signature": true,
+        "tree_parent": true,
+        "unique_event_assignment": true,
+        "verified_multistage_parent": true,
+        "witness_signature_and_content": true,
+        "write_file_return_time_reference": true
+      },
+      "component_chain_verified": true,
+      "delegation_id": "974e16a5352919cc8c7b1b993e3eb8a413e03659805012518e2036622bb371e7",
+      "depth": 6,
+      "receiver": "Agent084",
+      "sender": "Agent041"
+    },
+    {
+      "checks": {
+        "accepts_exact_job": true,
+        "actual_senders": true,
+        "fresh_digest_nonce": true,
+        "handover_time": true,
+        "one_independent_effect": true,
+        "recipient_signature": true,
+        "scope_and_instances": true,
+        "sender_signature": true,
+        "tree_parent": true,
+        "unique_event_assignment": true,
+        "verified_multistage_parent": true,
+        "witness_signature_and_content": true,
+        "write_file_return_time_reference": true
+      },
+      "component_chain_verified": true,
+      "delegation_id": "2c9307f36a9eb0115fa2873bbbc0a86e2726542c81c7aa7705b358d0680c1eb9",
+      "depth": 6,
+      "receiver": "Agent085",
+      "sender": "Agent042"
+    },
+    {
+      "checks": {
+        "accepts_exact_job": true,
+        "actual_senders": true,
+        "fresh_digest_nonce": true,
+        "handover_time": true,
+        "one_independent_effect": true,
+        "recipient_signature": true,
+        "scope_and_instances": true,
+        "sender_signature": true,
+        "tree_parent": true,
+        "unique_event_assignment": true,
+        "verified_multistage_parent": true,
+        "witness_signature_and_content": true,
+        "write_file_return_time_reference": true
+      },
+      "component_chain_verified": true,
+      "delegation_id": "7cdf45841555e364494c73e15d047db0fe0dc221b1224c9c9fa880cb4dbf0482",
+      "depth": 6,
+      "receiver": "Agent086",
+      "sender": "Agent042"
+    },
+    {
+      "checks": {
+        "accepts_exact_job": true,
+        "actual_senders": true,
+        "fresh_digest_nonce": true,
+        "handover_time": true,
+        "one_independent_effect": true,
+        "recipient_signature": true,
+        "scope_and_instances": true,
+        "sender_signature": true,
+        "tree_parent": true,
+        "unique_event_assignment": true,
+        "verified_multistage_parent": true,
+        "witness_signature_and_content": true,
+        "write_file_return_time_reference": true
+      },
+      "component_chain_verified": true,
+      "delegation_id": "3b04f6639167f4d0c12186ce87e06f9dd7a1b3560da45c5de0b8e852646c37e6",
+      "depth": 6,
+      "receiver": "Agent087",
+      "sender": "Agent043"
+    },
+    {
+      "checks": {
+        "accepts_exact_job": true,
+        "actual_senders": true,
+        "fresh_digest_nonce": true,
+        "handover_time": true,
+        "one_independent_effect": true,
+        "recipient_signature": true,
+        "scope_and_instances": true,
+        "sender_signature": true,
+        "tree_parent": true,
+        "unique_event_assignment": true,
+        "verified_multistage_parent": true,
+        "witness_signature_and_content": true,
+        "write_file_return_time_reference": true
+      },
+      "component_chain_verified": true,
+      "delegation_id": "1a5eba1e1a209a05432d1372c0d93ae5a76bdcf9948fe21464cf058f34a21627",
+      "depth": 6,
+      "receiver": "Agent088",
+      "sender": "Agent043"
+    },
+    {
+      "checks": {
+        "accepts_exact_job": true,
+        "actual_senders": true,
+        "fresh_digest_nonce": true,
+        "handover_time": true,
+        "one_independent_effect": true,
+        "recipient_signature": true,
+        "scope_and_instances": true,
+        "sender_signature": true,
+        "tree_parent": true,
+        "unique_event_assignment": true,
+        "verified_multistage_parent": true,
+        "witness_signature_and_content": true,
+        "write_file_return_time_reference": true
+      },
+      "component_chain_verified": true,
+      "delegation_id": "0f1f28a2ed4959782de2f1bc5f20c3b98fe1a403906349d18a0b6b11bb3c10cb",
+      "depth": 6,
+      "receiver": "Agent089",
+      "sender": "Agent044"
+    },
+    {
+      "checks": {
+        "accepts_exact_job": true,
+        "actual_senders": true,
+        "fresh_digest_nonce": true,
+        "handover_time": true,
+        "one_independent_effect": true,
+        "recipient_signature": true,
+        "scope_and_instances": true,
+        "sender_signature": true,
+        "tree_parent": true,
+        "unique_event_assignment": true,
+        "verified_multistage_parent": true,
+        "witness_signature_and_content": true,
+        "write_file_return_time_reference": true
+      },
+      "component_chain_verified": true,
+      "delegation_id": "d197e92e5be26b0cfa2b04f62a490d5da23e05ad632afd802c6f29ace852e185",
+      "depth": 6,
+      "receiver": "Agent090",
+      "sender": "Agent044"
+    },
+    {
+      "checks": {
+        "accepts_exact_job": true,
+        "actual_senders": true,
+        "fresh_digest_nonce": true,
+        "handover_time": true,
+        "one_independent_effect": true,
+        "recipient_signature": true,
+        "scope_and_instances": true,
+        "sender_signature": true,
+        "tree_parent": true,
+        "unique_event_assignment": true,
+        "verified_multistage_parent": true,
+        "witness_signature_and_content": true,
+        "write_file_return_time_reference": true
+      },
+      "component_chain_verified": true,
+      "delegation_id": "9150a2fdb990dd375b3165bf66e163ff8dcf1c22d30605b1fd0f1fd671be51f0",
+      "depth": 6,
+      "receiver": "Agent091",
+      "sender": "Agent045"
+    },
+    {
+      "checks": {
+        "accepts_exact_job": true,
+        "actual_senders": true,
+        "fresh_digest_nonce": true,
+        "handover_time": true,
+        "one_independent_effect": true,
+        "recipient_signature": true,
+        "scope_and_instances": true,
+        "sender_signature": true,
+        "tree_parent": true,
+        "unique_event_assignment": true,
+        "verified_multistage_parent": true,
+        "witness_signature_and_content": true,
+        "write_file_return_time_reference": true
+      },
+      "component_chain_verified": true,
+      "delegation_id": "aa0fb1dd790b20a0232bd05de2391b99b0d70cab3e055e95c8a589810ab9baf1",
+      "depth": 6,
+      "receiver": "Agent092",
+      "sender": "Agent045"
+    },
+    {
+      "checks": {
+        "accepts_exact_job": true,
+        "actual_senders": true,
+        "fresh_digest_nonce": true,
+        "handover_time": true,
+        "one_independent_effect": true,
+        "recipient_signature": true,
+        "scope_and_instances": true,
+        "sender_signature": true,
+        "tree_parent": true,
+        "unique_event_assignment": true,
+        "verified_multistage_parent": true,
+        "witness_signature_and_content": true,
+        "write_file_return_time_reference": true
+      },
+      "component_chain_verified": true,
+      "delegation_id": "86434acee902e9ad5e110a74138e048a6567c5323b6c5444488686adac933f1e",
+      "depth": 6,
+      "receiver": "Agent093",
+      "sender": "Agent046"
+    },
+    {
+      "checks": {
+        "accepts_exact_job": true,
+        "actual_senders": true,
+        "fresh_digest_nonce": true,
+        "handover_time": true,
+        "one_independent_effect": true,
+        "recipient_signature": true,
+        "scope_and_instances": true,
+        "sender_signature": true,
+        "tree_parent": true,
+        "unique_event_assignment": true,
+        "verified_multistage_parent": true,
+        "witness_signature_and_content": true,
+        "write_file_return_time_reference": true
+      },
+      "component_chain_verified": true,
+      "delegation_id": "67be03be5c9eb0ac8ea9588a152277b0237008c3e266e3623b8d78782d72e542",
+      "depth": 6,
+      "receiver": "Agent094",
+      "sender": "Agent046"
+    },
+    {
+      "checks": {
+        "accepts_exact_job": true,
+        "actual_senders": true,
+        "fresh_digest_nonce": true,
+        "handover_time": true,
+        "one_independent_effect": true,
+        "recipient_signature": true,
+        "scope_and_instances": true,
+        "sender_signature": true,
+        "tree_parent": true,
+        "unique_event_assignment": true,
+        "verified_multistage_parent": true,
+        "witness_signature_and_content": true,
+        "write_file_return_time_reference": true
+      },
+      "component_chain_verified": true,
+      "delegation_id": "b27ac437b7432452ad4892a754d88bacde85f0560f1724cedd6bdbc26dbbc876",
+      "depth": 6,
+      "receiver": "Agent095",
+      "sender": "Agent047"
+    },
+    {
+      "checks": {
+        "accepts_exact_job": true,
+        "actual_senders": true,
+        "fresh_digest_nonce": true,
+        "handover_time": true,
+        "one_independent_effect": true,
+        "recipient_signature": true,
+        "scope_and_instances": true,
+        "sender_signature": true,
+        "tree_parent": true,
+        "unique_event_assignment": true,
+        "verified_multistage_parent": true,
+        "witness_signature_and_content": true,
+        "write_file_return_time_reference": true
+      },
+      "component_chain_verified": true,
+      "delegation_id": "b8995f1ec5eb0c3b6bcc64439b4442e6dfecc922dbac50240825ea6ec0a82383",
+      "depth": 6,
+      "receiver": "Agent096",
+      "sender": "Agent047"
+    },
+    {
+      "checks": {
+        "accepts_exact_job": true,
+        "actual_senders": true,
+        "fresh_digest_nonce": true,
+        "handover_time": true,
+        "one_independent_effect": true,
+        "recipient_signature": true,
+        "scope_and_instances": true,
+        "sender_signature": true,
+        "tree_parent": true,
+        "unique_event_assignment": true,
+        "verified_multistage_parent": true,
+        "witness_signature_and_content": true,
+        "write_file_return_time_reference": true
+      },
+      "component_chain_verified": true,
+      "delegation_id": "b4e3a7436de9280e61c8c705713e29bdb8430eb283e3f41bc4c1a719b9caf6e5",
+      "depth": 6,
+      "receiver": "Agent097",
+      "sender": "Agent048"
+    },
+    {
+      "checks": {
+        "accepts_exact_job": true,
+        "actual_senders": true,
+        "fresh_digest_nonce": true,
+        "handover_time": true,
+        "one_independent_effect": true,
+        "recipient_signature": true,
+        "scope_and_instances": true,
+        "sender_signature": true,
+        "tree_parent": true,
+        "unique_event_assignment": true,
+        "verified_multistage_parent": true,
+        "witness_signature_and_content": true,
+        "write_file_return_time_reference": true
+      },
+      "component_chain_verified": true,
+      "delegation_id": "7c44f90adc20cea0e6d5f0ffdfcb6e52af254765d2204e3384e357504950f8c8",
+      "depth": 6,
+      "receiver": "Agent098",
+      "sender": "Agent048"
+    },
+    {
+      "checks": {
+        "accepts_exact_job": true,
+        "actual_senders": true,
+        "fresh_digest_nonce": true,
+        "handover_time": true,
+        "one_independent_effect": true,
+        "recipient_signature": true,
+        "scope_and_instances": true,
+        "sender_signature": true,
+        "tree_parent": true,
+        "unique_event_assignment": true,
+        "verified_multistage_parent": true,
+        "witness_signature_and_content": true,
+        "write_file_return_time_reference": true
+      },
+      "component_chain_verified": true,
+      "delegation_id": "e135f612af361954bb0d97d10008b5c68090ca393eeada07118b168ee6b6e3c5",
+      "depth": 6,
+      "receiver": "Agent099",
+      "sender": "Agent049"
+    }
+  ],
+  "checks": {
+    "all100_bindings_verified": true,
+    "all99_positive_chains_verified": true,
+    "all_challenge_nonces_distinct": true,
+    "all_critical_losses_measured_zero": true,
+    "all_four_actual_negatives_verified": true,
+    "all_kernel_writes_assigned_once": true,
+    "classic_profiles_present": true,
+    "collector_stopped_after_actors": true,
+    "distinct_keys_uids_instances": true,
+    "exactly100_test_principals": true,
+    "file_reference_set": true,
+    "kernel_target_count": true,
+    "lifecycle_reference_count": true,
+    "no_duplicate_kernel_writes": true,
+    "positive_reference_count": true,
+    "program_metadata_present": true,
+    "registry_scope": true,
+    "registry_signature_and_pin": true,
+    "writer_exit_reference": true
+  },
+  "classification": "BELEGT",
+  "critical_loss_metrics": {
+    "fork_entry_nmissed": 0,
+    "life_forked_recursion_misses": 0,
+    "life_tracepoint__sched__sched_process_exec_recursion_misses": 0,
+    "life_tracepoint__sched__sched_process_exit_recursion_misses": 0,
+    "lifecycle_invalid_fields": 0,
+    "lifecycle_map_update_failures": 0,
+    "lifecycle_perf_lost": 0,
+    "lifecycle_probe_read_failures": 0,
+    "lifecycle_submit_failures": 0,
+    "observer_stats_10": 0,
+    "observer_stats_11": 0,
+    "observer_stats_3": 0,
+    "observer_stats_4": 0,
+    "observer_stats_5": 0,
+    "observer_stats_7": 0,
+    "observer_stats_8": 0,
+    "observer_stats_9": 0,
+    "pending": 0,
+    "return_nmissed": 0,
+    "write_enter_recursion_misses": 0,
+    "write_entry_nmissed": 0,
+    "write_leave_recursion_misses": 0,
+    "write_perf_lost": 0,
+    "write_tracepoint__sched__sched_process_exit_recursion_misses": 0
+  },
+  "duplicated_kernel_events": 0,
+  "experiment_passed": true,
+  "false_positive_assignments": 0,
+  "full_chains_verified": 99,
+  "intentionally_incomplete_chains": 2,
+  "metrics": {
+    "actual_pid_reuse": null,
+    "issue_to_acceptance": {
+      "count": 99,
+      "max_ns": 849072516,
+      "mean_ns": 489947423.97979796,
+      "median_ns": 514596775,
+      "min_ns": 55350875,
+      "p95_nearest_rank_ns": 807342602
+    },
+    "issue_to_kernel_write": {
+      "count": 99,
+      "max_ns": 862604449,
+      "mean_ns": 644171819.6767677,
+      "median_ns": 737762840,
+      "min_ns": 76822762,
+      "p95_nearest_rank_ns": 858337402
+    },
+    "lifecycle_raw_callback_bytes": 13200,
+    "max_inflight_delegations": 37,
+    "max_overlapping_kernel_writes": 2,
+    "max_sampled_agent_rss_sum_bytes": 2628763648,
+    "max_tree_depth": 6,
+    "observer_cpu_system_seconds": 0.217631,
+    "observer_cpu_user_seconds": 2.120654,
+    "observer_peak_rss_bytes": 178479104,
+    "observer_raw_callback_bytes": 15048,
+    "pipeline_end_ns": 978734306372,
+    "pipeline_jobs_per_second": 27.94384262449193,
+    "pipeline_seconds": 3.542819838,
+    "pipeline_start_ns": 975191486534,
+    "registrar_cpu_system_seconds": 0.49466699999999997,
+    "registrar_cpu_user_seconds": 1.234585,
+    "registrar_peak_rss_bytes": 165412864,
+    "rss_sum_is_physical_vm_memory": false,
+    "whole_vm_kernel_cpu_overhead": null,
+    "workers_cpu_system_seconds": 4.37709,
+    "workers_cpu_user_seconds": 12.55776
+  },
+  "missing_reference_writes": 0,
+  "negative_checks": [
+    {
+      "case": "replay",
+      "checks": {
+        "actual_sender": true,
+        "exact_replay": true,
+        "fresh_window": true,
+        "no_forward": true,
+        "nonce_consumed": true,
+        "registrar_witness": true,
+        "valid_original_signature": true
+      },
+      "complete_effect_chain": false,
+      "passed": true
+    },
+    {
+      "case": "foreign_claim",
+      "checks": {
+        "actual_key_signature": true,
+        "actual_sender": true,
+        "foreign_claim_fails": true,
+        "no_forward": true,
+        "registrar_witness": true
+      },
+      "complete_effect_chain": false,
+      "passed": true
+    },
+    {
+      "case": "refuse",
+      "checks": {
+        "actual_senders": true,
+        "no_new_effect": true,
+        "no_release": true,
+        "receiver_signature": true,
+        "registrar_witness": true,
+        "response_binds_job": true,
+        "sender_signature": true,
+        "signed_refusal": true
+      },
+      "complete_effect_chain": false,
+      "passed": true
+    },
+    {
+      "case": "interrupt",
+      "checks": {
+        "accepted_then_interrupted": true,
+        "actual_senders": true,
+        "no_new_effect": true,
+        "no_release": true,
+        "receiver_signature": true,
+        "registrar_witness": true,
+        "response_binds_job": true,
+        "sender_signature": true
+      },
+      "complete_effect_chain": false,
+      "passed": true
+    }
+  ],
+  "positive_jobs": 99,
+  "provider_model_session_identity": "UNBEKANNT",
+  "rejected_message_cases": 2,
+  "trust": [
+    "host CA",
+    "root registrar/reference",
+    "Linux kernel",
+    "pinned controlled test code"
+  ]
+}

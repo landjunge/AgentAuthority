@@ -1,0 +1,238 @@
+{
+  "C_compile": "PASS:Wall/Wextra/Werror; intentional SDK audit deprecation suppressed and documented",
+  "bandit": "PASS:core scope",
+  "mypy_strict": "PASS:32 core files",
+  "new_unit_tests": 19,
+  "ruff_check": "PASS",
+  "ruff_format": "PASS",
+  "suites": [
+    {
+      "external_original": "/tmp/aa-a1-native-nFf2S4/suite1.xml",
+      "historical_deselections": 5,
+      "junit_sha256": "758717a8f33a5a69bb50eb3c425d853dfdf9e0d80814b6c28d4ad733919841a4",
+      "omitted": "stdout/stderr; no failure/error elements existed",
+      "suite": {
+        "errors": "0",
+        "failures": "0",
+        "hostname": "landjungeMac.local",
+        "name": "pytest",
+        "skipped": "0",
+        "tests": "588",
+        "time": "29.812",
+        "timestamp": "2026-10-11T23:50:51.488916+02:00"
+      },
+      "testcases": [
+        {
+          "classname": "tests.test_a1_native_availability",
+          "name": "test_snapshots_do_not_become_writer_or_agent_and_unexecuted_is_not_zero_errors",
+          "time": "0.001"
+        },
+        {
+          "classname": "tests.test_a1_native_availability",
+          "name": "test_missing_or_conflicting_snapshot_is_unknown[bsd-after_returned-0-process_snapshot]",
+          "time": "0.001"
+        },
+        {
+          "classname": "tests.test_a1_native_availability",
+          "name": "test_missing_or_conflicting_snapshot_is_unknown[bsd-stable-False-process_snapshot]",
+          "time": "0.001"
+        },
+        {
+          "classname": "tests.test_a1_native_availability",
+          "name": "test_missing_or_conflicting_snapshot_is_unknown[bsd-start_microseconds-1000000-process_snapshot]",
+          "time": "0.001"
+        },
+        {
+          "classname": "tests.test_a1_native_availability",
+          "name": "test_missing_or_conflicting_snapshot_is_unknown[fd-returned-0-read_only_fd_file_identity]",
+          "time": "0.001"
+        },
+        {
+          "classname": "tests.test_a1_native_availability",
+          "name": "test_missing_or_conflicting_snapshot_is_unknown[fd-same_file-False-read_only_fd_file_identity]",
+          "time": "0.001"
+        },
+        {
+          "classname": "tests.test_a1_native_availability",
+          "name": "test_missing_or_conflicting_snapshot_is_unknown[mach-pid-999-self_task_audit_snapshot]",
+          "time": "0.001"
+        },
+        {
+          "classname": "tests.test_a1_native_availability",
+          "name": "test_missing_or_conflicting_snapshot_is_unknown[mach-count-7-self_task_audit_snapshot]",
+          "time": "0.001"
+        },
+        {
+          "classname": "tests.test_a1_native_availability",
+          "name": "test_unexpected_es_connection_stops_before_any_writer_case[result-0]",
+          "time": "0.001"
+        },
+        {
+          "classname": "tests.test_a1_native_availability",
+          "name": "test_unexpected_es_connection_stops_before_any_writer_case[connected-True]",
+          "time": "0.001"
+        },
+        {
+          "classname": "tests.test_a1_native_availability",
+          "name": "test_unexpected_es_connection_stops_before_any_writer_case[callbacks-1]",
+          "time": "0.001"
+        },
+        {
+          "classname": "tests.test_a1_native_availability",
+          "name": "test_readable_audit_handle_does_not_establish_record_origin_or_instance_binding",
+          "time": "0.000"
+        },
+        {
+          "classname": "tests.test_a1_native_availability",
+          "name": "test_untrusted_schema_missing_access_result_or_root_cannot_pass[change0]",
+          "time": "0.001"
+        },
+        {
+          "classname": "tests.test_a1_native_availability",
+          "name": "test_untrusted_schema_missing_access_result_or_root_cannot_pass[change1]",
+          "time": "0.001"
+        },
+        {
+          "classname": "tests.test_a1_native_availability",
+          "name": "test_untrusted_schema_missing_access_result_or_root_cannot_pass[change2]",
+          "time": "0.001"
+        },
+        {
+          "classname": "tests.test_a1_native_availability",
+          "name": "test_root_and_nonmac_refuse_before_directory_creation",
+          "time": "0.006"
+        },
+        {
+          "classname": "tests.test_a1_native_availability",
+          "name": "test_repository_existing_and_nontemporary_paths_refused",
+          "time": "0.002"
+        },
+        {
+          "classname": "tests.test_a1_native_availability",
+          "name": "test_command_timeout_or_missing_tool_keeps_unknown_metrics_and_no_raw_text[False]",
+          "time": "0.001"
+        },
+        {
+          "classname": "tests.test_a1_native_availability",
+          "name": "test_command_timeout_or_missing_tool_keeps_unknown_metrics_and_no_raw_text[True]",
+          "time": "0.001"
+        }
+      ],
+      "unchanged_case_details_omitted": 569
+    },
+    {
+      "external_original": "/tmp/aa-a1-native-nFf2S4/suite2.xml",
+      "historical_deselections": 5,
+      "junit_sha256": "1b1755b376fbf39010d2e49622d150b78661a7e59e0cb6152d77f564aec2035d",
+      "omitted": "stdout/stderr; no failure/error elements existed",
+      "suite": {
+        "errors": "0",
+        "failures": "0",
+        "hostname": "landjungeMac.local",
+        "name": "pytest",
+        "skipped": "0",
+        "tests": "588",
+        "time": "29.591",
+        "timestamp": "2026-10-11T23:51:42.790041+02:00"
+      },
+      "testcases": [
+        {
+          "classname": "tests.test_a1_native_availability",
+          "name": "test_snapshots_do_not_become_writer_or_agent_and_unexecuted_is_not_zero_errors",
+          "time": "0.001"
+        },
+        {
+          "classname": "tests.test_a1_native_availability",
+          "name": "test_missing_or_conflicting_snapshot_is_unknown[bsd-after_returned-0-process_snapshot]",
+          "time": "0.001"
+        },
+        {
+          "classname": "tests.test_a1_native_availability",
+          "name": "test_missing_or_conflicting_snapshot_is_unknown[bsd-stable-False-process_snapshot]",
+          "time": "0.001"
+        },
+        {
+          "classname": "tests.test_a1_native_availability",
+          "name": "test_missing_or_conflicting_snapshot_is_unknown[bsd-start_microseconds-1000000-process_snapshot]",
+          "time": "0.001"
+        },
+        {
+          "classname": "tests.test_a1_native_availability",
+          "name": "test_missing_or_conflicting_snapshot_is_unknown[fd-returned-0-read_only_fd_file_identity]",
+          "time": "0.001"
+        },
+        {
+          "classname": "tests.test_a1_native_availability",
+          "name": "test_missing_or_conflicting_snapshot_is_unknown[fd-same_file-False-read_only_fd_file_identity]",
+          "time": "0.001"
+        },
+        {
+          "classname": "tests.test_a1_native_availability",
+          "name": "test_missing_or_conflicting_snapshot_is_unknown[mach-pid-999-self_task_audit_snapshot]",
+          "time": "0.001"
+        },
+        {
+          "classname": "tests.test_a1_native_availability",
+          "name": "test_missing_or_conflicting_snapshot_is_unknown[mach-count-7-self_task_audit_snapshot]",
+          "time": "0.001"
+        },
+        {
+          "classname": "tests.test_a1_native_availability",
+          "name": "test_unexpected_es_connection_stops_before_any_writer_case[result-0]",
+          "time": "0.001"
+        },
+        {
+          "classname": "tests.test_a1_native_availability",
+          "name": "test_unexpected_es_connection_stops_before_any_writer_case[connected-True]",
+          "time": "0.001"
+        },
+        {
+          "classname": "tests.test_a1_native_availability",
+          "name": "test_unexpected_es_connection_stops_before_any_writer_case[callbacks-1]",
+          "time": "0.001"
+        },
+        {
+          "classname": "tests.test_a1_native_availability",
+          "name": "test_readable_audit_handle_does_not_establish_record_origin_or_instance_binding",
+          "time": "0.000"
+        },
+        {
+          "classname": "tests.test_a1_native_availability",
+          "name": "test_untrusted_schema_missing_access_result_or_root_cannot_pass[change0]",
+          "time": "0.001"
+        },
+        {
+          "classname": "tests.test_a1_native_availability",
+          "name": "test_untrusted_schema_missing_access_result_or_root_cannot_pass[change1]",
+          "time": "0.001"
+        },
+        {
+          "classname": "tests.test_a1_native_availability",
+          "name": "test_untrusted_schema_missing_access_result_or_root_cannot_pass[change2]",
+          "time": "0.001"
+        },
+        {
+          "classname": "tests.test_a1_native_availability",
+          "name": "test_root_and_nonmac_refuse_before_directory_creation",
+          "time": "0.005"
+        },
+        {
+          "classname": "tests.test_a1_native_availability",
+          "name": "test_repository_existing_and_nontemporary_paths_refused",
+          "time": "0.002"
+        },
+        {
+          "classname": "tests.test_a1_native_availability",
+          "name": "test_command_timeout_or_missing_tool_keeps_unknown_metrics_and_no_raw_text[False]",
+          "time": "0.001"
+        },
+        {
+          "classname": "tests.test_a1_native_availability",
+          "name": "test_command_timeout_or_missing_tool_keeps_unknown_metrics_and_no_raw_text[True]",
+          "time": "0.001"
+        }
+      ],
+      "unchanged_case_details_omitted": 569
+    }
+  ]
+}

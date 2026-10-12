@@ -1,0 +1,117 @@
+{
+  "position": 3,
+  "target_path": "/var/tmp/a1-research-runs-001/7868656d70a56fa2",
+  "mode": "sibling",
+  "observer_exit": 0,
+  "oracle_exit": 0,
+  "observer_stderr_bytes": 0,
+  "observer_stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "oracle_stderr_bytes": 0,
+  "host_collection_ns": 6167532254,
+  "capture": [
+    {
+      "boot_hash": "ea23c1eead5c439d96e565f0df8e5f1a6a8d6f543205b4a35842d9bdc070e805",
+      "file": {
+        "dev": 265289729,
+        "inode": 262241
+      },
+      "kernel": "6.8.0-142-generic",
+      "observer_source_sha256": "20cdb32237bd02ba9705dae02b467ee60ca968f742fc1ba7f308d59770b2bcbe",
+      "pid_namespace": "pid:[4026531836]",
+      "program_sha256": "b9db19daf05653ca1edcdcc400fdbb72b931fc8e4f04b197839eb2201d5811de",
+      "ready": true,
+      "ready_ns": 737225832008
+    },
+    {
+      "summary": {
+        "cpu_system_seconds": 0.21690399999999999,
+        "cpu_user_seconds": 2.126475,
+        "end_ns": 743276381635,
+        "entry_probe_nmissed": null,
+        "entry_probe_nmissed_limit": "BCC uses perf kprobe entry; tracefs profile covers classic kretprobe only",
+        "kprobe_profile": [
+          [
+            "r_vfs_write_bcc_2357",
+            "29",
+            "0"
+          ]
+        ],
+        "logical_agent_identity": "UNBEKANNT",
+        "pending": 0,
+        "perf_lost": 0,
+        "raw_bytes": 0,
+        "records": 0,
+        "rss_peak_bytes": 177631232,
+        "scope": "observer process including BCC compile, not kernel/VM CPU",
+        "stats": {
+          "0": 0,
+          "1": 0,
+          "2": 0,
+          "3": 0,
+          "4": 0,
+          "5": 0,
+          "6": 0,
+          "7": 0
+        }
+      }
+    }
+  ],
+  "oracle": {
+    "controller": {
+      "boot_hash": "ea23c1eead5c439d96e565f0df8e5f1a6a8d6f543205b4a35842d9bdc070e805",
+      "clock_ticks": 100,
+      "pid": 2358,
+      "pid_namespace": "pid:[4026531836]",
+      "ppid": 1164,
+      "start_ticks": 73766,
+      "uid": 501
+    },
+    "forged_claim_pid": null,
+    "rows": [
+      {
+        "action": "write",
+        "begin_ns": 737714659231,
+        "creator_child": 2362,
+        "end_ns": 737714692819,
+        "exit_status": 0,
+        "file": {
+          "dev": 265289729,
+          "inode": 262242
+        },
+        "grandchild": false,
+        "pidfd_exit_seen": true,
+        "process": {
+          "clock_ticks": 100,
+          "pid": 2362,
+          "ppid": 2358,
+          "start_ticks": 73771
+        },
+        "process_after": {
+          "clock_ticks": 100,
+          "pid": 2362,
+          "ppid": 2358,
+          "start_ticks": 73771
+        },
+        "result": 16,
+        "stable": true
+      }
+    ]
+  },
+  "capture_sha256": "64c86df181b3426b3c0199c6d78201bcb43ce30caf93a1cac1f96c0b89227d51",
+  "oracle_sha256": "40eae7c45b3f5f55bfd6c93a3c9e656ec63fac497a8d39b4f3a2373fcf8ed8d5",
+  "evaluation": {
+    "evidence": "BELEGT",
+    "correct": 0,
+    "wrong": 0,
+    "unclear": 0,
+    "logical_agent_identity": "UNBEKANNT",
+    "reasons": [],
+    "expected_actions": 0,
+    "observed_actions": 0,
+    "loss_checks": true,
+    "false_claim_used": false,
+    "sequential_order": true,
+    "exit_records": 0,
+    "distinct_process_instances": 0
+  }
+}

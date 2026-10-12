@@ -1,0 +1,66 @@
+{
+  "acceptance": "BELEGT",
+  "additional_rows": [
+    {
+      "actual": "UNBEKANNT",
+      "case": "A1_writer_pid_start",
+      "expected": "BELEGT",
+      "reason": "required_experiment_not_measured",
+      "status": "UNBEKANNT"
+    },
+    {
+      "actual": "UNBEKANNT",
+      "case": "A1_sibling_distinct",
+      "expected": "VERSCHIEDEN",
+      "reason": "required_experiment_not_measured",
+      "status": "UNBEKANNT"
+    },
+    {
+      "actual": "UNBEKANNT",
+      "case": "A1_forged_pid_rejected",
+      "expected": true,
+      "reason": "required_experiment_not_measured",
+      "status": "UNBEKANNT"
+    },
+    {
+      "actual": "UNVOLLSTAENDIG",
+      "case": "B1_scope",
+      "expected": "UNVOLLSTAENDIG",
+      "reason": "recorded_scope_projection",
+      "status": "PASS"
+    },
+    {
+      "actual": "BELEGT",
+      "case": "B1_target",
+      "expected": "BELEGT",
+      "reason": "recorded_scope_projection",
+      "status": "PASS"
+    },
+    {
+      "actual": "UNBEKANNT",
+      "case": "B2_second_window",
+      "expected": "SPAETER",
+      "reason": "required_experiment_not_measured",
+      "status": "UNBEKANNT"
+    },
+    {
+      "actual": "UNBEKANNT",
+      "case": "B2_foreign_capture",
+      "expected": "UNBEKANNT/foreign_capture",
+      "reason": "required_experiment_not_measured",
+      "status": "UNBEKANNT"
+    }
+  ],
+  "cli_started": true,
+  "cli_success": true,
+  "full_matrix_complete": false,
+  "integration_sha256": "eaad99b65bd240eb38d1a3530008bb1c4e41f54bb02eee225bbacd3f945e7216",
+  "model_proven": true,
+  "original_matrix_pass": true,
+  "position": 2,
+  "reason": "originaler_codex_exec",
+  "recording_ok": true,
+  "run": 499767069173165969,
+  "runner_failure": null,
+  "timeout": false
+}

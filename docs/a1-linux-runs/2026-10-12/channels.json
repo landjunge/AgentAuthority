@@ -1,0 +1,87 @@
+{
+  "architecture": "x86_64",
+  "audit": {
+    "command": [
+      "auditctl",
+      "-s"
+    ],
+    "exit": 0,
+    "status_fields": [
+      "enabled 1",
+      "failure 1",
+      "pid 2068",
+      "rate_limit 0",
+      "backlog_limit 8192",
+      "lost 0",
+      "backlog 0",
+      "backlog_wait_time 60000",
+      "backlog_wait_time_actual 0",
+      "loginuid_immutable 0 unlocked"
+    ],
+    "stderr_bytes": 0
+  },
+  "boot_hash": "ea23c1eead5c439d96e565f0df8e5f1a6a8d6f543205b4a35842d9bdc070e805",
+  "capabilities": [
+    "CapInh:\t0000000000000000",
+    "CapPrm:\t000001ffffffffff",
+    "CapEff:\t000001ffffffffff",
+    "CapBnd:\t000001ffffffffff",
+    "CapAmb:\t0000000000000000",
+    "NoNewPrivs:\t0",
+    "Seccomp:\t0",
+    "Seccomp_filters:\t0"
+  ],
+  "distribution": "PRETTY_NAME=\"Ubuntu 24.04.5 LTS\"\nNAME=\"Ubuntu\"\nVERSION_ID=\"24.04\"\nVERSION=\"24.04.5 LTS (Noble Numbat)\"\nVERSION_CODENAME=noble\nID=ubuntu\nID_LIKE=debian\nHOME_URL=\"https://www.ubuntu.com/\"\nSUPPORT_URL=\"https://help.ubuntu.com/\"\nBUG_REPORT_URL=\"https://bugs.launchpad.net/ubuntu/\"\nPRIVACY_POLICY_URL=\"https://www.ubuntu.com/legal/terms-and-policies/privacy-policy\"\nUBUNTU_CODENAME=noble\nLOGO=ubuntu-logo\n",
+  "fanotify": {
+    "errno": null,
+    "flags": "NOTIFY/CLOEXEC/NONBLOCK/REPORT_PIDFD",
+    "init_result": 3,
+    "records_read": 0
+  },
+  "kernel": "6.8.0-142-generic",
+  "logical_agent_identity": "UNBEKANNT",
+  "perf_event_paranoid": "4",
+  "tracepoints": {
+    "sched/sched_process_exit": {
+      "fields": [
+        "field:unsigned short common_type;\toffset:0;\tsize:2;\tsigned:0;",
+        "field:unsigned char common_flags;\toffset:2;\tsize:1;\tsigned:0;",
+        "field:unsigned char common_preempt_count;\toffset:3;\tsize:1;\tsigned:0;",
+        "field:int common_pid;\toffset:4;\tsize:4;\tsigned:1;",
+        "field:char comm[16];\toffset:8;\tsize:16;\tsigned:0;",
+        "field:pid_t pid;\toffset:24;\tsize:4;\tsigned:1;",
+        "field:int prio;\toffset:28;\tsize:4;\tsigned:1;"
+      ],
+      "sha256": "ca0d5e54b2fff1dbe8bcac56d68338030e52c0cdedad998ad9052d4dc3494952",
+      "status": "BELEGT"
+    },
+    "syscalls/sys_enter_write": {
+      "fields": [
+        "field:unsigned short common_type;\toffset:0;\tsize:2;\tsigned:0;",
+        "field:unsigned char common_flags;\toffset:2;\tsize:1;\tsigned:0;",
+        "field:unsigned char common_preempt_count;\toffset:3;\tsize:1;\tsigned:0;",
+        "field:int common_pid;\toffset:4;\tsize:4;\tsigned:1;",
+        "field:int __syscall_nr;\toffset:8;\tsize:4;\tsigned:1;",
+        "field:unsigned int fd;\toffset:16;\tsize:8;\tsigned:0;",
+        "field:const char * buf;\toffset:24;\tsize:8;\tsigned:0;",
+        "field:size_t count;\toffset:32;\tsize:8;\tsigned:0;"
+      ],
+      "sha256": "3e6f075f7608a6e726a2d3ac85462a4e304b9681c7d1661fb8f1896cef68532d",
+      "status": "BELEGT"
+    },
+    "syscalls/sys_exit_write": {
+      "fields": [
+        "field:unsigned short common_type;\toffset:0;\tsize:2;\tsigned:0;",
+        "field:unsigned char common_flags;\toffset:2;\tsize:1;\tsigned:0;",
+        "field:unsigned char common_preempt_count;\toffset:3;\tsize:1;\tsigned:0;",
+        "field:int common_pid;\toffset:4;\tsize:4;\tsigned:1;",
+        "field:int __syscall_nr;\toffset:8;\tsize:4;\tsigned:1;",
+        "field:long ret;\toffset:16;\tsize:8;\tsigned:1;"
+      ],
+      "sha256": "1c5e7f6b0c1c488e9f5974e5a314663df12c591369328efaae74f5575a9f7786",
+      "status": "BELEGT"
+    }
+  },
+  "uid": 0,
+  "unprivileged_bpf_disabled": "2"
+}

@@ -1,0 +1,24 @@
+{
+  "method": "Apply reverse unified diff to final committed file to recover initial measured source; verifies both recorded hashes. attempt-02 used corrected C (final C hash), same initial Python as attempt-01. Later Python changes add temporary-path/missing-tool guards only; API selection and interpretation unchanged.",
+  "sources": [
+    {
+      "file": "scripts/a1_native_probe.c",
+      "final_sha256": "b5f07ca8297c1e70db332557d774fa752d95a85b4d13c7a1a1024694f67792d2",
+      "initial_measured_sha256": "1bb256ea1a9e8485dce34698822903a5c105864707909d2e7826ba652b67dc86",
+      "reverse_unified_diff": "--- scripts/a1_native_probe.c\n+++ scripts/a1_native_probe.c@initial-measured\n@@ -106,7 +106,7 @@\n            vnode.pvip.vip_vi.vi_stat.vst_gen, vnode.pfi.fi_openflags);\n     printf(\"\\\"mach\\\":{\\\"return\\\":%d,\\\"count\\\":%u,\\\"expected_count\\\":%u,\"\n            \"\\\"pid\\\":%d,\\\"pid_version\\\":%d},\", task_rc, token_count,\n-           (unsigned int)TASK_AUDIT_TOKEN_COUNT, token_ok ? audit_token_to_pid(token) : -1,\n+           TASK_AUDIT_TOKEN_COUNT, token_ok ? audit_token_to_pid(token) : -1,\n            token_ok ? audit_token_to_pidversion(token) : -1);\n     printf(\"\\\"audit\\\":{\\\"return\\\":%d,\\\"errno\\\":%d,\\\"condition\\\":%d},\",\n            audit_rc, audit_errno, condition);\n"
+    },
+    {
+      "file": "scripts/a1_native_availability.py",
+      "final_sha256": "50c56223844898adaa957bacd09463bf841facd4d04583cf290cc92fd39d1d3f",
+      "initial_measured_sha256": "748d191119980cfaa7d7c7c83dfec582851ade9fb947fb22143ebd180d9492fc",
+      "reverse_unified_diff": "--- scripts/a1_native_availability.py\n+++ scripts/a1_native_availability.py@initial-measured\n@@ -10,7 +10,6 @@\n import platform\n import subprocess\n import sys\n-import tempfile\n import time\n from pathlib import Path\n \n@@ -50,9 +49,6 @@\n         raise ValueError(\"native macOS only\")\n     if parent == ROOT or ROOT in parent.parents or parent.exists():\n         raise ValueError(\"fresh external output directory required\")\n-    temporary_roots = {Path(\"/tmp\").resolve(), Path(tempfile.gettempdir()).resolve()}\n-    if not any(root in parent.parents for root in temporary_roots):\n-        raise ValueError(\"temporary output only\")\n     return parent\n \n \n@@ -131,13 +127,6 @@\n         result = subprocess.run(argv, capture_output=True, timeout=timeout, check=False)\n     except subprocess.TimeoutExpired as exc:\n         result = subprocess.CompletedProcess(argv, 124, exc.stdout or b\"\", exc.stderr or b\"\")\n-    except OSError as exc:\n-        result = subprocess.CompletedProcess(argv, 127, b\"\", b\"\")\n-        failure = {\"error_kind\": type(exc).__name__, \"errno\": exc.errno}\n-    else:\n-        failure = {}\n-    if result.returncode == 124:\n-        failure = {\"error_kind\": \"TimeoutExpired\", \"errno\": None}\n     data = {\n         \"argv\": argv,\n         \"returncode\": result.returncode,\n@@ -149,7 +138,6 @@\n         \"cpu_seconds\": None,\n         \"peak_rss_bytes\": None,\n         \"raw_output_saved\": False,\n-        \"failure\": failure,\n     }\n     return result, data\n \n@@ -234,7 +222,7 @@\n         # Preserve bytes/hashes, but no unrestricted diagnostic/provider text.\n         lowered = (captured.stdout + captured.stderr).lower()\n         meta[\"root_or_privilege_rejection\"] = b\"root\" in lowered or b\"privilege\" in lowered\n-        meta[\"executable_sha256\"] = digest(Path(command[0])) if Path(command[0]).is_file() else None\n+        meta[\"executable_sha256\"] = digest(Path(command[0]))\n         meta[\"writer_events_measured\"] = False\n         report[\"commands\"].append(meta)\n     report[\"raw_struct_bytes_scope\"] = (\n"
+    }
+  ],
+  "ordinary_compile_failure": {
+    "kind": "Wformat under Werror",
+    "field": "TASK_AUDIT_TOKEN_COUNT is size_t; printf expected unsigned int",
+    "correction": "explicit unsigned int cast, count8 unchanged",
+    "attempt": "attempt-01",
+    "positive_writer_experiment": false
+  }
+}

@@ -1,0 +1,57 @@
+[
+  {
+    "command": [
+      "limactl",
+      "shell",
+      "--workdir=/tmp",
+      "a1-research",
+      "sudo",
+      "-n",
+      "python3",
+      "-B",
+      "/opt/a1/channels.py"
+    ],
+    "exit": 0,
+    "stdout": "{\n  \"architecture\": \"x86_64\",\n  \"audit\": {\n    \"command\": [\n      \"auditctl\",\n      \"-s\"\n    ],\n    \"exit\": 0,\n    \"status_fields\": [\n      \"enabled 1\",\n      \"failure 1\",\n      \"pid 2068\",\n      \"rate_limit 0\",\n      \"backlog_limit 8192\",\n      \"lost 0\",\n      \"backlog 0\",\n      \"backlog_wait_time 60000\",\n      \"backlog_wait_time_actual 0\",\n      \"loginuid_immutable 0 unlocked\"\n    ],\n    \"stderr_bytes\": 0\n  },\n  \"boot_hash\": \"ea23c1eead5c439d96e565f0df8e5f1a6a8d6f543205b4a35842d9bdc070e805\",\n  \"capabilities\": [\n    \"CapInh:\\t0000000000000000\",\n    \"CapPrm:\\t000001ffffffffff\",\n    \"CapEff:\\t000001ffffffffff\",\n    \"CapBnd:\\t000001ffffffffff\",\n    \"CapAmb:\\t0000000000000000\",\n    \"NoNewPrivs:\\t0\",\n    \"Seccomp:\\t0\",\n    \"Seccomp_filters:\\t0\"\n  ],\n  \"distribution\": \"PRETTY_NAME=\\\"Ubuntu 24.04.5 LTS\\\"\\nNAME=\\\"Ubuntu\\\"\\nVERSION_ID=\\\"24.04\\\"\\nVERSION=\\\"24.04.5 LTS (Noble Numbat)\\\"\\nVERSION_CODENAME=noble\\nID=ubuntu\\nID_LIKE=debian\\nHOME_URL=\\\"https://www.ubuntu.com/\\\"\\nSUPPORT_URL=\\\"https://help.ubuntu.com/\\\"\\nBUG_REPORT_URL=\\\"https://bugs.launchpad.net/ubuntu/\\\"\\nPRIVACY_POLICY_URL=\\\"https://www.ubuntu.com/legal/terms-and-policies/privacy-policy\\\"\\nUBUNTU_CODENAME=noble\\nLOGO=ubuntu-logo\\n\",\n  \"fanotify\": {\n    \"errno\": null,\n    \"flags\": \"NOTIFY/CLOEXEC/NONBLOCK/REPORT_PIDFD\",\n    \"init_result\": 3,\n    \"records_read\": 0\n  },\n  \"kernel\": \"6.8.0-142-generic\",\n  \"logical_agent_identity\": \"UNBEKANNT\",\n  \"perf_event_paranoid\": \"4\",\n  \"tracepoints\": {\n    \"sched/sched_process_exit\": {\n      \"fields\": [\n        \"field:unsigned short common_type;\\toffset:0;\\tsize:2;\\tsigned:0;\",\n        \"field:unsigned char common_flags;\\toffset:2;\\tsize:1;\\tsigned:0;\",\n        \"field:unsigned char common_preempt_count;\\toffset:3;\\tsize:1;\\tsigned:0;\",\n        \"field:int common_pid;\\toffset:4;\\tsize:4;\\tsigned:1;\",\n        \"field:char comm[16];\\toffset:8;\\tsize:16;\\tsigned:0;\",\n        \"field:pid_t pid;\\toffset:24;\\tsize:4;\\tsigned:1;\",\n        \"field:int prio;\\toffset:28;\\tsize:4;\\tsigned:1;\"\n      ],\n      \"sha256\": \"ca0d5e54b2fff1dbe8bcac56d68338030e52c0cdedad998ad9052d4dc3494952\",\n      \"status\": \"BELEGT\"\n    },\n    \"syscalls/sys_enter_write\": {\n      \"fields\": [\n        \"field:unsigned short common_type;\\toffset:0;\\tsize:2;\\tsigned:0;\",\n        \"field:unsigned char common_flags;\\toffset:2;\\tsize:1;\\tsigned:0;\",\n        \"field:unsigned char common_preempt_count;\\toffset:3;\\tsize:1;\\tsigned:0;\",\n        \"field:int common_pid;\\toffset:4;\\tsize:4;\\tsigned:1;\",\n        \"field:int __syscall_nr;\\toffset:8;\\tsize:4;\\tsigned:1;\",\n        \"field:unsigned int fd;\\toffset:16;\\tsize:8;\\tsigned:0;\",\n        \"field:const char * buf;\\toffset:24;\\tsize:8;\\tsigned:0;\",\n        \"field:size_t count;\\toffset:32;\\tsize:8;\\tsigned:0;\"\n      ],\n      \"sha256\": \"3e6f075f7608a6e726a2d3ac85462a4e304b9681c7d1661fb8f1896cef68532d\",\n      \"status\": \"BELEGT\"\n    },\n    \"syscalls/sys_exit_write\": {\n      \"fields\": [\n        \"field:unsigned short common_type;\\toffset:0;\\tsize:2;\\tsigned:0;\",\n        \"field:unsigned char common_flags;\\toffset:2;\\tsize:1;\\tsigned:0;\",\n        \"field:unsigned char common_preempt_count;\\toffset:3;\\tsize:1;\\tsigned:0;\",\n        \"field:int common_pid;\\toffset:4;\\tsize:4;\\tsigned:1;\",\n        \"field:int __syscall_nr;\\toffset:8;\\tsize:4;\\tsigned:1;\",\n        \"field:long ret;\\toffset:16;\\tsize:8;\\tsigned:1;\"\n      ],\n      \"sha256\": \"1c5e7f6b0c1c488e9f5974e5a314663df12c591369328efaae74f5575a9f7786\",\n      \"status\": \"BELEGT\"\n    }\n  },\n  \"uid\": 0,\n  \"unprivileged_bpf_disabled\": \"2\"\n}\n",
+    "stderr_bytes": 0
+  },
+  {
+    "command": [
+      "limactl",
+      "shell",
+      "--workdir=/tmp",
+      "a1-research",
+      "sudo",
+      "-n",
+      "cat",
+      "/sys/kernel/tracing/kprobe_events"
+    ],
+    "exit": 0,
+    "stdout": "",
+    "stderr_bytes": 0
+  },
+  {
+    "command": [
+      "colima",
+      "list",
+      "--json"
+    ],
+    "exit": 0,
+    "stdout": "",
+    "stderr_bytes": 0
+  },
+  {
+    "command": [
+      "docker",
+      "--context",
+      "colima",
+      "ps",
+      "-a",
+      "--format",
+      "{{.ID}} {{.Image}} {{.Status}}"
+    ],
+    "exit": 0,
+    "stdout": "4564a65814fd aa-run03-python:20261008 Exited (0) 3 days ago\n1dc912e5e03d aa-run03-python:20261008 Exited (0) 3 days ago\n7b5bed8ca23c agent0ai/agent-zero Exited (255) 3 days ago\n",
+    "stderr_bytes": 0
+  }
+]

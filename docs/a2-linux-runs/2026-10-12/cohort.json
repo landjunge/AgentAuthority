@@ -1,0 +1,284 @@
+{
+  "source_commit": "5d763c85bb9504f70fd6e306718c8ada9143b95e",
+  "cases": [
+    {
+      "position": 1,
+      "case": "alpha",
+      "evaluation": {
+        "enrollment_signature": true,
+        "proof_checks": [
+          {
+            "starter_signature": true,
+            "agent_signature_identity": "TestAlpha",
+            "receipt_credential_matches": true,
+            "proof_hash_matches": true,
+            "fresh_challenge": true
+          }
+        ],
+        "known_loss_checks": true,
+        "chains": [
+          {
+            "process": {
+              "tgid": 1216,
+              "start_ns": 1305735137762,
+              "ppid": 1215
+            },
+            "independent_write": "BELEGT",
+            "acting_authenticated_identity": "TestAlpha",
+            "identity_effect_chain": "BELEGT"
+          }
+        ],
+        "codex_authenticated": false,
+        "grok_authenticated": false,
+        "real_model_or_person_identity": "UNBEKANNT"
+      }
+    },
+    {
+      "position": 2,
+      "case": "beta",
+      "evaluation": {
+        "enrollment_signature": true,
+        "proof_checks": [
+          {
+            "starter_signature": true,
+            "agent_signature_identity": "TestBeta",
+            "receipt_credential_matches": true,
+            "proof_hash_matches": true,
+            "fresh_challenge": true
+          }
+        ],
+        "known_loss_checks": true,
+        "chains": [
+          {
+            "process": {
+              "tgid": 1231,
+              "start_ns": 1319294095880,
+              "ppid": 1230
+            },
+            "independent_write": "BELEGT",
+            "acting_authenticated_identity": "TestBeta",
+            "identity_effect_chain": "BELEGT"
+          }
+        ],
+        "codex_authenticated": false,
+        "grok_authenticated": false,
+        "real_model_or_person_identity": "UNBEKANNT"
+      }
+    },
+    {
+      "position": 3,
+      "case": "false-claim",
+      "evaluation": {
+        "enrollment_signature": true,
+        "proof_checks": [
+          {
+            "starter_signature": true,
+            "agent_signature_identity": "TestAlpha",
+            "receipt_credential_matches": true,
+            "proof_hash_matches": true,
+            "fresh_challenge": true
+          }
+        ],
+        "known_loss_checks": true,
+        "chains": [
+          {
+            "process": {
+              "tgid": 1246,
+              "start_ns": 1334761608158,
+              "ppid": 1245
+            },
+            "independent_write": "BELEGT",
+            "acting_authenticated_identity": "TestAlpha",
+            "identity_effect_chain": "BELEGT"
+          }
+        ],
+        "codex_authenticated": false,
+        "grok_authenticated": false,
+        "real_model_or_person_identity": "UNBEKANNT"
+      }
+    },
+    {
+      "position": 4,
+      "case": "child",
+      "evaluation": {
+        "enrollment_signature": true,
+        "proof_checks": [
+          {
+            "starter_signature": true,
+            "agent_signature_identity": "TestAlpha",
+            "receipt_credential_matches": true,
+            "proof_hash_matches": true,
+            "fresh_challenge": true
+          }
+        ],
+        "known_loss_checks": true,
+        "chains": [
+          {
+            "process": {
+              "tgid": 1262,
+              "start_ns": 1350570657175,
+              "ppid": 1261
+            },
+            "independent_write": "BELEGT",
+            "acting_authenticated_identity": null,
+            "identity_effect_chain": "UNBEKANNT"
+          }
+        ],
+        "codex_authenticated": false,
+        "grok_authenticated": false,
+        "real_model_or_person_identity": "UNBEKANNT"
+      }
+    },
+    {
+      "position": 5,
+      "case": "exec",
+      "evaluation": {
+        "enrollment_signature": true,
+        "proof_checks": [
+          {
+            "starter_signature": true,
+            "agent_signature_identity": "TestAlpha",
+            "receipt_credential_matches": true,
+            "proof_hash_matches": true,
+            "fresh_challenge": true
+          }
+        ],
+        "known_loss_checks": true,
+        "chains": [
+          {
+            "process": {
+              "tgid": 1277,
+              "start_ns": 1365924401734,
+              "ppid": 1276
+            },
+            "independent_write": "BELEGT",
+            "acting_authenticated_identity": null,
+            "identity_effect_chain": "UNBEKANNT"
+          }
+        ],
+        "codex_authenticated": false,
+        "grok_authenticated": false,
+        "real_model_or_person_identity": "UNBEKANNT"
+      }
+    },
+    {
+      "position": 6,
+      "case": "reuse",
+      "evaluation": {
+        "enrollment_signature": true,
+        "proof_checks": [
+          {
+            "starter_signature": true,
+            "agent_signature_identity": "TestAlpha",
+            "receipt_credential_matches": true,
+            "proof_hash_matches": true,
+            "fresh_challenge": true
+          },
+          {
+            "starter_signature": true,
+            "agent_signature_identity": "TestAlpha",
+            "receipt_credential_matches": true,
+            "proof_hash_matches": true,
+            "fresh_challenge": true
+          }
+        ],
+        "known_loss_checks": true,
+        "chains": [
+          {
+            "process": {
+              "tgid": 1292,
+              "start_ns": 1381661997003,
+              "ppid": 1291
+            },
+            "independent_write": "BELEGT",
+            "acting_authenticated_identity": null,
+            "identity_effect_chain": "UNBEKANNT"
+          }
+        ],
+        "codex_authenticated": false,
+        "grok_authenticated": false,
+        "real_model_or_person_identity": "UNBEKANNT"
+      }
+    },
+    {
+      "position": 7,
+      "case": "takeover",
+      "evaluation": {
+        "enrollment_signature": true,
+        "proof_checks": [
+          {
+            "starter_signature": true,
+            "agent_signature_identity": "TestAlpha",
+            "receipt_credential_matches": true,
+            "proof_hash_matches": true,
+            "fresh_challenge": true
+          },
+          {
+            "starter_signature": true,
+            "agent_signature_identity": "TestBeta",
+            "receipt_credential_matches": true,
+            "proof_hash_matches": true,
+            "fresh_challenge": true
+          }
+        ],
+        "known_loss_checks": true,
+        "chains": [
+          {
+            "process": {
+              "tgid": 1308,
+              "start_ns": 1397005646620,
+              "ppid": 1306
+            },
+            "independent_write": "BELEGT",
+            "acting_authenticated_identity": "TestBeta",
+            "identity_effect_chain": "BELEGT"
+          }
+        ],
+        "codex_authenticated": false,
+        "grok_authenticated": false,
+        "real_model_or_person_identity": "UNBEKANNT"
+      }
+    },
+    {
+      "position": 8,
+      "case": "replay",
+      "evaluation": {
+        "enrollment_signature": true,
+        "proof_checks": [
+          {
+            "starter_signature": true,
+            "agent_signature_identity": "TestAlpha",
+            "receipt_credential_matches": true,
+            "proof_hash_matches": true,
+            "fresh_challenge": true
+          },
+          {
+            "starter_signature": true,
+            "agent_signature_identity": "TestAlpha",
+            "receipt_credential_matches": true,
+            "proof_hash_matches": true,
+            "fresh_challenge": false
+          }
+        ],
+        "known_loss_checks": true,
+        "chains": [
+          {
+            "process": {
+              "tgid": 1324,
+              "start_ns": 1412723276866,
+              "ppid": 1322
+            },
+            "independent_write": "BELEGT",
+            "acting_authenticated_identity": null,
+            "identity_effect_chain": "UNBEKANNT"
+          }
+        ],
+        "codex_authenticated": false,
+        "grok_authenticated": false,
+        "real_model_or_person_identity": "UNBEKANNT"
+      }
+    }
+  ],
+  "test_identities_only": true,
+  "retry": false
+}

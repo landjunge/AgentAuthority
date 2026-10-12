@@ -1,0 +1,365 @@
+{
+  "position": 1,
+  "client_receipt_sha256": "5af8a6cd9b25cc16b52bf01db57074921d498364faa19807916e3c68a64d04a6",
+  "entry_gate": {
+    "qualified": true,
+    "checks": {
+      "host_signature": true,
+      "domain": true,
+      "trust_scope": true,
+      "client": true,
+      "channel": true,
+      "challenge": true,
+      "job_digest": true,
+      "instance": true,
+      "owned_spawn": true,
+      "dynamic_code_valid": true,
+      "kernel_start_stable": true,
+      "code_pin": true,
+      "time": true,
+      "anti_replay": true,
+      "job_kind": true,
+      "successful_client": true
+    },
+    "reasons": [],
+    "local_client_job_binding": "BELEGT",
+    "provider_session_job_binding": "UNBEKANNT",
+    "model_identity": "UNBEKANNT"
+  },
+  "entry_gate_ns": 896192401327475,
+  "source_commit": "92b3e5fe524617375805b112731dc249a4c7ad63",
+  "dispatch_packet": {
+    "ca_public_key": "bYRgBwmo/KMVkGI00wXKCeAmHZ0aEmvB/aJkCjxNDrU=",
+    "jobs": [
+      {
+        "body": {
+          "domain": "A3-HOST-DISPATCH-v1",
+          "run_id": "c10a9f82304b388f9a7d9e15",
+          "client": "Codex",
+          "job": {
+            "operation": "write16",
+            "nonce": "6f026cd700031b7a24d1d5a8e0730b9be60278b9041e67f4",
+            "position": "1",
+            "claimed_client": "Codex"
+          },
+          "local_client_receipt_sha256": "5af8a6cd9b25cc16b52bf01db57074921d498364faa19807916e3c68a64d04a6",
+          "provider_identity": "UNBEKANNT",
+          "model_identity": "UNBEKANNT"
+        },
+        "signature": "/266jyVy2U8QSX0Hl5FC686Iu0gJDlC4Giocpdla5DGjMNHAPnfbjrEwj+7I3sETJ2kaB4MH8TTAxzCdId6gCg=="
+      }
+    ],
+    "active_nonce": "6f026cd700031b7a24d1d5a8e0730b9be60278b9041e67f4",
+    "active_nonces": [
+      "6f026cd700031b7a24d1d5a8e0730b9be60278b9041e67f4"
+    ]
+  },
+  "capture": [
+    {
+      "boot_hash": "18e7b45ba1d1a2b42a77feef5d043e9652cfa17b7a8a7de3f4b87132fddc247e",
+      "file": {
+        "dev": 265289729,
+        "inode": 262950
+      },
+      "kernel": "6.8.0-142-generic",
+      "observer_source_sha256": "20cdb32237bd02ba9705dae02b467ee60ca968f742fc1ba7f308d59770b2bcbe",
+      "pid_namespace": "pid:[4026531836]",
+      "program_sha256": "c3d89e0ba1664eb18c3fbe4102b01af6200fd9dae06adebc19b1debb9a323731",
+      "ready": true,
+      "ready_ns": 96340509836
+    },
+    {
+      "record": {
+        "boot_hash": "18e7b45ba1d1a2b42a77feef5d043e9652cfa17b7a8a7de3f4b87132fddc247e",
+        "count": 16,
+        "cpu": 1,
+        "dev": 265289729,
+        "entry_ns": 98469297062,
+        "exit_ns": 98469320967,
+        "inode": 262950,
+        "kind": 1,
+        "ppid": 1120,
+        "raw_bytes": 76,
+        "result": 16,
+        "start_ns": 98333000221,
+        "tgid": 1121,
+        "tid": 1121
+      }
+    },
+    {
+      "record": {
+        "boot_hash": "18e7b45ba1d1a2b42a77feef5d043e9652cfa17b7a8a7de3f4b87132fddc247e",
+        "count": 0,
+        "cpu": 1,
+        "dev": 0,
+        "entry_ns": 0,
+        "exit_ns": 98590114685,
+        "inode": 0,
+        "kind": 2,
+        "ppid": 0,
+        "raw_bytes": 76,
+        "result": 0,
+        "start_ns": 98333000221,
+        "tgid": 1121,
+        "tid": 1121
+      }
+    },
+    {
+      "summary": {
+        "cpu_system_seconds": 0.40859199999999996,
+        "cpu_user_seconds": 2.0921290000000003,
+        "end_ns": 108371707387,
+        "entry_probe_nmissed": null,
+        "entry_probe_nmissed_limit": "BCC uses perf kprobe entry; tracefs profile covers classic kretprobe only",
+        "kprobe_profile": [
+          [
+            "r_vfs_write_bcc_1115",
+            "87",
+            "0"
+          ]
+        ],
+        "logical_agent_identity": "UNBEKANNT",
+        "pending": 0,
+        "perf_lost": 0,
+        "raw_bytes": 152,
+        "records": 2,
+        "rss_peak_bytes": 176025600,
+        "scope": "observer process including BCC compile, not kernel/VM CPU",
+        "stats": {
+          "0": 1,
+          "1": 1,
+          "2": 1,
+          "3": 0,
+          "4": 0,
+          "5": 0,
+          "6": 1,
+          "7": 0
+        }
+      }
+    }
+  ],
+  "trial": {
+    "active_nonce": "6f026cd700031b7a24d1d5a8e0730b9be60278b9041e67f4",
+    "case": "codex",
+    "handshakes": [
+      {
+        "proof": {
+          "body": {
+            "challenge": {
+              "boot_hash": "18e7b45ba1d1a2b42a77feef5d043e9652cfa17b7a8a7de3f4b87132fddc247e",
+              "domain": "A2-CHALLENGE-v1",
+              "expires_in_ns": 5000000000,
+              "file": {
+                "dev": 265289729,
+                "inode": 262950
+              },
+              "instance": {
+                "exec_ns": 98334471601,
+                "exit_ns": 0,
+                "generation": 1,
+                "parent": 1120,
+                "pid": 1121,
+                "start_ns": 98333000221
+              },
+              "issued_ns": 98457663891,
+              "nonce": "e8815cb66811371afaf0b6c4a9d46102fbfc8dafcec8397d25f970b965a76056",
+              "pid_namespace": "pid:[4026531836]",
+              "run_id": "c10a9f82304b388f9a7d9e15"
+            },
+            "claimed_identity": "WrapperCodex",
+            "details": {
+              "host_dispatch_sha256": "b793b2a431d84611fb9a62c8e9609a4a1fb8c9a0fc8497cf2b336bd41cfed1da",
+              "job_index": 0,
+              "job_nonce": "6f026cd700031b7a24d1d5a8e0730b9be60278b9041e67f4",
+              "wrapper_not_provider_identity": true
+            },
+            "domain": "A2-TEST-POP-v1"
+          },
+          "signature": "etBfKoAfjO4txRjjyAl21DozafzJlkPli57eVlJVnfYnDuDwcpm1OpYRFNsum3ZvSPu+5wsWMmPXOB5n1sZICw=="
+        },
+        "receipt": {
+          "body": {
+            "attested_ns": 98468981659,
+            "authenticated_identity": "WrapperCodex",
+            "boot_hash": "18e7b45ba1d1a2b42a77feef5d043e9652cfa17b7a8a7de3f4b87132fddc247e",
+            "challenge": {
+              "boot_hash": "18e7b45ba1d1a2b42a77feef5d043e9652cfa17b7a8a7de3f4b87132fddc247e",
+              "domain": "A2-CHALLENGE-v1",
+              "expires_in_ns": 5000000000,
+              "file": {
+                "dev": 265289729,
+                "inode": 262950
+              },
+              "instance": {
+                "exec_ns": 98334471601,
+                "exit_ns": 0,
+                "generation": 1,
+                "parent": 1120,
+                "pid": 1121,
+                "start_ns": 98333000221
+              },
+              "issued_ns": 98457663891,
+              "nonce": "e8815cb66811371afaf0b6c4a9d46102fbfc8dafcec8397d25f970b965a76056",
+              "pid_namespace": "pid:[4026531836]",
+              "run_id": "c10a9f82304b388f9a7d9e15"
+            },
+            "claimed_identity": "WrapperCodex",
+            "connection_peer": {
+              "gid": 61011,
+              "pid": 1121,
+              "uid": 61011
+            },
+            "credential_identity": "WrapperCodex",
+            "domain": "A2-START-BINDING-v1",
+            "fresh_challenge": true,
+            "instance_bound": true,
+            "message_sender": {
+              "exec_ns": 98334471601,
+              "exit_ns": 0,
+              "generation": 1,
+              "gid": 61011,
+              "parent": 1120,
+              "pid": 1121,
+              "start_ns": 98333000221,
+              "uid": 61011
+            },
+            "pid_namespace": "pid:[4026531836]",
+            "proof_sha256": "81b2f4e9815d8dff9cea22ccb1b68083e0aa0d8fd21f3fabf0b99174a472ab89",
+            "registered_identity": "WrapperCodex",
+            "run_id": "c10a9f82304b388f9a7d9e15",
+            "test_identity_only": true
+          },
+          "signature": "3R9ju87NnHjxZ8vcbPB2ttJYZykEE8lUU7yN47NO0OrrN2PVaYwltJBO9GL+3SbGnI0fqAslXH9f8hOF1DzSDA=="
+        }
+      }
+    ],
+    "lifecycle": {
+      "callback_raw_bytes": 132,
+      "fork_entry_nmissed": null,
+      "perf_lost": 0,
+      "records": [
+        {
+          "generation": 0,
+          "kind": 1,
+          "parent": 1120,
+          "pid": 1121,
+          "stamp": 98333007001,
+          "start": 98333000221,
+          "uid": 0
+        },
+        {
+          "generation": 1,
+          "kind": 2,
+          "parent": 1120,
+          "pid": 1121,
+          "stamp": 98334471635,
+          "start": 98333000221,
+          "uid": 61011
+        },
+        {
+          "generation": 1,
+          "kind": 3,
+          "parent": 1120,
+          "pid": 1121,
+          "stamp": 98590196148,
+          "start": 98333000221,
+          "uid": 61011
+        }
+      ],
+      "scope": "starter descendants; missing fork/exec means unknown binding",
+      "submit_failures": 0
+    },
+    "oracle": [
+      {
+        "exit": 0,
+        "identity_provisioned": "WrapperCodex",
+        "kernel_start_at_spawn": {
+          "exec_ns": 98334471601,
+          "exit_ns": 0,
+          "generation": 1,
+          "parent": 1120,
+          "pid": 1121,
+          "start_ns": 98333000221
+        },
+        "key_material_archived": false,
+        "mode": "write",
+        "registered": true,
+        "spawn_pid": 1121,
+        "stderr_bytes": 0,
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout_records": [
+          {
+            "action": {
+              "begin_ns": 98469287595,
+              "end_ns": 98469404827,
+              "file": {
+                "dev": 265289729,
+                "inode": 262950
+              },
+              "result": 16
+            },
+            "adapter_only": true,
+            "dispatch_sha256": "b793b2a431d84611fb9a62c8e9609a4a1fb8c9a0fc8497cf2b336bd41cfed1da"
+          }
+        ],
+        "uid": 61011
+      }
+    ],
+    "resources": {
+      "cpu_system_seconds": 0.339763,
+      "cpu_user_seconds": 1.09621,
+      "peak_rss_bytes": 164429824,
+      "scope": "root adapter including lifecycle compile; kernel/children unknown"
+    }
+  },
+  "observer_exit": 0,
+  "adapter_exit": 0,
+  "stderr_bytes": 0,
+  "writer_executed": true,
+  "evaluation": {
+    "enrollment_signature": true,
+    "known_loss_checks": true,
+    "proof_checks": [
+      {
+        "starter_signature": true,
+        "signature_principal": "WrapperCodex",
+        "receipt_principal_matches": true,
+        "proof_hash_matches": true,
+        "fresh_challenge": true,
+        "fresh_dispatch": true,
+        "dispatch_client_claim": "Codex",
+        "provider_authentication": "UNBEKANNT"
+      }
+    ],
+    "writes": [
+      {
+        "kernel_process": {
+          "tgid": 1121,
+          "start_ns": 98333000221,
+          "tid": 1121,
+          "ppid": 1120
+        },
+        "file": {
+          "dev": 265289729,
+          "inode": 262950
+        },
+        "kernel_entry_ns": 98469297062,
+        "kernel_exit_ns": 98469320967,
+        "write": "BELEGT",
+        "authenticated_local_wrapper": "WrapperCodex",
+        "wrapper_effect_chain": "BELEGT",
+        "fresh_host_dispatch": true,
+        "client_claim": "Codex",
+        "real_agent_effect_chain": "UNBEKANNT",
+        "session_identity": "UNBEKANNT",
+        "provider_identity": "UNBEKANNT",
+        "model_identity": "UNBEKANNT"
+      }
+    ],
+    "real_agent_effect_chain": "UNBEKANNT",
+    "partial_chain": "TEILWEISE BELEGT",
+    "reason": "No externally authenticated client/session/provider credential in enrollment"
+  },
+  "all_writes_before_client_receipt_expiry": true,
+  "host_collection_end_before_receipt_expiry": true
+}

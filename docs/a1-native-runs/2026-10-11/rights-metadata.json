@@ -1,0 +1,54 @@
+{
+  "command": "codesign display entitlements only, no signing performed",
+  "binary_sha256": "4820871df7c48ef7a434fffe169bb65674d806b551c570c0df64f0c2f592c1f2",
+  "returncode": 1,
+  "stdout_bytes": 0,
+  "stderr_bytes": 83,
+  "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stderr_sha256": "fc676a6fc5d104c013e1d874b3e13747f9118932ac56f98714bdcd0246a12366",
+  "unsigned_reported": true,
+  "TCC_status": "UNBEKANNT; ES nonroot rejection precedes supported FDA check",
+  "raw_output_saved": false,
+  "tools": [
+    {
+      "path": "/usr/bin/eslogger",
+      "exists": true,
+      "mode": "0o755",
+      "uid": 0,
+      "setuid": false,
+      "kind": "file"
+    },
+    {
+      "path": "/dev/auditpipe",
+      "exists": true,
+      "mode": "0o600",
+      "uid": 0,
+      "setuid": false,
+      "kind": "device"
+    },
+    {
+      "path": "/dev/dtrace",
+      "exists": true,
+      "mode": "0o666",
+      "uid": 0,
+      "setuid": false,
+      "kind": "device"
+    },
+    {
+      "path": "/usr/bin/fs_usage",
+      "exists": true,
+      "mode": "0o755",
+      "uid": 0,
+      "setuid": false,
+      "kind": "file"
+    },
+    {
+      "path": "/usr/sbin/dtrace",
+      "exists": true,
+      "mode": "0o755",
+      "uid": 0,
+      "setuid": false,
+      "kind": "file"
+    }
+  ]
+}

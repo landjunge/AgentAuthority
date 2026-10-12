@@ -1,0 +1,57 @@
+{
+  "suites": [
+    {
+      "position": 1,
+      "exit_code": 0,
+      "seconds": 60.8926867559785,
+      "fixed_head": "f5cd1b1875434168a9e4efde09da9647c0d78ade",
+      "head_unchanged": true,
+      "tests": 669,
+      "failures": 0,
+      "errors": 0
+    },
+    {
+      "position": 2,
+      "exit_code": 0,
+      "seconds": 58.75153202097863,
+      "fixed_head": "f5cd1b1875434168a9e4efde09da9647c0d78ade",
+      "head_unchanged": true,
+      "tests": 669,
+      "failures": 0,
+      "errors": 0
+    }
+  ],
+  "new_offline_regression_positions": 21,
+  "new_ruff": {
+    "command": "ruff check research/a4_delegation tests/test_a4_delegation.py",
+    "exit_code": 0
+  },
+  "new_format": {
+    "command": "ruff format --check research/a4_delegation tests/test_a4_delegation.py",
+    "exit_code": 0
+  },
+  "full_format": {
+    "command": "ruff format --check .",
+    "exit_code": 0,
+    "files": 242
+  },
+  "full_ruff": {
+    "exit_code": 1,
+    "historic_findings": 16,
+    "new_findings": 0,
+    "identical_to_base": true,
+    "evidence": "ruff-baseline-comparison.json"
+  },
+  "mypy": {
+    "command": "mypy lab/ agent_authority/ --strict",
+    "exit_code": 0,
+    "source_files": 32
+  },
+  "bandit": {
+    "command": "bandit -r lab/ agent_authority/ -ll",
+    "exit_code": 0,
+    "issues": 0,
+    "scope": "core only"
+  },
+  "diff_check_exit_code": 0
+}

@@ -1,0 +1,17 @@
+{
+  "command": [
+    "sudo",
+    "-n",
+    "python3",
+    "-c",
+    "import os,pathlib,json,sys; print(json.dumps({\"private_vaults_absent\":all(not pathlib.Path(p).exists() for p in json.loads(sys.argv[1])),\"remaining_owned_processes\":[int(p) for p in os.listdir(\"/proc\") if p.isdigit() and any(arg.startswith((b\"/opt/a4scale-\",b\"/opt/a4c-\")) and arg.endswith((b\"/worker.py\",b\"/registrar.py\",b\"/kernel.py\",b\"/guest.py\",b\"/agent.py\",b\"/observer.py\")) for arg in pathlib.Path(\"/proc/\"+p+\"/cmdline\").read_bytes().split(bytes([0])))],\"remaining_kprobe_events\":pathlib.Path(\"/sys/kernel/tracing/kprobe_events\").read_text(),\"distribution\":pathlib.Path(\"/etc/os-release\").read_text(),\"clock_ticks\":os.sysconf(\"SC_CLK_TCK\")}))"
+  ],
+  "result": {
+    "clock_ticks": 100,
+    "distribution": "PRETTY_NAME=\"Ubuntu 24.04.5 LTS\"\nNAME=\"Ubuntu\"\nVERSION_ID=\"24.04\"\nVERSION=\"24.04.5 LTS (Noble Numbat)\"\nVERSION_CODENAME=noble\nID=ubuntu\nID_LIKE=debian\nHOME_URL=\"https://www.ubuntu.com/\"\nSUPPORT_URL=\"https://help.ubuntu.com/\"\nBUG_REPORT_URL=\"https://bugs.launchpad.net/ubuntu/\"\nPRIVACY_POLICY_URL=\"https://www.ubuntu.com/legal/terms-and-policies/privacy-policy\"\nUBUNTU_CODENAME=noble\nLOGO=ubuntu-logo\n",
+    "host_private_ca_absent": true,
+    "private_vaults_absent": true,
+    "remaining_kprobe_events": "",
+    "remaining_owned_processes": []
+  }
+}

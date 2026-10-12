@@ -1,0 +1,6 @@
+{
+  "phase1_observer_source_matches_pin": true,
+  "phase2_observer_source_matches_pin": true,
+  "worker_registry_hash_matches_pin": true,
+  "derived_trial_equals_raw_final_result": true
+}

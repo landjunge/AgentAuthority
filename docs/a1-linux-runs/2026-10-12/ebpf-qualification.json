@@ -1,0 +1,52 @@
+{
+  "records": [
+    {
+      "boot_hash": "ea23c1eead5c439d96e565f0df8e5f1a6a8d6f543205b4a35842d9bdc070e805",
+      "file": {
+        "dev": 265289729,
+        "inode": 262232
+      },
+      "kernel": "6.8.0-142-generic",
+      "observer_source_sha256": "eaef9b73ff0e662f4f52c8fbab22cfd144ce08169ff9a1ef6a2d3da6b27c3ade",
+      "pid_namespace": "pid:[4026531836]",
+      "program_sha256": "4b1db08a023e49d47285bf8c8e0f30a8b8854be6754ca6b735b0fa6ed7d6cd55",
+      "ready": true,
+      "ready_ns": 247088953270
+    },
+    {
+      "summary": {
+        "cpu_system_seconds": 0.249793,
+        "cpu_user_seconds": 1.972849,
+        "end_ns": 248097785229,
+        "kprobe_profile": [
+          [
+            "r_vfs_write_bcc_2219",
+            "4",
+            "0"
+          ]
+        ],
+        "logical_agent_identity": "UNBEKANNT",
+        "pending": 0,
+        "perf_lost": 0,
+        "raw_bytes": 0,
+        "records": 0,
+        "rss_peak_bytes": 176050176,
+        "scope": "observer process including BCC compile, not kernel/VM CPU",
+        "stats": {
+          "0": 0,
+          "1": 0,
+          "2": 0,
+          "3": 0,
+          "4": 0,
+          "5": 0,
+          "6": 0,
+          "7": 0
+        }
+      }
+    }
+  ],
+  "stdout_sha256": "1036274853c39a45443ab687addafc0c8555b0c2cdc15de855fbaa533b8d214a",
+  "stderr_bytes": 0,
+  "writer_experiment": false,
+  "source_limit": "working-copy qualification, actual source hash in ready record; cohort uses committed source"
+}

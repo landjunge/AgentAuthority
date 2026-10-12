@@ -1,0 +1,32 @@
+[
+  {
+    "phase": "phase1",
+    "source_commit": "e5f4a0bfde026b9d567bc05ae06fec32be7eb660",
+    "source_checks": {
+      "research/a2_linux/protocol.py": true,
+      "research/a2_linux/starter.py": true,
+      "research/a4_completion/agent.py": true,
+      "research/a4_completion/guest.py": true,
+      "research/a4_completion/lifecycle.py": true,
+      "research/a4_completion/observer.py": true,
+      "research/a4_completion/probes.py": true
+    },
+    "source_hashes_match": true
+  },
+  {
+    "phase": "phase2",
+    "source_commit": "ae22c97f2554331c91e6d18abfe10039ee414e37",
+    "source_checks": {
+      "research/a2_linux/protocol.py": true,
+      "research/a2_linux/starter.py": true,
+      "research/a4_completion/guest.py": true,
+      "research/a4_completion/lifecycle.py": true,
+      "research/a4_completion/observer.py": true,
+      "research/a4_completion/probes.py": true,
+      "research/a4_scale/kernel.py": true,
+      "research/a4_scale/registrar.py": true,
+      "research/a4_scale/worker.py": true
+    },
+    "source_hashes_match": true
+  }
+]

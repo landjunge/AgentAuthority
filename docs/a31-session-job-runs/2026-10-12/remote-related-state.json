@@ -1,0 +1,47 @@
+[
+  {
+    "command": [
+      "git",
+      "ls-remote",
+      "origin",
+      "refs/heads/codex/a3-linux-real-agents-20261012",
+      "refs/heads/codex/a2-linux-identity-20261012",
+      "refs/heads/codex/a1-linux-experiment-20261012",
+      "refs/heads/master",
+      "refs/heads/docs/plan-abc-20261011"
+    ],
+    "stdout": "ec82f2ae5e0168ef41abe13e9b0cf495d20a0293\trefs/heads/codex/a1-linux-experiment-20261012\n98c274ac5c1e475c335704d4f5aefa40f97f47b0\trefs/heads/codex/a2-linux-identity-20261012\n28ff798e2548a82dbf787cbba0399c5a1857437f\trefs/heads/codex/a3-linux-real-agents-20261012\n600a6b1b7a5b4d82af8af0ac32265ccac2b32559\trefs/heads/docs/plan-abc-20261011\n3a9c0067a6e59a55b8e578b6ad870ffe6c74cb47\trefs/heads/master\n",
+    "exit": 0
+  },
+  {
+    "command": [
+      "gh",
+      "pr",
+      "view",
+      "44",
+      "--repo",
+      "landjunge/agent-authority-lab",
+      "--json",
+      "state,isDraft,headRefOid"
+    ],
+    "stdout": "{\"headRefOid\":\"600a6b1b7a5b4d82af8af0ac32265ccac2b32559\",\"isDraft\":true,\"state\":\"OPEN\"}\n",
+    "exit": 0
+  },
+  {
+    "command": [
+      "gh",
+      "run",
+      "list",
+      "--repo",
+      "landjunge/agent-authority-lab",
+      "--branch",
+      "codex/a31-session-job-binding-20261012",
+      "--limit",
+      "5",
+      "--json",
+      "databaseId,status,conclusion,headSha"
+    ],
+    "stdout": "[]\n",
+    "exit": 0
+  }
+]

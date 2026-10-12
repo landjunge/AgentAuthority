@@ -1,0 +1,6 @@
+{
+  "classification": "UNBEKANNT",
+  "message": "actual trial failed; preserved outputs, no retry",
+  "phase2_executed": false,
+  "type": "RuntimeError"
+}
