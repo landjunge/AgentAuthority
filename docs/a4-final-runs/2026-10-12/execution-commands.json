@@ -1,0 +1,24 @@
+{
+  "phase1": [
+    "python research/a4_completion/driver.py prepare docs/a4-final-runs/2026-10-12/phase1",
+    "git add docs/a4-final-runs/2026-10-12/phase1; git commit (7d65836)",
+    "python research/a4_completion/driver.py run docs/a4-final-runs/2026-10-12/phase1"
+  ],
+  "phase2": [
+    "python research/a4_scale/driver.py prepare docs/a4-final-runs/2026-10-12/phase2",
+    "git add docs/a4-final-runs/2026-10-12/phase2; git commit (51e31c9)",
+    "python research/a4_scale/driver.py run docs/a4-final-runs/2026-10-12/phase2",
+    "python research/a4_scale/join.py docs/a4-final-runs/2026-10-12/phase2"
+  ],
+  "environment": "LIMA_HOME=/Users/landjunge/.local/share/agent-authority-a1-linux-vm; limactl shell --workdir=/tmp a1-research; guest root only",
+  "source_execution_commits": {
+    "phase1": "7d65836554f6eda4bcc47810ea1c81686d418a6c",
+    "phase2": "51e31c9dfb0ebf3664ecb9a0a5d5648d86b053e6"
+  },
+  "python": "/Users/landjunge/agent-authority-lab/.venv/bin/python",
+  "fresh_agent_trials": {
+    "phase1": 1,
+    "phase2": 1,
+    "retries": 0
+  }
+}
