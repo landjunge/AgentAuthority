@@ -2,8 +2,8 @@
 """Catalog completeness, UI key coverage, UTF-8 and NOTIFY-only collector checks."""
 
 import json
-from pathlib import Path
 import re
+from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 catalog = json.loads(

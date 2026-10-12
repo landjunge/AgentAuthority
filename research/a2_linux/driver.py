@@ -73,6 +73,7 @@ def main(out):
             env=env,
             capture_output=True,
             timeout=25,
+            check=False,
         )
         rest, error = observer.communicate(timeout=20)
         capture = [json.loads(line) for line in (first + rest).splitlines()]

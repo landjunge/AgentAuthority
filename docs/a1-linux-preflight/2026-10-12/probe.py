@@ -132,7 +132,7 @@ def collect(label):
     start = time.monotonic_ns()
     result = {
         "schema": "a1-linux-preflight-v1",
-        "utc": datetime.datetime.now(datetime.timezone.utc).isoformat(),
+        "utc": datetime.datetime.now(datetime.UTC).isoformat(),
         "environment_label": label,
         "system": platform.system(),
         "release": platform.release(),

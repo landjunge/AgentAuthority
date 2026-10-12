@@ -5,12 +5,11 @@ import argparse
 import hashlib
 import json
 import os
-from pathlib import Path
 import plistlib
 import re
 import shutil
 import subprocess
-import sys
+from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 REPO = ROOT.parents[1]
@@ -28,8 +27,6 @@ def dependencies(path):
 
 def embed_runtime(destination, runtime_python):
     """Copy the installed Python runtime and its dylibs; rewrite to bundle-relative links."""
-    if sys.version_info < (3, 12):
-        raise SystemExit("Run this builder with Python 3.12 or later.")
     metadata = json.loads(
         subprocess.check_output(
             [

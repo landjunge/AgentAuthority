@@ -5,8 +5,8 @@ import datetime
 import hashlib
 import json
 import os
-import select
 import secrets
+import select
 import subprocess
 import time
 from pathlib import Path
@@ -28,7 +28,7 @@ def run(directory):
         raise ValueError("committed clean source required")
     result = {
         "source_commit": head,
-        "started_utc": datetime.datetime.now(datetime.timezone.utc).isoformat(),
+        "started_utc": datetime.datetime.now(datetime.UTC).isoformat(),
         "cases": [],
         "logical_agent_identity": "UNBEKANNT",
         "retries": 0,
@@ -60,6 +60,7 @@ def run(directory):
             env=env,
             capture_output=True,
             timeout=10,
+            check=False,
         )
         rest, error = observer.communicate(timeout=15)
         capture = [json.loads(line) for line in (first + rest).decode().splitlines()]
@@ -86,7 +87,7 @@ def run(directory):
         (directory / f"L{position}.json").write_text(json.dumps(record, indent=2) + "\n")
         result["cases"].append({"position": position, "mode": mode, **record["evaluation"]})
         print(position, mode, record["evaluation"], flush=True)
-    result["ended_utc"] = datetime.datetime.now(datetime.timezone.utc).isoformat()
+    result["ended_utc"] = datetime.datetime.now(datetime.UTC).isoformat()
     (directory / "cohort.json").write_text(json.dumps(result, indent=2) + "\n")
 
 
@@ -111,6 +112,7 @@ def run_reuse(directory):
         env=env,
         capture_output=True,
         timeout=10,
+        check=False,
     )
     rest, error = observer.communicate(timeout=15)
     oracle = json.loads(truth.stdout) if truth.returncode == 0 else None

@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
 """Fetch a pinned, SHA-256-verified, relocatable Intel Python runtime; no installation."""
 
-from pathlib import Path
 import hashlib
 import json
 import tarfile
 import urllib.request
+from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 URL = "https://github.com/astral-sh/python-build-standalone/releases/download/20261009/cpython-3.12.15%2B20261009-x86_64-apple-darwin-install_only_stripped.tar.gz"

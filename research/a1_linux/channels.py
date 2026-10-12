@@ -44,7 +44,7 @@ def main():
         except OSError as error:
             result["tracepoints"][event] = {"status": "UNBEKANNT", "errno": error.errno}
     command = ["auditctl", "-s"]
-    r = subprocess.run(command, capture_output=True, text=True, timeout=5)
+    r = subprocess.run(command, capture_output=True, text=True, timeout=5, check=False)
     result["audit"] = {
         "command": command,
         "exit": r.returncode,

@@ -7,6 +7,7 @@ import os
 import platform
 import resource
 import time
+from pathlib import Path
 
 PROGRAM = r"""
 #include <uapi/linux/ptrace.h>
@@ -96,7 +97,7 @@ def run(path, duration):
     rawdev = (os.major(identity.st_dev) << 20) | os.minor(identity.st_dev)
     text = PROGRAM.replace("TARGET_INODE", str(identity.st_ino)).replace("TARGET_DEV", str(rawdev))
     before = resource.getrusage(resource.RUSAGE_SELF)
-    boot = hashlib.sha256(open("/proc/sys/kernel/random/boot_id").read().encode()).hexdigest()
+    boot = hashlib.sha256(Path("/proc/sys/kernel/random/boot_id").read_bytes()).hexdigest()
     bpf = BPF(text=text)
     bpf.attach_kprobe(event="vfs_write", fn_name="enter")
     bpf.attach_kretprobe(event="vfs_write", fn_name="leave", maxactive=128)
@@ -144,7 +145,7 @@ def run(path, duration):
             "ready_ns": ready_ns,
             "file": {"dev": rawdev, "inode": identity.st_ino},
             "program_sha256": hashlib.sha256(text.encode()).hexdigest(),
-            "observer_source_sha256": hashlib.sha256(open(__file__, "rb").read()).hexdigest(),
+            "observer_source_sha256": hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
         }
     )
     end = time.monotonic() + duration
@@ -156,11 +157,8 @@ def run(path, duration):
     }
     try:
         names = [name.decode() if isinstance(name, bytes) else str(name) for name in bpf.kprobe_fds]
-        profile = [
-            line.split()
-            for line in open("/sys/kernel/tracing/kprobe_profile")
-            if any(name in line for name in names)
-        ]
+        with open("/sys/kernel/tracing/kprobe_profile") as profile_file:
+            profile = [line.split() for line in profile_file if any(name in line for name in names)]
     except (OSError, TypeError):
         profile = None
     after = resource.getrusage(resource.RUSAGE_SELF)
