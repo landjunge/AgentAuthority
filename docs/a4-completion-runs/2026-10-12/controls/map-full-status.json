@@ -1,0 +1,11 @@
+{
+  "command": [
+    "sudo",
+    "-n",
+    "python3",
+    "-B",
+    "/opt/a4c-controls-53dbe25838de559a/controls_probe.py",
+    "map-full"
+  ],
+  "exit_code": 0
+}

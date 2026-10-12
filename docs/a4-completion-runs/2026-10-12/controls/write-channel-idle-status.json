@@ -1,0 +1,14 @@
+{
+  "command": [
+    "sudo",
+    "-n",
+    "python3",
+    "-B",
+    "/opt/a4c-controls-53dbe25838de559a/observer.py",
+    "/var/tmp/a1-research-a4c-control-empty-53dbe25838de559a",
+    "--duration",
+    "2"
+  ],
+  "exit_code": 0,
+  "target_writer_jobs": 0
+}
