@@ -1,0 +1,557 @@
+{
+  "N_Startversuche": 8,
+  "N_abgebrochen": 0,
+  "N_geplant": 8,
+  "N_gestartet": 8,
+  "N_modellnachweise": 8,
+  "N_nicht_versucht": 0,
+  "N_ohne_Modellnachweis": 0,
+  "N_vollstaendig": 0,
+  "full_matrix_interval_95": [
+    0.0,
+    0.3694166475528192
+  ],
+  "general_reliability": "UNBEKANNT",
+  "global_stop": null,
+  "identity_effect_binding": "UNBEKANNT",
+  "interval_scope": "eight planned attempts; binomial IID/common-p assumption unverified",
+  "logical_agent_identity": "UNBEKANNT",
+  "manifest_sha256": "feff12758507ddb63a26be5a671aed8ab90f3ab57b605979119a4eaad5fea71e",
+  "original_matrix_interval_95": [
+    0.6305833524471807,
+    1.0
+  ],
+  "original_matrix_pass": 8,
+  "retries": 0,
+  "rows": [
+    {
+      "acceptance": "BELEGT",
+      "additional_rows": [
+        {
+          "actual": "UNBEKANNT",
+          "case": "A1_writer_pid_start",
+          "expected": "BELEGT",
+          "reason": "required_experiment_not_measured",
+          "status": "UNBEKANNT"
+        },
+        {
+          "actual": "UNBEKANNT",
+          "case": "A1_sibling_distinct",
+          "expected": "VERSCHIEDEN",
+          "reason": "required_experiment_not_measured",
+          "status": "UNBEKANNT"
+        },
+        {
+          "actual": "UNBEKANNT",
+          "case": "A1_forged_pid_rejected",
+          "expected": true,
+          "reason": "required_experiment_not_measured",
+          "status": "UNBEKANNT"
+        },
+        {
+          "actual": "UNVOLLSTAENDIG",
+          "case": "B1_scope",
+          "expected": "UNVOLLSTAENDIG",
+          "reason": "recorded_scope_projection",
+          "status": "PASS"
+        },
+        {
+          "actual": "BELEGT",
+          "case": "B1_target",
+          "expected": "BELEGT",
+          "reason": "recorded_scope_projection",
+          "status": "PASS"
+        },
+        {
+          "actual": "UNBEKANNT",
+          "case": "B2_second_window",
+          "expected": "SPAETER",
+          "reason": "required_experiment_not_measured",
+          "status": "UNBEKANNT"
+        },
+        {
+          "actual": "UNBEKANNT",
+          "case": "B2_foreign_capture",
+          "expected": "UNBEKANNT/foreign_capture",
+          "reason": "required_experiment_not_measured",
+          "status": "UNBEKANNT"
+        }
+      ],
+      "cli_started": true,
+      "cli_success": true,
+      "full_matrix_complete": false,
+      "integration_sha256": "1df4ff81649c2297b500283cea4b489e44b4b21455913b91ee2caa82cbae609e",
+      "model_proven": true,
+      "original_matrix_pass": true,
+      "position": 1,
+      "reason": "originaler_codex_exec",
+      "recording_ok": true,
+      "run": 8203361944725398884,
+      "runner_failure": null,
+      "timeout": false
+    },
+    {
+      "acceptance": "BELEGT",
+      "additional_rows": [
+        {
+          "actual": "UNBEKANNT",
+          "case": "A1_writer_pid_start",
+          "expected": "BELEGT",
+          "reason": "required_experiment_not_measured",
+          "status": "UNBEKANNT"
+        },
+        {
+          "actual": "UNBEKANNT",
+          "case": "A1_sibling_distinct",
+          "expected": "VERSCHIEDEN",
+          "reason": "required_experiment_not_measured",
+          "status": "UNBEKANNT"
+        },
+        {
+          "actual": "UNBEKANNT",
+          "case": "A1_forged_pid_rejected",
+          "expected": true,
+          "reason": "required_experiment_not_measured",
+          "status": "UNBEKANNT"
+        },
+        {
+          "actual": "UNVOLLSTAENDIG",
+          "case": "B1_scope",
+          "expected": "UNVOLLSTAENDIG",
+          "reason": "recorded_scope_projection",
+          "status": "PASS"
+        },
+        {
+          "actual": "BELEGT",
+          "case": "B1_target",
+          "expected": "BELEGT",
+          "reason": "recorded_scope_projection",
+          "status": "PASS"
+        },
+        {
+          "actual": "UNBEKANNT",
+          "case": "B2_second_window",
+          "expected": "SPAETER",
+          "reason": "required_experiment_not_measured",
+          "status": "UNBEKANNT"
+        },
+        {
+          "actual": "UNBEKANNT",
+          "case": "B2_foreign_capture",
+          "expected": "UNBEKANNT/foreign_capture",
+          "reason": "required_experiment_not_measured",
+          "status": "UNBEKANNT"
+        }
+      ],
+      "cli_started": true,
+      "cli_success": true,
+      "full_matrix_complete": false,
+      "integration_sha256": "eaad99b65bd240eb38d1a3530008bb1c4e41f54bb02eee225bbacd3f945e7216",
+      "model_proven": true,
+      "original_matrix_pass": true,
+      "position": 2,
+      "reason": "originaler_codex_exec",
+      "recording_ok": true,
+      "run": 499767069173165969,
+      "runner_failure": null,
+      "timeout": false
+    },
+    {
+      "acceptance": "BELEGT",
+      "additional_rows": [
+        {
+          "actual": "UNBEKANNT",
+          "case": "A1_writer_pid_start",
+          "expected": "BELEGT",
+          "reason": "required_experiment_not_measured",
+          "status": "UNBEKANNT"
+        },
+        {
+          "actual": "UNBEKANNT",
+          "case": "A1_sibling_distinct",
+          "expected": "VERSCHIEDEN",
+          "reason": "required_experiment_not_measured",
+          "status": "UNBEKANNT"
+        },
+        {
+          "actual": "UNBEKANNT",
+          "case": "A1_forged_pid_rejected",
+          "expected": true,
+          "reason": "required_experiment_not_measured",
+          "status": "UNBEKANNT"
+        },
+        {
+          "actual": "UNVOLLSTAENDIG",
+          "case": "B1_scope",
+          "expected": "UNVOLLSTAENDIG",
+          "reason": "recorded_scope_projection",
+          "status": "PASS"
+        },
+        {
+          "actual": "BELEGT",
+          "case": "B1_target",
+          "expected": "BELEGT",
+          "reason": "recorded_scope_projection",
+          "status": "PASS"
+        },
+        {
+          "actual": "UNBEKANNT",
+          "case": "B2_second_window",
+          "expected": "SPAETER",
+          "reason": "required_experiment_not_measured",
+          "status": "UNBEKANNT"
+        },
+        {
+          "actual": "UNBEKANNT",
+          "case": "B2_foreign_capture",
+          "expected": "UNBEKANNT/foreign_capture",
+          "reason": "required_experiment_not_measured",
+          "status": "UNBEKANNT"
+        }
+      ],
+      "cli_started": true,
+      "cli_success": true,
+      "full_matrix_complete": false,
+      "integration_sha256": "2fb731da17e0eee572ed1ae1eee1617401d350ac293ef04c1755eca759cfd04e",
+      "model_proven": true,
+      "original_matrix_pass": true,
+      "position": 3,
+      "reason": "originaler_codex_exec",
+      "recording_ok": true,
+      "run": 3456760512119539451,
+      "runner_failure": null,
+      "timeout": false
+    },
+    {
+      "acceptance": "BELEGT",
+      "additional_rows": [
+        {
+          "actual": "UNBEKANNT",
+          "case": "A1_writer_pid_start",
+          "expected": "BELEGT",
+          "reason": "required_experiment_not_measured",
+          "status": "UNBEKANNT"
+        },
+        {
+          "actual": "UNBEKANNT",
+          "case": "A1_sibling_distinct",
+          "expected": "VERSCHIEDEN",
+          "reason": "required_experiment_not_measured",
+          "status": "UNBEKANNT"
+        },
+        {
+          "actual": "UNBEKANNT",
+          "case": "A1_forged_pid_rejected",
+          "expected": true,
+          "reason": "required_experiment_not_measured",
+          "status": "UNBEKANNT"
+        },
+        {
+          "actual": "UNVOLLSTAENDIG",
+          "case": "B1_scope",
+          "expected": "UNVOLLSTAENDIG",
+          "reason": "recorded_scope_projection",
+          "status": "PASS"
+        },
+        {
+          "actual": "BELEGT",
+          "case": "B1_target",
+          "expected": "BELEGT",
+          "reason": "recorded_scope_projection",
+          "status": "PASS"
+        },
+        {
+          "actual": "UNBEKANNT",
+          "case": "B2_second_window",
+          "expected": "SPAETER",
+          "reason": "required_experiment_not_measured",
+          "status": "UNBEKANNT"
+        },
+        {
+          "actual": "UNBEKANNT",
+          "case": "B2_foreign_capture",
+          "expected": "UNBEKANNT/foreign_capture",
+          "reason": "required_experiment_not_measured",
+          "status": "UNBEKANNT"
+        }
+      ],
+      "cli_started": true,
+      "cli_success": true,
+      "full_matrix_complete": false,
+      "integration_sha256": "10d91c6aa6c0b65dc1a3a5503989235b95c686467fc7300921ebb284b57b6c42",
+      "model_proven": true,
+      "original_matrix_pass": true,
+      "position": 4,
+      "reason": "originaler_codex_exec",
+      "recording_ok": true,
+      "run": 7971611942963558758,
+      "runner_failure": null,
+      "timeout": false
+    },
+    {
+      "acceptance": "BELEGT",
+      "additional_rows": [
+        {
+          "actual": "UNBEKANNT",
+          "case": "A1_writer_pid_start",
+          "expected": "BELEGT",
+          "reason": "required_experiment_not_measured",
+          "status": "UNBEKANNT"
+        },
+        {
+          "actual": "UNBEKANNT",
+          "case": "A1_sibling_distinct",
+          "expected": "VERSCHIEDEN",
+          "reason": "required_experiment_not_measured",
+          "status": "UNBEKANNT"
+        },
+        {
+          "actual": "UNBEKANNT",
+          "case": "A1_forged_pid_rejected",
+          "expected": true,
+          "reason": "required_experiment_not_measured",
+          "status": "UNBEKANNT"
+        },
+        {
+          "actual": "UNVOLLSTAENDIG",
+          "case": "B1_scope",
+          "expected": "UNVOLLSTAENDIG",
+          "reason": "recorded_scope_projection",
+          "status": "PASS"
+        },
+        {
+          "actual": "BELEGT",
+          "case": "B1_target",
+          "expected": "BELEGT",
+          "reason": "recorded_scope_projection",
+          "status": "PASS"
+        },
+        {
+          "actual": "UNBEKANNT",
+          "case": "B2_second_window",
+          "expected": "SPAETER",
+          "reason": "required_experiment_not_measured",
+          "status": "UNBEKANNT"
+        },
+        {
+          "actual": "UNBEKANNT",
+          "case": "B2_foreign_capture",
+          "expected": "UNBEKANNT/foreign_capture",
+          "reason": "required_experiment_not_measured",
+          "status": "UNBEKANNT"
+        }
+      ],
+      "cli_started": true,
+      "cli_success": true,
+      "full_matrix_complete": false,
+      "integration_sha256": "18ac984660ca672ada6ee53d38ee6e37688fd09250df2e99101a47baec59609a",
+      "model_proven": true,
+      "original_matrix_pass": true,
+      "position": 5,
+      "reason": "originaler_codex_exec",
+      "recording_ok": true,
+      "run": 6740221314261761536,
+      "runner_failure": null,
+      "timeout": false
+    },
+    {
+      "acceptance": "BELEGT",
+      "additional_rows": [
+        {
+          "actual": "UNBEKANNT",
+          "case": "A1_writer_pid_start",
+          "expected": "BELEGT",
+          "reason": "required_experiment_not_measured",
+          "status": "UNBEKANNT"
+        },
+        {
+          "actual": "UNBEKANNT",
+          "case": "A1_sibling_distinct",
+          "expected": "VERSCHIEDEN",
+          "reason": "required_experiment_not_measured",
+          "status": "UNBEKANNT"
+        },
+        {
+          "actual": "UNBEKANNT",
+          "case": "A1_forged_pid_rejected",
+          "expected": true,
+          "reason": "required_experiment_not_measured",
+          "status": "UNBEKANNT"
+        },
+        {
+          "actual": "UNVOLLSTAENDIG",
+          "case": "B1_scope",
+          "expected": "UNVOLLSTAENDIG",
+          "reason": "recorded_scope_projection",
+          "status": "PASS"
+        },
+        {
+          "actual": "BELEGT",
+          "case": "B1_target",
+          "expected": "BELEGT",
+          "reason": "recorded_scope_projection",
+          "status": "PASS"
+        },
+        {
+          "actual": "UNBEKANNT",
+          "case": "B2_second_window",
+          "expected": "SPAETER",
+          "reason": "required_experiment_not_measured",
+          "status": "UNBEKANNT"
+        },
+        {
+          "actual": "UNBEKANNT",
+          "case": "B2_foreign_capture",
+          "expected": "UNBEKANNT/foreign_capture",
+          "reason": "required_experiment_not_measured",
+          "status": "UNBEKANNT"
+        }
+      ],
+      "cli_started": true,
+      "cli_success": true,
+      "full_matrix_complete": false,
+      "integration_sha256": "86a457166825442b995e9a2d78f08f0ea44461137ec61f8e7f37093000aeefdf",
+      "model_proven": true,
+      "original_matrix_pass": true,
+      "position": 6,
+      "reason": "originaler_codex_exec",
+      "recording_ok": true,
+      "run": 1873247828706755378,
+      "runner_failure": null,
+      "timeout": false
+    },
+    {
+      "acceptance": "BELEGT",
+      "additional_rows": [
+        {
+          "actual": "UNBEKANNT",
+          "case": "A1_writer_pid_start",
+          "expected": "BELEGT",
+          "reason": "required_experiment_not_measured",
+          "status": "UNBEKANNT"
+        },
+        {
+          "actual": "UNBEKANNT",
+          "case": "A1_sibling_distinct",
+          "expected": "VERSCHIEDEN",
+          "reason": "required_experiment_not_measured",
+          "status": "UNBEKANNT"
+        },
+        {
+          "actual": "UNBEKANNT",
+          "case": "A1_forged_pid_rejected",
+          "expected": true,
+          "reason": "required_experiment_not_measured",
+          "status": "UNBEKANNT"
+        },
+        {
+          "actual": "UNVOLLSTAENDIG",
+          "case": "B1_scope",
+          "expected": "UNVOLLSTAENDIG",
+          "reason": "recorded_scope_projection",
+          "status": "PASS"
+        },
+        {
+          "actual": "BELEGT",
+          "case": "B1_target",
+          "expected": "BELEGT",
+          "reason": "recorded_scope_projection",
+          "status": "PASS"
+        },
+        {
+          "actual": "UNBEKANNT",
+          "case": "B2_second_window",
+          "expected": "SPAETER",
+          "reason": "required_experiment_not_measured",
+          "status": "UNBEKANNT"
+        },
+        {
+          "actual": "UNBEKANNT",
+          "case": "B2_foreign_capture",
+          "expected": "UNBEKANNT/foreign_capture",
+          "reason": "required_experiment_not_measured",
+          "status": "UNBEKANNT"
+        }
+      ],
+      "cli_started": true,
+      "cli_success": true,
+      "full_matrix_complete": false,
+      "integration_sha256": "fba0bb074a352b012f0e0ab8962f276fd2d563ed7c675f14a901583cfa79ab54",
+      "model_proven": true,
+      "original_matrix_pass": true,
+      "position": 7,
+      "reason": "originaler_codex_exec",
+      "recording_ok": true,
+      "run": 7076522265621507268,
+      "runner_failure": null,
+      "timeout": false
+    },
+    {
+      "acceptance": "BELEGT",
+      "additional_rows": [
+        {
+          "actual": "UNBEKANNT",
+          "case": "A1_writer_pid_start",
+          "expected": "BELEGT",
+          "reason": "required_experiment_not_measured",
+          "status": "UNBEKANNT"
+        },
+        {
+          "actual": "UNBEKANNT",
+          "case": "A1_sibling_distinct",
+          "expected": "VERSCHIEDEN",
+          "reason": "required_experiment_not_measured",
+          "status": "UNBEKANNT"
+        },
+        {
+          "actual": "UNBEKANNT",
+          "case": "A1_forged_pid_rejected",
+          "expected": true,
+          "reason": "required_experiment_not_measured",
+          "status": "UNBEKANNT"
+        },
+        {
+          "actual": "UNVOLLSTAENDIG",
+          "case": "B1_scope",
+          "expected": "UNVOLLSTAENDIG",
+          "reason": "recorded_scope_projection",
+          "status": "PASS"
+        },
+        {
+          "actual": "BELEGT",
+          "case": "B1_target",
+          "expected": "BELEGT",
+          "reason": "recorded_scope_projection",
+          "status": "PASS"
+        },
+        {
+          "actual": "UNBEKANNT",
+          "case": "B2_second_window",
+          "expected": "SPAETER",
+          "reason": "required_experiment_not_measured",
+          "status": "UNBEKANNT"
+        },
+        {
+          "actual": "UNBEKANNT",
+          "case": "B2_foreign_capture",
+          "expected": "UNBEKANNT/foreign_capture",
+          "reason": "required_experiment_not_measured",
+          "status": "UNBEKANNT"
+        }
+      ],
+      "cli_started": true,
+      "cli_success": true,
+      "full_matrix_complete": false,
+      "integration_sha256": "a7d0d1639e10799db47322a26f4f955a6f1123a5bda3c1491727cdcb3922b547",
+      "model_proven": true,
+      "original_matrix_pass": true,
+      "position": 8,
+      "reason": "originaler_codex_exec",
+      "recording_ok": true,
+      "run": 8254354024848643444,
+      "runner_failure": null,
+      "timeout": false
+    }
+  ],
+  "source_head": "3fd4d08b0dfc7bef2fb97656f937d148529ba51c"
+}

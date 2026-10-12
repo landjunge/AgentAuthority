@@ -1,0 +1,368 @@
+{
+  "adapter_exit": 0,
+  "adapter_stderr_bytes": 0,
+  "capture": [
+    {
+      "boot_hash": "8e6742c8df3f1dafba8dac53b1e2a4a9abede8f7e50be64408241e5d8803fbdc",
+      "file": {
+        "dev": 265289729,
+        "inode": 262901
+      },
+      "kernel": "6.8.0-142-generic",
+      "observer_source_sha256": "20cdb32237bd02ba9705dae02b467ee60ca968f742fc1ba7f308d59770b2bcbe",
+      "pid_namespace": "pid:[4026531836]",
+      "program_sha256": "fe07ce4e3b833d5c5dfdd42de24b826e3494dd48f0f320b9e416b68475697ead",
+      "ready": true,
+      "ready_ns": 609294875552
+    },
+    {
+      "record": {
+        "boot_hash": "8e6742c8df3f1dafba8dac53b1e2a4a9abede8f7e50be64408241e5d8803fbdc",
+        "count": 16,
+        "cpu": 0,
+        "dev": 265289729,
+        "entry_ns": 611040141399,
+        "exit_ns": 611040167505,
+        "inode": 262901,
+        "kind": 1,
+        "ppid": 1263,
+        "raw_bytes": 76,
+        "result": 16,
+        "start_ns": 610912888282,
+        "tgid": 1265,
+        "tid": 1265
+      }
+    },
+    {
+      "record": {
+        "boot_hash": "8e6742c8df3f1dafba8dac53b1e2a4a9abede8f7e50be64408241e5d8803fbdc",
+        "count": 0,
+        "cpu": 0,
+        "dev": 0,
+        "entry_ns": 0,
+        "exit_ns": 611160688208,
+        "inode": 0,
+        "kind": 2,
+        "ppid": 0,
+        "raw_bytes": 76,
+        "result": 0,
+        "start_ns": 610912888282,
+        "tgid": 1265,
+        "tid": 1265
+      }
+    },
+    {
+      "summary": {
+        "cpu_system_seconds": 0.201839,
+        "cpu_user_seconds": 2.006669,
+        "end_ns": 621316711933,
+        "entry_probe_nmissed": null,
+        "entry_probe_nmissed_limit": "BCC uses perf kprobe entry; tracefs profile covers classic kretprobe only",
+        "kprobe_profile": [
+          [
+            "r_vfs_write_bcc_1258",
+            "88",
+            "0"
+          ]
+        ],
+        "logical_agent_identity": "UNBEKANNT",
+        "pending": 0,
+        "perf_lost": 0,
+        "raw_bytes": 152,
+        "records": 2,
+        "rss_peak_bytes": 177590272,
+        "scope": "observer process including BCC compile, not kernel/VM CPU",
+        "stats": {
+          "0": 1,
+          "1": 1,
+          "2": 1,
+          "3": 0,
+          "4": 0,
+          "5": 0,
+          "6": 1,
+          "7": 0
+        }
+      }
+    }
+  ],
+  "capture_sha256": "1a644d6e877c817d40cc8439b54218bb9cefb8025bc30d741eec549268561d13",
+  "case": "grok",
+  "clients": [
+    {
+      "client": "Grok",
+      "client_binary_sha256": "5ff2b912da2d85cdc627595d819423751bab67fcb65870f90a0783cccba5c62a",
+      "client_exit": 0,
+      "client_host_pid": 68580,
+      "credentials_transferred_to_guest": false,
+      "diagnostic_categories": [],
+      "event_types": [],
+      "host_duration_ns": 21751385771,
+      "job": {
+        "claimed_client": "Grok",
+        "nonce": "7ef0a21edbfbdd0c5f4c63f566bdca4f",
+        "operation": "write16",
+        "position": "2"
+      },
+      "local_session_ids": [],
+      "model_identity": "UNBEKANNT",
+      "output_storage": "allowlisted synthetic job only; raw model content discarded",
+      "provider_identity": "UNBEKANNT",
+      "signed_provider_attestation": false,
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_bytes": 1306,
+      "stdout_sha256": "aba37f515a03b531f31c8d53e25ffbcf06374bd111a22982e1ecd48dc520c61e",
+      "timeout": false
+    }
+  ],
+  "dispatch_packet": {
+    "active_nonce": "7ef0a21edbfbdd0c5f4c63f566bdca4f",
+    "active_nonces": [
+      "7ef0a21edbfbdd0c5f4c63f566bdca4f"
+    ],
+    "ca_public_key": "PjLKW9h2/YFZ8AIqI9+/j5YcvBsAEBDYnOK87H4RYBQ=",
+    "jobs": [
+      {
+        "body": {
+          "client": "Grok",
+          "client_evidence_sha256": "9bd8c86fd413109bff2c0f762ac1acb93fe6c693ee4bed76e73c92e963466e3d",
+          "domain": "A3-HOST-DISPATCH-v1",
+          "job": {
+            "claimed_client": "Grok",
+            "nonce": "7ef0a21edbfbdd0c5f4c63f566bdca4f",
+            "operation": "write16",
+            "position": "2"
+          },
+          "model_identity": "UNBEKANNT",
+          "provider_identity": "UNBEKANNT",
+          "run_id": "fa6556c4dbf7d152",
+          "signer_scope": "trusted local controller, not provider"
+        },
+        "signature": "sh/Fu+DW9dygUkdiRBrovM0UgYoG7bApRD/oPL20IU9FBRhfk0mIayWiDEg++myuxVFC7bNax9guCklHw0yFCA=="
+      }
+    ]
+  },
+  "evaluation": {
+    "enrollment_signature": true,
+    "known_loss_checks": true,
+    "partial_chain": "TEILWEISE BELEGT",
+    "proof_checks": [
+      {
+        "dispatch_client_claim": "Grok",
+        "fresh_challenge": true,
+        "fresh_dispatch": true,
+        "proof_hash_matches": true,
+        "provider_authentication": "UNBEKANNT",
+        "receipt_principal_matches": true,
+        "signature_principal": "WrapperGrok",
+        "starter_signature": true
+      }
+    ],
+    "real_agent_effect_chain": "UNBEKANNT",
+    "reason": "No externally authenticated client/session/provider credential in enrollment",
+    "writes": [
+      {
+        "authenticated_local_wrapper": "WrapperGrok",
+        "client_claim": "Grok",
+        "file": {
+          "dev": 265289729,
+          "inode": 262901
+        },
+        "fresh_host_dispatch": true,
+        "kernel_entry_ns": 611040141399,
+        "kernel_exit_ns": 611040167505,
+        "kernel_process": {
+          "ppid": 1263,
+          "start_ns": 610912888282,
+          "tgid": 1265,
+          "tid": 1265
+        },
+        "model_identity": "UNBEKANNT",
+        "provider_identity": "UNBEKANNT",
+        "real_agent_effect_chain": "UNBEKANNT",
+        "session_identity": "UNBEKANNT",
+        "wrapper_effect_chain": "BELEGT",
+        "write": "BELEGT"
+      }
+    ]
+  },
+  "observer_exit": 0,
+  "observer_stderr_bytes": 0,
+  "position": 2,
+  "source_commit": "88029be0d5e28c2715d799660eef76621e12c060",
+  "trial": {
+    "active_nonce": "7ef0a21edbfbdd0c5f4c63f566bdca4f",
+    "case": "grok",
+    "handshakes": [
+      {
+        "proof": {
+          "body": {
+            "challenge": {
+              "boot_hash": "8e6742c8df3f1dafba8dac53b1e2a4a9abede8f7e50be64408241e5d8803fbdc",
+              "domain": "A2-CHALLENGE-v1",
+              "expires_in_ns": 5000000000,
+              "file": {
+                "dev": 265289729,
+                "inode": 262901
+              },
+              "instance": {
+                "exec_ns": 610914332682,
+                "exit_ns": 0,
+                "generation": 1,
+                "parent": 1263,
+                "pid": 1265,
+                "start_ns": 610912888282
+              },
+              "issued_ns": 611028020686,
+              "nonce": "8952ed0e4c5f3d95061ff395a9481aea511e42bf13a3d853f9d303a489595583",
+              "pid_namespace": "pid:[4026531836]",
+              "run_id": "fa6556c4dbf7d152"
+            },
+            "claimed_identity": "WrapperGrok",
+            "details": {
+              "host_dispatch_sha256": "82141c3b793979a7fb5e4c397a93bfc91b55c70948439cf1eb288fe186a4d2f2",
+              "job_index": 0,
+              "job_nonce": "7ef0a21edbfbdd0c5f4c63f566bdca4f",
+              "wrapper_not_provider_identity": true
+            },
+            "domain": "A2-TEST-POP-v1"
+          },
+          "signature": "orvj2ZqiziPJAIm2HD2Y/S9hPTYiLhLIf42LxUjELDG9UXGtIjPQ4dSfLJ1m8FkAaBn9otF0Ba7jcThTIRlVCg=="
+        },
+        "receipt": {
+          "body": {
+            "attested_ns": 611039835253,
+            "authenticated_identity": "WrapperGrok",
+            "boot_hash": "8e6742c8df3f1dafba8dac53b1e2a4a9abede8f7e50be64408241e5d8803fbdc",
+            "challenge": {
+              "boot_hash": "8e6742c8df3f1dafba8dac53b1e2a4a9abede8f7e50be64408241e5d8803fbdc",
+              "domain": "A2-CHALLENGE-v1",
+              "expires_in_ns": 5000000000,
+              "file": {
+                "dev": 265289729,
+                "inode": 262901
+              },
+              "instance": {
+                "exec_ns": 610914332682,
+                "exit_ns": 0,
+                "generation": 1,
+                "parent": 1263,
+                "pid": 1265,
+                "start_ns": 610912888282
+              },
+              "issued_ns": 611028020686,
+              "nonce": "8952ed0e4c5f3d95061ff395a9481aea511e42bf13a3d853f9d303a489595583",
+              "pid_namespace": "pid:[4026531836]",
+              "run_id": "fa6556c4dbf7d152"
+            },
+            "claimed_identity": "WrapperGrok",
+            "connection_peer": {
+              "gid": 61012,
+              "pid": 1265,
+              "uid": 61012
+            },
+            "credential_identity": "WrapperGrok",
+            "domain": "A2-START-BINDING-v1",
+            "fresh_challenge": true,
+            "instance_bound": true,
+            "message_sender": {
+              "exec_ns": 610914332682,
+              "exit_ns": 0,
+              "generation": 1,
+              "gid": 61012,
+              "parent": 1263,
+              "pid": 1265,
+              "start_ns": 610912888282,
+              "uid": 61012
+            },
+            "pid_namespace": "pid:[4026531836]",
+            "proof_sha256": "7f821f3542256972c8a974bee6c2a3892fad7ac0f78a459cb5c9f97111eb8246",
+            "registered_identity": "WrapperGrok",
+            "run_id": "fa6556c4dbf7d152",
+            "test_identity_only": true
+          },
+          "signature": "afPrFOgzRuCRjzcLm8f/5XeoNL0jQb4OY2O34aY+YwW8SdgD05IGYVYm9YNOWBxu4pSi/1kZMOFWkDNjowvlCQ=="
+        }
+      }
+    ],
+    "lifecycle": {
+      "callback_raw_bytes": 132,
+      "fork_entry_nmissed": null,
+      "perf_lost": 0,
+      "records": [
+        {
+          "generation": 1,
+          "kind": 2,
+          "parent": 1263,
+          "pid": 1265,
+          "stamp": 610914332716,
+          "start": 610912888282,
+          "uid": 61012
+        },
+        {
+          "generation": 0,
+          "kind": 1,
+          "parent": 1263,
+          "pid": 1265,
+          "stamp": 610912893991,
+          "start": 610912888282,
+          "uid": 0
+        },
+        {
+          "generation": 1,
+          "kind": 3,
+          "parent": 1263,
+          "pid": 1265,
+          "stamp": 611160770131,
+          "start": 610912888282,
+          "uid": 61012
+        }
+      ],
+      "scope": "starter descendants; missing fork/exec means unknown binding",
+      "submit_failures": 0
+    },
+    "oracle": [
+      {
+        "exit": 0,
+        "identity_provisioned": "WrapperGrok",
+        "kernel_start_at_spawn": {
+          "exec_ns": 610914332682,
+          "exit_ns": 0,
+          "generation": 1,
+          "parent": 1263,
+          "pid": 1265,
+          "start_ns": 610912888282
+        },
+        "key_material_archived": false,
+        "mode": "write",
+        "registered": true,
+        "spawn_pid": 1265,
+        "stderr_bytes": 0,
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout_records": [
+          {
+            "action": {
+              "begin_ns": 611040131500,
+              "end_ns": 611040246707,
+              "file": {
+                "dev": 265289729,
+                "inode": 262901
+              },
+              "result": 16
+            },
+            "adapter_only": true,
+            "dispatch_sha256": "82141c3b793979a7fb5e4c397a93bfc91b55c70948439cf1eb288fe186a4d2f2"
+          }
+        ],
+        "uid": 61012
+      }
+    ],
+    "resources": {
+      "cpu_system_seconds": 0.19081900000000002,
+      "cpu_user_seconds": 0.8601099999999999,
+      "peak_rss_bytes": 164429824,
+      "scope": "root adapter including lifecycle compile; kernel/children unknown"
+    }
+  },
+  "trial_sha256": "83d2df77c5eeab6a08baf3f88e7819e2c1d4fb1aefad3f9de90a0d5e2c79666e"
+}

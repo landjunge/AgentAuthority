@@ -1,0 +1,14 @@
+{
+  "measured_source_commit": "92b3e5f",
+  "invalid_field": "all_writes_before_client_receipt_expiry",
+  "actual_original_expression": "all(kernel_entry_ns >= 0)",
+  "qualified_as_evidence": false,
+  "raw_integrations_preserved": true,
+  "separate_valid_observations": [
+    "entry_gate_ns checked against signed host expiry",
+    "host_collection_end_before_receipt_expiry was computed on the host monotonic clock"
+  ],
+  "host_end_timestamp_in_original_measurement": null,
+  "guest_host_clock_comparison": "UNBEKANNT; no direct clock equivalence asserted",
+  "source_corrected_without_remeasurement": true
+}

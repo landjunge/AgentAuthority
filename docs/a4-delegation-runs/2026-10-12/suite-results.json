@@ -1,0 +1,16 @@
+[
+  {
+    "position": 1,
+    "exit_code": 0,
+    "seconds": 60.8926867559785,
+    "fixed_head": "f5cd1b1875434168a9e4efde09da9647c0d78ade",
+    "head_unchanged": true
+  },
+  {
+    "position": 2,
+    "exit_code": 0,
+    "seconds": 58.75153202097863,
+    "fixed_head": "f5cd1b1875434168a9e4efde09da9647c0d78ade",
+    "head_unchanged": true
+  }
+]

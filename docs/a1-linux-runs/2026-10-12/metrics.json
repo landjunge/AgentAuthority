@@ -1,0 +1,26 @@
+{
+  "six_cases": 6,
+  "positive_target_actions": 5,
+  "correct": 5,
+  "wrong": 0,
+  "unclear": 0,
+  "kernel_write_records": 5,
+  "kernel_exit_records": 5,
+  "callback_raw_bytes_six_cases": 760,
+  "observer_cpu_user_six": 11.747236,
+  "observer_cpu_system_six": 1.1115789999999999,
+  "observer_peak_rss_max_six": 177643520,
+  "perf_lost_six": 0,
+  "entry_nmissed": null,
+  "kernel_observer_cpu": null,
+  "kernel_total_ram": null,
+  "pid_reuse_actual": true,
+  "pid_reuse_pid": 2435,
+  "pid_reuse_kernel_starts": [
+    774702253420,
+    775055346330
+  ],
+  "pid_reuse_correct": 2,
+  "pid_reuse_callback_raw_bytes": 304,
+  "pid_reuse_outside_six_denominator": true
+}

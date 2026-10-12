@@ -1,0 +1,153 @@
+{
+  "position": 1,
+  "target_path": "/var/tmp/a1-research-runs-001/d9056f1dbc77a90e",
+  "mode": "write",
+  "observer_exit": 0,
+  "oracle_exit": 0,
+  "observer_stderr_bytes": 0,
+  "observer_stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "oracle_stderr_bytes": 0,
+  "host_collection_ns": 6128986133,
+  "capture": [
+    {
+      "boot_hash": "ea23c1eead5c439d96e565f0df8e5f1a6a8d6f543205b4a35842d9bdc070e805",
+      "file": {
+        "dev": 265289729,
+        "inode": 262237
+      },
+      "kernel": "6.8.0-142-generic",
+      "observer_source_sha256": "20cdb32237bd02ba9705dae02b467ee60ca968f742fc1ba7f308d59770b2bcbe",
+      "pid_namespace": "pid:[4026531836]",
+      "program_sha256": "883c084cfd33f3e1cb3aa346a27fc7e3a8d27e5649c6742c0f69eb444223a98e",
+      "ready": true,
+      "ready_ns": 718424116619
+    },
+    {
+      "record": {
+        "boot_hash": "ea23c1eead5c439d96e565f0df8e5f1a6a8d6f543205b4a35842d9bdc070e805",
+        "count": 16,
+        "cpu": 0,
+        "dev": 265289729,
+        "entry_ns": 718892598253,
+        "exit_ns": 718892624096,
+        "inode": 262237,
+        "kind": 1,
+        "ppid": 2330,
+        "raw_bytes": 76,
+        "result": 16,
+        "start_ns": 718891288741,
+        "tgid": 2334,
+        "tid": 2334
+      }
+    },
+    {
+      "record": {
+        "boot_hash": "ea23c1eead5c439d96e565f0df8e5f1a6a8d6f543205b4a35842d9bdc070e805",
+        "count": 0,
+        "cpu": 0,
+        "dev": 0,
+        "entry_ns": 0,
+        "exit_ns": 719193675089,
+        "inode": 0,
+        "kind": 2,
+        "ppid": 0,
+        "raw_bytes": 76,
+        "result": 0,
+        "start_ns": 718891288741,
+        "tgid": 2334,
+        "tid": 2334
+      }
+    },
+    {
+      "summary": {
+        "cpu_system_seconds": 0.17414499999999997,
+        "cpu_user_seconds": 1.8495779999999997,
+        "end_ns": 724433606641,
+        "entry_probe_nmissed": null,
+        "entry_probe_nmissed_limit": "BCC uses perf kprobe entry; tracefs profile covers classic kretprobe only",
+        "kprobe_profile": [
+          [
+            "r_vfs_write_bcc_2328",
+            "33",
+            "0"
+          ]
+        ],
+        "logical_agent_identity": "UNBEKANNT",
+        "pending": 0,
+        "perf_lost": 0,
+        "raw_bytes": 152,
+        "records": 2,
+        "rss_peak_bytes": 177639424,
+        "scope": "observer process including BCC compile, not kernel/VM CPU",
+        "stats": {
+          "0": 1,
+          "1": 1,
+          "2": 1,
+          "3": 0,
+          "4": 0,
+          "5": 0,
+          "6": 1,
+          "7": 0
+        }
+      }
+    }
+  ],
+  "oracle": {
+    "controller": {
+      "boot_hash": "ea23c1eead5c439d96e565f0df8e5f1a6a8d6f543205b4a35842d9bdc070e805",
+      "clock_ticks": 100,
+      "pid": 2330,
+      "pid_namespace": "pid:[4026531836]",
+      "ppid": 1164,
+      "start_ticks": 71884,
+      "uid": 501
+    },
+    "forged_claim_pid": null,
+    "rows": [
+      {
+        "action": "write",
+        "begin_ns": 718892590842,
+        "creator_child": 2334,
+        "end_ns": 718892707602,
+        "exit_status": 0,
+        "file": {
+          "dev": 265289729,
+          "inode": 262237
+        },
+        "grandchild": false,
+        "pidfd_exit_seen": true,
+        "process": {
+          "clock_ticks": 100,
+          "pid": 2334,
+          "ppid": 2330,
+          "start_ticks": 71889
+        },
+        "process_after": {
+          "clock_ticks": 100,
+          "pid": 2334,
+          "ppid": 2330,
+          "start_ticks": 71889
+        },
+        "result": 16,
+        "stable": true
+      }
+    ]
+  },
+  "capture_sha256": "d8f6f7e1937607273b3acd427fd2becfb6d54211801903ff0791435e3245f806",
+  "oracle_sha256": "c152d9c4a55b68ba50fd81932e90cc9fc7113d045a8c7e7e74e93899acc1b155",
+  "evaluation": {
+    "evidence": "BELEGT",
+    "correct": 1,
+    "wrong": 0,
+    "unclear": 0,
+    "logical_agent_identity": "UNBEKANNT",
+    "reasons": [],
+    "expected_actions": 1,
+    "observed_actions": 1,
+    "loss_checks": true,
+    "false_claim_used": false,
+    "sequential_order": true,
+    "exit_records": 1,
+    "distinct_process_instances": 1
+  }
+}

@@ -1,0 +1,2 @@
+/Users/landjunge/.local/bin/codex: valid on disk
+/Users/landjunge/.local/bin/codex: satisfies its Designated Requirement

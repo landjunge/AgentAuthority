@@ -1,0 +1,402 @@
+{
+  "adapter_exit": 0,
+  "adapter_stderr_bytes": 0,
+  "capture": [
+    {
+      "boot_hash": "8e6742c8df3f1dafba8dac53b1e2a4a9abede8f7e50be64408241e5d8803fbdc",
+      "file": {
+        "dev": 265289729,
+        "inode": 262902
+      },
+      "kernel": "6.8.0-142-generic",
+      "observer_source_sha256": "20cdb32237bd02ba9705dae02b467ee60ca968f742fc1ba7f308d59770b2bcbe",
+      "pid_namespace": "pid:[4026531836]",
+      "program_sha256": "a201a35e5b7dde39acddf15a6259fee34c017d5bb26e675eb3b8faed42171eb0",
+      "ready": true,
+      "ready_ns": 635518461191
+    },
+    {
+      "record": {
+        "boot_hash": "8e6742c8df3f1dafba8dac53b1e2a4a9abede8f7e50be64408241e5d8803fbdc",
+        "count": 16,
+        "cpu": 1,
+        "dev": 265289729,
+        "entry_ns": 637321260083,
+        "exit_ns": 637321285322,
+        "inode": 262902,
+        "kind": 1,
+        "ppid": 1281,
+        "raw_bytes": 76,
+        "result": 16,
+        "start_ns": 637318111288,
+        "tgid": 1282,
+        "tid": 1282
+      }
+    },
+    {
+      "record": {
+        "boot_hash": "8e6742c8df3f1dafba8dac53b1e2a4a9abede8f7e50be64408241e5d8803fbdc",
+        "count": 0,
+        "cpu": 1,
+        "dev": 0,
+        "entry_ns": 0,
+        "exit_ns": 637451104225,
+        "inode": 0,
+        "kind": 2,
+        "ppid": 0,
+        "raw_bytes": 76,
+        "result": 0,
+        "start_ns": 637318111288,
+        "tgid": 1282,
+        "tid": 1282
+      }
+    },
+    {
+      "summary": {
+        "cpu_system_seconds": 0.196865,
+        "cpu_user_seconds": 2.091672,
+        "end_ns": 647528732098,
+        "entry_probe_nmissed": null,
+        "entry_probe_nmissed_limit": "BCC uses perf kprobe entry; tracefs profile covers classic kretprobe only",
+        "kprobe_profile": [
+          [
+            "r_vfs_write_bcc_1275",
+            "87",
+            "0"
+          ]
+        ],
+        "logical_agent_identity": "UNBEKANNT",
+        "pending": 0,
+        "perf_lost": 0,
+        "raw_bytes": 152,
+        "records": 2,
+        "rss_peak_bytes": 177582080,
+        "scope": "observer process including BCC compile, not kernel/VM CPU",
+        "stats": {
+          "0": 1,
+          "1": 1,
+          "2": 1,
+          "3": 0,
+          "4": 0,
+          "5": 0,
+          "6": 1,
+          "7": 0
+        }
+      }
+    }
+  ],
+  "capture_sha256": "1fa31de67965a0cbdfb17e206a6e2d1eb5496f91ba7135f82658b68330ec6d7b",
+  "case": "child",
+  "clients": [
+    {
+      "client": "Codex",
+      "client_binary_sha256": "f86b8cfd3de94dc70763d251da3ff292e94f4a53ad41b81faab3619a7bcb626c",
+      "client_exit": 0,
+      "client_host_pid": 69625,
+      "credentials_transferred_to_guest": false,
+      "delegation_events": [],
+      "delegation_requested": false,
+      "diagnostic_categories": [],
+      "event_types": [
+        "thread.started",
+        "turn.started",
+        "item.completed",
+        "turn.completed"
+      ],
+      "host_duration_ns": 10320458160,
+      "item_types": [
+        "agent_message"
+      ],
+      "job": {
+        "claimed_client": "Codex",
+        "nonce": "7f0d2e2be95ce896d126316d9fbbc84f",
+        "operation": "write16",
+        "position": "3"
+      },
+      "local_session_ids": [
+        {
+          "field": "thread_id",
+          "trust": "client_report_only",
+          "value": "01a12da0-6819-74d1-a8a9-f5f1fe373ede"
+        }
+      ],
+      "model_identity": "UNBEKANNT",
+      "output_storage": "allowlisted synthetic job only; raw model content discarded",
+      "provider_identity": "UNBEKANNT",
+      "signed_provider_attestation": false,
+      "stderr_bytes": 39,
+      "stderr_sha256": "1aa26269eb1cc57f86b235a03cda53c004edb5b1e9fc99d4da4f00843293d721",
+      "stdout_bytes": 462,
+      "stdout_sha256": "42c3b5135376b3122bbe958a55709d705a2aa55ee1a0fde83f92dfb2a9e6162c",
+      "timeout": false
+    }
+  ],
+  "dispatch_packet": {
+    "active_nonce": "7f0d2e2be95ce896d126316d9fbbc84f",
+    "active_nonces": [
+      "7f0d2e2be95ce896d126316d9fbbc84f"
+    ],
+    "ca_public_key": "PjLKW9h2/YFZ8AIqI9+/j5YcvBsAEBDYnOK87H4RYBQ=",
+    "jobs": [
+      {
+        "body": {
+          "client": "Codex",
+          "client_evidence_sha256": "1b9bbaa624128cf2d5656cda6aff2d4bc70a89fd3902f63879e8711122e2938c",
+          "domain": "A3-HOST-DISPATCH-v1",
+          "job": {
+            "claimed_client": "Codex",
+            "nonce": "7f0d2e2be95ce896d126316d9fbbc84f",
+            "operation": "write16",
+            "position": "3"
+          },
+          "model_identity": "UNBEKANNT",
+          "provider_identity": "UNBEKANNT",
+          "run_id": "fa6556c4dbf7d152",
+          "signer_scope": "trusted local controller, not provider"
+        },
+        "signature": "QUp0KYywe5ttVTwIFr+jQRjBuYGpR4R4c+KIj1XIxeZR/koOtW4O4trmza4wYCyZmt0DhBj+ftL5YTQEdCmDAQ=="
+      }
+    ]
+  },
+  "evaluation": {
+    "enrollment_signature": true,
+    "known_loss_checks": true,
+    "partial_chain": "TEILWEISE BELEGT",
+    "proof_checks": [
+      {
+        "dispatch_client_claim": "Codex",
+        "fresh_challenge": true,
+        "fresh_dispatch": true,
+        "proof_hash_matches": true,
+        "provider_authentication": "UNBEKANNT",
+        "receipt_principal_matches": true,
+        "signature_principal": "WrapperCodex",
+        "starter_signature": true
+      }
+    ],
+    "real_agent_effect_chain": "UNBEKANNT",
+    "reason": "No externally authenticated client/session/provider credential in enrollment",
+    "writes": [
+      {
+        "authenticated_local_wrapper": null,
+        "client_claim": null,
+        "file": {
+          "dev": 265289729,
+          "inode": 262902
+        },
+        "fresh_host_dispatch": false,
+        "kernel_entry_ns": 637321260083,
+        "kernel_exit_ns": 637321285322,
+        "kernel_process": {
+          "ppid": 1281,
+          "start_ns": 637318111288,
+          "tgid": 1282,
+          "tid": 1282
+        },
+        "model_identity": "UNBEKANNT",
+        "provider_identity": "UNBEKANNT",
+        "real_agent_effect_chain": "UNBEKANNT",
+        "session_identity": "UNBEKANNT",
+        "wrapper_effect_chain": "UNBEKANNT",
+        "write": "BELEGT"
+      }
+    ]
+  },
+  "observer_exit": 0,
+  "observer_stderr_bytes": 0,
+  "position": 3,
+  "source_commit": "88029be0d5e28c2715d799660eef76621e12c060",
+  "trial": {
+    "active_nonce": "7f0d2e2be95ce896d126316d9fbbc84f",
+    "case": "child",
+    "handshakes": [
+      {
+        "proof": {
+          "body": {
+            "challenge": {
+              "boot_hash": "8e6742c8df3f1dafba8dac53b1e2a4a9abede8f7e50be64408241e5d8803fbdc",
+              "domain": "A2-CHALLENGE-v1",
+              "expires_in_ns": 5000000000,
+              "file": {
+                "dev": 265289729,
+                "inode": 262902
+              },
+              "instance": {
+                "exec_ns": 637205687556,
+                "exit_ns": 0,
+                "generation": 1,
+                "parent": 1280,
+                "pid": 1281,
+                "start_ns": 637204274991
+              },
+              "issued_ns": 637317444950,
+              "nonce": "eab56d54a755d2920e1210ae3b01e0b14346febefda3a0c150b22fd4b42b2141",
+              "pid_namespace": "pid:[4026531836]",
+              "run_id": "fa6556c4dbf7d152"
+            },
+            "claimed_identity": "WrapperCodex",
+            "details": {
+              "host_dispatch_sha256": "858d109272b5a8bc1389300a2331695931bc7c0d400b7084bd79af3f9a3423b9",
+              "job_index": 0,
+              "job_nonce": "7f0d2e2be95ce896d126316d9fbbc84f",
+              "wrapper_not_provider_identity": true
+            },
+            "domain": "A2-TEST-POP-v1"
+          },
+          "signature": "ccFZrOoQFGFS5bai1CWeEQrGM9vKw4KPrUk0mMcKJlt/N70f3gmZHhuZsZiDyRy7sQ9ZBuXRsLhXSzQneGN7BQ=="
+        },
+        "receipt": {
+          "body": {
+            "attested_ns": 637320773827,
+            "authenticated_identity": null,
+            "boot_hash": "8e6742c8df3f1dafba8dac53b1e2a4a9abede8f7e50be64408241e5d8803fbdc",
+            "challenge": {
+              "boot_hash": "8e6742c8df3f1dafba8dac53b1e2a4a9abede8f7e50be64408241e5d8803fbdc",
+              "domain": "A2-CHALLENGE-v1",
+              "expires_in_ns": 5000000000,
+              "file": {
+                "dev": 265289729,
+                "inode": 262902
+              },
+              "instance": {
+                "exec_ns": 637205687556,
+                "exit_ns": 0,
+                "generation": 1,
+                "parent": 1280,
+                "pid": 1281,
+                "start_ns": 637204274991
+              },
+              "issued_ns": 637317444950,
+              "nonce": "eab56d54a755d2920e1210ae3b01e0b14346febefda3a0c150b22fd4b42b2141",
+              "pid_namespace": "pid:[4026531836]",
+              "run_id": "fa6556c4dbf7d152"
+            },
+            "claimed_identity": "WrapperCodex",
+            "connection_peer": {
+              "gid": 61011,
+              "pid": 1281,
+              "uid": 61011
+            },
+            "credential_identity": "WrapperCodex",
+            "domain": "A2-START-BINDING-v1",
+            "fresh_challenge": true,
+            "instance_bound": false,
+            "message_sender": {
+              "exec_ns": 0,
+              "exit_ns": 0,
+              "generation": 0,
+              "gid": 61011,
+              "parent": 1281,
+              "pid": 1282,
+              "start_ns": 637318111288,
+              "uid": 61011
+            },
+            "pid_namespace": "pid:[4026531836]",
+            "proof_sha256": "6af36952b7adba2babb483e780628e51ac5e34a87a2d458d12595201248ef59b",
+            "registered_identity": "WrapperCodex",
+            "run_id": "fa6556c4dbf7d152",
+            "test_identity_only": true
+          },
+          "signature": "42qQDs465bLPHh6yhHFoen4UbtQu6St+3fo6ULEvMtD8PsPq4juqji3qtoXVHr7y/VplSCWcTrCXXrZo9wE+Cg=="
+        }
+      }
+    ],
+    "lifecycle": {
+      "callback_raw_bytes": 220,
+      "fork_entry_nmissed": null,
+      "perf_lost": 0,
+      "records": [
+        {
+          "generation": 1,
+          "kind": 2,
+          "parent": 1280,
+          "pid": 1281,
+          "stamp": 637205687590,
+          "start": 637204274991,
+          "uid": 61011
+        },
+        {
+          "generation": 0,
+          "kind": 1,
+          "parent": 1280,
+          "pid": 1281,
+          "stamp": 637204281118,
+          "start": 637204274991,
+          "uid": 0
+        },
+        {
+          "generation": 0,
+          "kind": 1,
+          "parent": 1281,
+          "pid": 1282,
+          "stamp": 637318118843,
+          "start": 637318111288,
+          "uid": 61011
+        },
+        {
+          "generation": 0,
+          "kind": 3,
+          "parent": 1281,
+          "pid": 1282,
+          "stamp": 637451186064,
+          "start": 637318111288,
+          "uid": 61011
+        },
+        {
+          "generation": 1,
+          "kind": 3,
+          "parent": 1280,
+          "pid": 1281,
+          "stamp": 637474699982,
+          "start": 637204274991,
+          "uid": 61011
+        }
+      ],
+      "scope": "starter descendants; missing fork/exec means unknown binding",
+      "submit_failures": 0
+    },
+    "oracle": [
+      {
+        "exit": 0,
+        "identity_provisioned": "WrapperCodex",
+        "kernel_start_at_spawn": {
+          "exec_ns": 637205687556,
+          "exit_ns": 0,
+          "generation": 1,
+          "parent": 1280,
+          "pid": 1281,
+          "start_ns": 637204274991
+        },
+        "key_material_archived": false,
+        "mode": "child",
+        "registered": true,
+        "spawn_pid": 1281,
+        "stderr_bytes": 0,
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout_records": [
+          {
+            "action": {
+              "begin_ns": 637321246313,
+              "end_ns": 637321367616,
+              "file": {
+                "dev": 265289729,
+                "inode": 262902
+              },
+              "result": 16
+            },
+            "adapter_only": true,
+            "dispatch_sha256": "858d109272b5a8bc1389300a2331695931bc7c0d400b7084bd79af3f9a3423b9"
+          }
+        ],
+        "uid": 61011
+      }
+    ],
+    "resources": {
+      "cpu_system_seconds": 0.159496,
+      "cpu_user_seconds": 0.9556979999999999,
+      "peak_rss_bytes": 164433920,
+      "scope": "root adapter including lifecycle compile; kernel/children unknown"
+    }
+  },
+  "trial_sha256": "d24182bf0e9b4f33aa896cd4031989c37986d4fa4d7c6814c8e51aaa18ec826f"
+}

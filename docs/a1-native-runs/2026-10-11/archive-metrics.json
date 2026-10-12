@@ -1,0 +1,18 @@
+{
+  "archived_bytes": 68095,
+  "archived_files": 9,
+  "bytes_per_file": {
+    "artifact-index.json": 660,
+    "availability.json": 7990,
+    "baseline-preservation.json": 39087,
+    "compile-failure.json": 2734,
+    "primary-sources.json": 2245,
+    "rights-metadata.json": 1313,
+    "source-reconstruction.json": 4045,
+    "tests.json": 9355
+  },
+  "event_raw_bytes": null,
+  "metric_file_bytes": 666,
+  "scope": "New minimized archive only; includes this metrics file and integrity index. Existing historical bytes unchanged. Excludes source/spec/result Markdown/JSON and external compiled binary/compiler/JUnit originals.",
+  "unnecessary_content_saved": false
+}

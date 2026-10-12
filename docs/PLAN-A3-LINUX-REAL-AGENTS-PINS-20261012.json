@@ -1,0 +1,42 @@
+{
+  "base": "98c274ac5c1e475c335704d4f5aefa40f97f47b0",
+  "enrollment": {
+    "ca_public_key": "PjLKW9h2/YFZ8AIqI9+/j5YcvBsAEBDYnOK87H4RYBQ=",
+    "enrollment": {
+      "body": {
+        "a3_worker_sha256": "8426665c74eaf5dbfebfbfd876454c250a568086ddcae3193fedf544ec604a1b",
+        "agent_entry_sha256": "4e71c47c976aba8e0e1855c9730eb7c057a89bd49ef5d7a4d3bb1216ce85dbd2",
+        "agents": {
+          "WrapperCodex": {
+            "public_key": "XpCC+LMgQ/jOL5wPJKb8DTA5qNiin7d8s7516YW7l9k=",
+            "scope": "local_execution_wrapper_only_not_real_agent_provider_or_model",
+            "uid": 61011
+          },
+          "WrapperGrok": {
+            "public_key": "zRWBcyoX4ekiijRolMqyvvyKw73Igj2n7DrULmhK8rM=",
+            "scope": "local_execution_wrapper_only_not_real_agent_provider_or_model",
+            "uid": 61012
+          }
+        },
+        "boot_hash": "8e6742c8df3f1dafba8dac53b1e2a4a9abede8f7e50be64408241e5d8803fbdc",
+        "codex_authenticated": false,
+        "domain": "A3-WRAPPER-ENROLLMENT-v1",
+        "grok_authenticated": false,
+        "pid_namespace": "pid:[4026531836]",
+        "run_id": "fa6556c4dbf7d152",
+        "starter_public_key": "VWPchB12QL/xzskI7kchVngVe/4kStY9j5C6BAq0YcU="
+      },
+      "signature": "LkL1n9zPs+iNUlxsMBdRBOgUC2RC6SC/4BLVw5PKM5RF/aFVzGZtwAzE3aJXK60n/1oWRcOigpItdPgVBJSCCA=="
+    }
+  },
+  "first_two_client_jobs": "real access qualification outputs, host source not yet committed during calls; no claim of a precommitted client source pin",
+  "implementation_commit": "b6acd389b8018c7c76cd0d05414999c449b05593",
+  "source_hashes": {
+    "research/a3_linux/client.py": "d7123370191a9ad8abc447f6ce33565026d3a6dab92ff7885de39e1b7425bf4e",
+    "research/a3_linux/driver.py": "0d577e01b75e1d4b726e322fa549fb91d0d16ae471f2b9aad667c203a1185c7a",
+    "research/a3_linux/guest.py": "b8d143fead85889aad22b84de40d4d0893c681fe22d68bc82439ec0581f439b9",
+    "research/a3_linux/score.py": "199e765d4ed55977634402b24bce613b2c65667061a397745f6fd3c51897e216",
+    "research/a3_linux/shared_client.py": "c077a5c1b428e86f343694bbbf770c137c8f8f22a94e9e9f3f59bab558674788",
+    "research/a3_linux/worker.py": "8426665c74eaf5dbfebfbfd876454c250a568086ddcae3193fedf544ec604a1b"
+  }
+}

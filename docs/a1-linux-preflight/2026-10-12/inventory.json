@@ -1,0 +1,144 @@
+{
+  "utc": "2026-10-11T22:20:11.767760+00:00",
+  "codex_execution": {
+    "kernel": "Darwin",
+    "release": "24.6.0",
+    "architecture": "x86_64",
+    "euid": 501,
+    "linux_kernel": false,
+    "linux_simulation": false
+  },
+  "commands": [
+    {
+      "command": [
+        "colima",
+        "list",
+        "--json"
+      ],
+      "exit": 0,
+      "stdout": "{\"name\":\"default\",\"status\":\"Running\",\"arch\":\"x86_64\",\"cpus\":2,\"memory\":4294967296,\"disk\":32212254720,\"runtime\":\"docker\"}",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "command": [
+        "docker",
+        "--context",
+        "colima",
+        "info",
+        "--format",
+        "{{.KernelVersion}} {{.OperatingSystem}} {{.Architecture}} {{json .SecurityOptions}}"
+      ],
+      "exit": 0,
+      "stdout": "6.8.0-100-generic Ubuntu 24.04.4 LTS x86_64 [\"name=apparmor\",\"name=seccomp,profile=builtin\",\"name=cgroupns\"]",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "command": [
+        "docker",
+        "--context",
+        "colima",
+        "ps",
+        "-a",
+        "--format",
+        "{{.ID}} {{.Image}} {{.Status}}"
+      ],
+      "exit": 0,
+      "stdout": "4564a65814fd aa-run03-python:20261008 Exited (0) 3 days ago\n1dc912e5e03d aa-run03-python:20261008 Exited (0) 3 days ago\n7b5bed8ca23c agent0ai/agent-zero Exited (255) 3 days ago",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "command": [
+        "docker",
+        "--context",
+        "colima",
+        "image",
+        "inspect",
+        "sha256:34386ef0cb08",
+        "--format",
+        "{{.Id}} {{json .RepoDigests}}"
+      ],
+      "exit": 0,
+      "stdout": "sha256:34386ef0cb081344d7ec1c103ba398e6e9f64e9ab3a1509accc92a4e24a07258 [\"python@sha256:34386ef0cb081344d7ec1c103ba398e6e9f64e9ab3a1509accc92a4e24a07258\"]",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "command": [
+        "docker",
+        "context",
+        "inspect",
+        "colima",
+        "default",
+        "desktop-linux",
+        "orbstack",
+        "--format",
+        "{{.Name}} {{json .Endpoints.docker.Host}}"
+      ],
+      "exit": 0,
+      "stdout": "colima \"unix:///Users/landjunge/.colima/default/docker.sock\"\ndefault \"unix:///var/run/docker.sock\"\ndesktop-linux \"unix:///Users/landjunge/.docker/run/docker.sock\"\norbstack \"unix:///Users/landjunge/.orbstack/run/docker.sock\"",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "command": [
+        "gh",
+        "api",
+        "repos/landjunge/agent-authority-lab/actions/runners"
+      ],
+      "exit": 0,
+      "stdout": "{\"total_count\":0,\"runners\":[]}",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "command": [
+        "gh",
+        "api",
+        "repos/landjunge/agent-authority-lab/actions/runs/38179870080",
+        "--jq",
+        "{id,head_sha,status,conclusion,event,html_url,path}"
+      ],
+      "exit": 0,
+      "stdout": "{\"conclusion\":\"success\",\"event\":\"push\",\"head_sha\":\"44f714049a80dbc44549c642004f36cf89f3eea3\",\"html_url\":\"https://github.com/landjunge/agent-authority-lab/actions/runs/38179870080\",\"id\":38179870080,\"path\":\".github/workflows/a1-linux-preflight.yml\",\"status\":\"completed\"}",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "command": [
+        "gh",
+        "api",
+        "repos/landjunge/agent-authority-lab/actions/runs/38179870080/jobs",
+        "--jq",
+        ".jobs[] | {name,runner_name,runner_group_name,labels,conclusion}"
+      ],
+      "exit": 0,
+      "stdout": "{\"conclusion\":\"success\",\"labels\":[\"ubuntu-latest\"],\"name\":\"metadata-only\",\"runner_group_name\":\"GitHub Actions\",\"runner_name\":\"GitHub Actions 1000010139\"}",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "other_context_sockets": [
+    {
+      "path": "/var/run/docker.sock",
+      "exists": false
+    },
+    {
+      "path": "/Users/landjunge/.docker/run/docker.sock",
+      "exists": false
+    },
+    {
+      "path": "/Users/landjunge/.orbstack/run/docker.sock",
+      "exists": false
+    }
+  ],
+  "limitations": [
+    "No scan of every disk/remote device; inventory restricted to existing project tools and contexts.",
+    "Stopped containers runtime capabilities/namespaces are UNKNOWN; Config.User empty is not a measured UID.",
+    "Docker daemon access is existing authority; no privileged container or host mounts used.",
+    "limactl default list is empty; Colima uses its separate instance context.",
+    "No new remote Codex Linux execution endpoint established."
+  ]
+}

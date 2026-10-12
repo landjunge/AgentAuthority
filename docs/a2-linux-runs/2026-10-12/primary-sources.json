@@ -1,0 +1,34 @@
+{
+  "sources": [
+    {
+      "url": "https://raw.githubusercontent.com/torvalds/linux/e8f897f4afef0031fe618a8e94127a0934896aba/net/core/scm.c",
+      "sha256": "a06acb5b720e076434cd1d8528f3132defae5ee185d944dbabd37616e4b5bbb4",
+      "bytes": 8987,
+      "status": "BELEGT"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/torvalds/linux/e8f897f4afef0031fe618a8e94127a0934896aba/net/unix/af_unix.c",
+      "sha256": "a5ecafbd6a071f271687bfffd0b2976a0788b3cc463397afbe2f780c97db67e9",
+      "bytes": 88711,
+      "status": "BELEGT"
+    },
+    {
+      "url": "https://www.rfc-editor.org/rfc/rfc8032",
+      "sha256": "0efff707574baffb330b4dc0c7040f5fb599bfd1cc5c7ff87b7a22cc4423af15",
+      "bytes": 481978,
+      "status": "BELEGT"
+    },
+    {
+      "url": "https://www.rfc-editor.org/rfc/rfc8410",
+      "sha256": "6c4de0e1af4a77488c3b745fcacd80cfc375fe7f91084849e72953d5ac44b35a",
+      "bytes": 252234,
+      "status": "BELEGT"
+    },
+    {
+      "url": "https://cryptography.io/en/41.0.7/hazmat/primitives/asymmetric/ed25519/",
+      "status": "UNBEKANNT",
+      "error_class": "HTTPError"
+    }
+  ],
+  "linux_upstream_source_not_exact_downstream_host": "contract only; actual VM return/events archived separately"
+}

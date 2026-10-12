@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "/opt/a4c-69963f13141d92137877ae64536175a8/observer.py", line 200, in <module>
+    run(args.path, args.duration)
+  File "/opt/a4c-69963f13141d92137877ae64536175a8/observer.py", line 162, in run
+    programs = program_info(bpf)
+               ^^^^^^^^^^^^^^^^^
+  File "/opt/a4c-69963f13141d92137877ae64536175a8/probes.py", line 37, in program_info
+    for name, function in bpf.functions.items():
+                          ^^^^^^^^^^^^^
+AttributeError: 'BPF' object has no attribute 'functions'. Did you mean: 'Function'?

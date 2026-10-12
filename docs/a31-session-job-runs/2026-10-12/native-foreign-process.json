@@ -1,0 +1,33 @@
+{
+  "claimed_client": "Codex",
+  "actual_control": "own Apple sleep process, no model/client simulation",
+  "native_probe": {
+    "pid": 76253,
+    "ppid": 76252,
+    "uid": 501,
+    "start_sec": 1791769598,
+    "start_usec": 249858,
+    "boot_sec": 1790872495,
+    "boot_read_status": 0,
+    "kernel_instance_stable": true,
+    "proc_info_bytes": [
+      136,
+      136
+    ],
+    "proc_path_status": [
+      10,
+      10
+    ],
+    "guest_status": 0,
+    "requirement_status": 0,
+    "validity_status": -67050,
+    "signing_info_status": 0,
+    "path": "/bin/sleep",
+    "team": "",
+    "identifier": "com.apple.sleep",
+    "cdhash": "3c761e2b3ceda7f0fbdc3cf3bc6915b04cd69420",
+    "anchor": "Apple generic signing chain plus pinned vendor requirement"
+  },
+  "probe_exit": 0,
+  "vendor_requirement_rejected": true
+}

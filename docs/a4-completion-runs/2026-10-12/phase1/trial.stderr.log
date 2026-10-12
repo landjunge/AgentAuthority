@@ -1,0 +1,27 @@
+Traceback (most recent call last):
+  File "/opt/a4c-69963f13141d92137877ae64536175a8/guest.py", line 226, in trial
+    lifecycle = life.finish()
+                ^^^^^^^^^^^^^
+  File "/opt/a4c-69963f13141d92137877ae64536175a8/lifecycle.py", line 102, in finish
+    "program_info": program_info(self.bpf),
+                    ^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/a4c-69963f13141d92137877ae64536175a8/probes.py", line 37, in program_info
+    for name, function in bpf.functions.items():
+                          ^^^^^^^^^^^^^
+AttributeError: 'BPF' object has no attribute 'functions'. Did you mean: 'Function'?
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/opt/a4c-69963f13141d92137877ae64536175a8/guest.py", line 263, in <module>
+    else trial(args.vault, args.certificate, args.path)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/a4c-69963f13141d92137877ae64536175a8/guest.py", line 247, in trial
+    life.finish()
+  File "/opt/a4c-69963f13141d92137877ae64536175a8/lifecycle.py", line 102, in finish
+    "program_info": program_info(self.bpf),
+                    ^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/a4c-69963f13141d92137877ae64536175a8/probes.py", line 37, in program_info
+    for name, function in bpf.functions.items():
+                          ^^^^^^^^^^^^^
+AttributeError: 'BPF' object has no attribute 'functions'. Did you mean: 'Function'?

@@ -1,0 +1,27 @@
+{
+  "attempts_each": 1,
+  "ca_public_key_pin": "PjLKW9h2/YFZ8AIqI9+/j5YcvBsAEBDYnOK87H4RYBQ=",
+  "cases": [
+    "codex",
+    "grok",
+    "child",
+    "delegation",
+    "exec",
+    "session-switch",
+    "shared-process",
+    "replay",
+    "key-share",
+    "takeover"
+  ],
+  "enrollment_sha256": "cf2c128dbe2b7e16d66da6df5f0f8a9f8d8ab11553dcbdde300d988d588980bb",
+  "source_commit": "88029be0d5e28c2715d799660eef76621e12c060",
+  "source_hashes": {
+    "research/a3_linux/client.py": "d7123370191a9ad8abc447f6ce33565026d3a6dab92ff7885de39e1b7425bf4e",
+    "research/a3_linux/driver.py": "0d577e01b75e1d4b726e322fa549fb91d0d16ae471f2b9aad667c203a1185c7a",
+    "research/a3_linux/guest.py": "b8d143fead85889aad22b84de40d4d0893c681fe22d68bc82439ec0581f439b9",
+    "research/a3_linux/score.py": "199e765d4ed55977634402b24bce613b2c65667061a397745f6fd3c51897e216",
+    "research/a3_linux/shared_client.py": "c077a5c1b428e86f343694bbbf770c137c8f8f22a94e9e9f3f59bab558674788",
+    "research/a3_linux/worker.py": "8426665c74eaf5dbfebfbfd876454c250a568086ddcae3193fedf544ec604a1b"
+  },
+  "implementation_commit": "b6acd389b8018c7c76cd0d05414999c449b05593"
+}

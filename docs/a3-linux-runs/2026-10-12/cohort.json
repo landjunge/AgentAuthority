@@ -1,0 +1,563 @@
+{
+  "cases": [
+    {
+      "case": "codex",
+      "evaluation": {
+        "enrollment_signature": true,
+        "known_loss_checks": true,
+        "partial_chain": "TEILWEISE BELEGT",
+        "proof_checks": [
+          {
+            "dispatch_client_claim": "Codex",
+            "fresh_challenge": true,
+            "fresh_dispatch": true,
+            "proof_hash_matches": true,
+            "provider_authentication": "UNBEKANNT",
+            "receipt_principal_matches": true,
+            "signature_principal": "WrapperCodex",
+            "starter_signature": true
+          }
+        ],
+        "real_agent_effect_chain": "UNBEKANNT",
+        "reason": "No externally authenticated client/session/provider credential in enrollment",
+        "writes": [
+          {
+            "authenticated_local_wrapper": "WrapperCodex",
+            "client_claim": "Codex",
+            "file": {
+              "dev": 265289729,
+              "inode": 262900
+            },
+            "fresh_host_dispatch": true,
+            "kernel_entry_ns": 595464245117,
+            "kernel_exit_ns": 595464268216,
+            "kernel_process": {
+              "ppid": 1248,
+              "start_ns": 595331154878,
+              "tgid": 1249,
+              "tid": 1249
+            },
+            "model_identity": "UNBEKANNT",
+            "provider_identity": "UNBEKANNT",
+            "real_agent_effect_chain": "UNBEKANNT",
+            "session_identity": "UNBEKANNT",
+            "wrapper_effect_chain": "BELEGT",
+            "write": "BELEGT"
+          }
+        ]
+      },
+      "position": 1
+    },
+    {
+      "case": "grok",
+      "evaluation": {
+        "enrollment_signature": true,
+        "known_loss_checks": true,
+        "partial_chain": "TEILWEISE BELEGT",
+        "proof_checks": [
+          {
+            "dispatch_client_claim": "Grok",
+            "fresh_challenge": true,
+            "fresh_dispatch": true,
+            "proof_hash_matches": true,
+            "provider_authentication": "UNBEKANNT",
+            "receipt_principal_matches": true,
+            "signature_principal": "WrapperGrok",
+            "starter_signature": true
+          }
+        ],
+        "real_agent_effect_chain": "UNBEKANNT",
+        "reason": "No externally authenticated client/session/provider credential in enrollment",
+        "writes": [
+          {
+            "authenticated_local_wrapper": "WrapperGrok",
+            "client_claim": "Grok",
+            "file": {
+              "dev": 265289729,
+              "inode": 262901
+            },
+            "fresh_host_dispatch": true,
+            "kernel_entry_ns": 611040141399,
+            "kernel_exit_ns": 611040167505,
+            "kernel_process": {
+              "ppid": 1263,
+              "start_ns": 610912888282,
+              "tgid": 1265,
+              "tid": 1265
+            },
+            "model_identity": "UNBEKANNT",
+            "provider_identity": "UNBEKANNT",
+            "real_agent_effect_chain": "UNBEKANNT",
+            "session_identity": "UNBEKANNT",
+            "wrapper_effect_chain": "BELEGT",
+            "write": "BELEGT"
+          }
+        ]
+      },
+      "position": 2
+    },
+    {
+      "case": "child",
+      "evaluation": {
+        "enrollment_signature": true,
+        "known_loss_checks": true,
+        "partial_chain": "TEILWEISE BELEGT",
+        "proof_checks": [
+          {
+            "dispatch_client_claim": "Codex",
+            "fresh_challenge": true,
+            "fresh_dispatch": true,
+            "proof_hash_matches": true,
+            "provider_authentication": "UNBEKANNT",
+            "receipt_principal_matches": true,
+            "signature_principal": "WrapperCodex",
+            "starter_signature": true
+          }
+        ],
+        "real_agent_effect_chain": "UNBEKANNT",
+        "reason": "No externally authenticated client/session/provider credential in enrollment",
+        "writes": [
+          {
+            "authenticated_local_wrapper": null,
+            "client_claim": null,
+            "file": {
+              "dev": 265289729,
+              "inode": 262902
+            },
+            "fresh_host_dispatch": false,
+            "kernel_entry_ns": 637321260083,
+            "kernel_exit_ns": 637321285322,
+            "kernel_process": {
+              "ppid": 1281,
+              "start_ns": 637318111288,
+              "tgid": 1282,
+              "tid": 1282
+            },
+            "model_identity": "UNBEKANNT",
+            "provider_identity": "UNBEKANNT",
+            "real_agent_effect_chain": "UNBEKANNT",
+            "session_identity": "UNBEKANNT",
+            "wrapper_effect_chain": "UNBEKANNT",
+            "write": "BELEGT"
+          }
+        ]
+      },
+      "position": 3
+    },
+    {
+      "case": "delegation",
+      "evaluation": {
+        "enrollment_signature": true,
+        "known_loss_checks": true,
+        "partial_chain": "TEILWEISE BELEGT",
+        "proof_checks": [
+          {
+            "dispatch_client_claim": "Codex",
+            "fresh_challenge": true,
+            "fresh_dispatch": true,
+            "proof_hash_matches": true,
+            "provider_authentication": "UNBEKANNT",
+            "receipt_principal_matches": true,
+            "signature_principal": "WrapperCodex",
+            "starter_signature": true
+          }
+        ],
+        "real_agent_effect_chain": "UNBEKANNT",
+        "reason": "No externally authenticated client/session/provider credential in enrollment",
+        "writes": [
+          {
+            "authenticated_local_wrapper": "WrapperCodex",
+            "client_claim": "Codex",
+            "file": {
+              "dev": 265289729,
+              "inode": 262903
+            },
+            "fresh_host_dispatch": true,
+            "kernel_entry_ns": 673306037418,
+            "kernel_exit_ns": 673306065663,
+            "kernel_process": {
+              "ppid": 1296,
+              "start_ns": 673168990713,
+              "tgid": 1297,
+              "tid": 1297
+            },
+            "model_identity": "UNBEKANNT",
+            "provider_identity": "UNBEKANNT",
+            "real_agent_effect_chain": "UNBEKANNT",
+            "session_identity": "UNBEKANNT",
+            "wrapper_effect_chain": "BELEGT",
+            "write": "BELEGT"
+          }
+        ]
+      },
+      "position": 4
+    },
+    {
+      "case": "exec",
+      "evaluation": {
+        "enrollment_signature": true,
+        "known_loss_checks": true,
+        "partial_chain": "TEILWEISE BELEGT",
+        "proof_checks": [
+          {
+            "dispatch_client_claim": "Codex",
+            "fresh_challenge": true,
+            "fresh_dispatch": true,
+            "proof_hash_matches": true,
+            "provider_authentication": "UNBEKANNT",
+            "receipt_principal_matches": true,
+            "signature_principal": "WrapperCodex",
+            "starter_signature": true
+          }
+        ],
+        "real_agent_effect_chain": "UNBEKANNT",
+        "reason": "No externally authenticated client/session/provider credential in enrollment",
+        "writes": [
+          {
+            "authenticated_local_wrapper": null,
+            "client_claim": null,
+            "file": {
+              "dev": 265289729,
+              "inode": 262904
+            },
+            "fresh_host_dispatch": false,
+            "kernel_entry_ns": 698586525861,
+            "kernel_exit_ns": 698586554232,
+            "kernel_process": {
+              "ppid": 1312,
+              "start_ns": 698389815464,
+              "tgid": 1313,
+              "tid": 1313
+            },
+            "model_identity": "UNBEKANNT",
+            "provider_identity": "UNBEKANNT",
+            "real_agent_effect_chain": "UNBEKANNT",
+            "session_identity": "UNBEKANNT",
+            "wrapper_effect_chain": "UNBEKANNT",
+            "write": "BELEGT"
+          }
+        ]
+      },
+      "position": 5
+    },
+    {
+      "case": "session-switch",
+      "evaluation": {
+        "enrollment_signature": true,
+        "known_loss_checks": true,
+        "partial_chain": "TEILWEISE BELEGT",
+        "proof_checks": [
+          {
+            "dispatch_client_claim": "Codex",
+            "fresh_challenge": true,
+            "fresh_dispatch": true,
+            "proof_hash_matches": true,
+            "provider_authentication": "UNBEKANNT",
+            "receipt_principal_matches": true,
+            "signature_principal": "WrapperCodex",
+            "starter_signature": true
+          },
+          {
+            "dispatch_client_claim": "Codex",
+            "fresh_challenge": true,
+            "fresh_dispatch": true,
+            "proof_hash_matches": true,
+            "provider_authentication": "UNBEKANNT",
+            "receipt_principal_matches": true,
+            "signature_principal": "WrapperCodex",
+            "starter_signature": true
+          }
+        ],
+        "real_agent_effect_chain": "UNBEKANNT",
+        "reason": "No externally authenticated client/session/provider credential in enrollment",
+        "writes": [
+          {
+            "authenticated_local_wrapper": "WrapperCodex",
+            "client_claim": "Codex",
+            "file": {
+              "dev": 265289729,
+              "inode": 262905
+            },
+            "fresh_host_dispatch": true,
+            "kernel_entry_ns": 722483052148,
+            "kernel_exit_ns": 722483076796,
+            "kernel_process": {
+              "ppid": 1327,
+              "start_ns": 722360244123,
+              "tgid": 1328,
+              "tid": 1328
+            },
+            "model_identity": "UNBEKANNT",
+            "provider_identity": "UNBEKANNT",
+            "real_agent_effect_chain": "UNBEKANNT",
+            "session_identity": "UNBEKANNT",
+            "wrapper_effect_chain": "BELEGT",
+            "write": "BELEGT"
+          },
+          {
+            "authenticated_local_wrapper": "WrapperCodex",
+            "client_claim": "Codex",
+            "file": {
+              "dev": 265289729,
+              "inode": 262905
+            },
+            "fresh_host_dispatch": true,
+            "kernel_entry_ns": 722495455276,
+            "kernel_exit_ns": 722495469733,
+            "kernel_process": {
+              "ppid": 1327,
+              "start_ns": 722360244123,
+              "tgid": 1328,
+              "tid": 1328
+            },
+            "model_identity": "UNBEKANNT",
+            "provider_identity": "UNBEKANNT",
+            "real_agent_effect_chain": "UNBEKANNT",
+            "session_identity": "UNBEKANNT",
+            "wrapper_effect_chain": "BELEGT",
+            "write": "BELEGT"
+          }
+        ]
+      },
+      "position": 6
+    },
+    {
+      "case": "shared-process",
+      "evaluation": {
+        "enrollment_signature": true,
+        "known_loss_checks": true,
+        "partial_chain": "TEILWEISE BELEGT",
+        "proof_checks": [
+          {
+            "dispatch_client_claim": "Codex",
+            "fresh_challenge": true,
+            "fresh_dispatch": true,
+            "proof_hash_matches": true,
+            "provider_authentication": "UNBEKANNT",
+            "receipt_principal_matches": true,
+            "signature_principal": "WrapperCodex",
+            "starter_signature": true
+          },
+          {
+            "dispatch_client_claim": "Codex",
+            "fresh_challenge": true,
+            "fresh_dispatch": true,
+            "proof_hash_matches": true,
+            "provider_authentication": "UNBEKANNT",
+            "receipt_principal_matches": true,
+            "signature_principal": "WrapperCodex",
+            "starter_signature": true
+          }
+        ],
+        "real_agent_effect_chain": "UNBEKANNT",
+        "reason": "No externally authenticated client/session/provider credential in enrollment",
+        "writes": [
+          {
+            "authenticated_local_wrapper": "WrapperCodex",
+            "client_claim": "Codex",
+            "file": {
+              "dev": 265289729,
+              "inode": 262906
+            },
+            "fresh_host_dispatch": true,
+            "kernel_entry_ns": 744508932489,
+            "kernel_exit_ns": 744508955421,
+            "kernel_process": {
+              "ppid": 1343,
+              "start_ns": 744384045109,
+              "tgid": 1344,
+              "tid": 1344
+            },
+            "model_identity": "UNBEKANNT",
+            "provider_identity": "UNBEKANNT",
+            "real_agent_effect_chain": "UNBEKANNT",
+            "session_identity": "UNBEKANNT",
+            "wrapper_effect_chain": "BELEGT",
+            "write": "BELEGT"
+          },
+          {
+            "authenticated_local_wrapper": "WrapperCodex",
+            "client_claim": "Codex",
+            "file": {
+              "dev": 265289729,
+              "inode": 262906
+            },
+            "fresh_host_dispatch": true,
+            "kernel_entry_ns": 744521381527,
+            "kernel_exit_ns": 744521395388,
+            "kernel_process": {
+              "ppid": 1343,
+              "start_ns": 744384045109,
+              "tgid": 1344,
+              "tid": 1344
+            },
+            "model_identity": "UNBEKANNT",
+            "provider_identity": "UNBEKANNT",
+            "real_agent_effect_chain": "UNBEKANNT",
+            "session_identity": "UNBEKANNT",
+            "wrapper_effect_chain": "BELEGT",
+            "write": "BELEGT"
+          }
+        ]
+      },
+      "position": 7
+    },
+    {
+      "case": "replay",
+      "evaluation": {
+        "enrollment_signature": true,
+        "known_loss_checks": true,
+        "partial_chain": "TEILWEISE BELEGT",
+        "proof_checks": [
+          {
+            "dispatch_client_claim": "Codex",
+            "fresh_challenge": true,
+            "fresh_dispatch": false,
+            "proof_hash_matches": true,
+            "provider_authentication": "UNBEKANNT",
+            "receipt_principal_matches": true,
+            "signature_principal": "WrapperCodex",
+            "starter_signature": true
+          }
+        ],
+        "real_agent_effect_chain": "UNBEKANNT",
+        "reason": "No externally authenticated client/session/provider credential in enrollment",
+        "writes": [
+          {
+            "authenticated_local_wrapper": "WrapperCodex",
+            "client_claim": "Codex",
+            "file": {
+              "dev": 265289729,
+              "inode": 262907
+            },
+            "fresh_host_dispatch": false,
+            "kernel_entry_ns": 769823118840,
+            "kernel_exit_ns": 769823145530,
+            "kernel_process": {
+              "ppid": 1358,
+              "start_ns": 769693654189,
+              "tgid": 1359,
+              "tid": 1359
+            },
+            "model_identity": "UNBEKANNT",
+            "provider_identity": "UNBEKANNT",
+            "real_agent_effect_chain": "UNBEKANNT",
+            "session_identity": "UNBEKANNT",
+            "wrapper_effect_chain": "BELEGT",
+            "write": "BELEGT"
+          }
+        ]
+      },
+      "position": 8
+    },
+    {
+      "case": "key-share",
+      "evaluation": {
+        "enrollment_signature": true,
+        "known_loss_checks": true,
+        "partial_chain": "TEILWEISE BELEGT",
+        "proof_checks": [
+          {
+            "dispatch_client_claim": "Codex",
+            "fresh_challenge": true,
+            "fresh_dispatch": true,
+            "proof_hash_matches": true,
+            "provider_authentication": "UNBEKANNT",
+            "receipt_principal_matches": true,
+            "signature_principal": "WrapperCodex",
+            "starter_signature": true
+          }
+        ],
+        "real_agent_effect_chain": "UNBEKANNT",
+        "reason": "No externally authenticated client/session/provider credential in enrollment",
+        "writes": [
+          {
+            "authenticated_local_wrapper": null,
+            "client_claim": null,
+            "file": {
+              "dev": 265289729,
+              "inode": 262908
+            },
+            "fresh_host_dispatch": false,
+            "kernel_entry_ns": 794917779064,
+            "kernel_exit_ns": 794917803059,
+            "kernel_process": {
+              "ppid": 1374,
+              "start_ns": 794914915123,
+              "tgid": 1375,
+              "tid": 1375
+            },
+            "model_identity": "UNBEKANNT",
+            "provider_identity": "UNBEKANNT",
+            "real_agent_effect_chain": "UNBEKANNT",
+            "session_identity": "UNBEKANNT",
+            "wrapper_effect_chain": "UNBEKANNT",
+            "write": "BELEGT"
+          }
+        ]
+      },
+      "position": 9
+    },
+    {
+      "case": "takeover",
+      "evaluation": {
+        "enrollment_signature": true,
+        "known_loss_checks": true,
+        "partial_chain": "TEILWEISE BELEGT",
+        "proof_checks": [
+          {
+            "dispatch_client_claim": "Grok",
+            "fresh_challenge": true,
+            "fresh_dispatch": true,
+            "proof_hash_matches": true,
+            "provider_authentication": "UNBEKANNT",
+            "receipt_principal_matches": true,
+            "signature_principal": "WrapperCodex",
+            "starter_signature": true
+          },
+          {
+            "dispatch_client_claim": "Grok",
+            "fresh_challenge": true,
+            "fresh_dispatch": true,
+            "proof_hash_matches": true,
+            "provider_authentication": "UNBEKANNT",
+            "receipt_principal_matches": true,
+            "signature_principal": "WrapperGrok",
+            "starter_signature": true
+          }
+        ],
+        "real_agent_effect_chain": "UNBEKANNT",
+        "reason": "No externally authenticated client/session/provider credential in enrollment",
+        "writes": [
+          {
+            "authenticated_local_wrapper": "WrapperGrok",
+            "client_claim": "Grok",
+            "file": {
+              "dev": 265289729,
+              "inode": 262909
+            },
+            "fresh_host_dispatch": true,
+            "kernel_entry_ns": 831971211731,
+            "kernel_exit_ns": 831971242606,
+            "kernel_process": {
+              "ppid": 1389,
+              "start_ns": 831847588253,
+              "tgid": 1391,
+              "tid": 1391
+            },
+            "model_identity": "UNBEKANNT",
+            "provider_identity": "UNBEKANNT",
+            "real_agent_effect_chain": "UNBEKANNT",
+            "session_identity": "UNBEKANNT",
+            "wrapper_effect_chain": "BELEGT",
+            "write": "BELEGT"
+          }
+        ]
+      },
+      "position": 10
+    }
+  ],
+  "provider_authenticated_cases": 0,
+  "retry": false,
+  "source_commit": "88029be0d5e28c2715d799660eef76621e12c060"
+}
