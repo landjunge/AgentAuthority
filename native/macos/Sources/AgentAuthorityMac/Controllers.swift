@@ -167,7 +167,10 @@ final class MainPanelController:NSViewController,NSTableViewDataSource,NSTableVi
         else if d.isDemo && state.graphMode==2 {
             let result=clustered(d);nodes=result.0;edges=result.1
         }
-        if state.filter != 0 {nodes=nodes.filter{state.filter==1 ? [.unknown,.incomplete,.contradictory,.reported].contains($0.status):[.observed,.verified].contains($0.status)}}
+        if state.filter != 0 {let statuses=d.chainStatuses();nodes=nodes.filter{node in
+            let status=node.kind == .agent ? statuses[node.id] ?? node.status:node.status
+            return state.filter==1 ? [.unknown,.incomplete,.contradictory,.reported].contains(status):[.observed,.verified].contains(status)
+        }}
         if !state.query.isEmpty {let q=state.query.lowercased();nodes=nodes.filter{($0.title+" "+$0.id+" "+$0.facts.map(\.value).joined(separator:" ")+" "+$0.evidence.joined(separator:" ")).lowercased().contains(q)}}
         let ids=Set(nodes.map(\.id));edges=edges.filter{ids.contains($0.from)&&ids.contains($0.to)}
         canvas.document=d;canvas.selected=state.selected;canvas.setGraph(nodes:nodes,edges:edges,fit:fit,agentOverview:d.isDemo && state.graphMode==1 && !nodes.contains{$0.kind == .cluster});if fit{fitAfterLayout=true};view.needsLayout=true
@@ -263,7 +266,7 @@ final class InspectorController:NSViewController {
             let text=NSTextView();text.isEditable=false;text.isSelectable=true;text.font = .monospacedSystemFont(ofSize:11,weight:.regular);text.backgroundColor=Palette.background
             let encoder=JSONEncoder();encoder.outputFormatting=[.prettyPrinted,.sortedKeys,.withoutEscapingSlashes]
             text.string=(try? encoder.encode(node)).flatMap{String(data:$0,encoding:.utf8)} ?? "{}"
-            text.textContainer?.widthTracksTextView=true;add(text,CGFloat(max(350,text.string.split(separator:"\n").count*16)));add(wrapping(L("boundary.sample")),50)
+            text.textContainer?.widthTracksTextView=true;add(text,CGFloat(max(350,text.string.split(separator:"\n").count*16)));add(wrapping(L(state.document.isDemo ? "boundary.sample":state.document.reportJSON != nil ? "boundary.product":"boundary.live")),65)
         }else{
             let d=state.document;add(wrapping(L(d.isDemo ? "inspector.sampleExplanation":d.reportJSON != nil ? "inspector.productExplanation":"inspector.liveExplanation"),size:11),62)
             add(label("inspector.selected",size:10,color:Palette.muted),22)
