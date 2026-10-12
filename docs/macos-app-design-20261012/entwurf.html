@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="de" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Agent Authority · macOS-Entwurf</title>
+  <link rel="stylesheet" href="entwurf.css">
+</head>
+<body>
+<svg class="symbols" aria-hidden="true"><defs>
+ <symbol id="graph" viewBox="0 0 24 24"><rect x="2" y="8" width="6" height="8" rx="2"/><rect x="16" y="2" width="6" height="6" rx="2"/><rect x="16" y="16" width="6" height="6" rx="2"/><path d="M8 12h4V5h4M12 12v7h4"/></symbol>
+ <symbol id="grid" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></symbol>
+ <symbol id="agent" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21v-3a8 8 0 0 1 16 0v3"/></symbol>
+ <symbol id="shield" viewBox="0 0 24 24"><path d="m12 2 8 3v7c0 5-8 10-8 10S4 17 4 12V5l8-3Z"/><path d="m8 12 3 3 5-6"/></symbol>
+ <symbol id="file" viewBox="0 0 24 24"><path d="M14 2H5v20h14V7l-5-5Zm0 0v5h5M8 12h8M8 16h8"/></symbol>
+ <symbol id="process" viewBox="0 0 24 24"><rect x="5" y="5" width="14" height="14" rx="2"/><path d="M9 9h6v6H9ZM8 2v3m8-3v3M8 19v3m8-3v3M2 8h3m-3 8h3M19 8h3m-3 8h3"/></symbol>
+ <symbol id="icon-search" viewBox="0 0 24 24"><circle cx="10" cy="10" r="7"/><path d="m15 15 6 6"/></symbol>
+ <symbol id="sliders" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/><circle cx="8" cy="6" r="2"/><circle cx="16" cy="12" r="2"/><circle cx="10" cy="18" r="2"/></symbol>
+ <symbol id="side" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M9 4v16"/></symbol>
+ <symbol id="clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 6v6l4 2"/></symbol>
+ <symbol id="warning" viewBox="0 0 24 24"><path d="m12 3 10 18H2L12 3Z"/><path d="M12 9v5m0 3v1"/></symbol>
+ <symbol id="moon" viewBox="0 0 24 24"><path d="M20 15A9 9 0 0 1 9 4a9 9 0 1 0 11 11Z"/></symbol>
+ <symbol id="chain" viewBox="0 0 24 24"><path d="m9 15 6-6M8 12l-3 3a4 4 0 0 0 6 6l3-3m2-6 3-3a4 4 0 0 0-6-6l-3 3"/></symbol>
+ <symbol id="arrow" viewBox="0 0 24 24"><path d="M4 12h16m-6-6 6 6-6 6"/></symbol>
+ <symbol id="icon-host" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8m-4-4v4M7 8l3 3-3 3m6 0h4"/></symbol>
+ <symbol id="check" viewBox="0 0 24 24"><path d="m5 12 4 4 10-10"/></symbol>
+ <symbol id="gear" viewBox="0 0 24 24"><path d="m10 2-1 3-3 1-3-1-2 4 2 2v3l-2 2 2 4 3-1 3 1 1 3h4l1-3 3-1 3 1 2-4-2-2v-3l2-2-2-4-3 1-3-1-1-3Z"/><circle cx="12" cy="12" r="3"/></symbol>
+</defs></svg>
+<div class="window">
+ <header class="titlebar">
+  <div class="window-controls" aria-label="Fensterdekoration"><i></i><i></i><i></i></div>
+  <button class="icon-button" id="sidebar-toggle" aria-label="Seitenleiste einblenden oder ausblenden"><svg><use href="#side"/></svg></button>
+  <div class="window-title">Agent Authority <span>Beobachtung & Nachweis</span></div>
+  <select id="scenario" aria-label="Datenmodus"><option value="demo">Zielbild · Beispieldaten</option><option value="master">Aktueller master · Datenvertrag</option></select>
+  <button class="icon-button" id="theme" aria-label="Light Mode wechseln" title="Darstellung wechseln"><svg><use href="#moon"/></svg></button>
+  <button class="icon-button" id="inspector-toggle" aria-label="Inspector einblenden oder ausblenden"><svg style="transform:scaleX(-1)"><use href="#side"/></svg></button>
+ </header>
+ <div class="workspace">
+  <aside class="sidebar">
+   <div class="brand"><div class="brand-symbol"><svg><use href="#graph"/></svg></div><div>Agent<br><strong>Authority</strong></div></div>
+   <div class="sidebar-caption">UNTERSUCHEN</div>
+   <nav aria-label="Hauptnavigation">
+    <button data-nav="overview"><svg><use href="#grid"/></svg>Übersicht</button>
+    <button class="active" data-nav="graph"><svg><use href="#graph"/></svg>Authority Graph</button>
+    <button data-nav="agents"><svg><use href="#agent"/></svg>Agenten & Identitäten</button>
+    <button data-nav="delegations"><svg><use href="#chain"/></svg>Delegationen <span>18</span></button>
+    <button data-nav="actions"><svg><use href="#process"/></svg>Systemhandlungen</button>
+    <button data-nav="evidence"><svg><use href="#file"/></svg>Evidence</button>
+    <button data-nav="findings"><svg><use href="#warning"/></svg>Auffälligkeiten <span class="warn-count">6</span></button>
+   </nav>
+   <div class="sidebar-caption section-space">BEOBACHTUNGSRAUM</div>
+   <button class="scope-button" id="scope"><span class="scope-dot"></span><div>Lokaler Testlauf<small>AA-042 · kontrollierte Testidentitäten</small></div><b>⌄</b></button>
+   <div class="scope-note">Ausgewählter Lauf<br><span>12. Okt. 2026 · 14:20–14:35</span></div>
+   <div class="sidebar-bottom">
+    <button id="host" class="host-button"><svg><use href="#icon-host"/></svg><div>macOS-Testhost<small>Einrichtung erforderlich</small></div><span class="dot amber"></span></button>
+    <button id="settings" class="settings-button"><svg><use href="#gear"/></svg>Darstellung & Bedienung</button>
+    <div class="sidebar-version">ENTWURF 01 <span>master · 9eda80d</span></div>
+   </div>
+  </aside>
+  <main>
+   <div class="page-heading"><div><div class="eyebrow">LOKALER BEOBACHTUNGSRAUM <span> / </span> AA-042</div><h1>Authority Graph</h1><p>Von der Agentenidentität bis zur beobachteten Handlung.</p></div><div class="heading-actions"><span class="demo-tag">ENTWURF · BEISPIELDATEN</span><button class="small-button" id="export"><svg><use href="#file"/></svg>Entwurfsdaten</button></div></div>
+   <section class="metrics" aria-label="Dashboard des ausgewählten Laufs">
+    <button class="metric" data-metric="agents"><div>Aktive Testagenten <svg><use href="#agent"/></svg></div><strong id="agents-value">12<span> / 16 registriert</span></strong><small id="agents-description">Mit beobachteter Prozessinstanz</small></button>
+    <button class="metric" data-metric="delegations"><div>Delegationen <svg><use href="#chain"/></svg></div><strong id="delegations-value">18</strong><small id="delegations-description">16 angenommen · 2 offen</small></button>
+    <button class="metric" data-metric="chains"><div>Nachweisketten <svg><use href="#shield"/></svg></div><strong id="chains-value">36<span> / 42 vollständig</span></strong><small id="chains-description"><b class="amber-text">4 lückenhaft</b> · 2 unbekannt</small></button>
+    <button class="metric" data-metric="actions"><div>Systemhandlungen <svg><use href="#process"/></svg></div><strong id="actions-value">248</strong><small id="actions-description">Beobachtet · im ausgewählten Lauf</small></button>
+   </section>
+   <div class="coverage-strip"><span class="coverage-label"><svg><use href="#shield"/></svg>Beobachtungsqualität</span><span id="coverage">Signaturen geprüft <i>·</i> <b class="amber-text">2 Chains: Verlustkontrolle fehlt</b></span><button id="coverage-button">Nachweise prüfen <span>↗</span></button></div>
+   <section class="graph-panel" aria-label="Authority Graph">
+    <div class="graph-toolbar"><div class="segmented" role="group" aria-label="Graphdarstellung"><button class="selected" id="chain-mode">Kettenansicht</button><button id="all-mode">Laufübersicht</button></div><div class="toolbar-gap"></div><button class="small-button" id="filter"><svg><use href="#sliders"/></svg>Alle Zustände <span>⌄</span></button><label class="graph-search"><svg><use href="#icon-search"/></svg><input id="search" placeholder="Agent, PID, Evidence …" aria-label="Graph durchsuchen"><kbd>⌘ F</kbd></label></div>
+    <div class="graph-subhead"><div><span class="dot lavender"></span><b id="chain-heading">Dateischreibzugriff untersuchen</b><span class="subtle" id="chain-meta">Chain C-024 · 1 Delegationsstufe</span></div><span id="graph-count" class="subtle">3 von 12 Agenten im Fokus</span></div>
+    <div class="graph-stage" id="stage">
+     <svg id="authority-graph" viewBox="0 0 1030 440" role="group" aria-label="Interaktiver Graph. Knoten mit Tab auswählen, mit Enter öffnen.">
+      <defs><marker id="arrowhead" markerWidth="7" markerHeight="7" refX="6" refY="3" orient="auto"><path d="M0 0L6 3L0 6"/></marker><pattern id="dots" width="24" height="24" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r=".65" fill="var(--dot-grid)"/></pattern></defs>
+      <rect width="1030" height="440" fill="url(#dots)"/>
+      <g id="graph-content">
+       <g class="column-labels"><text x="28" y="37">AGENT & IDENTITÄT</text><text x="236" y="37">AUTHORITY</text><text x="441" y="37">DELEGATION</text><text x="646" y="37">PROZESS</text><text x="851" y="37">SYSTEMHANDLUNG</text></g>
+       <g class="links">
+        <path data-chain="complete" class="verified" d="M208 142H236"/><path data-chain="complete" class="verified" d="M416 142H441"/><path data-chain="complete" class="verified" d="M621 142H646"/><path data-chain="complete" class="verified" d="M826 142H851"/>
+        <path data-chain="partial" class="uncertain" d="M326 204V322H441"/><path data-chain="partial" class="uncertain" d="M621 322H646"/><path data-chain="partial" class="uncertain" d="M826 322H851"/>
+        <path class="identity-line" d="M118 204V242"/>
+       </g>
+       <g class="edge-labels"><text x="222" y="85" text-anchor="middle">bezieht sich auf</text><text x="429" y="85" text-anchor="middle">delegiert</text><text x="634" y="85" text-anchor="middle">gebunden</text><text x="839" y="85" text-anchor="middle">beobachtet</text><text x="327" y="280" text-anchor="middle">Übergabe gemeldet</text><text x="634" y="259" text-anchor="middle">Zuordnung fehlt</text></g>
+       <g class="node agent-node" data-node="agent-a" tabindex="0" role="button" aria-label="Testagent A auswählen" transform="translate(28 98)"><rect width="180" height="106" rx="9"/><use href="#agent" x="14" y="14" width="19" height="19"/><text class="node-kind" x="42" y="28">TESTAGENT</text><text class="node-title" x="14" y="56">Koordinator A</text><text class="node-meta" x="14" y="77">Registrierte Testidentität</text><circle class="status-good" cx="15" cy="92" r="3"/><text class="node-state" x="24" y="96">Identität belegt</text></g>
+       <g class="node identity-node" data-node="identity" tabindex="0" role="button" aria-label="Identitätsnachweis auswählen" transform="translate(28 242)"><rect width="180" height="65" rx="9"/><use href="#shield" x="14" y="14" width="17" height="17"/><text class="node-kind" x="39" y="26">IDENTITÄTSNACHWEIS</text><text class="node-meta" x="14" y="48">Test-CA · Schlüssel A-01</text></g>
+       <g class="node authority-node" data-node="authority" tabindex="0" role="button" aria-label="Authority auswählen" transform="translate(236 98)"><rect width="180" height="106" rx="9"/><use href="#shield" x="14" y="14" width="19" height="19"/><text class="node-kind" x="42" y="28">AUTHORITY</text><text class="node-title" x="14" y="56">Testauftrag J-024</text><text class="node-meta" x="14" y="77">Dateischreibzugriff · Testziel</text><circle class="status-good" cx="15" cy="92" r="3"/><text class="node-state" x="24" y="96">Aussteller: Test-Controller</text></g>
+       <g class="node agent-node" data-node="agent-b" tabindex="0" role="button" aria-label="Delegierter Testagent B auswählen" transform="translate(441 98)"><rect width="180" height="106" rx="9"/><use href="#agent" x="14" y="14" width="19" height="19"/><text class="node-kind" x="42" y="28">DELEGIERTER AGENT</text><text class="node-title" x="14" y="56">Ausführender B</text><text class="node-meta" x="14" y="77">A → B · Annahme signiert</text><circle class="status-good" cx="15" cy="92" r="3"/><text class="node-state" x="24" y="96">Scope eingegrenzt</text></g>
+       <g class="node process-node" data-node="process" tabindex="0" role="button" aria-label="Prozessinstanz auswählen" transform="translate(646 98)"><rect width="180" height="106" rx="9"/><use href="#process" x="14" y="14" width="19" height="19"/><text class="node-kind" x="42" y="28">PROZESSINSTANZ</text><text class="node-title" x="14" y="56">python3.12</text><text class="node-meta mono" x="14" y="77">PID 8421 · Instanz #03</text><circle class="status-good" cx="15" cy="92" r="3"/><text class="node-state" x="24" y="96">Kernelzuordnung belegt</text></g>
+       <g class="node action-node selected" data-node="action" tabindex="0" role="button" aria-label="Beobachteten Dateischreibzugriff auswählen" transform="translate(851 98)"><rect width="151" height="106" rx="9"/><use href="#file" x="14" y="14" width="19" height="19"/><text class="node-kind" x="42" y="28">HANDLUNG</text><text class="node-title" x="14" y="56">Datei schreiben</text><text class="node-meta" x="14" y="77">Testziel · Objekt #17</text><circle class="status-good" cx="15" cy="92" r="3"/><text class="node-state" x="24" y="96">Beobachtet</text></g>
+       <g class="node partial-node" data-node="agent-c" tabindex="0" role="button" aria-label="Lückenhafte Delegation auswählen" transform="translate(441 278)"><rect width="180" height="106" rx="9"/><use href="#agent" x="14" y="14" width="19" height="19"/><text class="node-kind" x="42" y="28">DELEGIERTER AGENT</text><text class="node-title" x="14" y="56">Testagent C</text><text class="node-meta" x="14" y="77">A → C · Übergabe gemeldet</text><circle class="status-warn" cx="15" cy="92" r="3"/><text class="node-state amber-text" x="24" y="96">Annahmebeleg fehlt</text></g>
+       <g class="node ghost-node" data-node="unknown" tabindex="0" role="button" aria-label="Unbekannte Prozesszuordnung auswählen" transform="translate(646 278)"><rect width="180" height="106" rx="9"/><use href="#process" x="14" y="14" width="19" height="19"/><text class="node-kind" x="42" y="28">PROZESSINSTANZ</text><text class="node-title" x="14" y="56">Nicht zugeordnet</text><text class="node-meta" x="14" y="77">Kein belastbares Binding</text><text class="node-state" x="14" y="96">Unbekannt</text></g>
+       <g class="node ghost-node" data-node="unproven-action" tabindex="0" role="button" aria-label="Gemeldete Handlung auswählen" transform="translate(851 278)"><rect width="151" height="106" rx="9"/><use href="#file" x="14" y="14" width="19" height="19"/><text class="node-kind" x="42" y="28">MELDUNG</text><text class="node-title" x="14" y="56">Datei schreiben</text><text class="node-meta" x="14" y="77">Als Ergebnis gemeldet</text><text class="node-state" x="14" y="96">Wirkung unbekannt</text></g>
+      </g>
+     </svg>
+     <div class="graph-legend"><span><i class="legend-line"></i>Belegte Beziehung</span><span><i class="legend-line dashed"></i>Gemeldet / Nachweis fehlt</span></div>
+     <div class="minimap" aria-label="Graphnavigation"><svg viewBox="0 0 110 45"><path d="M8 12H100M35 12v25h65"/><g><rect x="5" y="8" width="12" height="8"/><rect x="30" y="8" width="12" height="8"/><rect x="54" y="8" width="12" height="8"/><rect x="77" y="8" width="12" height="8"/><rect x="96" y="8" width="10" height="8"/><rect x="54" y="33" width="12" height="8"/><rect x="77" y="33" width="12" height="8"/><rect x="96" y="33" width="10" height="8"/></g></svg><div id="mini-view"></div></div>
+    </div>
+    <div class="graph-footer"><span><b id="graph-status">C-024: vollständig im Testscope</b><i>·</i><span id="scope-integrity">Signaturen, Bindings & Verlustkontrolle geprüft</span></span><div class="zoom"><button id="zoom-out" aria-label="Verkleinern">−</button><span id="zoom-value">100 %</span><button id="zoom-in" aria-label="Vergrößern">+</button><button id="fit" title="Graph einpassen (0)">Einpassen</button></div></div>
+   </section>
+   <section class="activity-panel"><div class="activity-heading"><h2>Handlungen im Fokus</h2><span id="activity-rate">248 Ereignisse / 15 Min. <i>·</i> 0,28 / s im Mittel <i>·</i> max. 3 parallele Prozesse</span><button id="activity-all">Alle ansehen ↗</button></div><table><thead><tr><th>Zeit</th><th>Systemhandlung</th><th>Agent / Prozess</th><th>Nachweiskette</th><th>Evidence</th></tr></thead><tbody><tr class="selected-row" data-select="action" tabindex="0"><td>14:32:08.412</td><td><svg><use href="#file"/></svg>Datei schreiben <span>Objekt #17</span></td><td>Ausführender B <span>PID 8421</span></td><td><span class="badge good">✓ Vollständig im Testscope</span></td><td><button class="evidence-link">E-108 ↗</button></td></tr><tr data-select="agent-c" tabindex="0"><td>14:31:56.209</td><td><svg><use href="#chain"/></svg>Übergabe gemeldet <span>J-025</span></td><td>Testagent C <span>nicht zugeordnet</span></td><td><span class="badge warning">△ Annahmebeleg fehlt</span></td><td><button class="evidence-link">E-104 ↗</button></td></tr></tbody></table></section>
+   <footer class="page-footer"><span>Beobachtung & Analyse <i>·</i> Ausgewählter Scope, keine globale Vollständigkeit</span><span>Beispieldaten · keine Live-Verbindung</span></footer>
+  </main>
+  <aside class="inspector" aria-label="Evidence-Inspector">
+   <div class="inspector-top"><span>INSPECTOR</span><button class="icon-button" id="close-inspector" aria-label="Inspector schließen">×</button></div>
+   <div class="inspector-heading"><div class="inspector-type" id="inspector-type"><svg><use href="#file"/></svg>BEOBACHTETE SYSTEMHANDLUNG</div><h2 id="selection-title">Datei schreiben</h2><p id="selection-subtitle">Testziel · Objekt #17</p><span class="badge good" id="selection-status">✓ Vollständig im Testscope</span></div>
+   <div class="inspector-tabs" role="tablist"><button class="active" role="tab" aria-selected="true" data-tab="chain">Nachweiskette</button><button role="tab" aria-selected="false" data-tab="raw">Rohdaten</button></div>
+   <div class="inspector-content" id="chain-inspector">
+    <div class="explanation" id="explanation">Die Handlung ist Prozess #03 zugeordnet. Dessen Binding führt über die signierte Delegation zu Testagent B und Auftrag J-024.</div>
+    <div class="section-label">HERKUNFT DER ZUORDNUNG <span>6 / 6</span></div>
+    <ol class="evidence-chain" id="evidence-chain"></ol>
+    <div class="integrity-box" id="integrity-box"><div><svg><use href="#shield"/></svg><strong>Integrität im Testscope</strong></div><ul><li><span>Signaturen & Auftragsscope</span><b>Geprüft</b></li><li><span>Prozessinstanz & Dateireferenz</span><b>Geprüft</b></li><li><span>Verlustkontrolle im Zeitfenster</span><b>Geprüft</b></li></ul></div>
+    <div class="boundary-note" id="boundary-note"><b>Grenze des Nachweises</b><p>Registrierte Testidentitäten. Keine Beglaubigung einer externen Provider- oder Modellsitzung. Ein Schreibereignis belegt keine dauerhafte Speicherung.</p></div>
+    <button class="inspector-action" id="evidence-open">Evidence E-108 ansehen <span>↗</span></button>
+   </div>
+   <div class="inspector-content" id="raw-inspector" hidden><div class="section-label">MINIMIERTE ENTWURFSDATEN</div><pre id="raw-data"></pre><p class="raw-caption">Beispiel eines geplanten UI-Vertrags. Kein bereits vorhandenes Produkt- oder ES-Schema.</p></div>
+  </aside>
+ </div>
+</div>
+<dialog id="sheet"><div class="sheet-heading"><div><div class="eyebrow">AGENT AUTHORITY</div><h2 id="sheet-title"></h2></div><button id="sheet-close" class="icon-button" aria-label="Dialog schließen">×</button></div><div id="sheet-body"></div><div class="sheet-footer">Interaktionsentwurf · keine Systemfreigaben oder Tests werden ausgeführt.</div></dialog>
+<div id="toast" role="status" hidden></div>
+<script src="entwurf.js"></script>
+</body>
+</html>

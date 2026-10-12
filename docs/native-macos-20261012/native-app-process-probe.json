@@ -1,0 +1,20 @@
+{
+  "app_bundle_id" : "de.agentauthority.observer",
+  "app_pid" : 86322,
+  "probe" : {
+    "audit_status" : 0,
+    "boot_sec" : 1790872495,
+    "boot_status" : 0,
+    "bsd_bytes" : 136,
+    "es_result" : 5,
+    "pid" : 86323,
+    "pid_version" : 2909255,
+    "ppid" : 86322,
+    "provider_identity" : "UNBEKANNT",
+    "schema" : "agent-authority-process-probe-v1",
+    "start_sec" : 1791818832,
+    "start_usec" : 435707,
+    "uid" : 501,
+    "writer_attribution" : "UNBEKANNT"
+  }
+}

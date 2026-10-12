@@ -1,0 +1,405 @@
+AGENT AUTHORITY — NATIVE MACOS-APP, ENTWURF 01
+Stand: 12. Oktober 2026. Sprache und Dateien: UTF-8.
+
+FREIGABESTAND
+Dieser Ordner enthält einen visuellen Interaktionsentwurf, Screenshots und
+die Recherchegrundlage. Keine native App, kein neuer Collector, keine neue
+Engine-API, keine Systemfreigabe und kein ausgeführter macOS-Writer-Versuch.
+Die größere Implementierung wartet auf die ausdrückliche Entwurfsfreigabe.
+
+ÖFFNEN
+entwurf.html lokal im Browser öffnen. Ohne Server und externe Abhängigkeiten.
+Dark/Light über das Mondsymbol. Knoten anklicken, Tab/Enter/Pfeiltasten,
+Hintergrund ziehen, Trackpad verschieben, +/− und 0 für Zoom/Einpassen,
+Suche mit ⌘F, Statusfilter, Rechtsklick und Rohdaten im Inspector.
+„macOS-Testhost“ zeigt den Freigabeablauf als Konzept, führt aber nichts aus.
+„Aktueller master · Datenvertrag“ zeigt die gegenwärtigen fachlichen Grenzen.
+Laufübersicht und weitere Sidebar-Bereiche erklären die geplante Architektur;
+sie sind keine schon fertig implementierten App-Bereiche.
+
+GRUNDLAGE UND PRODUKTGRENZE
+Aktueller lokaler und Remote-master:
+9eda80de0844b89c348728377f8930b7c3a25ff3, observer preview 0.3.0a2.
+Recherchequelle: /Users/landjunge/agent-authority-master.
+Entwurfsablage: vorhandener separater Worktree
+/Users/landjunge/agent-authority-macos-design-20261012,
+Branch design/macos-authority-20261012, gleiche master-Basis.
+
+Agent Authority beobachtet und analysiert. Authority im Graphen beschreibt
+vorgefundene oder gemeldete Rechte-/Auftragsnachweise und deren Herkunft.
+Die App erteilt keine Agentenrechte, entscheidet nicht ALLOW/DENY, stoppt
+keine Arbeit und übernimmt keine historischen Gatekeeper-/Gateway-Pläne.
+Die Einrichtung eigener macOS-Testkomponenten ist davon getrennt.
+ThreadDesk, Tollgate und 4AllPass bleiben eigenständige Systeme. Es gibt
+keine gemeinsame Produktarchitektur, kein gemeinsames Identitätsregister
+und keine implizite Rechteübernahme. Spätere Adapter sind Schnittstellen.
+
+HEUTIGER VERTRAG — KONKRET GELESEN
+agent_authority/observations.py:
+Source(kind, identifier), Entry(identifier, ordinal, kind,
+reported_actor_type, task_key, file_sha256), Diagnostic(code, entry_id),
+Snapshot(source, entries, diagnostics, files_seen, files_examined,
+directory_entries_seen, directory_scan_complete, bytes_read).
+Unveränderliche Dataclasses. ordinal ist gespeicherte Reihenfolge.
+reported_actor_type ist keine individuelle oder authentisierte Identität.
+task_key verknüpft gemeldete Beiträge, beweist keine Delegation.
+
+agent_authority/report.py:
+build_report(snapshot, limit) liefert agent-authority-observation-report-v1.
+Verfügbar sind Beitragsarten, gemeldete Aufgabenbezüge, Übernahmen ohne
+späteren Ergebnisbeitrag, strukturelle Warnungen, Quellenreferenzen,
+Dateifingerprints, Aufnahmestatus und Ausblendungszähler.
+source_authenticated=false; identity/effect/coverage=UNBEKANNT;
+task_completion_proven=false; rights_inherited=false.
+„Keine strukturelle Warnung“ ist kein kryptografisches Integritätsurteil.
+
+agent_authority/cli.py:
+agent-authority inspect --source json-directory --input PATH
+--source-id ID --format json --limit 1..100.
+Der ThreadDesk-Whiteboard-Eingang ist nur ein optionaler Adapter.
+Keine REST-, Streaming- oder Graph-API vorhanden. Exit 2 kennzeichnet
+unvollständige Aufnahme, keine Entscheidung über Agentenhandlungen.
+
+agent_authority/file_reader.py:
+10.000 Verzeichniseinträge je Scan plus Überlaufprobe, zwei Scans;
+10.000 JSON-Dateiversuche; 65.536 Byte je regulärer Datei;
+8 MiB gelesene Rohbytes je Aufnahme. Keine Symlink-/FIFO-Verfolgung.
+Bei Abbruch sind sichtbare Zahlen gegebenenfalls Untergrenzen, keine
+exakten Gesamtzahlen. Aufnahme ist nicht atomar. App muss langsame Quellen
+später in einem abbrechbaren Worker isolieren, ohne Readergrenzen zu ändern.
+Eine volle Graphansicht darf nie aus den 20/100 angezeigten Berichtszeilen
+auf vollständigen Datenbestand schließen; Ausblendung bleibt sichtbar.
+
+FORSCHUNG EINORDNEN
+PLAN-A1-NATIVE-RESULT-20261011.md dokumentiert auf macOS 15.7.4:
+proc_pidinfo/FD/Mach-Metadaten teilweise verfügbar; auditpipe EACCES,
+auditon EPERM, es_new_client ERR_NOT_PRIVILEGED bei UID 501,
+fs_usage/DTrace ohne zulässige Privilegien nicht verfügbar.
+FSEvents liefert keinen Writer-PID; kqueue keinen kausalen Prozess-Datei-Join.
+Die sechs Writer-Fälle wurden dort nicht ausgeführt. FDA war nicht gemessen.
+
+PLAN-A31-SESSION-JOB-RESULT-20261012.md:
+Hostclient-/Testjobbindings sind von einer unabhängigen Provider- oder
+Modellsitzungsbeglaubigung zu unterscheiden. Letztere bleibt unbekannt.
+
+PLAN-A4-DELEGATION-RESULT-20261012.md enthält ein älteres Zwei-Agenten-Gate
+mit unbekannten Verlustmetriken. Der spätere aktuelle Nachweis
+PLAN-A4-FINAL-RESULT-20261012.md belegt im abgegrenzten Linux-Testaufbau
+100 kontrollierte simulierte Agenten, 99 signierte positive Delegationen
+über sechs Stufen und 99 unabhängig beobachtete Writes mit gemessenen
+Nullverlustkontrollen. Die absichtlich unvollständigen Negativfälle und
+unbekannte externe Provideridentität bleiben getrennt sichtbar.
+Das ist kein macOS-Nachweis und keine Integration in den Produktvertrag.
+Die 12/18/36/42/248 im Entwurf sind vollständig synthetische UI-Beispielwerte,
+keine umgedeuteten Forschungszahlen oder Live-Messungen.
+
+INFORMATIONSARCHITEKTUR
+Ein Beobachtungsraum enthält Quelle, Host, Lauf, Zeit-/Aufnahmeumfang,
+Vertrauensanker und Abdeckung. Quellenwechsel invalidiert keine anderen
+Systeme; alte Scope-/Zeitfilter bleiben sichtbar und zurücksetzbar.
+
+Übersicht: laufbezogene Metriken mit klaren Nennern und Messbasis.
+Authority Graph: primärer Untersuchungsraum mit Kette und Inspector.
+Agenten & Identitäten: Actor-Meldung, registrierte Identität, Anker,
+Providerbindung und Prozessbindings getrennt.
+Delegationen: Sender, Empfänger, Elternreferenz, Scope, Annahme, Ablauf.
+Systemhandlungen: unabhängige Beobachtung oder explizit markierte Meldung.
+Evidence: ursprüngliche Referenz, Aufnahme, Fingerprint, Signaturprüfung.
+Auffälligkeiten: Lücken, Widersprüche, Aufnahmegrenzen, Ereignisverluste.
+macOS-Testhost: benötigte Fähigkeiten, ausführende Komponente, Freigaben,
+Verifikation und klar begrenzter Testlauf, später Export seiner Nachweise.
+
+GRAPH UND INSPECTOR
+Leserichtung links nach rechts: Agent/Identität → Authority → Delegation
+→ Prozessinstanz → Handlung. Identitätsanker hängt am zugehörigen Agenten.
+Kanten haben semantische Verben und eigene Nachweise. Durchgezogene Kanten
+kennzeichnen belegte Beziehungen; gestrichelte Kanten gemeldete/fehlende.
+Farbe wird durch Text, Symbol und Linienart ergänzt.
+Die rechte Ansicht zeigt dieselbe vollständige Herkunftskette für jede
+Selektion. Auswahlabhängige Erklärung steht vor technischen Einzelwerten.
+Identität, Authority, Annahme, Prozessbinding, Handlung und Evidenz werden
+separat bewertet. Keine einzige grüne Kennzahl ersetzt alle Prüfungen.
+
+Geplante Knoten: AgentIdentity, AuthorityRecord, DelegationRecord,
+ProcessInstance, ObservedAction, EvidenceReference. Diese Namen beschreiben
+das UI-Konzept; sie sind ausdrücklich keine existierenden Engine-Typen.
+Kanten brauchen Referenzen und Status statt bloßer vermuteter Korrelation.
+Status: gemeldet, beobachtet, belegt, lückenhaft, widersprüchlich, unbekannt.
+Vollständigkeit, kryptografische Integrität, Authentisierung und Abdeckung
+sind getrennte Dimensionen. Ein kompletter Testscope authentisiert nicht
+automatisch eine externe Modellsitzung oder den kompromittierten Host.
+
+Selektion: Kette hervorheben, ausgewählte Instanz im Inspector, Breadcrumb
+und Kontext behalten. Doppelklick/„Kette fokussieren“ führt in den Ausschnitt.
+Suche nach ID, Agent, PID plus Instanzkontext, Objekt und Evidence.
+Filter nach Quelle/Lauf, Typ, Zeitraum, Status, Tiefe und Nachweisqualität.
+Filter ändern Sichtbarkeit, nicht die fachliche Zuordnung oder Rohbeweise.
+Die Miniatur zeigt den Ausschnitt. Rücksprung und „Einpassen“ bleiben bereit.
+
+Für große Graphen zuerst Lauf-/Agenten-/Delegationscluster, dann der
+selektierte Zweig. Im Prototyp erklärt „Laufübersicht“ dieses Verhalten;
+es wird kein falscher Großgraph-Benchmark vorgespielt.
+Layout deterministisch, hierarchisch und inkrementell; keine ständig
+laufende Force-Simulation. Neue Ereignisse verschieben die Selektion nicht.
+Zyklen, Mehrfacheltern und gebrochene Elternreferenzen als Auffälligkeit,
+gegebenenfalls zusammengefasste zyklische Komponente, nicht verstecken.
+Aufgeklappte Gruppen zeigen den vollständigen Nachweis; der Inspector kann
+lange Delegationsketten virtualisiert und abschnittsweise öffnen.
+Semantischer Zoom: Cluster → Name/Typ/Status → Details. Ausgeblendete oder
+noch nicht geladene Elemente werden gezählt. Reihenfolge aus ordinal darf
+niemals als Kernelzeit dargestellt werden.
+
+METRIKEN — DEFINITION UND VERFÜGBARKEIT
+Aktive Agenten: registrierte Identitäten mit nachgewiesenem lebendem Binding
+im Scope, nicht Anzahl unterschiedlicher reported_actor_type-Werte.
+Delegationen: eindeutige belegte/angenommene/offene Übergaben, getrennte
+Nachrichtenfälle und Replay-Befunde; kein Gleichsetzen mit „handoff“.
+Nachweisketten: vollständige, lückenhafte, widersprüchliche und unbekannte
+eindeutige Job-/Binding-Ketten im selben Scope; mehrere Handlungen können
+zur selben Kette gehören. Fehlende Verlustkontrolle erlaubt keine Vollständigkeit.
+Integrität: separate Prüfungen der Signaturen, Elternreferenzen, Scope,
+Gültigkeit, Prozess-/Dateiinstanz und Erfassungsabdeckung.
+Systemhandlungen: eindeutige beobachtete Ereignisse; Duplikate und Verluste
+gesondert, gemeldete Ergebnisbeiträge nicht mitzählen.
+Durchsatz: Ereigniszahl / tatsächlich erfasstes Zeitfenster, mit Abdeckung.
+Parallelität: überlappende Prozess-/Jobintervalle oder tatsächliche Handlungen
+getrennt benennen. Keine Parallelität aus gleichen PIDs oder Actor-Zahlen.
+Auffälligkeiten: Anzahl mit Status, Ursache und zugehöriger Evidence.
+Bei fehlender Messgrundlage „— / unbekannt“, niemals 0 als Ersatz.
+Der heutige Bericht kann allein die gemeldeten Aktivitäten und strukturellen
+Warnungen liefern. Alle übrigen Zielmetriken benötigen spätere Nachweisadapter.
+
+NATIVE TECHNOLOGIE — EMPFEHLUNG, NOCH NICHT IMPLEMENTIERT
+Swift, AppKit-Fenster mit NSSplitViewController, NSToolbar, nativer Sidebar,
+Menü-/Tastaturbefehlen, Kontextmenüs, NSTableView und Inspector.
+SwiftUI kann passende Dashboard-/Formular-/Detailteile über NSHostingView
+liefern. Mindestziel macOS 12, x86_64 und später arm64.
+NavigationSplitView setzt macOS 13 voraus und ist deshalb keine Pflichtbasis.
+Der R9-M380-iMac von Ende 2015 hat laut Apple Monterey als letzte offiziell
+kompatible Version. Frühere 2015er Modelle haben andere Grenzen; im
+Implementierungsstart genaue Modellkennung und installiertes OS prüfen.
+
+Graph zuerst als eigene NSView mit Core Graphics/Core Text, cachen und nur
+sichtbare Bereiche zeichnen; räumlicher Index für Hit-Tests. Keine einzelne
+SwiftUI-View oder animierte Layerhierarchie je tausendem Knoten. Für VoiceOver
+semantische Accessibility-Elemente und eine gleichwertige navigierbare
+Ketten-/Tabellenansicht; hohe Kontraste, Textvergrößerung, Reduce Motion.
+Metal ist eine spätere, nur durch Profiling zu begründende Optimierung,
+keine Voraussetzung und keine zusätzliche fachliche Funktion.
+
+Bestehende Python-Engine bleibt unabhängig. Erste App-Anbindung über
+versioniertes JSON des vorhandenen CLI als lesender, abbrechbarer Worker,
+mit festem ausführbarem Pfad und strukturierten Argumenten ohne Shell.
+Python >=3.12 muss für die App definiert mitgeliefert oder reproduzierbar
+installiert sein; nicht auf das System-python oder Terminal-PATH vertrauen.
+Ein gesonderter Graph-/Evidence-Projektor verarbeitet qualifizierte neutrale
+Nachweise. Rich-Graph-Typen sind später explizit zu spezifizieren; keine
+Signaturen/PIDs in beliebige Extra-JSON-Felder schmuggeln, die der heutige
+Reader bewusst nicht in den Bericht übernimmt.
+Der Produktreader, seine Grenzen und historischen Tests bleiben erhalten.
+UI-Worker, Test-Runner, Connector/Collector und Verifier bleiben getrennte
+Komponenten innerhalb des eigenständigen Agent-Authority-Produkts.
+
+REGULÄRE MACOS-FREIGABEN UND UX
+1. Quellen-/Testordner: Ordnerauswahl über NSOpenPanel; reguläre Files-and-
+   Folders-Freigaben für geschützte Orte, bei Sandbox Sicherheitslesezeichen.
+   Ein eigener ungeschützter Testordner braucht keinen pauschalen Vollzugriff.
+   FDA nur für ausdrücklich benötigte breite geschützte Quellen.
+
+2. Kausale Dateihandlung → Prozess: bevorzugter zu qualifizierender Kanal
+   Endpoint Security. Collector braucht com.apple.developer.endpoint-security.client
+   mit Apple-genehmigtem Provisioning, Rootprivilegien des ES-Clients, eigenes
+   FDA/TCC und tatsächlichen erfolgreichen es_new_client-Aufruf.
+   Host-App braucht com.apple.developer.system-extension.install, signierte
+   Pakete und Installation aus /Applications. Aktivierung über
+   OSSystemExtensionRequest und Benutzerzustimmung im macOS-Dialog.
+   Die Systemerweiterung wird vom Betriebssystem mit dem vorgesehenen
+   privilegierten Ausführungskontext verwaltet; die Haupt-App bleibt nonroot.
+   Developer ID/Notarisierung allein ersetzt das ES-Entitlement nicht.
+   Benutzer-FDA ersetzt ebenfalls kein fehlendes Apple-Entitlement.
+   Keine SIP-Deaktivierung, kein Entwickler-Trick als Produktvoraussetzung.
+   Collector abonniert NOTIFY-Ereignisse für die Beobachtung, keine AUTH-
+   Entscheidungslogik. Kandidaten: FORK, EXEC, EXIT, WRITE, CLOSE(modified).
+   Die konkrete Ereignisabdeckung einschließlich mmap/Objektwechsel ist
+   separat zu prüfen; kein allgemeines Versprechen aller Systemhandlungen.
+   start_time ab Nachrichtenversion 3, seq_num ab 2, global_seq_num ab 4;
+   beim Feldzugriff Version prüfen. Audit-Token/PID-Version nicht mit der
+   Fork-Startzeit verwechseln. Verlustkontrollen und zulässige Mutinggrenzen
+   müssen die belegte Abdeckung begrenzen. Defaults nicht heimlich aufheben.
+
+3. FDA-UX: keinen globalen TCC-Status aus einer geschützten Datenbank lesen.
+   Für ES ist laut installiertem ESClient.h der unterstützte Test es_new_client.
+   Die einzelnen Fehler (Entitlement, Privileg, TCC, interne Fehler) erhalten
+   eigene Erklärung. Ein frühes Privilegienversagen beweist kein fehlendes FDA.
+   Systemeinstellungen öffnen; Benutzer erteilt den Zugriff, danach neu prüfen.
+   Apple dokumentiert folgende FDA-URLs im lokalen SDK:
+   macOS 13+: x-apple.systempreferences:com.apple.settings.PrivacySecurity.extension?Privacy_AllFiles
+   bis macOS 12: x-apple.systempreferences:com.apple.preference.security?Privacy_AllFiles
+   Unbekannt, nicht geprüft, verweigert und funktionsfähig separat anzeigen.
+
+4. UI-Testfälle: Bedienungshilfen über AXIsProcessTrustedWithOptions und
+   kAXTrustedCheckOptionPrompt; eigentliche Erteilung durch Benutzer in
+   Datenschutz. Erst beim konkreten UI-Test anfordern. AX ist kein Writerkanal.
+
+5. Steuerung anderer Apps via Apple Events: NSAppleEventsUsageDescription
+   plus com.apple.security.automation.apple-events für Hardened Runtime,
+   Zustimmung je Ziel-App. Die App startet ihre eigenen Testprozesse direkt;
+   dafür ist keine Terminal-Automation nötig. Fremde Terminal-/Codex-Prozesse
+   bekommen nicht automatisch die App-Freigaben.
+
+6. Visuelle Testnachweise: Bildschirmaufnahme nur wenn der Test Bildschirm-
+   Evidence benötigt, über CGPreflightScreenCaptureAccess /
+   CGRequestScreenCaptureAccess und die vorgesehenen Datenschutzdialoge.
+   ScreenCaptureKit auf geeigneten OS-Versionen optional, keine Mindestbasis
+   für den Datei-/Prozessnachweis. Keine Mikrofon-/Kamera-Berechtigung nötig.
+
+7. Adminpflichtige Diagnosen: falls auditpipe/fs_usage für einen klaren Test
+   gebraucht werden, eng begrenzter signierter Helper mit macOS-Autorisierung.
+   macOS 13+ SMAppService; für 12 gegebenenfalls dokumentierter Legacy-Pfad
+   SMJobBless. Der primäre ES-Systemerweiterungspfad benötigt diesen separaten
+   Legacy-Helper nicht. Root ist kein TCC-, SIP- oder Identity-Ersatz.
+   OpenBSM ist im SDK deprecated; keine langfristige Produktgrundlage.
+   DTrace hat harte SIP-Grenzen, auch mit Adminrechten.
+
+App startet den Test-Runner im nachvollziehbaren App-Kontext. Lang laufende
+launchd-Dienste oder externe Apps haben eigene Ausführungskontexte. Privileg,
+Entitlement und TCC sind separat zu prüfen, nicht pauschal „vererbt“.
+XPC-Aufrufe beschränken sich auf signierte eigene Komponenten und definierte
+Aufgaben; Callerprüfung über Audit-Token/Code-Requirement. Kein beliebiger
+Shellbefehl im privilegierten Helper. UI und Testagenten laufen nicht als root.
+Wählbare Testprofile zeigen Zweck, benötigte Komponente und Freigabe;
+danach reale Capability-Probe, kein bloß grüner Einstellungs-Schalter.
+Nach einem Widerruf Nachweise für die betroffene Zeit als begrenzt markieren.
+Keine TCC-Datenbankänderung, kein automatisches tccutil-reset, keine grant-API
+erfinden und keine Freigaben anderer Apps übernehmen.
+
+Harte, regulär nicht durch eine App-Freigabe beseitigbare Grenzen:
+SIP schützt Prozesse und Systembereiche, auch vor manchen root-/Debugzugriffen.
+com.apple.security.cs.debugger ist kein universeller task_for_pid-Zugang.
+Ein Prozessname, Code-Signatur oder Audit-Token beglaubigt keine externe
+Agenten-/Provider-/Modellsitzung. Diese Bindung braucht externe Nachweise.
+Ein NOTIFY_WRITE beweist keine Bytes, kein fsync und keine dauerhafte Wirkung.
+Unbeobachtete Ereignisse, zu frühe Exits, fehlende Felder oder verlorene
+Ereignisse dürfen unbekannt bleiben. Beobachtungshistorie wird nicht rückwirkend
+durch spätere Freigabe vollständig. Host/Kernel/CA sind explizite Trustanker.
+Linux-BCC/eBPF-Versuche werden nicht durch macOS-FDA zu nativen macOS-Tests;
+der Linux-VM-Testhost bleibt als getrennter Forschungskontext erkennbar.
+
+NÄCHSTER QUALIFIKATIONSSCHRITT NACH FREIGABE
+Zuerst signierte App-/Collector-Grundstruktur und Freigabe-UX, danach die
+existierenden sechs macOS-Writer-Fälle: A schreibt Ziel, B bleibt untätig,
+C schreibt anderes Ziel, Kindprozess schreibt, falscher PID-Claim,
+zwei aufeinanderfolgende Writer desselben Ziels. Vorab Instanz-/Objekt-/
+Lifecycle-/Verlustkriterien festlegen; echte Events gegen unabhängige Referenz.
+Eigene Signaturen/Testidentitäten getrennt von externen Providerbindings.
+Danach erst die umfangreiche Graph-UI mit qualifizierten Daten verbinden.
+Dieser Schritt ist geplant und wurde im Entwurfsauftrag nicht ausgeführt.
+
+PERFORMANCE UND 5K — ENTWURFSBUDGETS, KEINE GEMESSENEN ZUSAGEN
+Praktische Untergrenze: iMac 27 Zoll 5K (2015), R9 M380, 2 GiB VRAM.
+Standard-5K-Skalierung: 2560 × 1440 logische Punkte, 5120 × 2880 Pixel.
+Ein voller RGBA-8-Bit-Puffer benötigt 56,25 MiB ohne weitere Oberflächen;
+deshalb keine mehrfachen vollflächigen Blur-/Glow-/Postprocess-Puffer.
+Native Schriften bleiben in Retinaqualität; geometrische Renderqualität und
+Caches können adaptieren. Kein kleineres Daten-/Nachweisangebot bei schwacher GPU.
+
+Initiales Darstellungsbudget: etwa 500 sichtbare Knoten / 1.200 sichtbare
+Kanten; darüber semantische Cluster. Keine Grenze für belegte Fachinformation.
+Graphlayout/Parsing/Prüfung auf Workern; UI nur kleine Zustandsänderungen.
+Neue Anzeigeereignisse bündeln, etwa bis 10 Updates/s; Kennzahlen etwa 1/s;
+Selektion unmittelbar. Anzeige-Drosselung darf keine Capture-Verluste erzeugen.
+Ruhender Graph zeichnet nur bei Änderung. Keine permanenten Shader,
+Partikelflüsse, pulsierenden Kanten, Schatten-Stacks oder Layoutanimationen.
+Pfad-/Textcache begrenzen; initialer Graphcache-Zielwert 64 MiB, nach Profiling
+anpassen. Tabellen und große Inspectorlisten virtualisieren.
+Interaktion: 60 Hz als Ziel, auf Zielhardware gegebenenfalls 30 Hz kontrolliert;
+kein Qualitätsmodus, der Status oder Evidence ausblendet. Statische Ansicht
+bleibt scharf. Lesbarkeit und VoiceOver haben Vorrang vor dekorativer Qualität.
+
+Spätere Abnahme: 100 / 1.000 / 10.000 Gesamtknoten mit Clustering,
+schrittweise Updates, lange Delegation und viele geteilte Prozess-/Objektreferenzen.
+Framezeiten, Main-Thread-Zeit, Layoutlatenz, RSS/VRAM und Capture-Verluste getrennt
+mit Instruments/Time Profiler/Core Animation/gegebenenfalls Metal prüfen.
+Den vorhandenen Aufnahmevertrag mit 8 MiB Rohbytes nicht mit einem garantierten
+RAM-Budget verwechseln. Native Zielhardware-Messung steht noch aus.
+
+WERKZEUGE — TATSÄCHLICH VORHANDEN
+Lokaler Host macOS 15.7.4, x86_64; Xcode 16.0 (16A242d), Swift 6.0,
+Apple-Clang/SDK 15.0, Python 3.12 und Node vorhanden.
+AppKit, SwiftUI, Core Graphics, Core Text, Security, EndpointSecurity,
+SystemExtensions und ServiceManagement im Xcode-SDK.
+Playwright 1.62.1 mit lokalem Chromium vorhanden; lediglich dessen Renderer
+wird aus dem vorhandenen node_modules-Verzeichnis verwendet. Daraus folgt
+keine Produktkopplung an das Projekt, in dem es installiert ist.
+HTML/CSS/SVG erlauben präzise Schrift und anklickbare Zustände ohne UI-Enginebau.
+Figma-MCP ist in der Sitzung mit create_new_file, use_figma, Screenshot,
+Variablen-/Bibliothekswerkzeugen und Designimport verfügbar; nicht verwendet.
+Imagegen ist verfügbar; für diese präzise codebasierte UI-Probe nicht benötigt.
+Web-Recherche und lokale Datei-/Bildwerkzeuge wurden tatsächlich verwendet.
+Keine verfügbaren MCP-Tools erteilen macOS-TCC- oder ES-Rechte.
+Aufgeführte native Technologien sind geplante SDK-Verwendungen, keine erfundene
+bereits implementierte Agent-Authority-App-API.
+
+DESIGN-TOKENS — ORIGINAL UND NEU GEKENNZEICHNET
+ThreadDesk-Arbeitsquelle: /Users/landjunge/threaddesk,
+HEAD 65aafdf54c6bd0997ea9904dedcf2493eacefd13. Andere Änderungen dort bestanden;
+die beiden gelesenen CSS-Dateien sind gegenüber HEAD unverändert.
+style.css Zeilen 4–30: #121316 Grundfläche, #1a1b1f erhöht,
+#1e1f24 Karten/Subtle, #24262d raised, #e2e4e9 Text,
+#8b909a muted, #2e3138 Trennung, #5c616a Control-Kante,
+#b99cff brand, #8f98a8 neutraler Akzent, #3d9b6a ok,
+#c9a227 warn, #c45c5c risk. Dies sind Originalwerte, keine Schätzungen.
+networkpunkt.css Zeilen 12–14 enthält #7bdaa7, #e4be70, #f49b9b;
+diese sind ergänzende Status-Textwerte aus einer vorhandenen Projektquelle,
+nicht behauptete Primärtokens des aktiven ThreadDesk-Stylesheets.
+polish.css wurde ebenfalls gelesen; leuchtende ältere Map-Töne werden nicht
+als Kernpalette übernommen. ThreadDesk-Brandmark, Wortmarke, Layoutregeln,
+Rollen, Architektur und Identität werden nicht übernommen.
+Eigene abgeleitete Dark-Auswahlfläche #292536 und lesbarere Textabstufung
+#a4a9b4; neue Light-Flächen #f5f6f8/#ffffff, Text #23262d,
+Akzent #685091, Status-Text #246943/#805f15. Light-Mode-Tokens sind ausdrücklich
+neu für Agent Authority, da keine originale Light-Palette gefunden wurde.
+Ein kleines eigenes Graphsymbol statt der ThreadDesk-Markengeometrie.
+
+PRÜFUNG UND VERBLEIBENDE GRENZEN
+Automatisierte Interaktionsprüfung in pruefung.json: Selektion, lückenhafte
+Kette, Tastatur, Zoom/Einpassen, Suche/Filter, Dark/Light, Dialog/Escape,
+heutiger Vertrag ohne erfundene Live-Metrik, Rohdaten, Inspector/Sidebar,
+Kontextaktion. Keine JavaScript-Seitenfehler.
+Layout bei 1728 × 1240, 1280 × 900 und 2560 × 1440 @2x geprüft;
+5K-Screenshot 5120 × 2880. Keine horizontale Überbreite; getrennte
+Scrollbereiche bei kleineren Fenstern. Die Screenshots wurden visuell geprüft.
+Browserprobe ersetzt keine native Accessibility-/VoiceOver-Abnahme und keine
+R9-M380- oder native macOS-Performance-Messung. Graphaggregation ist spezifiziert,
+nicht als volle Großgraph-Implementierung in dieser Entwurfsphase erstellt.
+
+OFFIZIELLE QUELLEN
+Endpoint-Security-App, Entitlement, Systemerweiterung und FDA:
+https://developer.apple.com/documentation/endpointsecurity/monitoring-system-events-with-endpoint-security
+https://developer.apple.com/videos/play/wwdc2020/10159/
+https://developer.apple.com/system-extensions/
+https://developer.apple.com/documentation/bundleresources/entitlements/com.apple.developer.endpoint-security.client
+Lokaler überprüfter Vertrag: Xcode SDK usr/include/EndpointSecurity/ESClient.h,
+ESMessage.h und ESTypes.h. FDA-URLs und es_new_client-Statusprüfung daraus.
+
+Dateizugriff und Datenschutz:
+https://support.apple.com/en-lamr/guide/security-pdf/secddd1d86a6/web
+https://support.apple.com/guide/mac-help/control-access-screen-system-audio-recording-mchld6aa7d23/mac
+https://developer.apple.com/documentation/applicationservices/1459186-axisprocesstrustedwithoptions
+https://developer.apple.com/documentation/bundleresources/information-property-list/nsappleeventsusagedescription
+https://developer.apple.com/documentation/BundleResources/Entitlements/com.apple.security.automation.apple-events
+https://developer.apple.com/documentation/coregraphics/cgrequestscreencaptureaccess()
+
+Helper und harte Grenzen:
+https://developer.apple.com/documentation/servicemanagement/smappservice
+https://developer.apple.com/library/archive/documentation/Security/Conceptual/System_Integrity_Protection_Guide/RuntimeProtections/RuntimeProtections.html
+https://developer.apple.com/documentation/bundleresources/entitlements/com.apple.security.cs.debugger
+https://developer.apple.com/documentation/xcode/configuring-the-hardened-runtime
+
+Kompatibilität:
+https://support.apple.com/de-de/108054
+https://developer.apple.com/documentation/technotes/tn3154-adopting-swiftui-navigation-split-view
+
+Alle verwendeten Aussagen wurden mit aktuellen offiziellen Dokumenten oder
+den tatsächlich vorhandenen SDK-Headern und Projektquellen abgeglichen.
+Verfügbare Systemfreigaben sind keine Messung eines eingerichteten Testhosts.

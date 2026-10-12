@@ -1,0 +1,9 @@
+{
+  "schema_version": "agent-authority-observation-v1",
+  "id": "event-1",
+  "source_id": "local-design-fixture",
+  "ordinal": 1,
+  "kind": "task",
+  "reported_actor_type": "local-client",
+  "task_key": "task-1"
+}

@@ -1,0 +1,54 @@
+[0/1] Planning build
+Building for debugging...
+[0/7] Write sources
+[3/7] Write swift-version--58304C5D6DBC2206.txt
+[5/9] Emitting module AuthorityCore
+[6/9] Compiling AuthorityCore NativeProjection.swift
+[7/14] Compiling AuthorityCoreTests CoreTests.swift
+[8/14] Emitting module AuthorityCoreTests
+[8/15] Write Objects.LinkFileList
+[9/15] Linking AgentAuthorityNativePackageTests
+[11/15] Compiling AgentAuthorityMac GraphCanvas.swift
+[12/15] Emitting module AgentAuthorityMac
+[13/15] Compiling AgentAuthorityMac Controllers.swift
+[14/16] Compiling AgentAuthorityMac main.swift
+[14/17] Write Objects.LinkFileList
+[15/17] Linking AgentAuthorityMac
+[16/17] Applying AgentAuthorityMac
+Build complete! (20.24s)
+Test Suite 'All tests' started at 2026-10-12 17:49:30.663.
+Test Suite 'AgentAuthorityNativePackageTests.xctest' started at 2026-10-12 17:49:30.665.
+Test Suite 'CoreTests' started at 2026-10-12 17:49:30.665.
+Test Case '-[AuthorityCoreTests.CoreTests testCompactAgentOverviewPreservesAllNodesAndEdges]' started.
+Test Case '-[AuthorityCoreTests.CoreTests testCompactAgentOverviewPreservesAllNodesAndEdges]' passed (0.005 seconds).
+Test Case '-[AuthorityCoreTests.CoreTests testDemoRemainsExplicitAndScales]' started.
+Test Case '-[AuthorityCoreTests.CoreTests testDemoRemainsExplicitAndScales]' passed (0.026 seconds).
+Test Case '-[AuthorityCoreTests.CoreTests testKernelEventsNeverAuthenticateLogicalAgent]' started.
+Test Case '-[AuthorityCoreTests.CoreTests testKernelEventsNeverAuthenticateLogicalAgent]' passed (0.002 seconds).
+Test Case '-[AuthorityCoreTests.CoreTests testLanguagePriorityAndSystemAdaptation]' started.
+Test Case '-[AuthorityCoreTests.CoreTests testLanguagePriorityAndSystemAdaptation]' passed (0.000 seconds).
+Test Case '-[AuthorityCoreTests.CoreTests testLanguagesCompleteAndPlaceholdersMatch]' started.
+Test Case '-[AuthorityCoreTests.CoreTests testLanguagesCompleteAndPlaceholdersMatch]' passed (0.012 seconds).
+Test Case '-[AuthorityCoreTests.CoreTests testLayoutStableAndFiniteWithCycle]' started.
+Test Case '-[AuthorityCoreTests.CoreTests testLayoutStableAndFiniteWithCycle]' passed (0.101 seconds).
+Test Case '-[AuthorityCoreTests.CoreTests testProductMeldungenNeverBecomeIdentityOrEffects]' started.
+Test Case '-[AuthorityCoreTests.CoreTests testProductMeldungenNeverBecomeIdentityOrEffects]' passed (0.002 seconds).
+Test Case '-[AuthorityCoreTests.CoreTests testRejectsBrokenReferencesAndDuplicateIDs]' started.
+Test Case '-[AuthorityCoreTests.CoreTests testRejectsBrokenReferencesAndDuplicateIDs]' passed (0.002 seconds).
+Test Case '-[AuthorityCoreTests.CoreTests testStructuralWarningsHaveInspectableReferences]' started.
+Test Case '-[AuthorityCoreTests.CoreTests testStructuralWarningsHaveInspectableReferences]' passed (0.002 seconds).
+Test Case '-[AuthorityCoreTests.CoreTests testTraceIncludesProofAndDoesNotIncludeUnrelatedBranches]' started.
+Test Case '-[AuthorityCoreTests.CoreTests testTraceIncludesProofAndDoesNotIncludeUnrelatedBranches]' passed (0.001 seconds).
+Test Case '-[AuthorityCoreTests.CoreTests testUnknownSchemasAndOversizedInputRejected]' started.
+Test Case '-[AuthorityCoreTests.CoreTests testUnknownSchemasAndOversizedInputRejected]' passed (0.005 seconds).
+Test Case '-[AuthorityCoreTests.CoreTests testVerifiedLocalIdentityDoesNotRepairMissingParentAuthority]' started.
+Test Case '-[AuthorityCoreTests.CoreTests testVerifiedLocalIdentityDoesNotRepairMissingParentAuthority]' passed (0.004 seconds).
+Test Suite 'CoreTests' passed at 2026-10-12 17:49:30.829.
+	 Executed 12 tests, with 0 failures (0 unexpected) in 0.163 (0.164) seconds
+Test Suite 'AgentAuthorityNativePackageTests.xctest' passed at 2026-10-12 17:49:30.829.
+	 Executed 12 tests, with 0 failures (0 unexpected) in 0.163 (0.164) seconds
+Test Suite 'All tests' passed at 2026-10-12 17:49:30.829.
+	 Executed 12 tests, with 0 failures (0 unexpected) in 0.163 (0.166) seconds
+◇ Test run started.
+↳ Testing Library Version: 94 (x86_64-apple-macos13.0)
+✔ Test run with 0 tests passed after 0.001 seconds.

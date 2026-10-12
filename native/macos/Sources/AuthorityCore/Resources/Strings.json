@@ -1,0 +1,1090 @@
+{
+  "app.name": {
+    "de": "Agent Authority",
+    "en": "Agent Authority"
+  },
+  "app.tagline": {
+    "de": "Beobachtung & Nachweis",
+    "en": "Observation & evidence"
+  },
+  "app.observer": {
+    "de": "Beobachtung und Analyse · keine Rechtevergabe",
+    "en": "Observation and analysis · no authority decisions"
+  },
+  "nav.overview": {
+    "de": "Übersicht",
+    "en": "Overview"
+  },
+  "nav.graph": {
+    "de": "Authority Graph",
+    "en": "Authority Graph"
+  },
+  "nav.agents": {
+    "de": "Agenten & Identitäten",
+    "en": "Agents & identities"
+  },
+  "nav.delegations": {
+    "de": "Delegationen",
+    "en": "Delegations"
+  },
+  "nav.actions": {
+    "de": "Systemhandlungen",
+    "en": "System actions"
+  },
+  "nav.evidence": {
+    "de": "Evidence",
+    "en": "Evidence"
+  },
+  "nav.findings": {
+    "de": "Auffälligkeiten",
+    "en": "Findings"
+  },
+  "nav.host": {
+    "de": "macOS-Testhost",
+    "en": "macOS test host"
+  },
+  "nav.settings": {
+    "de": "Einstellungen",
+    "en": "Settings"
+  },
+  "nav.scope": {
+    "de": "BEOBACHTUNGSRAUM",
+    "en": "OBSERVATION SCOPE"
+  },
+  "mode.demo": {
+    "de": "Beispieldaten · 50 Agenten",
+    "en": "Sample data · 50 agents"
+  },
+  "mode.empty": {
+    "de": "Lokale Quelle öffnen",
+    "en": "Open local source"
+  },
+  "mode.sample": {
+    "de": "BEISPIELDATEN · KEINE LIVE-MESSUNG",
+    "en": "SAMPLE DATA · NO LIVE MEASUREMENT"
+  },
+  "mode.product": {
+    "de": "QUELLENBERICHT · BEOBACHTER",
+    "en": "SOURCE REPORT · OBSERVER"
+  },
+  "mode.live": {
+    "de": "KERNELEREIGNISSE · AGENTENIDENTITÄT UNBEKANNT",
+    "en": "KERNEL EVENTS · AGENT IDENTITY UNKNOWN"
+  },
+  "button.open": {
+    "de": "Quelle öffnen …",
+    "en": "Open source …"
+  },
+  "button.report": {
+    "de": "Bericht öffnen …",
+    "en": "Open report …"
+  },
+  "button.export": {
+    "de": "Nachweise exportieren …",
+    "en": "Export evidence …"
+  },
+  "button.refresh": {
+    "de": "Aktualisieren",
+    "en": "Refresh"
+  },
+  "button.cancel": {
+    "de": "Abbrechen",
+    "en": "Cancel"
+  },
+  "button.close": {
+    "de": "Schließen",
+    "en": "Close"
+  },
+  "button.fit": {
+    "de": "Einpassen",
+    "en": "Fit"
+  },
+  "button.zoomIn": {
+    "de": "Vergrößern",
+    "en": "Zoom in"
+  },
+  "button.zoomOut": {
+    "de": "Verkleinern",
+    "en": "Zoom out"
+  },
+  "button.focus": {
+    "de": "Kette fokussieren",
+    "en": "Focus chain"
+  },
+  "button.copy": {
+    "de": "Referenz kopieren",
+    "en": "Copy reference"
+  },
+  "button.finder": {
+    "de": "Im Finder zeigen",
+    "en": "Reveal in Finder"
+  },
+  "button.check": {
+    "de": "Prüfen",
+    "en": "Check"
+  },
+  "button.request": {
+    "de": "Anfordern",
+    "en": "Request"
+  },
+  "button.system": {
+    "de": "Systemeinstellungen",
+    "en": "System Settings"
+  },
+  "button.activate": {
+    "de": "Erweiterung aktivieren",
+    "en": "Activate extension"
+  },
+  "button.run": {
+    "de": "Testlauf starten",
+    "en": "Start test run"
+  },
+  "button.details": {
+    "de": "Details",
+    "en": "Details"
+  },
+  "button.connect": {
+    "de": "Collector verbinden",
+    "en": "Connect collector"
+  },
+  "toolbar.sidebar": {
+    "de": "Seitenleiste",
+    "en": "Sidebar"
+  },
+  "toolbar.inspector": {
+    "de": "Inspector",
+    "en": "Inspector"
+  },
+  "menu.file": {
+    "de": "Ablage",
+    "en": "File"
+  },
+  "menu.view": {
+    "de": "Darstellung",
+    "en": "View"
+  },
+  "menu.window": {
+    "de": "Fenster",
+    "en": "Window"
+  },
+  "menu.help": {
+    "de": "Hilfe",
+    "en": "Help"
+  },
+  "menu.quit": {
+    "de": "Agent Authority beenden",
+    "en": "Quit Agent Authority"
+  },
+  "menu.about": {
+    "de": "Über Agent Authority",
+    "en": "About Agent Authority"
+  },
+  "menu.shortcuts": {
+    "de": "Tastatur & Nachweisgrenzen",
+    "en": "Keyboard & evidence boundaries"
+  },
+  "menu.minimize": {
+    "de": "Minimieren",
+    "en": "Minimize"
+  },
+  "menu.fullscreen": {
+    "de": "Vollbild",
+    "en": "Enter Full Screen"
+  },
+  "settings.title": {
+    "de": "Sprache & Darstellung",
+    "en": "Language & appearance"
+  },
+  "settings.language": {
+    "de": "Sprache",
+    "en": "Language"
+  },
+  "settings.system": {
+    "de": "Systemsprache",
+    "en": "System language"
+  },
+  "settings.de": {
+    "de": "Deutsch",
+    "en": "Deutsch"
+  },
+  "settings.en": {
+    "de": "English",
+    "en": "English"
+  },
+  "settings.appearance": {
+    "de": "Darstellung",
+    "en": "Appearance"
+  },
+  "settings.systemTheme": {
+    "de": "Systemdarstellung",
+    "en": "System appearance"
+  },
+  "settings.dark": {
+    "de": "Dunkel",
+    "en": "Dark"
+  },
+  "settings.light": {
+    "de": "Hell",
+    "en": "Light"
+  },
+  "settings.runtime": {
+    "de": "Python 3.12 oder neuer",
+    "en": "Python 3.12 or later"
+  },
+  "settings.runtimeHint": {
+    "de": "Der lokale Build enthält eine Python-Laufzeit. Ein abweichender Interpreter kann ausdrücklich gewählt werden.",
+    "en": "The local build includes a Python runtime. You can explicitly select another interpreter."
+  },
+  "settings.choosePython": {
+    "de": "Interpreter auswählen …",
+    "en": "Choose interpreter …"
+  },
+  "settings.note": {
+    "de": "Eigene Agent-Authority-Einstellungen. Keine gemeinsame Konfiguration mit anderen Produkten.",
+    "en": "Independent Agent Authority preferences. No shared configuration with other products."
+  },
+  "metric.agents": {
+    "de": "Aktive Agenten",
+    "en": "Active agents"
+  },
+  "metric.delegations": {
+    "de": "Delegationen",
+    "en": "Delegations"
+  },
+  "metric.chains": {
+    "de": "Nachweisketten",
+    "en": "Evidence chains"
+  },
+  "metric.actions": {
+    "de": "Systemhandlungen",
+    "en": "System actions"
+  },
+  "metric.reported": {
+    "de": "Gemeldete Beiträge",
+    "en": "Reported entries"
+  },
+  "metric.tasks": {
+    "de": "Aufgabenbezüge",
+    "en": "Task associations"
+  },
+  "metric.warnings": {
+    "de": "Strukturelle Warnungen",
+    "en": "Structural warnings"
+  },
+  "metric.coverage": {
+    "de": "Aufnahme",
+    "en": "Read coverage"
+  },
+  "metric.demo": {
+    "de": "Beispielwert",
+    "en": "Sample value"
+  },
+  "metric.unavailable": {
+    "de": "Keine Messgrundlage",
+    "en": "No measurement basis"
+  },
+  "metric.complete": {
+    "de": "Vollständig im Leseumfang",
+    "en": "Complete within read scope"
+  },
+  "metric.incomplete": {
+    "de": "Aufnahme unvollständig",
+    "en": "Incomplete read"
+  },
+  "metric.sampleChains": {
+    "de": "{good} belegt · {missing} offen",
+    "en": "{good} verified · {missing} open"
+  },
+  "metric.sampleAgents": {
+    "de": "Registrierte Testidentitäten",
+    "en": "Registered test identities"
+  },
+  "metric.kernelOnly": {
+    "de": "Kernelbeobachtung · keine Agentenbindung",
+    "en": "Kernel observation · no agent binding"
+  },
+  "graph.title": {
+    "de": "Authority Graph",
+    "en": "Authority Graph"
+  },
+  "graph.subtitle": {
+    "de": "Identität → Authority → Delegation → Prozess → Handlung → Evidence",
+    "en": "Identity → authority → delegation → process → action → evidence"
+  },
+  "graph.chain": {
+    "de": "Kette",
+    "en": "Chain"
+  },
+  "graph.agents": {
+    "de": "Agenten",
+    "en": "Agents"
+  },
+  "graph.clusters": {
+    "de": "Gruppen",
+    "en": "Clusters"
+  },
+  "graph.all": {
+    "de": "Alle Zustände",
+    "en": "All states"
+  },
+  "graph.missing": {
+    "de": "Nachweise fehlen",
+    "en": "Missing evidence"
+  },
+  "graph.observed": {
+    "de": "Beobachtet / belegt",
+    "en": "Observed / verified"
+  },
+  "graph.search": {
+    "de": "Agent, PID, Evidence …",
+    "en": "Agent, PID, evidence …"
+  },
+  "graph.count": {
+    "de": "{visible} sichtbar · {total} insgesamt",
+    "en": "{visible} visible · {total} total"
+  },
+  "graph.hidden": {
+    "de": "{count} weitere Einträge nicht angezeigt",
+    "en": "{count} additional entries not displayed"
+  },
+  "graph.clusterCount": {
+    "de": "{count} Agenten",
+    "en": "{count} agents"
+  },
+  "graph.openCluster": {
+    "de": "Gruppe öffnen",
+    "en": "Expand group"
+  },
+  "graph.empty": {
+    "de": "Keine passenden Knoten. Quelle öffnen oder Filter zurücksetzen.",
+    "en": "No matching nodes. Open a source or reset filters."
+  },
+  "graph.verified": {
+    "de": "Belegte Beziehung",
+    "en": "Verified relationship"
+  },
+  "graph.reported": {
+    "de": "Gemeldet / Nachweis fehlt",
+    "en": "Reported / missing evidence"
+  },
+  "graph.cycle": {
+    "de": "Zyklus oder widersprüchliche Elternreferenz",
+    "en": "Cycle or contradictory parent reference"
+  },
+  "graph.root": {
+    "de": "Auftraggeber",
+    "en": "Originator"
+  },
+  "relation.identity": {
+    "de": "Identitätsanker",
+    "en": "Identity anchor"
+  },
+  "relation.authority": {
+    "de": "Authority ausgestellt",
+    "en": "Authority issued"
+  },
+  "relation.delegates": {
+    "de": "delegiert",
+    "en": "delegates"
+  },
+  "relation.bound": {
+    "de": "Prozessbindung",
+    "en": "process binding"
+  },
+  "relation.caused": {
+    "de": "beobachtete Handlung",
+    "en": "observed action"
+  },
+  "relation.reportedTask": {
+    "de": "gemeldeter Aufgabenbezug",
+    "en": "reported task association"
+  },
+  "relation.eventProcess": {
+    "de": "Kernel-Prozessinstanz",
+    "en": "kernel process instance"
+  },
+  "kind.agent": {
+    "de": "Agent",
+    "en": "Agent"
+  },
+  "kind.identity": {
+    "de": "Identität",
+    "en": "Identity"
+  },
+  "kind.authority": {
+    "de": "Authority",
+    "en": "Authority"
+  },
+  "kind.delegation": {
+    "de": "Delegation",
+    "en": "Delegation"
+  },
+  "kind.process": {
+    "de": "Prozessinstanz",
+    "en": "Process instance"
+  },
+  "kind.action": {
+    "de": "Systemhandlung",
+    "en": "System action"
+  },
+  "kind.evidence": {
+    "de": "Evidence",
+    "en": "Evidence"
+  },
+  "kind.task": {
+    "de": "Aufgabenbezug",
+    "en": "Task association"
+  },
+  "kind.entry": {
+    "de": "Meldung",
+    "en": "Reported entry"
+  },
+  "kind.cluster": {
+    "de": "Agentengruppe",
+    "en": "Agent cluster"
+  },
+  "status.reported": {
+    "de": "Gemeldet",
+    "en": "Reported"
+  },
+  "status.observed": {
+    "de": "Beobachtet",
+    "en": "Observed"
+  },
+  "status.verified": {
+    "de": "Belegt im Testscope",
+    "en": "Verified in test scope"
+  },
+  "status.incomplete": {
+    "de": "Nachweis lückenhaft",
+    "en": "Incomplete evidence"
+  },
+  "status.contradictory": {
+    "de": "Widersprüchlich",
+    "en": "Contradictory"
+  },
+  "status.unknown": {
+    "de": "Unbekannt",
+    "en": "Unknown"
+  },
+  "status.notChecked": {
+    "de": "Nicht geprüft",
+    "en": "Not checked"
+  },
+  "status.ready": {
+    "de": "Verfügbar",
+    "en": "Available"
+  },
+  "status.denied": {
+    "de": "Nicht freigegeben",
+    "en": "Not approved"
+  },
+  "status.needsSigning": {
+    "de": "Signierung erforderlich",
+    "en": "Signing required"
+  },
+  "status.needsApple": {
+    "de": "Apple-Entitlement erforderlich",
+    "en": "Apple entitlement required"
+  },
+  "status.notInstalled": {
+    "de": "Nicht installiert",
+    "en": "Not installed"
+  },
+  "status.busy": {
+    "de": "Wird geprüft …",
+    "en": "Checking …"
+  },
+  "inspector.title": {
+    "de": "INSPECTOR",
+    "en": "INSPECTOR"
+  },
+  "inspector.chain": {
+    "de": "Nachweiskette",
+    "en": "Evidence chain"
+  },
+  "inspector.raw": {
+    "de": "Rohdaten",
+    "en": "Raw data"
+  },
+  "inspector.empty": {
+    "de": "Knoten oder Tabellenzeile auswählen.",
+    "en": "Select a node or table row."
+  },
+  "inspector.selected": {
+    "de": "AUSWAHL",
+    "en": "SELECTION"
+  },
+  "inspector.origin": {
+    "de": "HERKUNFT DER ZUORDNUNG",
+    "en": "ATTRIBUTION CHAIN"
+  },
+  "inspector.integrity": {
+    "de": "Integrität & Abdeckung",
+    "en": "Integrity & coverage"
+  },
+  "inspector.signatures": {
+    "de": "Signaturen / Auftragsscope",
+    "en": "Signatures / job scope"
+  },
+  "inspector.binding": {
+    "de": "Prozessinstanz / Objektbindung",
+    "en": "Process instance / object binding"
+  },
+  "inspector.loss": {
+    "de": "Verlustkontrolle",
+    "en": "Loss accounting"
+  },
+  "inspector.boundary": {
+    "de": "Grenze des Nachweises",
+    "en": "Evidence boundary"
+  },
+  "inspector.source": {
+    "de": "Quelle",
+    "en": "Source"
+  },
+  "inspector.sampleExplanation": {
+    "de": "Synthetische Testidentitäten und Nachweise. Die ausgewählte Kette erklärt Herkunft, Delegation und Prozess-Handlung-Bezug.",
+    "en": "Synthetic test identities and evidence. The selected chain explains origin, delegation, and process-action attribution."
+  },
+  "inspector.productExplanation": {
+    "de": "Meldungen werden über Aufgabenbezüge verknüpft. Identität, Authority, Prozess und tatsächliche Wirkung sind durch diesen Produktvertrag nicht belegt.",
+    "en": "Entries are linked by reported task associations. This product contract does not prove identity, authority, process, or actual effects."
+  },
+  "inspector.liveExplanation": {
+    "de": "Das Kernelereignis enthält eine Prozessinstanz. Ein logischer Agent und eine externe Modellsitzung werden dadurch nicht authentisiert.",
+    "en": "The kernel event identifies a process instance. It does not authenticate a logical agent or external model session."
+  },
+  "boundary.sample": {
+    "de": "Beispieldaten. Keine verifizierte Provider- oder Modellsitzung, keine echte Messung.",
+    "en": "Sample data. No verified provider or model session, no actual measurement."
+  },
+  "boundary.product": {
+    "de": "Ein Dateifingerabdruck authentisiert keinen Verfasser. Ergebnisbeiträge beweisen keinen Vollzug. ordinal ist gespeicherte Reihenfolge, keine Kernelzeit.",
+    "en": "A file fingerprint does not authenticate its author. Result entries do not prove execution. ordinal is stored order, not kernel time."
+  },
+  "boundary.durable": {
+    "de": "Ein Schreibereignis beweist keine dauerhafte Speicherung.",
+    "en": "A write event does not prove durable storage."
+  },
+  "boundary.live": {
+    "de": "Agentenidentität und Authority bleiben unbekannt. Die Sequenzkontrolle gilt nur für den abonnierten Beobachtungsumfang.",
+    "en": "Agent identity and authority remain unknown. Sequence checks apply only to the subscribed observation scope."
+  },
+  "field.identity": {
+    "de": "Agentenidentität",
+    "en": "Agent identity"
+  },
+  "field.anchor": {
+    "de": "Vertrauensanker",
+    "en": "Trust anchor"
+  },
+  "field.authority": {
+    "de": "Authority",
+    "en": "Authority"
+  },
+  "field.provider": {
+    "de": "Providerbindung",
+    "en": "Provider binding"
+  },
+  "field.issuer": {
+    "de": "Aussteller",
+    "en": "Issuer"
+  },
+  "field.scope": {
+    "de": "Scope",
+    "en": "Scope"
+  },
+  "field.pid": {
+    "de": "PID",
+    "en": "PID"
+  },
+  "field.instance": {
+    "de": "Prozessinstanz",
+    "en": "Process instance"
+  },
+  "field.start": {
+    "de": "Start / Boot-Kontext",
+    "en": "Start / boot context"
+  },
+  "field.object": {
+    "de": "Dateiobjekt",
+    "en": "File object"
+  },
+  "field.effect": {
+    "de": "Tatsächliche Wirkung",
+    "en": "Actual effect"
+  },
+  "field.actor": {
+    "de": "Gemeldeter Actor",
+    "en": "Reported actor"
+  },
+  "field.ordinal": {
+    "de": "Gespeicherte Reihenfolge",
+    "en": "Stored order"
+  },
+  "field.sha256": {
+    "de": "Dateifingerabdruck SHA-256",
+    "en": "File fingerprint SHA-256"
+  },
+  "field.basis": {
+    "de": "Zuordnungsbasis",
+    "en": "Association basis"
+  },
+  "field.evidence": {
+    "de": "Nachweisreferenzen",
+    "en": "Evidence references"
+  },
+  "field.uid": {
+    "de": "Benutzerkennung",
+    "en": "User identifier"
+  },
+  "field.signing": {
+    "de": "Codesignatur",
+    "en": "Code signature"
+  },
+  "field.sequence": {
+    "de": "Ereignissequenz",
+    "en": "Event sequence"
+  },
+  "field.loss": {
+    "de": "Gemessene Sequenzlücken",
+    "en": "Measured sequence gaps"
+  },
+  "field.version": {
+    "de": "Nachrichtenversion",
+    "en": "Message version"
+  },
+  "basis.task": {
+    "de": "Nur gemeldete Aufgabenkennung",
+    "en": "Reported task identifier only"
+  },
+  "demo.coordinator": {
+    "de": "Koordinator A",
+    "en": "Coordinator A"
+  },
+  "demo.testCA": {
+    "de": "Test-CA",
+    "en": "Test CA"
+  },
+  "demo.controller": {
+    "de": "Test-Controller",
+    "en": "Test controller"
+  },
+  "demo.authority": {
+    "de": "Testauftrag J-024",
+    "en": "Test job J-024"
+  },
+  "demo.scope": {
+    "de": "Dateischreibzugriff · Testziel",
+    "en": "File write · test target"
+  },
+  "demo.synthetic": {
+    "de": "Synthetisches Beispiel",
+    "en": "Synthetic example"
+  },
+  "demo.write": {
+    "de": "Datei schreiben",
+    "en": "Write file"
+  },
+  "entry.note": {
+    "de": "Notiz gemeldet",
+    "en": "Note reported"
+  },
+  "entry.task": {
+    "de": "Auftrag gemeldet",
+    "en": "Task reported"
+  },
+  "entry.claimed": {
+    "de": "Übernahme gemeldet",
+    "en": "Claim reported"
+  },
+  "entry.progress": {
+    "de": "Fortschritt gemeldet",
+    "en": "Progress reported"
+  },
+  "entry.result": {
+    "de": "Ergebnis gemeldet",
+    "en": "Result reported"
+  },
+  "entry.decision": {
+    "de": "Entscheidung gemeldet",
+    "en": "Decision reported"
+  },
+  "entry.problem": {
+    "de": "Problem gemeldet",
+    "en": "Problem reported"
+  },
+  "entry.question": {
+    "de": "Frage gemeldet",
+    "en": "Question reported"
+  },
+  "entry.system": {
+    "de": "Systembeitrag gemeldet",
+    "en": "System entry reported"
+  },
+  "entry.plan": {
+    "de": "Plan gemeldet",
+    "en": "Plan reported"
+  },
+  "entry.handoff": {
+    "de": "Übergabe gemeldet",
+    "en": "Handoff reported"
+  },
+  "activity.title": {
+    "de": "Handlungen & Meldungen im Fokus",
+    "en": "Actions & entries in focus"
+  },
+  "activity.kind": {
+    "de": "Typ",
+    "en": "Type"
+  },
+  "activity.name": {
+    "de": "Handlung / Meldung",
+    "en": "Action / entry"
+  },
+  "activity.agent": {
+    "de": "Agent / Prozess",
+    "en": "Agent / process"
+  },
+  "activity.status": {
+    "de": "Nachweisstatus",
+    "en": "Evidence status"
+  },
+  "activity.evidence": {
+    "de": "Evidence",
+    "en": "Evidence"
+  },
+  "activity.count": {
+    "de": "{count} Einträge im Scope",
+    "en": "{count} entries in scope"
+  },
+  "findings.none": {
+    "de": "Keine strukturellen Warnungen im gelesenen Umfang. Identität und Wirkung bleiben unbekannt.",
+    "en": "No structural warnings in the read scope. Identity and effects remain unknown."
+  },
+  "findings.sample": {
+    "de": "Offene Testketten sind ausdrücklich als lückenhaft oder unbekannt markiert.",
+    "en": "Open sample chains are explicitly marked incomplete or unknown."
+  },
+  "source.title": {
+    "de": "Neutrale Beobachtungsquelle wählen",
+    "en": "Choose neutral observation source"
+  },
+  "source.identifier": {
+    "de": "Quellenkennung",
+    "en": "Source identifier"
+  },
+  "source.identifierHint": {
+    "de": "ASCII: Buchstaben, Ziffern, Punkt, Bindestrich, Unterstrich; maximal 128 Zeichen.",
+    "en": "ASCII: letters, digits, dots, hyphens, underscores; up to 128 characters."
+  },
+  "source.loading": {
+    "de": "Quelle wird begrenzt gelesen …",
+    "en": "Reading source within limits …"
+  },
+  "source.empty": {
+    "de": "Noch keine Quelle geöffnet.",
+    "en": "No source opened yet."
+  },
+  "source.noRuntime": {
+    "de": "Die Python-Laufzeit fehlt. In den Einstellungen Python 3.12 oder neuer auswählen.",
+    "en": "Python runtime missing. Select Python 3.12 or later in Settings."
+  },
+  "source.invalid": {
+    "de": "Die Quelle oder der Bericht entspricht nicht dem erwarteten Vertrag.",
+    "en": "Source or report does not match the expected contract."
+  },
+  "source.failed": {
+    "de": "Die Aufnahme ist fehlgeschlagen. Quelle, Interpreter und Zugriffsrechte prüfen.",
+    "en": "Read failed. Check source, interpreter, and access permissions."
+  },
+  "source.timeout": {
+    "de": "Die Aufnahme wurde wegen Zeit- oder Ausgabegrenzen beendet.",
+    "en": "Read stopped due to time or output limits."
+  },
+  "source.cancelled": {
+    "de": "Aufnahme abgebrochen.",
+    "en": "Read cancelled."
+  },
+  "source.confirm": {
+    "de": "Quelle nur lesend aufnehmen",
+    "en": "Read source without modifying it"
+  },
+  "export.title": {
+    "de": "Agent-Authority-Nachweise sichern",
+    "en": "Save Agent Authority evidence"
+  },
+  "export.error": {
+    "de": "Die Nachweise konnten nicht gespeichert werden.",
+    "en": "Could not save evidence."
+  },
+  "export.success": {
+    "de": "Nachweise gespeichert.",
+    "en": "Evidence saved."
+  },
+  "help.body": {
+    "de": "⌘O Quelle öffnen · ⌘F suchen · Tab/Pfeiltasten/Enter auswählen · +/− zoomen · 0 einpassen · Rechtsklick für Kontextaktionen. Der Graph zeigt Beobachtung und Analyse. Meldungen, Signaturen, Prozessbindings, Wirkungen und Abdeckung werden getrennt bewertet.",
+    "en": "⌘O open source · ⌘F search · Tab/arrows/Enter select · +/− zoom · 0 fit · right-click for context actions. The graph shows observation and analysis. Claims, signatures, process bindings, effects, and coverage are evaluated separately."
+  },
+  "host.title": {
+    "de": "macOS-Berechtigungen & Testhost",
+    "en": "macOS permissions & test host"
+  },
+  "host.intro": {
+    "de": "Freigaben werden für die tatsächlich ausführende Komponente geprüft. Die Haupt-App läuft ohne Rootrechte. Testprozesse starten direkt aus dieser App.",
+    "en": "Permissions are checked for the actual executing component. The main app runs without root privileges. Test processes launch directly from this app."
+  },
+  "host.files": {
+    "de": "Quellen- und Testordner",
+    "en": "Source and test folders"
+  },
+  "host.filesDetail": {
+    "de": "Ordner über den nativen Auswahldialog freigeben. Für ungeschützte Testordner ist kein pauschaler Vollzugriff nötig.",
+    "en": "Authorize a folder through the native picker. An unprotected test folder does not need full disk access."
+  },
+  "host.ax": {
+    "de": "Bedienungshilfen",
+    "en": "Accessibility"
+  },
+  "host.axDetail": {
+    "de": "Für ausdrücklich angeforderte UI-Tests; kein Kanal für Dateischreibzuordnung.",
+    "en": "For explicitly requested UI tests; not a file-writer attribution channel."
+  },
+  "host.screen": {
+    "de": "Bildschirmaufnahme",
+    "en": "Screen recording"
+  },
+  "host.screenDetail": {
+    "de": "Nur für visuelle Testnachweise. Eine Ablehnung beeinflusst keine Dateiquellen.",
+    "en": "Only for visual test evidence. Denial does not affect file sources."
+  },
+  "host.automation": {
+    "de": "Automation",
+    "en": "Automation"
+  },
+  "host.automationDetail": {
+    "de": "Apple-Events-Freigabe je gewählter Ziel-App. Eigene Testprozesse benötigen keine Terminal-Automation.",
+    "en": "Apple Events permission per selected target app. Own test processes need no Terminal automation."
+  },
+  "host.automationTarget": {
+    "de": "Ziel-App auswählen …",
+    "en": "Choose target app …"
+  },
+  "host.fda": {
+    "de": "Vollzugriff auf Festplatten",
+    "en": "Full Disk Access"
+  },
+  "host.fdaDetail": {
+    "de": "Benutzer erteilt den Zugriff in macOS. Die ES-Erweiterung prüft ihren eigenen Zugriff über es_new_client; die Haupt-App kann ihn nicht stellvertretend bestätigen.",
+    "en": "User grants access in macOS. The ES extension checks its own access through es_new_client; the main app cannot confirm it on its behalf."
+  },
+  "host.es": {
+    "de": "Endpoint-Security-Collector",
+    "en": "Endpoint Security collector"
+  },
+  "host.esDetail": {
+    "de": "Apple-Entitlement, gültige Codesignatur, Systemerweiterungsfreigabe und Collector-FDA sind erforderlich. Nur NOTIFY-Ereignisse; keine Freigabeentscheidungen.",
+    "en": "Requires Apple entitlement, valid code signing, system extension approval, and collector FDA. NOTIFY events only; no authorization decisions."
+  },
+  "host.entitlement": {
+    "de": "Apple-Entitlement beantragen",
+    "en": "Request Apple entitlement"
+  },
+  "host.signing": {
+    "de": "Auf diesem Build fehlen genehmigte Signierung oder Provisioning. Lokale Metadatenproben sind verfügbar; der unabhängige Writer-Test bleibt gesperrt.",
+    "en": "This build lacks approved signing or provisioning. Local metadata probes are available; the independent writer test remains blocked."
+  },
+  "host.boundaries": {
+    "de": "SIP bleibt aktiv. Root, FDA oder eine Prozesssignatur beglaubigen keine externe Agentensitzung. Fehlende Ereignisse bleiben unbekannt.",
+    "en": "SIP stays enabled. Root, FDA, or a process signature do not authenticate an external agent session. Missing events remain unknown."
+  },
+  "host.probe": {
+    "de": "Lokale Prozessprobe",
+    "en": "Local process probe"
+  },
+  "host.probeDetail": {
+    "de": "Prüft den eigenen Testprozess und Metadaten im App-Kontext. Kein Beweis eines unabhängigen Dateiwriters.",
+    "en": "Checks own test process and metadata in app context. Does not prove an independent file writer."
+  },
+  "host.writer": {
+    "de": "Sechs Writer-Kontrollen",
+    "en": "Six writer controls"
+  },
+  "host.writerDetail": {
+    "de": "A schreibt, B untätig, C anderes Ziel, Kindprozess, falscher PID-Claim, zwei Writer. Benötigt einen laufenden unabhängigen Collector mit Verlustkontrolle.",
+    "en": "A writes, B idle, C other target, child process, forged PID claim, two writers. Requires a running independent collector with loss accounting."
+  },
+  "host.probeResult": {
+    "de": "Prozessprobe beendet. Eigenprozess-Metadaten erfasst; Agentenidentität und Dateiwirkung nicht bewiesen.",
+    "en": "Process probe completed. Own-process metadata captured; agent identity and file effects not proven."
+  },
+  "host.extensionWaiting": {
+    "de": "macOS wartet auf deine Systemerweiterungsfreigabe.",
+    "en": "macOS is waiting for your system extension approval."
+  },
+  "host.extensionDone": {
+    "de": "Aktivierungsanfrage abgeschlossen. Collector-Verbindung und FDA separat prüfen.",
+    "en": "Activation request completed. Check collector connection and FDA separately."
+  },
+  "host.extensionReboot": {
+    "de": "Die Aktivierung wird nach einem Neustart wirksam.",
+    "en": "Activation takes effect after a restart."
+  },
+  "host.extensionError": {
+    "de": "Systemerweiterung nicht aktiviert. Signierung, Entitlement und macOS-Freigabe prüfen.",
+    "en": "System extension not activated. Check signing, entitlement, and macOS approval."
+  },
+  "host.collectorUnavailable": {
+    "de": "Collector nicht verfügbar. Entitlement, Aktivierung und FDA prüfen.",
+    "en": "Collector unavailable. Check entitlement, activation, and FDA."
+  },
+  "host.collectorReady": {
+    "de": "Collector verbunden. Ereignis- und Verluststatus werden separat erfasst.",
+    "en": "Collector connected. Events and loss status are captured separately."
+  },
+  "host.unknown": {
+    "de": "Nicht geprüft; kein globaler TCC-Status wird ausgelesen.",
+    "en": "Not checked; no global TCC state is read."
+  },
+  "host.saved": {
+    "de": "Testnachweise exportieren …",
+    "en": "Export test evidence …"
+  },
+  "host.writerBlocked": {
+    "de": "Nicht ausgeführt: unabhängiger Collector ist nicht qualifiziert. Keine erfolgreiche Writer-Zuordnung behauptet.",
+    "en": "Not executed: independent collector is not qualified. No successful writer attribution claimed."
+  },
+  "host.writerDone": {
+    "de": "Test abgeschlossen. Ergebnisse und Grenzen im Evidence-Bericht.",
+    "en": "Test completed. Results and boundaries are in the evidence report."
+  },
+  "error.title": {
+    "de": "Agent Authority",
+    "en": "Agent Authority"
+  },
+  "error.details": {
+    "de": "Technischer Befund",
+    "en": "Technical finding"
+  },
+  "error.unsupported": {
+    "de": "Diese Funktion ist auf diesem Build nicht verfügbar.",
+    "en": "This function is not available in this build."
+  },
+  "statusShort.verified": {
+    "de": "Belegt",
+    "en": "Verified"
+  },
+  "statusShort.observed": {
+    "de": "Beobachtet",
+    "en": "Observed"
+  },
+  "statusShort.reported": {
+    "de": "Gemeldet",
+    "en": "Reported"
+  },
+  "statusShort.incomplete": {
+    "de": "Nachweis fehlt",
+    "en": "Evidence missing"
+  },
+  "statusShort.unknown": {
+    "de": "Unbekannt",
+    "en": "Unknown"
+  },
+  "statusShort.contradictory": {
+    "de": "Widerspruch",
+    "en": "Contradiction"
+  },
+  "field.diagnostic": {
+    "de": "Diagnosecode",
+    "en": "Diagnostic code"
+  },
+  "relation.evidence": {
+    "de": "Nachweisreferenz",
+    "en": "evidence reference"
+  },
+  "diagnostic.invalid_thread_id": {
+    "de": "Quellenkennung ungültig",
+    "en": "Invalid source identifier"
+  },
+  "diagnostic.invalid_source_id": {
+    "de": "Quellenkennung entspricht nicht dem Vertrag",
+    "en": "Source identifier does not match contract"
+  },
+  "diagnostic.unsupported_reader_platform": {
+    "de": "Sicherer Reader auf dieser Plattform nicht verfügbar",
+    "en": "Secure reader unavailable on this platform"
+  },
+  "diagnostic.source_unavailable": {
+    "de": "Quelle nicht vollständig lesbar",
+    "en": "Source not fully readable"
+  },
+  "diagnostic.directory_limit": {
+    "de": "Verzeichnisgrenze erreicht; Gesamtzahl unbekannt",
+    "en": "Directory limit reached; total count unknown"
+  },
+  "diagnostic.input_byte_limit": {
+    "de": "Bytebudget erreicht; Aufnahme unvollständig",
+    "en": "Byte budget reached; incomplete read"
+  },
+  "diagnostic.input_limit": {
+    "de": "Dateigrenze erreicht; weitere Dateien nicht gelesen",
+    "en": "File limit reached; additional files not read"
+  },
+  "diagnostic.invalid_filename": {
+    "de": "Ungültige Eintragskennung im Dateinamen",
+    "en": "Invalid entry identifier in filename"
+  },
+  "diagnostic.unreadable_entry": {
+    "de": "Eintrag nicht als reguläre Datei lesbar",
+    "en": "Entry not readable as a regular file"
+  },
+  "diagnostic.nonregular_entry": {
+    "de": "Nichtreguläre Eintragsdatei ausgelassen",
+    "en": "Nonregular entry file omitted"
+  },
+  "diagnostic.entry_too_large": {
+    "de": "Eintrag überschreitet die Größengrenze",
+    "en": "Entry exceeds size limit"
+  },
+  "diagnostic.invalid_json": {
+    "de": "Ungültiges oder mehrdeutiges JSON",
+    "en": "Invalid or ambiguous JSON"
+  },
+  "diagnostic.invalid_entry": {
+    "de": "Eintrag entspricht nicht dem Feldvertrag",
+    "en": "Entry does not match field contract"
+  },
+  "diagnostic.entry_identity_mismatch": {
+    "de": "Datei- und Quellenzuordnung widersprechen sich",
+    "en": "File and source references conflict"
+  },
+  "diagnostic.source_changed": {
+    "de": "Quelle während der Aufnahme verändert",
+    "en": "Source changed during read"
+  },
+  "diagnostic.ordinal_collision": {
+    "de": "Gespeicherte Reihenfolge mehrdeutig",
+    "en": "Stored order is ambiguous"
+  },
+  "host.privilege": {
+    "de": "Collector hat keinen vorgesehenen privilegierten Ausführungskontext.",
+    "en": "Collector lacks its expected privileged execution context."
+  },
+  "host.collectorError": {
+    "de": "ES-Client konnte nicht initialisiert werden. Technischen Befund prüfen.",
+    "en": "ES client could not initialize. Check the technical finding."
+  },
+  "status.selected": {
+    "de": "Ordner ausgewählt; Inhalt separat prüfen",
+    "en": "Folder selected; check content separately"
+  },
+  "field.internalDelegations": {
+    "de": "Innere Delegationen",
+    "en": "Internal delegations"
+  },
+  "field.externalRelationships": {
+    "de": "Äußere Verbindungen",
+    "en": "External relationships"
+  }
+}
