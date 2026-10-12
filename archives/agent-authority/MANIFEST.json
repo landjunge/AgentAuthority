@@ -1,0 +1,573 @@
+{
+  "basis_commit": "e72dc38dc87a87a786386f2cf961d94ea3c46769",
+  "target": "master",
+  "tests_executed": false,
+  "experiments_executed": false,
+  "new_features": false,
+  "archives": [
+    {
+      "source_commit": "f94f444e383052d04e2ef22bfed4ec03512cb066",
+      "source_branches": [
+        "refs/remotes/origin/feat/observer-wb-automation"
+      ],
+      "archive": "historical-observer-pr19-f94f444.tar.gz",
+      "sha256": "01ece87d80c0cd7e5aac02c39f2b8faadddf427a06a16b83f035283d408f2973",
+      "bytes": 648102,
+      "files": 474,
+      "original_blobs_preserved": true,
+      "activation": "historical source archive only"
+    },
+    {
+      "source_commit": "4be9a61d9659d4f36347f0ad705369032b8c0a7c",
+      "source_branches": [
+        "refs/remotes/origin/research/observer-resource-epoch-2026-10-08"
+      ],
+      "archive": "resource-epoch-first-run-4be9a61.tar.gz",
+      "sha256": "f9677ead1fc2b2db2c75f19a6a28deb1e3cf192fb084b99214937498969f829b",
+      "bytes": 361414,
+      "files": 221,
+      "original_blobs_preserved": true,
+      "activation": "historical source archive only"
+    },
+    {
+      "source_commit": "b24a6305faecc46ec673dea8207b2ab83ab655df",
+      "source_branches": [
+        "refs/remotes/origin/service/v0.1-authority"
+      ],
+      "archive": "historical-authority-gateway-b24a630.tar.gz",
+      "sha256": "6bac49e6c09141343ca3d1f9d51046e15a69824692acd4ef4945775da4a8835d",
+      "bytes": 157981,
+      "files": 139,
+      "original_blobs_preserved": true,
+      "activation": "historical source archive only"
+    },
+    {
+      "source_commit": "2600a8deebcff98dc709b426603cd098d4605e1b",
+      "source_branches": [
+        "refs/remotes/origin/fix/atomic-workflow-hardening"
+      ],
+      "archive": "historical-runtime-hardening-2600a8d.tar.gz",
+      "sha256": "23b70f70c45547122431c628a1c1f44e7a6451bb70421131eb0af64903b9f856",
+      "bytes": 84658,
+      "files": 84,
+      "original_blobs_preserved": true,
+      "activation": "historical source archive only"
+    }
+  ],
+  "integrated_heads": [
+    {
+      "ref": "refs/heads/ci/quality-gates",
+      "sha": "1b927f38c22372163ef9bddb20f5ab48f7812227",
+      "previous": "ee04d81bb4bf856a55a112a310ae2785c45711b1",
+      "merge_commit": "6bdf3f18aa4885989a5f1ac41df025ad5902753e",
+      "result": "integrated",
+      "conflicts": [
+        {
+          "path": ".github/workflows/ci.yml",
+          "retained_blob": "054c8e7310be948e0b5de2b55f616862a03e366d",
+          "reason": "published integrated and subsequently amended live contract; original branch preserved in merge ancestry"
+        },
+        {
+          "path": ".github/workflows/codeql.yml",
+          "retained_blob": "5c46f305365243ad03742240135751bc044c6a9c",
+          "reason": "published integrated and subsequently amended live contract; original branch preserved in merge ancestry"
+        }
+      ]
+    },
+    {
+      "ref": "refs/heads/codex/a1-a4-comparison-20261012",
+      "sha": "e72dc38dc87a87a786386f2cf961d94ea3c46769",
+      "result": "already ancestor"
+    },
+    {
+      "ref": "refs/heads/docs/archive-realcase-v1",
+      "sha": "bb1023578f8ee613e47ec32ba9c72bfea41882c3",
+      "previous": "6bdf3f18aa4885989a5f1ac41df025ad5902753e",
+      "merge_commit": "21c0bdeb163845889907a30c28e24cf233144c3e",
+      "result": "integrated",
+      "conflicts": [
+        {
+          "path": "README.md",
+          "retained_blob": "3717e1c689ae0f8135542541b0def8dffde1f4fc",
+          "reason": "published integrated and subsequently amended live contract; original branch preserved in merge ancestry"
+        }
+      ]
+    },
+    {
+      "ref": "refs/heads/docs/convergence-battery-protocol-amendment",
+      "sha": "815d959a06ceb16f4f52aade15b3d72652b41be2",
+      "previous": "21c0bdeb163845889907a30c28e24cf233144c3e",
+      "merge_commit": "382a98b723acc560fe3e6de701d7daf3c6384cb3",
+      "result": "integrated",
+      "conflicts": []
+    },
+    {
+      "ref": "refs/heads/exp/convergence-attack-catalog-v1",
+      "sha": "b7adcd8f85b0e680848c9a07dccca474b07ab3d9",
+      "previous": "382a98b723acc560fe3e6de701d7daf3c6384cb3",
+      "merge_commit": "c4356745bcd15a4f867ed30df8cf26909e2a3ae6",
+      "result": "integrated",
+      "conflicts": [
+        {
+          "path": "README.md",
+          "retained_blob": "3717e1c689ae0f8135542541b0def8dffde1f4fc",
+          "reason": "published integrated and subsequently amended live contract; original branch preserved in merge ancestry"
+        },
+        {
+          "path": "tests/convergence/catalog.py",
+          "retained_blob": "4facfd649fff15f916e705c1d85196dc39c0c943",
+          "reason": "published integrated and subsequently amended live contract; original branch preserved in merge ancestry"
+        }
+      ]
+    },
+    {
+      "ref": "refs/heads/exp/convergence-battery-score",
+      "sha": "a732493e033bd2df8bbd1c0a16bb135693c57257",
+      "previous": "c4356745bcd15a4f867ed30df8cf26909e2a3ae6",
+      "merge_commit": "8e366f2d107a044b1dd3f610a1bffbd60365ba4c",
+      "result": "integrated",
+      "conflicts": [
+        {
+          "path": "README.md",
+          "retained_blob": "3717e1c689ae0f8135542541b0def8dffde1f4fc",
+          "reason": "published integrated and subsequently amended live contract; original branch preserved in merge ancestry"
+        },
+        {
+          "path": "tests/convergence/fp_panel.py",
+          "retained_blob": "b013af82170f182eed2b293a476305e66f7b1eba",
+          "reason": "published integrated and subsequently amended live contract; original branch preserved in merge ancestry"
+        },
+        {
+          "path": "tests/convergence/score.py",
+          "retained_blob": "18839d662c161b57d03b42bb67f96a46f7d508f9",
+          "reason": "published integrated and subsequently amended live contract; original branch preserved in merge ancestry"
+        }
+      ]
+    },
+    {
+      "ref": "refs/heads/exp/convergence-battery-v1",
+      "sha": "d1e45f3148a8bbb765c3d96f11741411e77c1c61",
+      "previous": "8e366f2d107a044b1dd3f610a1bffbd60365ba4c",
+      "merge_commit": "b8e55f5d4dc28d0542ab71713d2b049562d815f3",
+      "result": "integrated",
+      "conflicts": [
+        {
+          "path": "docs/CONVERGENCE-BATTERY-v1.md",
+          "retained_blob": "cbbd18b5f716e3b16480261f96275d421f9da7f5",
+          "reason": "published integrated and subsequently amended live contract; original branch preserved in merge ancestry"
+        }
+      ]
+    },
+    {
+      "ref": "refs/heads/feat/authority-emit-g3",
+      "sha": "09cbf153ed07f01492ccbe884e744e7f50911408",
+      "previous": "b8e55f5d4dc28d0542ab71713d2b049562d815f3",
+      "merge_commit": "9aeb48596430df4f00f87d1fafe128c0f1cfaeda",
+      "result": "integrated",
+      "conflicts": [
+        {
+          "path": "README.md",
+          "retained_blob": "3717e1c689ae0f8135542541b0def8dffde1f4fc",
+          "reason": "published integrated and subsequently amended live contract; original branch preserved in merge ancestry"
+        },
+        {
+          "path": "lab/authority_emit.py",
+          "retained_blob": "2ce7060f5c49f0fbec8fbb60bb3bc56cf981c150",
+          "reason": "published integrated and subsequently amended live contract; original branch preserved in merge ancestry"
+        },
+        {
+          "path": "lab/validator.py",
+          "retained_blob": "a45a1b40eaf2e6a487040bb3763b2fcfe2e2b466",
+          "reason": "published integrated and subsequently amended live contract; original branch preserved in merge ancestry"
+        }
+      ]
+    },
+    {
+      "ref": "refs/heads/fix/historical-entry-kinds-20261011",
+      "sha": "9de7290dd1be82fca493102048622e6b75908c9f",
+      "previous": "9aeb48596430df4f00f87d1fafe128c0f1cfaeda",
+      "merge_commit": "abb228c4fdd5505cfab4e8c0f4b5822945244830",
+      "result": "integrated",
+      "conflicts": []
+    },
+    {
+      "ref": "refs/heads/fix/lifecycle-atomicity",
+      "sha": "62ea19c165d0fbbee764b71b432adda9b9a5b98d",
+      "previous": "abb228c4fdd5505cfab4e8c0f4b5822945244830",
+      "merge_commit": "943258e6eab16a53a12a6278e725738ef403a786",
+      "result": "integrated",
+      "conflicts": [
+        {
+          "path": "docs/OUT-OF-SCOPE-DEBT.md",
+          "retained_blob": "446b02d594d711bcf939a7589fdbd70a4d4a2356",
+          "reason": "published integrated and subsequently amended live contract; original branch preserved in merge ancestry"
+        },
+        {
+          "path": "lab/validator.py",
+          "retained_blob": "a45a1b40eaf2e6a487040bb3763b2fcfe2e2b466",
+          "reason": "published integrated and subsequently amended live contract; original branch preserved in merge ancestry"
+        },
+        {
+          "path": "tests/test_workflow_lifecycle_atomicity.py",
+          "retained_blob": "f5105f92a533614584ca50f679303b664014c3f0",
+          "reason": "published integrated and subsequently amended live contract; original branch preserved in merge ancestry"
+        }
+      ]
+    },
+    {
+      "ref": "refs/heads/grok/quality-clean-20261011",
+      "sha": "ab7911f829e7991643dcce5d202f5b87b7aa3a8d",
+      "previous": "943258e6eab16a53a12a6278e725738ef403a786",
+      "merge_commit": "4769461d6cbee6311af5ff75513c90098a492577",
+      "result": "integrated",
+      "conflicts": [
+        {
+          "path": ".github/workflows/ci.yml",
+          "retained_blob": "054c8e7310be948e0b5de2b55f616862a03e366d",
+          "reason": "published integrated and subsequently amended live contract; original branch preserved in merge ancestry"
+        }
+      ]
+    },
+    {
+      "ref": "refs/heads/import/realcase-tests-v1",
+      "sha": "196c084ea3b080e2fb5f8b0745ef741de1d47fed",
+      "previous": "4769461d6cbee6311af5ff75513c90098a492577",
+      "merge_commit": "79d17477c026734ea4f6f6f3b465e046e2d8eeda",
+      "result": "integrated",
+      "conflicts": [
+        {
+          "path": "README.md",
+          "retained_blob": "3717e1c689ae0f8135542541b0def8dffde1f4fc",
+          "reason": "published integrated and subsequently amended live contract; original branch preserved in merge ancestry"
+        },
+        {
+          "path": "docs/OUT-OF-SCOPE-DEBT.md",
+          "retained_blob": "446b02d594d711bcf939a7589fdbd70a4d4a2356",
+          "reason": "published integrated and subsequently amended live contract; original branch preserved in merge ancestry"
+        },
+        {
+          "path": "tests/realcase/catalog.py",
+          "retained_blob": "7c76cc9367c3e84c0937658138bcaa645211626e",
+          "reason": "published integrated and subsequently amended live contract; original branch preserved in merge ancestry"
+        },
+        {
+          "path": "tests/realcase/run_matrix.py",
+          "retained_blob": "c925a31d81b26a6b0fde8d1d8930a1b4765f57dc",
+          "reason": "published integrated and subsequently amended live contract; original branch preserved in merge ancestry"
+        },
+        {
+          "path": "tests/realcase/test_oracles.py",
+          "retained_blob": "4f734769fc78c9f537481d1c97ba153565b16ff0",
+          "reason": "published integrated and subsequently amended live contract; original branch preserved in merge ancestry"
+        },
+        {
+          "path": "tests/realcase/test_security_expectations.py",
+          "retained_blob": "7d3cf05bcc694bcf4b29def1070065a81d84212e",
+          "reason": "published integrated and subsequently amended live contract; original branch preserved in merge ancestry"
+        }
+      ]
+    },
+    {
+      "ref": "refs/remotes/origin/codex/native-origin-fix-20261011",
+      "sha": "c9e665a9bdb354cdad96f54b64d3e85355f5a260",
+      "previous": "79d17477c026734ea4f6f6f3b465e046e2d8eeda",
+      "merge_commit": "e96f4fffe62eba23800d1730d761657c9119186c",
+      "result": "integrated",
+      "conflicts": []
+    },
+    {
+      "ref": "refs/remotes/origin/codex/native-origin-module-20261011",
+      "sha": "4e3d02e15f03bcabcdcb919748ec6f4c16387f2b",
+      "previous": "e96f4fffe62eba23800d1730d761657c9119186c",
+      "merge_commit": "4deeb47daa4826123a75834250153229b18be28e",
+      "result": "integrated",
+      "conflicts": [
+        {
+          "path": "docs/NATIVE-HERKUNFTSMODUL-20261011.md",
+          "retained_blob": "b98a6e7dd068a893700b71bd61104d1817b2fce8",
+          "reason": "published integrated and subsequently amended live contract; original branch preserved in merge ancestry"
+        },
+        {
+          "path": "lab/origin/macos.py",
+          "retained_blob": "77c38af0fda0a96fe5e3cb25aa67f4605a285cf4",
+          "reason": "published integrated and subsequently amended live contract; original branch preserved in merge ancestry"
+        },
+        {
+          "path": "lab/origin/receiver.py",
+          "retained_blob": "aaf4901e51d52dc5d25f77f29fb5cd34f3b51e32",
+          "reason": "published integrated and subsequently amended live contract; original branch preserved in merge ancestry"
+        },
+        {
+          "path": "lab/origin/transport.py",
+          "retained_blob": "323c2689e5d7d6acf445dbb3b0ccdc6b9c2116bd",
+          "reason": "published integrated and subsequently amended live contract; original branch preserved in merge ancestry"
+        },
+        {
+          "path": "tests/test_native_origin.py",
+          "retained_blob": "7128a48b90e6fbf0d4437c872e162f05467698ba",
+          "reason": "published integrated and subsequently amended live contract; original branch preserved in merge ancestry"
+        }
+      ]
+    },
+    {
+      "ref": "refs/remotes/origin/codex/origin-diagnostics-20261011",
+      "sha": "7b3ecf57702c441aab5da79f2bdf59a91345ee6f",
+      "previous": "4deeb47daa4826123a75834250153229b18be28e",
+      "merge_commit": "fe68e78b78835066982de93cf0cb331bec675fb6",
+      "result": "integrated",
+      "conflicts": [
+        {
+          "path": "scripts/local_process_evidence.py",
+          "retained_blob": "83a4c6fb60ffa49a2652d8eb24e74709e8f1c951",
+          "reason": "published integrated and subsequently amended live contract; original branch preserved in merge ancestry"
+        }
+      ]
+    },
+    {
+      "ref": "refs/remotes/origin/codex/origin-utc-cleanup-20261011",
+      "sha": "c28bda60319bb3fa7f7e22657a15cec8281c4b5c",
+      "previous": "fe68e78b78835066982de93cf0cb331bec675fb6",
+      "merge_commit": "ac238bb5cd06704417c05b1d762d234bf6dd915e",
+      "result": "integrated",
+      "conflicts": []
+    },
+    {
+      "ref": "refs/remotes/origin/codex/p6-abschlussdokumentation-20261011",
+      "sha": "ac8ed88e060b505be5b5d7c2b464f57710106b5b",
+      "previous": "ac238bb5cd06704417c05b1d762d234bf6dd915e",
+      "merge_commit": "14d04c8536e6729220c6c08ec4d84bd467180749",
+      "result": "integrated",
+      "conflicts": []
+    },
+    {
+      "ref": "refs/remotes/origin/codex/p6-formal-acceptance-20261010",
+      "sha": "84d0320570e6217fad013a7b15fe77a29fc8aece",
+      "previous": "14d04c8536e6729220c6c08ec4d84bd467180749",
+      "merge_commit": "d65f21a1ebd32c98ba892262e0eccd25a3d5a637",
+      "result": "integrated",
+      "conflicts": [
+        {
+          "path": "docs/P6-HERKUNFTSGRENZEN.md",
+          "retained_blob": "91129d8e5775868f5299423fec930b523babf794",
+          "reason": "published integrated and subsequently amended live contract; original branch preserved in merge ancestry"
+        }
+      ]
+    },
+    {
+      "ref": "refs/remotes/origin/codex/p6-marker-regression-20261010",
+      "sha": "df5100d94ef73b56e744dcbbb8d0d42be3cf5187",
+      "previous": "d65f21a1ebd32c98ba892262e0eccd25a3d5a637",
+      "merge_commit": "77326423d1757500a771e0cbde2e365f38deb9dc",
+      "result": "integrated",
+      "conflicts": [
+        {
+          "path": "docs/P6-HERKUNFTSGRENZEN.md",
+          "retained_blob": "91129d8e5775868f5299423fec930b523babf794",
+          "reason": "published integrated and subsequently amended live contract; original branch preserved in merge ancestry"
+        }
+      ]
+    },
+    {
+      "ref": "refs/remotes/origin/codex/p6-status-correction-20261010",
+      "sha": "5add2c194874c41200006861c27aaeb4ad42ac02",
+      "previous": "77326423d1757500a771e0cbde2e365f38deb9dc",
+      "merge_commit": "6fd8010b7b735e8d02295b00ba824236f75d5892",
+      "result": "integrated",
+      "conflicts": []
+    },
+    {
+      "ref": "refs/remotes/origin/codex/p7-integration-20261011",
+      "sha": "a945b9dbabc9d7ebc43190cd4c8bd1b87db627a1",
+      "previous": "6fd8010b7b735e8d02295b00ba824236f75d5892",
+      "merge_commit": "5b20c146e0f8855fb32100cf63a101fa6028bb4c",
+      "result": "integrated",
+      "conflicts": [
+        {
+          "path": "docs/P7-INTEGRATION-20261011.md",
+          "retained_blob": "f387a98f2a6cf65918bc7e9fa00577fd0465a655",
+          "reason": "published integrated and subsequently amended live contract; original branch preserved in merge ancestry"
+        },
+        {
+          "path": "docs/P7-P8-P9-ABHAENGIGKEITEN.md",
+          "retained_blob": "f09cbc2d9c491b32f34750c358a79c5362083576",
+          "reason": "published integrated and subsequently amended live contract; original branch preserved in merge ancestry"
+        },
+        {
+          "path": "scripts/p7_integration.py",
+          "retained_blob": "a606f6bba1a1cec4f2f8419e1b3b69d93ebf0d06",
+          "reason": "published integrated and subsequently amended live contract; original branch preserved in merge ancestry"
+        }
+      ]
+    },
+    {
+      "ref": "refs/remotes/origin/codex/p8-stability-20261011",
+      "sha": "ce0079d8c250e655e979e237047953b103c58890",
+      "previous": "5b20c146e0f8855fb32100cf63a101fa6028bb4c",
+      "merge_commit": "04316f584bc14a543c742c5412345f07428703f0",
+      "result": "integrated",
+      "conflicts": [
+        {
+          "path": "docs/P8-PRAXISTEST-20261011.md",
+          "retained_blob": "4cdd6d1c76a7e1738cdfddffee6b2a38611f01e4",
+          "reason": "published integrated and subsequently amended live contract; original branch preserved in merge ancestry"
+        }
+      ]
+    },
+    {
+      "ref": "refs/remotes/origin/codex/p9-reliability-20261011",
+      "sha": "073b821f5bbe92814512deeb894a7007e579a9e2",
+      "previous": "04316f584bc14a543c742c5412345f07428703f0",
+      "merge_commit": "b089c9c8b17023eb48b0a44d1fdddca1f48d69ce",
+      "result": "integrated",
+      "conflicts": []
+    },
+    {
+      "ref": "refs/remotes/origin/codex/pr19-pr17-triage-20261011",
+      "sha": "04b94475fbb91133fef88b2200994b7257e0f60a",
+      "previous": "b089c9c8b17023eb48b0a44d1fdddca1f48d69ce",
+      "merge_commit": "728f9d8423f7b5c3f08f55f7e7e17281a874e626",
+      "result": "integrated",
+      "conflicts": []
+    },
+    {
+      "ref": "refs/remotes/origin/codex/product-browser-20261011",
+      "sha": "7288ef99ae1f0c6baf6c5f2d90d645ecd065928a",
+      "previous": "728f9d8423f7b5c3f08f55f7e7e17281a874e626",
+      "merge_commit": "c06ac5bf6cdf934da543183b22e0f34d19170c15",
+      "result": "integrated",
+      "conflicts": []
+    },
+    {
+      "ref": "refs/remotes/origin/codex/product-observer-20261011",
+      "sha": "549290d54ea2f3d26eb1318b70f37efa4d9cb52b",
+      "previous": "c06ac5bf6cdf934da543183b22e0f34d19170c15",
+      "merge_commit": "f01b7061dafffcd99298a5c1599c2ae677104515",
+      "result": "integrated",
+      "conflicts": [
+        {
+          "path": "README.md",
+          "retained_blob": "3717e1c689ae0f8135542541b0def8dffde1f4fc",
+          "reason": "published integrated and subsequently amended live contract; original branch preserved in merge ancestry"
+        },
+        {
+          "path": "agent_authority/__init__.py",
+          "retained_blob": "023da5d650093b4b797f0e738b3e1b10c2290a72",
+          "reason": "published integrated and subsequently amended live contract; original branch preserved in merge ancestry"
+        },
+        {
+          "path": "agent_authority/cli.py",
+          "retained_blob": "ffd49be9acaefcccc77ef4d17ae6e8584e4b9ee7",
+          "reason": "published integrated and subsequently amended live contract; original branch preserved in merge ancestry"
+        },
+        {
+          "path": "agent_authority/report.py",
+          "retained_blob": "e15860c0728fb08fcbb07dcc20f393cd424c2e0d",
+          "reason": "published integrated and subsequently amended live contract; original branch preserved in merge ancestry"
+        },
+        {
+          "path": "agent_authority/whiteboard.py",
+          "retained_blob": "982ab52601129f488129376aeab9a7b80253079f",
+          "reason": "published integrated and subsequently amended live contract; original branch preserved in merge ancestry"
+        },
+        {
+          "path": "docs/PRODUCT-PREVIEW.md",
+          "retained_blob": "94c0d26ba408bf291ff2726d9dd043b7fd7af3ac",
+          "reason": "published integrated and subsequently amended live contract; original branch preserved in merge ancestry"
+        },
+        {
+          "path": "tests/test_product_observer.py",
+          "retained_blob": "d2943d1004cc70db1a6a2aecf29aa9bab66e21c8",
+          "reason": "published integrated and subsequently amended live contract; original branch preserved in merge ancestry"
+        }
+      ]
+    },
+    {
+      "ref": "refs/remotes/origin/codex/security-remediation-20261011",
+      "sha": "4a9d42e23ea07b21eeacc228d09889587a1ac329",
+      "previous": "f01b7061dafffcd99298a5c1599c2ae677104515",
+      "merge_commit": "a62e1083005930448c0bd8abf3fe5b1cd04a4f53",
+      "result": "integrated",
+      "conflicts": [
+        {
+          "path": "lab/validator.py",
+          "retained_blob": "a45a1b40eaf2e6a487040bb3763b2fcfe2e2b466",
+          "reason": "published integrated and subsequently amended live contract; original branch preserved in merge ancestry"
+        }
+      ]
+    },
+    {
+      "ref": "refs/remotes/origin/feat/observer-wb-automation",
+      "sha": "f94f444e383052d04e2ef22bfed4ec03512cb066",
+      "previous": "a62e1083005930448c0bd8abf3fe5b1cd04a4f53",
+      "merge_commit": "04816a974046fe6687d0e9fc3205e0d8826d65fc",
+      "result": "archived historical contract",
+      "conflicts": [
+        {
+          "path": "README.md",
+          "retained_blob": "3717e1c689ae0f8135542541b0def8dffde1f4fc",
+          "reason": "current observer index retained; complete original README preserved in the frozen PR19 archive; resolved before interrupted staging"
+        }
+      ]
+    },
+    {
+      "ref": "refs/remotes/origin/fix/atomic-workflow-hardening",
+      "sha": "2600a8deebcff98dc709b426603cd098d4605e1b",
+      "previous": "04816a974046fe6687d0e9fc3205e0d8826d65fc",
+      "merge_commit": "f18bb0d5c991dc323b49ad3fbbf2b153a2b3fa2d",
+      "result": "archived historical contract",
+      "conflicts": [
+        {
+          "path": "lab/fake_adapter.py",
+          "retained_blob": "6554aca80be631da0c3869670bd0ff3e23a0592a",
+          "reason": "published integrated and subsequently amended live contract; original branch preserved in merge ancestry"
+        }
+      ]
+    },
+    {
+      "ref": "refs/remotes/origin/license/all-rights-reserved",
+      "sha": "5c05550623eb437d909bcf8e0c43d9ac0a279ca1",
+      "previous": "f18bb0d5c991dc323b49ad3fbbf2b153a2b3fa2d",
+      "merge_commit": "fce817d4f4f60136e3c7648126db0ca444c9b668",
+      "result": "integrated",
+      "conflicts": []
+    },
+    {
+      "ref": "refs/remotes/origin/research/observer-resource-epoch-2026-10-08",
+      "sha": "4be9a61d9659d4f36347f0ad705369032b8c0a7c",
+      "previous": "fce817d4f4f60136e3c7648126db0ca444c9b668",
+      "merge_commit": "f1b53e88b4751ad31dc77f6f14bf90fde1f508d3",
+      "result": "archived historical contract",
+      "conflicts": []
+    },
+    {
+      "ref": "refs/remotes/origin/service/v0.1-authority",
+      "sha": "b24a6305faecc46ec673dea8207b2ab83ab655df",
+      "previous": "f1b53e88b4751ad31dc77f6f14bf90fde1f508d3",
+      "merge_commit": "353417ef286a0a99e70871998ded23c2d4e1c25c",
+      "result": "archived historical contract",
+      "conflicts": []
+    },
+    {
+      "ref": "refs/remotes/origin/spec/action-identity-approval-binding",
+      "sha": "8d25307f4d48b2062fca01fc6792566ff56ce864",
+      "previous": "353417ef286a0a99e70871998ded23c2d4e1c25c",
+      "merge_commit": "4beb1661af6bcda0c335c6e261b7ae6a418a8f90",
+      "result": "integrated",
+      "conflicts": []
+    },
+    {
+      "ref": "refs/remotes/origin/test/codeql-sarif-evidence-20261010",
+      "sha": "ef2d88d4d885898b8b780b3073d3fa0e3171a5c9",
+      "previous": "4beb1661af6bcda0c335c6e261b7ae6a418a8f90",
+      "merge_commit": "c093d495b70f5265db0d5bb289462f551cbee20f",
+      "result": "integrated",
+      "conflicts": []
+    },
+    {
+      "ref": "refs/tags/baseline/convergence-b0",
+      "sha": "ce279a466581f3b58c1f0d6741bf1a4a0c1c1bbb",
+      "result": "already ancestor"
+    }
+  ],
+  "existing_live_files_preserved": 643
+}
