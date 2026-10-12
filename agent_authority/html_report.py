@@ -143,7 +143,7 @@ def render_html(report: dict[str, Any]) -> str:
 <h1>Agent Authority</h1><p>Gemeldete Aktivität, nachvollziehbare Belege und Datenhinweise.</p>
 <p class="muted">Ausgewählter Verlauf: <code>{source_id}</code></p></header>
 <div class="{notice_class}"><strong>Datenaufnahme: {state}</strong>
-<p>{_h(source["files_examined"])} von {_h(source["files_seen"])} JSON-Dateien untersucht.
+<p>{_h(source["files_examined"])} von {"mindestens " if source["files_seen_is_lower_bound"] else ""}{_h(source["files_seen"])} gesehenen JSON-Dateien untersucht.
 Herkunft, Identität und tatsächliche Wirkung bleiben <strong>UNBEKANNT</strong>.</p></div>
 <div class="stats">{stats}</div>
 <nav aria-label="Berichtsabschnitte"><a href="#tasks">Aufgaben</a>

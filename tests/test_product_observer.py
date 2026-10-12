@@ -229,8 +229,8 @@ def test_observed_file_change_and_new_entry_make_the_snapshot_incomplete(tmp_pat
     path = put(tmp_path, 1)
     original = whiteboard._read_entry
 
-    def changed(directory, name, thread_id):
-        value = original(directory, name, thread_id)
+    def changed(directory, name, thread_id, budget):
+        value = original(directory, name, thread_id, budget)
         path.write_text(path.read_text() + " ")
         put(tmp_path, 2)
         return value

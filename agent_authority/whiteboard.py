@@ -5,7 +5,14 @@ from __future__ import annotations
 import re
 from pathlib import Path
 
-from agent_authority.file_reader import MAX_FILES, ReadIssue, Signature, read_directory, read_record
+from agent_authority.file_reader import (
+    MAX_FILES,
+    ReadBudget,
+    ReadIssue,
+    Signature,
+    read_directory,
+    read_record,
+)
 from agent_authority.observations import KINDS, Diagnostic, Entry, Snapshot, Source
 
 ID = re.compile(r"[0-9a-f]{12}\Z")
@@ -14,10 +21,12 @@ ACTORS = frozenset(
 )
 
 
-def _read_entry(directory: int, name: str, thread_id: str) -> tuple[Entry, Signature]:
+def _read_entry(
+    directory: int, name: str, thread_id: str, budget: ReadBudget
+) -> tuple[Entry, Signature]:
     if not ID.fullmatch(name[:-5]):
         raise ReadIssue("invalid_filename")
-    record, digest, signature = read_record(directory, name)
+    record, digest, signature = read_record(directory, name, budget)
     if not isinstance(record, dict):
         raise ReadIssue("invalid_entry")
     if record.get("id") != name[:-5] or record.get("thread_id") != thread_id:
@@ -46,6 +55,6 @@ def read_whiteboard(store: Path, thread_id: str) -> Snapshot:
     return read_directory(
         store.expanduser() / "whiteboard" / thread_id,
         Source("threaddesk-whiteboard", thread_id),
-        lambda directory, name: _read_entry(directory, name, thread_id),
+        lambda directory, name, budget: _read_entry(directory, name, thread_id, budget),
         max_files=MAX_FILES,
     )

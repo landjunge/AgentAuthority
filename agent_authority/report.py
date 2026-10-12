@@ -25,6 +25,8 @@ DIAGNOSTIC_TEXT = {
     "invalid_source_id": "Der Quellenbezeichner entspricht nicht dem Eingangsvertrag.",
     "unsupported_reader_platform": "Der lesende Adapter ist auf dieser Plattform nicht verfügbar.",
     "source_unavailable": "Die ausgewählte Quelle ist nicht vollständig lesbar.",
+    "directory_limit": "Die Verzeichnisgrenze wurde erreicht; Gesamtzahlen bleiben unbekannt.",
+    "input_byte_limit": "Das Gesamtbudget gelesener Bytes wurde erreicht; Aufnahme unvollständig.",
     "input_limit": "Die Aufnahmegrenze wurde erreicht; weitere Dateien wurden nicht gelesen.",
     "invalid_filename": "Eine JSON-Datei hat keinen gültigen Eintragsbezeichner.",
     "unreadable_entry": "Ein Eintrag konnte nicht als reguläre Datei gelesen werden.",
@@ -94,6 +96,10 @@ def build_report(snapshot: Snapshot, limit: int = 20) -> dict[str, Any]:
             "source_id": snapshot.source.identifier or None,
             "files_seen": snapshot.files_seen,
             "files_examined": snapshot.files_examined,
+            "files_seen_is_lower_bound": not snapshot.directory_scan_complete,
+            "directory_entries_seen": snapshot.directory_entries_seen,
+            "directory_scan_complete": snapshot.directory_scan_complete,
+            "bytes_read": snapshot.bytes_read,
             "entries_read": len(ordered),
             "complete_observed_read": complete,
             "coverage_of_all_agent_activity": "UNBEKANNT",
@@ -144,6 +150,11 @@ def render_text(report: dict[str, Any]) -> str:
         ),
         "Herkunft, Identität und tatsächliche Wirkung: UNBEKANNT.",
         "Ergebnisbeiträge sind Meldungen; sie beweisen keinen Abschluss oder Vollzug.",
+        (
+            f"{source['files_examined']} JSON-Dateien untersucht, "
+            f"{'mindestens ' if source['files_seen_is_lower_bound'] else ''}"
+            f"{source['files_seen']} gesehen; {source['bytes_read']} Bytes gelesen."
+        ),
     ]
     if report["tasks"]:
         lines.append("\nAufgaben im gelesenen Verlauf:")

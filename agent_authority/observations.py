@@ -87,3 +87,6 @@ class Snapshot:
     diagnostics: tuple[Diagnostic, ...]
     files_seen: int
     files_examined: int
+    directory_entries_seen: int = 0
+    directory_scan_complete: bool = True
+    bytes_read: int = 0

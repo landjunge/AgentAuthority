@@ -60,7 +60,13 @@ Thread-/Dateizuordnung, ungültiges JSON, fehlende Lesbarkeit oder beobachtete
 eindeutig dargestellt. Ausgeblendete Aufgaben/Beiträge/Warnungen werden gezählt;
 das Anzeigelimit reduziert die Analyse nicht.
 
-Höchstens 10.000 JSON-Dateien mit je 65.536 Bytes werden gelesen. Das Kommando legt
+Die Aufnahme begrenzt jeden der zwei Verzeichnisscans auf 10.000 Einträge
+zuzüglich einer Überlaufprobe, einschließlich Nicht-JSON-Dateien. Höchstens
+10.000 JSON-Dateien mit je 65.536 Bytes und insgesamt 8 MiB Rohdaten werden
+aufgenommen. Ein Grenzbyte bei gleichzeitigem Dateiwachstum wird mitgezählt.
+Unvollständig enumerierte Quellen zeigen Gesamtzahlen nur als Untergrenze;
+Grenzüberschreitungen führen zu Warnungen und Exit 2. Diese Regeln gelten für
+beide Dateiadapter; Details stehen im aktuellen Beobachtungsvertrag. Das Kommando legt
 keinen Store, Cache, Dienst oder Bericht an und folgt keinen symbolischen
 Eintragsdateien. Exit 0 bedeutet einen vollständigen beobachteten Leseumfang;
 Exit 2 bezeichnet unvollständige oder nicht lesbare Daten. Beide bedeuten weder

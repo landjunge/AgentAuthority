@@ -4,16 +4,24 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from agent_authority.file_reader import ReadIssue, Signature, read_directory, read_record
+from agent_authority.file_reader import (
+    ReadBudget,
+    ReadIssue,
+    Signature,
+    read_directory,
+    read_record,
+)
 from agent_authority.observations import TOKEN, Diagnostic, Entry, Snapshot, Source
 
 SCHEMA = "agent-authority-observation-v1"
 
 
-def _read_entry(directory: int, name: str, source_id: str) -> tuple[Entry, Signature]:
+def _read_entry(
+    directory: int, name: str, source_id: str, budget: ReadBudget
+) -> tuple[Entry, Signature]:
     if not TOKEN.fullmatch(name[:-5]):
         raise ReadIssue("invalid_filename")
-    record, digest, signature = read_record(directory, name)
+    record, digest, signature = read_record(directory, name, budget)
     if not isinstance(record, dict) or record.get("schema_version") != SCHEMA:
         raise ReadIssue("invalid_entry")
     if record.get("id") != name[:-5] or record.get("source_id") != source_id:
@@ -38,5 +46,5 @@ def read_observations(path: Path, source_id: str) -> Snapshot:
     return read_directory(
         path,
         Source("json-directory", source_id),
-        lambda directory, name: _read_entry(directory, name, source_id),
+        lambda directory, name, budget: _read_entry(directory, name, source_id, budget),
     )

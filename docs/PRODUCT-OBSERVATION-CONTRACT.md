@@ -59,3 +59,35 @@ Herkunft und tatsächliche Wirkung bleiben UNBEKANNT; Aufgabenabschluss,
 Rechteübernahme und Quellenauthentisierung werden nicht bewiesen. Dieser
 Vertrag integriert keine A1–A4-Livebeobachtung und verspricht keine atomaren
 Snapshots. Er ist der Eingang für die spätere eigenständige App, kein neuer UI-Bau.
+
+## Ressourcenvertrag der Dateiadapter
+
+Beide Dateiadapter benutzen dieselbe begrenzte Aufnahme in `file_reader.py`:
+
+- Höchstens 10.000 zurückgegebene Verzeichniseinträge je Scan, unabhängig von Endung oder Typ. Ein weiterer Eintrag dient nur zur Überlauferkennung; er wird nicht in die Liste aufgenommener Namen übernommen.
+- Zwei Scans (Aufnahme und Änderungskontrolle), jeweils höchstens 10.001 beobachtete Namen. Erst die begrenzte Namensmenge wird sortiert. Keine vollständige `listdir`-Aufnahme.
+- Höchstens 10.000 untersuchte JSON-Dateien; reguläre Dateien mit höchstens 65.536 Bytes. Symlinks/FIFOs werden weiterhin nicht verfolgt beziehungsweise blockierend gelesen.
+- 8 MiB Gesamtbudget tatsächlich gelesener Rohbytes pro Aufnahme, auch für anschließend verworfenes JSON. Eine laut `fstat` nicht mehr passende Datei wird vor dem Lesen abgewiesen. Bei Wachstum nach `fstat` wird höchstens ein zusätzlicher Byte zur Grenzerkennung gelesen und gezählt. Danach werden keine weiteren Dateien aufgenommen.
+
+`directory_entries_seen` und `files_seen` beziehen sich auf die erste
+Verzeichnisenumeration. `directory_scan_complete=false` und
+`files_seen_is_lower_bound=true` zeigen an, dass keine exakte Gesamtzahl ermittelt
+wurde. Auch 0 gesehene JSON-Dateien können dann eine Untergrenze sein. Text und
+HTML verwenden ausdrücklich „mindestens“. `bytes_read` zählt tatsächliche
+Rohbytes einschließlich verworfener Eingaben und eines etwaigen Grenzbytes.
+Nach einem Abbruch bleiben weitere Inhalte UNBEKANNT; die bis dahin gelesenen
+Einträge werden analysiert, nicht als vollständiger oder neuester Gesamtverlauf
+ausgegeben. Bei vollständiger Enumeration bleibt die bisherige Sortierung erhalten;
+bei Begrenzung hängt die Teilmenge von der Verzeichnisreihenfolge ab.
+
+`directory_limit`, `input_limit` oder `input_byte_limit` machen den Bericht
+unvollständig (Exit 2). Die bestehende Signaturprüfung der gelesenen Dateien und
+der Quellenverzeichnisidentität bleibt erhalten. Ein während der Aufnahme
+größer gewordenes Verzeichnis wird auch im Kontrollscan begrenzt und als
+unvollständig/gegebenenfalls verändert gemeldet. Plattformen ohne sichere
+`scandir(fd)`-/`open(dir_fd)`-Unterstützung werden abgewiesen.
+
+Die Grenzen beschränken aufgenommene Daten und Iterations-/Parserarbeit, nicht
+Wartezeiten einzelner Betriebssystemaufrufe oder die exakte Prozess-RAM-Nutzung.
+Langsame oder blockierende Dateisysteme erfordern später gegebenenfalls eigene
+Abbruchsteuerung durch die App. Keine atomare Snapshot- oder DLP-Garantie.
