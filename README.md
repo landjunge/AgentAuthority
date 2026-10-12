@@ -16,18 +16,20 @@ keeps those distinctions explicit.
 
 ## Local product preview
 
-The first product slice provides a read-only ThreadDesk whiteboard report:
+The product accepts source-neutral local observations. ThreadDesk is an optional
+archive adapter, not the product contract:
 
 ```sh
 python3.12 -m venv .venv
 .venv/bin/python -m pip install .
-.venv/bin/agent-authority inspect --thread THREAD_ID
+.venv/bin/agent-authority inspect --source json-directory --input /path/observations --source-id local-run
 .venv/bin/agent-authority inspect --thread THREAD_ID --format json --limit 10
 .venv/bin/agent-authority inspect --thread THREAD_ID --format html > report.html
 ```
 
-Use `--store PATH` to select a local ThreadDesk store; the default is
-`~/.threaddesk`. The report cites the read entries, shows reported task activity
+The [current observation contract](docs/PRODUCT-OBSERVATION-CONTRACT.md) defines
+the neutral input and report schemas. `--thread` selects the optional ThreadDesk
+adapter; only that adapter defaults to `~/.threaddesk`, with `--store PATH` as an override. The report cites the read entries, shows reported task activity
 and structural problems, and makes incomplete input visible. Stored actor,
 success and authentication labels do not establish identity, actual completion
 or effects. It writes no store, cache or report files and imports no historical
