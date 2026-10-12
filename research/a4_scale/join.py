@@ -404,11 +404,7 @@ def evaluate(bundle, capture, trial, pin):
         "critical_loss_metrics": loss,
         "agent_count": 100,
         "positive_jobs": 99,
-        "full_chains_verified": 99
-        if passed
-        else sum(chain_pass.values())
-        if measured_zero(loss)
-        else None,
+        "full_chains_verified": 99 if passed else None,
         "intentionally_incomplete_chains": 2,
         "rejected_message_cases": 2,
         "false_positive_assignments": 0 if passed else None,
