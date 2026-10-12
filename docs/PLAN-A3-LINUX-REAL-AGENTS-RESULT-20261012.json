@@ -1,0 +1,138 @@
+{
+  "package": "A3-LINUX-REAL-CLIENTS",
+  "utc": "2026-10-12T01:11:05.658354+00:00",
+  "baseline": "98c274ac5c1e475c335704d4f5aefa40f97f47b0",
+  "writer_source_commit": "88029be0d5e28c2715d799660eef76621e12c060",
+  "implementation_commit": "b6acd389b8018c7c76cd0d05414999c449b05593",
+  "archive_and_test_source_commit": "b5fd68e91cc943c661343fb5758980c9e2c55552",
+  "branch": "codex/a3-linux-real-agents-20261012",
+  "H_A3_REAL": "INCONCLUSIVE",
+  "partial_client_wrapper_effect_chain": "TEILWEISE BELEGT",
+  "authenticated_real_agent_effect_chain": "UNBEKANNT",
+  "provider_identity": "UNBEKANNT",
+  "model_identity": "UNBEKANNT",
+  "metrics": {
+    "positions": 10,
+    "attempts": 10,
+    "execution_failures": 0,
+    "independent_write_actions": 12,
+    "authenticated_local_wrapper_chains": 9,
+    "fresh_host_dispatch_and_wrapper_chains": 8,
+    "authenticated_real_agent_chains": 0,
+    "a1_callback_raw_bytes": 1672,
+    "a1_records": 22,
+    "lifecycle_callback_raw_bytes": 1672,
+    "lifecycle_records": 38,
+    "known_perf_losses": 0,
+    "entry_nmissed": null,
+    "lifecycle_fork_entry_nmissed": null,
+    "actor_proofs": 13,
+    "a1_cpu_user_s": 20.221154,
+    "a1_cpu_system_s": 2.102414,
+    "a1_peak_rss_max_B": 177590272,
+    "adapter_cpu_user_s": 9.008080999999999,
+    "adapter_cpu_system_s": 1.745079,
+    "adapter_peak_rss_max_B": 164560896,
+    "kernel_CPU": null,
+    "VM_total_RAM_cost": null,
+    "client_CPU_RAM": null,
+    "ground_truth_actions": 12,
+    "ground_truth_not_sent_to_a1": true,
+    "postprocessing_failure": {
+      "error": "KeyError peak_rss_bytes in first aggregation; actual A1 field rss_peak_bytes",
+      "measurement_repeated": false,
+      "fixed_only_aggregation": true
+    }
+  },
+  "remaining_limits": [
+    "No independent externally authenticated coding-agent/session enrollment",
+    "No provider-signed response/model attestation",
+    "Account token audience unpinned; raw bearer proof intentionally not archived",
+    "Actual delegate spawn/answer not sufficiently recorded",
+    "Host clients with Linux adapter; no authenticated native Linux Codex/Grok client",
+    "Known losses zero; unmeasured entry losses unknown",
+    "Trusted host CA, registrar, kernel/hypervisor",
+    "No enduring state/stress/production/general identity proof"
+  ],
+  "case_classification": [
+    {
+      "position": 1,
+      "case": "codex",
+      "partial_chain": "TEILWEISE BELEGT",
+      "real_agent_chain": "UNBEKANNT"
+    },
+    {
+      "position": 2,
+      "case": "grok",
+      "partial_chain": "TEILWEISE BELEGT",
+      "real_agent_chain": "UNBEKANNT"
+    },
+    {
+      "position": 3,
+      "case": "child",
+      "partial_chain": "TEILWEISE BELEGT",
+      "real_agent_chain": "UNBEKANNT"
+    },
+    {
+      "position": 4,
+      "case": "delegation",
+      "partial_chain": "TEILWEISE BELEGT",
+      "real_agent_chain": "UNBEKANNT"
+    },
+    {
+      "position": 5,
+      "case": "exec",
+      "partial_chain": "TEILWEISE BELEGT",
+      "real_agent_chain": "UNBEKANNT"
+    },
+    {
+      "position": 6,
+      "case": "session-switch",
+      "partial_chain": "TEILWEISE BELEGT",
+      "real_agent_chain": "UNBEKANNT"
+    },
+    {
+      "position": 7,
+      "case": "shared-process",
+      "partial_chain": "TEILWEISE BELEGT",
+      "real_agent_chain": "UNBEKANNT"
+    },
+    {
+      "position": 8,
+      "case": "replay",
+      "partial_chain": "TEILWEISE BELEGT",
+      "real_agent_chain": "UNBEKANNT"
+    },
+    {
+      "position": 9,
+      "case": "key-share",
+      "partial_chain": "TEILWEISE BELEGT",
+      "real_agent_chain": "UNBEKANNT"
+    },
+    {
+      "position": 10,
+      "case": "takeover",
+      "partial_chain": "TEILWEISE BELEGT",
+      "real_agent_chain": "UNBEKANNT"
+    }
+  ],
+  "historical_files_unchanged": 433,
+  "VM_stopped": true,
+  "private_keys_removed": true,
+  "host_credentials_transferred": false,
+  "merge": false,
+  "ready": false,
+  "remote_CI": "no runs observed",
+  "quality": {
+    "suite_tests": 632,
+    "suite_runs": 2,
+    "failures": 0,
+    "errors": 0,
+    "skips": 0,
+    "new_tests": 13,
+    "new_lint_findings": 0,
+    "unchanged_historical_lint_findings": 16
+  },
+  "archive_files": 26,
+  "archive_indexed_bytes": 300671
+}
