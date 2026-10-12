@@ -220,7 +220,7 @@ def test_missing_store_and_invalid_thread_do_not_create_files(tmp_path):
     assert not missing.exists()
     invalid = read_whiteboard(tmp_path, "../../private")
     assert invalid.diagnostics[0].code == "invalid_thread_id"
-    assert invalid.thread_id == ""
+    assert invalid.source.identifier == ""
 
 
 def test_observed_file_change_and_new_entry_make_the_snapshot_incomplete(tmp_path, monkeypatch):
@@ -229,8 +229,8 @@ def test_observed_file_change_and_new_entry_make_the_snapshot_incomplete(tmp_pat
     path = put(tmp_path, 1)
     original = whiteboard._read_entry
 
-    def changed(directory, name, thread_id):
-        value = original(directory, name, thread_id)
+    def changed(directory, name, thread_id, budget):
+        value = original(directory, name, thread_id, budget)
         path.write_text(path.read_text() + " ")
         put(tmp_path, 2)
         return value

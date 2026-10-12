@@ -5,7 +5,7 @@ from __future__ import annotations
 from collections import Counter, defaultdict
 from typing import Any
 
-from agent_authority.whiteboard import Entry, Snapshot
+from agent_authority.observations import Entry, Snapshot
 
 KIND_TEXT = {
     "note": "Notiz gemeldet",
@@ -21,9 +21,12 @@ KIND_TEXT = {
     "handoff": "Übergabe gemeldet",
 }
 DIAGNOSTIC_TEXT = {
-    "invalid_thread_id": "Die Thread-ID entspricht keinem ThreadDesk-Bezeichner.",
+    "invalid_thread_id": "Der Adapter meldet einen ungültigen Quellenbezeichner.",
+    "invalid_source_id": "Der Quellenbezeichner entspricht nicht dem Eingangsvertrag.",
     "unsupported_reader_platform": "Der lesende Adapter ist auf dieser Plattform nicht verfügbar.",
-    "source_unavailable": "Das ausgewählte Whiteboard ist nicht vollständig lesbar.",
+    "source_unavailable": "Die ausgewählte Quelle ist nicht vollständig lesbar.",
+    "directory_limit": "Die Verzeichnisgrenze wurde erreicht; Gesamtzahlen bleiben unbekannt.",
+    "input_byte_limit": "Das Gesamtbudget gelesener Bytes wurde erreicht; Aufnahme unvollständig.",
     "input_limit": "Die Aufnahmegrenze wurde erreicht; weitere Dateien wurden nicht gelesen.",
     "invalid_filename": "Eine JSON-Datei hat keinen gültigen Eintragsbezeichner.",
     "unreadable_entry": "Ein Eintrag konnte nicht als reguläre Datei gelesen werden.",
@@ -31,7 +34,7 @@ DIAGNOSTIC_TEXT = {
     "entry_too_large": "Ein Eintrag überschreitet die begrenzte Eingangsgröße.",
     "invalid_json": "Ein Eintrag enthält ungültiges oder mehrdeutiges JSON.",
     "invalid_entry": "Ein Eintrag entspricht nicht dem benötigten Feldvertrag.",
-    "entry_identity_mismatch": "Datei-, Eintrags- oder Threadzuordnung widersprechen sich.",
+    "entry_identity_mismatch": "Datei-, Eintrags- oder Quellenzuordnung widersprechen sich.",
     "source_changed": "Während der Aufnahme wurde eine Änderung an der Quelle beobachtet.",
     "ordinal_collision": "Mehrere Beiträge beanspruchen dieselbe gespeicherte Reihenfolge.",
 }
@@ -85,13 +88,18 @@ def build_report(snapshot: Snapshot, limit: int = 20) -> dict[str, Any]:
     tasks.sort(key=lambda task: max(ref["ordinal"] for ref in task["evidence"]), reverse=True)
     complete = not warnings
     return {
-        "schema_version": "agent-authority-whiteboard-report-v1",
+        "schema_version": "agent-authority-observation-report-v1",
         "role": "observer_only",
         "source": {
-            "scope": "selected_local_whiteboard_archive",
-            "thread_id": snapshot.thread_id or None,
+            "scope": "selected_local_observations",
+            "kind": snapshot.source.kind,
+            "source_id": snapshot.source.identifier or None,
             "files_seen": snapshot.files_seen,
             "files_examined": snapshot.files_examined,
+            "files_seen_is_lower_bound": not snapshot.directory_scan_complete,
+            "directory_entries_seen": snapshot.directory_entries_seen,
+            "directory_scan_complete": snapshot.directory_scan_complete,
+            "bytes_read": snapshot.bytes_read,
             "entries_read": len(ordered),
             "complete_observed_read": complete,
             "coverage_of_all_agent_activity": "UNBEKANNT",
@@ -134,7 +142,7 @@ def render_text(report: dict[str, Any]) -> str:
         else "unvollständig"
     )
     lines = [
-        "Agent Authority — Whiteboard-Beobachtung",
+        "Agent Authority — Aktivitätsbeobachtung",
         f"{source['entries_read']} Beiträge gelesen; Aufnahme {state}.",
         (
             f"{summary['tasks_with_reported_association']} gemeldete Aufgabenbezüge; "
@@ -142,6 +150,11 @@ def render_text(report: dict[str, Any]) -> str:
         ),
         "Herkunft, Identität und tatsächliche Wirkung: UNBEKANNT.",
         "Ergebnisbeiträge sind Meldungen; sie beweisen keinen Abschluss oder Vollzug.",
+        (
+            f"{source['files_examined']} JSON-Dateien untersucht, "
+            f"{'mindestens ' if source['files_seen_is_lower_bound'] else ''}"
+            f"{source['files_seen']} gesehen; {source['bytes_read']} Bytes gelesen."
+        ),
     ]
     if report["tasks"]:
         lines.append("\nAufgaben im gelesenen Verlauf:")
@@ -152,7 +165,7 @@ def render_text(report: dict[str, Any]) -> str:
                 if kind is not None
                 else "Letzte Meldung UNBEKANNT (Reihenfolge mehrdeutig)"
             )
-            refs = ", ".join(f"WB{ref['ordinal']} [{ref['entry_id']}]" for ref in task["evidence"])
+            refs = ", ".join(f"E{ref['ordinal']} [{ref['entry_id']}]" for ref in task["evidence"])
             pending = (
                 "; kein späterer Ergebnisbeitrag gelesen"
                 if task["claim_without_later_result"]

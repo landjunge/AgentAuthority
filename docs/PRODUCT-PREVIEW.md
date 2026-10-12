@@ -1,6 +1,11 @@
 # Agent Authority: lokale Produktpreview
 
-Agent Authority liest einen ausgewählten ThreadDesk-Whiteboard-Verlauf und zeigt
+Der aktuelle [quellenneutrale Vertrag](PRODUCT-OBSERVATION-CONTRACT.md) gilt für
+Produkteingang und Berichte. Der ThreadDesk-Leseadapter bleibt optional;
+`inspect --thread` ist ein kompatibler Adapteraufruf. Berichtsschema und
+Eintragsbeschriftungen wurden ausdrücklich auf den neutralen Vertrag umgestellt.
+
+Agent Authority liest ausgewählte lokale Beobachtungen und zeigt
 gemeldete Aufgabenaktivität sowie strukturelle Warnungen. Es verändert weder
 Aufgaben noch Agenten und trifft keine Ausführungsentscheidung.
 
@@ -35,7 +40,7 @@ Exit 2 wird der Bericht mit den Warnungen ausgegeben; eine Shell-Umleitung legt
 die vom Anwender gewählte Ausgabedatei an.
 
 Ein typischer Bericht nennt Aufgabenaliase wie A1, eine gemeldete Übernahme oder
-ein gemeldetes Ergebnis sowie Belegreferenzen wie WB42 und die Eintrags-ID.
+ein gemeldetes Ergebnis sowie Belegreferenzen wie E42 und die Eintrags-ID.
 Damit kann der Anwender den Originalbeitrag in ThreadDesk wiederfinden.
 JSON enthält zusätzlich den SHA256-Fingerprint der tatsächlich gelesenen Datei.
 „Kein späterer Ergebnisbeitrag gelesen“ heißt genau das; es heißt nicht,
@@ -55,7 +60,13 @@ Thread-/Dateizuordnung, ungültiges JSON, fehlende Lesbarkeit oder beobachtete
 eindeutig dargestellt. Ausgeblendete Aufgaben/Beiträge/Warnungen werden gezählt;
 das Anzeigelimit reduziert die Analyse nicht.
 
-Höchstens 10.000 JSON-Dateien mit je 65.536 Bytes werden gelesen. Das Kommando legt
+Die Aufnahme begrenzt jeden der zwei Verzeichnisscans auf 10.000 Einträge
+zuzüglich einer Überlaufprobe, einschließlich Nicht-JSON-Dateien. Höchstens
+10.000 JSON-Dateien mit je 65.536 Bytes und insgesamt 8 MiB Rohdaten werden
+aufgenommen. Ein Grenzbyte bei gleichzeitigem Dateiwachstum wird mitgezählt.
+Unvollständig enumerierte Quellen zeigen Gesamtzahlen nur als Untergrenze;
+Grenzüberschreitungen führen zu Warnungen und Exit 2. Diese Regeln gelten für
+beide Dateiadapter; Details stehen im aktuellen Beobachtungsvertrag. Das Kommando legt
 keinen Store, Cache, Dienst oder Bericht an und folgt keinen symbolischen
 Eintragsdateien. Exit 0 bedeutet einen vollständigen beobachteten Leseumfang;
 Exit 2 bezeichnet unvollständige oder nicht lesbare Daten. Beide bedeuten weder
