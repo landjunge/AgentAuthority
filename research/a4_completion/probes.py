@@ -34,17 +34,23 @@ def profile(names):
 
 def program_info(bpf):
     result = {}
-    for name, function in bpf.functions.items():
+    functions = getattr(bpf, "funcs", None)
+    if functions is None:
+        return {"missing_program_registry": {"recursion_misses": None, "prog_id": None}}
+    for name, function in functions.items():
         label = name.decode() if isinstance(name, bytes) else str(name)
-        raw = Path(f"/proc/self/fdinfo/{function.fd}").read_text()
-        fields = dict(line.split(":", 1) for line in raw.splitlines() if ":" in line)
-        result[label] = {
-            "raw_fdinfo": raw,
-            "recursion_misses": int(fields["recursion_misses"])
-            if "recursion_misses" in fields
-            else None,
-            "prog_id": int(fields["prog_id"]),
-        }
+        try:
+            raw = Path(f"/proc/self/fdinfo/{function.fd}").read_text()
+            fields = dict(line.split(":", 1) for line in raw.splitlines() if ":" in line)
+            result[label] = {
+                "raw_fdinfo": raw,
+                "recursion_misses": int(fields["recursion_misses"])
+                if "recursion_misses" in fields
+                else None,
+                "prog_id": int(fields["prog_id"]),
+            }
+        except (OSError, KeyError, ValueError) as error:
+            result[label] = {"recursion_misses": None, "prog_id": None, "error": str(error)}
     return result
 
 
