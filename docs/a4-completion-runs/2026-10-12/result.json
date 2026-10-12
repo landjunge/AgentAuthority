@@ -1,0 +1,66 @@
+{
+  "base_commit": "88087a609128149aad752ad9bb52959009843e1f",
+  "agent_delegation_attempts": 1,
+  "controlled_agents_in_attempt": 2,
+  "actual_target_write_events": 1,
+  "actual_write_process": {
+    "tgid": 1180,
+    "start_ns": 412972319475,
+    "dev": 265289729,
+    "inode": 263042,
+    "entry_ns": 413144447492,
+    "exit_ns": 413144489864,
+    "count": 16,
+    "result": 16
+  },
+  "independent_observed_process_write": "BELEGT",
+  "independently_archived_authenticated_actor_for_new_write": "UNBEKANNT",
+  "complete_delegation_chain": "UNBEKANNT",
+  "full_gate": "UNBEKANNT",
+  "phase2_executed": false,
+  "phase2_agent_count": 0,
+  "phase2_throughput": null,
+  "phase2_latency": null,
+  "phase2_cpu_ram": null,
+  "critical_loss_metrics_of_delegation_attempt": {
+    "write_entry_nmissed": null,
+    "fork_entry_nmissed": null,
+    "lifecycle_map_update_failures": null,
+    "recursion_misses": null,
+    "perf_submit_and_pair": null
+  },
+  "completed_full_chains_verified": 0,
+  "actual_completed_chain_count": null,
+  "false_positive_identity_assignments": null,
+  "cause": "shared metadata helper used BPF.functions; installed BCC stores loaded functions in BPF.funcs; both end collectors failed before export",
+  "correction_commit": "9b588fd",
+  "control_results_not_substituted_for_trial": true,
+  "controls": {
+    "fork_profile": {
+      "raw": "  p_a4c_wake_up_new_task_bcc_1242                            1               0\n",
+      "selected": {
+        "p_a4c_wake_up_new_task_bcc_1242": {
+          "hits": 1,
+          "misses": 0
+        }
+      },
+      "complete": true
+    },
+    "healthy_map_update_failures": 0,
+    "forced_map_update_failures": 1,
+    "idle_write_entry_misses": 0,
+    "idle_write_records": 0,
+    "idle_observer_cpu_user_seconds": 2.0720210000000003,
+    "idle_observer_cpu_system_seconds": 0.195511,
+    "idle_observer_peak_rss_bytes": 178434048
+  },
+  "raw_callback_bytes": {
+    "delegation_attempt_partial": 152,
+    "healthy_fork_control": 132,
+    "map_full_control": 0,
+    "idle_write_control": 0
+  },
+  "provider_model_identity": "UNBEKANNT",
+  "no_retry_of_delegation_attempt": true,
+  "partial_chain_classification": "TEILWEISE BELEGT"
+}

@@ -1,0 +1,25 @@
+[
+  {
+    "epoch": "phase1",
+    "source_commit": "a56553a9ebf86bbda34de4641677f38b468c3820",
+    "hash_checks": {
+      "research/a2_linux/protocol.py": true,
+      "research/a2_linux/starter.py": true,
+      "research/a4_completion/agent.py": true,
+      "research/a4_completion/guest.py": true,
+      "research/a4_completion/lifecycle.py": true,
+      "research/a4_completion/observer.py": true,
+      "research/a4_completion/probes.py": true
+    }
+  },
+  {
+    "epoch": "controls",
+    "source_commit": "9b588fde01bf9fdf63576179cc1b1b1d411f41cf",
+    "hash_checks": {
+      "research/a4_completion/controls_probe.py": true,
+      "research/a4_completion/lifecycle.py": true,
+      "research/a4_completion/observer.py": true,
+      "research/a4_completion/probes.py": true
+    }
+  }
+]

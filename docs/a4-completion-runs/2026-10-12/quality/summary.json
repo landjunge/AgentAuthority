@@ -1,0 +1,38 @@
+{
+  "suites": [
+    {
+      "position": 1,
+      "exit_code": 0,
+      "seconds": 61.30342510796618,
+      "fixed_head": "a46b107e083b542fba3e41e61e980b3cc8ab3598",
+      "head_unchanged": true,
+      "tests": 683,
+      "failures": 0,
+      "errors": 0
+    },
+    {
+      "position": 2,
+      "exit_code": 0,
+      "seconds": 58.904262077994645,
+      "fixed_head": "a46b107e083b542fba3e41e61e980b3cc8ab3598",
+      "head_unchanged": true,
+      "tests": 683,
+      "failures": 0,
+      "errors": 0
+    }
+  ],
+  "new_regressions": 14,
+  "new_ruff_exit": 0,
+  "new_format_exit": 0,
+  "full_format_exit": 0,
+  "formatted_files": 253,
+  "full_ruff_exit": 1,
+  "full_ruff_historical_findings": 16,
+  "new_ruff_findings": 0,
+  "ruff_comparison_file": "ruff-comparison.json",
+  "mypy_exit": 0,
+  "mypy_core_files": 32,
+  "bandit_core_exit": 0,
+  "bandit_core_issues": 0,
+  "diff_check_exit": 0
+}
