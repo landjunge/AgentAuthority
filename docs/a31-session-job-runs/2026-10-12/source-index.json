@@ -1,0 +1,58 @@
+{
+  "source_files_read": [
+    {
+      "local_name": "codex-auth-manager.txt",
+      "sha256": "d2081e3e4f2f339a7a1aa52ea62d8485e7785c2b0a12dde1a7f470019d56dc2a",
+      "bytes": 119014,
+      "url": "https://raw.githubusercontent.com/openai/codex/rust-v0.162.1/codex-rs/login/src/auth/manager.rs"
+    },
+    {
+      "local_name": "codex-auth-mod.txt",
+      "sha256": "5d72ae39f74e2ed944b13bab4dbaab03d5e0ae1a5ec908d14cf4513606fe7b83",
+      "bytes": 723,
+      "url": "https://raw.githubusercontent.com/openai/codex/rust-v0.162.1/codex-rs/login/src/auth/mod.rs"
+    },
+    {
+      "local_name": "codex-login-lib.txt",
+      "sha256": "c83451696298640d03f5d27a86943358bd811fbba610265aa8ccbb20f446af5a",
+      "bytes": 2895,
+      "url": "https://raw.githubusercontent.com/openai/codex/rust-v0.162.1/codex-rs/login/src/lib.rs"
+    },
+    {
+      "local_name": "codex-login.txt",
+      "sha256": "d586cdea172ee51784e6a33f1a972bf623c99b15b0217e4fea1a112811f225b4",
+      "bytes": 41354,
+      "url": "https://raw.githubusercontent.com/openai/codex/rust-v0.162.1/codex-rs/login/src/server.rs"
+    },
+    {
+      "local_name": "grok-auth-user-guide.txt",
+      "sha256": "4e2d87b5edded0aa676349ab44bf0a297669f64aeb635f3f3cd3e2e265931c63",
+      "bytes": 15578,
+      "url": "https://raw.githubusercontent.com/xai-org/grok-build/main/crates/codegen/xai-grok-pager/docs/user-guide/02-authentication.md"
+    },
+    {
+      "local_name": "grok-login-config.txt",
+      "sha256": "20f2c9ba6699180faf9aaefedcc363042715e84e6226679b3868d44011f5b055",
+      "bytes": 32405,
+      "url": "https://raw.githubusercontent.com/xai-org/grok-build/2bdd1d6a6369de0e8c68132ea4539e9abd9e14a8/crates/codegen/xai-grok-login/src/config.rs"
+    },
+    {
+      "local_name": "grok-login-jwt.txt",
+      "sha256": "2c9ecc0d4bafbd51509d7a6cb6de021c30539b631b0d1349addb0c52940227aa",
+      "bytes": 2264,
+      "url": "https://raw.githubusercontent.com/xai-org/grok-build/2bdd1d6a6369de0e8c68132ea4539e9abd9e14a8/crates/codegen/xai-grok-login/src/jwt.rs"
+    }
+  ],
+  "codex_source_ref": "rust-v0.162.1",
+  "grok_source_ref": "2bdd1d6a6369de0e8c68132ea4539e9abd9e14a8",
+  "grok_source_not_claimed_as_exact_binary_build": true,
+  "official_contract_urls": [
+    "https://developers.openai.com/siwc/website",
+    "https://developers.openai.com/codex/app-server",
+    "https://developers.openai.com/api/docs/guides/webhooks",
+    "https://docs.x.ai/build/enterprise",
+    "https://docs.x.ai/build/cli/reference",
+    "https://docs.x.ai/developers/rest-api-reference/inference/responses"
+  ],
+  "failed_paths_retained": "several historical source paths returned HTTP404; resolved via current published module paths, no missing contract fabricated"
+}

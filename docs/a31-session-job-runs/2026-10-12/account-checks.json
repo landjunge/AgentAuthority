@@ -1,0 +1,176 @@
+{
+  "client_id_override_environment_present": {
+    "CODEX_APP_SERVER_LOGIN_CLIENT_ID": false,
+    "GROK_OIDC_AUDIENCE": false,
+    "GROK_OIDC_CLIENT_ID": false,
+    "GROK_OIDC_ISSUER": false
+  },
+  "new_login": false,
+  "pins": {
+    "Codex": {
+      "algorithm": "RS256",
+      "client_id": "app_EMoamEEZ73f0CkXaXp7hrann",
+      "issuer": "https://auth.openai.com",
+      "source": "openai/codex rust-v0.162.1 codex-rs/login/src/auth/manager.rs"
+    },
+    "Grok": {
+      "algorithm": "ES256",
+      "client_id": "b1a00492-073a-47ea-816f-4c329264a828",
+      "issuer": "https://auth.x.ai",
+      "source": "xai-org/grok-build 2bdd1d6a6369de0e8c68132ea4539e9abd9e14a8 xai-grok-login/src/config.rs; not binary-build SHA match"
+    }
+  },
+  "public_JWKS": [
+    {
+      "keys": [
+        {
+          "alg": "RS256",
+          "e": "AQAB",
+          "kid": "n0z6Pr1-tB-17WoU4Tc98zuD0k6lyaMYBbwJAD8kRVs",
+          "kty": "RSA",
+          "n": "zc-mA_FoZ5fu_xalTkhlF4xBN07TrkOSaZy9U-gNzbQJ4dxy5CDzxR6-qYKhJGYVBORyqgGLZBCjrrjp57k1Wi-M413neq2-cq4erDpdUA82dJn4tBL_YFH9W845Duna8UDdGI7OODRj-LtcCk6T1CgHdXypsXXMI55xb-WlZ8rwWuMcw2XylEyC8_MDLhmDXP0Y7BA2_24A2NtxHu0eRQyBPpWpZdh0kjbbAzoUBocHQnMid1kjhcDkswdl3lrNouEf2L29GU6k7p6p5OIQ7JR9ybgvSIMlE8v9_Y1cgFsdlWcvu5Tk9-xR5DoOKYyxHcIdzlIPIMnwYJXM-OS5OQ",
+          "use": "sig",
+          "x5c": [
+            "MIIDQjCCAiqgAwIBAgIUGeoB9xNkT6Xm7USBkmcL857w9EYwDQYJKoZIhvcNAQELBQAwKjEoMCYGA1UEAwwfU2lnbmVyIFNlcnZpY2UgdmVyaWZpY2F0aW9uIGtleTAeFw0yNjEwMDgyMzI2MzNaFw0zNjEwMDUyMzI2MzNaMCoxKDAmBgNVBAMMH1NpZ25lciBTZXJ2aWNlIHZlcmlmaWNhdGlvbiBrZXkwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQDNz6YD8Whnl+7/FqVOSGUXjEE3TtOuQ5JpnL1T6A3NtAnh3HLkIPPFHr6pgqEkZhUE5HKqAYtkEKOuuOnnuTVaL4zjXed6rb5yrh6sOl1QDzZ0mfi0Ev9gUf1bzjkO6drxQN0Yjs44NGP4u1wKTpPUKAd1fKmxdcwjnnFv5aVnyvBa4xzDZfKUTILz8wMuGYNc/RjsEDb/bgDY23Ee7R5FDIE+lall2HSSNtsDOhQGhwdCcyJ3WSOFwOSzB2XeWs2i4R/Yvb0ZTqTunqnk4hDslH3JuC9IgyUTy/39jVyAWx2VZy+7lOT37FHkOg4pjLEdwh3OUg8gyfBglcz45Lk5AgMBAAGjYDBeMB0GA1UdDgQWBBQXgh9MwFBev4jax4v+F+SLXfwINDAfBgNVHSMEGDAWgBQXgh9MwFBev4jax4v+F+SLXfwINDAMBgNVHRMBAf8EAjAAMA4GA1UdDwEB/wQEAwIHgDANBgkqhkiG9w0BAQsFAAOCAQEAt4p49vTw3OQ1D7AmdifQ+YzJQ3od43jbGGqwmYZFhG5JGHj3k0JJbqLSk2e2NQtFL52ULxTNH/z7bcI5/U8+K67eTmpjzc1AjpfXxZ0o6IAZS3L7NbGbEKLG4i666RQNLdpIoxWj8m+jGKYfCd+pB43KYI89SMw1CU0SJB2g6dovHnHH7ClOKPjRF/3bgkmB4RrSq7A/GbW9cxviOAqZoQwXbfM5TKfS2Br33WlFXrAOa9quY5rJJH7aLXZxJBD0tWDOizS0PQfqIAdazDeYY7PICkz6W4cCCCHuNwR72ntHby5X5/X+PPmzbuyqYQvE/AyTGubrXJHoNBCPGWcD7g=="
+          ]
+        },
+        {
+          "alg": "RS256",
+          "e": "AQAB",
+          "kid": "qAgbfguRn1QO32qNOWHKNrFKMOwSew1TamFZPCI78HQ",
+          "kty": "RSA",
+          "n": "xYNYiGEZikcuWUbwx0gQbjhupTZtvy_EntH-EEGio3sMZMJmSHo92j1XKTSVdHCAOj7A1tLaEG3AFQ_34Bdrlq4kgAJBXggEesNCFq4KmgTiQNtsusIyG3oo8B7Z3-inPuaR-kJwTmfrKob9euhXzj6Qf5mEzL5hkbqrDyQPdIg8jZSajeKdsPHt2YOjy6eGd4kI1sgZplpxU2wyTRmayfXkMjPLDvFX7_8yu0G7axTTjeGzyyS-8uCOWw5E2Q_Jzxp8G3Nsuug73eazaYr1zhU7FENYgMm29VrDx1PCfKRsPrbBfkfMbnzKqmzfFBSJSfDJgnDFeymZFg03WEY8uQ",
+          "use": "sig",
+          "x5c": [
+            "MIIDQjCCAiqgAwIBAgIUMCsfZXC+VJ7ngC6stnoJ8ElWak0wDQYJKoZIhvcNAQELBQAwKjEoMCYGA1UEAwwfU2lnbmVyIFNlcnZpY2UgdmVyaWZpY2F0aW9uIGtleTAeFw0yNjEwMDgyMzI2MzNaFw0zNjEwMDUyMzI2MzNaMCoxKDAmBgNVBAMMH1NpZ25lciBTZXJ2aWNlIHZlcmlmaWNhdGlvbiBrZXkwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQDFg1iIYRmKRy5ZRvDHSBBuOG6lNm2/L8Se0f4QQaKjewxkwmZIej3aPVcpNJV0cIA6PsDW0toQbcAVD/fgF2uWriSAAkFeCAR6w0IWrgqaBOJA22y6wjIbeijwHtnf6Kc+5pH6QnBOZ+sqhv166FfOPpB/mYTMvmGRuqsPJA90iDyNlJqN4p2w8e3Zg6PLp4Z3iQjWyBmmWnFTbDJNGZrJ9eQyM8sO8Vfv/zK7QbtrFNON4bPLJL7y4I5bDkTZD8nPGnwbc2y66Dvd5rNpivXOFTsUQ1iAybb1WsPHU8J8pGw+tsF+R8xufMqqbN8UFIlJ8MmCcMV7KZkWDTdYRjy5AgMBAAGjYDBeMB0GA1UdDgQWBBTOvKm3FJYXXGFoRoLzcseikXTGfDAfBgNVHSMEGDAWgBTOvKm3FJYXXGFoRoLzcseikXTGfDAMBgNVHRMBAf8EAjAAMA4GA1UdDwEB/wQEAwIHgDANBgkqhkiG9w0BAQsFAAOCAQEAW27U5WeKprE65y12fe51rpQgkevKqSjuEvBtY0aFvobnw5zVVrF1N0veWPs7KqwyNrzGkYzxMSDabKinNSElphBCWJEKaJGACL0+INjLVeQ018HZ1jTYg99Sak18ySeMYj1Kd85WXM8oqQX7blIvQgP96q7LOJO3qNtjQAg7xt/z5slJ7fbiswSPF36rpD/GxUZxPBWQ+Ly/ekywxLMoi7iFmClwJd0vTjYCBN1OFXKIHl/HUUw5a+3QRrdloAQVFdjOl7tVzIjCLMWnZKvTXjIA8ppx13mEh2oqKNGFWyCjmd0TX8Pe1Z5su9zKdFnVpBPptMePgBdXrDCXOGYqeA=="
+          ]
+        },
+        {
+          "alg": "RS256",
+          "e": "AQAB",
+          "kid": "DoNsj1nLTYNSC3QI05vnd_bgfyzCYSZl2CjUkivtKEQ",
+          "kty": "RSA",
+          "n": "sbbzw5cG_yvyL3s72pJUIa32ZsxjvH5poWzRad-_jvNJrCIcO5_RBWDM12zQe_2MUpmPcjXqYYfRNRkGmBTl911myDN7HXFXf_exzod-PgArbSdCROgdVjqAEninvt8Haf8s-yE9fnaaMANWM2jbVIYfWZJ3cR08G9tDRGVCDU7oCtEdngmLn1jmYXKaCYPPiHRKs6MpHvRSzfqkir_NX3xQB-3amCOWEP4NRL52XhH4PliM1pMZVs6UAgPfquK-tS4hNiJHgk7VN8cqUK87hFsdYSN3UfVYgRMaHr40b-LiR2VVlDccwdwcP5dKB16Cw1k9SL6fpwJf7sOcuEeQ1Q",
+          "use": "sig"
+        },
+        {
+          "alg": "RS256",
+          "e": "AQAB",
+          "kid": "hsnAofk8H8v_nxbE0EEP3SmDMZgXYD_ChwRNKrkTznY",
+          "kty": "RSA",
+          "n": "kcF9Fa6BHBuWP3-eCGvm9ULZCE-IZTelewCEB51UudFkBypiV7EH2CvFrBZO4APS_7k7D0uX25rSTh0dz6kdUa2bvBOerdGPr0lYVEHB4BnroSOtySTsBjo8I3gWJ8oJwt-Ky7UFmEjO8QelAo7CrgFvLcSqQwuG9axBk6Wp09Y_7LvWf4f6yIMUKkEGdHW8d7juV4x3a9fQI3AK4JdfTij00tURWwU4KzIs-DXcxPJiuYqx9XlgbRHkGuW0KSbO2Y4F-UqIgfGrwfqj5ctCn7jfPHEFJpmNJb9Sjji32DDWy7XsY-d2Ozu2jjFWTJLua-iLLSZSNcNt_GFS8G2Yww",
+          "use": "sig"
+        }
+      ],
+      "sha256": "6eddd0d5087ca4ed34aa7db5a4bf619af8d297984ca9c49169e3ef2e10b052d5",
+      "url": "https://auth.openai.com/.well-known/jwks.json"
+    },
+    {
+      "keys": [
+        {
+          "alg": "ES256",
+          "crv": "P-256",
+          "kid": "oauth2-production-2026-02-19",
+          "kty": "EC",
+          "use": "sig",
+          "x": "-m5WdZbaehSO0yesg3a9FsZV1m-F5uQSIO87UBwA8Nk",
+          "y": "_-hhOxLm_1V83mLmXv83rYS7u_Hli3Okv56THqf9YCg"
+        },
+        {
+          "alg": "ES256",
+          "crv": "P-256",
+          "kid": "ia-20260825-prod",
+          "kty": "EC",
+          "use": "sig",
+          "x": "0hPZqAZVcxjCzHq102VS_YAOqxvTFfHYmCqxMZfFNj4",
+          "y": "MX-CkaPg-imLhMXn00Rjr9izW_NomW9WqZS6s-XQglY"
+        }
+      ],
+      "sha256": "e3fa27d87704f3819335325ec7cfc1a6a05d0e39735b5a80eff220409fd573ef",
+      "url": "https://auth.x.ai/.well-known/jwks.json"
+    }
+  ],
+  "subject_checks": [
+    {
+      "client": "Codex",
+      "expected_external_subject_anchor": "UNBEKANNT; no separately enrolled subject",
+      "signed_subject_consistency": true,
+      "signed_subjects_present": 2,
+      "subject_values_exported": false
+    },
+    {
+      "client": "Grok",
+      "expected_external_subject_anchor": "UNBEKANNT; no separately enrolled subject",
+      "signed_subject_consistency": true,
+      "signed_subjects_present": 1,
+      "subject_values_exported": false
+    }
+  ],
+  "token_checks": [
+    {
+      "access_token_resource_audience": "UNBEKANNT unless independently configured; not conflated with client_id",
+      "audience_check_is_full_ID_token_check": true,
+      "client": "Codex",
+      "has_signed_response_job_digest_field": false,
+      "kind": "id_token",
+      "nonce_equals_new_job_challenge": false,
+      "original_login_nonce_binding": "UNBEKANNT; original challenge not retained",
+      "pinned_OIDC_client_audience_matches": true,
+      "pinned_issuer_matches": true,
+      "provider_session_job_binding": "UNBEKANNT",
+      "raw_token_archived": false,
+      "signature_verified": true,
+      "signed_subject_nonempty": true,
+      "unexpired": false,
+      "wrong_client_audience_control_rejected": true,
+      "wrong_issuer_control_rejected": true
+    },
+    {
+      "access_token_resource_audience": "UNBEKANNT unless independently configured; not conflated with client_id",
+      "audience_check_is_full_ID_token_check": false,
+      "client": "Codex",
+      "has_signed_response_job_digest_field": false,
+      "kind": "other_cached_token",
+      "nonce_equals_new_job_challenge": false,
+      "original_login_nonce_binding": "UNBEKANNT; original challenge not retained",
+      "pinned_OIDC_client_audience_matches": false,
+      "pinned_issuer_matches": true,
+      "provider_session_job_binding": "UNBEKANNT",
+      "raw_token_archived": false,
+      "signature_verified": true,
+      "signed_subject_nonempty": true,
+      "unexpired": true,
+      "wrong_client_audience_control_rejected": true,
+      "wrong_issuer_control_rejected": true
+    },
+    {
+      "classification": "UNBEKANNT",
+      "client": "Codex",
+      "kind": "unqualified_cached_token"
+    },
+    {
+      "access_token_resource_audience": "UNBEKANNT unless independently configured; not conflated with client_id",
+      "audience_check_is_full_ID_token_check": false,
+      "client": "Grok",
+      "has_signed_response_job_digest_field": false,
+      "kind": "other_cached_token",
+      "nonce_equals_new_job_challenge": false,
+      "original_login_nonce_binding": "UNBEKANNT; original challenge not retained",
+      "pinned_OIDC_client_audience_matches": true,
+      "pinned_issuer_matches": true,
+      "provider_session_job_binding": "UNBEKANNT",
+      "raw_token_archived": false,
+      "signature_verified": true,
+      "signed_subject_nonempty": true,
+      "unexpired": true,
+      "wrong_client_audience_control_rejected": true,
+      "wrong_issuer_control_rejected": true
+    },
+    {
+      "classification": "UNBEKANNT",
+      "client": "Grok",
+      "kind": "unqualified_cached_token"
+    }
+  ],
+  "token_export": false
+}

@@ -1,0 +1,28 @@
+Executable=/Users/landjunge/.grok/downloads/grok-1.0.50-macos-x86_64
+Identifier=xai-grok-pager
+Format=Mach-O thin (x86_64)
+CodeDirectory v=20500 size=1403578 flags=0x10000(runtime) hashes=43856+2 location=embedded
+VersionPlatform=1
+VersionMin=658432
+VersionSDK=1769472
+Hash type=sha256 size=32
+CandidateCDHash sha256=baaf319d3348a74f7644e10590efa030bcb67ffa
+CandidateCDHashFull sha256=baaf319d3348a74f7644e10590efa030bcb67ffa4efa63074caee021e4623399
+Hash choices=sha256
+CMSDigest=baaf319d3348a74f7644e10590efa030bcb67ffa4efa63074caee021e4623399
+CMSDigestType=2
+Executable Segment base=0
+Executable Segment limit=168407040
+Executable Segment flags=0x1
+Page size=4096
+CDHash=baaf319d3348a74f7644e10590efa030bcb67ffa
+Signature size=8982
+Authority=Developer ID Application: X.AI Corporation (5Y6N3AJ54S)
+Authority=Developer ID Certification Authority
+Authority=Apple Root CA
+Timestamp=6. Oct 2026 at 22:23:33
+Info.plist=not bound
+TeamIdentifier=5Y6N3AJ54S
+Runtime Version=27.0.0
+Sealed Resources=none
+Internal requirements count=1 size=176

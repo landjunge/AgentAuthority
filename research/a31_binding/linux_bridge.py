@@ -143,13 +143,12 @@ def run(out):
             row["evaluation"] = evaluate(
                 enrollment, capture, payload, packet, state["ca_public_key"]
             )
-            row["all_writes_before_client_receipt_expiry"] = all(
-                record["record"]["entry_ns"] >= 0
-                for record in capture
-                if record.get("record", {}).get("kind") == 1
-            )
+            # Guest monotonic clock cannot be compared to host receipt expiry.
+            # A host receive-end bound is recorded instead. Missing values remain unknown.
+            row["host_collection_end_ns"] = time.monotonic_ns()
+            row["guest_clock_directly_compared_to_host_expiry"] = False
             row["host_collection_end_before_receipt_expiry"] = (
-                time.monotonic_ns() < source["local_receipt"]["body"]["expires_ns"]
+                row["host_collection_end_ns"] < source["local_receipt"]["body"]["expires_ns"]
             )
         else:
             row["classification"] = "UNBEKANNT"

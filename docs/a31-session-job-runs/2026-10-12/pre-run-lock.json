@@ -1,0 +1,10 @@
+{
+  "source_commit": "79fee3dea5396bb3b220e9a7248371611e88bc60",
+  "ca_public_key_pin": "bYRgBwmo/KMVkGI00wXKCeAmHZ0aEmvB/aJkCjxNDrU=",
+  "probe_executable_sha256": "1169a325c0c45bc09f9cb727ddbb2a1ddd1560f70a04c549162d8bf194fd0001",
+  "sources": {
+    "research/a31_binding/client_run.py": "ddc1a39c65b42587081199778d5a0294f513e0169b97f1375579019fd12e0ca0",
+    "research/a31_binding/process_probe.c": "74d4f2f17d42754a146aaed86eae091af021a535165cf16154fa9c410a67c3e3",
+    "research/a31_binding/receipt.py": "7cf8b783f222728e48c4b9660c0528ae186b84bf46269a09eb50757511db9415"
+  }
+}

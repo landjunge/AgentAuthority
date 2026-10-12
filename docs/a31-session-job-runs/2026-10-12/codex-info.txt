@@ -1,0 +1,28 @@
+Executable=/Users/landjunge/.codex/packages/standalone/releases/0.162.1-x86_64-apple-darwin/bin/codex
+Identifier=codex
+Format=Mach-O thin (x86_64)
+CodeDirectory v=20500 size=2063249 flags=0x10000(runtime) hashes=64466+7 location=embedded
+VersionPlatform=1
+VersionMin=658432
+VersionSDK=984320
+Hash type=sha256 size=32
+CandidateCDHash sha256=e14a40abbb6e7f524291a0cc7a3d4ca83e5eff18
+CandidateCDHashFull sha256=e14a40abbb6e7f524291a0cc7a3d4ca83e5eff189638045c0e15f4247b87c989
+Hash choices=sha256
+CMSDigest=e14a40abbb6e7f524291a0cc7a3d4ca83e5eff189638045c0e15f4247b87c989
+CMSDigestType=2
+Executable Segment base=0
+Executable Segment limit=253665280
+Executable Segment flags=0x1
+Page size=4096
+CDHash=e14a40abbb6e7f524291a0cc7a3d4ca83e5eff18
+Signature size=9047
+Authority=Developer ID Application: OpenAI OpCo, LLC (2DC432GLL2)
+Authority=Developer ID Certification Authority
+Authority=Apple Root CA
+Timestamp=9. Oct 2026 at 20:16:23
+Info.plist=not bound
+TeamIdentifier=2DC432GLL2
+Runtime Version=15.5.0
+Sealed Resources=none
+Internal requirements count=1 size=168

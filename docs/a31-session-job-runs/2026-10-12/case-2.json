@@ -1,0 +1,113 @@
+{
+  "context": {
+    "client": "Grok",
+    "challenge": "0eb6e0255d72c7788047e9daf7342a8db6789bd2c6347e31",
+    "channel_id": "e2b49a9d55690dbb0e720bbf40145d6ac04ad90202b6375a",
+    "receipt_id": "aa7dec354f0a0f3812cd2a282946722ea631c1993811e3af",
+    "spawn_pid": 74153,
+    "host_controller_pid": 74076,
+    "uid": 501,
+    "process_instance": {
+      "pid": 74153,
+      "start_sec": 1791768544,
+      "start_usec": 447566,
+      "boot_sec": 1790872495,
+      "path": "/Users/landjunge/.grok/downloads/grok-1.0.50-macos-x86_64"
+    }
+  },
+  "job": {
+    "operation": "write16",
+    "nonce": "0eb6e0255d72c7788047e9daf7342a8db6789bd2c6347e31",
+    "position": "2",
+    "claimed_client": "Grok"
+  },
+  "local_receipt": {
+    "body": {
+      "domain": "A31-LOCAL-CLIENT-JOB-v1",
+      "scope": "local_host_attestation_not_provider",
+      "client": "Grok",
+      "channel_id": "e2b49a9d55690dbb0e720bbf40145d6ac04ad90202b6375a",
+      "challenge": "0eb6e0255d72c7788047e9daf7342a8db6789bd2c6347e31",
+      "receipt_id": "aa7dec354f0a0f3812cd2a282946722ea631c1993811e3af",
+      "issued_ns": 896061494053331,
+      "expires_ns": 896241494053331,
+      "process_probe": {
+        "pid": 74153,
+        "ppid": 74076,
+        "uid": 501,
+        "start_sec": 1791768544,
+        "start_usec": 447566,
+        "boot_sec": 1790872495,
+        "boot_read_status": 0,
+        "kernel_instance_stable": true,
+        "proc_info_bytes": [
+          136,
+          136
+        ],
+        "proc_path_status": [
+          57,
+          57
+        ],
+        "guest_status": 0,
+        "requirement_status": 0,
+        "validity_status": 0,
+        "signing_info_status": 0,
+        "path": "/Users/landjunge/.grok/downloads/grok-1.0.50-macos-x86_64",
+        "team": "5Y6N3AJ54S",
+        "identifier": "xai-grok-pager",
+        "cdhash": "baaf319d3348a74f7644e10590efa030bcb67ffa",
+        "anchor": "Apple generic signing chain plus pinned vendor requirement"
+      },
+      "job_sha256": "42f791a172861ad3f6c7d0d799a75ee808c9f2b26f5dbfcbfa3eb5f0a035c446",
+      "client_binary_sha256": "5ff2b912da2d85cdc627595d819423751bab67fcb65870f90a0783cccba5c62a",
+      "client_exit": 0,
+      "qualified_response": true,
+      "stdout_sha256": "4d333b3b208cd500449f0ea197a96088d67aaed6f71b3a8bd7a7fab7b8e09bec",
+      "metadata_sha256": "97500c7ec8d6d2b7c049a4e2ec6031092d6269120f53703d2b690ee928d95bfd",
+      "provider_attestation": false,
+      "coding_thread_trust": "client_claim_only",
+      "stdout_writer_limit": "exclusive owned pipe may be inherited by client descendants"
+    },
+    "signature": "F5OyLcaqPhTaebO98RGeaFJq4RUCymOdso619YfN+mFhGZ0xGgtrva27upClroJKaOq27ym4wJ1MXB2LcaPrCQ=="
+  },
+  "client_metadata": [
+    {
+      "sessionId": "01a12dba-47cb-7e93-899f-85f02916bd36",
+      "attestation_fields": []
+    }
+  ],
+  "process_probe_exit": 0,
+  "client_exit": 0,
+  "timeout": false,
+  "stdout_bytes": 1051,
+  "stderr_bytes": 0,
+  "stdout_sha256": "4d333b3b208cd500449f0ea197a96088d67aaed6f71b3a8bd7a7fab7b8e09bec",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "provider_attestation_status": "UNBEKANNT",
+  "delegation_requested": false,
+  "evaluation": {
+    "qualified": true,
+    "checks": {
+      "host_signature": true,
+      "domain": true,
+      "trust_scope": true,
+      "client": true,
+      "channel": true,
+      "challenge": true,
+      "job_digest": true,
+      "instance": true,
+      "owned_spawn": true,
+      "dynamic_code_valid": true,
+      "kernel_start_stable": true,
+      "code_pin": true,
+      "time": true,
+      "anti_replay": true,
+      "job_kind": true,
+      "successful_client": true
+    },
+    "reasons": [],
+    "local_client_job_binding": "BELEGT",
+    "provider_session_job_binding": "UNBEKANNT",
+    "model_identity": "UNBEKANNT"
+  }
+}

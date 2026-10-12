@@ -1,0 +1,2 @@
+pub const XAI_OAUTH2_ISSUER: &str = "https://auth.x.ai";
+                    client_id: obfstr::obfstr!("b1a00492-073a-47ea-816f-4c329264a828").to_owned(),

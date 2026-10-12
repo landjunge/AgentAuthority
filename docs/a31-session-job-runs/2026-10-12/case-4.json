@@ -1,0 +1,131 @@
+{
+  "context": {
+    "client": "Codex",
+    "challenge": "ff473d1efc0975d0ecaf2c842eb35fc586ab01680a51c905",
+    "channel_id": "a70fa6e4c840eca209fec1eb0ab729ef5f514f3bca6b87db",
+    "receipt_id": "75a5a150bfff709f6c4775313d94552726e5e23bee491474",
+    "spawn_pid": 74273,
+    "host_controller_pid": 74076,
+    "uid": 501,
+    "process_instance": {
+      "pid": 74273,
+      "start_sec": 1791768564,
+      "start_usec": 512041,
+      "boot_sec": 1790872495,
+      "path": "/Users/landjunge/.codex/packages/standalone/releases/0.162.1-x86_64-apple-darwin/bin/codex"
+    }
+  },
+  "job": {
+    "operation": "write16",
+    "nonce": "ff473d1efc0975d0ecaf2c842eb35fc586ab01680a51c905",
+    "position": "4",
+    "claimed_client": "Codex"
+  },
+  "local_receipt": {
+    "body": {
+      "domain": "A31-LOCAL-CLIENT-JOB-v1",
+      "scope": "local_host_attestation_not_provider",
+      "client": "Codex",
+      "channel_id": "a70fa6e4c840eca209fec1eb0ab729ef5f514f3bca6b87db",
+      "challenge": "ff473d1efc0975d0ecaf2c842eb35fc586ab01680a51c905",
+      "receipt_id": "75a5a150bfff709f6c4775313d94552726e5e23bee491474",
+      "issued_ns": 896081812589974,
+      "expires_ns": 896261812589974,
+      "process_probe": {
+        "pid": 74273,
+        "ppid": 74076,
+        "uid": 501,
+        "start_sec": 1791768564,
+        "start_usec": 512041,
+        "boot_sec": 1790872495,
+        "boot_read_status": 0,
+        "kernel_instance_stable": true,
+        "proc_info_bytes": [
+          136,
+          136
+        ],
+        "proc_path_status": [
+          90,
+          90
+        ],
+        "guest_status": 0,
+        "requirement_status": 0,
+        "validity_status": 0,
+        "signing_info_status": 0,
+        "path": "/Users/landjunge/.codex/packages/standalone/releases/0.162.1-x86_64-apple-darwin/bin/codex",
+        "team": "2DC432GLL2",
+        "identifier": "codex",
+        "cdhash": "e14a40abbb6e7f524291a0cc7a3d4ca83e5eff18",
+        "anchor": "Apple generic signing chain plus pinned vendor requirement"
+      },
+      "job_sha256": "19708dd0c21932a5f5daa058d07940e394145332ffc1f31b356a81ea856d7dea",
+      "client_binary_sha256": "f86b8cfd3de94dc70763d251da3ff292e94f4a53ad41b81faab3619a7bcb626c",
+      "client_exit": 0,
+      "qualified_response": true,
+      "stdout_sha256": "7e8a28ee121a53a8cb4974af82227aea483dc7e1140ea810e410191c4b9a9303",
+      "metadata_sha256": "5ef90f078a40a2040e00a94ceccd6140e1d0d16eda86ca5b542c61b3989a7562",
+      "provider_attestation": false,
+      "coding_thread_trust": "client_claim_only",
+      "stdout_writer_limit": "exclusive owned pipe may be inherited by client descendants"
+    },
+    "signature": "FMnYUQwLkqmsw8iWMaSulRi0MV4UFLqdXRA5aBGFJDHZyLtOTmakQzwFvcK5AGOqRAyxFi72CFrm0sMo2nEiAA=="
+  },
+  "client_metadata": [
+    {
+      "type": "thread.started",
+      "thread_id": "01a12dba-93ae-7e50-acc0-5b7bf6dce67d",
+      "attestation_fields": []
+    },
+    {
+      "type": "turn.started",
+      "attestation_fields": []
+    },
+    {
+      "type": "item.completed",
+      "attestation_fields": []
+    },
+    {
+      "type": "agent_message",
+      "id": "item_0",
+      "attestation_fields": []
+    },
+    {
+      "type": "turn.completed",
+      "attestation_fields": []
+    }
+  ],
+  "process_probe_exit": 0,
+  "client_exit": 0,
+  "timeout": false,
+  "stdout_bytes": 484,
+  "stderr_bytes": 316,
+  "stdout_sha256": "7e8a28ee121a53a8cb4974af82227aea483dc7e1140ea810e410191c4b9a9303",
+  "stderr_sha256": "1bbaa7b17030ae2d516921eeab021ae23c85f597559d83b408f63aff73574b8c",
+  "provider_attestation_status": "UNBEKANNT",
+  "delegation_requested": true,
+  "evaluation": {
+    "qualified": true,
+    "checks": {
+      "host_signature": true,
+      "domain": true,
+      "trust_scope": true,
+      "client": true,
+      "channel": true,
+      "challenge": true,
+      "job_digest": true,
+      "instance": true,
+      "owned_spawn": true,
+      "dynamic_code_valid": true,
+      "kernel_start_stable": true,
+      "code_pin": true,
+      "time": true,
+      "anti_replay": true,
+      "job_kind": true,
+      "successful_client": true
+    },
+    "reasons": [],
+    "local_client_job_binding": "BELEGT",
+    "provider_session_job_binding": "UNBEKANNT",
+    "model_identity": "UNBEKANNT"
+  }
+}
