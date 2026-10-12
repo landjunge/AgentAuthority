@@ -1,0 +1,13 @@
+{
+  "agent_count": 0,
+  "delegation_count": 0,
+  "scope": "/opt/a4c-controls-53dbe25838de559a",
+  "source_commit": "9b588fde01bf9fdf63576179cc1b1b1d411f41cf",
+  "source_sha256": {
+    "research/a4_completion/controls_probe.py": "87ba39a9043f98de823480fb6a7b715f23b5a3a6c7f7790382c946786e4e77d1",
+    "research/a4_completion/lifecycle.py": "33a12d7f70ac7cc34530c2b11d8607bfc5db6ef7f749db25fa55e219eaae70d3",
+    "research/a4_completion/observer.py": "a9b374891f7b0cfd26b40a6faefbdfb43cb60cffcec0375a9d840ff987d4ffde",
+    "research/a4_completion/probes.py": "6ea0e80289ff7360b01ca206a5e5bcf6759a735577519d1300ef4a2e2583fe71"
+  },
+  "target_writer_job_count": 0
+}
