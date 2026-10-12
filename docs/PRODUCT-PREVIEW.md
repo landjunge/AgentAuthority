@@ -1,6 +1,11 @@
 # Agent Authority: lokale Produktpreview
 
-Agent Authority liest einen ausgewählten ThreadDesk-Whiteboard-Verlauf und zeigt
+Der aktuelle [quellenneutrale Vertrag](PRODUCT-OBSERVATION-CONTRACT.md) gilt für
+Produkteingang und Berichte. Der ThreadDesk-Leseadapter bleibt optional;
+`inspect --thread` ist ein kompatibler Adapteraufruf. Berichtsschema und
+Eintragsbeschriftungen wurden ausdrücklich auf den neutralen Vertrag umgestellt.
+
+Agent Authority liest ausgewählte lokale Beobachtungen und zeigt
 gemeldete Aufgabenaktivität sowie strukturelle Warnungen. Es verändert weder
 Aufgaben noch Agenten und trifft keine Ausführungsentscheidung.
 
@@ -35,7 +40,7 @@ Exit 2 wird der Bericht mit den Warnungen ausgegeben; eine Shell-Umleitung legt
 die vom Anwender gewählte Ausgabedatei an.
 
 Ein typischer Bericht nennt Aufgabenaliase wie A1, eine gemeldete Übernahme oder
-ein gemeldetes Ergebnis sowie Belegreferenzen wie WB42 und die Eintrags-ID.
+ein gemeldetes Ergebnis sowie Belegreferenzen wie E42 und die Eintrags-ID.
 Damit kann der Anwender den Originalbeitrag in ThreadDesk wiederfinden.
 JSON enthält zusätzlich den SHA256-Fingerprint der tatsächlich gelesenen Datei.
 „Kein späterer Ergebnisbeitrag gelesen“ heißt genau das; es heißt nicht,

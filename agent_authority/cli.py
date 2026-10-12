@@ -10,7 +10,6 @@ from pathlib import Path
 from agent_authority import __version__
 from agent_authority.html_report import render_html
 from agent_authority.report import build_report, render_text
-from agent_authority.whiteboard import read_whiteboard
 
 
 def _limit(value: str) -> int:
@@ -29,13 +28,12 @@ def main(argv: Sequence[str] | None = None) -> int:
         "--version", action="version", version=f"Agent Authority {__version__} (observer preview)"
     )
     actions = parser.add_subparsers(dest="command", required=True)
-    inspect = actions.add_parser("inspect", help="ThreadDesk-Whiteboard nur lesend auswerten.")
-    inspect.add_argument(
-        "--thread", required=True, help="ThreadDesk-Thread-ID (zwölf kleine Hexzeichen)."
-    )
-    inspect.add_argument(
-        "--store", type=Path, default=Path.home() / ".threaddesk", help="Lokaler ThreadDesk-Store."
-    )
+    inspect = actions.add_parser("inspect", help="Lokale Beobachtungsquelle nur lesend auswerten.")
+    inspect.add_argument("--source", choices=["json-directory", "threaddesk-whiteboard"])
+    inspect.add_argument("--input", type=Path, help="Verzeichnis neutraler JSON-Beobachtungen.")
+    inspect.add_argument("--source-id", help="Neutraler Quellenbezeichner, maximal 128 Zeichen.")
+    inspect.add_argument("--thread", help="ThreadDesk-Thread-ID (zwölf kleine Hexzeichen).")
+    inspect.add_argument("--store", type=Path, default=None, help="Lokaler ThreadDesk-Store.")
     inspect.add_argument(
         "--format", choices=["text", "json", "html"], default="text", help="Berichtsformat."
     )
@@ -46,7 +44,22 @@ def main(argv: Sequence[str] | None = None) -> int:
         help="Höchstens 1–100 Anzeigezeilen je Kategorie; Analyse bleibt vollständig.",
     )
     args = parser.parse_args(argv)
-    report = build_report(read_whiteboard(args.store, args.thread), args.limit)
+    source = args.source or ("threaddesk-whiteboard" if args.thread else None)
+    if source == "json-directory":
+        if args.input is None or args.source_id is None or args.thread or args.store is not None:
+            parser.error("json-directory benötigt --input und --source-id, ohne --thread/--store.")
+        from agent_authority.json_source import read_observations
+
+        snapshot = read_observations(args.input, args.source_id)
+    elif source == "threaddesk-whiteboard":
+        if not args.thread or args.input is not None or args.source_id is not None:
+            parser.error("threaddesk-whiteboard benötigt --thread, ohne --input/--source-id.")
+        from agent_authority.whiteboard import read_whiteboard
+
+        snapshot = read_whiteboard(args.store or Path.home() / ".threaddesk", args.thread)
+    else:
+        parser.error("Quelle mit --source wählen; --thread wählt den ThreadDesk-Adapter.")
+    report = build_report(snapshot, args.limit)
     if args.format == "html":
         output = render_html(report)
     elif args.format == "json":

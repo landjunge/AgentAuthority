@@ -48,7 +48,7 @@ def _evidence(references: list[dict[str, Any]]) -> str:
         return "<span class='muted'>Keine Eintragsreferenz verfügbar</span>"
     items = []
     for ref in references:
-        ordinal = f"WB{_h(ref['ordinal'])} · " if "ordinal" in ref else "Eintrag · "
+        ordinal = f"E{_h(ref['ordinal'])} · " if "ordinal" in ref else "Eintrag · "
         fingerprint = (
             f"<br><small>SHA256 <code>{_h(ref['file_sha256'])}</code></small>"
             if "file_sha256" in ref
@@ -61,12 +61,12 @@ def _evidence(references: list[dict[str, Any]]) -> str:
 
 
 def render_html(report: dict[str, Any]) -> str:
-    """Render the P10-01 projection; no archive reads, exports or new inferences."""
+    """Render the minimized observation projection; no archive reads, exports or new inferences."""
     source, summary, display = report["source"], report["summary"], report["display"]
     complete = source["complete_observed_read"]
     state = "vollständig im bezeichneten Leseumfang" if complete else "unvollständig"
     notice_class = "notice" if complete else "notice partial"
-    thread = _h(source["thread_id"]) if source["thread_id"] else "keine gültige Quelle"
+    source_id = _h(source["source_id"]) if source["source_id"] else "keine gültige Quelle"
     cards = [
         (source["entries_read"], "Beiträge gelesen"),
         (summary["tasks_with_reported_association"], "Gemeldete Aufgabenbezüge"),
@@ -116,7 +116,7 @@ def render_html(report: dict[str, Any]) -> str:
         else "<p>Keine strukturelle Warnung in den gelesenen Einträgen.</p>"
     )
     recent = "".join(
-        f"<tr><td>WB{_h(entry['ordinal'])}</td><td>{_h(KIND_TEXT[entry['reported_kind']])}</td>"
+        f"<tr><td>E{_h(entry['ordinal'])}</td><td>{_h(KIND_TEXT[entry['reported_kind']])}</td>"
         f"<td>{_h(entry['reported_actor_type'])} (gemeldet)</td>"
         f"<td>{_evidence([entry])}</td></tr>"
         for entry in report["recent_entries"]
@@ -138,10 +138,10 @@ def render_html(report: dict[str, Any]) -> str:
 <html lang="de"><head><meta charset="utf-8">
 <meta http-equiv="Content-Security-Policy" content="{_h(policy)}">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Agent Authority — Whiteboard {thread}</title><style>{STYLE}</style></head>
-<body><main><header><p class="eyebrow">LOKALES WHITEBOARDARCHIV</p>
+<title>Agent Authority — Aktivitätsbeobachtung {source_id}</title><style>{STYLE}</style></head>
+<body><main><header><p class="eyebrow">LOKALE BEOBACHTUNGSQUELLE</p>
 <h1>Agent Authority</h1><p>Gemeldete Aktivität, nachvollziehbare Belege und Datenhinweise.</p>
-<p class="muted">Ausgewählter Verlauf: <code>{thread}</code></p></header>
+<p class="muted">Ausgewählter Verlauf: <code>{source_id}</code></p></header>
 <div class="{notice_class}"><strong>Datenaufnahme: {state}</strong>
 <p>{_h(source["files_examined"])} von {_h(source["files_seen"])} JSON-Dateien untersucht.
 Herkunft, Identität und tatsächliche Wirkung bleiben <strong>UNBEKANNT</strong>.</p></div>

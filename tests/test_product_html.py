@@ -74,7 +74,7 @@ def test_html_matches_report_counts_task_aliases_and_actual_citation_bytes(tmp_p
     assert "3" in text and "Beiträge gelesen" in text
     assert "A1" in text and "A2" in text
     assert "Ergebnis gemeldet" in text and "Übernahme gemeldet" in text
-    assert "WB2" in text and path.stem in text
+    assert "E2" in text and path.stem in text
     assert hashlib.sha256(path.read_bytes()).hexdigest() in text
     assert "Herkunft, Identität und tatsächliche Wirkung bleiben" in text
     assert "UNBEKANNT" in text
@@ -96,7 +96,7 @@ def test_renderer_escapes_projected_strings_instead_of_creating_active_markup(tm
     put(tmp_path, 1)
     value = build_report(read_whiteboard(tmp_path, THREAD))
     injection = '<img src="https://example.invalid/leak" onerror="alert(1)">'
-    value["source"]["thread_id"] = injection
+    value["source"]["source_id"] = injection
     value["tasks"][0]["task_alias"] = injection
     value["tasks"][0]["evidence"][0]["entry_id"] = injection
     value["tasks"][0]["evidence"][0]["file_sha256"] = injection
@@ -174,7 +174,7 @@ def test_text_and_json_outputs_retain_their_default_behavior(tmp_path, capsys):
     put(tmp_path, 1)
     args = ["inspect", "--store", str(tmp_path), "--thread", THREAD]
     assert main(args) == 0
-    assert capsys.readouterr().out.startswith("Agent Authority — Whiteboard-Beobachtung")
+    assert capsys.readouterr().out.startswith("Agent Authority — Aktivitätsbeobachtung")
     assert main([*args, "--format", "json"]) == 0
     value = json.loads(capsys.readouterr().out)
     assert value == build_report(read_whiteboard(tmp_path, THREAD))
