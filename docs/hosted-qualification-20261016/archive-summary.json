@@ -1,0 +1,14 @@
+{
+  "same_as_original": true,
+  "experiment_passed": true,
+  "full_chains_verified": 99,
+  "failed_checks": [],
+  "input_sha256": {
+    "registry.json": "53f7f3b6fa653a6bfb3bc56b30ad14afdd80d9e5a19f91050e9596f8aa0d5c0c",
+    "capture.jsonl": "c4a1e49d2cff63f8970524df84220323b3f4f97d6db930f36779f2d20d5fae02",
+    "trial-result.json": "8409e0d77546800b91d0015231820d1837222dee373e2cd5954d7d4906bebe57",
+    "pins.json": "8dc261929d9f7b459711ce257bcb7885634eef9e18e29155d86b1a8201c7d390",
+    "independent-join.json": "54765ccd490ea23f7df0964a8f315214b5df1fb445a04425f1d22cf4f1e094b7"
+  },
+  "original_bytes_unchanged": true
+}

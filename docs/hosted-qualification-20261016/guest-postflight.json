@@ -1,0 +1,16 @@
+{
+  "command": [
+    "limactl",
+    "shell",
+    "--workdir=/tmp",
+    "a1-research",
+    "sudo",
+    "-n",
+    "python3",
+    "-c",
+    "import json,pathlib,os;print(json.dumps({\"kprobe_events\":pathlib.Path(\"/sys/kernel/tracing/kprobe_events\").read_text(),\"research_processes\":[{\"pid\":int(p.name),\"command\":p.joinpath(\"cmdline\").read_bytes().replace(b\"\\x00\",b\" \").decode(errors=\"replace\")} for p in pathlib.Path(\"/proc\").iterdir() if p.name.isdigit() and int(p.name)!=os.getpid() and p.joinpath(\"cmdline\").exists() and any(x in p.joinpath(\"cmdline\").read_bytes() for x in [b\"/opt/a4c-\",b\"a4c-private-\"])]}))"
+  ],
+  "exit": 0,
+  "stdout": "{\"kprobe_events\": \"\", \"research_processes\": [{\"pid\": 1216, \"command\": \"sudo -n python3 -c import json,pathlib,os;print(json.dumps({\\\"kprobe_events\\\":pathlib.Path(\\\"/sys/kernel/tracing/kprobe_events\\\").read_text(),\\\"research_processes\\\":[{\\\"pid\\\":int(p.name),\\\"command\\\":p.joinpath(\\\"cmdline\\\").read_bytes().replace(b\\\"\\\\x00\\\",b\\\" \\\").decode(errors=\\\"replace\\\")} for p in pathlib.Path(\\\"/proc\\\").iterdir() if p.name.isdigit() and int(p.name)!=os.getpid() and p.joinpath(\\\"cmdline\\\").exists() and any(x in p.joinpath(\\\"cmdline\\\").read_bytes() for x in [b\\\"/opt/a4c-\\\",b\\\"a4c-private-\\\"])]})) \"}]}\n",
+  "stderr": ""
+}

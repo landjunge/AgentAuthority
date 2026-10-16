@@ -1,0 +1,162 @@
+{
+  "docs/HOSTED-QUALIFICATION-PROTOCOL-20261016.md": {
+    "bytes": 3965,
+    "sha256": "9deb538e697a14f5b371b1d18c04ffa94567afa8af9a1350a72ffa80819c8756"
+  },
+  "docs/HOSTED-SERVICE-ASSESSMENT-20261016.md": {
+    "bytes": 27279,
+    "sha256": "8ab35a68422d7c2beb67dce73dbdb737f91c0e47f50cceb50d50dbf4a3f0cac4"
+  },
+  "docs/hosted-qualification-20261016/README.md": {
+    "bytes": 2962,
+    "sha256": "663cab65108ec2f57113bec2f5fd35280d69a42de0a62622e24b36cd24923d03"
+  },
+  "docs/hosted-qualification-20261016/archive-reverification.json": {
+    "bytes": 96421,
+    "sha256": "54765ccd490ea23f7df0964a8f315214b5df1fb445a04425f1d22cf4f1e094b7"
+  },
+  "docs/hosted-qualification-20261016/archive-summary.json": {
+    "bytes": 626,
+    "sha256": "f494879f5426bbd605927787d2cc4a173fc638a35c17ba167680ff950f4b5ba3"
+  },
+  "docs/hosted-qualification-20261016/existing-regressions-junit.xml": {
+    "bytes": 26205,
+    "sha256": "dc466ca0c57af93ae840b9a0c8460cfe5d5f61caafaf1e6b30a636ee2624e6f3"
+  },
+  "docs/hosted-qualification-20261016/existing-regressions.log": {
+    "bytes": 459,
+    "sha256": "544fbcd2146ea5e8a5c40ed99ed1d7c18af765a94eef1a6d61ac72ddce1d25e3"
+  },
+  "docs/hosted-qualification-20261016/format.log": {
+    "bytes": 26,
+    "sha256": "eee76f865de5a9f2456950f710ae5d5f9b5bd0ea02aa54f614c5eed6642a0bfd"
+  },
+  "docs/hosted-qualification-20261016/git-end-state.json": {
+    "bytes": 1404,
+    "sha256": "c4fd8aef911a537a63a18ae76dea856e2e12f47864a8db67cf8373419c83655f"
+  },
+  "docs/hosted-qualification-20261016/guest-postflight.json": {
+    "bytes": 1356,
+    "sha256": "05002912556eeacd1aa222b6e8684ac2ce8bd08e83f4dfcbbfcc3f79f503bbab"
+  },
+  "docs/hosted-qualification-20261016/guest-preflight.json": {
+    "bytes": 3167,
+    "sha256": "75c86925726eb9ec363be8bab57422dcdc8b8ac43a20cc1a4218c4ae059d490f"
+  },
+  "docs/hosted-qualification-20261016/ledger-junit-first.xml": {
+    "bytes": 2681,
+    "sha256": "f5d2bfd5b07adee2dc1a71c723c02bfb6658ba1cf937fab39d56467c641e6526"
+  },
+  "docs/hosted-qualification-20261016/ledger-junit.xml": {
+    "bytes": 3307,
+    "sha256": "9e426ba46f41f003115d544414ee04b165ae1ec0b01ca4d5545ea17f031414ce"
+  },
+  "docs/hosted-qualification-20261016/ledger-tests-first.log": {
+    "bytes": 288,
+    "sha256": "111daf3b13ab22b1f5d98e0a4adf6ee1568080f2508e61a3e178059a643d318b"
+  },
+  "docs/hosted-qualification-20261016/ledger-tests.log": {
+    "bytes": 288,
+    "sha256": "a52b3db1e07f22b226b4a3486dee56861bf6bf20511fa4c489c683befb9c7687"
+  },
+  "docs/hosted-qualification-20261016/lint-initial.log": {
+    "bytes": 38,
+    "sha256": "aac3a0503d8b95052cc85fb9f1717dc82b74aa55853a5aa9749b41e30275d472"
+  },
+  "docs/hosted-qualification-20261016/lint.log": {
+    "bytes": 19,
+    "sha256": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18"
+  },
+  "docs/hosted-qualification-20261016/live-command.stderr.log": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "docs/hosted-qualification-20261016/live-command.stdout.log": {
+    "bytes": 82,
+    "sha256": "5f89126713660f62e001750d8575e2d6c2614b453ff879dddbafd5cb74423aa9"
+  },
+  "docs/hosted-qualification-20261016/live-gate/attempt.json": {
+    "bytes": 291,
+    "sha256": "8eaaea6cfd331854e9e84f695f61e57d6b8cc2249f611dc3cfd8a0904dff12fb"
+  },
+  "docs/hosted-qualification-20261016/live-gate/capture.jsonl": {
+    "bytes": 2894,
+    "sha256": "de63bf0a6e17caec168f87b39ba6aa8c59faaa243b27b586743bf726427b8fe1"
+  },
+  "docs/hosted-qualification-20261016/live-gate/cleanup.json": {
+    "bytes": 233,
+    "sha256": "16d0f204f284e7b46eaad2cb9e370d0209875b079ddc5a1f28fb3944243eae34"
+  },
+  "docs/hosted-qualification-20261016/live-gate/evaluation.json": {
+    "bytes": 2172,
+    "sha256": "3a7fd126c19d0844a4d3f5f93d5264f51fb92d834615573fb3df0070072ff85b"
+  },
+  "docs/hosted-qualification-20261016/live-gate/harness-executed.py": {
+    "bytes": 5968,
+    "sha256": "84b1d64d00036d4520903fe69c1616c57d163e208f37711bc2c4bdf3bef6f207"
+  },
+  "docs/hosted-qualification-20261016/live-gate/observer.stderr.log": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "docs/hosted-qualification-20261016/live-gate/pins.json": {
+    "bytes": 1177,
+    "sha256": "1947fb1155af81912680d12167048cfc9b114fe7d27977baabb3860d8b7e1f9a"
+  },
+  "docs/hosted-qualification-20261016/live-gate/process-status.json": {
+    "bytes": 44,
+    "sha256": "88120ec3c8db0baac8831df031178077b04a0ea273b5ef381c0a66b6c1051492"
+  },
+  "docs/hosted-qualification-20261016/live-gate/registry.json": {
+    "bytes": 955,
+    "sha256": "e5801f5f96c0041889f490c4d3163e7c2728f3074b4a05af56eb6901311f4e0c"
+  },
+  "docs/hosted-qualification-20261016/live-gate/trial.stderr.log": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "docs/hosted-qualification-20261016/live-gate/trial.stdout.json": {
+    "bytes": 7492,
+    "sha256": "450287863d85694f5abb51e0bafc57600d6d4a367f66f443d524f7c77e683534"
+  },
+  "docs/hosted-qualification-20261016/origin-refs-at-session.txt": {
+    "bytes": 6179,
+    "sha256": "cb77bbbbbdd6b7f4183bde5d798c6107d89405de1234ceea5abb22c2edc0adaf"
+  },
+  "docs/hosted-qualification-20261016/original-source-hashes.json": {
+    "bytes": 1955,
+    "sha256": "56d8b9018be830cac15e7aebf6b97d574fda5ffcad2df813ac8bffd5c6c8783a"
+  },
+  "docs/hosted-qualification-20261016/qualification-summary.json": {
+    "bytes": 1303,
+    "sha256": "be31b1fb14abbe22f280589234d81cb76b2352cc38491eeabf06644675b68c3a"
+  },
+  "docs/hosted-qualification-20261016/root_probe_baseline-preflight.json": {
+    "bytes": 378,
+    "sha256": "192c9c6f5d8d656fb20c0d2c57e3459f92707d0f160b2b978a33bdbf0e98ec03"
+  },
+  "docs/hosted-qualification-20261016/scratch-recovery.json": {
+    "bytes": 7765,
+    "sha256": "0393a6882a2a86df2657ea95e2cd58b3dab5175a255b3a6859dabd9d040b3e80"
+  },
+  "docs/hosted-qualification-20261016/vm-end-state.json": {
+    "bytes": 2110,
+    "sha256": "3ef737ac8d4ce10bd3f50c11cb77f8f99d8843634261cc4d354bb534a6cef2ac"
+  },
+  "docs/hosted-qualification-20261016/vm-preflight.json": {
+    "bytes": 2494,
+    "sha256": "41715af6359bd0826b50417d4b13055b4dabb08d88e8ece8e4aeb0b506da0823"
+  },
+  "research/hosted_qualification/ledger.py": {
+    "bytes": 9344,
+    "sha256": "c2ef268bb8834cb62783e9d266029807953a67a30253091c7f9d5253215fa632"
+  },
+  "research/hosted_qualification/live_gate.py": {
+    "bytes": 6917,
+    "sha256": "102196e140b5cb3e91241aad6f44ab2d3d300d65ec211e256acca4fa64f3b357"
+  },
+  "tests/test_hosted_qualification.py": {
+    "bytes": 9669,
+    "sha256": "49a2b97c7810a5b3c60227dca6b7e857a0f8021feb9e2257f0e6ce2b7d842933"
+  }
+}

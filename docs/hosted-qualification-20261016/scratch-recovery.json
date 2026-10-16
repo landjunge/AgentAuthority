@@ -1,0 +1,82 @@
+[
+  {
+    "original": "/Users/landjunge/agent-authority-lab/.worktrees/hosted-qualification/docs/hosted-qualification-20261016/ledger-scratch",
+    "trash": "/Users/landjunge/.Trash/agent-authority-hosted-qualification-20261016-ledger-scratch",
+    "sha256": {
+      "test_rotation_revocation_and_o0/ledger.sqlite": "6540158c815c2ee62c9b59a8a4d14dd3b6409caf0b956dd46378d1e0354d0467",
+      "test_invalid_signed_context_do2/ledger.sqlite": "c6ddaaa406303d58cd28a1b0550b842e0be2faf6f8d81f8f00124506b562cf34",
+      "test_invalid_signed_context_do5/ledger.sqlite": "775d5f69f53c99e156ba957e4e1b7c74169a7b661891d85253fcd1aaeaaee20f",
+      "test_invalid_signed_context_do4/ledger.sqlite": "55e56d930d0ef84e4c2c5738e01b17bcf0f8f0a6051798afed34036fc762155b",
+      "test_invalid_signed_context_do3/ledger.sqlite": "333d6de11760547e89c27f1f15d68b1ad92f7c3a687440f81c620cc3cbff5165",
+      "test_report_never_promotes_sig0/ledger.sqlite": "3d962a6652c47d317c656e179fc1fffd8faaf92c06fa45c74f289cf8dd448285",
+      "test_failed_rotation_rolls_bac0/ledger.sqlite": "7c235c1afeb827e58e024163a51d89be3293405b61a9aa44247c4b396b308807",
+      "test_same_identifiers_in_disti0/ledger.sqlite": "d8389d5f0a6415dc0f04072e4251e6aab0cb3a5afc3cc21f477d9805b3c3f892",
+      "test_upload_key_cannot_enroll_0/ledger.sqlite": "3ca04fee7dee7ea9ae921965f31c7c760d3b5d04ababef74d01b79f88daf8e0f",
+      "test_parallel_workers_and_rest0/ledger.sqlite": "0674f514f340b7e1dad0d4953963c207f8926fcc2729d7f46a8e366d8142cb28",
+      "test_nonce_replay_and_idempote0/ledger.sqlite": "59061bab837ad316b6826d0a2d4b9062d5e4959bba7dbbb11a173aa75c2e2477",
+      "test_real_process_exit_at_comm1/ledger.sqlite": "574e6b06767493916b743ed5e85d972c40b9fc2d04a885308160dc72c3cae4c6",
+      "test_invalid_signed_context_do6/ledger.sqlite": "5b078ef95c2882e8dbdd67cba97e830fd9069dbb9d40370fecc49ea461bb7cab",
+      "test_invalid_signed_context_do1/ledger.sqlite": "0f39c00059c97ba058cc8119b30f0bf9e83b89fd19ba7163b0ab24ed5eee50c3",
+      "test_bad_signature_does_not_co0/ledger.sqlite": "5d2aea078ebd5af87cdddcf01e19a5f64f2b8bfc84d4965d007ecad72e073789",
+      "test_invalid_signed_context_do0/ledger.sqlite": "e1e43d4f8d7d46b325abb53f16a7c19d3fde6577ab11d1aa7ef2c18170791615",
+      "test_invalid_signed_context_do7/ledger.sqlite": "73c761cc39795b1ffafdb4f7345c57d6c375b5bb1f33d132e5417bf0dbd777b7",
+      "test_real_process_exit_at_comm0/ledger.sqlite": "23683bc26f87e0d831c08d2c116d29221082432f624f8be1a99fd49de61f5965"
+    },
+    "pytest_links_repaired_to_relative": {
+      "test_upload_key_cannot_enroll_current": "test_upload_key_cannot_enroll_0",
+      "test_failed_rotation_rolls_baccurrent": "test_failed_rotation_rolls_bac0",
+      "test_parallel_workers_and_restcurrent": "test_parallel_workers_and_rest0",
+      "test_nonce_replay_and_idempotecurrent": "test_nonce_replay_and_idempote0",
+      "test_real_process_exit_at_commcurrent": "test_real_process_exit_at_comm1",
+      "test_rotation_revocation_and_ocurrent": "test_rotation_revocation_and_o0",
+      "test_bad_signature_does_not_cocurrent": "test_bad_signature_does_not_co0",
+      "test_same_identifiers_in_disticurrent": "test_same_identifiers_in_disti0",
+      "test_invalid_signed_context_docurrent": "test_invalid_signed_context_do7",
+      "test_report_never_promotes_sigcurrent": "test_report_never_promotes_sig0"
+    },
+    "restore": "Rename trash directory to original path while no tests use that path. Synthetic DB only; private keys removed by fixture cleanup. Relative pytest links work in either location."
+  },
+  {
+    "original": "/Users/landjunge/agent-authority-lab/.worktrees/hosted-qualification/docs/hosted-qualification-20261016/ledger-scratch-final",
+    "trash": "/Users/landjunge/.Trash/agent-authority-hosted-qualification-20261016-ledger-scratch-final",
+    "sha256": {
+      "test_logical_deletion_does_not0/ledger.sqlite": "d1836b010274b781eceb82a7a234bf4bc7d5ef43b460d4dc857683c72f6dffaa",
+      "test_enrollment_time_and_domai1/ledger.sqlite": "a35af63ee69d9a410d30ebeaa928a94483ad543f35862743480c211a3ee51021",
+      "test_rotation_revocation_and_o0/ledger.sqlite": "11efea31d200cdebb2dee4351bf2fb561ce713969ebab45500267c81a00ba737",
+      "test_enrollment_time_and_domai0/ledger.sqlite": "77f092306631c855517ae95761aa6d06b554635b1991af5dbf2c3699bd9671bd",
+      "test_invalid_signed_context_do2/ledger.sqlite": "714be49ab3f3b206d3007a62657b7eeb3373cc13687727c81646eab124738f79",
+      "test_invalid_signed_context_do5/ledger.sqlite": "2cba12db31183b6be2e85ff4316495c6276434c797ec42da2beff5fe365018d2",
+      "test_invalid_signed_context_do4/ledger.sqlite": "42a3036e0a2cced518d7ef3c6d84f00218b83ad26d363e4dca2a4911efc4aacb",
+      "test_invalid_signed_context_do3/ledger.sqlite": "cbb47220df31bdd69ad48fe5e934b0bdd2c006d906be06a0f36136730eb92efd",
+      "test_report_never_promotes_sig0/ledger.sqlite": "60c43c4cd98ab9d65dd24b7f36126c2eb759bd4bf8fb9a47f437e447926cd9ee",
+      "test_failed_rotation_rolls_bac0/ledger.sqlite": "22edede046eb2237cc2366098b4b59c5ca7ef700753075f18ab1eec1d3c246f9",
+      "test_same_identifiers_in_disti0/ledger.sqlite": "7646752cf461c3305e6a09fd3618bcdabe2442f9b94f60b1d13287ad1a7e52d5",
+      "test_enrollment_time_and_domai2/ledger.sqlite": "5d9cb22486b65fbd529fcfcd43e2e2321e28a6d43ab3272925ebc61d0ab1a883",
+      "test_upload_key_cannot_enroll_0/ledger.sqlite": "6435c3df5387d7de9bb915d6b847de6915683adc6bd08a8beba8676debc392d4",
+      "test_parallel_workers_and_rest0/ledger.sqlite": "1fc3c1dabe2ca86fde62ea50f9511b7ca95b25bc70c79371fe83598893b0bfe7",
+      "test_nonce_replay_and_idempote0/ledger.sqlite": "ac26a532c6afce3006ae3950568dba9792ed1a98b83e49deec9938144223f7cd",
+      "test_real_process_exit_at_comm1/ledger.sqlite": "4e3c090d2344f948eeab8bcdd9de55d863e2580a9d37a400b8f63c8d1809fa92",
+      "test_invalid_signed_context_do6/ledger.sqlite": "f8ca53412811561b15b8b7d1fdcb71b087f33cd9fc516f401985468c97c0efb0",
+      "test_invalid_signed_context_do1/ledger.sqlite": "8cfe5167112e4b7150afcea3d6d841db5eb28636e42a2b530c55b79346e89437",
+      "test_bad_signature_does_not_co0/ledger.sqlite": "1dd83f1ee42e4f0b52c37ca5a488ec0f8f9b161d910512324dfcb418cb780790",
+      "test_invalid_signed_context_do0/ledger.sqlite": "334ce40606e0ee4b98842feef4387588a7366c8945328f0b9c213ba35e396bd0",
+      "test_invalid_signed_context_do7/ledger.sqlite": "a0c215764afbeccbafadf364ca377163724512e23722dd5502ccf95cc493401e",
+      "test_real_process_exit_at_comm0/ledger.sqlite": "9cd69c4f4aeae1020cdb0c73f76506a325966357aa32f053f879c1a1df6c3fc6"
+    },
+    "pytest_links_repaired_to_relative": {
+      "test_upload_key_cannot_enroll_current": "test_upload_key_cannot_enroll_0",
+      "test_logical_deletion_does_notcurrent": "test_logical_deletion_does_not0",
+      "test_failed_rotation_rolls_baccurrent": "test_failed_rotation_rolls_bac0",
+      "test_parallel_workers_and_restcurrent": "test_parallel_workers_and_rest0",
+      "test_nonce_replay_and_idempotecurrent": "test_nonce_replay_and_idempote0",
+      "test_real_process_exit_at_commcurrent": "test_real_process_exit_at_comm1",
+      "test_rotation_revocation_and_ocurrent": "test_rotation_revocation_and_o0",
+      "test_bad_signature_does_not_cocurrent": "test_bad_signature_does_not_co0",
+      "test_same_identifiers_in_disticurrent": "test_same_identifiers_in_disti0",
+      "test_invalid_signed_context_docurrent": "test_invalid_signed_context_do7",
+      "test_enrollment_time_and_domaicurrent": "test_enrollment_time_and_domai2",
+      "test_report_never_promotes_sigcurrent": "test_report_never_promotes_sig0"
+    },
+    "restore": "Rename trash directory to original path while no tests use that path. Synthetic DB only; private keys removed by fixture cleanup. Relative pytest links work in either location."
+  }
+]

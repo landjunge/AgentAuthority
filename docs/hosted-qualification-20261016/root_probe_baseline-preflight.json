@@ -1,0 +1,16 @@
+{
+  "command": [
+    "limactl",
+    "shell",
+    "--workdir=/tmp",
+    "a1-research",
+    "sudo",
+    "-n",
+    "python3",
+    "-c",
+    "import json,os,pathlib;print(json.dumps({\"euid\":os.geteuid(),\"kprobe_events\":pathlib.Path(\"/sys/kernel/tracing/kprobe_events\").read_text()}))"
+  ],
+  "exit": 0,
+  "stdout": "{\"euid\": 0, \"kprobe_events\": \"\"}\n",
+  "stderr": ""
+}

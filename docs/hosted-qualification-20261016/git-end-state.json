@@ -1,0 +1,22 @@
+{
+  "master": {
+    "path": "/Users/landjunge/agent-authority-lab/.worktrees/master",
+    "status": "## master...origin/master\n",
+    "head": "edd40b959fc898edc06e790fe3672e748d7dbb2c"
+  },
+  "main_checkout": {
+    "path": "/Users/landjunge/agent-authority-lab",
+    "status": "## feat/authority-emit-g3...origin/feat/authority-emit-g3 [gone]\n?? .github/workflows/codeql-sarif-artifact.yml\n?? AGENTS.md\n?? data/\n?? docs/BUILD-LOOP-HANDOFF.md\n?? docs/maintenance/\n",
+    "head": "09cbf153ed07f01492ccbe884e744e7f50911408"
+  },
+  "app": {
+    "path": "/Users/landjunge/agent-authority-macos-design-20261012",
+    "status": "## fix/native-navigation-warnings-20261012...origin/fix/native-navigation-warnings-20261012\n M native/macos/Sources/AgentAuthorityMac/EngineBridge.swift\n?? AGENTS.md\n?? design/\n?? docs/ABSCHLUSS-BUILD-DATENPFAD-20261013.txt\n?? docs/native-build-data-abschluss-20261013/\n",
+    "head": "22c4ee9fc479bb6a3df98fcbd786b0f5a7c9fe9b"
+  },
+  "qualification": {
+    "path": "/Users/landjunge/agent-authority-lab/.worktrees/hosted-qualification",
+    "status": "## codex/hosted-qualification-20261016\n?? docs/HOSTED-QUALIFICATION-PROTOCOL-20261016.md\n?? docs/HOSTED-SERVICE-ASSESSMENT-20261016.md\n?? docs/hosted-qualification-20261016/\n?? research/hosted_qualification/\n?? tests/test_hosted_qualification.py\n",
+    "head": "edd40b959fc898edc06e790fe3672e748d7dbb2c"
+  }
+}

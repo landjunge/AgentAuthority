@@ -1,0 +1,39 @@
+{
+  "generated_utc": "2026-10-16T21:12:05.035983+00:00",
+  "baseline": "edd40b959fc898edc06e790fe3672e748d7dbb2c",
+  "new_live_attempts": 1,
+  "controlled_test_agents": 2,
+  "kernel_writes": 1,
+  "write_bytes": [
+    16
+  ],
+  "live_checks_true": 26,
+  "critical_loss_fields": 23,
+  "all_critical_loss_values_integer_zero": true,
+  "kernel": "6.8.0-142-generic",
+  "archived_executed_harness_matches_pin": true,
+  "protocol_matches_pin": true,
+  "measurement_sources_still_match": true,
+  "new_ledger_tests": {
+    "tests": 22,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "existing_unchanged_regressions": {
+    "tests": 195,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "provider_model_session": "UNBEKANNT",
+  "debian13_target_kernel": "NOT_QUALIFIED",
+  "end_to_end_hosted_service": "NOT_IMPLEMENTED",
+  "product_server_access_this_session": false,
+  "new_packages_or_host_privilege_changes": false,
+  "source_hashes": {
+    "research/hosted_qualification/ledger.py": "c2ef268bb8834cb62783e9d266029807953a67a30253091c7f9d5253215fa632",
+    "research/hosted_qualification/live_gate.py": "102196e140b5cb3e91241aad6f44ab2d3d300d65ec211e256acca4fa64f3b357",
+    "tests/test_hosted_qualification.py": "49a2b97c7810a5b3c60227dca6b7e857a0f8021feb9e2257f0e6ce2b7d842933"
+  }
+}

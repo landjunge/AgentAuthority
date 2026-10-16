@@ -1,0 +1,26 @@
+{
+  "ca_public_key": "vDWV7y5KZufJ5xhfRaBG+xpJzlQFRc1StJeqUHznbWI=",
+  "registry": {
+    "body": {
+      "agent_sha256": "3cb8814ad4186f443c278c21711f728680dea35dbe5475dc3d606e76e5b3fa37",
+      "agents": {
+        "TestA": {
+          "public_key": "4BoFpJvHLl7UhyqgKY8wrp5GSs5uoEEVgvZNZ7WLM3c=",
+          "uid": 61101
+        },
+        "TestB": {
+          "public_key": "wsqhsA77aFBd9kwSyf14mpqqw7U9TKYg3pLPzvLDBGM=",
+          "uid": 61102
+        }
+      },
+      "boot_hash": "1f415445b02ad51d0555be1c9fe7b50584460cf41cbda161feb375b90a3785b8",
+      "domain": "A4-REGISTRY-v1",
+      "pid_namespace": "pid:[4026531836]",
+      "provider_identity": "UNBEKANNT",
+      "registrar_public_key": "ceMhv83+5YINa847rGba2F5PF0wYJuo3T34dUEG1axo=",
+      "run_id": "408c013e5f500de76b7f364d4d54734c",
+      "test_identities_only": true
+    },
+    "signature": "0xQk4QrkUgGJxCpezP1dPJ36WPAjkX/iljyW6mv+X8uoJZGZ4xbG/8YIxOPnyJvVDqWoiinPlsbfv5kW2TBtAg=="
+  }
+}

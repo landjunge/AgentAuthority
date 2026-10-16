@@ -1,0 +1,7 @@
+{
+  "host_private_ca_removed": true,
+  "keys_archived": false,
+  "nonsecret_recovery": "/var/tmp/aa-hosted-recovery-408c013e5f500de76b7f364d4d54734c",
+  "private_guest_files_removed": 3,
+  "secure_ram_or_ssd_erasure_proven": false
+}
