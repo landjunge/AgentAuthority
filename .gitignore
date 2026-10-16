@@ -6,3 +6,6 @@ __pycache__/
 .DS_Store
 coverage.xml
 htmlcov/
+
+# Private synthetic service credentials and durable local state
+.private-service-state/

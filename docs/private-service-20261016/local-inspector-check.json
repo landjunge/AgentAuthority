@@ -1,0 +1,8 @@
+{
+  "url": "http://127.0.0.1:8765/",
+  "loopback_only": true,
+  "unauthenticated_data_status": 401,
+  "report_signature_verified": true,
+  "revocation_separate_from_historical_report": true,
+  "vm_required_for_read": false
+}

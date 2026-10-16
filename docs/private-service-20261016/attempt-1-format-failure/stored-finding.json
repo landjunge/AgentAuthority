@@ -1,0 +1,24 @@
+{
+  "job_id": "6dbde7d04337451eb42db6f75624a115",
+  "state": "unknown",
+  "report": {
+    "body": {
+      "schema": "aa-report-v1",
+      "tenant": "test-a",
+      "job_id": "6dbde7d04337451eb42db6f75624a115",
+      "classification": "UNBEKANNT",
+      "reason": "RUNNER_OR_INTAKE_ERROR",
+      "verifier_version": "aa-private-verifier-v1",
+      "trust_catalog_version": "local-test-catalog-v1",
+      "issued_ms": 1792185594097,
+      "scope": "controlled-a4-write16",
+      "provider_model_session": "UNBEKANNT",
+      "uncertainties": [
+        "No automatic rerun",
+        "Action may have occurred"
+      ],
+      "grants_rights": false
+    },
+    "signature": "eH94JAKwzSN1QScEC0VXo4d4C4XbhL280Sdgqo0MV3Os8gsP8USsAdcSsD+2zU1hZESTlHBFUlY7QPkLAuGuAQ=="
+  }
+}

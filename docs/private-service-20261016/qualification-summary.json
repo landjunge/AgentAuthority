@@ -1,0 +1,34 @@
+{
+  "job_id": "b3e86d8b3b4ce9494fb68e7036aba484",
+  "classification": "BELEGT",
+  "service_checks": 28,
+  "critical_loss_fields": 23,
+  "report_signature_verified": true,
+  "job_signature_verified": true,
+  "acceptance_signature_verified": true,
+  "test_counts": {
+    "contracts-junit.xml": {
+      "name": "pytest",
+      "errors": "0",
+      "failures": "0",
+      "skipped": "0",
+      "tests": "61",
+      "time": "124.192",
+      "timestamp": "2026-10-16T23:27:53.092318+02:00",
+      "hostname": "landjungeMac.local"
+    },
+    "regressions-junit.xml": {
+      "name": "pytest",
+      "errors": "0",
+      "failures": "0",
+      "skipped": "0",
+      "tests": "214",
+      "time": "67.724",
+      "timestamp": "2026-10-16T23:26:18.394539+02:00",
+      "hostname": "landjungeMac.local"
+    }
+  },
+  "earlier_live_integration_attempts": 2,
+  "successful_live_service_attempts": 1,
+  "public_or_production_deployment": false
+}

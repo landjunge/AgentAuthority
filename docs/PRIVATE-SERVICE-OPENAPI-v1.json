@@ -1,0 +1,1313 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Agent Authority private synthetic service",
+    "version": "1.0.0",
+    "description": "Loopback-only qualification. No authorization decisions; no arbitrary code. Normative semantics: PRIVATE-SERVICE-API-v1.md. Restricted RFC8785 subset; legacy A4 bytes base64 wrapped."
+  },
+  "servers": [
+    {
+      "url": "http://127.0.0.1:8765"
+    }
+  ],
+  "security": [
+    {
+      "LocalBearer": []
+    }
+  ],
+  "paths": {
+    "/v1/challenges": {
+      "post": {
+        "operationId": "Challenge",
+        "description": "Role: admin. Signed target/path, time, replay and tenant rules are normative in PRIVATE-SERVICE-API-v1.md.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Challenge"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Persisted operation result; no action rights granted.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PossessionBody"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "RFC9457 problem; see normative code table.",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/enrollments": {
+      "post": {
+        "operationId": "EnrollmentRequest",
+        "description": "Role: admin. Signed target/path, time, replay and tenant rules are normative in PRIVATE-SERVICE-API-v1.md.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EnrollmentRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Persisted operation result; no action rights granted.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EnrollmentAccepted"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "RFC9457 problem; see normative code table.",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/revocations": {
+      "post": {
+        "operationId": "RevocationRequest",
+        "description": "Role: admin. Signed target/path, time, replay and tenant rules are normative in PRIVATE-SERVICE-API-v1.md.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RevocationRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Persisted operation result; no action rights granted.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RevocationAccepted"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "RFC9457 problem; see normative code table.",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/jobs": {
+      "post": {
+        "operationId": "JobRequest",
+        "description": "Role: client/admin. Signed target/path, time, replay and tenant rules are normative in PRIVATE-SERVICE-API-v1.md.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/JobRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "202": {
+            "description": "Persisted operation result; no action rights granted.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/JobAccepted"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "RFC9457 problem; see normative code table.",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/jobs/{id}/acceptances": {
+      "post": {
+        "operationId": "AcceptanceRequest",
+        "description": "Role: client/admin, exact receiver. Signed target/path, time, replay and tenant rules are normative in PRIVATE-SERVICE-API-v1.md.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AcceptanceRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "202": {
+            "description": "Persisted operation result; no action rights granted.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AcceptanceAccepted"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "RFC9457 problem; see normative code table.",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9_-]{1,80}$"
+            }
+          }
+        ]
+      }
+    },
+    "/v1/jobs/{id}/evidence": {
+      "post": {
+        "operationId": "EvidenceRequest",
+        "description": "Role: runner, pinned source. Signed target/path, time, replay and tenant rules are normative in PRIVATE-SERVICE-API-v1.md.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EvidenceRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Persisted operation result; no action rights granted.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EvidenceAccepted"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "RFC9457 problem; see normative code table.",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9_-]{1,80}$"
+            }
+          }
+        ]
+      }
+    },
+    "/v1/jobs/{id}": {
+      "get": {
+        "operationId": "getStatus",
+        "description": "Tenant-scoped read. Roles client/admin/reader; foreign ID returns 404.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9_-]{1,80}$"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Current status or historical signed report plus current unsigned key status",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Problem",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/jobs/{id}/report": {
+      "get": {
+        "operationId": "getReportResponse",
+        "description": "Tenant-scoped read. Roles client/admin/reader; foreign ID returns 404.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9_-]{1,80}$"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Current status or historical signed report plus current unsigned key status",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReportResponse"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Problem",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "LocalBearer": {
+        "type": "http",
+        "scheme": "bearer"
+      }
+    },
+    "schemas": {
+      "Challenge": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "schema",
+          "kid",
+          "public_key",
+          "idempotency_key",
+          "nonce",
+          "issued_ms",
+          "expires_ms"
+        ],
+        "properties": {
+          "schema": {
+            "const": "aa-private-v1"
+          },
+          "kid": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9_-]{1,80}$"
+          },
+          "public_key": {
+            "type": "string"
+          },
+          "idempotency_key": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9_-]{1,80}$"
+          },
+          "nonce": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "issued_ms": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 9007199254740991
+          },
+          "expires_ms": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 9007199254740991
+          }
+        }
+      },
+      "PossessionBody": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "schema",
+          "domain",
+          "tenant",
+          "audience",
+          "challenge_id",
+          "kid",
+          "public_key",
+          "expires_ms"
+        ],
+        "properties": {
+          "schema": {
+            "const": "aa-private-v1"
+          },
+          "domain": {
+            "const": "AA-POP-v1"
+          },
+          "tenant": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9_-]{1,80}$"
+          },
+          "audience": {
+            "const": "aa-private-local-v1"
+          },
+          "challenge_id": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "kid": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9_-]{1,80}$"
+          },
+          "public_key": {
+            "type": "string"
+          },
+          "expires_ms": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 9007199254740991
+          }
+        }
+      },
+      "Certificate": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "body",
+          "signature"
+        ],
+        "properties": {
+          "body": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "schema",
+              "domain",
+              "tenant",
+              "audience",
+              "kid",
+              "public_key",
+              "role",
+              "issued_ms",
+              "expires_ms"
+            ],
+            "properties": {
+              "schema": {
+                "const": "aa-private-v1"
+              },
+              "domain": {
+                "const": "AA-ENROLL-v1"
+              },
+              "tenant": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9_-]{1,80}$"
+              },
+              "audience": {
+                "const": "aa-private-local-v1"
+              },
+              "kid": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9_-]{1,80}$"
+              },
+              "public_key": {
+                "type": "string"
+              },
+              "role": {
+                "enum": [
+                  "actor",
+                  "runner"
+                ]
+              },
+              "issued_ms": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 9007199254740991
+              },
+              "expires_ms": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 9007199254740991
+              }
+            }
+          },
+          "signature": {
+            "type": "string",
+            "contentEncoding": "base64",
+            "description": "64-byte Ed25519 signature over restricted RFC8785 JCS(body)"
+          }
+        }
+      },
+      "Manifest": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "schema",
+          "source_id",
+          "source_class",
+          "run_id",
+          "registry_sha256",
+          "capture_sha256",
+          "trial_sha256",
+          "complete"
+        ],
+        "properties": {
+          "schema": {
+            "const": "aa-evidence-v1"
+          },
+          "source_id": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9_-]{1,80}$"
+          },
+          "source_class": {
+            "const": "controlled-linux-collector"
+          },
+          "run_id": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9_-]{1,80}$"
+          },
+          "registry_sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "capture_sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "trial_sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "complete": {
+            "type": "boolean"
+          }
+        }
+      },
+      "Problem": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "type",
+          "title",
+          "status",
+          "code"
+        ],
+        "properties": {
+          "type": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "status": {
+            "type": "integer"
+          },
+          "code": {
+            "type": "string"
+          }
+        }
+      },
+      "Status": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "schema",
+          "job_id",
+          "state",
+          "label",
+          "report_available",
+          "grants_rights"
+        ],
+        "properties": {
+          "schema": {
+            "const": "aa-private-v1"
+          },
+          "job_id": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9_-]{1,80}$"
+          },
+          "state": {
+            "enum": [
+              "awaiting_acceptance",
+              "queued",
+              "running",
+              "completed",
+              "unknown"
+            ]
+          },
+          "label": {
+            "type": "string"
+          },
+          "report_available": {
+            "type": "boolean"
+          },
+          "grants_rights": {
+            "const": false
+          }
+        }
+      },
+      "ReportResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "schema",
+          "report",
+          "current_key_status"
+        ],
+        "properties": {
+          "schema": {
+            "const": "aa-private-v1"
+          },
+          "report": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "body",
+              "signature"
+            ],
+            "properties": {
+              "body": {
+                "type": "object",
+                "description": "aa-report-v1; exact scope, source, version, uncertainty and classification defined in PRIVATE-SERVICE-API-v1.md"
+              },
+              "signature": {
+                "type": "string",
+                "contentEncoding": "base64",
+                "description": "64-byte Ed25519 signature over restricted RFC8785 JCS(body)"
+              }
+            }
+          },
+          "current_key_status": {
+            "type": "object",
+            "additionalProperties": {
+              "enum": [
+                "active",
+                "revoked",
+                "expired"
+              ]
+            }
+          }
+        }
+      },
+      "Possession": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "body",
+          "signature"
+        ],
+        "properties": {
+          "body": {
+            "$ref": "#/components/schemas/PossessionBody"
+          },
+          "signature": {
+            "type": "string",
+            "contentEncoding": "base64",
+            "description": "64-byte Ed25519 signature over restricted RFC8785 JCS(body)"
+          }
+        }
+      },
+      "EnrollmentRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "body",
+          "signature"
+        ],
+        "properties": {
+          "body": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "schema",
+              "domain",
+              "tenant",
+              "audience",
+              "method",
+              "path",
+              "kid",
+              "nonce",
+              "idempotency_key",
+              "issued_ms",
+              "expires_ms",
+              "payload"
+            ],
+            "properties": {
+              "schema": {
+                "const": "aa-private-v1"
+              },
+              "domain": {
+                "const": "AA-REQUEST-v1"
+              },
+              "tenant": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9_-]{1,80}$"
+              },
+              "audience": {
+                "const": "aa-private-local-v1"
+              },
+              "method": {
+                "const": "POST"
+              },
+              "path": {
+                "type": "string"
+              },
+              "kid": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9_-]{1,80}$"
+              },
+              "nonce": {
+                "type": "string",
+                "pattern": "^[0-9a-f]{64}$"
+              },
+              "idempotency_key": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9_-]{1,80}$"
+              },
+              "issued_ms": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 9007199254740991
+              },
+              "expires_ms": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 9007199254740991
+              },
+              "payload": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "certificate",
+                  "proof",
+                  "replaces"
+                ],
+                "properties": {
+                  "certificate": {
+                    "$ref": "#/components/schemas/Certificate"
+                  },
+                  "proof": {
+                    "$ref": "#/components/schemas/Possession"
+                  },
+                  "replaces": {
+                    "oneOf": [
+                      {
+                        "type": "string",
+                        "pattern": "^[A-Za-z0-9_-]{1,80}$"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "signature": {
+            "type": "string",
+            "contentEncoding": "base64",
+            "description": "64-byte Ed25519 signature over restricted RFC8785 JCS(body)"
+          }
+        }
+      },
+      "RevocationRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "body",
+          "signature"
+        ],
+        "properties": {
+          "body": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "schema",
+              "domain",
+              "tenant",
+              "audience",
+              "method",
+              "path",
+              "kid",
+              "nonce",
+              "idempotency_key",
+              "issued_ms",
+              "expires_ms",
+              "payload"
+            ],
+            "properties": {
+              "schema": {
+                "const": "aa-private-v1"
+              },
+              "domain": {
+                "const": "AA-REQUEST-v1"
+              },
+              "tenant": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9_-]{1,80}$"
+              },
+              "audience": {
+                "const": "aa-private-local-v1"
+              },
+              "method": {
+                "const": "POST"
+              },
+              "path": {
+                "type": "string"
+              },
+              "kid": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9_-]{1,80}$"
+              },
+              "nonce": {
+                "type": "string",
+                "pattern": "^[0-9a-f]{64}$"
+              },
+              "idempotency_key": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9_-]{1,80}$"
+              },
+              "issued_ms": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 9007199254740991
+              },
+              "expires_ms": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 9007199254740991
+              },
+              "payload": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "kid"
+                ],
+                "properties": {
+                  "kid": {
+                    "type": "string",
+                    "pattern": "^[A-Za-z0-9_-]{1,80}$"
+                  }
+                }
+              }
+            }
+          },
+          "signature": {
+            "type": "string",
+            "contentEncoding": "base64",
+            "description": "64-byte Ed25519 signature over restricted RFC8785 JCS(body)"
+          }
+        }
+      },
+      "JobRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "body",
+          "signature"
+        ],
+        "properties": {
+          "body": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "schema",
+              "domain",
+              "tenant",
+              "audience",
+              "method",
+              "path",
+              "kid",
+              "nonce",
+              "idempotency_key",
+              "issued_ms",
+              "expires_ms",
+              "payload"
+            ],
+            "properties": {
+              "schema": {
+                "const": "aa-private-v1"
+              },
+              "domain": {
+                "const": "AA-REQUEST-v1"
+              },
+              "tenant": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9_-]{1,80}$"
+              },
+              "audience": {
+                "const": "aa-private-local-v1"
+              },
+              "method": {
+                "const": "POST"
+              },
+              "path": {
+                "type": "string"
+              },
+              "kid": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9_-]{1,80}$"
+              },
+              "nonce": {
+                "type": "string",
+                "pattern": "^[0-9a-f]{64}$"
+              },
+              "idempotency_key": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9_-]{1,80}$"
+              },
+              "issued_ms": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 9007199254740991
+              },
+              "expires_ms": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 9007199254740991
+              },
+              "payload": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "scenario",
+                  "receiver_kid"
+                ],
+                "properties": {
+                  "scenario": {
+                    "const": "a4-write16-v1"
+                  },
+                  "receiver_kid": {
+                    "type": "string",
+                    "pattern": "^[A-Za-z0-9_-]{1,80}$"
+                  }
+                }
+              }
+            }
+          },
+          "signature": {
+            "type": "string",
+            "contentEncoding": "base64",
+            "description": "64-byte Ed25519 signature over restricted RFC8785 JCS(body)"
+          }
+        }
+      },
+      "AcceptanceRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "body",
+          "signature"
+        ],
+        "properties": {
+          "body": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "schema",
+              "domain",
+              "tenant",
+              "audience",
+              "method",
+              "path",
+              "kid",
+              "nonce",
+              "idempotency_key",
+              "issued_ms",
+              "expires_ms",
+              "payload"
+            ],
+            "properties": {
+              "schema": {
+                "const": "aa-private-v1"
+              },
+              "domain": {
+                "const": "AA-REQUEST-v1"
+              },
+              "tenant": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9_-]{1,80}$"
+              },
+              "audience": {
+                "const": "aa-private-local-v1"
+              },
+              "method": {
+                "const": "POST"
+              },
+              "path": {
+                "type": "string"
+              },
+              "kid": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9_-]{1,80}$"
+              },
+              "nonce": {
+                "type": "string",
+                "pattern": "^[0-9a-f]{64}$"
+              },
+              "idempotency_key": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9_-]{1,80}$"
+              },
+              "issued_ms": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 9007199254740991
+              },
+              "expires_ms": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 9007199254740991
+              },
+              "payload": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "job_id",
+                  "job_sha256"
+                ],
+                "properties": {
+                  "job_id": {
+                    "type": "string",
+                    "pattern": "^[A-Za-z0-9_-]{1,80}$"
+                  },
+                  "job_sha256": {
+                    "type": "string",
+                    "pattern": "^[0-9a-f]{64}$"
+                  }
+                }
+              }
+            }
+          },
+          "signature": {
+            "type": "string",
+            "contentEncoding": "base64",
+            "description": "64-byte Ed25519 signature over restricted RFC8785 JCS(body)"
+          }
+        }
+      },
+      "EvidenceRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "body",
+          "signature"
+        ],
+        "properties": {
+          "body": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "schema",
+              "domain",
+              "tenant",
+              "audience",
+              "method",
+              "path",
+              "kid",
+              "nonce",
+              "idempotency_key",
+              "issued_ms",
+              "expires_ms",
+              "payload"
+            ],
+            "properties": {
+              "schema": {
+                "const": "aa-private-v1"
+              },
+              "domain": {
+                "const": "AA-REQUEST-v1"
+              },
+              "tenant": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9_-]{1,80}$"
+              },
+              "audience": {
+                "const": "aa-private-local-v1"
+              },
+              "method": {
+                "const": "POST"
+              },
+              "path": {
+                "type": "string"
+              },
+              "kid": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9_-]{1,80}$"
+              },
+              "nonce": {
+                "type": "string",
+                "pattern": "^[0-9a-f]{64}$"
+              },
+              "idempotency_key": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9_-]{1,80}$"
+              },
+              "issued_ms": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 9007199254740991
+              },
+              "expires_ms": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 9007199254740991
+              },
+              "payload": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "manifest",
+                  "registry",
+                  "capture",
+                  "trial"
+                ],
+                "properties": {
+                  "manifest": {
+                    "$ref": "#/components/schemas/Manifest"
+                  },
+                  "registry": {
+                    "type": [
+                      "string",
+                      "null"
+                    ],
+                    "contentEncoding": "base64",
+                    "description": "Exact legacy A4 file bytes; capture is JSONL. SHA256(decoded bytes), or SHA256(empty bytes) for null."
+                  },
+                  "capture": {
+                    "type": [
+                      "string",
+                      "null"
+                    ],
+                    "contentEncoding": "base64",
+                    "description": "Exact legacy A4 file bytes; capture is JSONL. SHA256(decoded bytes), or SHA256(empty bytes) for null."
+                  },
+                  "trial": {
+                    "type": [
+                      "string",
+                      "null"
+                    ],
+                    "contentEncoding": "base64",
+                    "description": "Exact legacy A4 file bytes; capture is JSONL. SHA256(decoded bytes), or SHA256(empty bytes) for null."
+                  }
+                }
+              }
+            }
+          },
+          "signature": {
+            "type": "string",
+            "contentEncoding": "base64",
+            "description": "64-byte Ed25519 signature over restricted RFC8785 JCS(body)"
+          }
+        }
+      },
+      "JobAccepted": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "schema",
+          "job_id",
+          "job_sha256",
+          "state",
+          "status_url",
+          "report_url",
+          "grants_rights"
+        ],
+        "properties": {
+          "schema": {
+            "const": "aa-private-v1"
+          },
+          "job_id": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9_-]{1,80}$"
+          },
+          "job_sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "state": {
+            "const": "awaiting_acceptance"
+          },
+          "status_url": {
+            "type": "string"
+          },
+          "report_url": {
+            "type": "string"
+          },
+          "grants_rights": {
+            "const": false
+          }
+        }
+      },
+      "AcceptanceAccepted": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "schema",
+          "job_id",
+          "state",
+          "grants_rights"
+        ],
+        "properties": {
+          "schema": {
+            "const": "aa-private-v1"
+          },
+          "job_id": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9_-]{1,80}$"
+          },
+          "state": {
+            "const": "queued"
+          },
+          "grants_rights": {
+            "const": false
+          }
+        }
+      },
+      "EnrollmentAccepted": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "schema",
+          "kid",
+          "state",
+          "grants_rights"
+        ],
+        "properties": {
+          "schema": {
+            "const": "aa-private-v1"
+          },
+          "kid": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9_-]{1,80}$"
+          },
+          "state": {
+            "const": "registered"
+          },
+          "grants_rights": {
+            "const": false
+          }
+        }
+      },
+      "RevocationAccepted": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "schema",
+          "kid",
+          "state"
+        ],
+        "properties": {
+          "schema": {
+            "const": "aa-private-v1"
+          },
+          "kid": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9_-]{1,80}$"
+          },
+          "state": {
+            "const": "revoked"
+          }
+        }
+      },
+      "EvidenceAccepted": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "schema",
+          "job_id",
+          "state",
+          "report_sha256"
+        ],
+        "properties": {
+          "schema": {
+            "const": "aa-private-v1"
+          },
+          "job_id": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9_-]{1,80}$"
+          },
+          "state": {
+            "const": "completed"
+          },
+          "report_sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,1 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="0" skipped="0" tests="1" time="2.870" timestamp="2026-10-16T23:30:32.409558+02:00" hostname="landjungeMac.local"><testcase classname="tests.test_private_service" name="test_browser_and_wrong_host" time="2.800" /></testsuite></testsuites>

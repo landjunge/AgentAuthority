@@ -1,0 +1,7 @@
+{
+  "attempts": 1,
+  "controlled_test_agents": 2,
+  "harness_sha256": "102196e140b5cb3e91241aad6f44ab2d3d300d65ec211e256acca4fa64f3b357",
+  "protocol_sha256": "9deb538e697a14f5b371b1d18c04ffa94567afa8af9a1350a72ffa80819c8756",
+  "source_commit": "edd40b959fc898edc06e790fe3672e748d7dbb2c"
+}

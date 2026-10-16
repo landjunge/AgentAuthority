@@ -1,0 +1,70 @@
+[
+  {
+    "original": "/tmp/aa-private-offline-20261016",
+    "trash": "/Users/landjunge/.Trash/agent-authority-private-service-aa-private-offline-20261016",
+    "removed_exact_secret_files": [
+      "root/ca-private.pem",
+      "report/ca-private.pem",
+      "sender/ca-private.pem",
+      "receiver/ca-private.pem",
+      "runner/ca-private.pem",
+      "config.json"
+    ],
+    "sha256": {
+      "service.sqlite": "39c6be4c956920c30b38996493a13c3ff81a5e8dcf26ab622c9886afeadb327e"
+    },
+    "restore": "Move trash directory back to original path; credentials intentionally cannot be restored. Public evidence is archived in docs/private-service-20261016."
+  },
+  {
+    "original": "/tmp/aa-private-live-20261016",
+    "trash": "/Users/landjunge/.Trash/agent-authority-private-service-aa-private-live-20261016",
+    "removed_exact_secret_files": [
+      "root/ca-private.pem",
+      "report/ca-private.pem",
+      "sender/ca-private.pem",
+      "receiver/ca-private.pem",
+      "runner/ca-private.pem",
+      "config.json"
+    ],
+    "sha256": {
+      "service.sqlite": "b06878558d89bd142e5838c41d50d9f3eb1ea51cb8ddb946b8bbfba99297090b",
+      "evidence-6dbde7d04337451eb42db6f75624a115/registry.json": "d31cb0d76b5c543cae2bdf764c4050731e419a483f3e06b91941400e286550a2",
+      "evidence-6dbde7d04337451eb42db6f75624a115/capture.jsonl": "b359368e1908fa234cd50c9477d8af19f3c9021142aba7586c195946af2b3f3e",
+      "evidence-6dbde7d04337451eb42db6f75624a115/process-status.json": "88120ec3c8db0baac8831df031178077b04a0ea273b5ef381c0a66b6c1051492",
+      "evidence-6dbde7d04337451eb42db6f75624a115/cleanup.json": "a364d24715483c4c29284592712bec4fd787eb7227220f4af343bd10d8237447",
+      "evidence-6dbde7d04337451eb42db6f75624a115/trial.stdout.json": "3a928f9e276d13b4df07b7ca52d3b833ac843066f5b9b172a3dcdf29ece129b5",
+      "evidence-6dbde7d04337451eb42db6f75624a115/observer.stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "evidence-6dbde7d04337451eb42db6f75624a115/trial.stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "evidence-6dbde7d04337451eb42db6f75624a115/attempt.json": "302d13c7ce289c8103ca2bf9215caa2257d1d2ffa1c6ff735ae457aa86768b7c",
+      "evidence-6dbde7d04337451eb42db6f75624a115/pins.json": "aa41da295e0cf76a9832c2ff1c2865af4141731dcaab81fdf41b461c0b32037a",
+      "evidence-6dbde7d04337451eb42db6f75624a115/evaluation.json": "59fea89c9a49a6ed985aa366bc18dc385e5e33438a4ebd439c3634b969f7d7ec"
+    },
+    "restore": "Move trash directory back to original path; credentials intentionally cannot be restored. Public evidence is archived in docs/private-service-20261016."
+  },
+  {
+    "original": "/tmp/aa-private-live-20261016-v2",
+    "trash": "/Users/landjunge/.Trash/agent-authority-private-service-aa-private-live-20261016-v2",
+    "removed_exact_secret_files": [
+      "root/ca-private.pem",
+      "report/ca-private.pem",
+      "sender/ca-private.pem",
+      "receiver/ca-private.pem",
+      "runner/ca-private.pem",
+      "config.json"
+    ],
+    "sha256": {
+      "service.sqlite": "ec5794020a549a8eb3bd448765f237cd50c5a2a4504f0f173b25f9bb26894fa4",
+      "evidence-aabe7477deb2495c570e0209b421cd79/registry.json": "3c8b370e0c29a914903871ce65b4671f7b1ae4948f446f54fb65654de32bd615",
+      "evidence-aabe7477deb2495c570e0209b421cd79/capture.jsonl": "f464e570ba535952337ec05932c347a9b64db230c620151e449120628c79b46d",
+      "evidence-aabe7477deb2495c570e0209b421cd79/process-status.json": "88120ec3c8db0baac8831df031178077b04a0ea273b5ef381c0a66b6c1051492",
+      "evidence-aabe7477deb2495c570e0209b421cd79/cleanup.json": "ae8496766c246caede035aec04c4e81d5755ffd3bdeda45507a7352f6f1173a6",
+      "evidence-aabe7477deb2495c570e0209b421cd79/trial.stdout.json": "e8ff25e09887c6dc3634904c453da650c94cd6134a9f08e4ba8636266a4428f2",
+      "evidence-aabe7477deb2495c570e0209b421cd79/observer.stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "evidence-aabe7477deb2495c570e0209b421cd79/trial.stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "evidence-aabe7477deb2495c570e0209b421cd79/attempt.json": "302d13c7ce289c8103ca2bf9215caa2257d1d2ffa1c6ff735ae457aa86768b7c",
+      "evidence-aabe7477deb2495c570e0209b421cd79/pins.json": "327c122d5d3b033718688efb9eae1706c54236e113f483c999e8dde5c62c9639",
+      "evidence-aabe7477deb2495c570e0209b421cd79/evaluation.json": "2a3f2e5e414065018b1b9cd957ce1ed226ea2f68565552734162e1e4e6cf6606"
+    },
+    "restore": "Move trash directory back to original path; credentials intentionally cannot be restored. Public evidence is archived in docs/private-service-20261016."
+  }
+]

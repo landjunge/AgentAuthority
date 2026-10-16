@@ -1,0 +1,734 @@
+{
+  "cases": [
+    {
+      "auth_role": "admin",
+      "case": "/v1/challenges",
+      "method": "POST",
+      "path": "/v1/challenges",
+      "request": {
+        "kid": "sender",
+        "public_key": "5HPWsAoFZPVz8Qyva6nLja/YGWPVERGisjUwikoW6c0=",
+        "schema": "aa-private-v1"
+      },
+      "response": {
+        "audience": "aa-private-local-v1",
+        "challenge_id": "888e371a07dc2bb8998cb14854f660acd761415c7d90126467c4b803e1963e0a",
+        "domain": "AA-POP-v1",
+        "expires_ms": 1792185585248,
+        "kid": "sender",
+        "public_key": "5HPWsAoFZPVz8Qyva6nLja/YGWPVERGisjUwikoW6c0=",
+        "schema": "aa-private-v1",
+        "tenant": "test-a"
+      },
+      "status": 201
+    },
+    {
+      "auth_role": "admin",
+      "case": "/v1/enrollments",
+      "method": "POST",
+      "path": "/v1/enrollments",
+      "request": {
+        "body": {
+          "audience": "aa-private-local-v1",
+          "domain": "AA-REQUEST-v1",
+          "expires_ms": 1792185585403,
+          "idempotency_key": "aaae36d3989b0395e74fe6419eb3ad5c",
+          "issued_ms": 1792185525403,
+          "kid": "sender",
+          "method": "POST",
+          "nonce": "6c1ee1ac93d4ca27479ab8ce4da8aa1786fccdb9770d324e684c9c8e3d7c7698",
+          "path": "/v1/enrollments",
+          "payload": {
+            "certificate": {
+              "body": {
+                "audience": "aa-private-local-v1",
+                "domain": "AA-ENROLL-v1",
+                "expires_ms": 1792271925252,
+                "issued_ms": 1792185525252,
+                "kid": "sender",
+                "public_key": "5HPWsAoFZPVz8Qyva6nLja/YGWPVERGisjUwikoW6c0=",
+                "role": "actor",
+                "schema": "aa-private-v1",
+                "tenant": "test-a"
+              },
+              "signature": "9aQ7BXWQpi8Ky6aCFJceCdrFeyfZeuOccVcGjOomoYpGLVSRiq6KlA2rObA+4ui9lsKhgk2iwxQ67DZuG72VAw=="
+            },
+            "proof": {
+              "body": {
+                "audience": "aa-private-local-v1",
+                "challenge_id": "888e371a07dc2bb8998cb14854f660acd761415c7d90126467c4b803e1963e0a",
+                "domain": "AA-POP-v1",
+                "expires_ms": 1792185585248,
+                "kid": "sender",
+                "public_key": "5HPWsAoFZPVz8Qyva6nLja/YGWPVERGisjUwikoW6c0=",
+                "schema": "aa-private-v1",
+                "tenant": "test-a"
+              },
+              "signature": "dU+KGX38Q1ISgX8gHlDbuLsWJSZCIgeElUS2aAHEZo75TlOL46YyDWCV8/Pfefvt2DF+3g7DRnY0TqV4lByQDA=="
+            },
+            "replaces": null
+          },
+          "schema": "aa-private-v1",
+          "tenant": "test-a"
+        },
+        "signature": "GPG1aRuZUbn4j5bD1AyVuJXtPWlBeDJZi0I3H85+bYYyWYs/FV/kDN7Sex5t+UDWokrLqAHzrbNl7ozSQDvSAw=="
+      },
+      "response": {
+        "grants_rights": false,
+        "kid": "sender",
+        "schema": "aa-private-v1",
+        "state": "registered"
+      },
+      "status": 201
+    },
+    {
+      "auth_role": "admin",
+      "case": "/v1/challenges",
+      "method": "POST",
+      "path": "/v1/challenges",
+      "request": {
+        "kid": "receiver",
+        "public_key": "n2TTCcqQ9//7iFO4LHtOv2ZSYsaxRdyBrHl3oAOj8i4=",
+        "schema": "aa-private-v1"
+      },
+      "response": {
+        "audience": "aa-private-local-v1",
+        "challenge_id": "5d868e9a5922f8202028f1f6a110b62d59c3d729104fd9ff441c0de0e7c9b40f",
+        "domain": "AA-POP-v1",
+        "expires_ms": 1792185585718,
+        "kid": "receiver",
+        "public_key": "n2TTCcqQ9//7iFO4LHtOv2ZSYsaxRdyBrHl3oAOj8i4=",
+        "schema": "aa-private-v1",
+        "tenant": "test-a"
+      },
+      "status": 201
+    },
+    {
+      "auth_role": "admin",
+      "case": "/v1/enrollments",
+      "method": "POST",
+      "path": "/v1/enrollments",
+      "request": {
+        "body": {
+          "audience": "aa-private-local-v1",
+          "domain": "AA-REQUEST-v1",
+          "expires_ms": 1792185585873,
+          "idempotency_key": "103013529a1bac09c27b97018466a5e8",
+          "issued_ms": 1792185525873,
+          "kid": "receiver",
+          "method": "POST",
+          "nonce": "15d96d1878750b6873b3456c974eb564869852eb931f240945f5ec473f0ceb01",
+          "path": "/v1/enrollments",
+          "payload": {
+            "certificate": {
+              "body": {
+                "audience": "aa-private-local-v1",
+                "domain": "AA-ENROLL-v1",
+                "expires_ms": 1792271925721,
+                "issued_ms": 1792185525721,
+                "kid": "receiver",
+                "public_key": "n2TTCcqQ9//7iFO4LHtOv2ZSYsaxRdyBrHl3oAOj8i4=",
+                "role": "actor",
+                "schema": "aa-private-v1",
+                "tenant": "test-a"
+              },
+              "signature": "uDWClSca/Cfej0iEDFm3kqIwTCP+o+uCDt/35ER+SJ1kObmDr7d79mGiPfBay8BLUwHc94eJ0RsRcUNUHuh4Bw=="
+            },
+            "proof": {
+              "body": {
+                "audience": "aa-private-local-v1",
+                "challenge_id": "5d868e9a5922f8202028f1f6a110b62d59c3d729104fd9ff441c0de0e7c9b40f",
+                "domain": "AA-POP-v1",
+                "expires_ms": 1792185585718,
+                "kid": "receiver",
+                "public_key": "n2TTCcqQ9//7iFO4LHtOv2ZSYsaxRdyBrHl3oAOj8i4=",
+                "schema": "aa-private-v1",
+                "tenant": "test-a"
+              },
+              "signature": "WHXDiIAzlp/Lv5M5DXZPj532zkQdnI1W1/33ZJWHJEEkNRjmbKJMtXAsaDTsUrHng9MTMhcYfi3NZxjyPbkQBw=="
+            },
+            "replaces": null
+          },
+          "schema": "aa-private-v1",
+          "tenant": "test-a"
+        },
+        "signature": "42oeQrraz5wIkfCfAMsSQmAa0metRY02CEfgpLgNuY1WifHzrA6UFaL/HNaACFqj230IMmpz/d3MN0Rt40U9Ag=="
+      },
+      "response": {
+        "grants_rights": false,
+        "kid": "receiver",
+        "schema": "aa-private-v1",
+        "state": "registered"
+      },
+      "status": 201
+    },
+    {
+      "auth_role": "admin",
+      "case": "/v1/challenges",
+      "method": "POST",
+      "path": "/v1/challenges",
+      "request": {
+        "kid": "runner",
+        "public_key": "hvZKuc14ULfQxrrH+7KdJGLzmKAlVeGvWB2sU7/Qmr4=",
+        "schema": "aa-private-v1"
+      },
+      "response": {
+        "audience": "aa-private-local-v1",
+        "challenge_id": "8ac133dfab0f0d22836b9ae5b14c63f2c79a4cb33032034d63e5a77a0060e854",
+        "domain": "AA-POP-v1",
+        "expires_ms": 1792185586189,
+        "kid": "runner",
+        "public_key": "hvZKuc14ULfQxrrH+7KdJGLzmKAlVeGvWB2sU7/Qmr4=",
+        "schema": "aa-private-v1",
+        "tenant": "test-a"
+      },
+      "status": 201
+    },
+    {
+      "auth_role": "admin",
+      "case": "/v1/enrollments",
+      "method": "POST",
+      "path": "/v1/enrollments",
+      "request": {
+        "body": {
+          "audience": "aa-private-local-v1",
+          "domain": "AA-REQUEST-v1",
+          "expires_ms": 1792185586383,
+          "idempotency_key": "c206badf4a14c266665ebc51880eea7d",
+          "issued_ms": 1792185526383,
+          "kid": "runner",
+          "method": "POST",
+          "nonce": "be7051a0c9e1601f6561c4072e3150ddd37f9aa1747693c4c2ae73670642c04c",
+          "path": "/v1/enrollments",
+          "payload": {
+            "certificate": {
+              "body": {
+                "audience": "aa-private-local-v1",
+                "domain": "AA-ENROLL-v1",
+                "expires_ms": 1792271926191,
+                "issued_ms": 1792185526191,
+                "kid": "runner",
+                "public_key": "hvZKuc14ULfQxrrH+7KdJGLzmKAlVeGvWB2sU7/Qmr4=",
+                "role": "runner",
+                "schema": "aa-private-v1",
+                "tenant": "test-a"
+              },
+              "signature": "UhF0BEoF7XQErW0JxF2V9DMrukcxWd+yR9lyOx7EyiRLOSvCOPyyEkEFAH+1eswSgoQslwalQigAf0gmW10NBA=="
+            },
+            "proof": {
+              "body": {
+                "audience": "aa-private-local-v1",
+                "challenge_id": "8ac133dfab0f0d22836b9ae5b14c63f2c79a4cb33032034d63e5a77a0060e854",
+                "domain": "AA-POP-v1",
+                "expires_ms": 1792185586189,
+                "kid": "runner",
+                "public_key": "hvZKuc14ULfQxrrH+7KdJGLzmKAlVeGvWB2sU7/Qmr4=",
+                "schema": "aa-private-v1",
+                "tenant": "test-a"
+              },
+              "signature": "VfmHs+CKEWfcvGsQzyNSGBgRn34p0Jjok1a/PDuJqCX9bl5aU5fKt+Rl/dgxta/4n+8do5eK+COjaK2fOpXkAA=="
+            },
+            "replaces": null
+          },
+          "schema": "aa-private-v1",
+          "tenant": "test-a"
+        },
+        "signature": "joleL8PxRdZFuJ/LffQ9YEyG9PI29FE+Z0w37PL4cpLammxDVLGalpyM+ftcMqK2f5Ufi8eZSzzD3vqZF5cUAQ=="
+      },
+      "response": {
+        "grants_rights": false,
+        "kid": "runner",
+        "schema": "aa-private-v1",
+        "state": "registered"
+      },
+      "status": 201
+    },
+    {
+      "auth_role": "client",
+      "case": "valid-job",
+      "method": "POST",
+      "path": "/v1/jobs",
+      "request": {
+        "body": {
+          "audience": "aa-private-local-v1",
+          "domain": "AA-REQUEST-v1",
+          "expires_ms": 1792185586874,
+          "idempotency_key": "a06c02af2ac8f90b654c6d159c92b9eb",
+          "issued_ms": 1792185526874,
+          "kid": "sender",
+          "method": "POST",
+          "nonce": "6972d0f2588aedfb10f8df3095ccbe7f2be81741b31c10127880e181c8cefad0",
+          "path": "/v1/jobs",
+          "payload": {
+            "receiver_kid": "receiver",
+            "scenario": "a4-write16-v1"
+          },
+          "schema": "aa-private-v1",
+          "tenant": "test-a"
+        },
+        "signature": "ovqkW4yeeebl/aLfVRCj62O5nWVoJq6RA5Lehw3DIXz4ongCaX38yerJWwLTOvQvUVqsZYhLO5SCFGxLaFyjDg=="
+      },
+      "response": {
+        "grants_rights": false,
+        "job_id": "7b449aa26af0925bff8b9ed2d3795c39",
+        "job_sha256": "45ac5b4c7d4a93e5078fc4597366df46a90aadbbb63bdaaf1d7a18e0eea23ed8",
+        "report_url": "/v1/jobs/7b449aa26af0925bff8b9ed2d3795c39/report",
+        "schema": "aa-private-v1",
+        "state": "awaiting_acceptance",
+        "status_url": "/v1/jobs/7b449aa26af0925bff8b9ed2d3795c39"
+      },
+      "status": 202
+    },
+    {
+      "auth_role": "client",
+      "case": "identical-retry",
+      "method": "POST",
+      "path": "/v1/jobs",
+      "request": {
+        "body": {
+          "audience": "aa-private-local-v1",
+          "domain": "AA-REQUEST-v1",
+          "expires_ms": 1792185586874,
+          "idempotency_key": "a06c02af2ac8f90b654c6d159c92b9eb",
+          "issued_ms": 1792185526874,
+          "kid": "sender",
+          "method": "POST",
+          "nonce": "6972d0f2588aedfb10f8df3095ccbe7f2be81741b31c10127880e181c8cefad0",
+          "path": "/v1/jobs",
+          "payload": {
+            "receiver_kid": "receiver",
+            "scenario": "a4-write16-v1"
+          },
+          "schema": "aa-private-v1",
+          "tenant": "test-a"
+        },
+        "signature": "ovqkW4yeeebl/aLfVRCj62O5nWVoJq6RA5Lehw3DIXz4ongCaX38yerJWwLTOvQvUVqsZYhLO5SCFGxLaFyjDg=="
+      },
+      "response": {
+        "grants_rights": false,
+        "job_id": "7b449aa26af0925bff8b9ed2d3795c39",
+        "job_sha256": "45ac5b4c7d4a93e5078fc4597366df46a90aadbbb63bdaaf1d7a18e0eea23ed8",
+        "report_url": "/v1/jobs/7b449aa26af0925bff8b9ed2d3795c39/report",
+        "schema": "aa-private-v1",
+        "state": "awaiting_acceptance",
+        "status_url": "/v1/jobs/7b449aa26af0925bff8b9ed2d3795c39"
+      },
+      "status": 202
+    },
+    {
+      "auth_role": "client",
+      "case": "invalid-signature",
+      "method": "POST",
+      "path": "/v1/jobs",
+      "request": {
+        "body": {
+          "audience": "aa-private-local-v1",
+          "domain": "AA-REQUEST-v1",
+          "expires_ms": 1792185586874,
+          "idempotency_key": "a06c02af2ac8f90b654c6d159c92b9eb",
+          "issued_ms": 1792185526874,
+          "kid": "sender",
+          "method": "POST",
+          "nonce": "0a94166135f3093f8df7291b02e914b06e5abde18365139d76e9a4a2733c0bb8",
+          "path": "/v1/jobs",
+          "payload": {
+            "receiver_kid": "receiver",
+            "scenario": "a4-write16-v1"
+          },
+          "schema": "aa-private-v1",
+          "tenant": "test-a"
+        },
+        "signature": "ovqkW4yeeebl/aLfVRCj62O5nWVoJq6RA5Lehw3DIXz4ongCaX38yerJWwLTOvQvUVqsZYhLO5SCFGxLaFyjDg=="
+      },
+      "response": {
+        "code": "SIGNATURE_INVALID",
+        "status": 401,
+        "title": "SIGNATURE_INVALID",
+        "type": "urn:aa:problem:signature_invalid"
+      },
+      "status": 401
+    },
+    {
+      "auth_role": "client",
+      "case": "replay-new-idem",
+      "method": "POST",
+      "path": "/v1/jobs",
+      "request": {
+        "body": {
+          "audience": "aa-private-local-v1",
+          "domain": "AA-REQUEST-v1",
+          "expires_ms": 1792185587190,
+          "idempotency_key": "272f1726a41788639fdaf5e04bea437c",
+          "issued_ms": 1792185527190,
+          "kid": "sender",
+          "method": "POST",
+          "nonce": "6972d0f2588aedfb10f8df3095ccbe7f2be81741b31c10127880e181c8cefad0",
+          "path": "/v1/jobs",
+          "payload": {
+            "receiver_kid": "receiver",
+            "scenario": "a4-write16-v1"
+          },
+          "schema": "aa-private-v1",
+          "tenant": "test-a"
+        },
+        "signature": "FmOe/DzDvtyGTszJ8Of8mlSJUVjIUSjM45qMd3gO8/Tci0jyq+YEp2+qcEQJl5uHSo0thjthTjnGU1/FGD2qDg=="
+      },
+      "response": {
+        "code": "REPLAY",
+        "status": 409,
+        "title": "REPLAY",
+        "type": "urn:aa:problem:replay"
+      },
+      "status": 409
+    },
+    {
+      "auth_role": "client",
+      "case": "idempotency-conflict",
+      "method": "POST",
+      "path": "/v1/jobs",
+      "request": {
+        "body": {
+          "audience": "aa-private-local-v1",
+          "domain": "AA-REQUEST-v1",
+          "expires_ms": 1792185587345,
+          "idempotency_key": "a06c02af2ac8f90b654c6d159c92b9eb",
+          "issued_ms": 1792185527345,
+          "kid": "sender",
+          "method": "POST",
+          "nonce": "7dafbe89bc4380df602a869c0eebb4c270f5770c5baa248b23609f16884b8891",
+          "path": "/v1/jobs",
+          "payload": {
+            "receiver_kid": "receiver",
+            "scenario": "a4-write16-v1"
+          },
+          "schema": "aa-private-v1",
+          "tenant": "test-a"
+        },
+        "signature": "LWRD0Si3YEzFFq2gtU/T9pfcNmfGG+nkRygjx+XzEjuoLLXlk/Jnmui2BmJkJkT2ZqpsUHkXYjbm9UCz53kxBA=="
+      },
+      "response": {
+        "code": "IDEMPOTENCY_CONFLICT",
+        "status": 409,
+        "title": "IDEMPOTENCY_CONFLICT",
+        "type": "urn:aa:problem:idempotency_conflict"
+      },
+      "status": 409
+    },
+    {
+      "auth_role": "client",
+      "case": "expired",
+      "method": "POST",
+      "path": "/v1/jobs",
+      "request": {
+        "body": {
+          "audience": "aa-private-local-v1",
+          "domain": "AA-REQUEST-v1",
+          "expires_ms": 1792185526504,
+          "idempotency_key": "1e352c1bd876adeec8d8b35a093ac0b6",
+          "issued_ms": 1792185466504,
+          "kid": "sender",
+          "method": "POST",
+          "nonce": "c54569dfb5e5b50ae8d01dbee3d241a1592789cb9af30c616fc0516117b584b4",
+          "path": "/v1/jobs",
+          "payload": {
+            "receiver_kid": "receiver",
+            "scenario": "a4-write16-v1"
+          },
+          "schema": "aa-private-v1",
+          "tenant": "test-a"
+        },
+        "signature": "oAACyhWtbbMhjgOXgPz/Jrw7Mh3P/fqHMiOoLCTkyjkA4lb8U+yhqPfC91ecwTZ/zAsQQ67gCrqHSGR99CqBDA=="
+      },
+      "response": {
+        "code": "EXPIRED_OR_FUTURE",
+        "status": 410,
+        "title": "EXPIRED_OR_FUTURE",
+        "type": "urn:aa:problem:expired_or_future"
+      },
+      "status": 410
+    },
+    {
+      "auth_role": "missing",
+      "case": "missing-auth",
+      "method": "GET",
+      "path": "/v1/jobs/7b449aa26af0925bff8b9ed2d3795c39",
+      "request": null,
+      "response": {
+        "code": "AUTH_REQUIRED",
+        "status": 401,
+        "title": "AUTH_REQUIRED",
+        "type": "urn:aa:problem:auth_required"
+      },
+      "status": 401
+    },
+    {
+      "auth_role": "reader",
+      "case": "foreign-tenant-object",
+      "method": "GET",
+      "path": "/v1/jobs/7b449aa26af0925bff8b9ed2d3795c39",
+      "request": null,
+      "response": {
+        "code": "NOT_FOUND",
+        "status": 404,
+        "title": "NOT_FOUND",
+        "type": "urn:aa:problem:not_found"
+      },
+      "status": 404
+    },
+    {
+      "auth_role": "reader",
+      "case": "foreign-tenant-report",
+      "method": "GET",
+      "path": "/v1/jobs/7b449aa26af0925bff8b9ed2d3795c39/report",
+      "request": null,
+      "response": {
+        "code": "NOT_FOUND",
+        "status": 404,
+        "title": "NOT_FOUND",
+        "type": "urn:aa:problem:not_found"
+      },
+      "status": 404
+    },
+    {
+      "auth_role": "client",
+      "case": "report-pending",
+      "method": "GET",
+      "path": "/v1/jobs/7b449aa26af0925bff8b9ed2d3795c39/report",
+      "request": null,
+      "response": {
+        "code": "REPORT_PENDING",
+        "status": 409,
+        "title": "REPORT_PENDING",
+        "type": "urn:aa:problem:report_pending"
+      },
+      "status": 409
+    },
+    {
+      "auth_role": "client",
+      "case": "wrong-exact-acceptance",
+      "method": "POST",
+      "path": "/v1/jobs/7b449aa26af0925bff8b9ed2d3795c39/acceptances",
+      "request": {
+        "body": {
+          "audience": "aa-private-local-v1",
+          "domain": "AA-REQUEST-v1",
+          "expires_ms": 1792185587592,
+          "idempotency_key": "d477916c02824d5112576861464fcf30",
+          "issued_ms": 1792185527592,
+          "kid": "receiver",
+          "method": "POST",
+          "nonce": "df04a6943ad40a3b4241bd4f0fd210c9937e3b2b3712175e8e33b3aac3120218",
+          "path": "/v1/jobs/7b449aa26af0925bff8b9ed2d3795c39/acceptances",
+          "payload": {
+            "job_id": "7b449aa26af0925bff8b9ed2d3795c39",
+            "job_sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+          },
+          "schema": "aa-private-v1",
+          "tenant": "test-a"
+        },
+        "signature": "H3D/6lBEGl0KvJw438kWAIWgxj5CLtkKD+qq2Z7iKIipHrJbHZzTTewg4DEuhosRvQSe7qRXyNvdKxM9i2f4BQ=="
+      },
+      "response": {
+        "code": "DELEGATION_MISMATCH",
+        "status": 422,
+        "title": "DELEGATION_MISMATCH",
+        "type": "urn:aa:problem:delegation_mismatch"
+      },
+      "status": 422
+    },
+    {
+      "auth_role": "client",
+      "case": "valid-acceptance",
+      "method": "POST",
+      "path": "/v1/jobs/7b449aa26af0925bff8b9ed2d3795c39/acceptances",
+      "request": {
+        "body": {
+          "audience": "aa-private-local-v1",
+          "domain": "AA-REQUEST-v1",
+          "expires_ms": 1792185587748,
+          "idempotency_key": "11a1970afd888b7b32784b7765463345",
+          "issued_ms": 1792185527748,
+          "kid": "receiver",
+          "method": "POST",
+          "nonce": "a4cb87f65170aa9675287864b8543dced753155f3f7b117026cb1439f595b643",
+          "path": "/v1/jobs/7b449aa26af0925bff8b9ed2d3795c39/acceptances",
+          "payload": {
+            "job_id": "7b449aa26af0925bff8b9ed2d3795c39",
+            "job_sha256": "45ac5b4c7d4a93e5078fc4597366df46a90aadbbb63bdaaf1d7a18e0eea23ed8"
+          },
+          "schema": "aa-private-v1",
+          "tenant": "test-a"
+        },
+        "signature": "poqQdzwaAAw+nciNnj6WXXxpwibnJVHpzgqWAbAbVMT6z2nssV9dRU9ao+R9uDssMTL92n0+XXCz84ybWoK2Cw=="
+      },
+      "response": {
+        "grants_rights": false,
+        "job_id": "7b449aa26af0925bff8b9ed2d3795c39",
+        "schema": "aa-private-v1",
+        "state": "queued"
+      },
+      "status": 202
+    },
+    {
+      "auth_role": "client",
+      "case": "final-status",
+      "method": "GET",
+      "path": "/v1/jobs/7b449aa26af0925bff8b9ed2d3795c39",
+      "request": null,
+      "response": {
+        "grants_rights": false,
+        "job_id": "7b449aa26af0925bff8b9ed2d3795c39",
+        "label": "Testlauf unklar - keine automatische Wiederholung",
+        "report_available": true,
+        "schema": "aa-private-v1",
+        "state": "unknown"
+      },
+      "status": 200
+    },
+    {
+      "auth_role": "admin",
+      "case": "revoke-receiver",
+      "method": "POST",
+      "path": "/v1/revocations",
+      "request": {
+        "body": {
+          "audience": "aa-private-local-v1",
+          "domain": "AA-REQUEST-v1",
+          "expires_ms": 1792185587987,
+          "idempotency_key": "af6e3c0fa372d0936f8a714f330ee393",
+          "issued_ms": 1792185527987,
+          "kid": "sender",
+          "method": "POST",
+          "nonce": "3451fbc450f0b77bde39320d6b5e1563535037f22566a112e7ae2d89d92154e2",
+          "path": "/v1/revocations",
+          "payload": {
+            "kid": "receiver"
+          },
+          "schema": "aa-private-v1",
+          "tenant": "test-a"
+        },
+        "signature": "FXkLT8ywxktwuf6QkYD0pOdzaLydNWq3fwAWhW6UwF4HrpII6N5qBX+MEpa+ufT/STotBEunx7A5FGby3qK+CA=="
+      },
+      "response": {
+        "kid": "receiver",
+        "schema": "aa-private-v1",
+        "state": "revoked"
+      },
+      "status": 200
+    },
+    {
+      "auth_role": "client",
+      "case": "revoked-key",
+      "method": "POST",
+      "path": "/v1/jobs/7b449aa26af0925bff8b9ed2d3795c39/acceptances",
+      "request": {
+        "body": {
+          "audience": "aa-private-local-v1",
+          "domain": "AA-REQUEST-v1",
+          "expires_ms": 1792185588143,
+          "idempotency_key": "fc5b3d2c9078477a9cc4ae92884c330f",
+          "issued_ms": 1792185528143,
+          "kid": "receiver",
+          "method": "POST",
+          "nonce": "6973613805f02117360e43bd5015b7176f417f8e75716dedcdbaaab85f145c3f",
+          "path": "/v1/jobs/7b449aa26af0925bff8b9ed2d3795c39/acceptances",
+          "payload": {
+            "job_id": "7b449aa26af0925bff8b9ed2d3795c39",
+            "job_sha256": "45ac5b4c7d4a93e5078fc4597366df46a90aadbbb63bdaaf1d7a18e0eea23ed8"
+          },
+          "schema": "aa-private-v1",
+          "tenant": "test-a"
+        },
+        "signature": "CnbwBhht1VANcOXE/29hWrIVh5M7K7Hh8xoPUi641y/jo5dK1/Ia1wRYeP5dYdCRLlLak0ksXoki9YCnRCbCBw=="
+      },
+      "response": {
+        "code": "KEY_REVOKED",
+        "status": 403,
+        "title": "KEY_REVOKED",
+        "type": "urn:aa:problem:key_revoked"
+      },
+      "status": 403
+    },
+    {
+      "auth_role": "client",
+      "case": "historical-after-revocation",
+      "method": "GET",
+      "path": "/v1/jobs/7b449aa26af0925bff8b9ed2d3795c39/report",
+      "request": null,
+      "response": {
+        "current_key_status": {
+          "receiver": "revoked",
+          "sender": "active"
+        },
+        "report": {
+          "body": {
+            "classification": "UNBEKANNT",
+            "grants_rights": false,
+            "issued_ms": 1792185527907,
+            "job_id": "7b449aa26af0925bff8b9ed2d3795c39",
+            "provider_model_session": "UNBEKANNT",
+            "reason": "WORKER_INTERRUPTED",
+            "schema": "aa-report-v1",
+            "scope": "controlled-a4-write16",
+            "tenant": "test-a",
+            "trust_catalog_version": "local-test-catalog-v1",
+            "uncertainties": [
+              "No automatic rerun",
+              "Action may have occurred"
+            ],
+            "verifier_version": "aa-private-verifier-v1"
+          },
+          "signature": "jAR9WmvRsKU9igUjXTp0wBiS0OjqreguUs3Bg8q/L6+5Kw9x8SaD8C7He5rXNnobtTGAhmnU4gasBeVZDBtTBg=="
+        },
+        "schema": "aa-private-v1"
+      },
+      "status": 200
+    },
+    {
+      "auth_role": "client",
+      "case": "retry-after-restart",
+      "method": "POST",
+      "path": "/v1/jobs",
+      "request": {
+        "body": {
+          "audience": "aa-private-local-v1",
+          "domain": "AA-REQUEST-v1",
+          "expires_ms": 1792185586874,
+          "idempotency_key": "a06c02af2ac8f90b654c6d159c92b9eb",
+          "issued_ms": 1792185526874,
+          "kid": "sender",
+          "method": "POST",
+          "nonce": "6972d0f2588aedfb10f8df3095ccbe7f2be81741b31c10127880e181c8cefad0",
+          "path": "/v1/jobs",
+          "payload": {
+            "receiver_kid": "receiver",
+            "scenario": "a4-write16-v1"
+          },
+          "schema": "aa-private-v1",
+          "tenant": "test-a"
+        },
+        "signature": "ovqkW4yeeebl/aLfVRCj62O5nWVoJq6RA5Lehw3DIXz4ongCaX38yerJWwLTOvQvUVqsZYhLO5SCFGxLaFyjDg=="
+      },
+      "response": {
+        "grants_rights": false,
+        "job_id": "7b449aa26af0925bff8b9ed2d3795c39",
+        "job_sha256": "45ac5b4c7d4a93e5078fc4597366df46a90aadbbb63bdaaf1d7a18e0eea23ed8",
+        "report_url": "/v1/jobs/7b449aa26af0925bff8b9ed2d3795c39/report",
+        "schema": "aa-private-v1",
+        "state": "awaiting_acceptance",
+        "status_url": "/v1/jobs/7b449aa26af0925bff8b9ed2d3795c39"
+      },
+      "status": 202
+    }
+  ],
+  "job_id": "7b449aa26af0925bff8b9ed2d3795c39",
+  "live": false,
+  "public_keys": {
+    "receiver": "n2TTCcqQ9//7iFO4LHtOv2ZSYsaxRdyBrHl3oAOj8i4=",
+    "runner": "hvZKuc14ULfQxrrH+7KdJGLzmKAlVeGvWB2sU7/Qmr4=",
+    "sender": "5HPWsAoFZPVz8Qyva6nLja/YGWPVERGisjUwikoW6c0="
+  },
+  "report_public_key": "xP5ogcu/jh+Dm0ydu43MViMLnjmFeHqE9CUyaTrji60=",
+  "root_public_key": "bjfEB2Ze3TA8U7H6sdFFsCo4wXnZ359gxgq88wpooek=",
+  "schema": "aa-private-exercise-v1"
+}
