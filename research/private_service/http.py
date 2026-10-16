@@ -1,17 +1,50 @@
 """Loopback-only HTTP adapter and browser inspector. No ambient browser login."""
 
 import argparse
+import http.client
 import json
+import re
+import socket
 import sqlite3
+import threading
+import time
+from collections import deque
 from http.server import BaseHTTPRequestHandler, HTTPServer
 from pathlib import Path
 from urllib.error import HTTPError
-from urllib.request import Request, urlopen
+from urllib.parse import urlsplit
+from urllib.request import HTTPRedirectHandler, ProxyHandler, Request, build_opener
 
+from research.private_service.limits import (
+    DEADLINE,
+    HTTP_SECONDS,
+    MAX_BYTES,
+    process_limits,
+    unprivileged,
+)
 from research.private_service.protocol import Problem, parse, require
 from research.private_service.service import Service
 
-MAX_BYTES = 262144
+JOB_ROUTE = re.compile(
+    r"/v1/jobs/([A-Za-z0-9_-]{1,80})(?:/(report|acceptances|evidence|receipts|cancellations))?\Z"
+)
+CONTROL_ROUTES = {"/v1/challenges", "/v1/enrollments", "/v1/revocations", "/v1/jobs"}
+PUBLIC_ROUTES = {"/", "/inspector.js", "/v1/privacy"}
+HEADER_BYTES = 16384
+
+
+class HeaderReader:
+    def __init__(self, source):
+        self.source, self.left = source, HEADER_BYTES
+
+    def readline(self, limit=-1):
+        line = self.source.readline(min(limit, self.left + 1) if limit > 0 else self.left + 1)
+        self.left -= len(line)
+        if self.left < 0 or (line[:1] in (b" ", b"\t")):
+            raise http.client.LineTooLong("header limit")
+        return line
+
+
 PAGE = b"""<!doctype html><meta charset="utf-8"><title>Agent Authority - privater Test</title>
 <h1>Agent Authority: privaten Testlauf pruefen</h1>
 <p>Nur kontrollierte Testidentitaeten. Keine Rechteerteilung, kein Sicherheitszertifikat.</p>
@@ -63,7 +96,32 @@ document.getElementById('out').textContent=JSON.stringify(data,null,2);};"""
 
 
 def call(url, token, method, path, body=None):
-    require(url.startswith("http://127.0.0.1:"))
+    require(type(url) is str and all(33 <= ord(c) <= 126 for c in url))
+    try:
+        target = urlsplit(url)
+        port = target.port
+    except ValueError as error:
+        raise Problem(422, "LOOPBACK_TARGET_REQUIRED") from error
+    require(
+        target.scheme == "http"
+        and target.hostname == "127.0.0.1"
+        and target.username is None
+        and target.password is None
+        and not target.path
+        and not target.query
+        and not target.fragment
+        and port is not None
+        and 0 < port < 65536,
+        422,
+        "LOOPBACK_TARGET_REQUIRED",
+    )
+    require(type(path) is str and path.startswith("/") and "?" not in path and "#" not in path)
+
+    class NoRedirect(HTTPRedirectHandler):
+        def redirect_request(self, *args):
+            return None
+
+    opener = build_opener(ProxyHandler({}), NoRedirect())
     raw = None if body is None else json.dumps(body).encode()
     req = Request(
         url + path,
@@ -72,15 +130,37 @@ def call(url, token, method, path, body=None):
         headers={"Authorization": "Bearer " + token, "Content-Type": "application/json"},
     )
     try:
-        response = urlopen(req, timeout=30)
+        response = opener.open(req, timeout=10)
     except HTTPError as error:
         response = error
     with response:
-        return response.status, json.loads(response.read())
+        require(not 300 <= response.status < 400, 422, "REDIRECT_FORBIDDEN")
+        raw = response.read(MAX_BYTES + 1)
+        require(len(raw) <= MAX_BYTES, 413, "RESPONSE_LIMIT")
+        return response.status, json.loads(raw)
 
 
 def server(service, port=0):
+    unprivileged()
+
     class PrivateServer(HTTPServer):
+        request_queue_size = 4
+        # One active request and one child component per process. Bounded backlog;
+        # no unbounded thread/fork-per-connection path.
+
+        def __init__(self, *args):
+            self.rates = {"anonymous": deque()}
+            self.rates.update({t["tenant"]: deque() for t in service.config["tokens"]})
+            super().__init__(*args)
+
+        def rate(self, tenant):
+            events = self.rates[tenant]
+            stamp = time.monotonic()
+            while events and events[0] <= stamp - 60:
+                events.popleft()
+            require(len(events) < 120, 429, "RATE_LIMIT")
+            events.append(stamp)
+
         def service_actions(self):
             try:
                 with service.exclusive():
@@ -94,9 +174,39 @@ def server(service, port=0):
             pass  # No traceback/local variable/request dumps on broken sockets.
 
     class Handler(BaseHTTPRequestHandler):
+        server_version = "AgentAuthorityPrivate"
+        sys_version = ""
+
         def setup(self):
             super().setup()
-            self.connection.settimeout(5)
+            self.connection.settimeout(HTTP_SECONDS)
+            self.deadline = time.monotonic() + HTTP_SECONDS
+
+            def expire():
+                try:
+                    self.connection.shutdown(socket.SHUT_RDWR)
+                except OSError:
+                    pass
+
+            self.timer = threading.Timer(HTTP_SECONDS, expire)
+            self.timer.daemon = True
+            self.timer.start()
+
+        def finish(self):
+            self.timer.cancel()
+            super().finish()
+
+        def parse_request(self):
+            if len(self.raw_requestline) > 2048:
+                self.requestline, self.request_version, self.command = "", "HTTP/1.0", None
+                self.send_error(414)
+                return False
+            source = self.rfile
+            self.rfile = HeaderReader(source)
+            try:
+                return super().parse_request()
+            finally:
+                self.rfile = source
 
         def log_message(self, *args):
             pass  # Never log tokens, paths, bodies or free exception strings.
@@ -120,6 +230,8 @@ def server(service, port=0):
             self.send_header("Content-Type", content_type)
             self.send_header("Content-Length", str(len(raw)))
             self.send_header("Cache-Control", "no-store")
+            self.send_header("Connection", "close")
+            self.close_connection = True
             self.send_header("X-Content-Type-Options", "nosniff")
             self.send_header(
                 "Content-Security-Policy",
@@ -129,11 +241,38 @@ def server(service, port=0):
             self.wfile.write(raw)
 
         def route(self):
+            self.server.rate("anonymous")
+            for name in ("Host", "Origin", "Authorization", "Content-Type", "Content-Length"):
+                require(len(self.headers.get_all(name) or []) <= 1, 400, "DUPLICATE_HEADER")
             host = self.headers.get("Host", "")
             require(host == f"127.0.0.1:{self.server.server_port}", 403, "HOST_FORBIDDEN")
             origin = self.headers.get("Origin")
             require(origin is None or origin == f"http://{host}", 403, "ORIGIN_FORBIDDEN")
             require(not self.headers.get("Transfer-Encoding"), 400, "TRANSFER_ENCODING_UNSUPPORTED")
+            require(
+                self.headers.get("Content-Encoding") is None, 415, "CONTENT_ENCODING_UNSUPPORTED"
+            )
+            require(self.headers.get("Expect") is None, 417, "EXPECT_UNSUPPORTED")
+            require(self.command in ("GET", "POST"), 405, "METHOD_FORBIDDEN")
+            job_route = JOB_ROUTE.fullmatch(self.path)
+            require(self.path in PUBLIC_ROUTES | CONTROL_ROUTES or job_route, 404, "NOT_FOUND")
+            if self.command == "GET":
+                require(
+                    self.path in PUBLIC_ROUTES or (job_route and job_route[2] in (None, "report")),
+                    405,
+                    "METHOD_FORBIDDEN",
+                )
+                require(self.headers.get("Content-Length", "0") == "0", 400, "UNEXPECTED_BODY")
+            else:
+                require(
+                    self.path in CONTROL_ROUTES
+                    or (
+                        job_route
+                        and job_route[2] in ("acceptances", "evidence", "receipts", "cancellations")
+                    ),
+                    405,
+                    "METHOD_FORBIDDEN",
+                )
             if self.command == "GET" and self.path == "/v1/privacy":
                 self.send(
                     200,
@@ -157,6 +296,7 @@ def server(service, port=0):
             auth = self.headers.get("Authorization", "")
             require(auth.startswith("Bearer "), 401, "AUTH_REQUIRED")
             tenant, role = service.authenticate(auth[7:])
+            self.server.rate(tenant)
             if self.command == "POST":
                 require(self.headers.get("Content-Type") == "application/json", 415, "CONTENT_TYPE")
                 lengths = self.headers.get_all("Content-Length") or []
@@ -169,6 +309,9 @@ def server(service, port=0):
                 if self.path == "/v1/challenges":
                     result = service.challenge(tenant, role, data)
                 else:
+                    if self.path not in ("/v1/enrollments", "/v1/revocations"):
+                        require(type(data) is dict and type(data.get("body")) is dict)
+                        service.authorize_signer(auth[7:], data["body"].get("kid"))
                     result = service.mutate(tenant, role, self.path, data)
             else:
                 require(role in ("client", "admin", "reader"), 403, "ROLE_FORBIDDEN")
@@ -180,7 +323,13 @@ def server(service, port=0):
                     404,
                     "NOT_FOUND",
                 )
-                result = service.read(tenant, parts[3], len(parts) == 5)
+                # Serialize report materialization AND send with receipt/expiry.
+                # Already transmitted bytes cannot be recalled from a client.
+                with service.exclusive():
+                    service.authorize_read(auth[7:], parts[3])
+                    result = service.read(tenant, parts[3], len(parts) == 5)
+                    self.send(*result)
+                return
             self.send(*result)
 
         def dispatch(self):
@@ -221,26 +370,57 @@ def server(service, port=0):
                 )
 
         def handle_request(self):
+            token = DEADLINE.set(self.deadline)
             try:
-                # Serialize report materialization+send with deletion across API
-                # processes. Already sent bytes cannot be recalled from a client.
-                with service.exclusive():
-                    self.dispatch()
+                # Lock acquisition is inside dispatch's error handling. Slow body
+                # intake cannot hold the shared lifecycle/delete lock.
+                self.dispatch()
             except (OSError, TimeoutError):
                 pass  # Disconnect is never a receipt.
+            finally:
+                DEADLINE.reset(token)
 
         do_GET = handle_request
         do_POST = handle_request
+        do_DELETE = handle_request
+        do_PUT = handle_request
+        do_PATCH = handle_request
+        do_HEAD = handle_request
+        do_OPTIONS = handle_request
 
     return PrivateServer(("127.0.0.1", port), Handler)
 
 
-if __name__ == "__main__":
+def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--state", type=Path, required=True)
     parser.add_argument("--config", type=Path, required=True)
     parser.add_argument("--port", type=int, default=8765)
+    parser.add_argument(
+        "--signer-key",
+        type=Path,
+        required=True,
+        help="operator-only report key; never client/root/runner key",
+    )
     args = parser.parse_args()
-    instance = server(Service(args.state, json.loads(args.config.read_text())), args.port)
+    process_limits()
+    config = parse(args.config.read_bytes())
+    from research.private_service.boundary import ReportSigner
+    from research.private_service.protocol import fields
+
+    fields(config, "root_pins report_public_key trust_version runner_tenant runner_kid tokens")
+    for entry in config["tokens"]:
+        fields(entry, "tenant role sha256 subjects")
+    instance = server(Service(args.state, config, ReportSigner(args.signer_key)), args.port)
     print(f"Private inspector: http://127.0.0.1:{instance.server_port}", flush=True)
-    instance.serve_forever()
+    try:
+        instance.serve_forever()
+    finally:
+        instance.server_close()
+
+
+if __name__ == "__main__":
+    try:
+        main()
+    except (Problem, OSError, ValueError, KeyError, TypeError):
+        raise SystemExit("PRIVATE_SERVICE_START_FAILED") from None

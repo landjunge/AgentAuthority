@@ -3,6 +3,7 @@
 import base64
 import hashlib
 import json
+import math
 import re
 import sys
 import time
@@ -41,25 +42,37 @@ def identifier(value):
     require(type(value) is str and ID.fullmatch(value) is not None)
 
 
-def restricted(value, depth=0):
+MAX_NODES = 20000
+MAX_STRING = 196608
+
+
+def restricted(value, depth=0, budget=None, legacy=False):
+    budget = [MAX_NODES] if budget is None else budget
+    budget[0] -= 1
+    require(budget[0] >= 0, 422, "STRUCTURE_LIMIT")
     require(depth <= 30)
     if type(value) is dict:
+        require(len(value) <= 128, 422, "STRUCTURE_LIMIT")
         for k, v in value.items():
             require(type(k) is str)
-            restricted(k, depth + 1)
-            restricted(v, depth + 1)
+            restricted(k, depth + 1, budget, legacy)
+            restricted(v, depth + 1, budget, legacy)
     elif type(value) is list:
+        require(len(value) <= 4096, 422, "STRUCTURE_LIMIT")
         for v in value:
-            restricted(v, depth + 1)
+            restricted(v, depth + 1, budget, legacy)
     elif type(value) is str:
-        require(all(32 <= ord(c) <= 126 for c in value))
+        require(len(value) <= MAX_STRING, 422, "STRUCTURE_LIMIT")
+        require(legacy or all(32 <= ord(c) <= 126 for c in value))
     elif type(value) is int:
-        require(abs(value) <= 9007199254740991)
+        require(legacy or abs(value) <= 9007199254740991)
+    elif type(value) is float and legacy:
+        require(math.isfinite(value))
     else:
         require(value is None or type(value) is bool)
 
 
-def parse(raw):
+def parse(raw, legacy=False):
     def pairs(items):
         result = {}
         for key, value in items:
@@ -69,7 +82,7 @@ def parse(raw):
 
     try:
         value = json.loads(raw, object_pairs_hook=pairs)
-        restricted(value)
+        restricted(value, legacy=legacy)
         return value
     except (ValueError, TypeError, RecursionError, UnicodeError) as error:
         raise Problem(400, "INVALID_JSON") from error
@@ -133,18 +146,14 @@ def blob_digest(value):
 def evidence_values(payload):
     # These are opaque legacy A4 measurement bytes, outside the new JCS schema.
     # Hash the exact bytes; never re-canonicalize legacy floats/raw diagnostics.
-    def no_duplicates(items):
-        result = {}
-        for key, value in items:
-            require(key not in result)
-            result[key] = value
-        return result
-
-    return {
-        "registry": json.loads(unblob(payload["registry"]), object_pairs_hook=no_duplicates),
-        "capture": [
-            json.loads(line, object_pairs_hook=no_duplicates)
-            for line in unblob(payload["capture"]).splitlines()
-        ],
-        "trial": json.loads(unblob(payload["trial"]), object_pairs_hook=no_duplicates),
+    raw = {k: unblob(payload[k]) for k in ("registry", "capture", "trial")}
+    require(sum(map(len, raw.values())) <= 196608, 413, "EVIDENCE_BYTE_LIMIT")
+    lines = raw["capture"].splitlines()
+    require(len(lines) <= 4096, 422, "STRUCTURE_LIMIT")
+    result = {
+        "registry": parse(raw["registry"], legacy=True),
+        "capture": [parse(line, legacy=True) for line in lines],
+        "trial": parse(raw["trial"], legacy=True),
     }
+    restricted(result, legacy=True)
+    return result

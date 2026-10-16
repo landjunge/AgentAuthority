@@ -256,15 +256,15 @@ def test_content_inventory_encryption_input_and_report_cleanup(controlled, monke
     svc.claim()
     with svc.exclusive(), svc.connection() as db:
         db.execute("BEGIN IMMEDIATE")
-        report = {
-            "schema": "aa-report-v1",
-            "tenant": "test-a",
-            "job_id": jid,
-            "classification": "UNBEKANNT",
-            "issued_ms": clock[0],
-            "synthetic_marker": marker.decode(),
-        }
-        svc.finish(db, "test-a", jid, report, "unknown", clock[0])
+        # Use a real supported report rather than a free-form signing payload.
+        # The marker still passes through encrypted report bytes and is searched
+        # in every owned file before and after deletion, as in the original test.
+        previous_version = svc.config["trust_version"]
+        svc.config["trust_version"] = marker.decode()
+        try:
+            svc._unknown(db, "test-a", jid, "WORKER_INTERRUPTED")
+        finally:
+            svc.config["trust_version"] = previous_version
         db.commit()
     status = svc.read("test-a", jid)[1]
     assert status["inputs_cleanup_completed_at"] == iso(clock[0])

@@ -2,8 +2,8 @@
   "openapi": "3.1.0",
   "info": {
     "title": "Agent Authority private synthetic service",
-    "version": "1.1.0",
-    "description": "Loopback-only qualification. No authorization decisions; no arbitrary code. Normative semantics: PRIVATE-SERVICE-API-v1.md. Restricted RFC8785 subset; legacy A4 bytes base64 wrapped. New ephemeral states: absolute 24h report deadline, signed receipt and retryable cleanup. Historical states preserved. New VM dispatch blocked pending encrypted ephemeral runner qualification."
+    "version": "1.1.1",
+    "description": "Loopback-only qualification. No authorization decisions; no arbitrary code. Normative semantics: PRIVATE-SERVICE-API-v1.md. Restricted RFC8785 subset; legacy A4 bytes base64 wrapped. New ephemeral states: absolute 24h report deadline, signed receipt and retryable cleanup. Historical states preserved. New VM dispatch blocked pending encrypted ephemeral runner qualification. Private security acceptance 2026-10-17: explicit route/method allowlist, scoped bearer subjects, bounded JSON/HTTP/process budgets and report-only signing/verifier children. Same-UID OS isolation, Linux memory/target hardening and production TLS/proxy remain unqualified. See private-service-security-20261017/README.md."
   },
   "servers": [
     {

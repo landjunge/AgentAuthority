@@ -1,0 +1,122 @@
+{
+  "completed_at": "2026-10-16T22:19:45.686526+00:00",
+  "baseline": "09bc5f2",
+  "branch": "codex/hosted-qualification-20261016",
+  "worktree": "/Users/landjunge/agent-authority-lab/.worktrees/hosted-qualification",
+  "predecessor": {
+    "run": "20261016T213239.014587Z",
+    "status": "codex_completed",
+    "finished_at": "2026-10-16T22:01:05.135414+00:00",
+    "completion_and_reports_read_before_changes": true
+  },
+  "tested": {
+    "contracts": {
+      "tests": 163,
+      "errors": 0,
+      "failures": 0,
+      "skipped": 0,
+      "time_seconds": 210.013,
+      "modules": {
+        "tests.test_private_service_security": 72,
+        "tests.test_private_service": 39,
+        "tests.test_private_service_retention": 30,
+        "tests.test_hosted_qualification": 22
+      }
+    },
+    "regressions": {
+      "tests": 214,
+      "errors": 0,
+      "failures": 0,
+      "skipped": 0,
+      "time_seconds": 62.207,
+      "modules": {
+        "tests.test_product_contract": 22,
+        "tests.test_product_observer": 30,
+        "tests.test_product_html": 9,
+        "tests.test_product_input_bounds": 14,
+        "tests.test_a1_linux_scoring": 17,
+        "tests.test_a1_native_availability": 19,
+        "tests.test_a2_linux_identity": 14,
+        "tests.test_a3_linux_real_identity": 13,
+        "tests.test_a31_client_job_binding": 16,
+        "tests.test_a4_delegation": 21,
+        "tests.test_a4_completion_controls": 14,
+        "tests.test_a4_final_scale": 25
+      }
+    }
+  },
+  "unique_tests": 377,
+  "new_security_cases": 72,
+  "scope": "own synthetic IPv4 loopback only; original archived A4 evidence reverified, no new VM/kernel effect",
+  "findings_fixed": [
+    "ambiguous duplicate security headers; old adapter 200 reproduced, current 400",
+    "sliding socket timeout; old adapter accepts 6s trickle, current absolute 5s header/body deadline",
+    "overbroad service configuration and same-tenant object/cache access",
+    "runner revocation/rotation now terminates active jobs atomically as unknown",
+    "base64 legacy parser bypass of outer structural limits",
+    "unbounded lifecycle lock waits and insufficiently isolated verifier/signing work",
+    "prefix-only local client URL validation; proxies/redirects now disabled"
+  ],
+  "implemented_boundaries": [
+    "explicit route/method allowlist",
+    "scoped hashed bearer credentials",
+    "versioned exact canonical signed request and registered pinned keys",
+    "atomic durable tenant replay/idempotency across process races/restart/crash",
+    "fixed synthetic scenario; no client code/commands/paths/network targets",
+    "bounded report-only signing and verifier child pipes",
+    "root/capability API startup refusal",
+    "bounded bytes/parser/time/CPU/files/concurrency and resource-error results",
+    "existing 24h/receipt encrypted retention/cleanup unchanged"
+  ],
+  "open_release_blockers": [
+    "same host UID: no compromise-resistant API/signer/registrar/runner account or key ACL separation",
+    "hard RSS/cgroup memory/swap/process/network sandbox not demonstrated at Linux target",
+    "TLS/authenticated proxy/production HTTP stack and global rate limits not deployed/tested",
+    "encrypted ephemeral runner/VM storage qualification; dispatch remains blocked",
+    "outage-independent deletion, all-backup/keycopy erasure and restore epoch unresolved"
+  ],
+  "offline_or_simulated_only": [
+    "root UID rejection simulated; real CLI ran unprivileged on macOS",
+    "Linux capability and RLIMIT_AS code not live tested on Linux",
+    "verifier timeout HTTP rollback fault-injected; actual child deadline kill/reap separately measured",
+    "smaller request/job capacity thresholds fault-injected; actual 16-job limit exercised",
+    "deployment hardening is documented design only"
+  ],
+  "resource_observation": "resource-observation.json",
+  "new_live_vm_executions": 0,
+  "subagents_started": 0,
+  "public_messages_sent": 0,
+  "production_changes": false,
+  "public_or_production_deployment": false,
+  "historical_evidence_modified": false,
+  "deletion_contract_weakened": false,
+  "cleanup_confirmed": true,
+  "foreign_untracked_preserved": {
+    "path": "docs/USER-ROADMAP-KI-ZENTRALE.md",
+    "sha256": "163c851c0e878592b4377092f2dff16c2ccaa985e82d7f6b333d02d072bf20e9"
+  },
+  "source_sha256": {
+    "research/private_service/boundary.py": "e6a4f6bc414fff34e516d71c15e67de24eed19fdfa92a1b2a060ed86127f0b07",
+    "research/private_service/client.py": "7d4b7d93a2f5a3f7dc6f7f8da3ec7b252ec2a7995ae5f4e61604818376e2db1e",
+    "research/private_service/configuration.py": "09faf839ed631d873067ef85f28b74837bd88460c41a60710edcaef1cc116855",
+    "research/private_service/crypto.py": "ad1f113ed8d5bf025df56b6f935f58d8495970a7ffb02d831e6a61f0386bf3f0",
+    "research/private_service/demo.py": "7625cf47d4113167c1973840b4e8ac4ba2f3d932cbff0cf7f19c5669871d7a87",
+    "research/private_service/guest_adapter.py": "2356d9e45edbf0ed602df337fdb0aef390b331fbcb980c69475cce0befd2e8ed",
+    "research/private_service/http.py": "72657a7bd78a5f93a444fa46a2376fb320c07d980f76c70a603740d920157362",
+    "research/private_service/limits.py": "9b2ac998a615278370b34f2d61adc6239dd6261dab617b83469f42eac90598d1",
+    "research/private_service/protocol.py": "8abe3e26341d5fc416a93f07fe9f58ef8b815ac2469a044a2cf57767c9167727",
+    "research/private_service/retention.py": "6af92dcd92f3423b68300d9bcd9d8249c8321fa8b44dee8ec2865067e6332eb5",
+    "research/private_service/runner.py": "e3e329e4802dc990575a97687e9c74e9227ce24a2bd754022f511c22635ac704",
+    "research/private_service/service.py": "fe06d4c628e050625508c6241a84025788b39cc929afa90231a4084ed317fd67",
+    "research/private_service/verifier.py": "c591128646b6bb429f64a9c36cab3f1d51b5f86a78fb48d003f17302a432086d",
+    "tests/test_private_service_security.py": "a9309b3c0fb02fe4d65f13f2a4a4eb607428b94ff5a89cd1bd796dbd217ea33e",
+    "tests/test_private_service.py": "3620f0fa3477f541d1ecd2c6d0258c0e951c54e2830e8379b71287f36218e63f",
+    "tests/test_private_service_retention.py": "55725c9f4ba867efd756731e878db60a9fa2bb3fde290f14d2f1f9e8560117d1",
+    "tests/test_hosted_qualification.py": "49a2b97c7810a5b3c60227dca6b7e857a0f8021feb9e2257f0e6ce2b7d842933"
+  },
+  "python": "3.12.13",
+  "platform": "Darwin",
+  "effective_uid_nonzero": true,
+  "lint": "lint.log",
+  "note": "No addition of repeated exploratory runs or historical execution counts."
+}

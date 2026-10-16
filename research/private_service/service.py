@@ -34,14 +34,16 @@ LABELS = {
     "completed": "Pruefbericht verfuegbar",
     "unknown": "Testlauf unklar - keine automatische Wiederholung",
 }
+MAX_REQUEST_RECORDS = 8192
+MAX_JOB_RECORDS = 4096
+MAX_KEY_RECORDS = 4096  # IDs never reused; retire identity instead of pruning keys.
 
 
 class Service(Retention, Ledger):
-    def __init__(self, state, config):
+    def __init__(self, state, config, report_signer=None):
         require(not Path(state).is_symlink(), 503, "UNSAFE_STORAGE")
         self.state = Path(state).absolute()
         private_dir(self.state)
-        self.config = config
         self.database = str(self.state / "service.sqlite")
         for suffix in ("", "-wal", "-shm", "-journal"):
             require(not Path(self.database + suffix).is_symlink(), 503, "UNSAFE_STORAGE")
@@ -62,7 +64,19 @@ class Service(Retention, Ledger):
                             503,
                             "SCHEMA_UNSUPPORTED",
                         )
-            self._initialize(config)
+            from research.private_service.boundary import ReportSigner
+            from research.private_service.configuration import api_configuration
+
+            self.report_signer = report_signer or ReportSigner(config["report_private_key"])
+            # Only API control data survives initialization. Offline root/client/
+            # runner private keys and bearer values do not belong in API config.
+            self.config = api_configuration(config)
+            require(
+                self.config["report_public_key"] not in self.config["root_pins"].values(),
+                503,
+                "KEY_PURPOSE_MISMATCH",
+            )
+            self._initialize(self.config)
             self.sweep()
 
     def _initialize(self, config):
@@ -99,14 +113,43 @@ class Service(Retention, Ledger):
             )
 
     def authenticate(self, token):
+        entry = self.credentials(token)
+        return entry["tenant"], entry["role"]
+
+    def credentials(self, token):
+        import hashlib
         import hmac
 
         require(type(token) is str and token.isascii(), 401, "AUTH_REQUIRED")
 
         for entry in self.config["tokens"]:
-            if hmac.compare_digest(token, entry["token"]):
-                return entry["tenant"], entry["role"]
+            if hmac.compare_digest(hashlib.sha256(token.encode()).hexdigest(), entry["sha256"]):
+                return entry
         raise Problem(401, "AUTH_REQUIRED")
+
+    def authorize_signer(self, token, kid):
+        entry = self.credentials(token)
+        require("*" in entry["subjects"] or kid in entry["subjects"], 403, "OBJECT_FORBIDDEN")
+
+    def authorize_read(self, token, jid):
+        entry = self.credentials(token)
+        with self.connection() as db:
+            row = db.execute(
+                "SELECT sender,receiver FROM jobs WHERE tenant=? AND id=?", (entry["tenant"], jid)
+            ).fetchone()
+        require(
+            row is not None
+            and ("*" in entry["subjects"] or any(k in entry["subjects"] for k in row)),
+            404,
+            "NOT_FOUND",
+        )
+
+    def request_capacity(self, db):
+        require(
+            db.execute("SELECT count(*) FROM requests").fetchone()[0] < MAX_REQUEST_RECORDS,
+            429,
+            "REQUEST_CAPACITY",
+        )
 
     @guarded
     def challenge(self, tenant, role, data):
@@ -137,6 +180,7 @@ class Service(Retention, Ledger):
                 409,
                 "REPLAY",
             )
+            self.request_capacity(db)
             require(
                 db.execute(
                     "SELECT count(*) FROM challenges WHERE tenant=? AND expires>?",
@@ -248,6 +292,12 @@ class Service(Retention, Ledger):
                 )
                 fresh(cert, now, 86400000)
                 public = cert["public_key"]
+                require(
+                    public != self.config["report_public_key"]
+                    and public not in self.root_pins.values(),
+                    422,
+                    "KEY_PURPOSE_MISMATCH",
+                )
                 from protocol import unb64
 
                 try:
@@ -260,6 +310,7 @@ class Service(Retention, Ledger):
                 public = key[0]
                 require(body["issued_ms"] >= key[2], 410, "KEY_EXPIRED")
             require(verify(public, packet), 401, "SIGNATURE_INVALID")
+            fresh(body, self.time_ms())
             pd = digest(packet)
             previous = db.execute(
                 "SELECT digest,status,response FROM requests WHERE tenant=? AND idem=?",
@@ -277,7 +328,11 @@ class Service(Retention, Ledger):
                 409,
                 "REPLAY",
             )
+            self.request_capacity(db)
             result = self._operation(db, tenant, role, path, packet, now)
+            # Verification/signing can take time. Do not commit a request that
+            # became stale while processing; no new replay record on rollback.
+            fresh(body, self.time_ms())
             db.execute(
                 "INSERT INTO requests VALUES (?,?,?,?,?,?,?)",
                 (
@@ -305,6 +360,11 @@ class Service(Retention, Ledger):
     def _operation(self, db, tenant, role, path, packet, now):
         body, payload = packet["body"], packet["body"]["payload"]
         if path == "/v1/enrollments":
+            require(
+                db.execute("SELECT count(*) FROM service_keys").fetchone()[0] < MAX_KEY_RECORDS,
+                429,
+                "KEY_CAPACITY",
+            )
             cert = payload["certificate"]["body"]
             fields(payload["proof"], "body signature")
             proof = payload["proof"]["body"]
@@ -375,6 +435,11 @@ class Service(Retention, Ledger):
             self._revoke(db, tenant, payload["kid"], now, "revoke")
             return 200, {"schema": SCHEMA, "kid": payload["kid"], "state": "revoked"}
         if path == "/v1/jobs":
+            require(
+                db.execute("SELECT count(*) FROM jobs").fetchone()[0] < MAX_JOB_RECORDS,
+                429,
+                "JOB_CAPACITY",
+            )
             require(role in ("client", "admin"), 403, "ROLE_FORBIDDEN")
             require(self.key(db, tenant, body["kid"], now)[1] == "actor", 403, "ROLE_FORBIDDEN")
             fields(payload, "scenario receiver_kid")
@@ -503,6 +568,16 @@ class Service(Retention, Ledger):
             "AND state IN ('awaiting_acceptance','queued','running')",
             (tenant, kid, kid),
         ).fetchall()
+        if tenant == self.config["runner_tenant"] and kid == self.config["runner_kid"]:
+            affected = list(
+                set(affected)
+                | set(
+                    db.execute(
+                        "SELECT id,state FROM jobs WHERE tenant=? AND state IN ('queued','running')",
+                        (tenant,),
+                    ).fetchall()
+                )
+            )
         for jid, state in affected:
             self._unknown(
                 db,

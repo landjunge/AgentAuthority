@@ -1,0 +1,9 @@
+{
+  "platform": "darwin",
+  "cpu_seconds": 2,
+  "fd_limit": 64,
+  "core_limit": 0,
+  "file_size_limit": 0,
+  "data_limit_attempt": "rejected by this host",
+  "hard_memory_limit_live_verified": false
+}

@@ -15,11 +15,13 @@ import secrets
 import sqlite3
 import stat
 import threading
+import time
 from contextlib import contextmanager
 from datetime import UTC, datetime
 
 from research.private_service.crypto import crypt
-from research.private_service.protocol import Problem, digest, now_ms, require, sign
+from research.private_service.limits import LOCK_SECONDS, remaining
+from research.private_service.protocol import Problem, digest, now_ms, require, verify
 
 REPORT_TTL = 86_400_000
 MAX_REQUEST = 60_000
@@ -108,7 +110,8 @@ class Retention:
         name = str(self.state)
         with LOCKS_GUARD:
             lock, local = LOCKS.setdefault(name, (threading.RLock(), threading.local()))
-        with lock:
+        require(lock.acquire(timeout=remaining(LOCK_SECONDS)), 503, "STORAGE_BUSY")
+        try:
             if getattr(local, "depth", 0):
                 local.depth += 1
                 try:
@@ -120,16 +123,28 @@ class Retention:
                 self.state / ".lifecycle.lock", os.O_CREAT | os.O_RDWR | os.O_NOFOLLOW, 0o600
             )
             try:
-                fcntl.flock(fd, fcntl.LOCK_EX)
+                deadline = time.monotonic() + remaining(LOCK_SECONDS)
+                while True:
+                    try:
+                        fcntl.flock(fd, fcntl.LOCK_EX | fcntl.LOCK_NB)
+                        break
+                    except BlockingIOError:
+                        require(time.monotonic() < deadline, 503, "STORAGE_BUSY")
+                        time.sleep(min(0.01, max(0, deadline - time.monotonic())))
                 local.depth = 1
                 yield
             finally:
                 local.depth = 0
                 os.close(fd)
+        finally:
+            lock.release()
 
     @contextmanager
     def connection(self):
-        db = sqlite3.connect(self.database, timeout=15, isolation_level=None)
+        for suffix in ("", "-wal", "-shm", "-journal"):
+            path = self.state / ("service.sqlite" + suffix)
+            require(not path.is_symlink(), 503, "UNSAFE_STORAGE")
+        db = sqlite3.connect(self.database, timeout=remaining(0.5), isolation_level=None)
         try:
             db.execute("PRAGMA journal_mode=WAL")
             db.execute("PRAGMA synchronous=FULL")
@@ -200,7 +215,12 @@ class Retention:
     def finish(self, db, tenant, jid, report, state, now):
         expires = now + REPORT_TTL
         report.update(completed_at=iso(now), expires_at=iso(expires), report_version="1")
-        signed = sign(self.config["report_private_key"], report)
+        signed = self.report_signer(report)
+        require(
+            signed.get("body") == report and verify(self.config["report_public_key"], signed),
+            503,
+            "REPORT_SIGNING_FAILED",
+        )
         db.execute(
             "UPDATE jobs SET state=?,report=?,request=NULL,acceptance=NULL WHERE tenant=? AND id=?",
             (state, self.seal(tenant, jid, "report", signed), tenant, jid),
@@ -369,6 +389,11 @@ class Retention:
     def clean_orphans(self):
         # A process crash before SQLite commit can leave only an owned key dir.
         root = self.state / "jobs"
+        with self.connection() as db:
+            owned = {
+                (hashlib.sha256(t.encode()).hexdigest(), jid)
+                for t, jid in db.execute("SELECT tenant,job_id FROM lifecycle")
+            }
         for tenant_dir in root.iterdir():
             if (
                 tenant_dir.is_symlink()
@@ -380,13 +405,7 @@ class Retention:
             for folder in tenant_dir.iterdir():
                 if len(folder.name) != 32 or any(c not in "0123456789abcdef" for c in folder.name):
                     raise OSError("UNSAFE_STORAGE")
-                with self.connection() as db:
-                    tenants = db.execute(
-                        "SELECT tenant FROM lifecycle WHERE job_id=?", (folder.name,)
-                    ).fetchall()
-                if not any(
-                    hashlib.sha256(t.encode()).hexdigest() == tenant_dir.name for (t,) in tenants
-                ):
+                if (tenant_dir.name, folder.name) not in owned:
                     self._remove_tree(folder)
 
     def lifecycle_status(self, db, tenant, jid):

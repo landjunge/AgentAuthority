@@ -1,3 +1,8 @@
+> Stand 17.10.2026: [Praktische Sicherheitsabnahme und offene Zielgrenzen](private-service-security-20261017/README.md).
+> API-Konfiguration jetzt ohne Client-/Runnerkeys, Objekt-Subjects auch vor Cacheantworten,
+> feste Routen/Parser-/Zeit-/Prozessgrenzen; Signierer/Verifier als begrenzte Unterprozesse.
+> Gleiche Host-UID bleibt eine offene OS-Isolationsgrenze; keine Produktionsfreigabe.
+>
 > Stand 16.10.2026, Ergaenzung Aufbewahrung v1.1: Gilt fuer neue kurzlebige Teststates.
 > Historische States/Belege werden nicht migriert oder geloescht.
 > Neuer VM-Dispatch ist bis zur Speicherqualifikation gesperrt; die API und

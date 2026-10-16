@@ -53,7 +53,15 @@ def initialize(state):
         ("test-a", "runner"),
         ("test-b", "reader"),
     ):
-        config["tokens"].append({"tenant": tenant, "role": role, "token": secrets.token_hex(32)})
+        subjects = {
+            "admin": ["*"],
+            "client": ["sender", "receiver"],
+            "runner": ["runner"],
+            "reader": ["foreign-reader"],
+        }[role]
+        config["tokens"].append(
+            {"tenant": tenant, "role": role, "subjects": subjects, "token": secrets.token_hex(32)}
+        )
     config["runner_token"] = next(t["token"] for t in config["tokens"] if t["role"] == "runner")
     config_path = state / "config.json"
     config_path.write_text(json.dumps(config, indent=2) + "\n")

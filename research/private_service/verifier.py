@@ -6,14 +6,14 @@ import json
 import types
 from pathlib import Path
 
-from research.hosted_qualification.live_gate import driver
-from research.private_service.crypto import verify
-from research.private_service.protocol import blob_digest, digest, evidence_values, fields, require
-
-# Retain the historical evaluator bytecode and rules, replace only its disk-based
-# OpenSSL transport with EVP verification in memory. No mutation of old modules.
-evaluate = types.FunctionType(
-    driver.evaluate.__code__, {**driver.evaluate.__globals__, "signature": verify}
+from research.private_service.boundary import run_component
+from research.private_service.protocol import (
+    Problem,
+    blob_digest,
+    digest,
+    evidence_values,
+    fields,
+    require,
 )
 
 
@@ -54,47 +54,11 @@ def verify_package(service, tenant, jid, row, payload, now, source_kid):
         "acceptance_sha256": digest(json.loads(row[3])),
     }
     evidence_sha256 = digest(payload)
-    checks, loss = {}, {}
-    classification = "UNBEKANNT"
-    reasons = []
-    if manifest["complete"] is not True or any(
-        payload[k] is None for k in ("registry", "capture", "trial")
-    ):
-        classification = "UNVOLLSTAENDIG"
-        reasons.append("MISSING_EVIDENCE")
-    else:
-        try:
-            payload = evidence_values(payload)
-            require(type(payload["capture"]) is list)
-            capture = payload["capture"]
-            closed = (
-                sum(bool(r.get("ready")) for r in capture) == 1
-                and sum("summary" in r for r in capture) == 1
-            )
-            # perf buffers deliver across CPUs; use kernel monotonic stamps,
-            # preserving all records and preserving raw bytes and their digests.
-            normalized_trial = copy.deepcopy(payload["trial"])
-            normalized_trial["lifecycle"]["records"].sort(key=lambda r: r["stamp"])
-            result = evaluate(
-                payload["registry"], capture, normalized_trial, pins["pinned_ca_public_key"]
-            )
-            checks = result["checks"]
-            loss = result["critical_loss_metrics"]
-            checks["one_closed_capture"] = closed
-            checks["service_request_and_acceptance_binding"] = (
-                payload["trial"]["receipt"]["body"]["delegation"]["body"]["job"]["service_binding"]
-                == expected
-            )
-            if not all(v is True for v in checks.values()):
-                classification = "WIDERSPRUECHLICH"
-                reasons.append("CHAIN_CHECK_FAILED")
-            elif not all(type(v) is int and v == 0 for v in loss.values()):
-                reasons.append("LOSS_UNKNOWN_OR_POSITIVE")
-            else:
-                classification = "BELEGT"
-        except (KeyError, ValueError, TypeError, StopIteration, IndexError):
-            classification = "UNVOLLSTAENDIG"
-            reasons.append("MALFORMED_OR_MISSING_CHAIN")
+    result = run_component("verify", {"payload": payload, "pins": pins, "expected": expected})
+    fields(result, "classification checks loss reasons")
+    classification, checks, loss, reasons = (
+        result[k] for k in ("classification", "checks", "loss", "reasons")
+    )
     positive = classification == "BELEGT"
     return {
         "schema": "aa-report-v1",
@@ -144,3 +108,66 @@ def verify_package(service, tenant, jid, row, payload, now, source_kid):
         "provider_model_session": "UNBEKANNT",
         "grants_rights": False,
     }
+
+
+def evaluate_evidence(payload, pins, expected):
+    # Imported only inside the constrained verifier child. No runner/VM code is
+    # loaded into the HTTP process, and evaluation never dispatches an action.
+    from research.hosted_qualification.live_gate import driver
+    from research.private_service.crypto import verify
+
+    evaluate = types.FunctionType(
+        driver.evaluate.__code__, {**driver.evaluate.__globals__, "signature": verify}
+    )
+    manifest = payload["manifest"]
+    checks, loss = {}, {}
+    classification = "UNBEKANNT"
+    reasons = []
+    if manifest["complete"] is not True or any(
+        payload[k] is None for k in ("registry", "capture", "trial")
+    ):
+        classification = "UNVOLLSTAENDIG"
+        reasons.append("MISSING_EVIDENCE")
+    else:
+        try:
+            payload = evidence_values(payload)
+            require(type(payload["capture"]) is list)
+            capture = payload["capture"]
+            closed = (
+                sum(bool(r.get("ready")) for r in capture) == 1
+                and sum("summary" in r for r in capture) == 1
+            )
+            # perf buffers deliver across CPUs; use kernel monotonic stamps,
+            # preserving all records and preserving raw bytes and their digests.
+            normalized_trial = copy.deepcopy(payload["trial"])
+            normalized_trial["lifecycle"]["records"].sort(key=lambda r: r["stamp"])
+            result = evaluate(
+                payload["registry"], capture, normalized_trial, pins["pinned_ca_public_key"]
+            )
+            checks = result["checks"]
+            loss = result["critical_loss_metrics"]
+            checks["one_closed_capture"] = closed
+            checks["service_request_and_acceptance_binding"] = (
+                payload["trial"]["receipt"]["body"]["delegation"]["body"]["job"]["service_binding"]
+                == expected
+            )
+            if len(checks) != 28 or not all(v is True for v in checks.values()):
+                classification = "WIDERSPRUECHLICH"
+                reasons.append("CHAIN_CHECK_FAILED")
+            elif len(loss) != 23 or not all(type(v) is int and v == 0 for v in loss.values()):
+                reasons.append("LOSS_UNKNOWN_OR_POSITIVE")
+            else:
+                classification = "BELEGT"
+        except (
+            Problem,
+            KeyError,
+            ValueError,
+            TypeError,
+            StopIteration,
+            IndexError,
+            AttributeError,
+            RecursionError,
+        ):
+            classification = "UNVOLLSTAENDIG"
+            reasons.append("MALFORMED_OR_MISSING_CHAIN")
+    return {"classification": classification, "checks": checks, "loss": loss, "reasons": reasons}
