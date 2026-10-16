@@ -1,3 +1,10 @@
+> Nachtrag Aufbewahrung: Der unten beschriebene Forschungsstand bleibt historisch.
+> Fuer neue kurzlebige Dienststates gelten jetzt [API v1.1](PRIVATE-SERVICE-API-v1.md)
+> und der [praktisch gepruefte Loeschstand](private-service-retention-20261016/README.md).
+> Die frueher vorgeschlagenen 7 Tage Berichtsspeicher sind verworfen: maximal 24h
+> ab Fertigstellung, frueher nach signiertem vollstaendigem Empfang. Ausfallfeste
+> Dateifrist/Keybackups/verschluesselter VM-Runner bleiben offen, neuer Dispatch gesperrt.
+
 # Agent Authority als gehosteter Dienst: Iststand und sequenzieller Bauplan
 
 Prüfbasis: `edd40b959fc898edc06e790fe3672e748d7dbb2c`, 16. Oktober 2026.

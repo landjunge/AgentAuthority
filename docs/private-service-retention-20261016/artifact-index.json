@@ -1,0 +1,64 @@
+{
+  "files": [
+    {
+      "path": "docs/private-service-retention-20261016/README.md",
+      "bytes": 11698,
+      "sha256": "5ec132f867b3f9a690315b67bdea271064a335ead3e11d704ceaba2f1c68d787"
+    },
+    {
+      "path": "docs/private-service-retention-20261016/browser-syntax.log",
+      "bytes": 211,
+      "sha256": "498b1107dcc876effa9dc460e2566d4c77ca6e9198376e952ab92da7189cfef8"
+    },
+    {
+      "path": "docs/private-service-retention-20261016/contracts-junit.xml",
+      "bytes": 12622,
+      "sha256": "307aed8e0d1c122eb2e5daf6de6dccedbcd0aeb5d9562748551488e00ae476c7"
+    },
+    {
+      "path": "docs/private-service-retention-20261016/contracts-tests.log",
+      "bytes": 378,
+      "sha256": "ef3daa25954a76fbd8e5963ad569d876afeab93d2cb7936601ecd47bb73e671a"
+    },
+    {
+      "path": "docs/private-service-retention-20261016/format.log",
+      "bytes": 27,
+      "sha256": "cfe5c6461b42a90595a492aed11f2c8e6eb98b7c4caf2cc9f47e3333185e3f33"
+    },
+    {
+      "path": "docs/private-service-retention-20261016/historical-integrity.json",
+      "bytes": 10542,
+      "sha256": "1f08c35212049319fe911ee95bea5acee29708bdee84bab7f125cc25d7bb0da1"
+    },
+    {
+      "path": "docs/private-service-retention-20261016/lint.log",
+      "bytes": 19,
+      "sha256": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18"
+    },
+    {
+      "path": "docs/private-service-retention-20261016/regressions-junit.xml",
+      "bytes": 29180,
+      "sha256": "4d4d067f8ece0eda9291efefe423f21bd59ee5d0853a6f46ed73a31d93330a8a"
+    },
+    {
+      "path": "docs/private-service-retention-20261016/regressions-tests.log",
+      "bytes": 459,
+      "sha256": "c392a31c1c19e5f2e78e96b178c4428ea289013d83041ea99a854eb94cab28e2"
+    },
+    {
+      "path": "docs/private-service-retention-20261016/storage-inventory.json",
+      "bytes": 3420,
+      "sha256": "bf5cb97a5881ee6b2012cc95a2d7ac7a7842dd2aeceec02688203e7ccf1709d6"
+    },
+    {
+      "path": "docs/private-service-retention-20261016/summary.json",
+      "bytes": 4214,
+      "sha256": "73316e22db7e11a91533fad1e033745a506c857770747ddad740b06babeb194e"
+    },
+    {
+      "path": "docs/private-service-retention-20261016/test-cleanup.json",
+      "bytes": 373279,
+      "sha256": "8ae9e09c905a6410677119b5e404b2236d00505560b8148d8db157d9c0a5da40"
+    }
+  ]
+}

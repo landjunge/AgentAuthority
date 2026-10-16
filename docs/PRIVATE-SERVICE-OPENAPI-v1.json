@@ -2,8 +2,8 @@
   "openapi": "3.1.0",
   "info": {
     "title": "Agent Authority private synthetic service",
-    "version": "1.0.0",
-    "description": "Loopback-only qualification. No authorization decisions; no arbitrary code. Normative semantics: PRIVATE-SERVICE-API-v1.md. Restricted RFC8785 subset; legacy A4 bytes base64 wrapped."
+    "version": "1.1.0",
+    "description": "Loopback-only qualification. No authorization decisions; no arbitrary code. Normative semantics: PRIVATE-SERVICE-API-v1.md. Restricted RFC8785 subset; legacy A4 bytes base64 wrapped. New ephemeral states: absolute 24h report deadline, signed receipt and retryable cleanup. Historical states preserved. New VM dispatch blocked pending encrypted ephemeral runner qualification."
   },
   "servers": [
     {
@@ -343,6 +343,174 @@
           }
         }
       }
+    },
+    "/v1/jobs/{id}/receipts": {
+      "post": {
+        "operationId": "ConfirmCompleteReceipt",
+        "description": "Client/admin token plus fresh signature from the original sender/receiver. Exact tenant, job, report version and JCS envelope SHA256; received_complete must be true. Blocks access atomically. Cleanup can remain failed; 200 acknowledges receipt, not successful cleanup. Retries return current cleanup state. GET never confirms receipt.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ReceiptRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "default": {
+            "description": "RFC9457 problem; see normative code table.",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "Current status including receipt and actual cleanup state.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9_-]{1,80}$"
+            }
+          }
+        ]
+      }
+    },
+    "/v1/jobs/{id}/cancellations": {
+      "post": {
+        "operationId": "CancelJob",
+        "description": "Original sender/receiver, client/admin. Stops further admission; action may already have happened. Creates a bounded unknown report; never redispatches.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CancellationRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "default": {
+            "description": "RFC9457 problem; see normative code table.",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Problem"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "Current status including receipt and actual cleanup state.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/Lifecycle"
+                    },
+                    {
+                      "type": "object",
+                      "required": [
+                        "schema",
+                        "job_id",
+                        "state"
+                      ],
+                      "properties": {
+                        "schema": {
+                          "const": "aa-private-v1"
+                        },
+                        "job_id": {
+                          "type": "string"
+                        },
+                        "state": {
+                          "const": "unknown"
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9_-]{1,80}$"
+            }
+          }
+        ]
+      }
+    },
+    "/v1/privacy": {
+      "get": {
+        "operationId": "PrivacyBeforeSubmission",
+        "security": [],
+        "description": "DE/EN minimization, retention, residual metadata and explicit offline/backup/runner limitations. Available before authentication/submission.",
+        "responses": {
+          "200": {
+            "description": "Current private test policy",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "schema",
+                    "de",
+                    "en",
+                    "report_max_age_seconds",
+                    "receipt_requires",
+                    "replay_retention"
+                  ],
+                  "properties": {
+                    "schema": {
+                      "const": "aa-retention-v1"
+                    },
+                    "de": {
+                      "type": "string"
+                    },
+                    "en": {
+                      "type": "string"
+                    },
+                    "report_max_age_seconds": {
+                      "const": 86400
+                    },
+                    "receipt_requires": {
+                      "type": "string"
+                    },
+                    "replay_retention": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
@@ -587,7 +755,22 @@
           "state",
           "label",
           "report_available",
-          "grants_rights"
+          "grants_rights",
+          "completed_at",
+          "expires_at",
+          "received_at",
+          "cleanup_completed_at",
+          "inputs_cleanup_completed_at",
+          "residual_expires_at",
+          "report_version",
+          "report_sha256",
+          "receipt_state",
+          "access_state",
+          "deletion_reason",
+          "cleanup_state",
+          "cleanup_confirmed",
+          "content_key_state",
+          "cleanup_scope"
         ],
         "properties": {
           "schema": {
@@ -614,6 +797,107 @@
           },
           "grants_rights": {
             "const": false
+          },
+          "completed_at": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date-time"
+          },
+          "expires_at": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date-time"
+          },
+          "received_at": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date-time"
+          },
+          "cleanup_completed_at": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date-time"
+          },
+          "inputs_cleanup_completed_at": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date-time"
+          },
+          "residual_expires_at": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date-time"
+          },
+          "report_version": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "enum": [
+              "1",
+              null
+            ]
+          },
+          "report_sha256": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "receipt_state": {
+            "enum": [
+              "confirmed",
+              "unconfirmed"
+            ]
+          },
+          "access_state": {
+            "enum": [
+              "pending",
+              "available",
+              "blocked"
+            ]
+          },
+          "deletion_reason": {
+            "enum": [
+              "receipt",
+              "expired",
+              null
+            ]
+          },
+          "cleanup_state": {
+            "enum": [
+              "not_due",
+              "inputs_pending",
+              "inputs_failed",
+              "pending",
+              "failed",
+              "complete"
+            ]
+          },
+          "cleanup_confirmed": {
+            "type": "boolean"
+          },
+          "content_key_state": {
+            "enum": [
+              "present",
+              "absent_from_owned_namespace"
+            ]
+          },
+          "cleanup_scope": {
+            "type": "string"
           }
         }
       },
@@ -623,7 +907,22 @@
         "required": [
           "schema",
           "report",
-          "current_key_status"
+          "current_key_status",
+          "completed_at",
+          "expires_at",
+          "received_at",
+          "cleanup_completed_at",
+          "inputs_cleanup_completed_at",
+          "residual_expires_at",
+          "report_version",
+          "report_sha256",
+          "receipt_state",
+          "access_state",
+          "deletion_reason",
+          "cleanup_state",
+          "cleanup_confirmed",
+          "content_key_state",
+          "cleanup_scope"
         ],
         "properties": {
           "schema": {
@@ -657,6 +956,107 @@
                 "expired"
               ]
             }
+          },
+          "completed_at": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date-time"
+          },
+          "expires_at": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date-time"
+          },
+          "received_at": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date-time"
+          },
+          "cleanup_completed_at": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date-time"
+          },
+          "inputs_cleanup_completed_at": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date-time"
+          },
+          "residual_expires_at": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date-time"
+          },
+          "report_version": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "enum": [
+              "1",
+              null
+            ]
+          },
+          "report_sha256": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "receipt_state": {
+            "enum": [
+              "confirmed",
+              "unconfirmed"
+            ]
+          },
+          "access_state": {
+            "enum": [
+              "pending",
+              "available",
+              "blocked"
+            ]
+          },
+          "deletion_reason": {
+            "enum": [
+              "receipt",
+              "expired",
+              null
+            ]
+          },
+          "cleanup_state": {
+            "enum": [
+              "not_due",
+              "inputs_pending",
+              "inputs_failed",
+              "pending",
+              "failed",
+              "complete"
+            ]
+          },
+          "cleanup_confirmed": {
+            "type": "boolean"
+          },
+          "content_key_state": {
+            "enum": [
+              "present",
+              "absent_from_owned_namespace"
+            ]
+          },
+          "cleanup_scope": {
+            "type": "string"
           }
         }
       },
@@ -1289,7 +1689,22 @@
           "schema",
           "job_id",
           "state",
-          "report_sha256"
+          "report_sha256",
+          "completed_at",
+          "expires_at",
+          "received_at",
+          "cleanup_completed_at",
+          "inputs_cleanup_completed_at",
+          "residual_expires_at",
+          "report_version",
+          "report_sha256",
+          "receipt_state",
+          "access_state",
+          "deletion_reason",
+          "cleanup_state",
+          "cleanup_confirmed",
+          "content_key_state",
+          "cleanup_scope"
         ],
         "properties": {
           "schema": {
@@ -1303,8 +1718,419 @@
             "const": "completed"
           },
           "report_sha256": {
-            "type": "string",
+            "type": [
+              "string",
+              "null"
+            ],
             "pattern": "^[0-9a-f]{64}$"
+          },
+          "completed_at": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date-time"
+          },
+          "expires_at": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date-time"
+          },
+          "received_at": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date-time"
+          },
+          "cleanup_completed_at": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date-time"
+          },
+          "inputs_cleanup_completed_at": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date-time"
+          },
+          "residual_expires_at": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date-time"
+          },
+          "report_version": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "enum": [
+              "1",
+              null
+            ]
+          },
+          "receipt_state": {
+            "enum": [
+              "confirmed",
+              "unconfirmed"
+            ]
+          },
+          "access_state": {
+            "enum": [
+              "pending",
+              "available",
+              "blocked"
+            ]
+          },
+          "deletion_reason": {
+            "enum": [
+              "receipt",
+              "expired",
+              null
+            ]
+          },
+          "cleanup_state": {
+            "enum": [
+              "not_due",
+              "inputs_pending",
+              "inputs_failed",
+              "pending",
+              "failed",
+              "complete"
+            ]
+          },
+          "cleanup_confirmed": {
+            "type": "boolean"
+          },
+          "content_key_state": {
+            "enum": [
+              "present",
+              "absent_from_owned_namespace"
+            ]
+          },
+          "cleanup_scope": {
+            "type": "string"
+          }
+        }
+      },
+      "Lifecycle": {
+        "type": "object",
+        "required": [
+          "completed_at",
+          "expires_at",
+          "received_at",
+          "cleanup_completed_at",
+          "inputs_cleanup_completed_at",
+          "residual_expires_at",
+          "report_version",
+          "report_sha256",
+          "receipt_state",
+          "access_state",
+          "deletion_reason",
+          "cleanup_state",
+          "cleanup_confirmed",
+          "content_key_state",
+          "cleanup_scope"
+        ],
+        "properties": {
+          "completed_at": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date-time"
+          },
+          "expires_at": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date-time"
+          },
+          "received_at": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date-time"
+          },
+          "cleanup_completed_at": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date-time"
+          },
+          "inputs_cleanup_completed_at": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date-time"
+          },
+          "residual_expires_at": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date-time"
+          },
+          "report_version": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "enum": [
+              "1",
+              null
+            ]
+          },
+          "report_sha256": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "receipt_state": {
+            "enum": [
+              "confirmed",
+              "unconfirmed"
+            ]
+          },
+          "access_state": {
+            "enum": [
+              "pending",
+              "available",
+              "blocked"
+            ]
+          },
+          "deletion_reason": {
+            "enum": [
+              "receipt",
+              "expired",
+              null
+            ]
+          },
+          "cleanup_state": {
+            "enum": [
+              "not_due",
+              "inputs_pending",
+              "inputs_failed",
+              "pending",
+              "failed",
+              "complete"
+            ]
+          },
+          "cleanup_confirmed": {
+            "type": "boolean"
+          },
+          "content_key_state": {
+            "enum": [
+              "present",
+              "absent_from_owned_namespace"
+            ]
+          },
+          "cleanup_scope": {
+            "type": "string"
+          }
+        }
+      },
+      "ReceiptRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "body",
+          "signature"
+        ],
+        "properties": {
+          "body": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "schema",
+              "domain",
+              "tenant",
+              "audience",
+              "method",
+              "path",
+              "kid",
+              "nonce",
+              "idempotency_key",
+              "issued_ms",
+              "expires_ms",
+              "payload"
+            ],
+            "properties": {
+              "schema": {
+                "const": "aa-private-v1"
+              },
+              "domain": {
+                "const": "AA-REQUEST-v1"
+              },
+              "tenant": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9_-]{1,80}$"
+              },
+              "audience": {
+                "const": "aa-private-local-v1"
+              },
+              "method": {
+                "const": "POST"
+              },
+              "path": {
+                "type": "string"
+              },
+              "kid": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9_-]{1,80}$"
+              },
+              "nonce": {
+                "type": "string",
+                "pattern": "^[0-9a-f]{64}$"
+              },
+              "idempotency_key": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9_-]{1,80}$"
+              },
+              "issued_ms": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 9007199254740991
+              },
+              "expires_ms": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 9007199254740991
+              },
+              "payload": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "job_id",
+                  "report_version",
+                  "report_sha256",
+                  "received_complete"
+                ],
+                "properties": {
+                  "job_id": {
+                    "type": "string",
+                    "pattern": "^[0-9a-f]{32}$"
+                  },
+                  "report_version": {
+                    "const": "1"
+                  },
+                  "report_sha256": {
+                    "type": "string",
+                    "pattern": "^[0-9a-f]{64}$"
+                  },
+                  "received_complete": {
+                    "const": true
+                  }
+                }
+              }
+            }
+          },
+          "signature": {
+            "type": "string",
+            "contentEncoding": "base64",
+            "description": "64-byte Ed25519 signature over restricted RFC8785 JCS(body)"
+          }
+        }
+      },
+      "CancellationRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "body",
+          "signature"
+        ],
+        "properties": {
+          "body": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "schema",
+              "domain",
+              "tenant",
+              "audience",
+              "method",
+              "path",
+              "kid",
+              "nonce",
+              "idempotency_key",
+              "issued_ms",
+              "expires_ms",
+              "payload"
+            ],
+            "properties": {
+              "schema": {
+                "const": "aa-private-v1"
+              },
+              "domain": {
+                "const": "AA-REQUEST-v1"
+              },
+              "tenant": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9_-]{1,80}$"
+              },
+              "audience": {
+                "const": "aa-private-local-v1"
+              },
+              "method": {
+                "const": "POST"
+              },
+              "path": {
+                "type": "string"
+              },
+              "kid": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9_-]{1,80}$"
+              },
+              "nonce": {
+                "type": "string",
+                "pattern": "^[0-9a-f]{64}$"
+              },
+              "idempotency_key": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9_-]{1,80}$"
+              },
+              "issued_ms": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 9007199254740991
+              },
+              "expires_ms": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 9007199254740991
+              },
+              "payload": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "job_id"
+                ],
+                "properties": {
+                  "job_id": {
+                    "type": "string",
+                    "pattern": "^[0-9a-f]{32}$"
+                  }
+                }
+              }
+            }
+          },
+          "signature": {
+            "type": "string",
+            "contentEncoding": "base64",
+            "description": "64-byte Ed25519 signature over restricted RFC8785 JCS(body)"
           }
         }
       }

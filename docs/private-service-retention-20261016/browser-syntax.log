@@ -1,0 +1,1 @@
+Existing inspector JavaScript: node --check passed. DE/EN notices, no-store headers, safe textContent rendering and lifecycle fields are covered by HTTP contracts. No new browser storage or browser signing key.

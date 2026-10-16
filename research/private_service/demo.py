@@ -23,6 +23,7 @@ from research.private_service.protocol import (
     sign,
     verify,
 )
+from research.private_service.retention import write_private
 from research.private_service.service import Service
 
 
@@ -42,6 +43,8 @@ def initialize(state):
         "runner_tenant": "test-a",
         "runner_kid": "runner",
         "runner_private_key": keys["runner"]["private"],
+        "client_signing_kid": "sender",
+        "client_private_key": keys["sender"]["private"],
         "tokens": [],
     }
     for tenant, role in (
@@ -76,13 +79,12 @@ def exercise(state, live=False):
                 "method": method,
                 "path": path,
                 "auth_role": role,
-                "request": data,
                 "status": status,
-                "response": response,
+                "code": response.get("code"),
             }
         )
         if expected is not None:
-            assert status == expected, (path, status, response)
+            assert status == expected, (status, response.get("code"))
         return response
 
     def signed(kid, path, payload, **kwargs):
@@ -217,8 +219,9 @@ def exercise(state, live=False):
             "cases": transcript,
         }
     except Exception:
-        (state / "exchanges-failure.json").write_text(
-            json.dumps({"cases": transcript}, indent=2) + "\n"
+        write_private(
+            state / "exchanges-failure.json",
+            (json.dumps({"cases": transcript}, indent=2) + "\n").encode(),
         )
         raise
     finally:
@@ -234,7 +237,7 @@ if __name__ == "__main__":
     parser.add_argument("--live", action="store_true")
     args = parser.parse_args()
     result = exercise(args.state.resolve(), args.live)
-    args.output.write_text(json.dumps(result, indent=2, sort_keys=True) + "\n")
+    write_private(args.output, (json.dumps(result, indent=2, sort_keys=True) + "\n").encode())
     print(
         json.dumps({"live": args.live, "cases": len(result["cases"]), "job_id": result["job_id"]})
     )

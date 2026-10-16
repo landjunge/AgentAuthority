@@ -1,3 +1,9 @@
+> Historischer Abschluss des Vorgaengerlaufs; seine Belege und der alte Inspectorstate
+> bleiben erhalten. Aktueller Folgeauftrag: [Aufbewahrung/Loeschung und Grenzen](../private-service-retention-20261016/README.md).
+> Der neue Code nimmt historische States nicht implizit in eine TTL-Migration auf.
+> Neue VM-Liveausfuehrung ist bis zur Speicherqualifikation gesperrt. Die folgenden
+> damaligen Live-Startanweisungen beschreiben den historischen Commit `44af0b6`.
+
 # Ausführbarer privater Testdienst – Fortsetzung vom 16.10.2026
 
 Der Dienst verbindet die vorher getrennten Bausteine jetzt tatsächlich:

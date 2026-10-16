@@ -9,8 +9,10 @@ import time
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "a2_linux"))
-from host_crypto import create_ca, sign, verify
+from host_crypto import create_ca
 from protocol import canonical
+
+from research.private_service.crypto import sign, verify
 
 __all__ = ["canonical", "create_ca", "sign", "verify"]
 

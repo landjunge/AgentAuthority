@@ -8,7 +8,14 @@ import subprocess
 from pathlib import Path
 
 from research.hosted_qualification import live_gate
-from research.private_service.protocol import Problem, blob, blob_digest, canonical, request
+from research.private_service.protocol import (
+    Problem,
+    blob,
+    blob_digest,
+    canonical,
+    request,
+    require,
+)
 
 ROOT = Path(__file__).resolve().parents[2]
 LIMA_HOME = "/Users/landjunge/.local/share/agent-authority-a1-linux-vm"
@@ -43,6 +50,10 @@ def qualify_environment():
 
 
 def run_once(service, deliver):
+    # Existing research harness writes raw host/guest files and keeps guest recovery
+    # directories. Those are historical evidence, not a qualified ephemeral store.
+    # Do not silently run it under the new deletion promise on an unencrypted VM.
+    require(False, 503, "EPHEMERAL_RUNNER_STORAGE_UNQUALIFIED")
     with LOCK.open("a") as lock:
         try:
             fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
@@ -96,7 +107,8 @@ def run_once(service, deliver):
             with service.connection() as db:
                 db.execute("BEGIN IMMEDIATE")
                 db.execute(
-                    "INSERT INTO dispatch_pins VALUES (?,?,?)", (tenant, jid, json.dumps(pins))
+                    "INSERT INTO dispatch_pins VALUES (?,?,?)",
+                    (tenant, jid, service.seal(tenant, jid, "pins", pins)),
                 )
                 db.commit()
             return pins

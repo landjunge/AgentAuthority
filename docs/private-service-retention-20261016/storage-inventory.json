@@ -1,0 +1,106 @@
+{
+  "observed_at": "2026-10-16T21:51:08.306423+00:00",
+  "scope": "read-only metadata; no VM started, no guest probe, no payload or secret copy",
+  "filevault": {
+    "exit_code": 0,
+    "output": "FileVault is Off.",
+    "stderr_present": false
+  },
+  "time_machine_destinations": {
+    "exit_code": 0,
+    "output": "tmutil: No destinations configured.",
+    "stderr_present": false
+  },
+  "local_snapshots": {
+    "exit_code": 0,
+    "output": "Snapshots for disk /:",
+    "stderr_present": false
+  },
+  "worktree_backup_exclusion": {
+    "exit_code": 0,
+    "output": "[Included]  /Users/landjunge/agent-authority-lab/.worktrees/hosted-qualification",
+    "stderr_present": false
+  },
+  "historical_state_backup_exclusion": {
+    "exit_code": 0,
+    "output": "[Included]  /Users/landjunge/agent-authority-lab/.worktrees/hosted-qualification/.private-service-state",
+    "stderr_present": false
+  },
+  "vm": {
+    "name": "a1-research",
+    "status": "Stopped",
+    "mounts": null,
+    "files": [
+      {
+        "path": "/Users/landjunge/.local/share/agent-authority-a1-linux-vm/a1-research/cidata.iso",
+        "mode": "0o644",
+        "logical_bytes": 157696
+      },
+      {
+        "path": "/Users/landjunge/.local/share/agent-authority-a1-linux-vm/a1-research/vz-identifier",
+        "mode": "0o644",
+        "logical_bytes": 70
+      },
+      {
+        "path": "/Users/landjunge/.local/share/agent-authority-a1-linux-vm/a1-research/serialv.log",
+        "mode": "0o600",
+        "logical_bytes": 71
+      },
+      {
+        "path": "/Users/landjunge/.local/share/agent-authority-a1-linux-vm/a1-research/ha.stdout.log",
+        "mode": "0o644",
+        "logical_bytes": 381
+      },
+      {
+        "path": "/Users/landjunge/.local/share/agent-authority-a1-linux-vm/a1-research/vz-efi",
+        "mode": "0o600",
+        "logical_bytes": 131072
+      },
+      {
+        "path": "/Users/landjunge/.local/share/agent-authority-a1-linux-vm/a1-research/lima-version",
+        "mode": "0o444",
+        "logical_bytes": 5
+      },
+      {
+        "path": "/Users/landjunge/.local/share/agent-authority-a1-linux-vm/a1-research/ssh.config",
+        "mode": "0o600",
+        "logical_bytes": 767
+      },
+      {
+        "path": "/Users/landjunge/.local/share/agent-authority-a1-linux-vm/a1-research/cloud-config.yaml",
+        "mode": "0o444",
+        "logical_bytes": 505
+      },
+      {
+        "path": "/Users/landjunge/.local/share/agent-authority-a1-linux-vm/a1-research/disk",
+        "mode": "0o600",
+        "logical_bytes": 12884901888
+      },
+      {
+        "path": "/Users/landjunge/.local/share/agent-authority-a1-linux-vm/a1-research/lima.yaml",
+        "mode": "0o644",
+        "logical_bytes": 527
+      },
+      {
+        "path": "/Users/landjunge/.local/share/agent-authority-a1-linux-vm/a1-research/ha.stderr.log",
+        "mode": "0o644",
+        "logical_bytes": 9459
+      }
+    ]
+  },
+  "new_runner": "blocked before VM/claim/lock/artifact activity: EPHEMERAL_RUNNER_STORAGE_UNQUALIFIED",
+  "unverified_external_storage": [
+    "other backups/keycopies",
+    "APFS historical snapshots",
+    "host/guest swap",
+    "crashdumps",
+    "OS/SSH/proxy configurations outside the app"
+  ],
+  "claims_not_made": [
+    "physical SSD/RAM zeroization",
+    "all-backup erasure",
+    "offline exact-deadline file erasure",
+    "KMS cryptographic key destruction",
+    "snapshot rollback protection"
+  ]
+}

@@ -46,22 +46,6 @@ def api(tmp_path):
 
     def send(role, method, path, data=None):
         result = call(url, tokens.get(role, "wrong-token"), method, path, data)
-        archive = os.environ.get("AA_CONTRACT_TRANSCRIPT")
-        if archive and (result[0] >= 400 or path.endswith("/evidence")):
-            with Path(archive).open("a") as output:
-                output.write(
-                    json.dumps(
-                        {
-                            "method": method,
-                            "path": path,
-                            "auth_role": role,
-                            "request": data,
-                            "status": result[0],
-                            "response": result[1],
-                        }
-                    )
-                    + "\n"
-                )
         return result
 
     def packet(kid, path, payload, **changes):
@@ -125,6 +109,22 @@ def api(tmp_path):
     instance.shutdown()
     thread.join(5)
     instance.server_close()
+    # Tear down only this fixture's new ephemeral payloads, including tests that
+    # intentionally left a running/pending job or crashed before commit.
+    with svc.exclusive():
+        with svc.connection() as db:
+            db.execute(
+                "UPDATE lifecycle SET blocked=?,reason='test_teardown',cleanup='pending'",
+                (now_ms(),),
+            )
+            db.execute("UPDATE jobs SET request=NULL,acceptance=NULL,report=NULL,state='unknown'")
+            db.execute("DELETE FROM dispatch_pins")
+        svc.sweep()
+        with svc.connection() as db:
+            assert db.execute(
+                "SELECT count(*) FROM lifecycle WHERE cleanup!='complete'"
+            ).fetchone() == (0,)
+        assert not list((state / "jobs").rglob("content.key"))
     # Only exact synthetic private files created by this fixture.
     for key in [
         state / "root/ca-private.pem",
@@ -388,7 +388,14 @@ def actual_evidence(api):
     # Independent control-plane pin archived separately, never read from upload.
     pins = json.loads((path.parent / "live-dispatch-pins.json").read_text())
     with api[0].connection() as db:
-        db.execute("INSERT INTO dispatch_pins VALUES (?,?,?)", ("test-a", jid, json.dumps(pins)))
+        db.execute(
+            "INSERT INTO lifecycle (tenant,job_id,retain_until) VALUES (?,?,?)",
+            ("test-a", jid, now_ms() + 86500000),
+        )
+        db.execute(
+            "INSERT INTO dispatch_pins VALUES (?,?,?)",
+            ("test-a", jid, api[0].seal("test-a", jid, "pins", pins)),
+        )
     row = (
         "sender",
         "receiver",
@@ -436,9 +443,13 @@ def test_original_evidence_counterexamples(api, actual_evidence, mutation, expec
         )
     elif mutation == "pin":
         with api[0].connection() as db:
-            pin = json.loads(db.execute("SELECT context FROM dispatch_pins").fetchone()[0])
+            pin = api[0].unseal(
+                "test-a", jid, "pins", db.execute("SELECT context FROM dispatch_pins").fetchone()[0]
+            )
             pin["pinned_ca_public_key"] = api[5]["sender"]["public"]
-            db.execute("UPDATE dispatch_pins SET context=?", (json.dumps(pin),))
+            db.execute(
+                "UPDATE dispatch_pins SET context=?", (api[0].seal("test-a", jid, "pins", pin),)
+            )
     for key in ("registry", "capture", "trial"):
         value = package[key]
         raw = (
@@ -463,7 +474,7 @@ def test_original_evidence_counterexamples(api, actual_evidence, mutation, expec
         ("missing", 201, None),
         ("bad-digest", 422, "EVIDENCE_DIGEST_MISMATCH"),
         ("upload-trust", 403, "SOURCE_FORBIDDEN"),
-        ("expired", 410, "EVIDENCE_WINDOW_EXPIRED"),
+        ("expired", 409, "STATE_CONFLICT"),
     ],
 )
 def test_evidence_http_admission_and_missing_report(api, actual_evidence, mode, status, code):
@@ -477,8 +488,8 @@ def test_evidence_http_admission_and_missing_report(api, actual_evidence, mode, 
                 jid,
                 row[0],
                 row[1],
-                row[2],
-                row[3],
+                api[0].seal("test-a", jid, "request", json.loads(row[2])),
+                api[0].seal("test-a", jid, "acceptance", json.loads(row[3])),
                 "running",
                 now_ms() - 180001 if mode == "expired" else now_ms(),
                 None,

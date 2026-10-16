@@ -3,10 +3,18 @@
 import copy
 import hashlib
 import json
+import types
 from pathlib import Path
 
 from research.hosted_qualification.live_gate import driver
+from research.private_service.crypto import verify
 from research.private_service.protocol import blob_digest, digest, evidence_values, fields, require
+
+# Retain the historical evaluator bytecode and rules, replace only its disk-based
+# OpenSSL transport with EVP verification in memory. No mutation of old modules.
+evaluate = types.FunctionType(
+    driver.evaluate.__code__, {**driver.evaluate.__globals__, "signature": verify}
+)
 
 
 def verify_package(service, tenant, jid, row, payload, now, source_kid):
@@ -22,7 +30,7 @@ def verify_package(service, tenant, jid, row, payload, now, source_kid):
             "SELECT context FROM dispatch_pins WHERE tenant=? AND job_id=?", (tenant, jid)
         ).fetchone()
     require(saved is not None, 409, "DISPATCH_PIN_MISSING")
-    pins = json.loads(saved[0])
+    pins = service.unseal(tenant, jid, "pins", saved[0])
     require(
         source_kid == pins["source_kid"]
         and manifest["source_id"] == source_kid
@@ -67,7 +75,7 @@ def verify_package(service, tenant, jid, row, payload, now, source_kid):
             # preserving all records and preserving raw bytes and their digests.
             normalized_trial = copy.deepcopy(payload["trial"])
             normalized_trial["lifecycle"]["records"].sort(key=lambda r: r["stamp"])
-            result = driver.evaluate(
+            result = evaluate(
                 payload["registry"], capture, normalized_trial, pins["pinned_ca_public_key"]
             )
             checks = result["checks"]

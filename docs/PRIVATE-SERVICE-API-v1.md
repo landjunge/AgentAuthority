@@ -1,3 +1,8 @@
+> Stand 16.10.2026, Ergaenzung Aufbewahrung v1.1: Gilt fuer neue kurzlebige Teststates.
+> Historische States/Belege werden nicht migriert oder geloescht.
+> Neuer VM-Dispatch ist bis zur Speicherqualifikation gesperrt; die API und
+> Berichtspruefung sind praktisch qualifiziert. [Nachweis und Grenzen](private-service-retention-20261016/README.md).
+
 # Privater Testdienst: Schnittstellenvertrag v1
 
 Fortsetzung des Dienstauftrags `20261016T205615.209078Z`, Nutzerergänzung vom
@@ -239,8 +244,9 @@ lokal höchstens ein Poll je Oberfläche gleichzeitig. POST 202 ist nur Aufnahme
 kein Erfolg einer Aktion. Ein eingereichtes geschlossenes Paket ergibt synchron
 201; das bedeutet ausschließlich „Prüfbericht dauerhaft gespeichert“. Zusätzliche
 Queue-/Callback-/Pushdienste sind dafür unnötig. Worker einmalig explizit starten.
-Ein nicht mehr frischer wartender Auftrag wird spätestens beim Worker-Claim als
-unklar abgeschlossen; ohne Worker kann die Anzeige weiter wartend bleiben.
+Ein wartender Auftrag wird nach 60s ab dauerhaftem created-Zeitpunkt als unklar
+abgeschlossen; ein laufender nach 180s ab dauerhaftem dispatched-Zeitpunkt.
+API-Idlewartung (nominal 0,5s), jeder Zugriff und Neustart pruefen dies. Kein Redispatch.
 
 Bericht: Envelope des getrennten Dienstreportkeys (Operator verteilt dessen
 Publickey außerhalb des Ergebnisdownloads). Body benennt Domain/Audience,
@@ -292,29 +298,162 @@ Fehlermeldung, Job bleibt vor Claim wartend; keine Installation auf fremden Host
 
 ## Datensparsamkeit und Betriebsgrenzen
 
-Die DB enthält Publickeys, Rollen, Gültigkeit/Widerruf, begrenzte Auftragsdaten,
-Signaturen/Digests, Replaymerkposten, Auditereignisse und Berichte. Keine Prompts,
-Gespräche, Kundendateien oder beliebige freie Auftragsfelder. Rohpakete bleiben
-im privaten Workerstate; die API speichert deren Digest und minimierte Prüfergebnisse,
-keine zweite Rohkopie. Aufnahmeantworten liegen atomar bei den Requestdigests.
-Token/Privatekeys liegen ausschließlich im 0700-Teststate, Keyfiles/Config 0600.
-Diese lokale erste Stufe trennt Worker und API logisch/prozessual, besitzt aber
-noch keine verschiedenen OS-Nutzer/KMS/mTLS-/Containergrenzen. Der Operatoraccount
-kann beide lesen. Das ist eine bekannte Testbetriebsgrenze, kein Produktionsschutz.
+Der Dienst nimmt nur feste synthetische Szenarien und begrenzte Nachweispakete an:
+Test-/Mandanten-/Keykennungen, Publickeys/Signaturen, Prozessinstanz-/Write- und
+Verlustnachweise. Zweck ist ausschliesslich die Pruefung dieses konkreten Tests.
+Keine freien Prompts, Kundendateien oder Clientpfade als Dateiziele. Vor Einreichung
+stehen DE/EN-Hinweise ohne Authentisierung auf `/` und `GET /v1/privacy` bereit,
+einschliesslich der unten genannten Betriebsgrenzen.
 
-Aktuelle Qualifikationsdaten sind ausschließlich synthetische Forschungsbelege
-und werden explizit archiviert. **Keine automatische Kunden-TTL oder physische
-Löschung behauptet.** Die früher vorgeschlagenen 24h Rohdaten / 7 Tage Berichte
-sind weiterhin eine Abnahme vor Fremdbetrieb, nicht aktivierte Zusicherung.
-Replaymerkposten werden in dieser Stufe niemals automatisch entfernt. Kein
-Backup-/VM-Snapshot-Rollback in den aktiven Aufnahmepfad: Wiederherstellung verlangt
-neue Token-/Schlüssel-/Requestepoche und eine außerhalb des Snapshots auditierte
-Sperre alter Epochen; diese Betriebsfunktion ist noch nicht implementiert. Darum
-kein produktiver/Mehrhostbetrieb. Lokaler Prozessneustart mit unverändertem
-Datenträger ist dagegen praktisch geprüft. SQLite-WAL/FULL beweist keinen
-Stromausfall, Plattenschaden oder verteilten Konsens.
+### Feste Frist und vollstaendige Empfangsbestaetigung
 
-Runner: bestehende VM, 2 CPUs, 2GiB RAM, 12GiB Disk; vor jedem Dispatch müssen
+`completed_at` ist der beim Abschluss gespeicherte UTC-Zeitpunkt; `expires_at =
+completed_at + 86400s`. Beide stehen im signierten Bericht und im API-Ergebnis.
+Ein Neustart, GET, Retry oder eine fehlgeschlagene Bereinigung verschiebt sie nie.
+Bei `now >= expires_at` ist kein neuer Berichtszugriff zulaessig (`410 REPORT_GONE`).
+Nicht abgeschlossene Jobs haben noch kein expires_at; sie werden nach den obigen
+60-/180s-Grenzen konservativ abgeschlossen und erhalten dann ihre feste Berichtsfrist.
+Ein persistent gespeicherter maximal beobachteter UTC-Zeitstand verhindert ein
+Wiederaufleben abgelaufener Requests nach einer Rueckstellung der Systemuhr.
+Eine vertrauenswuerdige Uhr und unveraenderter Datentraeger bleiben Voraussetzungen;
+ein Snapshotrollback wird dadurch nicht erkannt.
+
+`POST /v1/jobs/{id}/receipts` verwendet dasselbe vollstaendige signierte
+Requestenvelope, die gleichen Frische-/Rollen-/Mandantregeln und den exakten Pfad.
+Zulaessig sind client/admin-Token plus derzeit gueltiger Originalsender- oder
+Originalempfaengerkey des Objekts. Payload, ohne zusaetzliche Felder:
+
+```json
+{"job_id":"<server-generated-id>","report_version":"1","report_sha256":"<SHA256(JCS(report-envelope))>","received_complete":true}
+```
+
+Die Signatur bindet Mandant, Auftrag, Version, vollstaendigen Berichtsdigest und
+die ausdrueckliche Aussage des Clients, alle Bytes empfangen zu haben. Sie ist
+kein serverseitiger Beweis, dass der Client die Bytes gelesen/verstaendlich gefunden
+hat. Weder GET, Transporterfolg noch Downloadbeginn gelten als Bestaetigung.
+Die Server-API vertraut fuer diese Aussage dem berechtigten signierenden Client.
+Der lokale CLI-Weg `receive --output DATEI` speichert erst eine neue 0600-Datei
+vollstaendig, prueft die Reportkeysignatur und fsynct sie; er bestaetigt noch nichts.
+`confirm --report-file DATEI` prueft Signatur/Mandant/Job erneut und bestaetigt erst
+danach. Eine lokale Empfaengerkopie gehoert anschliessend zum Empfaenger, nicht
+zu den kurzlebigen Dienstdateien. Browser-GET bestaetigt nichts; private Signierkeys
+werden nicht in Browserstorage abgelegt.
+
+Gueltige Bestaetigung sperrt Berichtszugriff und entfernt die Inhaltsreferenz in
+einer SQLite-Transaktion. Erst danach erfolgen Dateibereinigung und WAL-Pruefung.
+HTTP 200 bestaetigt den Empfang; **nur** `cleanup_confirmed=true` und ein konkretes
+`cleanup_completed_at` bestaetigen die unten abgegrenzte Bereinigung. Fehlerhafte
+Signatur `401`, falsches Objekt/Key `403`/`404`, falscher Digest/Version/kein voller
+Empfang `422 RECEIPT_MISMATCH`, nach Ablauf `410 REPORT_GONE`. Exakter Retry im
+gueltigen Requestfenster sowie neu signierte gleiche Bestaetigung sind sicher.
+Die Bestaetigungsantwort liefert immer den aktuellen Bereinigungszustand statt
+einen alten Erfolgswert aus dem Idempotenzcache. Ein Timeout kann deshalb ohne
+neuen Auftrag durch erneute Bestaetigung oder Statusabruf geklaert werden.
+
+`POST /v1/jobs/{id}/cancellations` hat Payload `{job_id}`, dieselben Objektkeys und
+client/admin-Rollen. Fuer offene Jobs entsteht ein signierter UNBEKANNT-Bericht;
+keine automatische Wiederholung. Eine moeglicherweise bereits begonnene Aktion
+kann nicht zurueckgenommen werden. Der neue VM-Dispatch ist derzeit gesperrt.
+
+### Speicher, Bereinigung und nachpruefbarer Zustand
+
+Neue States verwenden internes Speicherschema 2 (keine automatische Altschemamigration):
+0700-Verzeichnisse, 0600-Dateien. Generierte Auftragspfade
+`STATE/jobs/SHA256(tenant)/server-id/`, keine Dateizielwahl durch Upload.
+Auftrag, Annahme, Dispatchpins und Bericht sind mittels installiertem OpenSSL-3
+EVP AES-256-GCM verschluesselt (zufaelliger 96-Bit-Nonce, 128-Bit-Tag, eigener
+256-Bit-Auftragsschluessel; [OpenSSL-EVP](https://docs.openssl.org/3.0/man3/EVP_EncryptInit/)). Mandant/Job/Feld sind authentisierte Zusatzdaten.
+Der einzige dauerhafte Auftragsschluessel liegt in `content.key` des Auftrags,
+nicht in SQLite/WAL/Config/Keysicherung. Es existiert keine App-Backuproutine.
+Ed25519-Envelopes und A4-Pruefregeln bleiben gleich; der private Dienst signiert
+und verifiziert nun mit EVP im Speicher, ohne Message-/Signaturtempfiles.
+Die historischen Forschungsmodule und archivierten Belege werden nicht veraendert.
+
+Bei Abschluss/Fehler/Abbruch verfallen gespeicherte Eingabeenvelopes und Pins sofort;
+die API persistiert keine hochgeladenen Rohpakete. Eigene verschluesselte
+Zwischenstaende unter `job/scratch` werden entfernt. Orphan-Key-/Arbeitsverzeichnisse
+nach Abbruch vor DB-Commit werden unter der gleichen Prozesssperre nachgeholt.
+Bei Empfang/Ablauf werden zusaetzlich der Bericht und das ganze Auftragverzeichnis
+inklusive Auftragsschluessel entfernt. SQLite `secure_delete=ON`,
+`temp_store=MEMORY`, `synchronous=FULL`, WAL-Checkpoint mit `TRUNCATE` und
+anschliessende Pfadpruefung gehoeren zur Bestaetigung. Eine blockierte WAL-Lesekopie
+oder fehlgeschlagener unlink/rmdir laesst `cleanup_state=failed` stehen; der Zugriff
+bleibt gesperrt. Idlewartung, naechster Zugriff und Neustart versuchen erneut.
+Ein Dateibereinigungsfehler kann daher eine laengere, explizit ausgewiesene
+Aufbewahrung verschluesselter Restdateien verursachen, niemals einen stillen Erfolg.
+
+Status- und Berichtsantworten enthalten:
+
+| Feld | Bedeutung |
+|---|---|
+| completed_at / expires_at | Konkrete absolute Frist, vor Fertigstellung null |
+| report_version / report_sha256 | Bindung an exaktes signiertes Berichtsenvelope |
+| receipt_state / received_at | unconfirmed oder confirmed, Zeitpunkt |
+| access_state | pending, available oder blocked |
+| deletion_reason | receipt oder expired, sonst null |
+| cleanup_state | not_due, inputs_pending/inputs_failed, pending/failed oder complete |
+| inputs_cleanup_completed_at | Bestaetigtes Ende eigener Eingabedateien und aktiver DB-/WAL-Kopien |
+| content_key_state | present oder absent_from_owned_namespace; kein Nachweis gegen alte Backups/SSD-Reste |
+| cleanup_confirmed / cleanup_completed_at | Tatsaechlich nachgepruefte Dienstdatei-/SQLite-Namespacebereinigung |
+| cleanup_scope | Explizite Abgrenzung gegen physische SSD-/RAM-/Backuploeschung |
+| residual_expires_at | Konkretes Ende des inhaltsfreien Job-/Loeschstatus |
+
+Ein dateiuebergreifender `flock` plus lokale Threadsperre serialisieren
+Reportmaterialisierung/-Versand und Loeschung ueber API-/Workerprozesse.
+Nach Sperrcommit gibt es keinen neuen Abruf. Vorher bereits ausgegebene Bytes und
+Empfaengerkopien koennen nicht zurueckgerufen werden. Sockets haben 5s Timeout;
+eine vor der Frist begonnene Antwort kann noch unterwegs sein.
+
+### Inhaltsfreie Sperrdaten und Authregister
+
+Erfolgsrequests speichern nur Mandant, Idempotenz-ID, Nonce, Paketdigest,
+minimalen Ergebnisstatus/-IDs und Zeitpunkt; keine Request-/Berichtsinhalte.
+Ihr festes Ende ist `max(Request.expires_ms, tatsaechliches Signierkey.expires_ms)
++ 60000ms maximale Requestgueltigkeit + 5000ms Aufbewahrungstoleranz`. Die
+Requestpruefung selbst gewaehrt **keine** Uhrtoleranz und erlaubt maximal 60s.
+Zertifikate haben maximal 24h Gueltigkeit. Challenges und deren unsigned
+Requestmerkposten enden an ihrer gespeicherten Frist bzw. Requestfrist + 5s;
+sie koennen niemals einen Auftrag ausfuehren. Widerrufs-/Enrollaudit endet mit
+der zugehoerigen Keyfrist + 65s. Job-/Loeschstatus bleibt bis zum spaeteren Ende
+von beteiligter Sender-/Empfaengerepoche +65s und Berichtsfrist +65s. Fehlgeschlagene
+Dateibereinigung verhindert das stille Entfernen ihres noch offenen Loeschstatus.
+
+Nach Ablauf der Sperrfrist sind alte Requests und deren Signierkeys abgelaufen;
+alte Key-IDs bleiben im Authregister gesperrt und koennen nicht erneut registriert
+werden. Das verhindert eine erneute Ausfuehrung aus geloeschten Auftraegen.
+Das Publickey-/Key-ID-/Rollen-/Gueltigkeits-/Widerrufsregister, Rootpins,
+Bearer-/Report-/Clientsignerkeys und Config sind **keine** kurzlebigen
+Berichtsinhalte. Sie gelten bis zur expliziten Stilllegung dieser lokalen
+Dienstidentitaet; die Key-ID-Nichtwiederverwendung benoetigt das Register fuer
+diese gesamte Identitaetsepoche. Kein pauschales inhaltsbezogenes Sicherheitsarchiv.
+Der globale UTC-Maximalstand ist inhaltsfrei und gilt ebenfalls fuer diese Epoche.
+
+### Offene Betriebsgrenzen dieser Implementierung
+
+* Bei vollstaendig gestopptem Dienst laeuft keine Dateibereinigung. Die feste
+  Frist bleibt gespeichert und wird beim Neustart **vor** Freigabe erzwungen;
+  eine garantierte Dateientfernung exakt nach 24h waehrend eines Ausfalls ist
+  **nicht umgesetzt**. Dafuer ist ein qualifizierter unabhaengiger Expiry-/KMS-Betrieb
+  erforderlich. Dateibereinigungsfehler sind ebenfalls sichtbare Fristueberschreitungen.
+* FileVault des untersuchten Hosts ist ausgeschaltet. GCM schuetzt Inhalte im
+  Dateispeicher; der lokale Operator kann die Auftragsschluessel lesen. Unlink
+  belegt keine SSD-/RAM-Zeroisierung oder Unwiederherstellbarkeit alter Keybytes.
+  Keine KMS-/Hardware-Keyvernichtung oder nachgewiesene Loeschung von Keybackups.
+* Keine App-Inhaltslogs/-Caches/-Backups. Es gibt aber keinen Nachweis ueber
+  saemtliche hostexternen Backup-/Snapshot-/Swap-/Crashdump-/Admin-Systeme.
+  Keine oeffentlichen Links, kein Proxy, nur Loopback. Backup-/Snapshotrestore in
+  die aktive Epoche bleibt unzulaessig und technisch nicht rollbackfest;
+  neue extern gesperrte Schluessel-/Token-/Requestepoche ist noch offen.
+* Der bisherige A4-Liveharness erzeugt Klartext in Host-/VM-Arbeitsdateien und
+  Gast-Recoveryverzeichnissen auf einer normalen VM-Disk. `run_once` verweigert
+  deshalb neuen Dispatch mit `503 EPHEMERAL_RUNNER_STORAGE_UNQUALIFIED`, **bevor**
+  VM/Lock/Claim/Dateierzeugung beginnen. Diese Sperre kann nicht durch einen
+  hochgeladenen Pfad/Schalter umgangen werden. Kein frischer Live-Gate-Nachweis
+  fuer verschluesselte Runnerdaten; die API-/Verifierregressionen nutzen die
+  bereits vorhandenen synthetischen Testbelege. Historische States/Archive
+  werden durch `LEGACY_STATE_PRESERVED` vor impliziter TTL-Migration geschuetzt.
+
+Historisches Runnerprofil (neuer Dispatch derzeit gesperrt): bestehende VM, 2 CPUs, 2GiB RAM, 12GiB Disk; vor jedem Dispatch müssen
 keine Hostmounts/Agentweiterleitung und keine aktiven fremden Probes vorliegen.
 Nur der qualifizierte Ubuntu-Kernel 6.8.0-142-generic, zwei feste UIDs und ein
 frisches Zielobjekt. Collectorfenster 12s, A4-Aktionsfenster 5s, lokale Aufruf-
@@ -361,7 +500,7 @@ Zwingende lokale Abnahmekriterien:
 
 Vor echtem Fremdbetrieb zusätzlich erforderlich: separater Zielhost/Kernel mit
 echtem Load/Attach/Write-/Verlustnachweis, OS-/Privilegien-/Netztrennung,
-TLS/Serviceidentität/KMS/Root-/Reportkeyrotation, begrenzte Aufbewahrung/Löschung,
+TLS/Serviceidentität/KMS/Root-/Reportkeyrotation, ausfallfeste Dateifrist/Keyloeschung,
 Recoveryepoche/Restoretests, Backup-/Monitoring-/Betriebsverantwortung und ein
 geeigneter HTTP-Server. Keine dieser Produktionsvoraussetzungen wird durch
 lokale Vertragstests als erfüllt ausgegeben.

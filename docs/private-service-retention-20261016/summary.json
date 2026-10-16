@@ -1,0 +1,91 @@
+{
+  "completed_at": "2026-10-16T21:59:23.276565+00:00",
+  "predecessor": {
+    "id": "20261016T211328.908495Z",
+    "status": "codex_completed",
+    "finished_at": "2026-10-16T21:32:31.117177Z",
+    "read_before_changes": true
+  },
+  "baseline": "44af0b6",
+  "branch": "codex/hosted-qualification-20261016",
+  "worktree": "/Users/landjunge/agent-authority-lab/.worktrees/hosted-qualification",
+  "implemented": [
+    "absolute completed_at + 86400s report access deadline persisted across restart",
+    "authenticated signed tenant/job/report-version/digest full receipt confirmation",
+    "block access before retryable physical namespace cleanup",
+    "per-job AES-256-GCM content with private permissions and no signature tempfiles",
+    "input/intermediate cleanup, cancellation, stale processing, startup/idle sweeps",
+    "bounded epoch-derived replay metadata; auth register separate",
+    "DE/EN pre-submission notice and actual receipt/deletion/cleanup completion states"
+  ],
+  "tested": {
+    "contracts": {
+      "tests": 91,
+      "errors": 0,
+      "failures": 0,
+      "skipped": 0,
+      "time_seconds": 94.029,
+      "modules": {
+        "tests.test_private_service_retention": 30,
+        "tests.test_private_service": 39,
+        "tests.test_hosted_qualification": 22
+      }
+    },
+    "regressions": {
+      "tests": 214,
+      "errors": 0,
+      "failures": 0,
+      "skipped": 0,
+      "time_seconds": 63.027,
+      "modules": {
+        "tests.test_product_contract": 22,
+        "tests.test_product_observer": 30,
+        "tests.test_product_html": 9,
+        "tests.test_product_input_bounds": 14,
+        "tests.test_a1_linux_scoring": 17,
+        "tests.test_a1_native_availability": 19,
+        "tests.test_a2_linux_identity": 14,
+        "tests.test_a3_linux_real_identity": 13,
+        "tests.test_a31_client_job_binding": 16,
+        "tests.test_a4_delegation": 21,
+        "tests.test_a4_completion_controls": 14,
+        "tests.test_a4_final_scale": 25
+      }
+    }
+  },
+  "unique_checks": 305,
+  "new_retention_checks": 30,
+  "open": [
+    "exact file deletion during total service downtime",
+    "cleanup completion when filesystem refuses removal; retry and honest failure implemented",
+    "all-backup/keycopy erasure, KMS/physical SSD/RAM erasure",
+    "encrypted ephemeral VM/runner/compiler/swap/log storage; new live dispatch deliberately blocked",
+    "snapshot rollback/restore epoch and production hardening"
+  ],
+  "new_live_vm_executions": 0,
+  "vm_final_state": "Stopped",
+  "historical_evidence_modified": false,
+  "historical_report_readme_note_added": true,
+  "subagents_started": 0,
+  "public_messages_sent": 0,
+  "production_changes": false,
+  "public_or_production_deployment": false,
+  "private_service_source_sha256": {
+    "research/private_service/client.py": "7d4b7d93a2f5a3f7dc6f7f8da3ec7b252ec2a7995ae5f4e61604818376e2db1e",
+    "research/private_service/crypto.py": "ad1f113ed8d5bf025df56b6f935f58d8495970a7ffb02d831e6a61f0386bf3f0",
+    "research/private_service/demo.py": "2df1e0e3029bf32b8ec56ee21513b1fac5c14c112fb19b941676305704269f92",
+    "research/private_service/guest_adapter.py": "2356d9e45edbf0ed602df337fdb0aef390b331fbcb980c69475cce0befd2e8ed",
+    "research/private_service/http.py": "ec8b3299362aacaa554d6c53c5e7ed2783b02b47a953a8d0710fefdb63ce7514",
+    "research/private_service/protocol.py": "18bd2fb23bde7f93edb86af5b9c7259d5bac2a3f0b241180b620847c95b69788",
+    "research/private_service/retention.py": "300b7067d3873cefd677d97cd15ffd5121b75aadab8ee99582d7e97602c4d3d2",
+    "research/private_service/runner.py": "e3e329e4802dc990575a97687e9c74e9227ce24a2bd754022f511c22635ac704",
+    "research/private_service/service.py": "d72c24c2d4e9d3a90bf35f8cc0e47ce51998815e772801bcef35a00e0cb482c9",
+    "research/private_service/verifier.py": "01924481b519e19f003a43e4323af651636cdcf379f1f7662690f5f48809fd20",
+    "tests/test_private_service.py": "3620f0fa3477f541d1ecd2c6d0258c0e951c54e2830e8379b71287f36218e63f",
+    "tests/test_private_service_retention.py": "bf242288e8d6394e9a0905ebf0649736b2ff47315337450a3241a24b2de46763"
+  },
+  "python": "3.12.13",
+  "preserved_foreign_untracked": [
+    "docs/USER-ROADMAP-KI-ZENTRALE.md"
+  ]
+}
