@@ -1,0 +1,57 @@
+{
+  "job_id": "4bbb5281b36836073359dc41dd496002",
+  "classification": "UNBEKANNT",
+  "report": {
+    "body": {
+      "schema": "aa-report-v1",
+      "domain": "AA-REPORT-v1",
+      "audience": "aa-private-local-v1",
+      "signing_kid": "local-report-v1",
+      "tenant": "test-a",
+      "job_id": "4bbb5281b36836073359dc41dd496002",
+      "classification": "UNBEKANNT",
+      "reason": "REQUEST_EXPIRED",
+      "sources": [],
+      "verifier_version": "aa-private-verifier-v1",
+      "trust_catalog_version": "local-test-catalog-v1",
+      "issued_ms": 1792192912646,
+      "scope": "controlled-a4-write16",
+      "provider_model_session": "UNBEKANNT",
+      "uncertainties": [
+        "No automatic rerun",
+        "Action may have occurred"
+      ],
+      "grants_rights": false,
+      "completed_at": "2026-10-16T23:21:52.646Z",
+      "expires_at": "2026-10-17T23:21:52.646Z",
+      "report_version": "1"
+    },
+    "signature": "tOW44QswQSySeink0HQgB3OMOymDYaty0HzRl+PyWtvMlqrkUiS1TowuHCUxZo+CWzUqlaVjmc8dOydIKRJrCg=="
+  },
+  "signed_receipt": {
+    "body": {
+      "schema": "aa-private-v1",
+      "domain": "AA-REQUEST-v1",
+      "tenant": "test-a",
+      "audience": "aa-private-local-v1",
+      "method": "POST",
+      "path": "/v1/jobs/4bbb5281b36836073359dc41dd496002/receipts",
+      "kid": "sender",
+      "nonce": "902fbead36c8a8d58dbcfa8553295cdfee7ba2641f49867cb1e5873680c4e53d",
+      "idempotency_key": "cf228b27e0c44e9ef270d7ee996a380c",
+      "issued_ms": 1792193002398,
+      "expires_ms": 1792193062398,
+      "payload": {
+        "job_id": "4bbb5281b36836073359dc41dd496002",
+        "report_version": "1",
+        "report_sha256": "9590d2b47c25654ff68b92f94e59fdcd632b72dde6bdb2b1d70f2716fe5acc53",
+        "received_complete": true
+      }
+    },
+    "signature": "u/2252ymyBR7O1m0hC2udnl932H6sGM7vk2o6IPUUQuAUNSIR5N8R/UGBAAZeQ0xA1S3xYTlW8fllf1LRyV4Bw=="
+  },
+  "cleanup_state": "complete",
+  "report_get_after_receipt": 410,
+  "runner_was_started": false,
+  "action_jobs": 0
+}

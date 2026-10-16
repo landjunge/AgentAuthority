@@ -1,0 +1,8 @@
+{"units": {"aa-private-signer.socket": "d92e7dd642cbd466127c5c0dd24349586a9c2c4ec9de7d7fcac3278a2e653a9e", "aa-private-verifier.socket": "f0b4cef5df2b6b977f30072f45a23ddbeacb7f03d62db2ef947bc403a4704f80", "aa-private-control.socket": "076546e19581ad7237b97e1150e18cec2d1ea93db9330ebd61fd48fe1e33e866", "aa-private-collector.socket": "84ed55b79d46e24bb974841fa55bce1486261b7034c2b2240f761e7d19dc28aa", "aa-private-api.service": "f48d05adb04e2f00f6208547501c16b0d098ad937c598126629a8537beba0bff", "aa-private-signer.service": "497c5fca2dd4f721d531a96107484250e5d8530d01f28ef0705ac83188d8395b", "aa-private-verifier.service": "4d3ef618c12312d12830cb3972e5a2f9acc6c347c6a5bc67aaa93e08fbca9c77", "aa-private-collector.service": "5b500de9f8020364a41f2aa2f68bff6c80a12131e62dba5bfde44ae1dacc491c", "aa-private-runner.service": "b3baee00edb780d1bee2383afccbdd928d6d240964dfc22645fba26114838383"}, "accounts": {"aa-api": 987, "aa-signer": 986, "aa-verifier": 985, "aa-runner": 984, "aa-registrar": 983, "aa-test-a": 61101, "aa-test-b": 61102}, "report_public_key": "9d/Jd7ZZtOB4/WYBnxEG7ROAbNmjAUYhwIwhQNcCJmk=", "root_public_key": "ksxsU+vc8Fuj2Gx/3uU8DjSd5DIohw0KTWpjxBHWuv8=", "loopback": "127.0.0.1:8765", "runner_hardstop": true, "enabled_on_boot": false}
+Running as unit: aa-private-install.service
+aa-private-runner.service: RuntimeMaxSec= has no effect in combination with Type=oneshot. Ignoring.
+Finished with result: success
+Main processes terminated with: code=exited, status=0/SUCCESS
+Service runtime: 1.300s
+CPU time consumed: 369ms
+Memory peak: 17.1M (swap: 0B)

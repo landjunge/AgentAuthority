@@ -1,0 +1,57 @@
+{
+  "job_id": "0da3e0cda5e591e74094acdab56fc5e3",
+  "classification": "UNBEKANNT",
+  "report": {
+    "body": {
+      "schema": "aa-report-v1",
+      "domain": "AA-REPORT-v1",
+      "audience": "aa-private-local-v1",
+      "signing_kid": "local-report-v1",
+      "tenant": "test-a",
+      "job_id": "0da3e0cda5e591e74094acdab56fc5e3",
+      "classification": "UNBEKANNT",
+      "reason": "WORKER_TIMEOUT",
+      "sources": [],
+      "verifier_version": "aa-private-verifier-v1",
+      "trust_catalog_version": "local-test-catalog-v1",
+      "issued_ms": 1792192650892,
+      "scope": "controlled-a4-write16",
+      "provider_model_session": "UNBEKANNT",
+      "uncertainties": [
+        "No automatic rerun",
+        "Action may have occurred"
+      ],
+      "grants_rights": false,
+      "completed_at": "2026-10-16T23:17:30.892Z",
+      "expires_at": "2026-10-17T23:17:30.892Z",
+      "report_version": "1"
+    },
+    "signature": "HC4ROAVbqt4MxWnTbxt6ouUITgUT6xz41RZcNrfqLYA/JtyWsUbAgq53PiwQzHyquBMREzntE8IaqR9OIIpwCA=="
+  },
+  "signed_receipt": {
+    "body": {
+      "schema": "aa-private-v1",
+      "domain": "AA-REQUEST-v1",
+      "tenant": "test-a",
+      "audience": "aa-private-local-v1",
+      "method": "POST",
+      "path": "/v1/jobs/0da3e0cda5e591e74094acdab56fc5e3/receipts",
+      "kid": "sender",
+      "nonce": "791231e67ad976a066ff99471093af7e2f328c833c66bf12063d586e379290be",
+      "idempotency_key": "16b2ade74f7364a3d52fb95025d9f17d",
+      "issued_ms": 1792192755735,
+      "expires_ms": 1792192815735,
+      "payload": {
+        "job_id": "0da3e0cda5e591e74094acdab56fc5e3",
+        "report_version": "1",
+        "report_sha256": "27619a76ae21eebec7b18b4dbe672f2df9009a03f32537a53d1ffbc2928b9227",
+        "received_complete": true
+      }
+    },
+    "signature": "DfzZKzIvLutZxaOIIDpCRezRG2uVlFpLs3cDmYramR/CW3rGXjlrYsJQk/ofD2sVvmfQDeqSj9cktkXK0ISpCQ=="
+  },
+  "cleanup_state": "complete",
+  "report_get_after_receipt": 410,
+  "rerun_of_prior_job": false,
+  "action_status": "unknown; original capture was not retained"
+}

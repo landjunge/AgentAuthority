@@ -1,0 +1,7 @@
+{"load": true, "fdinfo": "pos:\t0\nflags:\t02000002\nmnt_id:\t17\nino:\t1051\nprog_type:\t2\nprog_jited:\t1\nprog_tag:\ta04f5eef06a7f555\nmemlock:\t4096\nprog_id:\t4983\nrun_time_ns:\t0\nrun_cnt:\t0\nrecursion_misses:\t0\nverified_insns:\t2\n"}
+Running as unit: aa-private-kernel-load-check-two.service; invocation ID: 93ef7f7981de4f1e81025437fd011b09
+Finished with result: success
+Main processes terminated with: code=exited, status=0/SUCCESS
+Service runtime: 1.467s
+CPU time consumed: 595ms
+Memory peak: 54M (swap: 0B)

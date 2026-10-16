@@ -1,0 +1,50 @@
+{
+  "research/a4_completion/guest.py": {
+    "sha256": "48e7a209f37b5bdfceab37d23c74c74325530de8ce088a232d2836c3162790ea",
+    "artifact": "research/a4_completion/guest.py"
+  },
+  "research/a4_completion/agent.py": {
+    "sha256": "3cb8814ad4186f443c278c21711f728680dea35dbe5475dc3d606e76e5b3fa37",
+    "artifact": "research/a4_completion/agent.py"
+  },
+  "research/a4_completion/observer.py": {
+    "sha256": "a9b374891f7b0cfd26b40a6faefbdfb43cb60cffcec0375a9d840ff987d4ffde",
+    "artifact": "research/a4_completion/observer.py"
+  },
+  "research/a4_completion/lifecycle.py": {
+    "sha256": "33a12d7f70ac7cc34530c2b11d8607bfc5db6ef7f749db25fa55e219eaae70d3",
+    "artifact": "research/a4_completion/lifecycle.py"
+  },
+  "research/a4_completion/probes.py": {
+    "sha256": "6ea0e80289ff7360b01ca206a5e5bcf6759a735577519d1300ef4a2e2583fe71",
+    "artifact": "research/a4_completion/probes.py"
+  },
+  "research/a4_completion/verify.py": {
+    "sha256": "a45346d68acd874cd5825d3390dd1d44e8ee24a8fbaeea6661628f6655738f69",
+    "artifact": "research/a4_completion/verify.py"
+  },
+  "research/a2_linux/protocol.py": {
+    "sha256": "63ee8c01a210a918852cfd0ddc036e68a732e73988822b362dce3244496e3def",
+    "artifact": "research/a2_linux/protocol.py"
+  },
+  "research/a2_linux/starter.py": {
+    "sha256": "f6899e18906038af2536db088eb1322a500f893d754bba307adf1271e75ae94b",
+    "artifact": "research/a2_linux/starter.py"
+  },
+  "research/debian_private/collector.py": {
+    "sha256": "35888a1e2bf84276aedf40121cfecdbcde476e58b623201e37e72f3b4d381e32",
+    "artifact": "docs/private-service-debian-20261017/qualified-source/research/debian_private/collector.py"
+  },
+  "research/debian_private/collector_observer.py": {
+    "sha256": "624599351e5eb9012d93bd023962ededa4ccb79cf255cfdbcac7bc74ca942915",
+    "artifact": "research/debian_private/collector_observer.py"
+  },
+  "research/debian_private/collector_trial.py": {
+    "sha256": "bdeecd496981374fd9c748c6c91119a069bfa6501333c2b2d52e2de43962ec53",
+    "artifact": "research/debian_private/collector_trial.py"
+  },
+  "research/debian_private/probe_profile.py": {
+    "sha256": "61d5e675081c02e8d58926d0669101d660396883d851f08efe096452b3abcd6a",
+    "artifact": "research/debian_private/probe_profile.py"
+  }
+}

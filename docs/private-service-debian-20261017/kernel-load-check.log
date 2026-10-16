@@ -1,0 +1,17 @@
+Unable to find kernel headers. Try rebuilding kernel with CONFIG_IKHEADERS=m (module) or installing the kernel development package for your running kernel version.
+Running as unit: aa-private-kernel-load-check.service
+modprobe: FATAL: Module kheaders not found in directory /lib/modules/6.12.101+deb13-amd64
+<built-in>:1:10: fatal error: './include/linux/kconfig.h' file not found
+    1 | #include "./include/linux/kconfig.h"
+      |          ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+1 error generated.
+Traceback (most recent call last):
+  File "<stdin>", line 4, in <module>
+  File "/usr/lib/python3/dist-packages/bcc/__init__.py", line 480, in __init__
+    raise Exception("Failed to compile BPF module %s" % (src_file or "<text>"))
+Exception: Failed to compile BPF module <text>
+Finished with result: exit-code
+Main processes terminated with: code=exited, status=1/FAILURE
+Service runtime: 982ms
+CPU time consumed: 417ms
+Memory peak: 47.6M (swap: 0B)

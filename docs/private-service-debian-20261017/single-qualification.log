@@ -1,0 +1,16 @@
+Running as unit: aa-private-single-qualification.service; invocation ID: da0711cc0e73431a885b64e62ee66231
+Stopping 'aa-private-collector.service', but its triggering units are still active:
+aa-private-collector.socket
+Traceback (most recent call last):
+  File "<stdin>", line 19, in <module>
+  File "/opt/aa-private/research/debian_private/qualify_job.py", line 271, in main
+    require(completed.returncode == 0, 503, "RUNNER_FAILED_NO_RETRY")
+    ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/aa-private/research/private_service/protocol.py", line 34, in require
+    raise Problem(status, code)
+research.private_service.protocol.Problem: RUNNER_FAILED_NO_RETRY
+Finished with result: exit-code
+Main processes terminated with: code=exited, status=1/FAILURE
+Service runtime: 23.278s
+CPU time consumed: 646ms
+Memory peak: 34M (swap: 0B)

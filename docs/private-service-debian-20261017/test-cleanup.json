@@ -1,0 +1,26 @@
+{
+  "completed_job": "1d24c7f6521209d87a39057d765a3cac",
+  "regression_tree_removed": true,
+  "regression_inventory": {
+    "files": 312,
+    "directories": 468,
+    "symlinks": 82,
+    "other_test_nodes": 0,
+    "logical_bytes": 12880940
+  },
+  "retired_diagnostic_units": [
+    "aa-private-cap-profile.service",
+    "aa-private-runner-regression.service",
+    "aa-private-intake-repair.service"
+  ],
+  "own_stale_probe_definitions_removed": [
+    "p_a4c_vfs_write_bcc_1097651",
+    "r_vfs_write_bcc_1097651"
+  ],
+  "probe_origin": "interrupted actor-ready-kernel-check; fixed source/probe name and dead own PID 1097651, no global tracefs flush",
+  "test_uid_processes": 0,
+  "raw_handoff_and_recipient_server_copy_absent": true,
+  "collector_and_runner_stopped": true,
+  "research_archives_and_production_data_untouched": true,
+  "physical_erasure_claim": false
+}

@@ -1,0 +1,10 @@
+{
+  "collector_test_epoch_retired": true,
+  "test_public_pins_saved_privately": "/var/lib/aa-private-install-20261017/retired-collector-public-pins.json",
+  "direct_validation_rejects": "COLLECTOR_IDENTITY_RETIRED",
+  "hardstop_remains": true,
+  "clock_floor_advanced": true,
+  "extra_content_free_consumption_markers_removed": 3,
+  "api_replay_and_deletion_metadata_retained_to_existing_bounded_expiry": true,
+  "new_dispatch_requires_fresh_operator_trust_and_qualification": true
+}

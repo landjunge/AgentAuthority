@@ -1,0 +1,44 @@
+[Unit]
+Description=Private AA isolated verifier
+ConditionPathIsMountPoint=/var/lib/aa-private/secure
+[Service]
+User=aa-verifier
+Group=aa-signer
+ExecStart=/usr/bin/python3 -B -m research.debian_private.components verifier
+CapabilityBoundingSet=
+AmbientCapabilities=
+RestrictAddressFamilies=AF_UNIX
+PrivateNetwork=yes
+SystemCallFilter=~bpf perf_event_open ptrace process_vm_readv process_vm_writev
+MemoryMax=192M
+TasksMax=4
+ReadWritePaths=/var/lib/aa-private/secure/verifier /var/lib/aa-private/secure/verdicts
+TemporaryFileSystem=/tmp:rw,nosuid,nodev,noexec,noswap,size=4M
+TemporaryFileSystem=/var/tmp:rw,nosuid,nodev,noexec,noswap,size=4M
+Slice=aa-private.slice
+WorkingDirectory=/opt/aa-private
+Environment=PYTHONDONTWRITEBYTECODE=1
+UMask=0077
+NoNewPrivileges=yes
+ProtectSystem=strict
+ProtectHome=yes
+PrivateDevices=yes
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectKernelLogs=yes
+ProtectControlGroups=yes
+ProtectClock=yes
+ProtectProc=invisible
+RestrictSUIDSGID=yes
+RestrictRealtime=yes
+LockPersonality=yes
+RestrictNamespaces=yes
+MemorySwapMax=0
+LimitCORE=0
+LimitNOFILE=64
+TimeoutStopSec=5
+KillMode=control-group
+SendSIGKILL=yes
+StandardOutput=null
+StandardError=null
+InaccessiblePaths=-/opt/4allpass -/opt/ki-helper-runtime -/opt/ki-hilfezentrum -/var/www -/srv -/var/lib/docker -/run/docker.sock -/etc/ssh -/etc/ssl/private

@@ -1,0 +1,45 @@
+Running as unit: aa-private-fresh-completion-qualification.service; invocation ID: cf57ba22a49b4fb8854776d814ed0b37
+Traceback (most recent call last):
+  File "<stdin>", line 20, in <module>
+  File "/opt/aa-private/research/debian_private/qualify_job.py", line 271, in main
+    send("client", "GET", path, expected=404, label="file-route-denied-" + path)
+    ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/aa-private/research/debian_private/qualify_job.py", line 87, in send
+    status, response = call(
+                       ~~~~^
+        "http://127.0.0.1:8765",
+        ^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+        data,
+        ^^^^^
+    )
+    ^
+  File "/opt/aa-private/research/private_service/http.py", line 133, in call
+    response = opener.open(req, timeout=10)
+  File "/usr/lib/python3.13/urllib/request.py", line 489, in open
+    response = self._open(req, data)
+  File "/usr/lib/python3.13/urllib/request.py", line 506, in _open
+    result = self._call_chain(self.handle_open, protocol, protocol +
+                              '_open', req)
+  File "/usr/lib/python3.13/urllib/request.py", line 466, in _call_chain
+    result = func(*args)
+  File "/usr/lib/python3.13/urllib/request.py", line 1348, in http_open
+    return self.do_open(http.client.HTTPConnection, req)
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/urllib/request.py", line 1323, in do_open
+    r = h.getresponse()
+  File "/usr/lib/python3.13/http/client.py", line 1459, in getresponse
+    response.begin()
+    ~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.13/http/client.py", line 336, in begin
+    version, status, reason = self._read_status()
+                              ~~~~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.13/http/client.py", line 305, in _read_status
+    raise RemoteDisconnected("Remote end closed connection without"
+                             " response")
+http.client.RemoteDisconnected: Remote end closed connection without response
+Finished with result: exit-code
+Main processes terminated with: code=exited, status=1/FAILURE
+Service runtime: 1.670s
+CPU time consumed: 523ms
+Memory peak: 32.6M (swap: 0B)

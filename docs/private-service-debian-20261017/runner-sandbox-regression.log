@@ -1,0 +1,9 @@
+exit 0
+{"scope": "historical regression only; no current action", "cases": [{"case": "missing_capture", "classification": "UNVOLLSTAENDIG"}, {"case": "bad_registry_signature", "classification": "WIDERSPRUECHLICH"}, {"case": "positive_loss", "classification": "UNBEKANNT"}, {"case": "unknown_recursion", "classification": "UNBEKANNT"}, {"case": "wrong_ca_pin", "classification": "WIDERSPRUECHLICH"}]}
+
+Running as unit: aa-private-runner-regression-setup.service
+Finished with result: success
+Main processes terminated with: code=exited, status=0/SUCCESS
+Service runtime: 1.107s
+CPU time consumed: 89ms
+Memory peak: 8.7M (swap: 0B)

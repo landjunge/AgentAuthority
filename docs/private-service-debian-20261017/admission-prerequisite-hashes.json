@@ -1,0 +1,6 @@
+{
+  "restricted-kernel-check-final.log": "1180777d880cd60ad10d1f11b550b5c4dd11388b1ec401b53c8a684673e8115e",
+  "preflight-final-two.log": "b4c2a0e02bf7e3fb09ad7aaf1d5bf317d1bfb29b9fb8d195f05130f38ead4372",
+  "limit-checks-three.log": "630e7e6d90a3957d075fb7c55f7c532da8ff98ef7c244c2c1dcebe590bc67beb",
+  "debian-regressions.json": "7015b75287da940da607e66a760220ea83721b0a61ed7f7980ed8a6ecfc12f0e"
+}

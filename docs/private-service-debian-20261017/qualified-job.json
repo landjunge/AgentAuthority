@@ -1,0 +1,233 @@
+{
+  "schema": "aa-debian-single-qualification-v1",
+  "attempts": 1,
+  "action_jobs": 1,
+  "cases": [
+    {
+      "case": "bad-job-signature",
+      "status": 401,
+      "code": "SIGNATURE_INVALID",
+      "duration_ns": 57060898
+    },
+    {
+      "case": "expired-request",
+      "status": 410,
+      "code": "EXPIRED_OR_FUTURE",
+      "duration_ns": 24654839
+    },
+    {
+      "case": "arbitrary-scenario-denied",
+      "status": 422,
+      "code": "SCENARIO_UNSUPPORTED",
+      "duration_ns": 82802351
+    },
+    {
+      "case": "free-file-target-denied",
+      "status": 422,
+      "code": "INVALID_FORMAT",
+      "duration_ns": 91610021
+    },
+    {
+      "case": "signed-job",
+      "status": 202,
+      "code": null,
+      "duration_ns": 26735321
+    },
+    {
+      "case": "exact-retry-no-new-job",
+      "status": 202,
+      "code": null,
+      "duration_ns": 88176498
+    },
+    {
+      "case": "parallel-second-job-denied",
+      "status": 429,
+      "code": "ONE_JOB_LIMIT",
+      "duration_ns": 73241060
+    },
+    {
+      "case": "nonexact-acceptance-denied",
+      "status": 422,
+      "code": "DELEGATION_MISMATCH",
+      "duration_ns": 98162862
+    },
+    {
+      "case": "exact-signed-acceptance",
+      "status": 202,
+      "code": null,
+      "duration_ns": 29674530
+    },
+    {
+      "case": "foreign-object-denied",
+      "status": 404,
+      "code": "NOT_FOUND",
+      "duration_ns": 77244793
+    },
+    {
+      "case": "foreign-report-denied",
+      "status": 404,
+      "code": "NOT_FOUND",
+      "duration_ns": 14126389
+    },
+    {
+      "case": "stranger-object-denied",
+      "status": 404,
+      "code": "NOT_FOUND",
+      "duration_ns": 85162335
+    },
+    {
+      "case": "stranger-report-denied",
+      "status": 404,
+      "code": "NOT_FOUND",
+      "duration_ns": 17411987
+    },
+    {
+      "case": "file-route-denied-/.git/HEAD",
+      "status": 404,
+      "code": "NOT_FOUND",
+      "duration_ns": 79563034
+    },
+    {
+      "case": "file-route-denied-/config.json",
+      "status": 404,
+      "code": "NOT_FOUND",
+      "duration_ns": 107753343
+    },
+    {
+      "case": "file-route-denied-/service.sqlite-wal",
+      "status": 404,
+      "code": "NOT_FOUND",
+      "duration_ns": 13454333
+    },
+    {
+      "case": "file-route-denied-/root/ca-private.pem",
+      "status": 404,
+      "code": "NOT_FOUND",
+      "duration_ns": 75202302
+    },
+    {
+      "case": "file-route-denied-/../etc/passwd",
+      "status": 404,
+      "code": "NOT_FOUND",
+      "duration_ns": 13806893
+    },
+    {
+      "case": "file-route-denied-/v1/graph",
+      "status": 404,
+      "code": "NOT_FOUND",
+      "duration_ns": 90062566
+    },
+    {
+      "case": "duplicate-json-denied",
+      "status": 400,
+      "duration_ns": 6780459
+    },
+    {
+      "case": "oversize-body-denied",
+      "status": 413,
+      "duration_ns": 6582698
+    },
+    {
+      "case": "parser-depth-denied",
+      "status": 422,
+      "duration_ns": 6165332
+    }
+  ],
+  "start_monotonic_ns": 3450220918508747,
+  "completed": false,
+  "registered_identities": [
+    {
+      "body": {
+        "schema": "aa-private-v1",
+        "domain": "AA-ENROLL-v1",
+        "tenant": "test-a",
+        "audience": "aa-private-local-v1",
+        "kid": "sender",
+        "public_key": "ltdXIfyBi4LHKGjC3sxeo9LG/wTVdqdyKFKWxNeiASc=",
+        "role": "actor",
+        "issued_ms": 1792192468205,
+        "expires_ms": 1792278868205
+      },
+      "signature": "sEIzrTLpbpiktVvSLJkMGHeV3An9zFojpaMJsMToxj++MqcTb/Ad1IMzclLXRLrxMHQ+sChoUqJtwC8xlR3jBg=="
+    },
+    {
+      "body": {
+        "schema": "aa-private-v1",
+        "domain": "AA-ENROLL-v1",
+        "tenant": "test-a",
+        "audience": "aa-private-local-v1",
+        "kid": "receiver",
+        "public_key": "PxgijgOsto5yCtHXHlh7VSDErSP0hs/SV+6JpL1Aahs=",
+        "role": "actor",
+        "issued_ms": 1792192468440,
+        "expires_ms": 1792278868440
+      },
+      "signature": "9RTiXcOSXDttFLmAEgBRx9CkU7PaMIHG/eulilYRn8o7DtMZSm4C6edGuKDRVHYfsMpb9m/PJhD68+YqutEgCA=="
+    },
+    {
+      "body": {
+        "schema": "aa-private-v1",
+        "domain": "AA-ENROLL-v1",
+        "tenant": "test-a",
+        "audience": "aa-private-local-v1",
+        "kid": "runner",
+        "public_key": "fvGexZOQQ1zDcX7JvD0q/mkO6N7+rZnQXYYX9jJPN4U=",
+        "role": "runner",
+        "issued_ms": 1792192468614,
+        "expires_ms": 1792278868614
+      },
+      "signature": "Vx9DJBJE/pA0/9nynH8xURNuSoHCENVns/uFAOauPrbCrY/S3vii5BR/QjdFNnvF8IZZ5vDKnXB4TRQRqcUnAg=="
+    }
+  ],
+  "registration_source": "/var/lib/aa-private-install-20261017/single-job.json",
+  "prior_failed_attempt_preserved": true,
+  "arrival_monotonic_ns": 3450221181362591,
+  "job_id": "954ccd151773afebf083942fc919adc9",
+  "job_sha256": "69e014c2c20acb17a324a6f20f1f1e055127a239b81d3130012654ed4598f4c4",
+  "signed_job": {
+    "body": {
+      "schema": "aa-private-v1",
+      "domain": "AA-REQUEST-v1",
+      "tenant": "test-a",
+      "audience": "aa-private-local-v1",
+      "method": "POST",
+      "path": "/v1/jobs",
+      "kid": "sender",
+      "nonce": "e6f3ad916155219cdbe6e0ac1646099880bba9474f9d3329647bd4aad4951cc1",
+      "idempotency_key": "e7828fe9ef33ce085690c04f951e9ee8",
+      "issued_ms": 1792193018409,
+      "expires_ms": 1792193078409,
+      "payload": {
+        "scenario": "a4-write16-v1",
+        "receiver_kid": "receiver"
+      }
+    },
+    "signature": "0WlFyuZKGyvSXm0Zh8efpUHkgNQBss8MJP1j9XbJks39q1BGL1okNiEwIu2pD07IwTViZ883YHwjw98JcowcBg=="
+  },
+  "accepted_monotonic_ns": 3450221501064773,
+  "acceptance_sha256": "e80266188f30145dd46e59df5f653512df2d7fe288a70e3f9b3367a3a38c4976",
+  "signed_acceptance": {
+    "body": {
+      "schema": "aa-private-v1",
+      "domain": "AA-REQUEST-v1",
+      "tenant": "test-a",
+      "audience": "aa-private-local-v1",
+      "method": "POST",
+      "path": "/v1/jobs/954ccd151773afebf083942fc919adc9/acceptances",
+      "kid": "receiver",
+      "nonce": "c6889751b0912f076c7fdb47094fc1d99b9ba94e7ff2c0b5a577360eef8b6011",
+      "idempotency_key": "04ed6b742e62d0691364997b25b64fea",
+      "issued_ms": 1792193018698,
+      "expires_ms": 1792193078698,
+      "payload": {
+        "job_id": "954ccd151773afebf083942fc919adc9",
+        "job_sha256": "69e014c2c20acb17a324a6f20f1f1e055127a239b81d3130012654ed4598f4c4"
+      }
+    },
+    "signature": "SXXkeWs2GDA02GA4k8Etg9elVtrK7dTjSlA1nrRkzqkyi3uriRdOxNMMXzpLAhlJ2PvjlgCcMkNyE8oo2U05BA=="
+  },
+  "runner_start_monotonic_ns": 3450222099641752,
+  "runner_exit": 1,
+  "runner_end_monotonic_ns": 3450244503451253,
+  "failure": "SAFE_STOP_NO_AUTOMATIC_RERUN"
+}

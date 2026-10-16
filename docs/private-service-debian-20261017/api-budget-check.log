@@ -1,0 +1,7 @@
+{"sequential_metadata_requests": 49, "success": 48, "bounded_rate_rejections": 1, "disconnects": 0, "actual_api_process": {"VmPeak": "178244 kB", "VmSize": "120888 kB", "Threads": "2"}, "job_actions": 0}
+Running as unit: aa-private-api-budget-check.service
+Finished with result: success
+Main processes terminated with: code=exited, status=0/SUCCESS
+Service runtime: 990ms
+CPU time consumed: 138ms
+Memory peak: 10.2M (swap: 0B)

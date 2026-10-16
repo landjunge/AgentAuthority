@@ -1,0 +1,11 @@
+[Unit]
+Description=Private AA signer authenticated local channel
+ConditionPathIsMountPoint=/var/lib/aa-private/secure
+[Socket]
+ListenStream=/run/aa-private/signer.sock
+SocketUser=aa-signer
+SocketGroup=aa-api
+SocketMode=0660
+Backlog=2
+Service=aa-private-signer.service
+RemoveOnStop=yes

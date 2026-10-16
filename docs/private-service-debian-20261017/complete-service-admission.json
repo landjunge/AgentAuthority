@@ -1,0 +1,19 @@
+{
+  "schema": "aa-debian-bounded-completion-v1",
+  "monotonic_ns": 3450608897961832,
+  "earlier_jobs_closed_unknown": 3,
+  "no_old_job_reexecution": true,
+  "one_fresh_job_only": true,
+  "fresh_confirmation": {
+    "samples": 27,
+    "host_cpu_max_pct": 9.720670391061448,
+    "mem_available_min": 15702511616,
+    "central_statuses": [
+      403
+    ]
+  },
+  "cpu_stat_before": "usage_usec 160450081\nuser_usec 126257960\nsystem_usec 34192121\nnice_usec 5531869\nnr_periods 11382\nnr_throttled 3513\nthrottled_usec 349558072\nnr_bursts 0\nburst_usec 0\n",
+  "intake_only_repair_window_seconds": 70,
+  "handoff_expiry_seconds": 180,
+  "public_or_capacity_release": false
+}

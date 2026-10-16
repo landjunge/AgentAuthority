@@ -1,0 +1,12 @@
+Running as unit: aa-private-limits-check.service
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "/opt/aa-private/research/debian_private/limit_checks.py", line 40, in main
+    assert checks[-1]['pass'], 'leave hardstop closed on failed guard test'
+           ~~~~~~~~~~^^^^^^^^
+AssertionError: leave hardstop closed on failed guard test
+Finished with result: exit-code
+Main processes terminated with: code=exited, status=1/FAILURE
+Service runtime: 8.120s
+CPU time consumed: 1.114s
+Memory peak: 10.2M (swap: 0B)

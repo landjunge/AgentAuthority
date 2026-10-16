@@ -1,0 +1,11 @@
+[Unit]
+Description=Private AA verifier authenticated local channel
+ConditionPathIsMountPoint=/var/lib/aa-private/secure
+[Socket]
+ListenStream=/run/aa-private/verifier.sock
+SocketUser=aa-verifier
+SocketGroup=aa-api
+SocketMode=0660
+Backlog=2
+Service=aa-private-verifier.service
+RemoveOnStop=yes

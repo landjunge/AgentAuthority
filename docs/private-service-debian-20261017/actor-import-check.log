@@ -1,0 +1,17 @@
+unchanged actor import-only 1 Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+    import runpy;runpy.run_path('/opt/aa-private/research/a4_completion/agent.py',run_name='import_only_no_action')
+                 ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen runpy>", line 287, in run_path
+  File "<frozen runpy>", line 98, in _run_module_code
+  File "<frozen runpy>", line 88, in _run_code
+  File "/opt/aa-private/research/a4_completion/agent.py", line 12, in <module>
+    from protocol import canonical, envelope, verify
+ModuleNotFoundError: No module named 'protocol'
+
+Running as unit: aa-private-actor-import-check.service; invocation ID: cf56705cce4f43b0a1d536690552a9b8
+Finished with result: success
+Main processes terminated with: code=exited, status=0/SUCCESS
+Service runtime: 396ms
+CPU time consumed: 132ms
+Memory peak: 13.2M (swap: 0B)

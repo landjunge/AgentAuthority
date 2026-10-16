@@ -24,6 +24,11 @@ ROOT = Path(__file__).resolve().parents[2]
 
 def run_component(operation, value, keyfile=None):
     require(operation in ("verify", "report"), 503, "COMPONENT_FORBIDDEN")
+    if os.environ.get("AA_PRIVATE_LINUX_IPC") == "1":
+        from research.debian_private.ipc import component
+
+        require(keyfile is None, 503, "COMPONENT_FORBIDDEN")
+        return component(operation, value)
     raw = json.dumps(value).encode()
     require(len(raw) <= MAX_CHILD_INPUT, 413, "COMPONENT_INPUT_LIMIT")
     command = [sys.executable, "-m", "research.private_service.boundary", operation]

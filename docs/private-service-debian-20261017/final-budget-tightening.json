@@ -1,0 +1,1 @@
+{"final_workload_cpu_one_core": 0.35, "guard_cpu_one_core": 0.05, "combined_host_cpu_pct": 5.0, "final_workload_memory": 768000000, "guard_memory": 67108864, "combined_memory": 835108864, "reason": "include separately surviving health guard inside prior 5% host planning envelope; stricter than successful trial, no new performance claim"}

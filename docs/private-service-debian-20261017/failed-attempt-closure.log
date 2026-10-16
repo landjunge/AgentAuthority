@@ -1,0 +1,9 @@
+{"prior_closed_unknown": true, "cleanup_complete": true, "get": 410}
+Running as unit: aa-private-close-failed-attempt.service
+Stopping 'aa-private-collector.service', but its triggering units are still active:
+aa-private-collector.socket
+Finished with result: success
+Main processes terminated with: code=exited, status=0/SUCCESS
+Service runtime: 842ms
+CPU time consumed: 204ms
+Memory peak: 17.2M (swap: 0B)

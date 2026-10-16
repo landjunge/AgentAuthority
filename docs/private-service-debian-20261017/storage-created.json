@@ -1,0 +1,1 @@
+{"mapping": "aa-private-epoch", "loop": "/dev/loop0", "ciphertext": "/var/lib/aa-private/epoch.ciphertext", "mount": "/var/lib/aa-private/secure", "size_bytes": 268435456, "key_backup": false, "on_reboot": "fail closed; kernel-only epoch key lost; no automatic new epoch", "plaintext_recovery": false, "journal": false}

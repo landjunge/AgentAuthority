@@ -1,0 +1,1426 @@
+{
+  "started_utc": "2026-10-16T22:35:41.854458+00:00",
+  "finished_utc": "2026-10-16T22:37:44.163702+00:00",
+  "local_elapsed_seconds": 122.30830888682976,
+  "collector_sha256": "a01ca51cf9391ffab79196d3aa06059cd391d610df43af0db5a782a7d17a1b73",
+  "command": [
+    "ssh",
+    "-T",
+    "-o",
+    "BatchMode=yes",
+    "-o",
+    "StrictHostKeyChecking=yes",
+    "-o",
+    "UpdateHostKeys=no",
+    "-o",
+    "ConnectTimeout=8",
+    "-o",
+    "ConnectionAttempts=1",
+    "-o",
+    "ForwardAgent=no",
+    "-o",
+    "ClearAllForwardings=yes",
+    "-o",
+    "ServerAliveInterval=10",
+    "-o",
+    "ServerAliveCountMax=2",
+    "netcup-daniel",
+    "nice -n 19 python3 -B -"
+  ],
+  "exit": 0,
+  "records": [
+    {
+      "cpus": 8,
+      "interval_seconds": 10,
+      "kernel": "6.12.101+deb13-amd64",
+      "kind": "metadata",
+      "os_release": "PRETTY_NAME=\"Debian GNU/Linux 13 (trixie)\"\nNAME=\"Debian GNU/Linux\"\nVERSION_ID=\"13\"\nVERSION=\"13 (trixie)\"\nVERSION_CODENAME=trixie\nDEBIAN_VERSION_FULL=13.6\nID=debian\nHOME_URL=\"https://www.debian.org/\"\nSUPPORT_URL=\"https://www.debian.org/support\"\nBUG_REPORT_URL=\"https://bugs.debian.org/\"",
+      "python": "3.13.5",
+      "sample_count": 13,
+      "scope": "procfs/statvfs/systemctl reads and TCP connect without application bytes",
+      "self_limits": {
+        "address_space_bytes": 134217728,
+        "cpu_seconds": 8,
+        "fds": 64,
+        "nice_requested": 19,
+        "wall_seconds": 150
+      },
+      "service": "ki-hilfezentrum.service",
+      "service_initial": {
+        "ActiveState": "active",
+        "CPUQuotaPerSecUSec": "500ms",
+        "CPUUsageNSec": "7917636000",
+        "ControlGroup": "/system.slice/ki-hilfezentrum.service",
+        "LimitNOFILE": "524288",
+        "LimitNPROC": "63768",
+        "MainPID": "1011380",
+        "MemoryCurrent": "75378688",
+        "MemoryHigh": "infinity",
+        "MemoryMax": "268435456",
+        "MemoryPeak": "86351872",
+        "MemorySwapMax": "infinity",
+        "NoNewPrivileges": "yes",
+        "SubState": "running",
+        "TasksCurrent": "6",
+        "TasksMax": "64",
+        "User": "ki-hilfezentrum"
+      },
+      "uid": 1000,
+      "utc": "2026-10-16T22:35:44.106143+00:00"
+    },
+    {
+      "collection_seconds": 0.017846352886408567,
+      "cpu_ticks_first8": [
+        8474091,
+        8389,
+        5917314,
+        2738889824,
+        103354,
+        0,
+        786258,
+        98457
+      ],
+      "disks": {
+        "sr0": {
+          "io_ms": 0,
+          "read_sectors_512": 0,
+          "weighted_io_ms": 0,
+          "write_sectors_512": 0
+        },
+        "vda": {
+          "io_ms": 247496,
+          "read_sectors_512": 1146055,
+          "weighted_io_ms": 4203074,
+          "write_sectors_512": 63601756
+        }
+      },
+      "filesystems": {
+        "/": {
+          "available_bytes": 314541338624,
+          "free_inodes": 20629211,
+          "total_bytes": 336847396864
+        },
+        "/var": {
+          "available_bytes": 314541338624,
+          "free_inodes": 20629211,
+          "total_bytes": 336847396864
+        }
+      },
+      "index": 0,
+      "kind": "sample",
+      "listener_tcp_only": {
+        "connect_ms": 2.1700779907405376,
+        "ok": true
+      },
+      "load": [
+        0.119140625,
+        0.05517578125,
+        0.00927734375
+      ],
+      "mem_kib": {
+        "Dirty": 1032,
+        "MemAvailable": 15472776,
+        "MemTotal": 16382180,
+        "SwapFree": 4194300,
+        "SwapTotal": 4194300,
+        "Writeback": 0
+      },
+      "monotonic": 3447346.892390741,
+      "psi": {
+        "cpu": "some avg10=0.00 avg60=0.00 avg300=0.00 total=4843772101\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0",
+        "io": "some avg10=0.00 avg60=0.00 avg300=0.00 total=327096347\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=253125334",
+        "memory": "some avg10=0.00 avg60=0.00 avg300=0.00 total=109\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=79"
+      },
+      "service": {
+        "ActiveState": "active",
+        "CPUQuotaPerSecUSec": "500ms",
+        "CPUUsageNSec": "7918768000",
+        "ControlGroup": "/system.slice/ki-hilfezentrum.service",
+        "LimitNOFILE": "524288",
+        "LimitNPROC": "63768",
+        "MainPID": "1011380",
+        "MemoryCurrent": "75640832",
+        "MemoryHigh": "infinity",
+        "MemoryMax": "268435456",
+        "MemoryPeak": "86351872",
+        "MemorySwapMax": "infinity",
+        "NoNewPrivileges": "yes",
+        "SubState": "running",
+        "TasksCurrent": "6",
+        "TasksMax": "64",
+        "User": "ki-hilfezentrum"
+      },
+      "service_cgroup": {
+        "cpu.max": "50000 100000",
+        "cpu.stat": "usage_usec 7918768\nuser_usec 6203313\nsystem_usec 1715455\nnice_usec 0\nnr_periods 7299\nnr_throttled 40\nthrottled_usec 2781314\nnr_bursts 0\nburst_usec 0",
+        "io.stat": "254:0 rbytes=0 wbytes=5156864 rios=0 wios=1189 dbytes=0 dios=0",
+        "memory.current": "75640832",
+        "memory.events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0",
+        "memory.max": "268435456",
+        "memory.swap.current": "0",
+        "memory.swap.max": "max",
+        "pids.current": "6",
+        "pids.max": "64"
+      },
+      "swap_pages": {
+        "pswpin": 0,
+        "pswpout": 0
+      },
+      "utc": "2026-10-16T22:35:44.123558+00:00"
+    },
+    {
+      "collection_seconds": 0.012305440846830606,
+      "cpu_busy_percent": 0.5884562413922656,
+      "cpu_iowait_percent": 0.025040691123075,
+      "cpu_ticks_first8": [
+        8474117,
+        8390,
+        5917330,
+        2738897762,
+        103356,
+        0,
+        786261,
+        98458
+      ],
+      "disks": {
+        "sr0": {
+          "io_ms": 0,
+          "read_sectors_512": 0,
+          "weighted_io_ms": 0,
+          "write_sectors_512": 0
+        },
+        "vda": {
+          "io_ms": 247512,
+          "read_sectors_512": 1146055,
+          "weighted_io_ms": 4203172,
+          "write_sectors_512": 63603820
+        }
+      },
+      "filesystems": {
+        "/": {
+          "available_bytes": 314541338624,
+          "free_inodes": 20629211,
+          "total_bytes": 336847396864
+        },
+        "/var": {
+          "available_bytes": 314541338624,
+          "free_inodes": 20629211,
+          "total_bytes": 336847396864
+        }
+      },
+      "index": 1,
+      "kind": "sample",
+      "listener_tcp_only": {
+        "connect_ms": 0.296643003821373,
+        "ok": true
+      },
+      "load": [
+        0.1005859375,
+        0.05322265625,
+        0.00830078125
+      ],
+      "mem_kib": {
+        "Dirty": 80,
+        "MemAvailable": 15476284,
+        "MemTotal": 16382180,
+        "SwapFree": 4194300,
+        "SwapTotal": 4194300,
+        "Writeback": 0
+      },
+      "monotonic": 3447356.892636721,
+      "psi": {
+        "cpu": "some avg10=0.00 avg60=0.00 avg300=0.00 total=4843785883\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0",
+        "io": "some avg10=0.00 avg60=0.00 avg300=0.00 total=327100004\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=253128873",
+        "memory": "some avg10=0.00 avg60=0.00 avg300=0.00 total=109\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=79"
+      },
+      "service": {
+        "ActiveState": "active",
+        "CPUQuotaPerSecUSec": "500ms",
+        "CPUUsageNSec": "7924632000",
+        "ControlGroup": "/system.slice/ki-hilfezentrum.service",
+        "LimitNOFILE": "524288",
+        "LimitNPROC": "63768",
+        "MainPID": "1011380",
+        "MemoryCurrent": "75636736",
+        "MemoryHigh": "infinity",
+        "MemoryMax": "268435456",
+        "MemoryPeak": "86351872",
+        "MemorySwapMax": "infinity",
+        "NoNewPrivileges": "yes",
+        "SubState": "running",
+        "TasksCurrent": "6",
+        "TasksMax": "64",
+        "User": "ki-hilfezentrum"
+      },
+      "service_cgroup": {
+        "cpu.max": "50000 100000",
+        "cpu.stat": "usage_usec 7924632\nuser_usec 6208570\nsystem_usec 1716061\nnice_usec 0\nnr_periods 7307\nnr_throttled 40\nthrottled_usec 2781314\nnr_bursts 0\nburst_usec 0",
+        "io.stat": "254:0 rbytes=0 wbytes=5156864 rios=0 wios=1189 dbytes=0 dios=0",
+        "memory.current": "75636736",
+        "memory.events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0",
+        "memory.max": "268435456",
+        "memory.swap.current": "0",
+        "memory.swap.max": "max",
+        "pids.current": "6",
+        "pids.max": "64"
+      },
+      "swap_pages": {
+        "pswpin": 0,
+        "pswpout": 0
+      },
+      "utc": "2026-10-16T22:35:54.122150+00:00"
+    },
+    {
+      "collection_seconds": 0.015359793789684772,
+      "cpu_busy_percent": 1.6666666666666718,
+      "cpu_iowait_percent": 0.012531328320802004,
+      "cpu_ticks_first8": [
+        8474186,
+        8411,
+        5917369,
+        2738905608,
+        103357,
+        0,
+        786264,
+        98459
+      ],
+      "disks": {
+        "sr0": {
+          "io_ms": 0,
+          "read_sectors_512": 0,
+          "weighted_io_ms": 0,
+          "write_sectors_512": 0
+        },
+        "vda": {
+          "io_ms": 247532,
+          "read_sectors_512": 1146055,
+          "weighted_io_ms": 4203304,
+          "write_sectors_512": 63605756
+        }
+      },
+      "filesystems": {
+        "/": {
+          "available_bytes": 314541338624,
+          "free_inodes": 20629211,
+          "total_bytes": 336847396864
+        },
+        "/var": {
+          "available_bytes": 314541338624,
+          "free_inodes": 20629211,
+          "total_bytes": 336847396864
+        }
+      },
+      "index": 2,
+      "kind": "sample",
+      "listener_tcp_only": {
+        "connect_ms": 0.27731573209166527,
+        "ok": true
+      },
+      "load": [
+        0.08447265625,
+        0.05126953125,
+        0.00732421875
+      ],
+      "mem_kib": {
+        "Dirty": 464,
+        "MemAvailable": 15467192,
+        "MemTotal": 16382180,
+        "SwapFree": 4194300,
+        "SwapTotal": 4194300,
+        "Writeback": 0
+      },
+      "monotonic": 3447366.89257628,
+      "psi": {
+        "cpu": "some avg10=0.00 avg60=0.00 avg300=0.00 total=4843810847\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0",
+        "io": "some avg10=0.00 avg60=0.00 avg300=0.00 total=327102863\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=253131225",
+        "memory": "some avg10=0.00 avg60=0.00 avg300=0.00 total=109\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=79"
+      },
+      "service": {
+        "ActiveState": "active",
+        "CPUQuotaPerSecUSec": "500ms",
+        "CPUUsageNSec": "7960296000",
+        "ControlGroup": "/system.slice/ki-hilfezentrum.service",
+        "LimitNOFILE": "524288",
+        "LimitNPROC": "63768",
+        "MainPID": "1011380",
+        "MemoryCurrent": "75902976",
+        "MemoryHigh": "infinity",
+        "MemoryMax": "268435456",
+        "MemoryPeak": "86351872",
+        "MemorySwapMax": "infinity",
+        "NoNewPrivileges": "yes",
+        "SubState": "running",
+        "TasksCurrent": "6",
+        "TasksMax": "64",
+        "User": "ki-hilfezentrum"
+      },
+      "service_cgroup": {
+        "cpu.max": "50000 100000",
+        "cpu.stat": "usage_usec 7960296\nuser_usec 6233921\nsystem_usec 1726374\nnice_usec 0\nnr_periods 7323\nnr_throttled 40\nthrottled_usec 2781314\nnr_bursts 0\nburst_usec 0",
+        "io.stat": "254:0 rbytes=0 wbytes=5255168 rios=0 wios=1213 dbytes=0 dios=0",
+        "memory.current": "75902976",
+        "memory.events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0",
+        "memory.max": "268435456",
+        "memory.swap.current": "0",
+        "memory.swap.max": "max",
+        "pids.current": "6",
+        "pids.max": "64"
+      },
+      "swap_pages": {
+        "pswpin": 0,
+        "pswpout": 0
+      },
+      "utc": "2026-10-16T22:36:04.122180+00:00"
+    },
+    {
+      "collection_seconds": 0.014081167057156563,
+      "cpu_busy_percent": 0.6763527054108209,
+      "cpu_iowait_percent": 0.025050100200400802,
+      "cpu_ticks_first8": [
+        8474214,
+        8411,
+        5917392,
+        2738913536,
+        103359,
+        0,
+        786266,
+        98460
+      ],
+      "disks": {
+        "sr0": {
+          "io_ms": 0,
+          "read_sectors_512": 0,
+          "weighted_io_ms": 0,
+          "write_sectors_512": 0
+        },
+        "vda": {
+          "io_ms": 247540,
+          "read_sectors_512": 1146055,
+          "weighted_io_ms": 4203403,
+          "write_sectors_512": 63607348
+        }
+      },
+      "filesystems": {
+        "/": {
+          "available_bytes": 314541338624,
+          "free_inodes": 20629211,
+          "total_bytes": 336847396864
+        },
+        "/var": {
+          "available_bytes": 314541338624,
+          "free_inodes": 20629211,
+          "total_bytes": 336847396864
+        }
+      },
+      "index": 3,
+      "kind": "sample",
+      "listener_tcp_only": {
+        "connect_ms": 0.5613728426396847,
+        "ok": true
+      },
+      "load": [
+        0.0712890625,
+        0.04931640625,
+        0.00634765625
+      ],
+      "mem_kib": {
+        "Dirty": 20,
+        "MemAvailable": 15486388,
+        "MemTotal": 16382180,
+        "SwapFree": 4194300,
+        "SwapTotal": 4194300,
+        "Writeback": 0
+      },
+      "monotonic": 3447376.892620781,
+      "psi": {
+        "cpu": "some avg10=0.00 avg60=0.00 avg300=0.00 total=4843829250\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0",
+        "io": "some avg10=0.00 avg60=0.00 avg300=0.00 total=327104548\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=253132562",
+        "memory": "some avg10=0.00 avg60=0.00 avg300=0.00 total=109\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=79"
+      },
+      "service": {
+        "ActiveState": "active",
+        "CPUQuotaPerSecUSec": "500ms",
+        "CPUUsageNSec": "7966409000",
+        "ControlGroup": "/system.slice/ki-hilfezentrum.service",
+        "LimitNOFILE": "524288",
+        "LimitNPROC": "63768",
+        "MainPID": "1011380",
+        "MemoryCurrent": "75902976",
+        "MemoryHigh": "infinity",
+        "MemoryMax": "268435456",
+        "MemoryPeak": "86351872",
+        "MemorySwapMax": "infinity",
+        "NoNewPrivileges": "yes",
+        "SubState": "running",
+        "TasksCurrent": "6",
+        "TasksMax": "64",
+        "User": "ki-hilfezentrum"
+      },
+      "service_cgroup": {
+        "cpu.max": "50000 100000",
+        "cpu.stat": "usage_usec 7966409\nuser_usec 6239618\nsystem_usec 1726791\nnice_usec 0\nnr_periods 7333\nnr_throttled 40\nthrottled_usec 2781314\nnr_bursts 0\nburst_usec 0",
+        "io.stat": "254:0 rbytes=0 wbytes=5255168 rios=0 wios=1213 dbytes=0 dios=0",
+        "memory.current": "75898880",
+        "memory.events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0",
+        "memory.max": "268435456",
+        "memory.swap.current": "0",
+        "memory.swap.max": "max",
+        "pids.current": "6",
+        "pids.max": "64"
+      },
+      "swap_pages": {
+        "pswpin": 0,
+        "pswpout": 0
+      },
+      "utc": "2026-10-16T22:36:14.122269+00:00"
+    },
+    {
+      "collection_seconds": 0.014003145974129438,
+      "cpu_busy_percent": 0.576080150281777,
+      "cpu_iowait_percent": 0.0,
+      "cpu_ticks_first8": [
+        8474239,
+        8412,
+        5917411,
+        2738921475,
+        103359,
+        0,
+        786267,
+        98460
+      ],
+      "disks": {
+        "sr0": {
+          "io_ms": 0,
+          "read_sectors_512": 0,
+          "weighted_io_ms": 0,
+          "write_sectors_512": 0
+        },
+        "vda": {
+          "io_ms": 247540,
+          "read_sectors_512": 1146055,
+          "weighted_io_ms": 4203414,
+          "write_sectors_512": 63607540
+        }
+      },
+      "filesystems": {
+        "/": {
+          "available_bytes": 314541338624,
+          "free_inodes": 20629211,
+          "total_bytes": 336847396864
+        },
+        "/var": {
+          "available_bytes": 314541338624,
+          "free_inodes": 20629211,
+          "total_bytes": 336847396864
+        }
+      },
+      "index": 4,
+      "kind": "sample",
+      "listener_tcp_only": {
+        "connect_ms": 0.2842294052243233,
+        "ok": true
+      },
+      "load": [
+        0.06005859375,
+        0.04736328125,
+        0.00537109375
+      ],
+      "mem_kib": {
+        "Dirty": 8,
+        "MemAvailable": 15466516,
+        "MemTotal": 16382180,
+        "SwapFree": 4194300,
+        "SwapTotal": 4194300,
+        "Writeback": 0
+      },
+      "monotonic": 3447386.892557434,
+      "psi": {
+        "cpu": "some avg10=0.00 avg60=0.00 avg300=0.00 total=4843844093\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0",
+        "io": "some avg10=0.00 avg60=0.00 avg300=0.00 total=327105055\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=253132922",
+        "memory": "some avg10=0.00 avg60=0.00 avg300=0.00 total=109\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=79"
+      },
+      "service": {
+        "ActiveState": "active",
+        "CPUQuotaPerSecUSec": "500ms",
+        "CPUUsageNSec": "7972031000",
+        "ControlGroup": "/system.slice/ki-hilfezentrum.service",
+        "LimitNOFILE": "524288",
+        "LimitNPROC": "63768",
+        "MainPID": "1011380",
+        "MemoryCurrent": "75644928",
+        "MemoryHigh": "infinity",
+        "MemoryMax": "268435456",
+        "MemoryPeak": "86351872",
+        "MemorySwapMax": "infinity",
+        "NoNewPrivileges": "yes",
+        "SubState": "running",
+        "TasksCurrent": "6",
+        "TasksMax": "64",
+        "User": "ki-hilfezentrum"
+      },
+      "service_cgroup": {
+        "cpu.max": "50000 100000",
+        "cpu.stat": "usage_usec 7972031\nuser_usec 6240738\nsystem_usec 1731293\nnice_usec 0\nnr_periods 7345\nnr_throttled 40\nthrottled_usec 2781314\nnr_bursts 0\nburst_usec 0",
+        "io.stat": "254:0 rbytes=0 wbytes=5255168 rios=0 wios=1213 dbytes=0 dios=0",
+        "memory.current": "75644928",
+        "memory.events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0",
+        "memory.max": "268435456",
+        "memory.swap.current": "0",
+        "memory.swap.max": "max",
+        "pids.current": "6",
+        "pids.max": "64"
+      },
+      "swap_pages": {
+        "pswpin": 0,
+        "pswpout": 0
+      },
+      "utc": "2026-10-16T22:36:24.122256+00:00"
+    },
+    {
+      "collection_seconds": 0.014201728161424398,
+      "cpu_busy_percent": 0.6132665832290329,
+      "cpu_iowait_percent": 0.0,
+      "cpu_ticks_first8": [
+        8474263,
+        8413,
+        5917432,
+        2738929416,
+        103359,
+        0,
+        786269,
+        98461
+      ],
+      "disks": {
+        "sr0": {
+          "io_ms": 0,
+          "read_sectors_512": 0,
+          "weighted_io_ms": 0,
+          "write_sectors_512": 0
+        },
+        "vda": {
+          "io_ms": 247540,
+          "read_sectors_512": 1146055,
+          "weighted_io_ms": 4203424,
+          "write_sectors_512": 63607700
+        }
+      },
+      "filesystems": {
+        "/": {
+          "available_bytes": 314541338624,
+          "free_inodes": 20629211,
+          "total_bytes": 336847396864
+        },
+        "/var": {
+          "available_bytes": 314541338624,
+          "free_inodes": 20629211,
+          "total_bytes": 336847396864
+        }
+      },
+      "index": 5,
+      "kind": "sample",
+      "listener_tcp_only": {
+        "connect_ms": 0.42016059160232544,
+        "ok": true
+      },
+      "load": [
+        0.05029296875,
+        0.04541015625,
+        0.00439453125
+      ],
+      "mem_kib": {
+        "Dirty": 72,
+        "MemAvailable": 15477524,
+        "MemTotal": 16382180,
+        "SwapFree": 4194300,
+        "SwapTotal": 4194300,
+        "Writeback": 0
+      },
+      "monotonic": 3447396.89255579,
+      "psi": {
+        "cpu": "some avg10=0.00 avg60=0.00 avg300=0.00 total=4843859065\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0",
+        "io": "some avg10=0.00 avg60=0.00 avg300=0.00 total=327105711\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=253133456",
+        "memory": "some avg10=0.00 avg60=0.00 avg300=0.00 total=109\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=79"
+      },
+      "service": {
+        "ActiveState": "active",
+        "CPUQuotaPerSecUSec": "500ms",
+        "CPUUsageNSec": "7977818000",
+        "ControlGroup": "/system.slice/ki-hilfezentrum.service",
+        "LimitNOFILE": "524288",
+        "LimitNPROC": "63768",
+        "MainPID": "1011380",
+        "MemoryCurrent": "75390976",
+        "MemoryHigh": "infinity",
+        "MemoryMax": "268435456",
+        "MemoryPeak": "86351872",
+        "MemorySwapMax": "infinity",
+        "NoNewPrivileges": "yes",
+        "SubState": "running",
+        "TasksCurrent": "6",
+        "TasksMax": "64",
+        "User": "ki-hilfezentrum"
+      },
+      "service_cgroup": {
+        "cpu.max": "50000 100000",
+        "cpu.stat": "usage_usec 7977818\nuser_usec 6246525\nsystem_usec 1731293\nnice_usec 0\nnr_periods 7355\nnr_throttled 40\nthrottled_usec 2781314\nnr_bursts 0\nburst_usec 0",
+        "io.stat": "254:0 rbytes=0 wbytes=5255168 rios=0 wios=1213 dbytes=0 dios=0",
+        "memory.current": "75390976",
+        "memory.events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0",
+        "memory.max": "268435456",
+        "memory.swap.current": "0",
+        "memory.swap.max": "max",
+        "pids.current": "6",
+        "pids.max": "64"
+      },
+      "swap_pages": {
+        "pswpin": 0,
+        "pswpout": 0
+      },
+      "utc": "2026-10-16T22:36:34.122363+00:00"
+    },
+    {
+      "collection_seconds": 0.014709529001265764,
+      "cpu_busy_percent": 0.538644619817108,
+      "cpu_iowait_percent": 0.0,
+      "cpu_ticks_first8": [
+        8474288,
+        8413,
+        5917448,
+        2738937356,
+        103359,
+        0,
+        786271,
+        98461
+      ],
+      "disks": {
+        "sr0": {
+          "io_ms": 0,
+          "read_sectors_512": 0,
+          "weighted_io_ms": 0,
+          "write_sectors_512": 0
+        },
+        "vda": {
+          "io_ms": 247540,
+          "read_sectors_512": 1146055,
+          "weighted_io_ms": 4203429,
+          "write_sectors_512": 63607748
+        }
+      },
+      "filesystems": {
+        "/": {
+          "available_bytes": 314541338624,
+          "free_inodes": 20629211,
+          "total_bytes": 336847396864
+        },
+        "/var": {
+          "available_bytes": 314541338624,
+          "free_inodes": 20629211,
+          "total_bytes": 336847396864
+        }
+      },
+      "index": 6,
+      "kind": "sample",
+      "listener_tcp_only": {
+        "connect_ms": 0.2764142118394375,
+        "ok": true
+      },
+      "load": [
+        0.0419921875,
+        0.04345703125,
+        0.00341796875
+      ],
+      "mem_kib": {
+        "Dirty": 0,
+        "MemAvailable": 15474444,
+        "MemTotal": 16382180,
+        "SwapFree": 4194300,
+        "SwapTotal": 4194300,
+        "Writeback": 0
+      },
+      "monotonic": 3447406.892585836,
+      "psi": {
+        "cpu": "some avg10=0.00 avg60=0.00 avg300=0.00 total=4843877166\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0",
+        "io": "some avg10=0.00 avg60=0.00 avg300=0.00 total=327106054\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=253133714",
+        "memory": "some avg10=0.00 avg60=0.00 avg300=0.00 total=109\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=79"
+      },
+      "service": {
+        "ActiveState": "active",
+        "CPUQuotaPerSecUSec": "500ms",
+        "CPUUsageNSec": "7983952000",
+        "ControlGroup": "/system.slice/ki-hilfezentrum.service",
+        "LimitNOFILE": "524288",
+        "LimitNPROC": "63768",
+        "MainPID": "1011380",
+        "MemoryCurrent": "75390976",
+        "MemoryHigh": "infinity",
+        "MemoryMax": "268435456",
+        "MemoryPeak": "86351872",
+        "MemorySwapMax": "infinity",
+        "NoNewPrivileges": "yes",
+        "SubState": "running",
+        "TasksCurrent": "6",
+        "TasksMax": "64",
+        "User": "ki-hilfezentrum"
+      },
+      "service_cgroup": {
+        "cpu.max": "50000 100000",
+        "cpu.stat": "usage_usec 7983952\nuser_usec 6252659\nsystem_usec 1731293\nnice_usec 0\nnr_periods 7365\nnr_throttled 40\nthrottled_usec 2781314\nnr_bursts 0\nburst_usec 0",
+        "io.stat": "254:0 rbytes=0 wbytes=5255168 rios=0 wios=1213 dbytes=0 dios=0",
+        "memory.current": "75390976",
+        "memory.events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0",
+        "memory.max": "268435456",
+        "memory.swap.current": "0",
+        "memory.swap.max": "max",
+        "pids.current": "6",
+        "pids.max": "64"
+      },
+      "swap_pages": {
+        "pswpin": 0,
+        "pswpout": 0
+      },
+      "utc": "2026-10-16T22:36:44.121873+00:00"
+    },
+    {
+      "collection_seconds": 0.013587922789156437,
+      "cpu_busy_percent": 0.563204005006257,
+      "cpu_iowait_percent": 0.012515644555694618,
+      "cpu_ticks_first8": [
+        8474312,
+        8414,
+        5917467,
+        2738945300,
+        103360,
+        0,
+        786272,
+        98461
+      ],
+      "disks": {
+        "sr0": {
+          "io_ms": 0,
+          "read_sectors_512": 0,
+          "weighted_io_ms": 0,
+          "write_sectors_512": 0
+        },
+        "vda": {
+          "io_ms": 247540,
+          "read_sectors_512": 1146055,
+          "weighted_io_ms": 4203430,
+          "write_sectors_512": 63607780
+        }
+      },
+      "filesystems": {
+        "/": {
+          "available_bytes": 314541338624,
+          "free_inodes": 20629211,
+          "total_bytes": 336847396864
+        },
+        "/var": {
+          "available_bytes": 314541338624,
+          "free_inodes": 20629211,
+          "total_bytes": 336847396864
+        }
+      },
+      "index": 7,
+      "kind": "sample",
+      "listener_tcp_only": {
+        "connect_ms": 0.25693606585264206,
+        "ok": true
+      },
+      "load": [
+        0.03515625,
+        0.04150390625,
+        0.00244140625
+      ],
+      "mem_kib": {
+        "Dirty": 0,
+        "MemAvailable": 15473836,
+        "MemTotal": 16382180,
+        "SwapFree": 4194300,
+        "SwapTotal": 4194300,
+        "Writeback": 0
+      },
+      "monotonic": 3447416.892565472,
+      "psi": {
+        "cpu": "some avg10=0.00 avg60=0.00 avg300=0.00 total=4843889577\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0",
+        "io": "some avg10=0.00 avg60=0.00 avg300=0.00 total=327106297\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=253133885",
+        "memory": "some avg10=0.00 avg60=0.00 avg300=0.00 total=109\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=79"
+      },
+      "service": {
+        "ActiveState": "active",
+        "CPUQuotaPerSecUSec": "500ms",
+        "CPUUsageNSec": "7989309000",
+        "ControlGroup": "/system.slice/ki-hilfezentrum.service",
+        "LimitNOFILE": "524288",
+        "LimitNPROC": "63768",
+        "MainPID": "1011380",
+        "MemoryCurrent": "75386880",
+        "MemoryHigh": "infinity",
+        "MemoryMax": "268435456",
+        "MemoryPeak": "86351872",
+        "MemorySwapMax": "infinity",
+        "NoNewPrivileges": "yes",
+        "SubState": "running",
+        "TasksCurrent": "6",
+        "TasksMax": "64",
+        "User": "ki-hilfezentrum"
+      },
+      "service_cgroup": {
+        "cpu.max": "50000 100000",
+        "cpu.stat": "usage_usec 7989309\nuser_usec 6258016\nsystem_usec 1731293\nnice_usec 0\nnr_periods 7377\nnr_throttled 40\nthrottled_usec 2781314\nnr_bursts 0\nburst_usec 0",
+        "io.stat": "254:0 rbytes=0 wbytes=5255168 rios=0 wios=1213 dbytes=0 dios=0",
+        "memory.current": "75386880",
+        "memory.events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0",
+        "memory.max": "268435456",
+        "memory.swap.current": "0",
+        "memory.swap.max": "max",
+        "pids.current": "6",
+        "pids.max": "64"
+      },
+      "swap_pages": {
+        "pswpin": 0,
+        "pswpout": 0
+      },
+      "utc": "2026-10-16T22:36:54.122153+00:00"
+    },
+    {
+      "collection_seconds": 0.015138634946197271,
+      "cpu_busy_percent": 0.5884562413922656,
+      "cpu_iowait_percent": 0.0,
+      "cpu_ticks_first8": [
+        8474341,
+        8414,
+        5917481,
+        2738953240,
+        103360,
+        0,
+        786275,
+        98462
+      ],
+      "disks": {
+        "sr0": {
+          "io_ms": 0,
+          "read_sectors_512": 0,
+          "weighted_io_ms": 0,
+          "write_sectors_512": 0
+        },
+        "vda": {
+          "io_ms": 247540,
+          "read_sectors_512": 1146055,
+          "weighted_io_ms": 4203430,
+          "write_sectors_512": 63607780
+        }
+      },
+      "filesystems": {
+        "/": {
+          "available_bytes": 314541338624,
+          "free_inodes": 20629211,
+          "total_bytes": 336847396864
+        },
+        "/var": {
+          "available_bytes": 314541338624,
+          "free_inodes": 20629211,
+          "total_bytes": 336847396864
+        }
+      },
+      "index": 8,
+      "kind": "sample",
+      "listener_tcp_only": {
+        "connect_ms": 0.3586527891457081,
+        "ok": true
+      },
+      "load": [
+        0.029296875,
+        0.03955078125,
+        0.00146484375
+      ],
+      "mem_kib": {
+        "Dirty": 72,
+        "MemAvailable": 15477476,
+        "MemTotal": 16382180,
+        "SwapFree": 4194300,
+        "SwapTotal": 4194300,
+        "Writeback": 0
+      },
+      "monotonic": 3447426.892586575,
+      "psi": {
+        "cpu": "some avg10=0.00 avg60=0.00 avg300=0.00 total=4843907000\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0",
+        "io": "some avg10=0.00 avg60=0.00 avg300=0.00 total=327106889\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=253134319",
+        "memory": "some avg10=0.00 avg60=0.00 avg300=0.00 total=109\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=79"
+      },
+      "service": {
+        "ActiveState": "active",
+        "CPUQuotaPerSecUSec": "500ms",
+        "CPUUsageNSec": "7995492000",
+        "ControlGroup": "/system.slice/ki-hilfezentrum.service",
+        "LimitNOFILE": "524288",
+        "LimitNPROC": "63768",
+        "MainPID": "1011380",
+        "MemoryCurrent": "75902976",
+        "MemoryHigh": "infinity",
+        "MemoryMax": "268435456",
+        "MemoryPeak": "86351872",
+        "MemorySwapMax": "infinity",
+        "NoNewPrivileges": "yes",
+        "SubState": "running",
+        "TasksCurrent": "6",
+        "TasksMax": "64",
+        "User": "ki-hilfezentrum"
+      },
+      "service_cgroup": {
+        "cpu.max": "50000 100000",
+        "cpu.stat": "usage_usec 7995492\nuser_usec 6263657\nsystem_usec 1731834\nnice_usec 0\nnr_periods 7387\nnr_throttled 40\nthrottled_usec 2781314\nnr_bursts 0\nburst_usec 0",
+        "io.stat": "254:0 rbytes=0 wbytes=5255168 rios=0 wios=1213 dbytes=0 dios=0",
+        "memory.current": "75898880",
+        "memory.events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0",
+        "memory.max": "268435456",
+        "memory.swap.current": "0",
+        "memory.swap.max": "max",
+        "pids.current": "6",
+        "pids.max": "64"
+      },
+      "swap_pages": {
+        "pswpin": 0,
+        "pswpout": 0
+      },
+      "utc": "2026-10-16T22:37:04.122177+00:00"
+    },
+    {
+      "collection_seconds": 0.014352276921272278,
+      "cpu_busy_percent": 0.6259389083625444,
+      "cpu_iowait_percent": 0.0,
+      "cpu_ticks_first8": [
+        8474367,
+        8415,
+        5917502,
+        2738961178,
+        103360,
+        0,
+        786277,
+        98462
+      ],
+      "disks": {
+        "sr0": {
+          "io_ms": 0,
+          "read_sectors_512": 0,
+          "weighted_io_ms": 0,
+          "write_sectors_512": 0
+        },
+        "vda": {
+          "io_ms": 247540,
+          "read_sectors_512": 1146055,
+          "weighted_io_ms": 4203445,
+          "write_sectors_512": 63608004
+        }
+      },
+      "filesystems": {
+        "/": {
+          "available_bytes": 314541338624,
+          "free_inodes": 20629211,
+          "total_bytes": 336847396864
+        },
+        "/var": {
+          "available_bytes": 314541338624,
+          "free_inodes": 20629211,
+          "total_bytes": 336847396864
+        }
+      },
+      "index": 9,
+      "kind": "sample",
+      "listener_tcp_only": {
+        "connect_ms": 0.26657478883862495,
+        "ok": true
+      },
+      "load": [
+        0.0244140625,
+        0.03759765625,
+        0.00048828125
+      ],
+      "mem_kib": {
+        "Dirty": 76,
+        "MemAvailable": 15481924,
+        "MemTotal": 16382180,
+        "SwapFree": 4194300,
+        "SwapTotal": 4194300,
+        "Writeback": 0
+      },
+      "monotonic": 3447436.89255853,
+      "psi": {
+        "cpu": "some avg10=0.00 avg60=0.00 avg300=0.00 total=4843926446\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0",
+        "io": "some avg10=0.00 avg60=0.00 avg300=0.00 total=327107797\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=253135062",
+        "memory": "some avg10=0.00 avg60=0.00 avg300=0.00 total=109\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=79"
+      },
+      "service": {
+        "ActiveState": "active",
+        "CPUQuotaPerSecUSec": "500ms",
+        "CPUUsageNSec": "8001143000",
+        "ControlGroup": "/system.slice/ki-hilfezentrum.service",
+        "LimitNOFILE": "524288",
+        "LimitNPROC": "63768",
+        "MainPID": "1011380",
+        "MemoryCurrent": "75902976",
+        "MemoryHigh": "infinity",
+        "MemoryMax": "268435456",
+        "MemoryPeak": "86351872",
+        "MemorySwapMax": "infinity",
+        "NoNewPrivileges": "yes",
+        "SubState": "running",
+        "TasksCurrent": "6",
+        "TasksMax": "64",
+        "User": "ki-hilfezentrum"
+      },
+      "service_cgroup": {
+        "cpu.max": "50000 100000",
+        "cpu.stat": "usage_usec 8001143\nuser_usec 6268084\nsystem_usec 1733058\nnice_usec 0\nnr_periods 7397\nnr_throttled 40\nthrottled_usec 2781314\nnr_bursts 0\nburst_usec 0",
+        "io.stat": "254:0 rbytes=0 wbytes=5255168 rios=0 wios=1213 dbytes=0 dios=0",
+        "memory.current": "75898880",
+        "memory.events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0",
+        "memory.max": "268435456",
+        "memory.swap.current": "0",
+        "memory.swap.max": "max",
+        "pids.current": "6",
+        "pids.max": "64"
+      },
+      "swap_pages": {
+        "pswpin": 0,
+        "pswpout": 0
+      },
+      "utc": "2026-10-16T22:37:14.121889+00:00"
+    },
+    {
+      "collection_seconds": 0.015525502152740955,
+      "cpu_busy_percent": 0.638377769432974,
+      "cpu_iowait_percent": 0.012517211165352359,
+      "cpu_ticks_first8": [
+        8474393,
+        8415,
+        5917522,
+        2738969115,
+        103361,
+        0,
+        786281,
+        98463
+      ],
+      "disks": {
+        "sr0": {
+          "io_ms": 0,
+          "read_sectors_512": 0,
+          "weighted_io_ms": 0,
+          "write_sectors_512": 0
+        },
+        "vda": {
+          "io_ms": 247540,
+          "read_sectors_512": 1146055,
+          "weighted_io_ms": 4203457,
+          "write_sectors_512": 63608196
+        }
+      },
+      "filesystems": {
+        "/": {
+          "available_bytes": 314541338624,
+          "free_inodes": 20629211,
+          "total_bytes": 336847396864
+        },
+        "/var": {
+          "available_bytes": 314541338624,
+          "free_inodes": 20629211,
+          "total_bytes": 336847396864
+        }
+      },
+      "index": 10,
+      "kind": "sample",
+      "listener_tcp_only": {
+        "connect_ms": 0.35374192520976067,
+        "ok": true
+      },
+      "load": [
+        0.02001953125,
+        0.03564453125,
+        0.0
+      ],
+      "mem_kib": {
+        "Dirty": 8,
+        "MemAvailable": 15484220,
+        "MemTotal": 16382180,
+        "SwapFree": 4194300,
+        "SwapTotal": 4194300,
+        "Writeback": 0
+      },
+      "monotonic": 3447446.892553644,
+      "psi": {
+        "cpu": "some avg10=0.00 avg60=0.00 avg300=0.00 total=4843941768\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0",
+        "io": "some avg10=0.00 avg60=0.00 avg300=0.00 total=327108698\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=253135768",
+        "memory": "some avg10=0.00 avg60=0.00 avg300=0.00 total=109\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=79"
+      },
+      "service": {
+        "ActiveState": "active",
+        "CPUQuotaPerSecUSec": "500ms",
+        "CPUUsageNSec": "8006721000",
+        "ControlGroup": "/system.slice/ki-hilfezentrum.service",
+        "LimitNOFILE": "524288",
+        "LimitNPROC": "63768",
+        "MainPID": "1011380",
+        "MemoryCurrent": "75640832",
+        "MemoryHigh": "infinity",
+        "MemoryMax": "268435456",
+        "MemoryPeak": "86351872",
+        "MemorySwapMax": "infinity",
+        "NoNewPrivileges": "yes",
+        "SubState": "running",
+        "TasksCurrent": "6",
+        "TasksMax": "64",
+        "User": "ki-hilfezentrum"
+      },
+      "service_cgroup": {
+        "cpu.max": "50000 100000",
+        "cpu.stat": "usage_usec 8006871\nuser_usec 6269284\nsystem_usec 1737587\nnice_usec 0\nnr_periods 7407\nnr_throttled 40\nthrottled_usec 2781314\nnr_bursts 0\nburst_usec 0",
+        "io.stat": "254:0 rbytes=0 wbytes=5255168 rios=0 wios=1213 dbytes=0 dios=0",
+        "memory.current": "75640832",
+        "memory.events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0",
+        "memory.max": "268435456",
+        "memory.swap.current": "0",
+        "memory.swap.max": "max",
+        "pids.current": "6",
+        "pids.max": "64"
+      },
+      "swap_pages": {
+        "pswpin": 0,
+        "pswpout": 0
+      },
+      "utc": "2026-10-16T22:37:24.122033+00:00"
+    },
+    {
+      "collection_seconds": 0.012511576060205698,
+      "cpu_busy_percent": 0.6261740763932377,
+      "cpu_iowait_percent": 0.0,
+      "cpu_ticks_first8": [
+        8474417,
+        8416,
+        5917545,
+        2738977050,
+        103361,
+        0,
+        786283,
+        98463
+      ],
+      "disks": {
+        "sr0": {
+          "io_ms": 0,
+          "read_sectors_512": 0,
+          "weighted_io_ms": 0,
+          "write_sectors_512": 0
+        },
+        "vda": {
+          "io_ms": 247540,
+          "read_sectors_512": 1146055,
+          "weighted_io_ms": 4203457,
+          "write_sectors_512": 63608196
+        }
+      },
+      "filesystems": {
+        "/": {
+          "available_bytes": 314541338624,
+          "free_inodes": 20629211,
+          "total_bytes": 336847396864
+        },
+        "/var": {
+          "available_bytes": 314541338624,
+          "free_inodes": 20629211,
+          "total_bytes": 336847396864
+        }
+      },
+      "index": 11,
+      "kind": "sample",
+      "listener_tcp_only": {
+        "connect_ms": 0.26098405942320824,
+        "ok": true
+      },
+      "load": [
+        0.0166015625,
+        0.03369140625,
+        0.0
+      ],
+      "mem_kib": {
+        "Dirty": 0,
+        "MemAvailable": 15494856,
+        "MemTotal": 16382180,
+        "SwapFree": 4194300,
+        "SwapTotal": 4194300,
+        "Writeback": 0
+      },
+      "monotonic": 3447456.892544712,
+      "psi": {
+        "cpu": "some avg10=0.00 avg60=0.00 avg300=0.00 total=4843958909\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0",
+        "io": "some avg10=0.00 avg60=0.00 avg300=0.00 total=327108875\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=253135891",
+        "memory": "some avg10=0.00 avg60=0.00 avg300=0.00 total=109\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=79"
+      },
+      "service": {
+        "ActiveState": "active",
+        "CPUQuotaPerSecUSec": "500ms",
+        "CPUUsageNSec": "8012919000",
+        "ControlGroup": "/system.slice/ki-hilfezentrum.service",
+        "LimitNOFILE": "524288",
+        "LimitNPROC": "63768",
+        "MainPID": "1011380",
+        "MemoryCurrent": "75386880",
+        "MemoryHigh": "infinity",
+        "MemoryMax": "268435456",
+        "MemoryPeak": "86351872",
+        "MemorySwapMax": "infinity",
+        "NoNewPrivileges": "yes",
+        "SubState": "running",
+        "TasksCurrent": "6",
+        "TasksMax": "64",
+        "User": "ki-hilfezentrum"
+      },
+      "service_cgroup": {
+        "cpu.max": "50000 100000",
+        "cpu.stat": "usage_usec 8012919\nuser_usec 6274930\nsystem_usec 1737988\nnice_usec 0\nnr_periods 7415\nnr_throttled 40\nthrottled_usec 2781314\nnr_bursts 0\nburst_usec 0",
+        "io.stat": "254:0 rbytes=0 wbytes=5255168 rios=0 wios=1213 dbytes=0 dios=0",
+        "memory.current": "75386880",
+        "memory.events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0",
+        "memory.max": "268435456",
+        "memory.swap.current": "0",
+        "memory.swap.max": "max",
+        "pids.current": "6",
+        "pids.max": "64"
+      },
+      "swap_pages": {
+        "pswpin": 0,
+        "pswpout": 0
+      },
+      "utc": "2026-10-16T22:37:34.121887+00:00"
+    },
+    {
+      "collection_seconds": 0.012435507960617542,
+      "cpu_busy_percent": 0.6881881881881879,
+      "cpu_iowait_percent": 0.0,
+      "cpu_ticks_first8": [
+        8474439,
+        8417,
+        5917574,
+        2738984987,
+        103361,
+        0,
+        786285,
+        98464
+      ],
+      "disks": {
+        "sr0": {
+          "io_ms": 0,
+          "read_sectors_512": 0,
+          "weighted_io_ms": 0,
+          "write_sectors_512": 0
+        },
+        "vda": {
+          "io_ms": 247540,
+          "read_sectors_512": 1146055,
+          "weighted_io_ms": 4203466,
+          "write_sectors_512": 63608364
+        }
+      },
+      "filesystems": {
+        "/": {
+          "available_bytes": 314541338624,
+          "free_inodes": 20629211,
+          "total_bytes": 336847396864
+        },
+        "/var": {
+          "available_bytes": 314541338624,
+          "free_inodes": 20629211,
+          "total_bytes": 336847396864
+        }
+      },
+      "index": 12,
+      "kind": "sample",
+      "listener_tcp_only": {
+        "connect_ms": 0.26127370074391365,
+        "ok": true
+      },
+      "load": [
+        0.2353515625,
+        0.08154296875,
+        0.015625
+      ],
+      "mem_kib": {
+        "Dirty": 8,
+        "MemAvailable": 15475656,
+        "MemTotal": 16382180,
+        "SwapFree": 4194300,
+        "SwapTotal": 4194300,
+        "Writeback": 0
+      },
+      "monotonic": 3447466.892543298,
+      "psi": {
+        "cpu": "some avg10=0.00 avg60=0.00 avg300=0.00 total=4843979187\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0",
+        "io": "some avg10=0.00 avg60=0.00 avg300=0.00 total=327109325\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=253136238",
+        "memory": "some avg10=0.00 avg60=0.00 avg300=0.00 total=109\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=79"
+      },
+      "service": {
+        "ActiveState": "active",
+        "CPUQuotaPerSecUSec": "500ms",
+        "CPUUsageNSec": "8018773000",
+        "ControlGroup": "/system.slice/ki-hilfezentrum.service",
+        "LimitNOFILE": "524288",
+        "LimitNPROC": "63768",
+        "MainPID": "1011380",
+        "MemoryCurrent": "75640832",
+        "MemoryHigh": "infinity",
+        "MemoryMax": "268435456",
+        "MemoryPeak": "86351872",
+        "MemorySwapMax": "infinity",
+        "NoNewPrivileges": "yes",
+        "SubState": "running",
+        "TasksCurrent": "6",
+        "TasksMax": "64",
+        "User": "ki-hilfezentrum"
+      },
+      "service_cgroup": {
+        "cpu.max": "50000 100000",
+        "cpu.stat": "usage_usec 8018773\nuser_usec 6277138\nsystem_usec 1741634\nnice_usec 0\nnr_periods 7424\nnr_throttled 40\nthrottled_usec 2781314\nnr_bursts 0\nburst_usec 0",
+        "io.stat": "254:0 rbytes=0 wbytes=5255168 rios=0 wios=1213 dbytes=0 dios=0",
+        "memory.current": "75640832",
+        "memory.events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0",
+        "memory.max": "268435456",
+        "memory.swap.current": "0",
+        "memory.swap.max": "max",
+        "pids.current": "6",
+        "pids.max": "64"
+      },
+      "swap_pages": {
+        "pswpin": 0,
+        "pswpout": 0
+      },
+      "utc": "2026-10-16T22:37:44.121934+00:00"
+    },
+    {
+      "elapsed_seconds": 120.01274590007961,
+      "kind": "complete",
+      "samples": 13,
+      "self_usage": {
+        "system_cpu_seconds": 0.018105,
+        "user_cpu_seconds": 0.07893399999999999
+      },
+      "service_final": {
+        "ActiveState": "active",
+        "CPUQuotaPerSecUSec": "500ms",
+        "CPUUsageNSec": "8018773000",
+        "ControlGroup": "/system.slice/ki-hilfezentrum.service",
+        "LimitNOFILE": "524288",
+        "LimitNPROC": "63768",
+        "MainPID": "1011380",
+        "MemoryCurrent": "75386880",
+        "MemoryHigh": "infinity",
+        "MemoryMax": "268435456",
+        "MemoryPeak": "86351872",
+        "MemorySwapMax": "infinity",
+        "NoNewPrivileges": "yes",
+        "SubState": "running",
+        "TasksCurrent": "6",
+        "TasksMax": "64",
+        "User": "ki-hilfezentrum"
+      }
+    }
+  ],
+  "stderr": "",
+  "scope": "read-only phase 0; no test jobs, no remote files or installation"
+}

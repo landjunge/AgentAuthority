@@ -1,0 +1,16 @@
+Running as unit: aa-private-qualified-fresh-job.service
+Failed to reset failed state of unit aa-private-collector.service: Unit aa-private-collector.service not loaded.
+Failed to reset failed state of unit aa-private-runner.service: Unit aa-private-runner.service not loaded.
+Traceback (most recent call last):
+  File "<stdin>", line 17, in <module>
+  File "/opt/aa-private/research/debian_private/qualify_job.py", line 298, in main
+    require(completed.returncode == 0, 503, "RUNNER_FAILED_NO_RETRY")
+    ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/aa-private/research/private_service/protocol.py", line 34, in require
+    raise Problem(status, code)
+research.private_service.protocol.Problem: RUNNER_FAILED_NO_RETRY
+Finished with result: exit-code
+Main processes terminated with: code=exited, status=1/FAILURE
+Service runtime: 24.203s
+CPU time consumed: 555ms
+Memory peak: 33.7M (swap: 0B)

@@ -1,0 +1,7 @@
+{"checks": [{"case": "real runner and collector started in guard-only mode", "pass": true, "runner_pid": "1076405", "collector_pid": "1076418"}, {"case": "hard RAM limit kills allocation", "pass": true, "result": 1}, {"case": "automatic OOM guard stops real runner and collector", "pass": true, "abort": ["scope_oom"], "states": {"runner": {"MainPID": "0", "Result": "signal", "ExecMainStatus": "15", "ActiveState": "failed"}, "collector": {"MainPID": "0", "Result": "success", "ExecMainStatus": "15", "ActiveState": "inactive"}}}, {"case": "CPU quota and wall timeout bound busy loop", "pass": true, "properties": {"Result": "timeout", "CPUUsageNSec": "324239000"}}, {"case": "hard task limit rejects third process", "pass": true}, {"case": "hard file byte limit", "pass": true, "size": 4096}, {"case": "no plaintext marker in encrypted backing", "pass": true}, {"case": "wrong-key ciphertext restore cannot mount", "pass": true, "result": 32}], "failed": [], "scope": "no action; controlled cgroup OOM/CPU/tasks/byte/time and separate random-key restore epoch", "ram_zeroization_or_offline_physical_erasure_proven": false}
+Running as unit: aa-private-limits-check-three.service; invocation ID: 31c0e6209fb241df8ba9e0b19835aec9
+Finished with result: success
+Main processes terminated with: code=exited, status=0/SUCCESS
+Service runtime: 7.598s
+CPU time consumed: 501ms
+Memory peak: 39.5M (swap: 0B)

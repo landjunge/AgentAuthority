@@ -1,0 +1,55 @@
+[Unit]
+Description=Private AA constrained synthetic collector
+ConditionPathIsMountPoint=/var/lib/aa-private/secure
+ConditionPathExists=/run/aa-private/epoch
+Requires=aa-private-watchdog.service
+After=aa-private-watchdog.service
+[Service]
+User=root
+ExecStart=/usr/bin/python3 -B -m research.debian_private.collector
+CapabilityBoundingSet=CAP_KILL CAP_BPF CAP_PERFMON CAP_SYS_ADMIN CAP_SETUID CAP_SETGID CAP_CHOWN CAP_DAC_OVERRIDE
+RestrictAddressFamilies=AF_UNIX AF_NETLINK
+PrivateNetwork=yes
+MemoryMax=512M
+TasksMax=12
+LimitMEMLOCK=64M
+LimitFSIZE=16M
+RuntimeMaxSec=180
+ReadWritePaths=/var/lib/aa-private/secure/collector /var/lib/aa-private/secure/verifier /sys/kernel/tracing
+BindPaths=/var/lib/aa-private/secure/collector/tmp:/tmp
+BindPaths=/var/lib/aa-private/secure/collector/tmp:/var/tmp
+Environment=TMPDIR=/tmp/compiler
+Slice=aa-private.slice
+WorkingDirectory=/opt/aa-private
+Environment=PYTHONDONTWRITEBYTECODE=1
+UMask=0077
+NoNewPrivileges=yes
+ProtectSystem=strict
+ProtectHome=yes
+PrivateDevices=yes
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectKernelLogs=yes
+ProtectControlGroups=yes
+ProtectClock=yes
+ProtectProc=invisible
+RestrictSUIDSGID=yes
+RestrictRealtime=yes
+LockPersonality=yes
+RestrictNamespaces=yes
+MemorySwapMax=0
+LimitCORE=0
+LimitNOFILE=64
+TimeoutStopSec=5
+KillMode=control-group
+SendSIGKILL=yes
+StandardOutput=null
+StandardError=null
+InaccessiblePaths=-/opt/4allpass -/opt/ki-helper-runtime -/opt/ki-hilfezentrum -/var/www -/srv -/var/lib/docker -/run/docker.sock -/etc/ssh -/etc/ssl/private
+InaccessiblePaths=/var/lib/aa-private/secure/signer /var/lib/aa-private/secure/runner /var/lib/aa-private/secure/registrar /var/lib/aa-private/secure/api /var/lib/aa-private/secure/verdicts
+
+Environment=BCC_KERNEL_SOURCE=/opt/aa-private/kernel-headers-view
+
+ReadWritePaths=/sys/kernel/debug/tracing
+
+AmbientCapabilities=CAP_SETUID

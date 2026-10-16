@@ -1,0 +1,17 @@
+ Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+    from research.debian_private.ipc import call;import json;print(json.dumps(call('collector',{'op':'probe-check'},0,seconds=90,output=262144)))
+                                                                              ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/aa-private/research/debian_private/ipc.py", line 78, in call
+    require(result.get("ok") is True, 503, "IPC_COMPONENT_FAILED")
+    ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/aa-private/research/private_service/protocol.py", line 34, in require
+    raise Problem(status, code)
+research.private_service.protocol.Problem: IPC_COMPONENT_FAILED
+
+Running as unit: aa-private-restricted-kernel-check-four.service; invocation ID: 07f515915b3e421e81233f8a1e7e0831
+Finished with result: exit-code
+Main processes terminated with: code=exited, status=1/FAILURE
+Service runtime: 8.994s
+CPU time consumed: 133ms
+Memory peak: 15.4M (swap: 0B)

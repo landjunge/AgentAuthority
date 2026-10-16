@@ -1,0 +1,17 @@
+Running as unit: aa-private-finish-same-fresh-job.service; invocation ID: cd2da1574d0047f1959c7d4afc61f69c
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "/opt/aa-private/research/debian_private/finish_job.py", line 121, in main
+    send("client", "POST", "/v1/jobs", original, 202, "restart-exact-retry-no-rerun")
+    ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/aa-private/research/debian_private/finish_job.py", line 55, in send
+    require(status == expected, 503, "FINISH_HTTP_EXPECTATION")
+    ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/aa-private/research/private_service/protocol.py", line 34, in require
+    raise Problem(status, code)
+research.private_service.protocol.Problem: FINISH_HTTP_EXPECTATION
+Finished with result: exit-code
+Main processes terminated with: code=exited, status=1/FAILURE
+Service runtime: 1.222s
+CPU time consumed: 215ms
+Memory peak: 16M (swap: 0B)

@@ -1,0 +1,6 @@
+[Unit]
+Description=Private AA one-shot encrypted handoff expiry
+[Timer]
+OnActiveSec=180s
+AccuracySec=1s
+Unit=aa-private-handoff-expire.service

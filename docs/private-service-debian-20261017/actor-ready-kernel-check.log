@@ -1,0 +1,22 @@
+ Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+    from research.debian_private.ipc import call;import json;print(json.dumps(call('collector',{'op':'probe-check'},0,seconds=90,output=262144)))
+                                                                              ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/aa-private/research/debian_private/ipc.py", line 77, in call
+    result = receive(channel, output, seconds=seconds)
+  File "/opt/aa-private/research/debian_private/ipc.py", line 53, in receive
+    size = struct.unpack("!I", take(4))[0]
+                               ~~~~^^^
+  File "/opt/aa-private/research/debian_private/ipc.py", line 49, in take
+    require(bool(chunk), 503, "IPC_TRUNCATED")
+    ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/aa-private/research/private_service/protocol.py", line 34, in require
+    raise Problem(status, code)
+research.private_service.protocol.Problem: IPC_TRUNCATED
+
+Running as unit: aa-private-actor-ready-kernel-check.service; invocation ID: 79666f06ea7246d683a361e3dd9bead4
+Finished with result: exit-code
+Main processes terminated with: code=exited, status=1/FAILURE
+Service runtime: 17.155s
+CPU time consumed: 133ms
+Memory peak: 13.6M (swap: 0B)

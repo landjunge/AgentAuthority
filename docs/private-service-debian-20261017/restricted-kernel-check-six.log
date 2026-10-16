@@ -1,0 +1,8 @@
+{"kernel": "6.12.101+deb13-amd64", "cgroup_id": 275109, "uid_filter": 61102, "load_attach_programs": 6, "recursion_misses": {"enter": 0, "leave": 0, "tracepoint__sched__sched_process_exit": 0, "life_tracepoint__sched__sched_process_exec": 0, "life_tracepoint__sched__sched_process_exit": 0, "life_forked": 0}, "own_classic_probes_detached": true, "actor_writes": 0, "idle_foreign_records": 0, "scope": "real restricted service, prerequisite only", "uid_target_access": [{"uid": 61101, "open_without_write": false}, {"uid": 61102, "open_without_write": true}]}
+ 
+Running as unit: aa-private-restricted-kernel-check-six.service; invocation ID: defda04358ba4e02bc80385b1152bbe6
+Finished with result: success
+Main processes terminated with: code=exited, status=0/SUCCESS
+Service runtime: 24.309s
+CPU time consumed: 136ms
+Memory peak: 13.3M (swap: 0B)

@@ -1,0 +1,8 @@
+{"test_files": 5, "fixture_scope": "historical synthetic regressions only, not current effect", "git_objects": 5, "encrypted_staging": true}
+ Running as unit: aa-private-stage-checks.service; invocation ID: 66f2e1984c854f77b084ea2d85492a31
+Finished with result: success
+Main processes terminated with: code=exited, status=0/SUCCESS
+Service runtime: 2.018s
+CPU time consumed: 92ms
+Memory peak: 7.6M (swap: 0B)
+

@@ -1,0 +1,15 @@
+Running as unit: aa-private-qualification-cleanup-two.service
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "/opt/aa-private/research/debian_private/cleanup_qualification.py", line 46, in main
+    with trace.open("a") as f:
+         ~~~~~~~~~~^^^^^
+  File "/usr/lib/python3.13/pathlib/_local.py", line 539, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+OSError: [Errno 22] Invalid argument
+Finished with result: exit-code
+Main processes terminated with: code=exited, status=1/FAILURE
+Service runtime: 214ms
+CPU time consumed: 98ms
+Memory peak: 9.8M (swap: 0B)

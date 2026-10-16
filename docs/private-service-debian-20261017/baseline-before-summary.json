@@ -1,0 +1,145 @@
+{
+  "scope": "Debian production read-only short-window phase 0; not job capacity",
+  "samples": 13,
+  "cpu_intervals": 12,
+  "elapsed_seconds": 120.00015255715698,
+  "start_utc": "2026-10-16T22:35:44.123558+00:00",
+  "end_utc": "2026-10-16T22:37:44.121934+00:00",
+  "cpus": 8,
+  "cpu_busy_percent": {
+    "count": 12,
+    "min": 0.538644619817108,
+    "median": 0.6196027457957887,
+    "p95_nearest_rank": 1.6666666666666718,
+    "max": 1.6666666666666718
+  },
+  "cpu_iowait_percent": {
+    "count": 12,
+    "min": 0.0,
+    "median": 0.0,
+    "p95_nearest_rank": 0.025050100200400802,
+    "max": 0.025050100200400802
+  },
+  "interval_seconds": {
+    "count": 12,
+    "min": 9.999936652835459,
+    "median": 9.999996735015884,
+    "p95_nearest_rank": 10.000245979987085,
+    "max": 10.000245979987085
+  },
+  "memory_total_bytes": 16775352320,
+  "memory_available_bytes": {
+    "count": 13,
+    "min": 15837712384,
+    "median": 15847714816,
+    "p95_nearest_rank": 15866732544,
+    "max": 15866732544
+  },
+  "swap_used_bytes": {
+    "count": 13,
+    "min": 0,
+    "median": 0,
+    "p95_nearest_rank": 0,
+    "max": 0
+  },
+  "swap_page_deltas": {
+    "pswpin": 0,
+    "pswpout": 0
+  },
+  "load1": {
+    "count": 13,
+    "min": 0.0166015625,
+    "median": 0.05029296875,
+    "p95_nearest_rank": 0.2353515625,
+    "max": 0.2353515625
+  },
+  "filesystem_available_bytes": {
+    "/": {
+      "count": 13,
+      "min": 314541338624,
+      "median": 314541338624,
+      "p95_nearest_rank": 314541338624,
+      "max": 314541338624
+    },
+    "/var": {
+      "count": 13,
+      "min": 314541338624,
+      "median": 314541338624,
+      "p95_nearest_rank": 314541338624,
+      "max": 314541338624
+    }
+  },
+  "disks_separate_layers_do_not_sum": {
+    "sr0": {
+      "read_bytes": 0,
+      "write_bytes": 0,
+      "io_busy_percent_window": 0.0,
+      "weighted_io_ms": 0
+    },
+    "vda": {
+      "read_bytes": 0,
+      "write_bytes": 3383296,
+      "io_busy_percent_window": 0.03666662005203907,
+      "weighted_io_ms": 392
+    }
+  },
+  "central_service_cpu_percent_one_core": {
+    "count": 12,
+    "min": 0.05357010908927957,
+    "median": 0.05858928294245785,
+    "p95_nearest_rank": 0.3566421555798699,
+    "max": 0.3566421555798699
+  },
+  "central_service_memory_bytes": {
+    "count": 13,
+    "min": 75386880,
+    "median": 75640832,
+    "p95_nearest_rank": 75902976,
+    "max": 75902976
+  },
+  "central_service_tasks": {
+    "count": 13,
+    "min": 6,
+    "median": 6,
+    "p95_nearest_rank": 6,
+    "max": 6
+  },
+  "central_tcp_connect_ms_only": {
+    "count": 13,
+    "min": 0.25693606585264206,
+    "median": 0.2842294052243233,
+    "p95_nearest_rank": 2.1700779907405376,
+    "max": 2.1700779907405376
+  },
+  "service_limits_initial": {
+    "ActiveState": "active",
+    "CPUQuotaPerSecUSec": "500ms",
+    "CPUUsageNSec": "7917636000",
+    "ControlGroup": "/system.slice/ki-hilfezentrum.service",
+    "LimitNOFILE": "524288",
+    "LimitNPROC": "63768",
+    "MainPID": "1011380",
+    "MemoryCurrent": "75378688",
+    "MemoryHigh": "infinity",
+    "MemoryMax": "268435456",
+    "MemoryPeak": "86351872",
+    "MemorySwapMax": "infinity",
+    "NoNewPrivileges": "yes",
+    "SubState": "running",
+    "TasksCurrent": "6",
+    "TasksMax": "64",
+    "User": "ki-hilfezentrum"
+  },
+  "planning_only_never_permission": {
+    "additional_host_cpu_percentage_points_ceiling": 5.0,
+    "equivalent_cpu_cores_ceiling": 0.4,
+    "additional_memory_bytes_ceiling": 838767616,
+    "memory_total_percent": 5.0,
+    "formula": "CPU=min(5pp,25% worst-window idle); RAM=min(5% total,10% minimum available)",
+    "production_workload_authorized": false,
+    "actual_production_job_budget": 0,
+    "needs": "separate Debian baseline + qualified runner + one measured complete job before load budgets"
+  },
+  "complete_test_jobs": 0,
+  "capacity_jobs_per_second": null
+}

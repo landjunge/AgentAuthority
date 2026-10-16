@@ -1,0 +1,275 @@
+{
+  "schema": "aa-debian-completed-same-fresh-job-v1",
+  "job_id": "1d24c7f6521209d87a39057d765a3cac",
+  "completed": true,
+  "action_reexecuted": false,
+  "initial_coordinator_failed": true,
+  "intake_repaired_under_runner_uid": true,
+  "measurement": {
+    "job_id": "1d24c7f6521209d87a39057d765a3cac",
+    "collector_duration_ms": 20552,
+    "negative_cases": [
+      {
+        "case": "missing_capture",
+        "classification": "UNVOLLSTAENDIG"
+      },
+      {
+        "case": "bad_registry_signature",
+        "classification": "WIDERSPRUECHLICH"
+      },
+      {
+        "case": "positive_loss",
+        "classification": "UNBEKANNT"
+      },
+      {
+        "case": "unknown_recursion",
+        "classification": "UNBEKANNT"
+      },
+      {
+        "case": "wrong_ca_pin",
+        "classification": "WIDERSPRUECHLICH"
+      },
+      {
+        "case": "live-intake-source",
+        "status": 403,
+        "code": "SOURCE_FORBIDDEN"
+      },
+      {
+        "case": "live-intake-digest",
+        "status": 422,
+        "code": "EVIDENCE_DIGEST_MISMATCH"
+      },
+      {
+        "case": "live-intake-missing_field",
+        "status": 422,
+        "code": "INVALID_FORMAT"
+      },
+      {
+        "case": "live-intake-signature",
+        "status": 401,
+        "code": "SIGNATURE_INVALID"
+      }
+    ],
+    "observed_write": [
+      {
+        "boot_hash": "b478430b2e8321f193ae7a41083a858e97e4298d812b6884ba19bdb6b0883010",
+        "count": 16,
+        "cpu": 3,
+        "dev": 265289728,
+        "entry_ns": 3450624626616752,
+        "exit_ns": 3450624626722355,
+        "inode": 32822,
+        "kind": 1,
+        "ppid": 1104967,
+        "raw_bytes": 76,
+        "result": 16,
+        "start_ns": 3450624402044208,
+        "tgid": 1105010,
+        "tid": 1105010
+      }
+    ],
+    "capture_sha256": "9229fd91c66f38b92a95b6588de3777ec5bb3ea9eaa78a9eccc199d2c77bd182"
+  },
+  "cases": [
+    {
+      "case": "fresh-signed-report-before-restart",
+      "status": 200,
+      "code": null
+    },
+    {
+      "case": "same-report-after-real-api-restart",
+      "status": 200,
+      "code": null
+    },
+    {
+      "case": "restart-exact-retry-no-rerun",
+      "status": 410,
+      "code": "EXPIRED_OR_FUTURE"
+    },
+    {
+      "case": "fresh-signed-report-before-restart",
+      "status": 200,
+      "code": null
+    },
+    {
+      "case": "same-report-after-real-api-restart",
+      "status": 200,
+      "code": null
+    },
+    {
+      "case": "restart-exact-retry-at-actual-request-deadline",
+      "status": 410,
+      "code": "EXPIRED_OR_FUTURE"
+    },
+    {
+      "case": "restart-replay-denied",
+      "status": 409,
+      "code": "REPLAY"
+    },
+    {
+      "case": "bad-report-digest-receipt-denied",
+      "status": 422,
+      "code": "RECEIPT_MISMATCH"
+    },
+    {
+      "case": "incomplete-receipt-denied",
+      "status": 422,
+      "code": "RECEIPT_MISMATCH"
+    },
+    {
+      "case": "signed-full-receipt",
+      "status": 200,
+      "code": null
+    },
+    {
+      "case": "report-unavailable-after-receipt",
+      "status": 410,
+      "code": "REPORT_GONE"
+    },
+    {
+      "case": "repeat-receipt-and-cleanup",
+      "status": 200,
+      "code": null
+    },
+    {
+      "case": "receiver-revoked",
+      "status": 200,
+      "code": null
+    },
+    {
+      "case": "revoked-key-cannot-use-exact-cache",
+      "status": 410,
+      "code": "EXPIRED_OR_FUTURE"
+    },
+    {
+      "case": "fresh-request-by-revoked-key-denied",
+      "status": 403,
+      "code": "KEY_REVOKED"
+    },
+    {
+      "case": "expired-exact-acceptance-denied",
+      "status": 410,
+      "code": "EXPIRED_OR_FUTURE"
+    }
+  ],
+  "start_monotonic_ns": 3450608978853193,
+  "finish_start_monotonic_ns": 3450805398678888,
+  "classification": "BELEGT",
+  "checks": {
+    "registry_signature_and_pin": true,
+    "exactly_two_test_principals": true,
+    "separate_keys_and_uids": true,
+    "witness_signature": true,
+    "sender_signature": true,
+    "receiver_signature": true,
+    "domain_and_scope": true,
+    "job_digest": true,
+    "accepts_exact_delegation": true,
+    "fresh_nonce_fields": true,
+    "handover_order": true,
+    "exactly_one_target_write": true,
+    "TestA_proof": true,
+    "TestA_credentials": true,
+    "TestA_oracle": true,
+    "TestA_lifecycle": true,
+    "TestB_proof": true,
+    "TestB_credentials": true,
+    "TestB_oracle": true,
+    "TestB_lifecycle": true,
+    "acceptance_process": true,
+    "write_process_file_time": true,
+    "sender_oracle_no_write": true,
+    "count_reference_concordance": true,
+    "classic_profile_present": true,
+    "program_info_present": true,
+    "one_closed_capture": true,
+    "service_request_and_acceptance_binding": true
+  },
+  "critical_loss_metrics": {
+    "write_entry_nmissed": 0,
+    "fork_entry_nmissed": 0,
+    "return_nmissed": 0,
+    "write_perf_lost": 0,
+    "pending": 0,
+    "write_submit_failures": 0,
+    "pending_overwrite": 0,
+    "pending_map_failures": 0,
+    "exit_submit_failures": 0,
+    "lifecycle_perf_lost": 0,
+    "lifecycle_submit_failures": 0,
+    "lifecycle_map_update_failures": 0,
+    "lifecycle_probe_read_failures": 0,
+    "lifecycle_invalid_fields": 0,
+    "observer_probe_read_failures": 0,
+    "observer_seen_update_failures": 0,
+    "observer_delete_failures": 0,
+    "write_enter_recursion_misses": 0,
+    "write_leave_recursion_misses": 0,
+    "write_tracepoint__sched__sched_process_exit_recursion_misses": 0,
+    "life_tracepoint__sched__sched_process_exec_recursion_misses": 0,
+    "life_tracepoint__sched__sched_process_exit_recursion_misses": 0,
+    "life_forked_recursion_misses": 0
+  },
+  "report_sha256": "2fb40c8e4822019dc006df978a92ed64e9a2701d52699549afdde4632e156db8",
+  "previous_finish_expectation_error_preserved": true,
+  "cleanup": {
+    "job_fields_null": true,
+    "dispatch_pins": 0,
+    "job_directory_absent": true,
+    "verifier_pin_absent": true,
+    "verdict_absent": true,
+    "lifecycle_complete": true,
+    "inputs_and_targets_absent": true,
+    "handoff_absent": true
+  },
+  "signed_receipt": {
+    "body": {
+      "schema": "aa-private-v1",
+      "domain": "AA-REQUEST-v1",
+      "tenant": "test-a",
+      "audience": "aa-private-local-v1",
+      "method": "POST",
+      "path": "/v1/jobs/1d24c7f6521209d87a39057d765a3cac/receipts",
+      "kid": "sender",
+      "nonce": "da0cf31309cc18da733c93b99f408496f8ed8b220a85141dfbbe2818170f8c0e",
+      "idempotency_key": "31dfed5cf6bc0aa5b454e6daf204730f",
+      "issued_ms": 1792193639909,
+      "expires_ms": 1792193699909,
+      "payload": {
+        "job_id": "1d24c7f6521209d87a39057d765a3cac",
+        "report_version": "1",
+        "report_sha256": "2fb40c8e4822019dc006df978a92ed64e9a2701d52699549afdde4632e156db8",
+        "received_complete": true
+      }
+    },
+    "signature": "JtnpAb4qI7mMIad003/TzKUXNg2ydJ9EA4uuMs8GDEVMJJiBSVffSQJvEg4RnqHrvRVfva2p2vDIvE/L1RllDw=="
+  },
+  "receipt_status": {
+    "schema": "aa-private-v1",
+    "job_id": "1d24c7f6521209d87a39057d765a3cac",
+    "state": "completed",
+    "label": "Berichtszugriff gesperrt; Bereinigung complete",
+    "report_available": false,
+    "grants_rights": false,
+    "completed_at": "2026-10-16T23:32:10.695Z",
+    "expires_at": "2026-10-17T23:32:10.695Z",
+    "report_version": "1",
+    "report_sha256": "2fb40c8e4822019dc006df978a92ed64e9a2701d52699549afdde4632e156db8",
+    "receipt_state": "confirmed",
+    "received_at": "2026-10-16T23:33:59.933Z",
+    "access_state": "blocked",
+    "deletion_reason": "receipt",
+    "cleanup_state": "complete",
+    "cleanup_completed_at": "2026-10-16T23:33:59.946Z",
+    "cleanup_confirmed": true,
+    "content_key_state": "absent_from_owned_namespace",
+    "inputs_cleanup_completed_at": "2026-10-16T23:32:10.921Z",
+    "residual_expires_at": "2026-10-17T23:33:15.695Z",
+    "cleanup_scope": "this job's service files and SQLite namespace; no SSD/RAM/backup erasure claim"
+  },
+  "test_expectation_corrections": [
+    "Original 60s job retry after intake repair expires: 410",
+    "Original expired acceptance rejected before revoked-key lookup: 410; fresh revoked-key request independently checked 403"
+  ],
+  "cleanup_end_monotonic_ns": 3450898109605865
+}

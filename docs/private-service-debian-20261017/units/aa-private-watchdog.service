@@ -1,0 +1,18 @@
+[Unit]
+Description=Agent Authority production health guard
+[Service]
+ExecStart=/usr/bin/python3 -B /opt/aa-private/research/debian_private/watchdog.py
+User=root
+MemoryMax=64M
+MemorySwapMax=0
+CPUQuota=5%
+TasksMax=6
+LimitCORE=0
+UMask=0077
+StandardOutput=null
+StandardError=null
+ProtectHome=yes
+ProtectSystem=strict
+ReadWritePaths=/run/aa-private /var/lib/aa-private-install-20261017
+NoNewPrivileges=yes
+CapabilityBoundingSet=

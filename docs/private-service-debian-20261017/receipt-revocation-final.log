@@ -1,0 +1,7 @@
+{"completed": true, "classification": "BELEGT", "checks": 28, "loss_counters": 23, "job_id": "1d24c7f6521209d87a39057d765a3cac", "action_reexecuted": false, "cleanup": {"job_fields_null": true, "dispatch_pins": 0, "job_directory_absent": true, "verifier_pin_absent": true, "verdict_absent": true, "lifecycle_complete": true, "inputs_and_targets_absent": true, "handoff_absent": true}}
+Running as unit: aa-private-receipt-revocation-final.service; invocation ID: 1b7e19a474c445a1a398aa658c2bc699
+Finished with result: success
+Main processes terminated with: code=exited, status=0/SUCCESS
+Service runtime: 583ms
+CPU time consumed: 205ms
+Memory peak: 17.2M (swap: 0B)

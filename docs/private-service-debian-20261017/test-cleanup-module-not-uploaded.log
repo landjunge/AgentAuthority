@@ -1,0 +1,9 @@
+Running as unit: aa-private-qualification-cleanup.service; invocation ID: cd813fd2cfc9453986111fec34924fa3
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+ModuleNotFoundError: No module named 'research.debian_private.cleanup_qualification'
+Finished with result: exit-code
+Main processes terminated with: code=exited, status=1/FAILURE
+Service runtime: 122ms
+CPU time consumed: 37ms
+Memory peak: 4.7M (swap: 0B)

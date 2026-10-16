@@ -1,0 +1,7 @@
+{
+  "before": "0o700",
+  "after": "0o750",
+  "uid": 985,
+  "gid": 986,
+  "reason": "umask masked intended signer read/search; no other principal granted access"
+}

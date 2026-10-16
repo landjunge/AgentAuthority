@@ -1,0 +1,7 @@
+[Unit]
+Description=Agent Authority private qualification aggregate budget
+[Slice]
+CPUQuota=35%
+MemoryMax=768000000
+MemorySwapMax=0
+TasksMax=48

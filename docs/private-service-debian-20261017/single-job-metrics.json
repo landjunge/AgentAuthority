@@ -1,0 +1,46 @@
+{
+  "scope": "one successful fresh job; 1 Hz health samples, not a throughput estimate",
+  "before": {
+    "samples": 27,
+    "host_cpu_max_pct": 9.720670391061448,
+    "mem_available_min": 15702511616,
+    "central_statuses": [
+      403
+    ]
+  },
+  "action_and_initial_intake_window": {
+    "samples": 20,
+    "host_cpu_max_pct": 8.764044943820226,
+    "host_cpu_mean_pct": 4.726945463799702,
+    "mem_available_min": 15505063936,
+    "scope_memory_sampled_max": 621948928,
+    "scope_tasks_sampled_max": 10,
+    "scope_swap_max": 0,
+    "central_statuses": [
+      403
+    ],
+    "central_probe_max_ms": 177.47991299256682,
+    "abort_reasons": []
+  },
+  "window_seconds": 22.20394834363833,
+  "sampled_slice_cpu_seconds": 5.794843,
+  "collector_duration_ms": 20552,
+  "operator_repair_and_completion_seconds": 287.71053547691554,
+  "after_recent": {
+    "samples": 27,
+    "host_cpu_max_pct": 2.5669642857142905,
+    "host_cpu_mean_pct": 0.9017522347796617,
+    "mem_available_min": 15742644224,
+    "scope_memory_sampled_max": 423481344,
+    "scope_tasks_sampled_max": 4,
+    "scope_swap_max": 0,
+    "central_statuses": [
+      403
+    ],
+    "central_probe_max_ms": 117.9258837364614,
+    "abort_reasons": []
+  },
+  "all_session_guard_events": [
+    "scope_oom"
+  ]
+}
