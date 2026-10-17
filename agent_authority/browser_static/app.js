@@ -142,6 +142,26 @@
     if (report) return JSON.stringify(report, null, 2);
     return graph?.isDemo ? JSON.stringify(graph, null, 2) : null;
   }
+  function helpCenterContextGraph(context) {
+    // Source relationships only. Help Center account IDs are never interpreted
+    // as verified agents, delegated authority or a shared authenticated subject.
+    if (context?.schema !== "hilfezentrum.authority-context.v1" || context.case?.synthetic !== true || context.handoff?.data_transferred !== false) throw new Error("invalid_synthetic_context");
+    const fact = (labelKey, value, valueKey = false) => ({labelKey, value: String(value), valueKey});
+    const node = (id, kind, name, status, facts) => ({id, kind, name, nameKey: true, status, group: "", facts, evidence: []});
+    const owner = "account:" + context.owner_account_id, participant = "account:" + context.participant_account_id;
+    const listing = "listing:" + context.listing.id, assignment = "assignment:" + context.assignment.id, caseId = "case:" + context.case.key;
+    const nodes = [
+      node(owner, "identity", "hilfezentrum.owner", "unknown", [fact("field.identity", context.owner_account_id), fact("field.basis", "hilfezentrum.accountBoundary", true)]),
+      node(participant, "identity", "hilfezentrum.participant", "unknown", [fact("field.identity", context.participant_account_id), fact("field.basis", "hilfezentrum.accountBoundary", true)]),
+      node(listing, "task", "hilfezentrum.listing", "reported", [fact("web.reference", context.listing.id), fact("hilfezentrum.state", context.listing.lifecycle.state), fact("field.version", context.listing.lifecycle.revision)]),
+      node(assignment, "entry", "hilfezentrum.assignment", "reported", [fact("web.reference", context.assignment.id), fact("hilfezentrum.state", context.assignment.state), fact("field.version", context.assignment.revision), fact("field.start", context.assignment.created_at), fact("hilfezentrum.changed", context.assignment.changed_at)]),
+      node(caseId, "entry", "hilfezentrum.case", "reported", [fact("web.reference", context.case.key), fact("hilfezentrum.state", context.case.state), fact("field.version", context.case.revision), fact("field.start", context.case.tracked_since)])
+    ];
+    const edge = (from, to, relation) => ({from, to, relation, status: "reported", evidence: []});
+    return {schema: "agent-authority-ui-graph-v1", source: "hilfezentrum-synthetic", isDemo: false, nodes: [nodes[3], nodes[0], nodes[1], nodes[2], nodes[4]], edges: [
+      edge(owner, listing, "context-owner"), edge(listing, assignment, "context-assignment"), edge(participant, assignment, "context-participant"), edge(assignment, caseId, "context-case")
+    ], omitted: 0, warnings: [], reportJSON: JSON.stringify(context, null, 2)};
+  }
   class NavigationHistory {
     constructor(limit = 100) { this.limit = limit; this.entries = []; this.base = 0; this.index = 0; }
     copy(value) { return value ? {...value, expandedGroups: [...(value.expandedGroups || [])]} : null; }
@@ -156,12 +176,15 @@
     restore(index) { const value = this.at(index); if (value) this.index = index; return value; }
     back() { return this.canGoBack ? this.restore(this.index - 1) : null; }
   }
-  const model = {trace, chainStatuses, graphLayout, clustered, warningAssessment, visibleGraph, rowsForPage, reportText, NavigationHistory};
+  const model = {trace, chainStatuses, graphLayout, clustered, warningAssessment, visibleGraph, rowsForPage, reportText, helpCenterContextGraph, NavigationHistory};
   if (typeof module === "object" && module.exports) module.exports = model;
   global.AuthorityBrowserModel = model;
   if (typeof document === "undefined") return;
 
   const $ = id => document.getElementById(id);
+  const appBase = new URL("./", window.location.href);
+  const helpCenterDemoLanguage = /^#hilfezentrum-demo-(de|en)$/.exec(window.location.hash)?.[1];
+  let helpCenterDemoPending = Boolean(helpCenterDemoLanguage);
   const SVG_NS = "http://www.w3.org/2000/svg";
   const EMPTY_GRAPH = () => ({schema: "agent-authority-ui-graph-v1", source: "", isDemo: false, nodes: [], edges: [], warnings: [], omitted: 0});
   const state = {page: "overview", mode: 0, chainAnchor: "", selection: "", filter: 0, query: "", expandedGroups: new Set(), zoom: 1, panX: 0, panY: 0,
@@ -200,6 +223,7 @@
     $("language").value = preference; $("login-language").value = language;
     $("modes").setAttribute("aria-label", L("web.graphView")); $("graph-area").setAttribute("aria-label", L("graph.title"));
     $("report-controls").setAttribute("aria-label", L("web.report"));
+    for (const link of document.querySelectorAll(".help-center-return")) link.href = "https://ki-hilfezentrum.netzwerkpunkt.de/" + (language === "en" ? "en.html" : "") + "#agent-authority";
   }
   function renderAccountLabel() { $("account-label").textContent = state.session ? `${L(state.session.user?.synthetic ? "web.syntheticAccount" : "web.account")} · ${state.session.user?.id || ""}` : ""; }
   function chooseLanguage(value) { preference = value; language = resolveLanguage(value); savePreference("language", value); translateStatic(); renderReports(); renderScopes(); render(); renderAccountLabel(); message(currentMessage.key, currentMessage.variant, currentMessage.values); }
@@ -209,12 +233,13 @@
     const headers = new Headers(options.headers || {}); headers.set("Accept", "application/json");
     if (options.body !== undefined && !(options.body instanceof Blob)) { headers.set("Content-Type", "application/json"); options.body = JSON.stringify(options.body); }
     if (options.method && options.method !== "GET" && path !== "/api/login" && state.session?.csrfToken) headers.set("X-CSRF-Token", state.session.csrfToken);
-    const response = await fetch(path, {...options, headers, credentials: "same-origin", cache: "no-store"});
+    const response = await fetch(new URL(path.replace(/^\//, ""), appBase), {...options, headers, credentials: "same-origin", cache: "no-store"});
     let payload = {}; try { payload = await response.json(); } catch (_) { /* Non-JSON proxy errors are not rendered as HTML. */ }
     if (!response.ok) { if (response.status === 401 && path !== "/api/login") showLogin(); throw new APIError(response.status, typeof payload.error === "string" ? payload.error : payload.error?.code || payload.code); }
     return payload;
   }
   function errorKey(error) {
+    if (error.status === 404 && error.code === "NOT_FOUND") return "web.contextNotAvailable";
     if (error.status === 401) return "web.sessionExpired";
     if (error.status === 403) return "web.accessDenied";
     if (error.status === 413) return "web.tooLarge";
@@ -241,6 +266,7 @@
     resetNavigation(); renderScopes(); render();
     await refreshReports(false);
     try { state.status = await api("/api/status"); renderService(); } catch (error) { if (state.session) message(errorKey(error), "error"); }
+    if (helpCenterDemoPending && state.session) { helpCenterDemoPending = false; await loadHelpCenterDemo(); }
   }
   function snapshot() { return {page: state.page, mode: state.mode, chainAnchor: state.chainAnchor, selection: state.selection, filter: state.filter, query: state.query, expandedGroups: [...state.expandedGroups], zoom: state.zoom, panX: state.panX, panY: state.panY, raw: state.raw, rowPage: state.rowPage}; }
   function resetNavigation() { navigationEpoch = String(Date.now()) + Math.random().toString(16).slice(2); navigation.reset(snapshot()); window.history.replaceState({aa: navigationEpoch, index: 0}, "", "#" + state.page); updateBack(); }
@@ -283,7 +309,7 @@
       renderReports(); renderScopes();
       if (reloadSelected && state.reportId) await loadReport(state.reportId);
       else if (!state.graph.nodes.length && !state.report && !state.privateReport) render();
-      if (!state.reports.length && !state.graph.isDemo) message("web.noReports");
+      if (!state.reports.length && !state.graph.isDemo && state.metadata.adapter !== "hilfezentrum-synthetic-context") message("web.noReports");
     } catch (error) { if (state.session) message(errorKey(error), "error"); }
     finally { setBusy(-1); }
   }
@@ -303,7 +329,7 @@
     resetNavigation(); renderReports(); render(true); navigation.save(snapshot());
     $("announcer").textContent = documentValue.isDemo ? L("mode.sample") : L("web.reportLoaded");
   }
-  function boundaryKey() { return state.graph.isDemo ? "boundary.sample" : state.privateReport ? "web.privateBoundary" : state.report || state.graph.reportJSON ? "boundary.product" : "web.noDataBoundary"; }
+  function boundaryKey() { return state.metadata.adapter === "hilfezentrum-synthetic-context" ? "web.helpCenterBoundary" : state.graph.isDemo ? "boundary.sample" : state.privateReport ? "web.privateBoundary" : state.report || state.graph.reportJSON ? "boundary.product" : "web.noDataBoundary"; }
   function provenanceText() {
     const provenance = state.metadata.inputProvenance;
     if (!provenance) return "";
@@ -311,7 +337,9 @@
   }
   function renderMetrics() {
     const d = state.graph, metrics = [];
-    if (d.isDemo) {
+    if (state.metadata.adapter === "hilfezentrum-synthetic-context") {
+      metrics.push(["hilfezentrum.accounts", 2, L("hilfezentrum.accountBoundary")], ["hilfezentrum.assignment", 1, L("status.reported")], ["hilfezentrum.case", 1, L("status.reported")], ["web.identityIntegration", "—", L("web.blocked")]);
+    } else if (d.isDemo) {
       const statuses = chainStatuses(d), actions = d.nodes.filter(n => n.kind === "action"), good = actions.filter(n => statuses.get(n.id) === "verified").length;
       metrics.push(["metric.agents", d.nodes.filter(n => n.kind === "agent").length, L("metric.sampleAgents")], ["metric.delegations", d.edges.filter(e => e.relation === "delegates").length, L("metric.demo")], ["metric.chains", good, L("metric.sampleChains", {good, missing: actions.length - good})], ["metric.actions", actions.length, L("metric.demo")]);
     } else if (state.report || d.reportJSON) {
@@ -327,12 +355,12 @@
     if (d.completeRead === false) coverage += " · " + L("metric.incomplete");
     if (d.warnings?.length) coverage += " · " + L("web.diagnostics", {count: d.warnings.length});
     $("coverage").textContent = coverage; $("coverage").classList.toggle("incomplete", d.completeRead === false || d.omitted > 0);
-    $("source-boundary").textContent = L(boundaryKey()) + (provenanceText() ? " " + L("web.inputProvenance") + ": " + provenanceText() : "") + (state.metadata.syntheticAccount && !d.isDemo ? " " + L("web.reportClaims") : "");
+    $("source-boundary").textContent = L(boundaryKey()) + (provenanceText() ? " " + L("web.inputProvenance") + ": " + provenanceText() : "") + (state.metadata.syntheticAccount && !d.isDemo && state.metadata.adapter !== "hilfezentrum-synthetic-context" ? " " + L("web.reportClaims") : "");
   }
   function render(fit = false) {
     const utility = ["host", "settings"].includes(state.page);
     $("page-title").textContent = L(state.page === "host" ? "web.service" : "nav." + state.page);
-    $("data-mode").textContent = state.graph.isDemo ? L("mode.sample") : state.privateReport ? L("web.privateMode") : state.report || state.graph.reportJSON ? L("mode.product") : L("web.noReport");
+    $("data-mode").textContent = state.metadata.adapter === "hilfezentrum-synthetic-context" ? L("hilfezentrum.syntheticMode") : state.graph.isDemo ? L("mode.sample") : state.privateReport ? L("web.privateMode") : state.report || state.graph.reportJSON ? L("mode.product") : L("web.noReport");
     $("scope-description").textContent = state.graph.isDemo ? L("mode.demo") : state.metadata.sourceId || state.metadata.source_id || state.graph.source || L("source.empty");
     $("scope-job").textContent = state.metadata.jobId || state.metadata.job_id ? L("web.job") + ": " + (state.metadata.jobId || state.metadata.job_id) : "";
     for (const el of document.querySelectorAll("[data-page]")) { const active = el.dataset.page === state.page; el.classList.toggle("active", active); if (active) el.setAttribute("aria-current", "page"); else el.removeAttribute("aria-current"); }
@@ -340,7 +368,7 @@
     $("application").classList.toggle("inspector-hidden", utility || !state.inspectorOpen); $("inspector-toggle").setAttribute("aria-expanded", String(state.inspectorOpen));
     $("search").value = state.query; $("proof-filter").value = String(state.filter);
     for (const el of $("modes").querySelectorAll("button")) { const active = Number(el.dataset.mode) === state.mode; el.classList.toggle("active", active); el.setAttribute("aria-pressed", String(active)); }
-    $("export").disabled = !(state.report || state.privateReport || state.graph.isDemo);
+    $("export").disabled = !(state.report || state.privateReport || state.graph.isDemo || state.metadata.adapter === "hilfezentrum-synthetic-context");
     $("focus-chain").disabled = !state.selection || state.selection.startsWith("cluster:"); $("copy-reference").disabled = !state.selection;
     $("expand-group").hidden = !state.selection.startsWith("cluster:");
     $("pulse-label").hidden = !state.graph.isDemo;
@@ -472,12 +500,12 @@
     const tabs = element("div", "segments tabs"); for (const [raw, key] of [[false, "inspector.chain"], [true, "inspector.raw"]]) { const tab = button(L(key), () => { state.raw = raw; renderInspector(); }, state.raw === raw ? "active" : ""); tab.setAttribute("aria-pressed", String(state.raw === raw)); tabs.append(tab); } target.append(tabs);
     if (state.raw) {
       target.append(element("pre", "", JSON.stringify(node, null, 2)), element("h3", "", L("web.rawSource")));
-      const source = state.privateReport || state.report;
-      if (source) { const details = element("details"); details.append(element("summary", "", L(state.privateReport ? "web.privateReport" : "web.neutralReport")), element("pre", "", reportText(state.graph, state.report, state.privateReport))); target.append(details); }
+      const source = state.privateReport || state.report || (state.metadata.adapter === "hilfezentrum-synthetic-context" && state.graph.reportJSON);
+      if (source) { const details = element("details"); details.append(element("summary", "", L(state.metadata.adapter === "hilfezentrum-synthetic-context" ? "hilfezentrum.sourceContext" : state.privateReport ? "web.privateReport" : "web.neutralReport")), element("pre", "", reportText(state.graph, state.report, state.privateReport))); target.append(details); }
       if (Object.keys(state.metadata).length) { const details = element("details"); details.append(element("summary", "", L("web.metadata")), element("pre", "", JSON.stringify(state.metadata, null, 2))); target.append(details); }
       target.append(element("p", "boundary", L(boundaryKey()))); return;
     }
-    target.append(element("p", "small muted", L(d.isDemo ? "inspector.sampleExplanation" : state.privateReport ? "web.privateExplanation" : "inspector.productExplanation")), element("h3", "", L("inspector.selected")));
+    target.append(element("p", "small muted", L(state.metadata.adapter === "hilfezentrum-synthetic-context" ? "web.helpCenterBoundary" : d.isDemo ? "inspector.sampleExplanation" : state.privateReport ? "web.privateExplanation" : "inspector.productExplanation")), element("h3", "", L("inspector.selected")));
     addDefinition(target, [["web.reference", node.id], ...(node.facts || []).map(f => [f.labelKey, factText(f)]), ["field.evidence", (node.evidence || []).join(", ") || L("status.unknown")]]);
     const source = state.metadata.sourceId || state.metadata.source_id || d.source; if (source) addDefinition(target, [["inspector.source", source], ["web.job", state.metadata.jobId || state.metadata.job_id || L("status.unknown")]]);
     if (provenanceText()) addDefinition(target, [["web.inputProvenance", provenanceText()]]);
@@ -527,10 +555,18 @@
     try { const payload = await api("/api/demo"); if (generation === loadGeneration && state.session) { setDocument(payload.graph, payload.metadata || {synthetic: true}, null, null); message("web.demoBoundary", "warning"); } }
     catch (error) { if (state.session) message(errorKey(error), "error"); } finally { setBusy(-1); }
   });
+  async function loadHelpCenterDemo() {
+    const generation = ++loadGeneration; setBusy(1); message("");
+    try {
+      const payload = await api("/api/hilfezentrum/demo", {method: "POST", body: {}});
+      if (generation === loadGeneration && state.session) { state.page = "graph"; setDocument(helpCenterContextGraph(payload.context), payload.metadata, null, null); message("web.helpCenterBoundary", "warning"); }
+    } catch (error) { if (state.session) message(errorKey(error), "error"); } finally { setBusy(-1); }
+  }
+  $("help-center-demo").addEventListener("click", loadHelpCenterDemo);
   $("export").addEventListener("click", () => {
     const value = reportText(state.graph, state.report, state.privateReport); if (value === null) return;
     const blob = new Blob([value], {type: "application/json"}), url = URL.createObjectURL(blob), link = element("a");
-    link.href = url; link.download = state.privateReport ? "AgentAuthority-PrivateVerification.json" : state.graph.isDemo ? "AgentAuthority-SyntheticDemo.json" : "AgentAuthority-Evidence.json";
+    link.href = url; link.download = state.metadata.adapter === "hilfezentrum-synthetic-context" ? "AgentAuthority-HelpCenter-SYNTHETIC.json" : state.privateReport ? "AgentAuthority-PrivateVerification.json" : state.graph.isDemo ? "AgentAuthority-SyntheticDemo.json" : "AgentAuthority-Evidence.json";
     document.body.append(link); link.click(); link.remove(); setTimeout(() => URL.revokeObjectURL(url), 1000);
   });
   $("import-open").addEventListener("click", () => { $("import-message").hidden = true; $("import-dialog").showModal(); }); $("import-cancel").addEventListener("click", () => $("import-dialog").close());
@@ -586,8 +622,8 @@
   });
   if (typeof ResizeObserver !== "undefined") { let previousWidth = 0; new ResizeObserver(() => { const width = $("graph-area").clientWidth; if (width && Math.abs(previousWidth - width) > 20 && state.session) { previousWidth = width; renderGraph(false); } else updateViewport(); }).observe($("graph-area")); }
   async function start() {
-    preference = readPreference("language", "system"); language = resolveLanguage(preference); document.documentElement.dataset.theme = readPreference("theme", "system"); $("theme").value = document.documentElement.dataset.theme; $("pulse").checked = readPreference("pulse", "true") !== "false";
-    try { const response = await fetch("/static/strings.json", {credentials: "same-origin"}); if (!response.ok) throw new Error("catalog"); catalog = await response.json(); } catch (_) { $("login-message").textContent = "Sprachressourcen nicht verfügbar / Language resources unavailable"; $("login-message").hidden = false; return; }
+    preference = helpCenterDemoLanguage || readPreference("language", "system"); language = resolveLanguage(preference); document.documentElement.dataset.theme = readPreference("theme", "system"); $("theme").value = document.documentElement.dataset.theme; $("pulse").checked = readPreference("pulse", "true") !== "false";
+    try { const response = await fetch(new URL("static/strings.json", appBase), {credentials: "same-origin"}); if (!response.ok) throw new Error("catalog"); catalog = await response.json(); } catch (_) { $("login-message").textContent = "Sprachressourcen nicht verfügbar / Language resources unavailable"; $("login-message").hidden = false; return; }
     translateStatic();
     try { await enterSession(await api("/api/session")); } catch (error) { showLogin(); if (error.status !== 401) { $("login-message").textContent = L(errorKey(error)); $("login-message").hidden = false; } }
   }

@@ -1674,5 +1674,81 @@
   "web.activityTable": {
     "de": "Aktivitäten und Belegverweise, horizontal scrollbar",
     "en": "Activity and evidence references, scroll horizontally"
+  },
+  "web.helpCenterReturn": {
+    "de": "Zurück zum KI-Hilfezentrum",
+    "en": "Back to the AI Help Center"
+  },
+  "web.helpCenterDemo": {
+    "de": "Synthetischen Hilfezentrum-Kontext öffnen",
+    "en": "Open synthetic Help Center context"
+  },
+  "web.helpCenterBoundary": {
+    "de": "Synthetischer Verbindungstest mit festem Hilfezentrum-Beispiel. Keine Übernahme echter Vorgänge und keine gemeinsame Anmeldung. Beziehungen sind gemeldeter Kontext, kein Identitäts- oder Berechtigungsnachweis.",
+    "en": "Synthetic connection test using a fixed Help Center example. No real case transfer or shared sign-in. Relationships are reported context, not identity or authority evidence."
+  },
+  "web.contextNotAvailable": {
+    "de": "Dieser synthetische Hilfezentrum-Kontext ist für das angemeldete Prüfkonto nicht freigegeben.",
+    "en": "This synthetic Help Center context is not enabled for the signed-in test account."
+  },
+  "hilfezentrum.syntheticMode": {
+    "de": "HILFEZENTRUM · SYNTHETISCHER VERBINDUNGSTEST",
+    "en": "HELP CENTER · SYNTHETIC CONNECTION TEST"
+  },
+  "hilfezentrum.owner": {
+    "de": "Auftraggeberkonto",
+    "en": "Owner account"
+  },
+  "hilfezentrum.participant": {
+    "de": "Teilnehmerkonto",
+    "en": "Participant account"
+  },
+  "hilfezentrum.accounts": {
+    "de": "Hilfezentrum-Konten",
+    "en": "Help Center accounts"
+  },
+  "hilfezentrum.accountBoundary": {
+    "de": "Nur Hilfezentrum-Kontozuordnung; Agentenidentität unbekannt",
+    "en": "Help Center account association only; agent identity unknown"
+  },
+  "hilfezentrum.listing": {
+    "de": "Hilfezentrum-Angebot",
+    "en": "Help Center listing"
+  },
+  "hilfezentrum.assignment": {
+    "de": "Ausgewählter Auftrag",
+    "en": "Selected assignment"
+  },
+  "hilfezentrum.case": {
+    "de": "Zugeordneter Vorgang",
+    "en": "Associated case"
+  },
+  "hilfezentrum.state": {
+    "de": "Gemeldeter Zustand",
+    "en": "Reported state"
+  },
+  "hilfezentrum.changed": {
+    "de": "Gemeldete Änderung",
+    "en": "Reported change"
+  },
+  "hilfezentrum.sourceContext": {
+    "de": "Synthetischer Hilfezentrum-Quellkontext",
+    "en": "Synthetic Help Center source context"
+  },
+  "relation.context-owner": {
+    "de": "gemeldeter Auftraggeber",
+    "en": "reported owner"
+  },
+  "relation.context-assignment": {
+    "de": "zugeordneter Auftrag",
+    "en": "associated assignment"
+  },
+  "relation.context-participant": {
+    "de": "zugeordneter Teilnehmer",
+    "en": "associated participant"
+  },
+  "relation.context-case": {
+    "de": "zugeordneter Vorgang",
+    "en": "associated case"
   }
 }

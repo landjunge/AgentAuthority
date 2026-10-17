@@ -1,0 +1,38 @@
+{
+  "schema": "aa-helpcenter-ui-check-v1",
+  "synthetic": true,
+  "checks": {
+    "de_deep_link_context_graph": true,
+    "de_language": true,
+    "de_synthetic_mode": true,
+    "de_fixed_helpcenter_return": true,
+    "de_no_verified_nodes": true,
+    "de_no_imported_report": true,
+    "de_no_warning_claim": true,
+    "de_export_fixed_context": true,
+    "de_export_no_identity_or_transport": true,
+    "de_refresh_retains_context_boundary": true,
+    "en_deep_link_context_graph": true,
+    "en_language": true,
+    "en_synthetic_mode": true,
+    "en_fixed_helpcenter_return": true,
+    "en_no_verified_nodes": true,
+    "en_no_imported_report": true,
+    "en_no_warning_claim": true,
+    "en_export_fixed_context": true,
+    "en_export_no_identity_or_transport": true,
+    "en_refresh_retains_context_boundary": true,
+    "temporary_service_stopped": true,
+    "temporary_state_removed": true,
+    "no_browser_errors": true
+  },
+  "pageErrors": 0,
+  "sourceSha256": {
+    "agent_authority/browser_handoff.py": "810faac431a5aa205e91cfd964cea93200bb8e0d0c473df68a7642da6540263b",
+    "agent_authority/browser_static/app.js": "5126048211acd8708ae8bff4bbd06bfe3d39b801ae663d1f2c044f12b8cbd582",
+    "agent_authority/browser_static/index.html": "d81c825a5f9fd48cbe92474756bd6974c0db010d9cb13187303d73e27cb1b71d",
+    "agent_authority/browser_static/strings.json": "f33e715ead1b1f52bb34d2c8835dacd0e0861d3b1cb3f7d03aa9ad43c26cc78d"
+  },
+  "browserVersion": "151.0.7922.34",
+  "passed": true
+}

@@ -1,0 +1,9 @@
+{
+  "status": "in_progress",
+  "snapshot_verified": true,
+  "existing_service": "agent-authority-browser.service absent before continuation",
+  "aa_base": "0794aa53ffe71d502d4ae54f6764062a1ed77f97",
+  "helpcenter_base": "2befbe0b131f7262ece8361aa32be9ea31b7296b",
+  "next": ["finish narrow HTTP/context checks", "install private single-worker service", "coordinate helpcenter release", "verify changed paths and pin evidence"],
+  "gates": ["real AA identity/source contract", "collector hardstop", "real source imports and foreign actions"]
+}
