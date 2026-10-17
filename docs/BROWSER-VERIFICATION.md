@@ -15,7 +15,7 @@ und [BROWSER-CONTRACTS.md](BROWSER-CONTRACTS.md).
 | Echter Browser auf finalem UI-Code | **23 Prüfungen bestanden**, Chrome `155.0.8059.84`, frisches Headless-Profil mit vorhandenem Playwright; [Ergebnis](browser-verification-20261017/final-export/browser-results.json). Keine Installation/Downloads. |
 | Desktop/iPhone-Breite | Echte Screenshots aufgenommen und angesehen: [Desktop-Graph](browser-verification-20261017/final-export/desktop-demo.png), [neutrale Daten](browser-verification-20261017/final-export/desktop-report.png), [Privatvertrag](browser-verification-20261017/final-export/desktop-private.png), [390px-Ansicht](browser-verification-20261017/final-export/iphone-demo.png). Keine echte iOS-/Safari-Geräteprüfung behauptet. |
 | Debian-Paketstart/Stop | **33/33 bestanden** mit unverändert vorhandenem Python **3.13.5**, zwei Prüfkonten, zwei gespeicherte Berichte, zwei Starts. [Erster Debianbeleg](browser-verification-20261017/debian-initial.json) benennt ehrlich `packageSourceClean=false` für den damaligen Zwischenbau. |
-| Letztes aus sauberem Commit erzeugtes Lieferpaket | Exakter Quellcommit, Datei-/Runtime-/Pakethashes in `dist/browser/PACKAGE-MANIFEST.json`, `SHA256SUMS` und `debian-final.json`; letzter Beleg wird nach lokalem Commit mit demselben gezielten Paketprüfer erzeugt. Keine Gleichsetzung des Zwischenpakets mit dem Lieferpaket. |
+| Letztes aus sauberem Commit erzeugtes Lieferpaket | **33/33 auf Debian bestanden**, Quellcommit `642c8a61b90a3141c38408c8b9ac0f886a4d1abc`, `sourceClean=true`. [Exakter Paketbeleg](browser-verification-20261017/debian-final.json), [Bereinigung](browser-verification-20261017/debian-cleanup.json), [bytegleicher Wiederholungsbuild](browser-verification-20261017/package-reproducibility.json). Keine Gleichsetzung des Zwischenpakets mit dem Lieferpaket. |
 | Quellhygiene | Ruff check/format und `git diff --check` für die neuen/angepassten Dateien bestanden. Syntaxprüfung JS und portable Zipapp-Ressourcen geprüft. Keine Runtimeabhängigkeiten ergänzt. |
 
 Der echte Browser prüfte Anmeldung ohne automatische Demo, neutralen Upload,
@@ -27,6 +27,13 @@ Gruppenöffnung, kritisches Warnbeispiel, reduzierte Bewegung, Tastatur, DE/EN
 einschließlich laufender Meldung, responsive Tabelle, zwei getrennte Cookie-
 Kontexte, fremde ID=404 und Abwesenheit privater Daten im Browserstorage.
 Keine JavaScript-Seitenfehler. Alle Inhalte waren selbst erzeugt synthetisch.
+
+Das geprüfte Lieferpaket `dist/browser/agent-authority-browser.pyz` hat SHA-256
+`f9eb981665170f35a98a5fddd0106baafba23265fd8a5d007b35bc3e7830464d`.
+Manifest und `SHA256SUMS` liegen daneben. Der anschließende lokale Belegcommit
+ergänzt ausschließlich diese Abschlussnachweise; er verändert keinen Runtimecode.
+Das ausgelieferte Paket bleibt bewusst das exakt auf Debian geprüfte Artefakt
+aus dem oben genannten sauberen Quellcommit.
 
 Die Paketprüfung verwendet keine Browserinstallation auf Debian. Sie prüft
 Ressourcen tatsächlich per HTTP aus der Zipapp, anonym=401, Owner-/Scopegrenzen,

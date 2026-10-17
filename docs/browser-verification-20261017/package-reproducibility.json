@@ -1,0 +1,7 @@
+{
+  "schema": "aa-browser-reproducibility-v1",
+  "identical": true,
+  "temporaryDirectoryRemoved": true,
+  "sourceClean": true,
+  "packageSha256": "f9eb981665170f35a98a5fddd0106baafba23265fd8a5d007b35bc3e7830464d"
+}
