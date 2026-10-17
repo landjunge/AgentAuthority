@@ -321,7 +321,7 @@ After=docker.service
 Requires=docker.service
 ConditionPathExists=!{ROOT}/SECURITY-STOP
 StartLimitIntervalSec=120
-StartLimitBurst=3
+StartLimitBurst=6
 [Service]
 User=aa-browser
 Group=aa-browser
