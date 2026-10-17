@@ -191,6 +191,13 @@ class BrowserRoutes:
                     cookie=self.server.profile.cookie(session.token, SESSION_SECONDS),
                 )
                 return
+            if self.path == "/api/hilfezentrum/login" and method == "POST":
+                if not hasattr(store.access, 'exchange'):
+                    raise Problem(503, "HELP_ACCOUNT_UNCONFIGURED")
+                session = store.access.exchange(self.body())
+                self.reply(200, store.session_document(session),
+                           cookie=self.server.profile.cookie(session.token, 300))
+                return
             session = store.access.resolve(self.headers.get("Cookie", ""))
             principal = session.principal
             if method == "POST" and not hmac.compare_digest(
@@ -202,12 +209,18 @@ class BrowserRoutes:
 
                 self.reply(200, synthetic_context(store, principal, self.body()))
             elif self.path == "/api/hilfezentrum/context" and method == "POST":
-                self.body()
-                raise Problem(409, "HILFEZENTRUM_IDENTITY_CONTRACT_REQUIRED")
+                if self.body() != {}:
+                    raise Problem(422, "INVALID_HELP_CONTEXT")
+                if not hasattr(store.access, 'context'):
+                    raise Problem(409, "HILFEZENTRUM_IDENTITY_CONTRACT_REQUIRED")
+                self.reply(200, {'context': store.access.context(principal),
+                                 'agent_identity_verified': False, 'external_authority': 'unknown'})
             elif self.path == "/api/session" and method == "GET":
                 self.reply(200, store.session_document(session))
             elif self.path == "/api/status" and method == "GET":
                 document = status_document()
+                if hasattr(store.access, 'exchange'):
+                    document['production'].update(identity='helpcenter-account-only', helpcenterHandoff='configured-account-only', helpcenterHandoffReason='Own-service grant v1; external model identity unknown; collector remains blocked')
                 document["processing"] = store.analysis.status()
                 self.reply(200, document)
             elif self.path == "/api/reports" and method == "GET":

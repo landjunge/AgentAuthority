@@ -120,6 +120,12 @@ def create_app() -> BrowserWSGI:
     if not re.fullmatch(r"[A-Za-z0-9_-]{43,128}", token) or transport not in {"unix", "loopback"}:
         raise ValueError("invalid private proxy configuration")
     store = Store(Path(os.environ["AA_BROWSER_STATE"]))
+    if os.environ.get("AA_HELP_PEER_URL"):
+        from agent_authority.account_access import AccountAccess, GrantPeer
+        peer = GrantPeer(os.environ["AA_HELP_PEER_URL"],
+                         private_file(Path(os.environ["AA_HELP_BRIDGE_KEY_FILE"]), 256).decode().strip(),
+                         private_file(Path(os.environ["AA_HELP_SERVICE_KEY_FILE"]), 256).decode().strip())
+        store.access = AccountAccess(store.access, peer)
     app = BrowserWSGI(store, profile, token, transport)
     atexit.register(app.close)
     return app

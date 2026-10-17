@@ -621,10 +621,29 @@
     if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === "f" && !["settings", "host"].includes(state.page)) { event.preventDefault(); $("search").focus(); }
   });
   if (typeof ResizeObserver !== "undefined") { let previousWidth = 0; new ResizeObserver(() => { const width = $("graph-area").clientWidth; if (width && Math.abs(previousWidth - width) > 20 && state.session) { previousWidth = width; renderGraph(false); } else updateViewport(); }).observe($("graph-area")); }
+  let helpAccountTicket = /^#account-ticket=([A-Za-z0-9_-]{43})$/.exec(location.hash)?.[1] || null;
+  if (helpAccountTicket) history.replaceState(null, '', location.pathname);
   async function start() {
     preference = helpCenterDemoLanguage || readPreference("language", "system"); language = resolveLanguage(preference); document.documentElement.dataset.theme = readPreference("theme", "system"); $("theme").value = document.documentElement.dataset.theme; $("pulse").checked = readPreference("pulse", "true") !== "false";
     try { const response = await fetch(new URL("static/strings.json", appBase), {credentials: "same-origin"}); if (!response.ok) throw new Error("catalog"); catalog = await response.json(); } catch (_) { $("login-message").textContent = "Sprachressourcen nicht verfügbar / Language resources unavailable"; $("login-message").hidden = false; return; }
     translateStatic();
+    if (helpAccountTicket) {
+      showLogin();
+      const button = document.createElement('button'); button.type = 'button';
+      button.textContent = language === 'de' ? 'Mit ausgewähltem Hilfezentrum-Konto anmelden' : 'Sign in with the selected Help Center account';
+      $('login-form').prepend(button);
+      button.onclick = async () => {
+        button.disabled = true;
+        const ticket = helpAccountTicket; helpAccountTicket = null;
+        try {
+          const session = await api('/api/hilfezentrum/login', {method:'POST', body:{ticket}});
+          await enterSession(session);
+          const payload = await api('/api/hilfezentrum/context', {method:'POST', body:{}});
+          setDocument(helpCenterContextGraph(payload.context), {adapter:'helpcenter-account-context', synthetic:false, accessIdentity:'helpcenter-account', sourceAuthentication:'helpcenter-account-only', agentIdentityVerified:false}, null, null);
+        } catch (error) { $('login-message').textContent = L(errorKey(error)); $('login-message').hidden = false; }
+      };
+      return;
+    }
     try { await enterSession(await api("/api/session")); } catch (error) { showLogin(); if (error.status !== 401) { $("login-message").textContent = L(errorKey(error)); $("login-message").hidden = false; } }
   }
   start();

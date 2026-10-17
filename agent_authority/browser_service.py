@@ -83,10 +83,16 @@ class BrowserService:
         principal = self.access.refresh(session.principal)
         return {
             "csrfToken": session.csrf,
-            "user": {"id": principal.subject, "synthetic": True},
+            "user": {"id": principal.subject, "synthetic": self.identity_metadata(principal)["syntheticAccount"],
+                     "agentIdentityVerified": False},
             "scopes": [s.document() for s in principal.scopes],
-            "production": status_document()["production"],
+            "production": {**status_document()["production"], **({'identity': 'helpcenter-account-only', 'helpcenterHandoff': 'configured-account-only'} if hasattr(self.access, 'exchange') else {})},
         }
+
+    def identity_metadata(self, principal):
+        if hasattr(self.access, 'identity_metadata'):
+            return self.access.identity_metadata(principal)
+        return {'syntheticAccount': True, 'accessIdentity': 'synthetic-private-account'}
 
     def listing(self, principal: Principal) -> list[dict[str, Any]]:
         current = self.access.refresh(principal)
@@ -123,8 +129,7 @@ class BrowserService:
             "jobId": job,
             "createdAt": datetime.now(timezone.utc).isoformat(),
             "adapter": kind,
-            "syntheticAccount": True,
-            "accessIdentity": "synthetic-private-account",
+            **self.identity_metadata(principal),
             "sourceAuthentication": "UNBEKANNT",
             "productionIntegration": "blocked",
         }
