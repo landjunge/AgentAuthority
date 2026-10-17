@@ -1,5 +1,12 @@
 # Spätere Bereitstellung auf dem vorhandenen Debian-vServer
 
+**Aktueller Paketnachweis:** Der anschließende
+[Debianabschluss](BROWSER-DEBIAN-ABSCHLUSS-20261017.md) belegt das neuere Paket
+mit 46/46 tatsächlich ausgeführten Checks in einer vollständig bereinigten
+temporären Loopbackkopie. Dieser Bereitstellungsplan wurde dadurch nicht als
+Dauer-/Produktionsdienst ausgeführt. Die unten erwähnte fehlende Debianprüfung
+beschreibt den damaligen Architekturnachlauf.
+
 Dieser Ablauf ist ein überprüfbarer Vorschlag, keine jetzt ausgeführte
 Bereitstellung. Der Nutzerauftrag untersagt System-, Dienst-, Firewalländerung,
 Installation und Neustarts bestehender Dienste. Geprüft wird ausschließlich eine

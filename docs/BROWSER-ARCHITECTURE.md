@@ -1,5 +1,12 @@
 # Browserdienst: gezielter Architekturabschluss vom 17.10.2026
 
+**Späterer Abschluss:** Groks vollständiger Nachlauf `20261017T072638.620141Z`
+urteilt für `57691679…` mit `pass`, ohne Befunde. Anschließend wurde das neue
+Paket auf Debian mit 46/46 Checks qualifiziert. Die folgenden Abschnitte erhalten
+den damaligen Architektur-/Belegstand; das nun vorliegende Review, die aktuelle
+Paketidentität und reale Freigabeabhängigkeiten stehen im
+[Debianabschluss](BROWSER-DEBIAN-ABSCHLUSS-20261017.md).
+
 Dieser Nachlauf erhält den fertiggestellten Browserdienst und gleicht die später
 präzisierten Anforderungen zu Clientgrafik, zusätzlichen Servern und Modulschutz
 ab. Die bestätigte Reihenfolge wurde umgesetzt: zuerst Anmeldung und

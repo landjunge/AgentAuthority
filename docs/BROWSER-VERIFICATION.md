@@ -1,5 +1,11 @@
 # Browserdienst: tatsächliche Prüfung und Restgrenzen
 
+**Aktueller Nachtrag:** Der neue Serverstand wurde danach mit genauem sauberem
+Paket auf Debian qualifiziert: **46/46**, getrennt von den unten erhaltenen
+Altbelegen. Paketidentität, ausgeführte Proben, unabhängige Hashgegenprüfung und
+weiter offene Produktivverträge stehen im
+[Debianabschluss](BROWSER-DEBIAN-ABSCHLUSS-20261017.md).
+
 Auftrag und eigener Worktree vom 17.10.2026. Eingefrorene Ausgangsbasis
 `22c4ee9fc479bb6a3df98fcbd786b0f5a7c9fe9b`, Branch
 `codex/debian-browser-service-20261017T062735Z`. Keine Zusammenführung fremder

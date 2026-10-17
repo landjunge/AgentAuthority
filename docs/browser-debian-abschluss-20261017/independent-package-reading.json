@@ -1,0 +1,27 @@
+{
+  "schema": "aa-browser-independent-package-reading-v1",
+  "role": "delegated evidence reader",
+  "scope": "independent archive/hash/source/evidence reading; no SSH or tests",
+  "sourceCommit": "56adfeb318f7fa6d315d5da13c072231643eb7fd",
+  "reviewedRuntimeCommit": "57691679a02c9f2b0738dff77a28c1774de5958e",
+  "packageSha256": "2efc74f7d86459c99f8d709af7c1e1ab9dc5c9d0261fd7fafc46407b70425b5a",
+  "runtimeSha256": "72f0d81992cc5994c210efe129ee81a59111b212cbf4664272d02cc1b92088ee",
+  "payloadFiles": 33,
+  "archiveFiles": 34,
+  "productFiles": 23,
+  "bootstrapFiles": 1,
+  "checks": {
+    "allPayloadHashesMatchArchiveAndSource": true,
+    "noDuplicateOrExtraFiles": true,
+    "runtimeByteIdenticalToGrokReviewedSourceAndPackage": true,
+    "all46ChecksExecutedAndPassedInReadDebianEvidence": true,
+    "packageSourceAndRuntimeIdentityMatch": true,
+    "checkerWrapperRunnerBootstrapAndTarHashesMatch": true
+  },
+  "cleanup": "confirmed by reading executed Debian evidence and wrapper; no independent SSH execution",
+  "browserExecuted": false,
+  "debianExecutedByThisRole": false,
+  "productionApproval": false,
+  "passed": true,
+  "recordedBy": "root builder, transcribed from delegated evidence-reader report"
+}
