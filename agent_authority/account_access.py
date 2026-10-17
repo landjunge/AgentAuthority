@@ -3,6 +3,7 @@
 The peer URL, bridge credential and service key come only from private operator
 configuration. No browser supplied host, scope or subject is accepted.
 """
+import math
 import http.client
 import socket
 import json
@@ -10,7 +11,7 @@ import secrets
 import time
 import threading
 from dataclasses import replace
-from urllib.request import Request, build_opener, HTTPRedirectHandler
+from urllib.request import Request, build_opener, HTTPRedirectHandler, ProxyHandler
 from urllib.parse import urlsplit
 from agent_authority.browser_contracts import Principal, Scope, Session, Problem
 from agent_authority.observations import TOKEN
@@ -54,7 +55,7 @@ class GrantPeer:
                       headers={'Content-Type': 'application/json', 'X-Bridge-Key': self.bridge,
                                'X-KH-AA-Key': self.key, 'X-Bot-Source': 'aa-own-service'})
         try:
-            with build_opener(NoRedirect).open(req, timeout=3) as response:
+            with build_opener(ProxyHandler({}), NoRedirect).open(req, timeout=3) as response:
                 raw = response.read(16001)
                 if len(raw) > 16000:
                     raise ValueError('Peer response too large')
@@ -73,15 +74,22 @@ class AccountAccess:
 
     def checked(self, data):
         try:
-            assert data['issuer'] == 'ki-hilfezentrum-account-v1'
-            assert data['audience'] == 'agent-authority-browser-v1'
-            assert data['agent_identity_verified'] is False
-            assert data['external_authority'] == 'unknown'
-            assert time.time() < data['expires_at'] <= time.time()+301
-            assert data['adapters'] == ['report']
-            assert all(isinstance(data[k], str) and TOKEN.fullmatch(data[k]) for k in ('subject', 'sourceId', 'jobId'))
+            expiry = data['expires_at']
+            valid = (
+                data['issuer'] == 'ki-hilfezentrum-account-v1'
+                and data['audience'] == 'agent-authority-browser-v1'
+                and data['agent_identity_verified'] is False
+                and data['external_authority'] == 'unknown'
+                and type(expiry) in (int, float) and math.isfinite(expiry)
+                and time.time() < expiry <= time.time()+301
+                and data['adapters'] == ['report']
+                and all(isinstance(data[k], str) and TOKEN.fullmatch(data[k])
+                        for k in ('subject', 'sourceId', 'jobId'))
+            )
+            if not valid:
+                raise Problem(401, 'INVALID_HELP_ACCOUNT_GRANT')
             return Principal(data['subject'], (Scope(data['sourceId'], data['jobId'], ('report',)),))
-        except (KeyError, TypeError, AssertionError):
+        except (KeyError, TypeError, ValueError):
             raise Problem(401, 'INVALID_HELP_ACCOUNT_GRANT') from None
 
     def exchange(self, body):
