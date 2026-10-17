@@ -1,0 +1,49 @@
+{
+  "schema": "aa-helpcenter-deployment-source-pins-v1",
+  "aa": {
+    "worktree": "/Users/landjunge/agent-authority-lab/.worktrees/dauerbetrieb-20261017T1048Z",
+    "base": "0794aa53ffe71d502d4ae54f6764062a1ed77f97",
+    "product_source": "27db3a848e9aad30318dd00f7380725b22bd8543",
+    "operations_source": "a6bc3fc57321f9529c8351a100c39c11f06443b1",
+    "package_sha256": "f512ab6b5716ff097cdf9978ccd01bc26be6e03732989d747ffa947a3cd1c6f4",
+    "earlier_operations_commits": [
+      "3ef12040e2003bbc8c598d989437d8b8c5c4198a",
+      "a201f07e105506fdabf15fd80a9599a703690d2a",
+      "78504e44dc361208fdfccc5ae242fb5e38e540da",
+      "0a4455712647945870085f3a0b821103082500b8"
+    ],
+    "evidence_sha256": {
+      "docs/BROWSER-DAUERBETRIEB-20261017.md": "cf66113493ec18d2cd6ef68b8f0cb259abe3eddd8bf5de641d991e6afaa417ac",
+      "docs/browser-dauerbetrieb-20261017/final-audit.json": "aa8ca25918658d78ae1ef9def773448cd8571a81ccf4f9aa4b768e76d53a1887",
+      "docs/browser-dauerbetrieb-20261017/hilfezentrum-ui.json": "fb31f3fd3960c409dbd5fe663a77b40bff2a1e0a3f00adbd693ab888d363c421",
+      "docs/browser-dauerbetrieb-20261017/live-checks.json": "bc2348fed0bc5c4f0f16783ae1d2a226ccfd396ebac08fa672b910baca7657d9",
+      "docs/browser-dauerbetrieb-20261017/progress.json": "67aef1f0d7532f5a01f9b812f27ab2e75486582b5da3a5b6c4c16acbd5982544",
+      "docs/browser-dauerbetrieb-20261017/recovery-checks.json": "56bbc861909ca9c2de33a7b8b11be850b6c38a82538aaf876911abeb3d70a70a",
+      "docs/browser-dauerbetrieb-20261017/start-rate-recovery.json": "d0fa4f7c846b7f307846e441e0c123cd2da374b43789452af01a22a5187059c0",
+      "docs/browser-dauerbetrieb-20261017/activation.txt": "23c4f8ea0b2dc2d95793ddce5476727c1a0212918ce6c04909fca514e07b7261"
+    }
+  },
+  "helpcenter": {
+    "worktree": "/Users/landjunge/Projects/ki-hilfezentrum/.worktrees/authority-integration-20261017",
+    "builder_base": "2befbe0b131f7262ece8361aa32be9ea31b7296b",
+    "product_source": "33c4b508d047a534524a214fc08325e807b07870",
+    "archive_sha256": "cee21a25a93c38259c582fabf7587d45843513b6e671b3e6a0df8aa480c82e4d",
+    "archive_bytes": 3799040,
+    "archive_file_count": 362,
+    "activation_operations": "f3a9eabc3f6ee87dd53ec428a0b54740afc0cebe",
+    "rollback_operations": "338da2a9a2ce090ec27bf60a13d26eb7101afdfd",
+    "integration_evidence": "6ac66d7de1c005f8cddb1f243a67ba3bce62445c",
+    "evidence_sha256": {
+      "AUTHORITY-INTEGRATION.md": "1095b5b740a98c295f0f0269e3f60c82bee6b122a4dfd8fb77ab6ae5138684e0",
+      "docs/belege/authority-integration-20261017/local-checks.json": "fd10807213d15128e5e3f871c362596435448805e5e9f66a1c435acbef6e0b9e",
+      "docs/belege/authority-integration-20261017/operations-cleanup.json": "fd35293eca47d7588f946322afd0b6fda9c3b4bf3363d5c082c69685662cffdb",
+      "docs/belege/authority-integration-20261017/public-checks.json": "2d864835bd41d058bd73b12cf2d7773ea8921cfcdbf93058b33192450d633a5c",
+      "docs/belege/authority-integration-20261017/synthetic-case-ui.json": "0783c5b9d218e6df4a7f72a0036d3fa1c54f57fd1afb963b42e2fc4549d1a569"
+    }
+  },
+  "limits": [
+    "No positive real human authentication or live authorized assignment selection tested",
+    "No real AA identity handoff or SSO",
+    "Recovery code switch used first release pin; no older production release, reboot or state restore tested"
+  ]
+}

@@ -1,9 +1,41 @@
 {
-  "status": "in_progress",
+  "status": "independent_technical_work_completed_real_identity_handoff_blocked",
   "snapshot_verified": true,
-  "existing_service": "agent-authority-browser.service absent before continuation",
-  "aa_base": "0794aa53ffe71d502d4ae54f6764062a1ed77f97",
-  "helpcenter_base": "2befbe0b131f7262ece8361aa32be9ea31b7296b",
-  "next": ["finish narrow HTTP/context checks", "install private single-worker service", "coordinate helpcenter release", "verify changed paths and pin evidence"],
-  "gates": ["real AA identity/source contract", "collector hardstop", "real source imports and foreign actions"]
+  "aa_service_before_continuation": "not installed",
+  "aa": {
+    "active": true,
+    "enabled": true,
+    "operator_path": "existing netcup root SSH; private credential file, no secrets in evidence",
+    "url": "https://v2202608211799501333.goodsrv.de/agent-authority/",
+    "synthetic": true,
+    "single_instance": true,
+    "source_commit": "27db3a848e9aad30318dd00f7380725b22bd8543",
+    "operations_commit": "a6bc3fc57321f9529c8351a100c39c11f06443b1"
+  },
+  "helpcenter": {
+    "public_entry_de": "https://ki-hilfezentrum.netzwerkpunkt.de/#agent-authority",
+    "public_entry_en": "https://ki-hilfezentrum.netzwerkpunkt.de/en.html#agent-authority",
+    "source_commit": "33c4b508d047a534524a214fc08325e807b07870",
+    "integration_evidence_commit": "6ac66d7de1c005f8cddb1f243a67ba3bce62445c",
+    "activated": true,
+    "shared_login": false,
+    "real_handoff": "blocked_503_authority_identity_contract_missing"
+  },
+  "passed_checks": {
+    "aa_targeted_unit": 19,
+    "aa_existing_boundary_method": 1,
+    "aa_synthetic_browser_assertions": 23,
+    "aa_live_assertions": 44,
+    "aa_recovery_assertions": 7,
+    "helpcenter_public_assertions": 35,
+    "helpcenter_public_https_requests": 8
+  },
+  "gates": [
+    "real AA issuer/audience and Subject/Tenant/Owner/Source/Job/Adapter mapping with expiry, revocation and allowed fields/storage",
+    "real source/verifier/keypin/retention",
+    "collector hardstop and foreign actions",
+    "existing missing deletion-ledger binding"
+  ],
+  "next_independent_technical_step": null,
+  "no_push_merge_or_visibility_change": true
 }

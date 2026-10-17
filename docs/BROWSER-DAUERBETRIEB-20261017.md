@@ -145,7 +145,7 @@ getrennten AA-Arbeitsbereich bleibt offen.
 | AA-Ausgangsbasis | `0794aa53ffe71d502d4ae54f6764062a1ed77f97` |
 | Aktive AA-Produktquelle | `27db3a848e9aad30318dd00f7380725b22bd8543` |
 | AA-Paket SHA-256 | `f512ab6b5716ff097cdf9978ccd01bc26be6e03732989d747ffa947a3cd1c6f4` |
-| AA-Opsfortschritt | `3ef1204`, `a201f07`, `78504e4`, `0a44557`; endgültiger Ops-/Auditpin im Quellenmanifest |
+| AA-Opsfortschritt | `3ef1204`, `a201f07`, `78504e4`, `0a44557`; endgültiger Ops-/Auditpin `a6bc3fc57321f9529c8351a100c39c11f06443b1` |
 | Finale AA-Unit SHA-256 | `8d27b1bc83cb8377c63dc508963ea8f904d9b97517df93149a1dbf44fc080db0` |
 | Hilfezentrum-Produktquelle | `33c4b508d047a534524a214fc08325e807b07870` |
 | Hilfezentrum-Archiv SHA-256 | `cee21a25a93c38259c582fabf7587d45843513b6e671b3e6a0df8aa480c82e4d` · 3.799.040 Bytes / 362 Dateien |

@@ -1,4 +1,29 @@
 {
+  "at": "2026-10-17T11:52:03.711383+00:00",
+  "audit_source_sha256": "7cdd0bed40bdf7e5cdbdc3fc45d4d35e114e6e9bcbe5fa5a7b944e92f6fcd7d0",
+  "operations": {
+    "provenance": {
+      "schema": "aa-private-operations-source-v1",
+      "source_commit": "a6bc3fc57321f9529c8351a100c39c11f06443b1",
+      "product_source_commit": "27db3a848e9aad30318dd00f7380725b22bd8543",
+      "package_sha256": "f512ab6b5716ff097cdf9978ccd01bc26be6e03732989d747ffa947a3cd1c6f4",
+      "files": {
+        "browser_service.py": "483f93b2a2729cb9056934d8687cca177b353f7c58c11209eed8b29000e1d078",
+        "check_browser_service.py": "8106744e122a070005fac5e9438356a6a852551680ff6cc9b55c525a3e60e517",
+        "check_browser_recovery.py": "f6e6a3b6b8a1a8e7c00cc29641c51ad62d4bc9c2aa2b9068cf0f7d8061bf9a72",
+        "final_browser_audit.py": "7cdd0bed40bdf7e5cdbdc3fc45d4d35e114e6e9bcbe5fa5a7b944e92f6fcd7d0"
+      }
+    },
+    "bytes_match_manifest": true
+  },
+  "aggregate": {
+    "CPUQuotaPerSecUSec": "400ms",
+    "MemoryMax": "838860800",
+    "MemorySwapMax": "0"
+  },
+  "own_running_lab_units": [
+    "aa-browser-final-audit-20261017.service"
+  ],
   "passed": true,
   "aa": {
     "activation": {
@@ -124,7 +149,7 @@
   },
   "legacy": {
     "unit_definitions_unchanged": true,
-    "collector_identity_retired": true,
+    "collector_config_outside_legacy_sender_receiver_schema": true,
     "collector_service": "inactive",
     "collector_socket": "inactive",
     "verifier": "active",
