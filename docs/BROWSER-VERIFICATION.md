@@ -43,8 +43,24 @@ geprüft; die verschobene `observation_report`-Methode ist per AST identisch.
 Die 34 bestehenden Graphmodellchecks, 23 Browserchecks und 33 ursprünglichen
 Debian-Paketchecks wurden **gelesen, nicht erneut ausgeführt**. Deren Erfolg
 belegt ihren ursprünglichen Code/Paketstand. Keine neue visuelle oder Debian-
-Freigabe für den geänderten Servercode wird daraus abgeleitet. Quellhygiene und
-lokaler Paketstart des Nachlaufs werden mit dem konkreten Abschlussstand erfasst.
+Freigabe für den geänderten Servercode wird daraus abgeleitet. Ruff check/format für alle Browser-Pythondateien und die vier betroffenen
+Tests sowie `git diff --check` bestanden.
+
+Zusätzlich **33/33 lokale Paketprüfungen bestanden**: neues Zipapp aus sauberem
+Commit `062333d2ccd1c37957e1661474dfc006ab406291`, Python 3.13.14 auf diesem
+Mac. [Exakter Paketbeleg](browser-architecture-20261017/local-package.json).
+Manifest, enthaltene Module/Ressourcen, Anmeldung/Owner-/Scope-/CSRF-Grenzen,
+beide Berichtsadapter, SIGTERM, geschlossene Ports, Neustart mit ungültiger alter
+Sitzung und erhaltenem zugeordnetem Ergebnis wurden tatsächlich aus der Zipapp
+geprüft. Eigene Prozesse und temporärer State wurden bereinigt. Ein Browser und
+Debian wurden dabei nicht ausgeführt.
+
+Das neue lokale Paket liegt unter
+`dist/browser-architecture/agent-authority-browser.pyz`, SHA-256
+`c54e240d7ed8eeb97aa2b620993df855e62aeea4279b37b36c298e5639fd4ab8`.
+Manifest und `SHA256SUMS` liegen daneben. Der folgende Belegcommit ergänzt nur
+Dokumentation/Ergebnisdatei; das Paket bleibt dem exakt geprüften Runtimecommit
+zugeordnet. Es ersetzt keinen früheren Debianqualifikationsbeleg.
 
 Gemeinsame produktive Auth-/Widerrufs-/Daten-/Quoten-/Auftragszulassung,
 Lastverteilung und dauerhafte Queue sind vorbereitet beziehungsweise als
