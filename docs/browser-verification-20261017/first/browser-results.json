@@ -1,0 +1,13 @@
+{
+  "schema": "aa-browser-ui-check-v1",
+  "synthetic": true,
+  "passed": false,
+  "failure": "Probe selector data-node-id absent; cleanup close after Playwright exception interrupted the probe finally block",
+  "checks": {
+    "login_empty_no_demo": true
+  },
+  "correction": "SVG nodes receive data-node-id; browser close guarded in finally; own orphan received SIGTERM",
+  "visualResult": "Only empty state captured; remaining UI assertions not passed",
+  "processStopped": true,
+  "temporaryStateRemoved": true
+}

@@ -57,6 +57,22 @@ bundle includes Python 3.12 and targets macOS 12. Live Endpoint Security testing
 requires Apple-approved entitlement, signing, extension activation and the
 collector's own Full Disk Access. The development build cannot substitute these.
 
+## Private browser service
+
+The [browser service](docs/BROWSER-SERVICE.md) ports the native navigation,
+dashboard, interactive graph, inspector, filters and history to a responsive
+German/English browser UI with the existing Python observation engine. It runs
+with Python >=3.12, including the Debian 13 / Python 3.13.5 target, without
+third-party runtime packages. A portable zipapp is built by
+`python3.13 -B scripts/package_browser.py --output dist/browser`.
+
+Only explicit private synthetic accounts are currently enabled. Report access is
+restricted by owner and configured source/job pairs; demo data is an explicit
+choice. Real identities, production sources, public hosting and collector
+activation remain blocked. See [native feature mapping](docs/BROWSER-PARITY.md),
+[source contracts](docs/BROWSER-CONTRACTS.md), [verification](docs/BROWSER-VERIFICATION.md)
+and the [later deployment plan](docs/BROWSER-DEPLOYMENT.md).
+
 ## Historical research baseline
 
 Experimental security lab: can **deterministic workflow-level state and information-flow enforcement** stop **some modeled** composition attacks that per-action authorization misses?

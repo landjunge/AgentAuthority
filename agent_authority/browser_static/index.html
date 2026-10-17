@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="de" data-theme="system">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="color-scheme" content="light dark">
+  <title>Agent Authority</title>
+  <link rel="stylesheet" href="/static/style.css">
+  <script src="/static/app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main" data-i18n="web.skip">Zum Inhalt</a>
+  <section id="login-screen" class="login-screen" aria-labelledby="login-title">
+    <div class="login-card">
+      <div class="brand-mark" aria-hidden="true">A<span>↗</span></div>
+      <h1 id="login-title">Agent Authority</h1>
+      <p data-i18n="app.tagline">Beobachtung & Nachweis</p>
+      <p class="boundary" data-i18n="web.loginBoundary">Privater Dienst. Reale Kontenanbindung ist noch nicht konfiguriert. Nur ausdrücklich eingerichtete synthetische Prüfkonten verwenden.</p>
+      <form id="login-form">
+        <label for="username" data-i18n="web.username">Prüfkonto</label>
+        <input id="username" name="username" autocomplete="username" required maxlength="128">
+        <label for="password" data-i18n="web.password">Kennwort</label>
+        <input id="password" name="password" type="password" autocomplete="current-password" required maxlength="256">
+        <button class="primary" type="submit" data-i18n="web.login">Anmelden</button>
+      </form>
+      <p id="login-message" class="message error" role="alert" hidden></p>
+      <div class="login-language"><label for="login-language" data-i18n="settings.language">Sprache</label><select id="login-language"><option value="de">Deutsch</option><option value="en">English</option></select></div>
+      <p class="muted small" data-i18n="app.observer">Beobachtung und Analyse · keine Rechtevergabe</p>
+    </div>
+  </section>
+
+  <div id="application" class="application" hidden>
+    <header class="topbar">
+      <button id="sidebar-toggle" class="icon-button mobile-nav" aria-controls="sidebar" aria-expanded="false" data-i18n-title="toolbar.sidebar" aria-label="Seitenleiste">☰</button>
+      <a class="brand" href="#overview" data-page="overview"><span class="brand-symbol" aria-hidden="true">A↗</span> Agent Authority</a>
+      <span class="observer-label" data-i18n="app.observer">Beobachtung und Analyse · keine Rechtevergabe</span>
+      <span id="account-label" class="account-label"></span>
+      <button id="logout" data-i18n="web.logout">Abmelden</button>
+    </header>
+    <aside id="sidebar" class="sidebar" aria-label="Navigation">
+      <p class="sidebar-caption" data-i18n="app.tagline">Beobachtung & Nachweis</p>
+      <nav id="navigation">
+        <button data-page="overview"><span aria-hidden="true">▦</span><span data-i18n="nav.overview">Übersicht</span></button>
+        <button data-page="graph"><span aria-hidden="true">⌘</span><span data-i18n="nav.graph">Authority Graph</span></button>
+        <button data-page="agents"><span aria-hidden="true">◎</span><span data-i18n="nav.agents">Agenten & Identitäten</span></button>
+        <button data-page="delegations"><span aria-hidden="true">↳</span><span data-i18n="nav.delegations">Delegationen</span></button>
+        <button data-page="actions"><span aria-hidden="true">▣</span><span data-i18n="nav.actions">Systemhandlungen</span></button>
+        <button data-page="evidence"><span aria-hidden="true">▤</span><span data-i18n="nav.evidence">Evidence</span></button>
+        <button data-page="findings"><span aria-hidden="true">△</span><span data-i18n="nav.findings">Auffälligkeiten</span></button>
+      </nav>
+      <div class="source-scope"><p class="eyebrow" data-i18n="nav.scope">BEOBACHTUNGSRAUM</p><p id="scope-description" class="break"></p><p id="scope-job" class="small muted break"></p></div>
+      <div class="sidebar-bottom">
+        <button data-page="host"><span aria-hidden="true">◫</span><span data-i18n="web.service">Dienst & Adapter</span></button>
+        <button data-page="settings"><span aria-hidden="true">⚙</span><span data-i18n="nav.settings">Einstellungen</span></button>
+      </div>
+    </aside>
+    <main id="main" tabindex="-1">
+      <div class="page-heading"><div><p id="data-mode" class="eyebrow"></p><h1 id="page-title" data-i18n="nav.overview">Übersicht</h1></div><div class="heading-actions"><button id="refresh" data-i18n="button.refresh">Aktualisieren</button><button id="import-open" class="primary" data-i18n="web.import">Bericht aufnehmen</button></div></div>
+      <div id="global-message" class="message" role="status" hidden></div>
+      <section id="report-controls" class="report-controls" aria-label="Bericht">
+        <label for="report-select" data-i18n="web.report">Zugeordneter Bericht</label><select id="report-select"><option value="" data-i18n="web.chooseReport">Bericht wählen …</option></select>
+        <button id="demo-load" data-i18n="web.demo">Demo ausdrücklich öffnen</button><button id="export" data-i18n="button.export" disabled>Nachweise exportieren …</button>
+      </section>
+      <section id="data-workspace">
+        <div id="metrics" class="metrics"></div>
+        <p id="coverage" class="coverage"></p>
+        <p id="source-boundary" class="source-boundary"></p>
+        <section class="graph-section" aria-labelledby="graph-heading">
+          <div class="graph-heading"><h2 id="graph-heading" data-i18n="graph.title">Authority Graph</h2><button id="inspector-toggle" aria-controls="inspector" aria-expanded="true" data-i18n="toolbar.inspector">Inspector</button></div>
+          <div class="graph-controls">
+            <div id="modes" class="segments" role="group" aria-label="Graphansicht"><button data-mode="0" data-i18n="graph.chain">Kette</button><button data-mode="1" data-i18n="graph.agents">Agenten</button><button data-mode="2" data-i18n="graph.clusters">Gruppen</button></div>
+            <label class="sr-only" for="proof-filter" data-i18n="web.filter">Nachweisfilter</label><select id="proof-filter"><option value="0" data-i18n="graph.all">Alle Zustände</option><option value="1" data-i18n="graph.missing">Nachweise fehlen</option><option value="2" data-i18n="graph.observed">Beobachtet / belegt</option></select>
+            <form id="search-form" class="search-form" role="search"><label class="sr-only" for="search" data-i18n="graph.search">Agent, PID, Evidence …</label><input id="search" type="search" maxlength="200" data-i18n-placeholder="graph.search" placeholder="Agent, PID, Evidence …"><button type="submit" data-i18n="web.search">Suchen</button></form>
+          </div>
+          <div class="graph-subcontrols"><button id="back" disabled data-i18n="button.back">Zurück</button><button id="focus-chain" disabled data-i18n="button.focus">Kette fokussieren</button><button id="expand-group" hidden data-i18n="graph.openCluster">Gruppe öffnen</button><button id="copy-reference" disabled data-i18n="button.copy">Referenz kopieren</button><label id="pulse-label" class="checkbox"><input id="pulse" type="checkbox" checked><span data-i18n="warning.pulse">Warnpulsieren</span></label></div>
+          <p id="mode-boundary" class="small muted"></p>
+          <button id="critical-warning" class="critical-banner" hidden data-i18n="warning.criticalMessage">Synthetische kritische Warnung</button>
+          <div id="graph-area" class="graph-area" tabindex="0" role="group" aria-label="Authority Graph">
+            <svg id="graph-svg" xmlns="http://www.w3.org/2000/svg" aria-label="Authority Graph"><defs><marker id="edge-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z"></path></marker></defs><g id="graph-viewport"><g id="graph-edges"></g><g id="graph-nodes"></g></g></svg>
+            <div id="graph-empty" class="graph-empty"></div>
+            <button id="minimap" class="minimap" data-i18n-title="button.fit" aria-label="Einpassen"><svg id="minimap-svg" viewBox="0 0 120 64" aria-hidden="true"></svg></button>
+            <div class="graph-footer"><span id="graph-count"></span><div><button id="zoom-out" class="icon-button" data-i18n-title="button.zoomOut" aria-label="Verkleinern">−</button><output id="zoom-label">100 %</output><button id="zoom-in" class="icon-button" data-i18n-title="button.zoomIn" aria-label="Vergrößern">+</button><button id="fit" data-i18n="button.fit">Einpassen</button></div></div>
+          </div>
+          <p class="graph-help small muted" data-i18n="web.graphHelp">Ziehen: verschieben · Strg/⌘ + Mausrad: zoomen · Pfeiltasten: Auswahl · Enter: Kette/Gruppe öffnen · +/−: Zoom · 0: einpassen</p>
+        </section>
+        <section class="activity-section" aria-labelledby="activity-heading"><div class="activity-heading"><h2 id="activity-heading" data-i18n="activity.title">Letzte Aktivitäten</h2><span id="table-count" class="small muted"></span></div><div class="table-scroll" role="region" tabindex="0" data-i18n-label="web.activityTable" aria-label="Aktivitäten und Belegverweise, horizontal scrollbar"><table><thead><tr><th data-i18n="activity.kind">Art</th><th data-i18n="activity.name">Name</th><th data-i18n="activity.status">Nachweis</th><th data-i18n="field.instance">Instanz</th><th data-i18n="activity.evidence">Belegverweise</th></tr></thead><tbody id="activity-rows"></tbody></table></div><p id="table-empty" class="empty-state" hidden></p><div class="pagination"><button id="rows-previous" data-i18n="web.previous">Vorherige</button><span id="rows-page" class="small muted"></span><button id="rows-next" data-i18n="web.next">Weitere</button></div></section>
+      </section>
+      <section id="service-page" class="utility-page" hidden><h2 data-i18n="web.serviceStatus">Belegte Dienstgrenzen</h2><p data-i18n="web.serviceExplanation">Agent Authority beobachtet und analysiert. Der Dienst vergibt keine Rechte und führt keine Agentenaufträge aus.</p><div id="service-details"></div><h2 data-i18n="web.platformTitle">Plattformgebundene App-Funktionen</h2><p data-i18n="web.platformExplanation">macOS-Berechtigungen, Endpoint Security, Apple Events, Prozessproben und Writer-Kontrollen gehören zum nativen Testhost. Sie werden im Browser nicht ausgeführt. Ein Debian-Adapter benötigt seinen eigenen belegten Vertrag.</p><h2 data-i18n="web.scopes">Freigegebene Quellen / Aufträge</h2><ul id="scope-list"></ul></section>
+      <section id="settings-page" class="utility-page" hidden><h2 data-i18n="settings.title">Sprache & Darstellung</h2><div class="setting"><label for="language" data-i18n="settings.language">Sprache</label><select id="language"><option value="system" data-i18n="settings.system">Systemsprache</option><option value="de">Deutsch</option><option value="en">English</option></select></div><div class="setting"><label for="theme" data-i18n="settings.appearance">Darstellung</label><select id="theme"><option value="system" data-i18n="settings.systemTheme">Systemdarstellung</option><option value="dark" data-i18n="settings.dark">Dunkel</option><option value="light" data-i18n="settings.light">Hell</option></select></div><p class="muted" data-i18n="web.preferenceNote">Eigene Agent-Authority-Browserpräferenzen. Berichte und Kennwörter werden nicht im Browserspeicher gespeichert.</p><h2 data-i18n="menu.shortcuts">Tastatur & Nachweisgrenzen</h2><p data-i18n="web.graphHelp"></p><p data-i18n="web.navigationHelp">Tab navigiert zwischen Bedienelementen. Die Zurück-Schaltfläche stellt Ansicht, Auswahl, Suche, Filter und Viewport wieder her. Alt + Pfeil links nutzt die Ansichtshistorie. Strg/⌘ + F fokussiert die Graphsuche.</p><p data-i18n="app.observer"></p></section>
+    </main>
+    <aside id="inspector" class="inspector" aria-labelledby="inspector-heading"><div class="inspector-top"><h2 id="inspector-heading" data-i18n="inspector.title">INSPECTOR</h2><button id="inspector-close" class="icon-button" data-i18n-title="button.close" aria-label="Schließen">×</button></div><div id="inspector-content"></div></aside>
+  </div>
+
+  <dialog id="import-dialog" aria-labelledby="import-title"><form id="import-form"><h2 id="import-title" data-i18n="web.import">Bericht aufnehmen</h2><p class="muted" data-i18n="web.importBoundary">Nur JSON aufnehmen. Quellen-/Auftragszugriff wird serverseitig geprüft. Die Aufnahme löst keine Agentenaktion aus.</p><label for="import-scope" data-i18n="web.scopePair">Quelle / Auftrag</label><select id="import-scope" required></select><label for="import-kind" data-i18n="web.contract">Vertrag</label><select id="import-kind"><option value="report" data-i18n="web.neutralReport">Neutraler Beobachtungsbericht v1</option><option value="observations" data-i18n="web.observations">Neutrale Einträge (Engine-Aufnahme)</option><option value="private-verification" data-i18n="web.privateReport">Privatdienst-Verifikationsbericht</option></select><label for="import-file" data-i18n="web.jsonFile">JSON-Datei (max. 8 MiB)</label><input id="import-file" type="file" accept=".json,application/json" required><p id="import-message" class="message error" role="alert" hidden></p><div class="dialog-actions"><button type="button" id="import-cancel" data-i18n="button.cancel">Abbrechen</button><button type="submit" class="primary" data-i18n="web.importSubmit">Nur lesend aufnehmen</button></div></form></dialog>
+  <div id="announcer" class="sr-only" aria-live="polite" aria-atomic="true"></div>
+</body>
+</html>

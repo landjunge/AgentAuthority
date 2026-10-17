@@ -1,0 +1,22 @@
+{
+  "schema": "aa-browser-ui-check-v1",
+  "synthetic": true,
+  "checks": {
+    "login_empty_no_demo": true,
+    "neutral_graph_four_nodes": true,
+    "foreign_text_inert": true,
+    "search_empty_state": true,
+    "history_restores_search_viewport": true,
+    "history_restores_filter": true,
+    "all_native_pages_navigate": true,
+    "invalid_import_visible_no_fallback": true,
+    "empty_report_visible": true,
+    "no_page_errors": true
+  },
+  "errors": [],
+  "browser": "155.0.8059.84",
+  "failure": "Error",
+  "processStopped": true,
+  "passed": false,
+  "temporaryStateRemoved": true
+}
