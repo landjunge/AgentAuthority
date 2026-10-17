@@ -26,7 +26,6 @@ import zipfile
 from pathlib import Path
 from typing import Any
 
-
 CHECKS = (
     "package_manifest",
     "package_hashes",
@@ -38,17 +37,27 @@ CHECKS = (
     "static_http",
     "anonymous_denied",
     "synthetic_login",
+    "live_logout",
+    "revoked_cookie_denied",
+    "fresh_login_after_logout",
     "empty_accounts",
     "neutral_import",
     "neutral_model_and_foreign_text",
     "owner_isolation",
     "source_job_isolation",
+    "source_isolation",
+    "job_isolation",
+    "adapter_isolation",
     "csrf_denied",
     "duplicate_json_denied",
     "private_import",
     "private_report_unverified",
     "private_owner_isolation",
+    "report_states_listing",
     "production_blocked",
+    "status_process_queue_limits",
+    "second_instance_denied",
+    "first_instance_healthy",
     "explicit_demo",
     "demo_does_not_create_report",
     "package_credentials_absent",
@@ -59,9 +68,134 @@ CHECKS = (
     "report_persisted",
     "final_sigterm",
     "final_port_closed",
+    "package_repository_modules",
+    "repository_state_roundtrip",
+    "atomic_quota",
     "temporary_directory_removed",
     "own_processes_reaped",
 )
+
+
+# This narrowly scoped child probe imports the actual checked archive, never the
+# repository checkout. Its two private stores are separate from the HTTP store.
+# Only fixed booleans/counts leave the process, including on unexpected failure.
+REPOSITORY_PROBE = r"""
+import hashlib
+import json
+import os
+import sys
+import threading
+from concurrent.futures import ThreadPoolExecutor
+from pathlib import Path
+
+names = ('package_repository_modules', 'repository_state_roundtrip', 'atomic_quota')
+result = {
+    'checks': {name: False for name in names},
+    'executed': {name: False for name in names},
+    'counts': {'quotaReports': 0, 'quotaInserted': 0, 'quotaRejected': 0,
+               'quotaConnections': 0, 'repositoryStates': 0},
+}
+repositories = []
+
+def check(name, condition):
+    result['executed'][name] = True
+    result['checks'][name] = bool(condition)
+    if not condition:
+        raise RuntimeError()
+
+def payload(number, adapter='observations', state=None):
+    value = {
+        'metadata': {
+            'id': f'{number:032x}', 'sourceId': 'synthetic-source',
+            'jobId': 'synthetic-job', 'adapter': adapter,
+            'createdAt': '2026-10-17T07:00:00+00:00',
+        },
+        'report': {'claim': 'synthetic, unauthenticated'},
+        'graph': {'nodes': [{'id': 'entry-1'}]},
+    }
+    if state is not None:
+        value['metadata']['state'] = state
+    return value
+
+try:
+    os.umask(0o077)
+    package = Path(sys.argv[1]).resolve()
+    root = Path(sys.argv[2])
+    root.mkdir(mode=0o700)
+    sys.path.insert(0, str(package))
+    import agent_authority.browser_contracts as contracts
+    import agent_authority.browser_repository as repository_module
+
+    result['packageSha256'] = hashlib.sha256(package.read_bytes()).hexdigest()
+    check('package_repository_modules', all(
+        module.__file__ == str(package / (module.__name__.replace('.', '/') + '.py'))
+        for module in (contracts, repository_module)
+    ))
+    actor = contracts.Principal('synthetic-owner', (
+        contracts.Scope('synthetic-source', 'synthetic-job',
+                        ('observations', 'report', 'private-verification')),
+    ))
+    states = root / 'states'
+    states.mkdir(mode=0o700)
+    first = repository_module.LocalReportRepository(states)
+    repositories.append(first)
+    expected = {}
+    for number, adapter, state in (
+        (1, 'observations', 'complete'),
+        (2, 'report', 'incomplete'),
+        (3, 'private-verification', 'reported-private-verification'),
+        (4, 'observations', None),
+    ):
+        first.insert(actor, payload(number, adapter, state))
+        expected[f'{number:032x}'] = state or 'unknown'
+    first.close()
+    repositories.remove(first)
+    reopened = repository_module.LocalReportRepository(states)
+    repositories.append(reopened)
+    listed = reopened.listing(actor)
+    result['counts']['repositoryStates'] = len(listed)
+    check('repository_state_roundtrip',
+          {item['id']: item['state'] for item in listed} == expected
+          and all('report' not in item and 'graph' not in item for item in listed))
+
+    quota = root / 'quota'
+    quota.mkdir(mode=0o700)
+    first = repository_module.LocalReportRepository(quota)
+    repositories.append(first)
+    for number in range(1, 50):
+        first.insert(actor, payload(number))
+    second = repository_module.LocalReportRepository(quota)
+    repositories.append(second)
+    result['counts']['quotaConnections'] = 2
+    barrier = threading.Barrier(2)
+
+    def insert(repository, number):
+        barrier.wait(timeout=3)
+        try:
+            repository.insert(actor, payload(number))
+            return 'inserted'
+        except contracts.Problem as exc:
+            return 'quota' if (exc.status, exc.code) == (409, 'STORAGE_LIMIT') else 'unexpected'
+
+    with ThreadPoolExecutor(max_workers=2) as executor:
+        futures = [executor.submit(insert, first, 50), executor.submit(insert, second, 51)]
+        outcomes = [future.result(timeout=5) for future in futures]
+    count = first.db.execute('SELECT COUNT(*) FROM reports WHERE owner=?',
+                             (actor.subject,)).fetchone()[0]
+    result['counts'].update(quotaReports=count, quotaInserted=outcomes.count('inserted'),
+                            quotaRejected=outcomes.count('quota'))
+    check('atomic_quota', sorted(outcomes) == ['inserted', 'quota'] and count == 50
+          and len(second.listing(actor)) == 50)
+except BaseException:
+    pass
+finally:
+    for repository in repositories:
+        try:
+            repository.close()
+        except BaseException:
+            pass
+    print(json.dumps(result, separators=(',', ':')))
+"""
 
 
 class CheckFailure(Exception):
@@ -285,6 +419,53 @@ class Probe:
             connection.settimeout(1)
             return connection.connect_ex(("127.0.0.1", self.port)) != 0
 
+    def repository_probe(self, cwd: Path) -> None:
+        environment = dict(os.environ)
+        environment.pop("PYTHONPATH", None)
+        process = subprocess.Popen(
+            [
+                sys.executable,
+                "-I",
+                "-B",
+                "-c",
+                REPOSITORY_PROBE,
+                str(self.package),
+                str(cwd / "repository-probe"),
+            ],
+            cwd=cwd,
+            env=environment,
+            stdin=subprocess.DEVNULL,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+        )
+        self.processes.append(process)
+        try:
+            stdout, _ = process.communicate(timeout=20)
+        except BaseException:
+            process.kill()
+            process.communicate(timeout=5)
+            raise
+        result = json.loads(stdout)
+        names = ("package_repository_modules", "repository_state_roundtrip", "atomic_quota")
+        for name in names:
+            self.evidence["executed"][name] = result["executed"][name] is True
+            self.evidence["checks"][name] = result["checks"][name] is True
+        if result.get("packageSha256") != self.evidence["packageSha256"]:
+            self.evidence["checks"]["package_repository_modules"] = False
+        for name in (
+            "quotaReports",
+            "quotaInserted",
+            "quotaRejected",
+            "quotaConnections",
+            "repositoryStates",
+        ):
+            value = result["counts"][name]
+            if type(value) is not int or not 0 <= value <= 50:
+                raise CheckFailure()
+            self.evidence["counts"][name] = value
+        if process.returncode != 0 or not all(self.evidence["checks"][name] for name in names):
+            raise CheckFailure()
+
     def exercise(self, cwd: Path, package_contents: list[bytes]) -> None:
         state, examples = cwd / "state", cwd / "examples"
         initialized = self.command(cwd, "init-synthetic", "--state", str(state))
@@ -325,6 +506,27 @@ class Probe:
             scopes[username] = self.login(username, credentials[username])["scopes"]
         self.evidence["counts"]["accounts"] = len(self.sessions)
         self.check("synthetic_login", len(self.sessions) == 2)
+        revoked_cookie = self.sessions["alice"][0]
+        status, body, headers = self.request("POST", "/api/logout", {}, user="alice")
+        self.check(
+            "live_logout",
+            status == 200
+            and body == {"loggedOut": True}
+            and "Max-Age=0" in headers.get("Set-Cookie", ""),
+        )
+        self.check(
+            "revoked_cookie_denied",
+            all(
+                self.request("GET", path, user="alice")[0] == 401
+                for path in ("/api/session", "/api/reports", "/api/status")
+            ),
+        )
+        self.login("alice", credentials["alice"])
+        self.check(
+            "fresh_login_after_logout",
+            self.sessions["alice"][0] != revoked_cookie
+            and self.request("GET", "/api/session", user="alice")[0] == 200,
+        )
         self.check(
             "empty_accounts",
             all(
@@ -364,11 +566,34 @@ class Probe:
             self.request("GET", "/api/reports/" + neutral_id, user="bob")[0] == 404
             and self.request("GET", "/api/reports", user="bob")[1]["reports"] == [],
         )
-        forbidden = dict(envelope, jobId="not-configured")
+        denied_owner = self.request("POST", "/api/reports/import", envelope, user="bob")[0]
+        denied_source = self.request(
+            "POST",
+            "/api/reports/import",
+            dict(envelope, sourceId="not-configured"),
+            user="alice",
+        )[0]
+        denied_job = self.request(
+            "POST",
+            "/api/reports/import",
+            dict(envelope, jobId="not-configured"),
+            user="alice",
+        )[0]
+        self.check("source_isolation", denied_source == 403)
+        self.check("job_isolation", denied_job == 403)
         self.check(
             "source_job_isolation",
-            self.request("POST", "/api/reports/import", envelope, user="bob")[0] == 403
-            and self.request("POST", "/api/reports/import", forbidden, user="alice")[0] == 403,
+            denied_owner == denied_source == denied_job == 403,
+        )
+        self.check(
+            "adapter_isolation",
+            self.request(
+                "POST",
+                "/api/reports/import",
+                dict(envelope, kind="private-verification"),
+                user="alice",
+            )[0]
+            == 403,
         )
         self.check(
             "csrf_denied",
@@ -424,6 +649,43 @@ class Probe:
                 for key in ("identity", "collector", "privateService")
             ),
         )
+        architecture, processing = result["architecture"], result["processing"]
+        self.check(
+            "status_process_queue_limits",
+            architecture["graphComputation"] == "browser"
+            and architecture["profile"] == "single-instance-local-synthetic"
+            and architecture["stateLease"]
+            == "exclusive-local-process-lock; not a distributed lease"
+            and architecture["httpConcurrency"] == 1
+            and architecture["socketBacklog"] == 8
+            and architecture["durableQueue"] is False
+            and architecture["globalAdmission"] == "not-implemented; multi-instance-blocked"
+            and result["production"]["multiInstance"] == "blocked"
+            and processing
+            == {
+                "scope": "process",
+                "concurrencyLimit": 1,
+                "active": 0,
+                "completed": 2,
+                "failed": 0,
+                "rejectedBusy": 0,
+                "waitingJobs": 0,
+                "durableQueue": False,
+                "automaticRetry": False,
+            },
+        )
+        duplicate = self.command(cwd, "serve", "--state", str(state), "--port", "0")
+        self.check(
+            "second_instance_denied",
+            duplicate.returncode == 2
+            and b"Agent Authority synthetic private service:" not in duplicate.stdout,
+        )
+        self.check(
+            "first_instance_healthy",
+            process.poll() is None
+            and self.request("GET", "/api/status", user="alice")[0] == 200
+            and self.request("GET", "/api/reports/" + neutral_id, user="alice")[0] == 200,
+        )
         status, result, _ = self.request("GET", "/api/demo", user="alice")
         self.check(
             "explicit_demo",
@@ -437,6 +699,12 @@ class Probe:
         self.check(
             "demo_does_not_create_report",
             {item["id"] for item in reports} == {neutral_id, private_id},
+        )
+        self.check(
+            "report_states_listing",
+            {item["id"]: item["state"] for item in reports}
+            == {neutral_id: "complete", private_id: "reported-private-verification"}
+            and all("graph" not in item and "report" not in item for item in reports),
         )
         self.check(
             "package_credentials_absent",
@@ -456,6 +724,7 @@ class Probe:
         )
         self.check("final_sigterm", self.stop(process))
         self.check("final_port_closed", self.port_closed())
+        self.repository_probe(cwd)
 
     def run(self) -> dict:
         temporary = tempfile.TemporaryDirectory(prefix="aa-browser-package-check-")
@@ -463,10 +732,10 @@ class Probe:
         try:
             contents = self.inspect_package()
             self.exercise(path, contents)
-        except (Exception, KeyboardInterrupt):
+        except (Exception, KeyboardInterrupt) as exc:  # noqa: BLE001
             # Failed/absent checks remain false and unexecuted. Never persist an
             # exception message: it could contain credentials or local paths.
-            pass
+            self.evidence["failureType"] = type(exc).__name__
         finally:
             reaped = True
             for process in self.processes:

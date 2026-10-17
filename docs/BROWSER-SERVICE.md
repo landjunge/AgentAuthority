@@ -155,3 +155,31 @@ der konkrete spätere Bereitstellungsablauf in [BROWSER-DEPLOYMENT.md](BROWSER-D
 Prüfungen, Fehlerkorrekturen und offene Punkte werden in
 [BROWSER-VERIFICATION.md](BROWSER-VERIFICATION.md) nach tatsächlichem Ergebnis
 festgehalten. Ein lokaler Dienstabschluss ist keine Produktionsfreigabe.
+
+## Stop, Wiederanlauf und lokale Wiederherstellung
+
+Den eigenen Vordergrundprozess mit Ctrl+C oder gezielt mit SIGTERM beenden und
+sein Ende abwarten. Danach denselben Paketpfad, State und freien Loopbackport
+erneut mit `serve` starten. Bestätigt gespeicherte Berichte bleiben erhalten;
+erneute Anmeldung ist nötig, weil alte Sitzungen nach Prozessende ungültig sind.
+`init-synthetic` ist kein Reparaturbefehl für einen vorhandenen State. Die
+Lockdatei weder während des Betriebs entfernen noch zum Umgehen einer Belegung
+ersetzen. Einen belegten Port oder fremden Prozess nicht beenden.
+
+Eine unklare Importantwort nicht automatisch wiederholen: Nach Anmeldung zuerst
+die zugeordnete Berichtsliste und den konkreten Bericht prüfen. Jeder neue
+ausdrückliche Import erzeugt ein weiteres Ergebnis. Unfertige Analysen haben
+keine Wiederaufnahme oder dauerhafte Queue. `/api/status` beschreibt Prozess-
+und Schutzgrenzen, keine unabhängige Bereitschaftsprobe während einer Analyse.
+
+Bei beschädigtem State den eigenen Dienst stoppen und den konkreten State zur
+Untersuchung erhalten. Für eine neue rein synthetische Vorführung ein anderes
+neues 0700-Verzeichnis initialisieren. Das ersetzt keine verlorenen Berichte.
+Eine später freigegebene konsistente Wiederherstellung braucht zusammenpassende
+Konfiguration und Datenbank, private Dateirechte und einen eigenen Restorebeleg;
+fremde oder produktive Backups werden durch diese Anleitung weder gelesen noch
+verändert. Alte Sitzungen werden auch nach einer Wiederherstellung nie übernommen.
+
+Die heute kleinsten verwendbaren Konten-/Quellen-/Privatdienstanschlüsse und ihre
+konkreten Freigabeabhängigkeiten stehen in
+[BROWSER-ANSCHLUSS-20261017.md](BROWSER-ANSCHLUSS-20261017.md).
