@@ -188,6 +188,7 @@ def install(package, expected):
     uid = account.pw_uid
     gid = account.pw_gid
     ROOT.mkdir(mode=0o750)
+    ROOT.chmod(0o750)
     os.chown(ROOT, 0, gid)
     release = ROOT / "releases" / expected[:20]
     release.mkdir(parents=True, mode=0o750)
@@ -222,6 +223,36 @@ def install(package, expected):
     os.chown(STATE, uid, gid)
     SOCKET.mkdir(mode=0o700)
     os.chown(SOCKET, uid, gid)
+    finish_install(release, expected, uid, gid, before)
+
+
+def resume_pre_init(package, expected):
+    """Only the precisely verified first-install stop before account initialization."""
+    require(os.getuid() == 0 and digest(package) == expected, 'root and exact package hash required')
+    require(not any(p.exists() for p in (STATE / 'data', STATE / 'proxy.token', CONFIG / 'operator-access.json', UNIT, SLICE)), 'not the pre-init stop; refuse ambiguous resume')
+    before = json.loads((BACKUP / 'before.json').read_text())
+    require(digest(CADDY) == before['caddy_sha256'] and digest(BACKUP / 'Caddyfile.before') == before['caddy_sha256'], 'shared proxy changed before resume')
+    account = pwd.getpwnam('aa-browser')
+    require(account.pw_shell == '/usr/sbin/nologin' and account.pw_dir == str(STATE), 'unexpected service user')
+    uid, gid = account.pw_uid, account.pw_gid
+    require(uid != 0 and gid != 0, 'unprivileged service user required')
+    release = ROOT / 'releases' / expected[:20]
+    require((ROOT / 'current').resolve() == release and digest(release / 'browser.pyz') == expected, 'partial release mismatch')
+    provenance = json.loads((ROOT / 'runtime-provenance.json').read_text())
+    require(provenance['source'] == str(KH_RELEASE / 'runtime/lib/python3.13/site-packages'), 'unexpected runtime provenance')
+    dst = ROOT / 'runtime/lib/python3.13/site-packages'
+    require(all(digest(dst / name) == value for name, value in provenance['files'].items()), 'partial runtime mismatch')
+    for directory, owner in ((ROOT, 0), (CONFIG, 0), (STATE, uid), (SOCKET, uid)):
+        info = directory.lstat()
+        require(stat.S_ISDIR(info.st_mode) and info.st_uid == owner and not info.st_mode & 0o022, 'unexpected partial directory')
+        require(stat.S_IMODE(info.st_mode) in ({0o700, 0o750} if directory == ROOT else {0o700}), 'unexpected partial directory mode')
+        require(info.st_gid == (0 if directory == CONFIG else gid), 'unexpected partial directory group')
+    ROOT.chmod(0o750)
+    finish_install(release, expected, uid, gid, before)
+
+
+def finish_install(release, expected, uid, gid, before):
+    runtime = ROOT / 'runtime'
     # No secret stdout: init's one-time values are captured in memory.
     output = run(
         "runuser",
@@ -471,6 +502,8 @@ if __name__ == "__main__":
     action = sys.argv[1]
     if action == "install":
         install(Path(sys.argv[2]), sys.argv[3])
+    elif action == "resume-pre-init":
+        resume_pre_init(Path(sys.argv[2]), sys.argv[3])
     elif action == "status":
         print(status())
     elif action == "security-stop":
