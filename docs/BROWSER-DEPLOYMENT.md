@@ -7,6 +7,15 @@ eigene temporäre synthetische Loopbackkopie. SSH-Alias `netcup`, Debian 13.6,
 Python 3.13.5 sind lesend bestätigt. Keine Schritte benötigen den Mac zur
 eigentlichen Dienstbedienung nach erfolgter Bereitstellung.
 
+Der [Architekturabschluss](BROWSER-ARCHITECTURE.md) ergänzt den konkreten
+Erweiterungsweg zu weiteren Instanzen einschließlich Zustandsinventar,
+gemeinsamer Auth-/Widerrufs-/Daten-/Quotenautorität, begrenzter Verarbeitung und
+geplanter Eingangs-/Queuekonfiguration. Die heutigen austauschbaren Module laufen
+weiter lokal. SQLite, Prozesssitzungen und POSIX-Statesperre erlauben keine
+Mehrserverfreigabe. Im Nachlauf wurden keine Debian-/Produktionsänderungen oder
+neuen Remoteprüfungen ausgeführt; die früheren Debianbelege gelten für ihr
+ausdrücklich benanntes Paket, nicht für danach geänderten Servercode.
+
 ## Paketprüfung und private Vorführung
 
 1. Sauberen lokalen Quellcommit festhalten; mit `scripts/package_browser.py`

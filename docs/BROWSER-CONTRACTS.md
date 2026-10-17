@@ -5,6 +5,43 @@ Inventur vom 17.10.2026, ausschließlich lesend. Basis dieses eigenen Worktrees:
 Schlüssel, Konten und produktive Daten wurden nicht übernommen oder verändert.
 Diese Inventur gibt keinen Collector, Runner oder produktiven Anschluss frei.
 
+Der nachfolgende Inventarteil beschreibt die übernommenen Fachverträge. Die
+anschließende modulare Dienstfassung und ihre Skalierungsgrenzen sind im
+[Architekturabgleich](BROWSER-ARCHITECTURE.md) dokumentiert. Die neuen internen
+Verträge ersetzen keines dieser Datenformate.
+
+## Ergänzung: interne Modulverträge des Architekturnachlaufs
+
+`browser_contracts.py` definiert `CONTRACT_VERSION=1`: `AccessControl` für
+Anmeldung, Sitzungsauflösung, aktuelle Rechteprüfung und Widerruf;
+`ReportRepository` für berechtigte Listen/Lesezugriffe und atomare Quote+Insert;
+`ReportAnalysis` für begrenzte fachliche Projektion und Prozessstatus.
+`BrowserService` akzeptiert nur passende Vertragsversionen. `Store` verbindet
+ausschließlich die festen lokalen Implementierungen. Es existiert weder ein
+Netzwerkprotokoll dieser Ports noch ein dynamischer Modullader.
+
+Der serverinterne Nutzerkontext bindet Subject, aktuelle Source-/Job-/Adapterrechte
+und eine überprüfbare Sitzung. Vor jedem Daten-/Analyseaufruf werden Rechte neu
+aufgelöst; vor dem Insert werden Ablauf/Widerruf und Scope erneut geprüft.
+Der Datenport erhält nur Owner und berechtigte Scopes, keinen Sitzungstoken.
+Die spätere gemeinsame Autorität muss zusätzlich atomare Rechteversionen beziehungsweise
+den zulässigen Widerrufskonsistenzvertrag für getrennte Dienste festlegen.
+
+Konfiguration v2 bindet jedes Paar explizit an die festen Adapter `observations`,
+`report` oder `private-verification`. V1-Kompatibilität gilt nur für die exakt
+bekannten ursprünglichen synthetischen Paare. Eigene V1-Paare scheitern geschlossen,
+bis ihre Adapterbindung ausdrücklich festgelegt ist; kein State wird automatisch
+umgeschrieben. Datenbankformat, explizite Importsemantik und bestehende
+HTTP-Scopeform bleiben erhalten. Die Berichtliste ergänzt `state` aus den
+gespeicherten Metadaten, damit vollständig/unvollständig/gemeldeter Privatvertrag
+auch nach Neustart unterscheidbar bleiben. Unbekannte Zustände bleiben unbekannt.
+
+Alle drei Ports laufen heute im selben lokalen Prozess. Versionierung und
+Dateiaufteilung sind keine Sicherheitsisolation. Ein künftiger Remoteadapter
+braucht explizite Dienstidentität, minimale Rechte, begrenzte feste Ein-/Ausgaben,
+autoritative Ownerbindung und geschlossene Ausfallbehandlung. Diese Integration
+bleibt an die dokumentierten Produktions-/Infrastrukturentscheidungen gebunden.
+
 ## Bestehende Python-Engine und Produktbericht
 
 `agent_authority/observations.py` definiert die unveränderlichen `Source`,

@@ -2,6 +2,14 @@
 
 Arbeitsbasis ist Commit `22c4ee9fc479bb6a3df98fcbd786b0f5a7c9fe9b`. Die native App und deren laufende Instanzen werden nicht verändert. Inventar: `native/macos/Sources/AuthorityCore/{Models,NativeProjection,GraphNavigation,UIWarnings,Localization}.swift`, `AgentAuthorityMac/{Controllers,GraphCanvas,EngineBridge,TestHost,CollectorClient,main}.swift` und `AuthorityCore/Resources/Strings.json`.
 
+Der [Architekturnachlauf](BROWSER-ARCHITECTURE.md) erhält diese Zuordnung:
+Graphaufbau, Gruppierung, Fokus, Filter, Layout, Zoom/Pan und SVG-Zeichnen bleiben
+clientseitig. Serverzugriff und fachliche Projektion sind davon getrennt.
+Anmeldung/Rechte und Berichtsablage sind jetzt gekapselte austauschbare Module;
+die verfügbare lokale Implementierung ist keine Mehrserverplattform.
+Die Berichtauswahl übernimmt den gespeicherten Zustand vollständig/unvollständig/
+gemeldeter Privatvertrag, statt mangels Listenfeld immer „unbekannt“ anzuzeigen.
+
 | App-Funktion / belegte Quelle | Browser-/Serverzuordnung | Grenze |
 | --- | --- | --- |
 | Navigation Übersicht, Authority Graph, Agenten & Identitäten, Delegationen, Systemhandlungen, Evidence, Auffälligkeiten (`Controllers.swift:32`) | Dieselben Seiten, Auswahl und tabellarische Inhalte; eigenständige Übersicht mit Quellenkennzahlen und verknüpftem Graph | Keine erfundenen Agenten, wenn der Quellenvertrag nur Meldungen enthält |

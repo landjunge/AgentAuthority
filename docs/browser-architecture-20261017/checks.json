@@ -1,0 +1,112 @@
+{
+  "schema": "aa-browser-architecture-check-v1",
+  "synthetic": true,
+  "environment": {
+    "system": "Darwin",
+    "python": "3.13.14",
+    "realMultiServerProof": false,
+    "debianExecuted": false
+  },
+  "baselineCommit": "03c65da0823c82b5a11edfb0a3c8f0cf57d88770",
+  "sourceDirty": true,
+  "sourceSha256": {
+    "agent_authority/browser.py": "6abfbba0e8d578805f62153fc983d04948789d23f7b22c25fbd66908632097b3",
+    "agent_authority/browser_adapter.py": "a121470270d41f366f26f5621a169b1bab1d7914b0e44f1a3f362e1b5b07b079",
+    "agent_authority/browser_analysis.py": "8cd04d21f839beb25df02b9542ebfb168e1c1cf79180537dd646d83e3d022e2f",
+    "agent_authority/browser_auth.py": "1c892f8048f33e9020574dabbdf9c4d22d1b95736501c796505d94c9c87e54df",
+    "agent_authority/browser_contracts.py": "c0c227d09c764d8618df6f1ada9fe3f86b6409649142505ec55991c404c3aacd",
+    "agent_authority/browser_examples.py": "d75f008ba5cb2703192e80581651c9cd4abecd757b84a1a21c9af2a970bea6c1",
+    "agent_authority/browser_model.py": "ee327ad4eb7760954b4e6c543a68332bae363852b84ff0a708abc044c5ac2cb8",
+    "agent_authority/browser_repository.py": "f20a1def17a2e45c38af1e3ca33358a097e4409183bc5ab01467f4134acd2e34",
+    "agent_authority/browser_service.py": "a6246a9ab9ecfe68516c9e8fb6648d7edb84a010597e1030231235f58c9a1951",
+    "agent_authority/browser_support.py": "e2559354d05b83cc1abeaefd5bc5f2e4adfbcfae7122151368b554735a4477a4"
+  },
+  "testModules": [
+    "tests.test_browser_service",
+    "tests.test_browser_auth",
+    "tests.test_browser_modules",
+    "tests.test_browser_repository"
+  ],
+  "tests": [
+    "tests.test_browser_service.BrowserServiceTests.test_account_source_and_job_isolation",
+    "tests.test_browser_service.BrowserServiceTests.test_anonymous_denied_and_no_example_fallback",
+    "tests.test_browser_service.BrowserServiceTests.test_browser_raw_json_preserves_duplicate_key_rejection",
+    "tests.test_browser_service.BrowserServiceTests.test_csrf_host_origin_and_method_boundaries",
+    "tests.test_browser_service.BrowserServiceTests.test_database_failure_returns_fixed_error_without_private_details",
+    "tests.test_browser_service.BrowserServiceTests.test_empty_incomplete_and_invalid_reports_are_distinct",
+    "tests.test_browser_service.BrowserServiceTests.test_engine_semantics_provenance_and_foreign_text",
+    "tests.test_browser_service.BrowserServiceTests.test_explicit_demo_status_and_csp",
+    "tests.test_browser_service.BrowserServiceTests.test_input_limits_duplicates_and_problems_do_not_echo",
+    "tests.test_browser_service.BrowserServiceTests.test_large_ordinal_preserved_in_graph_and_exact_report_text",
+    "tests.test_browser_service.BrowserServiceTests.test_login_rate_limit_expires_without_revealing_account_existence",
+    "tests.test_browser_service.BrowserServiceTests.test_private_state_permissions_and_production_config_blocked",
+    "tests.test_browser_service.BrowserServiceTests.test_report_count_and_byte_quotas_are_account_scoped",
+    "tests.test_browser_service.BrowserServiceTests.test_server_modules_and_state_are_not_browser_resources",
+    "tests.test_browser_service.BrowserServiceTests.test_session_expiry_and_second_local_instance_is_blocked",
+    "tests.test_browser_service.BrowserServiceTests.test_storage_bound_and_scope_revocation",
+    "tests.test_browser_auth.BrowserAuthTests.test_closed_backend_clears_context_and_cannot_issue_more_sessions",
+    "tests.test_browser_auth.BrowserAuthTests.test_duplicate_configured_scope_is_rejected",
+    "tests.test_browser_auth.BrowserAuthTests.test_expired_principal_cannot_be_reused_between_modules",
+    "tests.test_browser_auth.BrowserAuthTests.test_known_v1_configuration_preserves_only_defined_adapter_mapping",
+    "tests.test_browser_auth.BrowserAuthTests.test_local_operator_uses_bounded_expiring_context_and_configured_subject",
+    "tests.test_browser_auth.BrowserAuthTests.test_login_and_resolve_bind_current_rights_to_server_session",
+    "tests.test_browser_auth.BrowserAuthTests.test_missing_or_foreign_session_context_is_denied",
+    "tests.test_browser_auth.BrowserAuthTests.test_revoked_principal_cannot_be_reused_between_modules",
+    "tests.test_browser_auth.BrowserAuthTests.test_source_job_and_adapter_are_authorized_together",
+    "tests.test_browser_modules.BrowserModuleTests.test_analysis_slot_rejects_overlap_and_releases_after_failure",
+    "tests.test_browser_modules.BrowserModuleTests.test_auth_failure_never_falls_back_and_repository_has_no_session_secret",
+    "tests.test_browser_modules.BrowserModuleTests.test_denied_source_adapter_and_module_names_never_invoke_ports",
+    "tests.test_browser_modules.BrowserModuleTests.test_revocation_during_analysis_prevents_commit",
+    "tests.test_browser_modules.BrowserModuleTests.test_scope_revocation_during_analysis_prevents_commit",
+    "tests.test_browser_modules.BrowserModuleTests.test_store_restart_invalidates_session_and_keeps_exact_result",
+    "tests.test_browser_repository.BrowserRepositoryTests.test_atomic_count_quota_across_two_local_connections",
+    "tests.test_browser_repository.BrowserRepositoryTests.test_byte_output_and_duplicate_limits_leave_no_partial_write",
+    "tests.test_browser_repository.BrowserRepositoryTests.test_listing_bounds_payload_decoding_by_row_and_account_bytes",
+    "tests.test_browser_repository.BrowserRepositoryTests.test_listing_preserves_stored_states_without_reprojecting_after_restart",
+    "tests.test_browser_repository.BrowserRepositoryTests.test_owner_source_job_and_adapter_selected_before_payload_decoding",
+    "tests.test_browser_repository.BrowserRepositoryTests.test_stored_snapshot_and_owner_survive_close_and_reopen",
+    "tests.test_browser_repository.BrowserRepositoryTests.test_validation_and_scope_checks_precede_database_access",
+    "tests.test_browser_repository.StateLeaseTests.test_insecure_or_symlink_state_lock_and_database_rejected",
+    "tests.test_browser_repository.StateLeaseTests.test_process_exit_releases_kernel_lease_without_deleting_lock",
+    "tests.test_browser_repository.StateLeaseTests.test_second_process_denied_and_restart_releases_same_lock_inode",
+    "tests.test_browser_repository.BrowserRepositoryTests.test_busy_writer_is_bounded_and_rejected_without_retry_or_partial_result"
+  ],
+  "counts": {
+    "run": 42,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "failedTests": [],
+  "unchangedEvidenceReadNotReexecuted": {
+    "agent_authority/browser_static/app.js": true,
+    "agent_authority/browser_model.py": true,
+    "agent_authority/browser_adapter.py": true,
+    "agent_authority/observations.py": true,
+    "agent_authority/report.py": true
+  },
+  "movedObservationMethodAstIdentical": true,
+  "passed": true,
+  "limits": [
+    "Two SQLite connections and child-process leases run on one local host only.",
+    "No load campaign, live source, production account, SSH, deployment or collector access.",
+    "Previous graph/browser/Debian checks were read, not rerun or attributed to the changed server."
+  ],
+  "testBatches": [
+    {
+      "testModules": [
+        "tests.test_browser_service",
+        "tests.test_browser_auth",
+        "tests.test_browser_modules",
+        "tests.test_browser_repository"
+      ],
+      "run": 41
+    },
+    {
+      "testNames": [
+        "tests.test_browser_repository.BrowserRepositoryTests.test_busy_writer_is_bounded_and_rejected_without_retry_or_partial_result"
+      ],
+      "run": 1
+    }
+  ]
+}

@@ -6,6 +6,56 @@ Auftrag und eigener Worktree vom 17.10.2026. Eingefrorene Ausgangsbasis
 Arbeitsstände. Inventar und Portregeln stehen in [BROWSER-PARITY.md](BROWSER-PARITY.md)
 und [BROWSER-CONTRACTS.md](BROWSER-CONTRACTS.md).
 
+## Gezielter Architekturnachlauf
+
+Basis `03c65da0823c82b5a11edfb0a3c8f0cf57d88770`, eigener Branch
+`codex/browser-architecture-20261017T064003Z`. Ursprüngliche Builderbelege und
+`PREVIOUS-REVIEW.json` aus den benannten Agent-Bridge-Queues wurden gelesen;
+Groks Urteil war `changes_requested` mit R1-1, R3-1 und R3-2. Der konkrete
+[Korrekturabgleich](BROWSER-ARCHITECTURE.md) trennt lokale Umsetzung, Nachweise,
+Vorbereitung und fehlende Infrastruktur. Kein fremder laufender Builder wurde
+unterbrochen und kein fremder Worktree bearbeitet.
+
+**42 gezielte synthetische Prüfungen bestanden, null Fehler/Überspringungen**:
+16 HTTP-Service-, neun Auth-, sechs Modul- und elf Repository-/Leaseprüfungen.
+[Maschinenlesbarer Beleg](browser-architecture-20261017/checks.json),
+[tatsächliche Testausgabe](browser-architecture-20261017/unittest-results.txt).
+Der Hauptlauf umfasst 41 Tests; wegen des konkreten alten Busy-Writer-Befunds
+folgte genau eine zusätzliche relevante Sperr-/503-/Rollbackprobe. Python
+3.13.14 auf Darwin; keine nachinstallierten Pakete. Die bisherigen Servicechecks
+wurden auf die gekapselten Komponenten umgestellt, ihre Zugriffserwartungen
+beibehalten und die Berichtlistenzustände ergänzt.
+
+Geprüft sind aktuelle Sitzungsrechte einschließlich Widerruf/Ablauf vor
+Modulaufrufen und Commit, entzogenes Scope während Analyse, feste Adapterbindung,
+kein Portaufruf bei verweigertem Zugriff, keine Sessiontokens im Datenport,
+Versionsablehnung, keine Serverquellen/State als Webressourcen, begrenzter
+Analyseslot samt Freigabe nach Fehler und gesperrte Mehrinstanzbehauptung.
+Die Berichtliste zeigt nach Speicherung/Neustart die drei bestehenden Zustände.
+Zwei lokale SQLite-Verbindungen überschreiten die 50er-Quote nicht mehr;
+Schreibbelegung wird begrenzt mit 503 abgewiesen, ohne teilweises Ergebnis oder
+Retry. Ein zweiter Prozess erhält keine Statelease; reguläres Schließen und
+Prozessende geben denselben bestehenden Lock-Inode frei. Diese Einhostproben
+belegen keine realen zusätzlichen Server.
+
+Unveränderte Client-/Engine-/Adapterdateien wurden bytegleich zur Nachlaufbasis
+geprüft; die verschobene `observation_report`-Methode ist per AST identisch.
+Die 34 bestehenden Graphmodellchecks, 23 Browserchecks und 33 ursprünglichen
+Debian-Paketchecks wurden **gelesen, nicht erneut ausgeführt**. Deren Erfolg
+belegt ihren ursprünglichen Code/Paketstand. Keine neue visuelle oder Debian-
+Freigabe für den geänderten Servercode wird daraus abgeleitet. Quellhygiene und
+lokaler Paketstart des Nachlaufs werden mit dem konkreten Abschlussstand erfasst.
+
+Gemeinsame produktive Auth-/Widerrufs-/Daten-/Quoten-/Auftragszulassung,
+Lastverteilung und dauerhafte Queue sind vorbereitet beziehungsweise als
+Integration offen, **nicht implementiert**. Echte Konten, Quellen, Collector,
+öffentlicher Betrieb und produktiver Mehrserverbetrieb bleiben gesperrt. Der
+Korrekturreview bleibt für die bereits vorgesehene Grok-Queue offen; die lokalen
+Codex-Teilprüfungen sind kein neues Grok-Urteil.
+
+Die folgenden Tabellen und Paketangaben sind ausdrücklich die **erhaltenen
+ursprünglichen Belege**, keine erneute Ausführung im Architekturnachlauf.
+
 ## Geprüfter Funktionsumfang
 
 | Prüfung | Tatsächliches Ergebnis / Beleg |

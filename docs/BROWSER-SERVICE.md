@@ -7,6 +7,12 @@ private synthetische Prüfmodus. Veröffentlichung, echte Konten-/Datenanbindung
 Collectoraktivierung und Agentenaktionen sind nicht Bestandteil dieser Fassung.
 Agent Authority bleibt Beobachtung und Analyse gemäß D-012.
 
+Der gezielte [Architekturabschluss](BROWSER-ARCHITECTURE.md) erhält diese
+Bedienoberfläche. Graphaufbau, Layout, Gruppierung, Filter und Zeichnen laufen
+im Nutzerbrowser. Anmeldung/Rechteprüfung, begrenzte Analyse und Berichtsablage
+sind über versionierte interne Verträge getrennt. Die verfügbaren Implementierungen
+bleiben lokal; gemeinsame Mehrserver-Infrastruktur ist nicht eingerichtet.
+
 ## Sofortstart im eigenen Worktree
 
 Python >=3.12 ist erforderlich. Auf dem Zielhost wurde Python 3.13.5 bestätigt.
@@ -27,6 +33,11 @@ nur gesalzene scrypt-Hashes. Keine Anmeldung erzeugt Beispielberichte.
 Mit Ctrl+C oder SIGTERM endet der eigene Prozess; Sitzungen verfallen dabei.
 Der private State bleibt zur erneuten Bedienung erhalten. Eigene Testverzeichnisse
 nach Ende bewusst entfernen; sie gehören nicht zum Quellpaket.
+Ein State darf nur von einem Dienst-/Importprozess gleichzeitig verwendet werden.
+Ein zweiter Start wird vor Zugriff auf Sitzungen und Datenbank abgewiesen.
+Die private `.instance.lock` bleibt beim Beenden erhalten; nicht bei laufendem
+Dienst entfernen. `import-directory` benötigt deshalb einen gestoppten eigenen
+Browserdienst. Das ist eine lokale Prozesssperre, kein Mehrserverbetrieb.
 
 Bei Mac-Umgebungen mit älterem `python3` den vorhandenen Interpreter ausdrücklich
 wählen, z.B. `/usr/local/bin/python3.13`. Kein Python im App-Bundle wird verändert.
@@ -91,6 +102,11 @@ Loopback oder einen SSH-Tunnel voraus; es ist keine öffentliche TLS-/SSO-Lösun
 Der Dienst kann nicht auf einer öffentlichen Adresse gestartet werden.
 
 Owner **und** Quellen-/Auftragspaar begrenzen jeden Berichtszugriff serverseitig.
+Zusätzlich muss der Adapter für dieses Paar freigegeben sein. Neue synthetische
+States verwenden `aa-browser-synthetic-config-v2` mit expliziter Adapterliste;
+bekannte ursprüngliche v1-Beispielpaare werden eng kompatibel gelesen, eigene
+v1-Paare benötigen eine ausdrückliche v2-Zuordnung. Die HTTP-Scopeform bleibt
+`sourceId`/`jobId`. Konfiguration wird beim Start gelesen, nicht live nachgeladen.
 Fremde und unbekannte IDs ergeben identisch 404. Manipulierte Source-/Job-Paare
 ergeben 403. IDs, URLs, Browserpfade und Freitext begründen keinen Zugriff.
 Berichte und Passwörter landen nicht in Browserstorage; Datenantworten tragen
@@ -104,6 +120,13 @@ Pro Prüfkonto maximal 50 Berichte und 64 MiB gespeicherte Ausgaben. Sitzungen
 maximal 128, Loginfehlversuche maximal zwölf pro Minute, Socketzeitlimit fünf
 Sekunden, eine HTTP-Verarbeitung gleichzeitig. Diese Grenzen sind für die
 private Prüfung bestimmt, kein Last-/Internetfreigabenachweis.
+Quotenprüfung und Speichern sind jetzt eine lokale SQLite-Transaktion. Der
+Analyseport erlaubt eine Verarbeitung, lehnt Überschneidungen unmittelbar ab
+und meldet Prozesszähler über das geschützte `/api/status`. Es gibt keine
+dauerhafte Warteschlange, globale Zulassung oder automatische Wiederholung.
+Der serielle HTTP-Server liefert während einer Analyse keine unabhängige
+Statusabfrage. Limits auf getrennten States/Servern werden nicht geteilt;
+produktive Mehrinstanznutzung bleibt gesperrt.
 
 Neutrale Upload-Einträge werden mit den bestehenden `Entry`, `Snapshot` und
 `build_report` ausgewertet. Ihr SHA-256 bezieht sich auf die dokumentierte

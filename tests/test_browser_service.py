@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import base64
 import copy
+from dataclasses import replace
 import http.client
 import json
 import os
@@ -20,6 +21,7 @@ from agent_authority.browser import (
     Store,
     init_synthetic,
 )
+from agent_authority.browser_analysis import LocalReportAnalysis
 from agent_authority.observations import Snapshot, Source
 from agent_authority.report import build_report
 from agent_authority.browser_model import validate_graph
@@ -157,7 +159,7 @@ class BrowserServiceTests(unittest.TestCase):
 
     def test_browser_raw_json_preserves_duplicate_key_rejection(self):
         self.login("alice")
-        report = self.store.observation_report(observations(), "synthetic-alice")
+        report = LocalReportAnalysis.observation_report(observations(), "synthetic-alice")
         raw = json.dumps(report)
         body = {
             "sourceId": "synthetic-alice",
@@ -190,9 +192,10 @@ class BrowserServiceTests(unittest.TestCase):
         )
 
     def test_empty_incomplete_and_invalid_reports_are_distinct(self):
-        self.login("alice")
+        account = self.login("alice")
         status, metadata, _ = self.upload(records=[])
         self.assertEqual(status, 201)
+        complete_id = metadata["id"]
         value = self.request("GET", f"/api/reports/{metadata['id']}", user="alice")[1]
         self.assertEqual(value["graph"]["nodes"], [])
         self.assertTrue(value["graph"]["completeRead"])
@@ -210,6 +213,7 @@ class BrowserServiceTests(unittest.TestCase):
         )
         status, metadata, _ = self.upload(kind="report", data=report)
         self.assertEqual(status, 201)
+        incomplete_id = metadata["id"]
         value = self.request("GET", f"/api/reports/{metadata['id']}", user="alice")[1]
         self.assertFalse(value["graph"]["completeRead"])
         self.assertEqual(value["graph"]["warnings"], ["source_unavailable"])
@@ -217,6 +221,47 @@ class BrowserServiceTests(unittest.TestCase):
         self.assertEqual(self.upload(kind="report", data=report)[0], 422)
         self.assertEqual(self.upload(kind="report", data={"schema": "aa-report-v1"})[0], 422)
         self.assertEqual(self.upload(kind="report", data="/etc/passwd")[0], 422)
+        from agent_authority.browser_adapter import synthetic_private_response
+
+        scope = next(s for s in account["scopes"] if s["sourceId"] == "synthetic-private-alice")
+        status, metadata, _ = self.request(
+            "POST",
+            "/api/reports/import",
+            {
+                **scope,
+                "kind": "private-verification",
+                "data": synthetic_private_response(scope["jobId"]),
+            },
+            user="alice",
+        )
+        self.assertEqual(status, 201)
+        listing = self.request("GET", "/api/reports", user="alice")[1]["reports"]
+        self.assertEqual(
+            {item["id"]: item["state"] for item in listing},
+            {
+                complete_id: "complete",
+                incomplete_id: "incomplete",
+                metadata["id"]: "reported-private-verification",
+            },
+        )
+
+    def test_server_modules_and_state_are_not_browser_resources(self):
+        self.login("alice")
+        for path in (
+            "/browser_auth.py",
+            "/agent_authority/browser_service.py",
+            "/config.json",
+            "/reports.sqlite3",
+            "/.instance.lock",
+            "/api/modules",
+        ):
+            status, value, _ = self.request("GET", path, user="alice")
+            self.assertEqual((status, value["code"]), (404, "NOT_FOUND"))
+        document = self.request("GET", "/api/status", user="alice")[1]
+        self.assertEqual(document["production"]["multiInstance"], "blocked")
+        self.assertEqual(document["architecture"]["graphComputation"], "browser")
+        self.assertEqual(document["processing"]["concurrencyLimit"], 1)
+        self.assertFalse(document["processing"]["durableQueue"])
 
     def test_csrf_host_origin_and_method_boundaries(self):
         self.login("alice")
@@ -324,25 +369,28 @@ class BrowserServiceTests(unittest.TestCase):
         self.assertEqual(headers["Cache-Control"], "no-store")
         self.assertIsInstance(raw, bytes)
 
-    def test_session_expiry_and_restart_do_not_keep_auth(self):
+    def test_session_expiry_and_second_local_instance_is_blocked(self):
         self.login("alice")
         token = self.cookies["alice"].split("=", 1)[1]
-        restarted = Store(self.state)
-        try:
-            self.assertEqual(restarted.sessions, {})
-            self.assertNotIn(token, restarted.sessions)
-        finally:
-            restarted.close()
-        user, csrf, _ = self.store.sessions[token]
-        self.store.sessions[token] = (user, csrf, time.monotonic() - 1)
+        with self.assertRaises(ValueError):
+            Store(self.state)
+        user, csrf, _ = self.store.access._sessions[token]
+        self.store.access._sessions[token] = (user, csrf, time.monotonic() - 1)
         self.assertEqual(self.request("GET", "/api/session", user="alice")[0], 401)
 
     def test_storage_bound_and_scope_revocation(self):
         self.login("alice")
         self.assertEqual(self.upload()[0], 201)
-        identifier = self.store.listing("alice")[0]["id"]
-        self.store.accounts["alice"]["scopes"] = [{"sourceId": "different", "jobId": "different"}]
-        self.assertEqual(self.store.listing("alice"), [])
+        identifier = self.store.listing(self.store.access.resolve(self.cookies["alice"]).principal)[
+            0
+        ]["id"]
+        account = self.store.access._accounts["alice"]
+        self.store.access._accounts["alice"] = replace(
+            account, principal=replace(account.principal, scopes=())
+        )
+        self.assertEqual(
+            self.store.listing(self.store.access.resolve(self.cookies["alice"]).principal), []
+        )
         self.assertEqual(self.request("GET", f"/api/reports/{identifier}", user="alice")[0], 404)
 
     def test_login_rate_limit_expires_without_revealing_account_existence(self):
@@ -355,26 +403,28 @@ class BrowserServiceTests(unittest.TestCase):
         self.assertEqual(
             self.request("POST", "/api/login", {}, headers={"Authorization": authorization})[0], 429
         )
-        self.store.failed_logins = [time.monotonic() - 61]
+        self.store.access._failed_logins = [time.monotonic() - 61]
         self.login("alice")
 
     def test_report_count_and_byte_quotas_are_account_scoped(self):
         self.login("alice")
         self.login("bob")
         self.assertEqual(self.upload()[0], 201)
-        with patch("agent_authority.browser.MAX_REPORTS", 1):
+        with patch("agent_authority.browser_repository.MAX_REPORTS", 1):
             self.assertEqual(self.upload()[0], 409)
             self.assertEqual(self.upload("bob")[0], 201)
-        used = self.store.db.execute(
+        used = self.store.repository.db.execute(
             "SELECT SUM(length(payload)) FROM reports WHERE owner=?", ("alice",)
         ).fetchone()[0]
-        with patch("agent_authority.browser.MAX_ACCOUNT_BYTES", used):
+        with patch("agent_authority.browser_repository.MAX_ACCOUNT_BYTES", used):
             self.assertEqual(self.upload()[0], 409)
-        self.assertEqual(len(self.store.listing("alice")), 1)
+        self.assertEqual(
+            len(self.store.listing(self.store.access.resolve(self.cookies["alice"]).principal)), 1
+        )
 
     def test_database_failure_returns_fixed_error_without_private_details(self):
         self.login("alice")
-        self.store.db.close()
+        self.store.repository.db.close()
         status, value, _ = self.request("GET", "/api/reports", user="alice")
         self.assertEqual((status, value), (500, {"status": 500, "code": "INTERNAL_ERROR"}))
         self.assertNotIn(str(self.state), json.dumps(value))
@@ -386,8 +436,10 @@ class BrowserServiceTests(unittest.TestCase):
         config = json.loads((self.state / "config.json").read_text())
         config["synthetic"] = False
         (self.state / "config.json").write_text(json.dumps(config))
+        from agent_authority.browser_auth import LocalAccessControl
+
         with self.assertRaises(ValueError):
-            Store(self.state)
+            LocalAccessControl(self.state)
 
 
 if __name__ == "__main__":
