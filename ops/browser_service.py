@@ -327,6 +327,10 @@ User=aa-browser
 Group=aa-browser
 Slice=aa-browser.slice
 WorkingDirectory={ROOT}/current
+RuntimeDirectory=agent-authority-browser
+RuntimeDirectoryMode=0750
+RuntimeDirectoryPreserve=yes
+BindPaths={SOCKET}:/run/agent-authority-browser
 Environment=PYTHONDONTWRITEBYTECODE=1
 Environment=PYTHONPATH={ROOT}/current/browser.pyz
 Environment=AA_BROWSER_ORIGIN={ORIGIN}
@@ -334,7 +338,7 @@ Environment=AA_BROWSER_PREFIX={PREFIX}
 Environment=AA_BROWSER_STATE={STATE}/data
 Environment=AA_BROWSER_PROXY_TOKEN_FILE={STATE}/proxy.token
 Environment=AA_BROWSER_PROXY_TRANSPORT=unix
-ExecStart={runtime}/bin/python -B -m gunicorn --bind unix:{SOCKET}/browser.sock --workers 1 --threads 1 --worker-class sync --timeout 20 --graceful-timeout 10 --limit-request-line 2048 --limit-request-fields 32 --limit-request-field_size 4096 --umask 0077 --access-logfile /dev/null --error-logfile /dev/null agent_authority.browser_wsgi:create_app()
+ExecStart={runtime}/bin/python -B -m gunicorn --bind unix:/run/agent-authority-browser/browser.sock --workers 1 --threads 1 --worker-class sync --timeout 20 --graceful-timeout 10 --limit-request-line 2048 --limit-request-fields 32 --limit-request-field_size 4096 --umask 0077 --access-logfile /dev/null --error-logfile /dev/null agent_authority.browser_wsgi:create_app()
 Restart=on-failure
 RestartSec=3
 TimeoutStopSec=20
@@ -356,7 +360,7 @@ RestrictSUIDSGID=true
 LockPersonality=true
 RestrictAddressFamilies=AF_UNIX
 CapabilityBoundingSet=
-ReadWritePaths={STATE} {SOCKET}
+ReadWritePaths={STATE} /run/agent-authority-browser
 [Install]
 WantedBy=multi-user.target
 """
@@ -373,6 +377,10 @@ TasksMax=32
 """,
         0o644,
     )
+    activate_proxy(hashes, token, release, expected, before)
+
+
+def activate_proxy(hashes, token, release, expected, before):
     # Preserve the inode: Caddyfile is an existing single-file Docker bind mount.
     text = CADDY.read_text()
     anchor = "v2202608211799501333.goodsrv.de {\n"
@@ -428,6 +436,32 @@ TasksMax=32
             CADDY.chmod(stat.S_IMODE((BACKUP / "Caddyfile.before").stat().st_mode))
             caddy_reload()
         raise
+
+
+def recover_socket_namespace(package_hash):
+    """Guarded recovery of the first failed activation; no account/state recreation."""
+    require(not (ROOT / 'activation.json').exists(), 'already activated; use normal code operations')
+    marker = ROOT / 'SECURITY-STOP'
+    require(marker.is_file(), 'failed activation stop marker required')
+    before = json.loads((BACKUP / 'before.json').read_text())
+    require(digest(CADDY) == before['caddy_sha256'], 'proxy changed; refuse recovery')
+    release = (ROOT / 'current').resolve(strict=True)
+    require(release == ROOT / 'releases' / package_hash[:20] and digest(release / 'browser.pyz') == package_hash, 'exact existing package required')
+    require(run('systemctl', 'show', NAME, '-p', 'MainPID', '--value', text=True).strip() == '0', 'stop existing workers before recovery')
+    credentials = json.loads((CONFIG / 'operator-access.json').read_text())
+    require(credentials['synthetic'] is True and set(credentials['accounts']) == {'alice', 'bob'}, 'existing synthetic account contract required')
+    token = (STATE / 'proxy.token').read_text().strip()
+    old = UNIT.read_text()
+    require(old.count('--bind unix:' + str(SOCKET) + '/browser.sock') == 1 and 'BindPaths=' not in old, 'unexpected original socket unit')
+    new = old.replace('--bind unix:' + str(SOCKET) + '/browser.sock', '--bind unix:/run/agent-authority-browser/browser.sock')
+    new = new.replace('WorkingDirectory=' + str(ROOT) + '/current\n', 'WorkingDirectory=' + str(ROOT) + '/current\nRuntimeDirectory=agent-authority-browser\nRuntimeDirectoryMode=0750\nRuntimeDirectoryPreserve=yes\nBindPaths=' + str(SOCKET) + ':/run/agent-authority-browser\n')
+    new = new.replace('ReadWritePaths=' + str(STATE) + ' ' + str(SOCKET), 'ReadWritePaths=' + str(STATE) + ' /run/agent-authority-browser')
+    write(BACKUP / 'socket-unit.before', old)
+    UNIT.write_text(new)
+    hashes = {name: run('docker', 'exec', '-i', '4allpass-caddy-1', 'caddy', 'hash-password', '--algorithm', 'bcrypt', '--bcrypt-cost', '10', input=(password+'\n').encode()).decode().strip() for name, password in credentials['accounts'].items()}
+    # Explicit root recovery of this diagnosed provisioning error only.
+    marker.unlink()
+    activate_proxy(hashes, token, release, package_hash, before)
 
 
 def security_stop():
@@ -504,6 +538,8 @@ if __name__ == "__main__":
         install(Path(sys.argv[2]), sys.argv[3])
     elif action == "resume-pre-init":
         resume_pre_init(Path(sys.argv[2]), sys.argv[3])
+    elif action == "recover-socket-namespace":
+        recover_socket_namespace(sys.argv[2])
     elif action == "status":
         print(status())
     elif action == "security-stop":
