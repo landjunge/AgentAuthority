@@ -1,0 +1,194 @@
+{
+  "passed": true,
+  "checks": [
+    {
+      "check": "outer_anonymous_401",
+      "passed": true
+    },
+    {
+      "check": "inner_anonymous_401",
+      "passed": true
+    },
+    {
+      "check": "tls_prefix_and_private_login_page",
+      "passed": true
+    },
+    {
+      "check": "helpcenter_navigation_landing_200",
+      "passed": true
+    },
+    {
+      "check": "cross_site_api_still_403",
+      "passed": true
+    },
+    {
+      "check": "private_python_not_served",
+      "passed": true
+    },
+    {
+      "check": "direct_socket_without_proxy_403",
+      "passed": true
+    },
+    {
+      "check": "direct_forged_forwarded_403",
+      "passed": true
+    },
+    {
+      "check": "login_alice",
+      "passed": true
+    },
+    {
+      "check": "secure_cookie_alice",
+      "passed": true
+    },
+    {
+      "check": "login_bob",
+      "passed": true
+    },
+    {
+      "check": "secure_cookie_bob",
+      "passed": true
+    },
+    {
+      "check": "private_python_authenticated_404",
+      "passed": true
+    },
+    {
+      "check": "real_context_contract_409",
+      "passed": true
+    },
+    {
+      "check": "origin_403",
+      "passed": true
+    },
+    {
+      "check": "fetch_site_403",
+      "passed": true
+    },
+    {
+      "check": "csrf_403",
+      "passed": true
+    },
+    {
+      "check": "synthetic_connection_200",
+      "passed": true
+    },
+    {
+      "check": "foreign_fixture_404",
+      "passed": true
+    },
+    {
+      "check": "handoff_parameters_rejected_422",
+      "passed": true
+    },
+    {
+      "check": "production_gates_unchanged",
+      "passed": true
+    },
+    {
+      "check": "synthetic_report_created",
+      "passed": true
+    },
+    {
+      "check": "owner_report_200",
+      "passed": true
+    },
+    {
+      "check": "foreign_id_404",
+      "passed": true
+    },
+    {
+      "check": "anonymous_id_401",
+      "passed": true
+    },
+    {
+      "check": "source_scope_403",
+      "passed": true
+    },
+    {
+      "check": "proxy_overwrites_client_token",
+      "passed": true
+    },
+    {
+      "check": "single_state_lease",
+      "passed": true
+    },
+    {
+      "check": "stop_inactive",
+      "passed": true
+    },
+    {
+      "check": "stop_no_application",
+      "passed": true
+    },
+    {
+      "check": "temporary_report_removed",
+      "passed": true
+    },
+    {
+      "check": "start_revokes_old_session",
+      "passed": true
+    },
+    {
+      "check": "login_alice",
+      "passed": true
+    },
+    {
+      "check": "secure_cookie_alice",
+      "passed": true
+    },
+    {
+      "check": "restart_revokes_old_session",
+      "passed": true
+    },
+    {
+      "check": "login_alice",
+      "passed": true
+    },
+    {
+      "check": "secure_cookie_alice",
+      "passed": true
+    },
+    {
+      "check": "state_retained_empty",
+      "passed": true
+    },
+    {
+      "check": "unprivileged_and_limits",
+      "passed": true
+    },
+    {
+      "check": "one_actual_worker",
+      "passed": true
+    },
+    {
+      "check": "aggregate_probe_limits",
+      "passed": true
+    },
+    {
+      "check": "existing_units_unchanged",
+      "passed": true
+    },
+    {
+      "check": "collector_remains_inactive",
+      "passed": true
+    },
+    {
+      "check": "verifier_remains_active",
+      "passed": true
+    }
+  ],
+  "unit": {
+    "MainPID": "1449511",
+    "NRestarts": "0",
+    "CPUQuotaPerSecUSec": "400ms",
+    "MemoryMax": "268435456",
+    "MemorySwapMax": "0",
+    "TasksMax": "16",
+    "User": "aa-browser",
+    "Group": "aa-browser"
+  },
+  "aggregate": "CPUQuotaPerSecUSec=400ms\nMemoryMax=838860800\nMemorySwapMax=0\n",
+  "no_real_data": true,
+  "temporary_reports_remaining": 0
+}

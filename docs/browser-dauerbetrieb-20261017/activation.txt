@@ -1,0 +1,13 @@
+{"package_sha256": "f512ab6b5716ff097cdf9978ccd01bc26be6e03732989d747ffa947a3cd1c6f4", "release": "/opt/agent-authority-browser/releases/f512ab6b5716ff097cdf", "origin": "https://v2202608211799501333.goodsrv.de", "prefix": "/agent-authority/", "synthetic": true, "caddy_after_sha256": "e53959d9d1ab0197368e89805babef30a5da3dc29578bef6e7e2b93cf0f829ba", "unit_sha256": "8763cef3cd503d668b666ef741d6e50fa5de7696c511a713ec014b46f1a9801e", "slice_sha256": "5fb32331bab80be2d60450d33ff9d8574b66c2474c27d94424a9b3b4df119522"}
+MainPID=1449285
+NRestarts=0
+Slice=aa-browser.slice
+CPUQuotaPerSecUSec=400ms
+MemoryMax=268435456
+MemorySwapMax=0
+TasksMax=16
+User=aa-browser
+Group=aa-browser
+ActiveState=active
+SubState=running
+

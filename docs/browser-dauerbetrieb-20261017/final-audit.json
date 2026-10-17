@@ -1,0 +1,172 @@
+{
+  "passed": true,
+  "aa": {
+    "activation": {
+      "package_sha256": "f512ab6b5716ff097cdf9978ccd01bc26be6e03732989d747ffa947a3cd1c6f4",
+      "release": "/opt/agent-authority-browser/releases/f512ab6b5716ff097cdf",
+      "origin": "https://v2202608211799501333.goodsrv.de",
+      "prefix": "/agent-authority/",
+      "synthetic": true,
+      "caddy_after_sha256": "e53959d9d1ab0197368e89805babef30a5da3dc29578bef6e7e2b93cf0f829ba",
+      "unit_sha256": "8d27b1bc83cb8377c63dc508963ea8f904d9b97517df93149a1dbf44fc080db0",
+      "slice_sha256": "5fb32331bab80be2d60450d33ff9d8574b66c2474c27d94424a9b3b4df119522",
+      "operator_start_limit_burst": 6
+    },
+    "source_commit": "27db3a848e9aad30318dd00f7380725b22bd8543",
+    "source_clean": true,
+    "package_bytes_match_manifest": true,
+    "package_hash_matches_activation": true,
+    "unit_hash_matches_activation": true,
+    "unit": {
+      "MainPID": "1451472",
+      "NRestarts": "0",
+      "CPUQuotaPerSecUSec": "400ms",
+      "MemoryMax": "268435456",
+      "MemorySwapMax": "0",
+      "TasksMax": "16",
+      "User": "aa-browser",
+      "Group": "aa-browser",
+      "ActiveState": "active",
+      "SubState": "running"
+    },
+    "enabled": "enabled",
+    "worker_count": 1,
+    "worker_uid": 981,
+    "security_stop_latched": false,
+    "database_integrity": "ok",
+    "stored_reports": 0,
+    "runtime_file_count": 67,
+    "runtime_bytes_match_qualified_copy": true
+  },
+  "caddy": {
+    "only_aa_route_added": true,
+    "container_id": "3d2803e5eba4c0363b182446c9be0facd2af832003b5b684ddd1a4b4c069efdb",
+    "container_id_unchanged": true
+  },
+  "helpcenter": {
+    "source": "/opt/ki-hilfezentrum-releases/33c4b508d047a534524a214fc08325e807b07870/source",
+    "backend_activation": {
+      "at": "2026-10-17T11:39:39.350068+00:00",
+      "passed": true,
+      "phase": "backend_activate",
+      "source_commit": "33c4b508d047a534524a214fc08325e807b07870",
+      "source": "/opt/ki-hilfezentrum-releases/33c4b508d047a534524a214fc08325e807b07870/source",
+      "old_workers_drained": true,
+      "runtime_unit_environment_authkey_retained": true,
+      "current_database_retained": true,
+      "anonymous_authority_401": true,
+      "real_handoff_blocked": true
+    },
+    "web_deployment": {
+      "at": "2026-10-17T11:40:47.645553+00:00",
+      "phase": "authority_web_activate",
+      "passed": true,
+      "source_commit": "33c4b508d047a534524a214fc08325e807b07870",
+      "changed": [
+        "authority-workspace.js",
+        "case-inbox.js",
+        "api.php",
+        "en.html",
+        "index.html"
+      ],
+      "public_hashes": {
+        "authority-workspace.js": "0a0bed28e8e53931d8f952b0e4ea1c01883352547de4f8495f9fd51fe1a3b71f",
+        "case-inbox.js": "bfb749616b92f99b1a132536af492d89a63b9d7b17e1c507a7c2d1344942fd9d",
+        "api.php": "a5bcb069e19f5616d8449a7a90aa02947cb0ca5384ae7958b0a572494b18ec4b",
+        "index.html": "f0fcdcdd01af91cd8919ea7dd870d1d8bb7dea52bdff8f16413024ef2c89b71b",
+        "en.html": "18fb4c76ea19d0899114fa4187ab1809ff1009eebcdb50a59704e68887d6ac3e"
+      },
+      "private_configuration_and_rewrites_preserved": true,
+      "existing_owners_groups_modes_preserved": true,
+      "backup_server_only": true,
+      "staging_removed": true,
+      "rollback_directory_retained": true
+    },
+    "unit": {
+      "MainPID": "1450769",
+      "NRestarts": "0",
+      "CPUQuotaPerSecUSec": "500ms",
+      "MemoryMax": "268435456",
+      "MemorySwapMax": "infinity",
+      "TasksMax": "64",
+      "User": "ki-hilfezentrum",
+      "Group": "ki-hilfezentrum",
+      "ActiveState": "active",
+      "SubState": "running"
+    },
+    "database_integrity": "ok",
+    "protected_counts": {
+      "bots": 12,
+      "listings": 2,
+      "human_contacts": 1,
+      "human_sessions": 0
+    },
+    "fresh_backup_counts": {
+      "bots": 11,
+      "listings": 2,
+      "human_contacts": 1,
+      "human_sessions": 0
+    },
+    "all_original_rows_retained": {
+      "bots": true,
+      "listings": true,
+      "human_contacts": true,
+      "human_sessions": true
+    },
+    "concurrent_additions_preserved": {
+      "bots": 1,
+      "listings": 0,
+      "human_contacts": 0,
+      "human_sessions": 0
+    },
+    "addition_actor": "unknown; no attribution from this audit",
+    "deletion_ledger_bound": false
+  },
+  "legacy": {
+    "unit_definitions_unchanged": true,
+    "collector_identity_retired": true,
+    "collector_service": "inactive",
+    "collector_socket": "inactive",
+    "verifier": "active",
+    "watchdog": "failed"
+  },
+  "filesystem": {
+    "/opt/agent-authority-browser": {
+      "mode": "0o750",
+      "uid": 0,
+      "gid": 981
+    },
+    "/var/lib/agent-authority-browser": {
+      "mode": "0o700",
+      "uid": 981,
+      "gid": 981
+    },
+    "/var/lib/agent-authority-browser/data": {
+      "mode": "0o700",
+      "uid": 981,
+      "gid": 981
+    },
+    "/etc/agent-authority-browser": {
+      "mode": "0o700",
+      "uid": 0,
+      "gid": 0
+    },
+    "/etc/agent-authority-browser/operator-access.json": {
+      "mode": "0o600",
+      "uid": 0,
+      "gid": 0
+    },
+    "/opt/4allpass": {
+      "mode": "0o750",
+      "uid": 0,
+      "gid": 0
+    },
+    "/opt/4allpass/sites/.aa-transport": {
+      "mode": "0o700",
+      "uid": 981,
+      "gid": 981
+    }
+  },
+  "own_install_staging_removed": true,
+  "other_units_reset": false
+}

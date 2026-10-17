@@ -1,0 +1,15 @@
+{
+  "passed": true,
+  "checks": [
+    "pinned_first_release_code_switch_restarts_successfully",
+    "persistent_security_latch_disables_service",
+    "manual_start_cannot_bypass_latch",
+    "code_switch_cannot_clear_latch",
+    "explicit_root_recovery_active",
+    "caddy_and_account_configuration_retained",
+    "database_bytes_retained"
+  ],
+  "older_aa_release_available": false,
+  "code_switch_target": "f512ab6b5716ff097cdf9978ccd01bc26be6e03732989d747ffa947a3cd1c6f4",
+  "service_active": true
+}
