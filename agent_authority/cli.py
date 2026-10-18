@@ -43,7 +43,33 @@ def main(argv: Sequence[str] | None = None) -> int:
         default=20,
         help="Höchstens 1–100 Anzeigezeilen je Kategorie; Analyse bleibt vollständig.",
     )
+    workflow = actions.add_parser(
+        "workflow-inspect", help="Begrenzte Workflow-Metadaten nur beobachten."
+    )
+    workflow.add_argument("--input", type=Path, required=True)
+    workflow.add_argument("--source-id", required=True)
+    from agent_authority.workflow import TOOLS
+
+    workflow.add_argument("--source-tool", choices=sorted(TOOLS), required=True)
+    workflow.add_argument("--format", choices=["text", "json", "html"], default="text")
+    workflow.add_argument("--limit", type=_limit, default=20)
     args = parser.parse_args(argv)
+    if args.command == "workflow-inspect":
+        from agent_authority.workflow import build_workflow_report, read_workflow
+        from agent_authority.workflow_present import render_workflow_html, render_workflow_text
+
+        value = build_workflow_report(
+            read_workflow(args.input, args.source_id, args.source_tool), args.limit
+        )
+        if args.format == "json":
+            output = json.dumps(value, ensure_ascii=False, indent=2)
+        elif args.format == "html":
+            output = render_workflow_html(value)
+        else:
+            output = render_workflow_text(value)
+        print(output)
+        return 0 if value["read"]["workflow_evidence_complete"] else 2
+
     source = args.source or ("threaddesk-whiteboard" if args.thread else None)
     if source == "json-directory":
         if args.input is None or args.source_id is None or args.thread or args.store is not None:
