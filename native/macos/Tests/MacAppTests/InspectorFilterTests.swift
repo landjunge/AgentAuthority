@@ -28,6 +28,22 @@ final class InspectorFilterTests: XCTestCase {
         XCTAssertEqual(main.canvas.warningOutcome("agent-003"), .finding(.critical))
     }
 
+    func testWorkflowExportMinimizationDoesNotMislabelReportAsKernelObservation() throws {
+        _ = NSApplication.shared
+        let state=AppState()
+        state.document=GraphDocument(source:"workflow",nodes:[GraphNode(id:"n",kind:.entry,name:"n",status:.reported)])
+        state.document.reportSource=true
+        XCTAssertNil(state.document.reportJSON)
+        state.selected="n"
+        let inspector=InspectorController(state)
+        let tabs=try XCTUnwrap(descendants(inspector.view).compactMap{$0 as? NSSegmentedControl}.first)
+        tabs.selectedSegment=1
+        XCTAssertTrue(tabs.sendAction(tabs.action,to:tabs.target))
+        let texts=descendants(inspector.view).compactMap{($0 as? NSTextField)?.stringValue}
+        XCTAssertTrue(texts.contains(L("boundary.product")))
+        XCTAssertFalse(texts.contains(L("boundary.live")))
+    }
+
     func testRawInspectorPreservesRealVersusSyntheticSourceBoundary() throws {
         _ = NSApplication.shared
         for (demo, reported, boundary) in [(true, false, "boundary.sample"),

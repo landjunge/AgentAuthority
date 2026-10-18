@@ -39,7 +39,7 @@ class DirectoryScan:
     complete: bool
 
 
-def _scan_directory(directory: int) -> DirectoryScan:
+def _scan_directory(directory: int, suffix: str = ".json") -> DirectoryScan:
     """Bound all directory entries, including names we will never read as JSON."""
     names: list[str] = []
     seen = files = 0
@@ -47,7 +47,7 @@ def _scan_directory(directory: int) -> DirectoryScan:
     with os.scandir(directory) as iterator:
         for item in iterator:
             seen += 1
-            is_json = item.name.endswith(".json")
+            is_json = item.name.endswith(suffix)
             files += int(is_json)
             if seen > MAX_DIRECTORY_ENTRIES:
                 complete = False
@@ -78,7 +78,7 @@ def _constant(value: str) -> Any:
     raise ValueError("non-finite JSON value")
 
 
-def read_record(directory: int, name: str, budget: ReadBudget) -> tuple[Any, str, Signature]:
+def read_bytes(directory: int, name: str, budget: ReadBudget) -> tuple[bytes, str, Signature]:
     descriptor = os.open(name, os.O_RDONLY | os.O_NONBLOCK | os.O_NOFOLLOW, dir_fd=directory)
     try:
         before = os.fstat(descriptor)
@@ -106,11 +106,16 @@ def read_record(directory: int, name: str, budget: ReadBudget) -> tuple[Any, str
             raise ReadIssue("source_changed")
     finally:
         os.close(descriptor)
+    return bytes(raw), hashlib.sha256(raw).hexdigest(), _signature(after)
+
+
+def read_record(directory: int, name: str, budget: ReadBudget) -> tuple[Any, str, Signature]:
+    raw, fingerprint, signature = read_bytes(directory, name, budget)
     try:
         record = json.loads(raw, object_pairs_hook=_unique, parse_constant=_constant)
     except (ValueError, UnicodeError, RecursionError) as exc:
         raise ReadIssue("invalid_json") from exc
-    return record, hashlib.sha256(raw).hexdigest(), _signature(after)
+    return record, fingerprint, signature
 
 
 def read_directory(

@@ -1,0 +1,330 @@
+{
+  "schema_version": "agent-authority-workflow-report-v1",
+  "role": "observer_only",
+  "source_authenticated": false,
+  "identity": "UNBEKANNT",
+  "effect": "UNBEKANNT",
+  "observation_report": {
+    "schema_version": "agent-authority-observation-report-v1",
+    "role": "observer_only",
+    "source": {
+      "scope": "selected_local_observations",
+      "kind": "workflow-jsonl",
+      "source_id": "synthetic-aa-ui",
+      "files_seen": 1,
+      "files_examined": 1,
+      "files_seen_is_lower_bound": false,
+      "directory_entries_seen": 1,
+      "directory_scan_complete": true,
+      "bytes_read": 4223,
+      "entries_read": 6,
+      "complete_observed_read": true,
+      "coverage_of_all_agent_activity": "UNBEKANNT",
+      "source_authenticated": false,
+      "identity": "UNBEKANNT",
+      "effect": "UNBEKANNT"
+    },
+    "summary": {
+      "reported_kind_counts": {
+        "claimed": 1,
+        "progress": 1,
+        "question": 1,
+        "result": 2,
+        "system": 1
+      },
+      "tasks_with_reported_association": 1,
+      "claims_without_later_result_in_read_entries": 0,
+      "structural_warning_count": 0
+    },
+    "tasks": [
+      {
+        "task_alias": "A1",
+        "association_basis": "reported_task_id_only",
+        "last_reported_kind": "result",
+        "order_ambiguous": false,
+        "entry_count": 6,
+        "reported_kind_counts": {
+          "claimed": 1,
+          "progress": 1,
+          "question": 1,
+          "result": 2,
+          "system": 1
+        },
+        "claim_without_later_result": false,
+        "evidence": [
+          {
+            "entry_id": "wf-9f86d209aa1c9c81339d473537ed6954",
+            "ordinal": 4,
+            "file_sha256": "c4167b05fd3f5384a473ae079543eca87dc71baf5d0b74bed0222b0b1f336bfb"
+          },
+          {
+            "entry_id": "wf-3a4c1d88c62c2c6fd91ac471dcb64506",
+            "ordinal": 5,
+            "file_sha256": "c4167b05fd3f5384a473ae079543eca87dc71baf5d0b74bed0222b0b1f336bfb"
+          },
+          {
+            "entry_id": "wf-db60e30b7518c21685e77f4a4a46c72a",
+            "ordinal": 6,
+            "file_sha256": "c4167b05fd3f5384a473ae079543eca87dc71baf5d0b74bed0222b0b1f336bfb"
+          }
+        ]
+      }
+    ],
+    "recent_entries": [
+      {
+        "entry_id": "wf-db60e30b7518c21685e77f4a4a46c72a",
+        "ordinal": 6,
+        "file_sha256": "c4167b05fd3f5384a473ae079543eca87dc71baf5d0b74bed0222b0b1f336bfb",
+        "reported_kind": "result",
+        "reported_actor_type": "kirabridge"
+      },
+      {
+        "entry_id": "wf-3a4c1d88c62c2c6fd91ac471dcb64506",
+        "ordinal": 5,
+        "file_sha256": "c4167b05fd3f5384a473ae079543eca87dc71baf5d0b74bed0222b0b1f336bfb",
+        "reported_kind": "result",
+        "reported_actor_type": "kirabridge"
+      },
+      {
+        "entry_id": "wf-9f86d209aa1c9c81339d473537ed6954",
+        "ordinal": 4,
+        "file_sha256": "c4167b05fd3f5384a473ae079543eca87dc71baf5d0b74bed0222b0b1f336bfb",
+        "reported_kind": "system",
+        "reported_actor_type": "kirabridge"
+      },
+      {
+        "entry_id": "wf-5565729c61f9c4c15cd349ce6036652d",
+        "ordinal": 3,
+        "file_sha256": "c4167b05fd3f5384a473ae079543eca87dc71baf5d0b74bed0222b0b1f336bfb",
+        "reported_kind": "question",
+        "reported_actor_type": "kirabridge"
+      },
+      {
+        "entry_id": "wf-60942856d3dfc9826c3de9d1e4c31194",
+        "ordinal": 2,
+        "file_sha256": "c4167b05fd3f5384a473ae079543eca87dc71baf5d0b74bed0222b0b1f336bfb",
+        "reported_kind": "progress",
+        "reported_actor_type": "kirabridge"
+      },
+      {
+        "entry_id": "wf-2379b96c49597def9b9e450dbf9ab439",
+        "ordinal": 1,
+        "file_sha256": "c4167b05fd3f5384a473ae079543eca87dc71baf5d0b74bed0222b0b1f336bfb",
+        "reported_kind": "claimed",
+        "reported_actor_type": "kirabridge"
+      }
+    ],
+    "warnings": [],
+    "display": {
+      "limit": 20,
+      "tasks_omitted": 0,
+      "entries_omitted": 0,
+      "warnings_omitted": 0
+    },
+    "task_completion_proven": false,
+    "rights_inherited": false
+  },
+  "events": [
+    {
+      "event_id": "audit-1",
+      "source_tool": "kirabridge",
+      "source_id": "synthetic-aa-ui",
+      "segment_id": "segment-0001",
+      "event_type": "task.accepted",
+      "producer_ordinal": 1,
+      "timestamp": "2026-10-18T17:00:00Z",
+      "binding": {
+        "bridge_task_id": "kb-task-1",
+        "handoff_id": "handoff-1",
+        "handoff_revision": 1,
+        "operator_scope": "synthetic-worktree",
+        "original_task_id": "thread:task",
+        "principal_ref": "operator-synthetic",
+        "project_id": "synthetic-project",
+        "reported_status": "running",
+        "request_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "run_id": "run-1",
+        "source_ref": "synthetic-source-v1",
+        "source_revision": 7,
+        "task_id": "thread:task",
+        "workflow_id": "workflow-1"
+      },
+      "entry_id": "wf-2379b96c49597def9b9e450dbf9ab439",
+      "file_sha256": "c4167b05fd3f5384a473ae079543eca87dc71baf5d0b74bed0222b0b1f336bfb",
+      "record_sha256": "eeda129382bca421791342517ef26fe54aa0716374fadfc75dbe65bfd9090357",
+      "assertion_basis": "producer_report_only",
+      "identity_authenticated": false,
+      "effect_verified": false
+    },
+    {
+      "event_id": "audit-2",
+      "source_tool": "kirabridge",
+      "source_id": "synthetic-aa-ui",
+      "segment_id": "segment-0001",
+      "event_type": "task.running",
+      "producer_ordinal": 2,
+      "timestamp": "2026-10-18T17:00:00Z",
+      "binding": {
+        "bridge_task_id": "kb-task-1",
+        "handoff_id": "handoff-1",
+        "handoff_revision": 1,
+        "operator_scope": "synthetic-worktree",
+        "original_task_id": "thread:task",
+        "principal_ref": "operator-synthetic",
+        "project_id": "synthetic-project",
+        "reported_status": "running",
+        "request_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "run_id": "run-1",
+        "source_ref": "synthetic-source-v1",
+        "source_revision": 7,
+        "task_id": "thread:task",
+        "workflow_id": "workflow-1"
+      },
+      "entry_id": "wf-60942856d3dfc9826c3de9d1e4c31194",
+      "file_sha256": "c4167b05fd3f5384a473ae079543eca87dc71baf5d0b74bed0222b0b1f336bfb",
+      "record_sha256": "3c2a409e46aea252ccda0d3a25396334bb3d37f6b0ad141af2e8de3fdc2faa2c",
+      "assertion_basis": "producer_report_only",
+      "identity_authenticated": false,
+      "effect_verified": false
+    },
+    {
+      "event_id": "audit-3",
+      "source_tool": "kirabridge",
+      "source_id": "synthetic-aa-ui",
+      "segment_id": "segment-0001",
+      "event_type": "task.question",
+      "producer_ordinal": 3,
+      "timestamp": "2026-10-18T17:00:00Z",
+      "binding": {
+        "bridge_task_id": "kb-task-1",
+        "handoff_id": "handoff-1",
+        "handoff_revision": 1,
+        "operator_scope": "synthetic-worktree",
+        "original_task_id": "thread:task",
+        "principal_ref": "operator-synthetic",
+        "project_id": "synthetic-project",
+        "reported_status": "running",
+        "request_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "run_id": "run-1",
+        "source_ref": "synthetic-source-v1",
+        "source_revision": 7,
+        "task_id": "thread:task",
+        "workflow_id": "workflow-1"
+      },
+      "entry_id": "wf-5565729c61f9c4c15cd349ce6036652d",
+      "file_sha256": "c4167b05fd3f5384a473ae079543eca87dc71baf5d0b74bed0222b0b1f336bfb",
+      "record_sha256": "dd4c289271f345c42fdf4062dc533a7f3235808790c8d1c9407443bb1e4a11b2",
+      "assertion_basis": "producer_report_only",
+      "identity_authenticated": false,
+      "effect_verified": false
+    },
+    {
+      "event_id": "audit-4",
+      "source_tool": "kirabridge",
+      "source_id": "synthetic-aa-ui",
+      "segment_id": "segment-0001",
+      "event_type": "task.answer_recorded",
+      "producer_ordinal": 4,
+      "timestamp": "2026-10-18T17:00:00Z",
+      "binding": {
+        "bridge_task_id": "kb-task-1",
+        "handoff_id": "handoff-1",
+        "handoff_revision": 1,
+        "operator_scope": "synthetic-worktree",
+        "original_task_id": "thread:task",
+        "principal_ref": "operator-synthetic",
+        "project_id": "synthetic-project",
+        "reported_status": "running",
+        "request_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "run_id": "run-1",
+        "source_ref": "synthetic-source-v1",
+        "source_revision": 7,
+        "task_id": "thread:task",
+        "workflow_id": "workflow-1"
+      },
+      "entry_id": "wf-9f86d209aa1c9c81339d473537ed6954",
+      "file_sha256": "c4167b05fd3f5384a473ae079543eca87dc71baf5d0b74bed0222b0b1f336bfb",
+      "record_sha256": "821d5b7c70731faf15fdcade08e64f6461e6c4d95217e868e2502a5b0fe65e91",
+      "assertion_basis": "producer_report_only",
+      "identity_authenticated": false,
+      "effect_verified": false
+    },
+    {
+      "event_id": "audit-5",
+      "source_tool": "kirabridge",
+      "source_id": "synthetic-aa-ui",
+      "segment_id": "segment-0001",
+      "event_type": "task.completed",
+      "producer_ordinal": 5,
+      "timestamp": "2026-10-18T17:00:00Z",
+      "binding": {
+        "bridge_task_id": "kb-task-1",
+        "handoff_id": "handoff-1",
+        "handoff_revision": 1,
+        "operator_scope": "synthetic-worktree",
+        "original_task_id": "thread:task",
+        "principal_ref": "operator-synthetic",
+        "project_id": "synthetic-project",
+        "reported_status": "turn_completed",
+        "request_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "run_id": "run-1",
+        "source_ref": "synthetic-source-v1",
+        "source_revision": 7,
+        "task_id": "thread:task",
+        "workflow_id": "workflow-1"
+      },
+      "entry_id": "wf-3a4c1d88c62c2c6fd91ac471dcb64506",
+      "file_sha256": "c4167b05fd3f5384a473ae079543eca87dc71baf5d0b74bed0222b0b1f336bfb",
+      "record_sha256": "9a362d68dd75a5ab6fc8433c1b8194b6f18b78a7338caca7546e07e896699062",
+      "assertion_basis": "producer_report_only",
+      "identity_authenticated": false,
+      "effect_verified": false
+    },
+    {
+      "event_id": "audit-6",
+      "source_tool": "kirabridge",
+      "source_id": "synthetic-aa-ui",
+      "segment_id": "segment-0001",
+      "event_type": "return.received",
+      "producer_ordinal": 6,
+      "timestamp": "2026-10-18T17:00:00Z",
+      "binding": {
+        "bridge_task_id": "kb-task-1",
+        "handoff_id": "handoff-1",
+        "handoff_revision": 1,
+        "operator_scope": "synthetic-worktree",
+        "original_task_id": "thread:task",
+        "principal_ref": "operator-synthetic",
+        "project_id": "synthetic-project",
+        "reported_status": "delivered_unverified",
+        "request_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "run_id": "run-1",
+        "source_ref": "synthetic-source-v1",
+        "source_revision": 7,
+        "task_id": "thread:task",
+        "workflow_id": "workflow-1"
+      },
+      "entry_id": "wf-db60e30b7518c21685e77f4a4a46c72a",
+      "file_sha256": "c4167b05fd3f5384a473ae079543eca87dc71baf5d0b74bed0222b0b1f336bfb",
+      "record_sha256": "49b750666e3dcc91d029b3bdd348076a87d459267d39c9c20c8e81435ad996dc",
+      "assertion_basis": "producer_report_only",
+      "identity_authenticated": false,
+      "effect_verified": false
+    }
+  ],
+  "read": {
+    "segments_seen": 1,
+    "records_seen": 6,
+    "duplicates_ignored": 0,
+    "events_omitted": 0,
+    "complete_selected_read": true,
+    "workflow_evidence_complete": true,
+    "coverage_of_all_activity": "UNBEKANNT"
+  },
+  "warnings": [],
+  "warnings_omitted": 0,
+  "rights_granted": false,
+  "budget_released": false,
+  "stop_enforced": false,
+  "task_completion_proven": false
+}
