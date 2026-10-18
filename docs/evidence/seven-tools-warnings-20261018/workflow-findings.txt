@@ -1,0 +1,58 @@
+Agent Authority — Aktivitätsbeobachtung
+2 Beiträge gelesen; Aufnahme vollständig im bezeichneten Leseumfang.
+1 gemeldete Aufgabenbezüge; 0 Übernahmen ohne späteren Ergebnisbeitrag.
+Herkunft, Identität und tatsächliche Wirkung: UNBEKANNT.
+Ergebnisbeiträge sind Meldungen; sie beweisen keinen Abschluss oder Vollzug.
+1 JSON-Dateien untersucht, 1 gesehen; 1252 Bytes gelesen.
+
+Aufgaben im gelesenen Verlauf:
+A1: Ergebnis gemeldet; Belege: E1 [wf-71501d0708b2415912ad70d93711a576], E2 [wf-54f694ee995ce5530843631bfe2d5db2]
+Keine strukturelle Warnung in den gelesenen Einträgen.
+
+Workflow-Metadaten / Workflow metadata
+Nur gemeldete Bezüge; keine Rechte, Budgets oder Stopps durch diesen Bericht.
+Reported references only; this report grants no rights, budget or stop authority.
+handoff.bound · threaddesk · synthetic-bind
+  bridge_task_id: synthetic-kb-task-1
+  handoff_id: synthetic-handoff-1
+  handoff_revision: 1
+  original_task_id: synthetic-thread:task-1
+  project_id: synthetic-project
+  recipient_id: codex
+  run_id: synthetic-run-1
+  source_revision: 7
+  task_id: synthetic-thread:task-1
+  task_revision: 3
+  workflow_id: synthetic-workflow
+return.received · threaddesk · synthetic-return
+  binding_event_id: synthetic-bind
+  bridge_task_id: synthetic-kb-task-1
+  handoff_id: synthetic-handoff-1
+  handoff_revision: 1
+  original_task_id: synthetic-thread:task-1
+  project_id: synthetic-project
+  recipient_id: grok
+  reported_status: delivered_unverified
+  run_id: synthetic-run-1
+  source_revision: 6
+  task_id: synthetic-thread:task-1
+  task_revision: 3
+  workflow_id: synthetic-workflow
+Fachliche Hinweise / Workflow findings
+Nur Konsistenz gemeldeter Fakten; tatsächlicher Verstoß und Gesamtauftrag bleiben ungeprüft.
+Producer-claim consistency only; actual violations and project completion remain unverified.
+Veraltete Revision gemeldet / Stale revision reported · reported_contradiction
+  finding-399832c86908d0efc5f709a9f0eb7c8c · source_revision
+  threaddesk/synthetic-aa-c02/synthetic-return · wf-54f694ee995ce5530843631bfe2d5db2 · sha256:cb935bc21cb5e04f586278761c862ad5173443ede4c734f356ca50709161b700
+  threaddesk/synthetic-aa-c02/synthetic-bind · wf-71501d0708b2415912ad70d93711a576 · sha256:f8b02183aab3d2181c4eb49a9595e993e2771e57d93fcba90ba77fc24aa44f4e
+Widersprüchlicher Rückgabebezug / Conflicting return binding · reported_contradiction
+  finding-a39fc4878dac8409c8d28986b6ef1352 · recipient_id
+  threaddesk/synthetic-aa-c02/synthetic-return · wf-54f694ee995ce5530843631bfe2d5db2 · sha256:cb935bc21cb5e04f586278761c862ad5173443ede4c734f356ca50709161b700
+  threaddesk/synthetic-aa-c02/synthetic-bind · wf-71501d0708b2415912ad70d93711a576 · sha256:f8b02183aab3d2181c4eb49a9595e993e2771e57d93fcba90ba77fc24aa44f4e
+Ergebnisbeleg fehlt / Result artifact reference missing · missing_evidence
+  finding-bb37a04f384ddda421367920a85b3cb4 · artifact_ref
+  threaddesk/synthetic-aa-c02/synthetic-return · wf-54f694ee995ce5530843631bfe2d5db2 · sha256:cb935bc21cb5e04f586278761c862ad5173443ede4c734f356ca50709161b700
+Weitere Hinweise / Omitted findings: 0
+Keine Hinweise ist kein Sicherheits- oder Vollständigkeitsnachweis. / No findings is not a safety or completeness proof.
+Nicht angezeigte Ereignisse / Omitted events: 0
+Identität, tatsächliche Wirkung und vollständige Abdeckung: UNBEKANNT / UNKNOWN.

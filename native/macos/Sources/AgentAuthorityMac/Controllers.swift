@@ -88,13 +88,15 @@ final class MainPanelController:NSViewController,NSTableViewDataSource,NSTableVi
         minus.title="";plus.title="";zoomLabel.font = .systemFont(ofSize:10);zoomLabel.textColor=Palette.muted
         backButton=button("button.back",target:self,action:#selector(goBack),symbol:"chevron.left");backButton.isEnabled=state.history.canGoBack
         warningCases=NSPopUpButton();warningCases.controlSize = .small
-        warningCases.addItem(withTitle:L(state.document.isDemo ? "warning.demoMenu":"warning.notAssessable"))
+        let workflowFindings=state.document.isDemo ? []:state.document.nodes.filter(\.isWorkflowFinding)
+        warningCases.addItem(withTitle:L(state.document.isDemo ? "warning.demoMenu":workflowFindings.isEmpty ? "warning.notAssessable":"workflow.reportFindings"))
         for id in UIWarningDemo.nodeIDs where state.document.nodes.contains(where:{$0.id==id}) && state.document.isDemo {
             let a=UIWarningDemo.assessment(nodeID:id,in:state.document)
             warningCases.addItem(withTitle:L("warning.demoPrefix")+" · "+a.outcome.text)
             warningCases.lastItem?.representedObject=id
         }
-        warningCases.target=self;warningCases.action=#selector(warningCaseChanged);warningCases.isEnabled=state.document.isDemo
+        for finding in workflowFindings.prefix(100) {warningCases.addItem(withTitle:finding.title);warningCases.lastItem?.representedObject=finding.id}
+        warningCases.target=self;warningCases.action=#selector(warningCaseChanged);warningCases.isEnabled=state.document.isDemo || !workflowFindings.isEmpty
         pulseButton=NSButton(checkboxWithTitle:L("warning.pulse"),target:self,action:#selector(pulseChanged));pulseButton.controlSize = .small;pulseButton.state=canvas.pulseEnabled ? .on:.off;pulseButton.toolTip=L("warning.motionHint")
         criticalBanner=button("warning.criticalMessage",target:self,action:#selector(criticalPressed),symbol:"exclamationmark.triangle.fill");criticalBanner.isBordered=false;criticalBanner.alignment = .left;criticalBanner.font = .systemFont(ofSize:10);criticalBanner.contentTintColor=Palette.warning(.critical);criticalBanner.toolTip=L("warning.criticalMessage")
         let stop=button("button.cancel",target:self,action:#selector(cancelPressed));stop.isHidden = !busy
@@ -152,7 +154,8 @@ final class MainPanelController:NSViewController,NSTableViewDataSource,NSTableVi
         }else if d.isReportSource {
             metrics[0].set("metric.reported",String(d.totalEntries ?? d.nodes.filter{$0.kind == .entry}.count),L("status.reported"))
             metrics[1].set("metric.tasks",String(d.reportedTaskCount ?? d.nodes.filter{$0.kind == .task}.count),L("basis.task"))
-            metrics[2].set("metric.warnings",String(d.reportedWarningCount ?? d.warnings.count),L("metric.warnings"))
+            let findingsKey=d.nodes.contains(where: \.isWorkflowFinding) ? "workflow.reportFindings":"metric.warnings"
+            metrics[2].set(findingsKey,String(d.reportedWarningCount ?? d.warnings.count),L(findingsKey))
             metrics[3].set("metric.coverage",d.completeRead == true ? "✓":"△",L(d.completeRead == true ? "metric.complete":"metric.incomplete"))
         }else{
             metrics[0].set("metric.agents","—",L("metric.unavailable"));metrics[1].set("metric.delegations","—",L("metric.unavailable"));metrics[2].set("metric.chains","—",L("metric.unavailable"));metrics[3].set("metric.actions",String(actions.count),L("metric.kernelOnly"))
@@ -286,6 +289,16 @@ final class InspectorController:NSViewController {
         scroll.documentView=doc;layoutDocument(width:view.bounds.width)
     }
     private func addWarning(_ id:String){
+        if let node=state.document.nodes.first(where:{$0.id==id}),!state.document.isDemo,
+           node.isWorkflowFinding {
+            add(label("warning.title",size:12,weight:.medium),26)
+            add(wrapping(L("workflow.producerConsistency"),size:11),35)
+            if let classification=node.facts.first(where:{$0.labelKey=="workflow.classification"}) {
+                add(wrapping(classification.text,size:11,color:Palette.status(node.status)),46)
+            }
+            add(wrapping(L("workflow.findingBoundary"),size:10),68)
+            return
+        }
         let a=UIWarningDemo.assessment(nodeID:id,in:state.document)
         add(label("warning.title",size:12,weight:.medium),26)
         add(wrapping((a.isSynthetic ? L("warning.demoPrefix")+" · ":"")+a.outcome.text,size:11,color:Palette.warningOutcome(a.outcome)),40)

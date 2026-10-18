@@ -1,0 +1,57 @@
+{
+  "observed_at": "2026-10-18T18:21:37.623192+00:00",
+  "method": "actual AppKit own-view bitmap capture; no host/collector probe",
+  "platform": "Darwin",
+  "architecture": "x86_64",
+  "macos": "15.7.4",
+  "core_source_commit": "cdbe24c",
+  "native_source": "AA-C02 follow-up tree; final source commit recorded by Git history",
+  "executable_sha256": "a3065572325038f6691d97cfaa82157d4d56adedc95d9f50ca7b0edaf54cf00c",
+  "captures": [
+    {
+      "name": "native-de.png",
+      "sha256": "c1d479c722670b1582aeb0b5e81bbea20d0b249b9c2a5b4d507a32ad6e6be56e",
+      "bytes": 675578
+    },
+    {
+      "name": "native-en-small.png",
+      "sha256": "eceb8c3107603c0ff1f2c8c0144cc65460702537b3a1340c1bd03c0ab1e858cd",
+      "bytes": 474783
+    },
+    {
+      "name": "native-de-initial.png",
+      "sha256": "7da900ca533a9b9c9dd1c6387fe68c94044f63b097b1151a127714f15ca24461",
+      "bytes": 674974
+    },
+    {
+      "name": "native-en-small-initial.png",
+      "sha256": "0ce613f85456f12db53a1a8c7751496fc01d1e82efd891d4d26ce243a8a66de2",
+      "bytes": 474547
+    },
+    {
+      "name": "workflow-findings.json",
+      "sha256": "1a39d7a7839b1c4293ed1b13de1249030eabe41835da2dca19fc47bb7c2d4a7a",
+      "bytes": 11000
+    },
+    {
+      "name": "existing-tg-findings.json",
+      "sha256": "7cfe71be6c965488e98559c04bcf5f109393f53f145bb49f22475d5b1f89b701",
+      "bytes": 3481
+    }
+  ],
+  "cases": [
+    {
+      "language": "de",
+      "logical_size": "1680x960",
+      "selected": "warning-0"
+    },
+    {
+      "language": "en",
+      "logical_size": "1150x730",
+      "selected": "warning-0"
+    }
+  ],
+  "actual_effect_or_identity_verified": false,
+  "source_records_synthetic": true,
+  "general_ui_regression_suite_repeated": false
+}

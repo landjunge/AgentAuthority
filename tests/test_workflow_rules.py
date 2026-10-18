@@ -331,3 +331,43 @@ def test_adapter_strict_additions_and_real_report_path_show_evidence_without_sec
     for text in [json.dumps(value), render_workflow_text(value), render_workflow_html(value)]:
         assert "PRIVATE_SECRET" not in text
         assert "workflow_result_artifact_missing" in text or "Ergebnisbeleg" in text
+
+
+@pytest.mark.parametrize(
+    "field,value",
+    [
+        ("attempt_id", "foreign"),
+        ("consumer_id", "foreign"),
+        ("actor_claim", "foreign"),
+        ("request_hash", "b" * 64),
+        ("task_id", "foreign"),
+    ],
+)
+def test_gate_with_foreign_g01_binding_never_becomes_matching_checkpoint(field: str, value: str):
+    base = {
+        "source_tool": "tollgate",
+        "control_ref": "gate-epoch-1",
+        "attempt_id": "attempt-1",
+        "consumer_id": "codex-lane",
+        "actor_claim": "codex",
+        "request_hash": "a" * 64,
+    }
+    gate = claim(1, "budget.reserved", **{**base, field: value})
+    dispatch = control(2, "dispatch.attempted", dispatch_seq=2, gate_event_id="e-1")
+    result = analysis(gate, dispatch)
+    assert "workflow_control_point_missing" in codes(result)
+    assert not result["gate_authorization_proven"]
+
+
+def test_gate_after_dispatch_or_ambiguous_ordinal_cannot_be_a_prior_checkpoint():
+    result = analysis(
+        control(3, "budget.reserved"),
+        control(2, "dispatch.attempted", dispatch_seq=2, gate_event_id="e-3"),
+    )
+    assert "workflow_control_point_missing" in codes(result)
+    result = analysis(
+        control(1, "budget.reserved"),
+        claim(1, "task.running", source_tool="tollgate", event_id="collision"),
+        control(2, "dispatch.attempted", dispatch_seq=2, gate_event_id="e-1"),
+    )
+    assert "workflow_control_point_missing" in codes(result)

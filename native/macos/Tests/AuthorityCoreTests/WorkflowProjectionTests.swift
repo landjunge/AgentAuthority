@@ -50,3 +50,41 @@ final class WorkflowProjectionTests:XCTestCase {
         XCTAssertThrowsError(try ReportProjection.decode(JSONSerialization.data(withJSONObject:large)))
     }
 }
+
+extension WorkflowProjectionTests {
+    func finding(_ code:String="workflow_revision_stale",classification:String="reported_contradiction")->[String:Any] {
+        ["finding_id":"finding-"+String(repeating:"a",count:32),"code":code,"assessment_scope":"producer_claim_consistency",
+         "classification":classification,"actual_violation_verified":true,
+         "fields":["source_revision","secret_field"],"reported_scope":["workflow_id":"wf-1","password":"PRIVATE_SECRET"],
+         "evidence_refs":[["entry_id":"wf-event","source_tool":"threaddesk","source_id":"synthetic-source","event_id":"e-1","record_sha256":String(repeating:"a",count:64),"token":"PRIVATE_SECRET"]]]
+    }
+    func withAnalysis(_ findings:[[String:Any]])->[String:Any] {
+        var raw=wrapper();raw["analysis"]=["schema_version":"agent-authority-workflow-findings-v1","assessment_scope":"producer_claim_consistency","findings":findings,"findings_omitted":0]
+        return raw
+    }
+    func testSemanticFindingKeepsReportedScopeAndEvidenceWithoutProvingActualViolation()throws {
+        let d=try ReportProjection.decode(JSONSerialization.data(withJSONObject:withAnalysis([finding()])))
+        let warning=try XCTUnwrap(d.nodes.first{$0.name=="diagnostic.workflow_revision_stale"})
+        XCTAssertEqual(warning.status,.contradictory)
+        XCTAssertEqual(warning.evidence,["wf-event"])
+        XCTAssertTrue(warning.facts.contains{$0.labelKey=="workflow.actualViolation"&&$0.value=="status.unknown"})
+        XCTAssertTrue(warning.facts.contains{$0.labelKey=="workflow.classification"&&$0.value=="workflow.classification.reported_contradiction"})
+        XCTAssertTrue(warning.facts.contains{$0.labelKey=="workflow.evidence.event_id"&&$0.value=="1: e-1"})
+        XCTAssertTrue(d.edges.contains{$0.from==warning.id&&$0.to=="wf-event"})
+        XCTAssertLessThanOrEqual(warning.facts.count,32)
+        let exported=String(data:try JSONEncoder().encode(d),encoding:.utf8)!
+        XCTAssertFalse(exported.contains("PRIVATE_SECRET"));XCTAssertFalse(exported.contains("secret_field"))
+        XCTAssertFalse(d.nodes.contains{$0.status == .observed || $0.status == .verified})
+    }
+    func testMissingSemanticEvidenceRemainsIncompleteAndUnknownSchemaNotGreen()throws {
+        let d=try ReportProjection.decode(JSONSerialization.data(withJSONObject:withAnalysis([finding("workflow_control_point_missing",classification:"missing_evidence")])))
+        XCTAssertEqual(d.nodes.first{$0.name=="diagnostic.workflow_control_point_missing"}?.status,.incomplete)
+        var raw=wrapper();raw["analysis"]=["schema_version":"future-v9"]
+        let unknown=try ReportProjection.decode(JSONSerialization.data(withJSONObject:raw))
+        XCTAssertTrue(unknown.warnings.contains("workflow_analysis_unknown"))
+        var bad=finding();bad["classification"]="authorized"
+        let invalid=try ReportProjection.decode(JSONSerialization.data(withJSONObject:withAnalysis([bad])))
+        XCTAssertTrue(invalid.warnings.contains("workflow_analysis_unknown"))
+        XCTAssertThrowsError(try ReportProjection.decode(JSONSerialization.data(withJSONObject:withAnalysis(Array(repeating:finding(),count:101)))))
+    }
+}

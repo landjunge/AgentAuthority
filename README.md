@@ -65,7 +65,10 @@ v1 remains unchanged. The native graph reads the explicit workflow-report wrappe
 shows reported task/run/handoff/source references and retains unknown identity and
 external effect. It creates no new task queue/audit stream and grants no rights,
 secrets, budgets, stop authority or project acceptance. Identical events are
-counted once; conflicting, missing and unordered records stay visible. Actual
+counted once; conflicting, missing and unordered records stay visible.
+[Scoped workflow findings](docs/WORKFLOW-WARNINGS.md) compare revision/return,
+artifact and declared control/stop evidence; conflicts remain reported claims,
+missing prerequisites remain unknown, and zero findings proves no global safety. Actual
 limits, supported producer types and remaining live-adapter gaps are documented
 in [Workflow observations](docs/WORKFLOW-OBSERVATIONS.md).
 
@@ -74,7 +77,10 @@ vorhandener Workflow-Metadaten. Der neutrale v1-Vertrag bleibt erhalten. Graph u
 Inspector lesen den ausdrücklich neuen Workflow-Reportwrapper; Identität und
 externe Wirkung bleiben unbekannt. Keine neue Aufgabenwarteschlange/Auditwelt,
 keine Rechte-, Geheimnis- oder Budgetfreigabe und keine Nutzerabnahme. Duplikate
-zählen einmal; Konflikte und Lücken bleiben sichtbar. Das Repository ist privat;
+zählen einmal; Konflikte und Lücken bleiben sichtbar.
+[Begrenzte fachliche Hinweise](docs/WORKFLOW-WARNINGS.md) vergleichen Revisionen,
+Rückgaben, Artefakt- und gemeldete Kontroll-/Sperrbelege. Keine Hinweise bedeutet
+keine allgemeine Sicherheitsbestätigung. Das Repository ist privat;
 es gibt keinen öffentlich freigegebenen Download oder fertigen Webdienst.
 
 ```sh
