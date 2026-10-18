@@ -1394,5 +1394,125 @@
   "workflow.omitted_fields": {
     "de": "Weitere Felder nur im CLI-Report",
     "en": "Additional fields in CLI report only"
+  },
+  "workflow.consumer_id": {
+    "de": "Gemeldeter Verbraucher",
+    "en": "Reported consumer"
+  },
+  "workflow.binding_event_id": {
+    "de": "Bindungsereignis",
+    "en": "Binding event"
+  },
+  "workflow.control_ref": {
+    "de": "Gemeldeter Kontrollnamensraum",
+    "en": "Reported controller namespace"
+  },
+  "workflow.gate_event_id": {
+    "de": "Gemeldeter Kontrollbeleg",
+    "en": "Reported gate event"
+  },
+  "workflow.finding_id": {
+    "de": "Stabile Hinweiskennung",
+    "en": "Stable finding ID"
+  },
+  "workflow.assessment": {
+    "de": "Prüfumfang",
+    "en": "Assessment scope"
+  },
+  "workflow.producerConsistency": {
+    "de": "Konsistenz der Produzentenmeldungen",
+    "en": "Producer-claim consistency"
+  },
+  "workflow.classification": {
+    "de": "Art des Hinweises",
+    "en": "Finding classification"
+  },
+  "workflow.classification.reported_contradiction": {
+    "de": "Widerspruch zwischen Meldungen · tatsächlicher Verstoß ungeprüft",
+    "en": "Conflicting reports · actual violation unverified"
+  },
+  "workflow.classification.missing_evidence": {
+    "de": "Fehlender Nachweis · unbekannt",
+    "en": "Missing evidence · unknown"
+  },
+  "workflow.compared_fields": {
+    "de": "Betroffene Metadatenfelder",
+    "en": "Relevant metadata fields"
+  },
+  "workflow.evidence.source_tool": {
+    "de": "Beleg: meldendes Werkzeug",
+    "en": "Evidence: reporting tool"
+  },
+  "workflow.evidence.source_id": {
+    "de": "Beleg: ausgewählte Quelle",
+    "en": "Evidence: selected source"
+  },
+  "workflow.evidence.event_id": {
+    "de": "Beleg: Ereigniskennung",
+    "en": "Evidence: event ID"
+  },
+  "workflow.evidence.record_sha256": {
+    "de": "Beleg: Meldungsfingerabdruck",
+    "en": "Evidence: record fingerprint"
+  },
+  "workflow.actualViolation": {
+    "de": "Tatsächlicher Verstoß",
+    "en": "Actual violation"
+  },
+  "diagnostic.workflow_revision_stale": {
+    "de": "Veraltete Revision gemeldet",
+    "en": "Stale revision reported"
+  },
+  "diagnostic.workflow_revision_mismatch": {
+    "de": "Abweichende Revision gemeldet",
+    "en": "Different revision reported"
+  },
+  "diagnostic.workflow_revision_unknown": {
+    "de": "Revisionsbezug unbekannt",
+    "en": "Revision relation unknown"
+  },
+  "diagnostic.workflow_return_binding_unknown": {
+    "de": "Rückgabebezug unzureichend belegt",
+    "en": "Return binding insufficiently evidenced"
+  },
+  "diagnostic.workflow_return_binding_mismatch": {
+    "de": "Widersprüchlicher Rückgabebezug",
+    "en": "Conflicting return binding"
+  },
+  "diagnostic.workflow_result_artifact_missing": {
+    "de": "Ergebnisbeleg fehlt · Abschluss ungeprüft",
+    "en": "Result evidence missing · completion unverified"
+  },
+  "diagnostic.workflow_control_point_missing": {
+    "de": "Kontrollpunkt unzureichend belegt",
+    "en": "Control point insufficiently evidenced"
+  },
+  "diagnostic.workflow_stop_order_unknown": {
+    "de": "Effektive Sperrreihenfolge unbekannt",
+    "en": "Effective stop order unknown"
+  },
+  "diagnostic.workflow_dispatch_after_stop": {
+    "de": "Versand nach gemeldeter Sperrbarriere",
+    "en": "Dispatch after reported stop barrier"
+  },
+  "diagnostic.workflow_analysis_unknown": {
+    "de": "Regelauswertung nicht auswertbar",
+    "en": "Rule analysis unavailable"
+  },
+  "diagnostic.workflow_findings_omitted": {
+    "de": "Weitere Hinweise nicht angezeigt",
+    "en": "Additional findings omitted"
+  },
+  "workflow.findingBoundary": {
+    "de": "Nur gemeldete Metadaten verglichen. Identität, Wirkung, tatsächlicher Verstoß und Projektabnahme bleiben unbekannt. Kein Sicherheits- oder Freigabenachweis.",
+    "en": "Reported metadata compared only. Identity, effect, actual violation and project acceptance remain unknown. No safety or authorization proof."
+  },
+  "workflow.reportFindings": {
+    "de": "Gemeldete Hinweise",
+    "en": "Reported findings"
+  },
+  "workflow.claimsCompared": {
+    "de": "Meldungen verglichen",
+    "en": "Reports compared"
   }
 }

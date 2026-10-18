@@ -27,6 +27,7 @@ from agent_authority.file_reader import (
 )
 from agent_authority.observations import TOKEN, Diagnostic, Entry, Snapshot, Source
 from agent_authority.report import build_report
+from agent_authority.workflow_rules import analyze_workflow_claims
 
 EVENT_SCHEMA = "agent-authority-workflow-event-v1"
 REPORT_SCHEMA = "agent-authority-workflow-report-v1"
@@ -59,6 +60,10 @@ BINDINGS = frozenset(
         "principal_ref",
         "operator_scope",
         "actor_claim",
+        "consumer_id",
+        "binding_event_id",
+        "control_ref",
+        "gate_event_id",
     }
 )
 HASH_FIELDS = frozenset({"request_hash", "source_hash"})
@@ -496,6 +501,9 @@ def build_workflow_report(read: WorkflowRead, limit: int = 20) -> dict[str, Any]
                 }
             )
     complete = base["source"]["complete_observed_read"] and not read.diagnostics
+    analysis = analyze_workflow_claims(
+        read.claims, limit, complete_selected_read=complete and not warnings
+    )
     base["source"]["complete_observed_read"] = complete and not warnings
     return {
         "schema_version": REPORT_SCHEMA,
@@ -514,6 +522,7 @@ def build_workflow_report(read: WorkflowRead, limit: int = 20) -> dict[str, Any]
             "workflow_evidence_complete": complete and not warnings,
             "coverage_of_all_activity": "UNBEKANNT",
         },
+        "analysis": analysis,
         "warnings": warnings[:limit],
         "warnings_omitted": max(0, len(warnings) - limit),
         "rights_granted": False,

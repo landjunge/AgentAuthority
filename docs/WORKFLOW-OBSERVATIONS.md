@@ -155,10 +155,11 @@ begrenzten Snapshot sichern. Rückgabe-/Quelle-/Handoff-Revisionen bleiben getre
   Ein Web-/Pushdienst, bestätigter Rückkanal in einer Sprachsitzung, neue
   Authentisierung und AA-C03-Betrieb sind hier nicht gebaut.
 
-AA-C02 bleibt getrennt: auftragssemantische Regeln für alte Rückgabegrundlagen,
-falsche Empfänger, fehlende Artefaktbelege und tatsächlich angeschlossenen
-Stopppunkt benötigen den jeweiligen Producer-/Adapterbeleg. Die hier geprüften
-Lücken-/Konflikthinweise ersetzen diese vollständige Abnahme nicht.
+AA-C02 ergänzt jetzt begrenzte [fachliche Meldungshinweise](WORKFLOW-WARNINGS.md):
+Revisionen/Rückgaben, Artefaktbeleg und Kontroll-/Sperrbezüge. Diese Regeln prüfen
+Konsistenz importierter Meldungen, keine unabhängige tatsächliche Wirkung. Ein
+angeschlossener Live-Kontrollweg benötigt weiterhin den jeweiligen Originalbeleg.
+Die historische AA-C01-Abnahme wird dadurch nicht nachträglich erweitert.
 
 ## English
 
@@ -197,5 +198,6 @@ No source deletion/rotation or ever-growing secondary cache. Producer rotation
 and retention of explicitly saved reports remain operator responsibilities.
 Completeness refers only to this selected slice; global activity, identity and
 external effect remain UNKNOWN even on exit0. Exit2 is not an enforcement decision.
-No web deployment, voice-session push guarantee, production semantic warning suite
-or live-agent acceptance is claimed. See the evidence status for actual tests.
+The [scoped semantic rules](WORKFLOW-WARNINGS.md) now add producer-claim consistency
+findings without proving external effect. No web deployment, voice-session push
+guarantee, production enforcement or live-agent acceptance is claimed. See the evidence status for actual tests.

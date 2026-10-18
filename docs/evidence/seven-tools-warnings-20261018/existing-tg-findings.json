@@ -1,0 +1,112 @@
+{
+  "schema_version": "agent-authority-workflow-report-v1",
+  "role": "observer_only",
+  "source_authenticated": false,
+  "identity": "UNBEKANNT",
+  "effect": "UNBEKANNT",
+  "observation_report": {
+    "schema_version": "agent-authority-observation-report-v1",
+    "role": "observer_only",
+    "source": {
+      "scope": "selected_local_observations",
+      "kind": "workflow-jsonl",
+      "source_id": "existing-synthetic-tg-proof",
+      "files_seen": 1,
+      "files_examined": 1,
+      "files_seen_is_lower_bound": false,
+      "directory_entries_seen": 1,
+      "directory_scan_complete": true,
+      "bytes_read": 484,
+      "entries_read": 1,
+      "complete_observed_read": true,
+      "coverage_of_all_agent_activity": "UNBEKANNT",
+      "source_authenticated": false,
+      "identity": "UNBEKANNT",
+      "effect": "UNBEKANNT"
+    },
+    "summary": {
+      "reported_kind_counts": {
+        "system": 1
+      },
+      "tasks_with_reported_association": 0,
+      "claims_without_later_result_in_read_entries": 0,
+      "structural_warning_count": 0
+    },
+    "tasks": [],
+    "recent_entries": [
+      {
+        "entry_id": "wf-e2343c966c81796598b0bcd04d27e3b3",
+        "ordinal": 1,
+        "file_sha256": "dc0d0698d80c70ac5c626c875aaae9ddd27a4dd75327b39d8c77b3244d48ba44",
+        "reported_kind": "system",
+        "reported_actor_type": "tollgate"
+      }
+    ],
+    "warnings": [],
+    "display": {
+      "limit": 100,
+      "tasks_omitted": 0,
+      "entries_omitted": 0,
+      "warnings_omitted": 0
+    },
+    "task_completion_proven": false,
+    "rights_inherited": false
+  },
+  "events": [
+    {
+      "event_id": "selected-status-1",
+      "source_tool": "tollgate",
+      "source_id": "existing-synthetic-tg-proof",
+      "segment_id": "segment-1",
+      "event_type": "budget.checked",
+      "producer_ordinal": 1,
+      "timestamp": null,
+      "binding": {
+        "available_microusd": 60,
+        "cost_kind": "evidenced_final",
+        "project_id": "dummy-project",
+        "reserved_microusd": 0,
+        "source_hash": "b2b0e1b2aff1fc5fee67e08878c3a6888e13c7325e9376dbd2af51395271ea07",
+        "spent_microusd": 40,
+        "stop_state": "effective",
+        "workflow_id": "dummy-workflow"
+      },
+      "entry_id": "wf-e2343c966c81796598b0bcd04d27e3b3",
+      "file_sha256": "dc0d0698d80c70ac5c626c875aaae9ddd27a4dd75327b39d8c77b3244d48ba44",
+      "record_sha256": "dfaccae4de1b53c27a41b490b0c2d5f58f98387b2be5fae322354f8d97a77c78",
+      "assertion_basis": "producer_report_only",
+      "identity_authenticated": false,
+      "effect_verified": false
+    }
+  ],
+  "read": {
+    "segments_seen": 1,
+    "records_seen": 1,
+    "duplicates_ignored": 0,
+    "events_omitted": 0,
+    "complete_selected_read": true,
+    "workflow_evidence_complete": true,
+    "coverage_of_all_activity": "UNBEKANNT"
+  },
+  "analysis": {
+    "schema_version": "agent-authority-workflow-findings-v1",
+    "assessment_scope": "producer_claim_consistency",
+    "findings": [],
+    "counts": {},
+    "rule_results": {},
+    "findings_omitted": 0,
+    "claims_examined": 1,
+    "selected_read_complete": true,
+    "coverage_of_all_activity": "UNBEKANNT",
+    "source_authenticated": false,
+    "actual_violation_verified": false,
+    "task_completion_proven": false,
+    "gate_authorization_proven": false
+  },
+  "warnings": [],
+  "warnings_omitted": 0,
+  "rights_granted": false,
+  "budget_released": false,
+  "stop_enforced": false,
+  "task_completion_proven": false
+}

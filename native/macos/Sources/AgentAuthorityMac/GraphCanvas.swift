@@ -19,6 +19,7 @@ final class GraphCanvas:NSView {
     private var pulseViews:[String:WarningPulseView]=[:]
     var activePulseCount:Int{pulseViews.count}
     func warningOutcome(_ id:String)->WarningOutcome{warningOutcomes[id] ?? .notAssessable}
+    func warningCaption(_ id:String)->String {nodeByID[id]?.isWorkflowFinding == true ? L("workflow.claimsCompared"):warningOutcome(id).text}
     var compact=true
     private var dragPoint:NSPoint?;private var originalOffset=NSPoint.zero
     private var pressed:String?
@@ -101,7 +102,7 @@ final class GraphCanvas:NSView {
             drawText(n.title,in:NSRect(x:r.minX+20,y:r.minY+7,width:card.width-27,height:17),font:.systemFont(ofSize:12,weight:.medium),color:.labelColor)
             if scale>=0.65 {drawText(L("statusShort."+status.rawValue),in:NSRect(x:r.minX+10,y:r.minY+23,width:card.width-18,height:11),font:.systemFont(ofSize:10),color:Palette.status(status))}
             let warning=warningOutcomes[n.id] ?? .notAssessable
-            drawText(warning.text,in:NSRect(x:r.minX+9,y:r.minY+35,width:card.width-16,height:12),font:.systemFont(ofSize:8.5,weight:.medium),color:Palette.warningOutcome(warning))
+            drawText(warningCaption(n.id),in:NSRect(x:r.minX+9,y:r.minY+35,width:card.width-16,height:12),font:.systemFont(ofSize:8.5,weight:.medium),color:Palette.warningOutcome(warning))
         }
         NSGraphicsContext.restoreGraphicsState()
         drawText(L("graph.count",["visible":String(visibleCount),"total":String(document.nodes.count)]),in:NSRect(x:14,y:bounds.height-23,width:bounds.width-140,height:16),font:.systemFont(ofSize:10),color:Palette.muted)
@@ -146,7 +147,7 @@ final class GraphCanvas:NSView {
         }
     }
     override func updateTrackingAreas(){super.updateTrackingAreas();if let tracking{removeTrackingArea(tracking)};tracking=NSTrackingArea(rect:bounds,options:[.mouseMoved,.activeInKeyWindow,.inVisibleRect],owner:self,userInfo:nil);addTrackingArea(tracking!)}
-    override func mouseMoved(with event:NSEvent){let id=hit(convert(event.locationInWindow,from:nil));toolTip=id.flatMap{nodeByID[$0]}.map{$0.title+"\n"+$0.kind.label+" · "+$0.status.label+"\n"+L("inspector.integrity")+": "+(chainStatus[$0.id] ?? .unknown).label+"\n"+L("warning.title")+": "+(warningOutcomes[$0.id] ?? .notAssessable).text+"\n"+$0.facts.map{L($0.labelKey)+": "+$0.text}.joined(separator:"\n")}}
+    override func mouseMoved(with event:NSEvent){let id=hit(convert(event.locationInWindow,from:nil));toolTip=id.flatMap{nodeByID[$0]}.map{$0.title+"\n"+$0.kind.label+" · "+$0.status.label+"\n"+L("inspector.integrity")+": "+(chainStatus[$0.id] ?? .unknown).label+"\n"+L("warning.title")+": "+warningCaption($0.id)+"\n"+$0.facts.map{L($0.labelKey)+": "+$0.text}.joined(separator:"\n")}}
     override func menu(for event:NSEvent)->NSMenu? {guard let id=hit(convert(event.locationInWindow,from:nil))else{return nil};select(id);let m=NSMenu()
         for (key,sel) in [("button.focus",#selector(focusMenu)),("button.copy",#selector(copyMenu))]{let item=NSMenuItem(title:L(key),action:sel,keyEquivalent:"");item.target=self;m.addItem(item)}
         if nodeByID[id]?.kind == .cluster{let item=NSMenuItem(title:L("graph.openCluster"),action:#selector(expandMenu),keyEquivalent:"");item.target=self;m.addItem(item)};return m
@@ -162,7 +163,7 @@ final class GraphCanvas:NSView {
             guard actual.intersects(bounds)else{continue}
             let screen=window?.convertToScreen(convert(actual,to:nil)) ?? actual
             let status=n.kind == .agent ? chainStatus[n.id] ?? n.status:n.status
-            let element=GraphAccessibleNode(owner:self,id:n.id,role:.button,frame:screen,label:n.title+", "+n.kind.label+", "+status.label+", "+(warningOutcomes[n.id] ?? .notAssessable).text)
+            let element=GraphAccessibleNode(owner:self,id:n.id,role:.button,frame:screen,label:n.title+", "+n.kind.label+", "+status.label+", "+warningCaption(n.id))
             children.append(element)
         }
         setAccessibilityChildren(children)

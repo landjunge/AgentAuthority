@@ -1,0 +1,310 @@
+{
+  "schema_version": "agent-authority-workflow-report-v1",
+  "role": "observer_only",
+  "source_authenticated": false,
+  "identity": "UNBEKANNT",
+  "effect": "UNBEKANNT",
+  "observation_report": {
+    "schema_version": "agent-authority-observation-report-v1",
+    "role": "observer_only",
+    "source": {
+      "scope": "selected_local_observations",
+      "kind": "workflow-jsonl",
+      "source_id": "synthetic-aa-c02",
+      "files_seen": 1,
+      "files_examined": 1,
+      "files_seen_is_lower_bound": false,
+      "directory_entries_seen": 1,
+      "directory_scan_complete": true,
+      "bytes_read": 1252,
+      "entries_read": 2,
+      "complete_observed_read": true,
+      "coverage_of_all_agent_activity": "UNBEKANNT",
+      "source_authenticated": false,
+      "identity": "UNBEKANNT",
+      "effect": "UNBEKANNT"
+    },
+    "summary": {
+      "reported_kind_counts": {
+        "result": 1,
+        "system": 1
+      },
+      "tasks_with_reported_association": 1,
+      "claims_without_later_result_in_read_entries": 0,
+      "structural_warning_count": 0
+    },
+    "tasks": [
+      {
+        "task_alias": "A1",
+        "association_basis": "reported_task_id_only",
+        "last_reported_kind": "result",
+        "order_ambiguous": false,
+        "entry_count": 2,
+        "reported_kind_counts": {
+          "result": 1,
+          "system": 1
+        },
+        "claim_without_later_result": false,
+        "evidence": [
+          {
+            "entry_id": "wf-71501d0708b2415912ad70d93711a576",
+            "ordinal": 1,
+            "file_sha256": "1f015de15d1a9d640e311f73572dcf0751171ec1037ff1e9433f0500528c5dbe"
+          },
+          {
+            "entry_id": "wf-54f694ee995ce5530843631bfe2d5db2",
+            "ordinal": 2,
+            "file_sha256": "1f015de15d1a9d640e311f73572dcf0751171ec1037ff1e9433f0500528c5dbe"
+          }
+        ]
+      }
+    ],
+    "recent_entries": [
+      {
+        "entry_id": "wf-54f694ee995ce5530843631bfe2d5db2",
+        "ordinal": 2,
+        "file_sha256": "1f015de15d1a9d640e311f73572dcf0751171ec1037ff1e9433f0500528c5dbe",
+        "reported_kind": "result",
+        "reported_actor_type": "threaddesk"
+      },
+      {
+        "entry_id": "wf-71501d0708b2415912ad70d93711a576",
+        "ordinal": 1,
+        "file_sha256": "1f015de15d1a9d640e311f73572dcf0751171ec1037ff1e9433f0500528c5dbe",
+        "reported_kind": "system",
+        "reported_actor_type": "threaddesk"
+      }
+    ],
+    "warnings": [],
+    "display": {
+      "limit": 100,
+      "tasks_omitted": 0,
+      "entries_omitted": 0,
+      "warnings_omitted": 0
+    },
+    "task_completion_proven": false,
+    "rights_inherited": false
+  },
+  "events": [
+    {
+      "event_id": "synthetic-bind",
+      "source_tool": "threaddesk",
+      "source_id": "synthetic-aa-c02",
+      "segment_id": "segment-1",
+      "event_type": "handoff.bound",
+      "producer_ordinal": 1,
+      "timestamp": "2026-10-18T18:18:00Z",
+      "binding": {
+        "bridge_task_id": "synthetic-kb-task-1",
+        "handoff_id": "synthetic-handoff-1",
+        "handoff_revision": 1,
+        "original_task_id": "synthetic-thread:task-1",
+        "project_id": "synthetic-project",
+        "recipient_id": "codex",
+        "run_id": "synthetic-run-1",
+        "source_revision": 7,
+        "task_id": "synthetic-thread:task-1",
+        "task_revision": 3,
+        "workflow_id": "synthetic-workflow"
+      },
+      "entry_id": "wf-71501d0708b2415912ad70d93711a576",
+      "file_sha256": "1f015de15d1a9d640e311f73572dcf0751171ec1037ff1e9433f0500528c5dbe",
+      "record_sha256": "f8b02183aab3d2181c4eb49a9595e993e2771e57d93fcba90ba77fc24aa44f4e",
+      "assertion_basis": "producer_report_only",
+      "identity_authenticated": false,
+      "effect_verified": false
+    },
+    {
+      "event_id": "synthetic-return",
+      "source_tool": "threaddesk",
+      "source_id": "synthetic-aa-c02",
+      "segment_id": "segment-1",
+      "event_type": "return.received",
+      "producer_ordinal": 2,
+      "timestamp": "2026-10-18T18:18:00Z",
+      "binding": {
+        "binding_event_id": "synthetic-bind",
+        "bridge_task_id": "synthetic-kb-task-1",
+        "handoff_id": "synthetic-handoff-1",
+        "handoff_revision": 1,
+        "original_task_id": "synthetic-thread:task-1",
+        "project_id": "synthetic-project",
+        "recipient_id": "grok",
+        "reported_status": "delivered_unverified",
+        "run_id": "synthetic-run-1",
+        "source_revision": 6,
+        "task_id": "synthetic-thread:task-1",
+        "task_revision": 3,
+        "workflow_id": "synthetic-workflow"
+      },
+      "entry_id": "wf-54f694ee995ce5530843631bfe2d5db2",
+      "file_sha256": "1f015de15d1a9d640e311f73572dcf0751171ec1037ff1e9433f0500528c5dbe",
+      "record_sha256": "cb935bc21cb5e04f586278761c862ad5173443ede4c734f356ca50709161b700",
+      "assertion_basis": "producer_report_only",
+      "identity_authenticated": false,
+      "effect_verified": false
+    }
+  ],
+  "read": {
+    "segments_seen": 1,
+    "records_seen": 2,
+    "duplicates_ignored": 0,
+    "events_omitted": 0,
+    "complete_selected_read": true,
+    "workflow_evidence_complete": true,
+    "coverage_of_all_activity": "UNBEKANNT"
+  },
+  "analysis": {
+    "schema_version": "agent-authority-workflow-findings-v1",
+    "assessment_scope": "producer_claim_consistency",
+    "findings": [
+      {
+        "finding_id": "finding-399832c86908d0efc5f709a9f0eb7c8c",
+        "rule_id": "revision",
+        "code": "workflow_revision_stale",
+        "classification": "reported_contradiction",
+        "severity": "warning",
+        "entry_id": "wf-54f694ee995ce5530843631bfe2d5db2",
+        "evidence_refs": [
+          {
+            "source_tool": "threaddesk",
+            "source_id": "synthetic-aa-c02",
+            "event_id": "synthetic-return",
+            "entry_id": "wf-54f694ee995ce5530843631bfe2d5db2",
+            "record_sha256": "cb935bc21cb5e04f586278761c862ad5173443ede4c734f356ca50709161b700",
+            "file_sha256": "1f015de15d1a9d640e311f73572dcf0751171ec1037ff1e9433f0500528c5dbe"
+          },
+          {
+            "source_tool": "threaddesk",
+            "source_id": "synthetic-aa-c02",
+            "event_id": "synthetic-bind",
+            "entry_id": "wf-71501d0708b2415912ad70d93711a576",
+            "record_sha256": "f8b02183aab3d2181c4eb49a9595e993e2771e57d93fcba90ba77fc24aa44f4e",
+            "file_sha256": "1f015de15d1a9d640e311f73572dcf0751171ec1037ff1e9433f0500528c5dbe"
+          }
+        ],
+        "reported_scope": {
+          "project_id": "synthetic-project",
+          "workflow_id": "synthetic-workflow",
+          "task_id": "synthetic-thread:task-1",
+          "original_task_id": "synthetic-thread:task-1",
+          "bridge_task_id": "synthetic-kb-task-1",
+          "handoff_id": "synthetic-handoff-1",
+          "run_id": "synthetic-run-1"
+        },
+        "assessment_scope": "producer_claim_consistency",
+        "fields": [
+          "source_revision"
+        ],
+        "identity_authenticated": false,
+        "actual_violation_verified": false
+      },
+      {
+        "finding_id": "finding-a39fc4878dac8409c8d28986b6ef1352",
+        "rule_id": "return_binding",
+        "code": "workflow_return_binding_mismatch",
+        "classification": "reported_contradiction",
+        "severity": "warning",
+        "entry_id": "wf-54f694ee995ce5530843631bfe2d5db2",
+        "evidence_refs": [
+          {
+            "source_tool": "threaddesk",
+            "source_id": "synthetic-aa-c02",
+            "event_id": "synthetic-return",
+            "entry_id": "wf-54f694ee995ce5530843631bfe2d5db2",
+            "record_sha256": "cb935bc21cb5e04f586278761c862ad5173443ede4c734f356ca50709161b700",
+            "file_sha256": "1f015de15d1a9d640e311f73572dcf0751171ec1037ff1e9433f0500528c5dbe"
+          },
+          {
+            "source_tool": "threaddesk",
+            "source_id": "synthetic-aa-c02",
+            "event_id": "synthetic-bind",
+            "entry_id": "wf-71501d0708b2415912ad70d93711a576",
+            "record_sha256": "f8b02183aab3d2181c4eb49a9595e993e2771e57d93fcba90ba77fc24aa44f4e",
+            "file_sha256": "1f015de15d1a9d640e311f73572dcf0751171ec1037ff1e9433f0500528c5dbe"
+          }
+        ],
+        "reported_scope": {
+          "project_id": "synthetic-project",
+          "workflow_id": "synthetic-workflow",
+          "task_id": "synthetic-thread:task-1",
+          "original_task_id": "synthetic-thread:task-1",
+          "bridge_task_id": "synthetic-kb-task-1",
+          "handoff_id": "synthetic-handoff-1",
+          "run_id": "synthetic-run-1"
+        },
+        "assessment_scope": "producer_claim_consistency",
+        "fields": [
+          "recipient_id"
+        ],
+        "identity_authenticated": false,
+        "actual_violation_verified": false
+      },
+      {
+        "finding_id": "finding-bb37a04f384ddda421367920a85b3cb4",
+        "rule_id": "artifact_evidence",
+        "code": "workflow_result_artifact_missing",
+        "classification": "missing_evidence",
+        "severity": "unknown",
+        "entry_id": "wf-54f694ee995ce5530843631bfe2d5db2",
+        "evidence_refs": [
+          {
+            "source_tool": "threaddesk",
+            "source_id": "synthetic-aa-c02",
+            "event_id": "synthetic-return",
+            "entry_id": "wf-54f694ee995ce5530843631bfe2d5db2",
+            "record_sha256": "cb935bc21cb5e04f586278761c862ad5173443ede4c734f356ca50709161b700",
+            "file_sha256": "1f015de15d1a9d640e311f73572dcf0751171ec1037ff1e9433f0500528c5dbe"
+          }
+        ],
+        "reported_scope": {
+          "project_id": "synthetic-project",
+          "workflow_id": "synthetic-workflow",
+          "task_id": "synthetic-thread:task-1",
+          "original_task_id": "synthetic-thread:task-1",
+          "bridge_task_id": "synthetic-kb-task-1",
+          "handoff_id": "synthetic-handoff-1",
+          "run_id": "synthetic-run-1"
+        },
+        "assessment_scope": "producer_claim_consistency",
+        "fields": [
+          "artifact_ref"
+        ],
+        "identity_authenticated": false,
+        "actual_violation_verified": false
+      }
+    ],
+    "counts": {
+      "reported_contradiction": 2,
+      "missing_evidence": 1
+    },
+    "rule_results": {
+      "artifact_evidence": {
+        "reported_results": 1,
+        "missing_evidence": 1
+      },
+      "return_binding": {
+        "compared_pairs": 1,
+        "reported_contradiction": 1
+      },
+      "revision": {
+        "compared_pairs": 1,
+        "reported_contradiction": 1
+      }
+    },
+    "findings_omitted": 0,
+    "claims_examined": 2,
+    "selected_read_complete": true,
+    "coverage_of_all_activity": "UNBEKANNT",
+    "source_authenticated": false,
+    "actual_violation_verified": false,
+    "task_completion_proven": false,
+    "gate_authorization_proven": false
+  },
+  "warnings": [],
+  "warnings_omitted": 0,
+  "rights_granted": false,
+  "budget_released": false,
+  "stop_enforced": false,
+  "task_completion_proven": false
+}

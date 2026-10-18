@@ -31,6 +31,7 @@ public struct Fact: Codable, Equatable {
     public var text: String { valueKey ? L(value) : value }
 }
 public struct GraphNode: Codable, Equatable, Identifiable {
+    public var isWorkflowFinding:Bool { facts.contains{$0.labelKey=="workflow.finding_id"} }
     public var id: String
     public var kind: NodeKind
     public var name: String
@@ -142,6 +143,48 @@ public enum DemoData {
 }
 
 public enum ReportProjection {
+    private static let findingCodes:Set<String>=["workflow_revision_stale","workflow_revision_mismatch","workflow_revision_unknown","workflow_return_binding_unknown","workflow_return_binding_mismatch","workflow_result_artifact_missing","workflow_control_point_missing","workflow_stop_order_unknown","workflow_dispatch_after_stop"]
+    private static func safeReference(_ value:Any?)->String? {
+        guard let text=value as? String,text.range(of:"^[A-Za-z0-9][A-Za-z0-9_.:-]{0,255}$",options:.regularExpression) != nil else{return nil}
+        return text
+    }
+    private static func findingWarnings(_ value:Any?)throws->[[String:Any]] {
+        guard let value=value else{return []}
+        guard let analysis=value as? [String:Any],analysis["schema_version"] as? String == "agent-authority-workflow-findings-v1",
+              analysis["assessment_scope"] as? String == "producer_claim_consistency",let findings=analysis["findings"] as? [[String:Any]] else {
+            return [["code":"workflow_analysis_unknown","evidence":[]]]
+        }
+        guard findings.count<=100 else{throw ModelError.invalidReport}
+        var result:[[String:Any]]=[]
+        let scopeKeys:Set<String>=["project_id","workflow_id","task_id","original_task_id","bridge_task_id","handoff_id","run_id","attempt_id","control_ref"]
+        let fieldKeys=scopeKeys.union(["source_revision","task_revision","handoff_revision","recipient_id","principal_ref","operator_scope","request_hash","source_hash","artifact_ref","dispatch_seq","barrier_seq"])
+        for finding in findings {
+            guard let code=finding["code"] as? String,findingCodes.contains(code),
+                  finding["assessment_scope"] as? String == "producer_claim_consistency",
+                  let classification=finding["classification"] as? String,["reported_contradiction","missing_evidence"].contains(classification),
+                  let findingID=finding["finding_id"] as? String,findingID.range(of:"^finding-[0-9a-f]{32}$",options:.regularExpression) != nil else {
+                result.append(["code":"workflow_analysis_unknown","evidence":[]]);continue
+            }
+            var projected:[String:Any]=["code":code,"classification":classification,"finding_id":findingID]
+            var evidence:[[String:Any]]=[]
+            for ref in (finding["evidence_refs"] as? [[String:Any]] ?? []).prefix(2) {
+                var selected:[String:Any]=[:]
+                for key in ["entry_id","source_tool","source_id","event_id"] {if let value=safeReference(ref[key]) {selected[key]=value}}
+                for key in ["file_sha256","record_sha256"] {
+                    if let value=ref[key] as? String,value.range(of:"^[0-9a-f]{64}$",options:.regularExpression) != nil {selected[key]=value}
+                }
+                evidence.append(selected)
+            }
+            projected["evidence"]=evidence
+            projected["fields"]=(finding["fields"] as? [String] ?? []).filter{fieldKeys.contains($0)}.prefix(16).joined(separator:", ")
+            projected["reported_scope"]=(finding["reported_scope"] as? [String:Any] ?? [:]).filter{scopeKeys.contains($0.key)&&safeReference($0.value) != nil}
+            result.append(projected)
+        }
+        if let omitted=analysis["findings_omitted"] as? NSNumber,CFGetTypeID(omitted) != CFBooleanGetTypeID(),omitted.int64Value>0 {
+            result.append(["code":"workflow_findings_omitted","evidence":[]])
+        }
+        return result
+    }
     public static func decode(_ data: Data) throws -> GraphDocument {
         guard data.count<=8*1024*1024 else { throw ModelError.inputTooLarge }
         guard let envelope=try JSONSerialization.jsonObject(with:data) as? [String:Any] else {throw ModelError.invalidReport}
@@ -158,6 +201,7 @@ public enum ReportProjection {
                 if let entry=warning["entry_id"] as? String {projected["evidence"]=[["entry_id":entry]]}
                 warnings.append(projected)
             }
+            warnings += try findingWarnings(envelope["analysis"])
             raw["warnings"]=warnings
             var summary=raw["summary"] as? [String:Any] ?? [:]
             summary["structural_warning_count"]=warnings.count;raw["summary"]=summary
@@ -188,7 +232,7 @@ public enum ReportProjection {
         for event in workflowEvents {
             guard let id=event["entry_id"] as? String,let index=doc.nodes.firstIndex(where:{$0.id==id}),
                   let binding=event["binding"] as? [String:Any] else {continue}
-            let allowed:Set<String>=["project_id","workflow_id","thread_id","handoff_id","handoff_revision","source_revision","source_ref","source_hash","request_hash","task_id","original_task_id","bridge_task_id","run_id","attempt_id","parent_task_id","subtask_id","return_id","recipient_id","session_id","principal_ref","operator_scope","actor_claim","task_revision","artifact_ref","dispatch_seq","barrier_seq","reserved_microusd","spent_microusd","available_microusd","cost_kind","stop_state","reported_status"]
+            let allowed:Set<String>=["project_id","workflow_id","thread_id","handoff_id","handoff_revision","source_revision","source_ref","source_hash","request_hash","task_id","original_task_id","bridge_task_id","run_id","attempt_id","parent_task_id","subtask_id","return_id","recipient_id","session_id","principal_ref","operator_scope","actor_claim","consumer_id","binding_event_id","control_ref","gate_event_id","task_revision","artifact_ref","dispatch_seq","barrier_seq","reserved_microusd","spent_microusd","available_microusd","cost_kind","stop_state","reported_status"]
             let priority=["project_id","workflow_id","original_task_id","bridge_task_id","task_id","handoff_id","handoff_revision","source_revision","source_ref","source_hash","run_id","attempt_id","session_id","principal_ref","operator_scope","request_hash"]
             let present=binding.keys.filter{allowed.contains($0)}
             let selected=priority.filter{present.contains($0)}+present.filter{!priority.contains($0)}.sorted()
@@ -216,8 +260,21 @@ public enum ReportProjection {
             guard let code=warning["code"] as? String else{continue}
             let id="warning-\(index)",evidence=(warning["evidence"] as? [[String:Any]] ?? []).compactMap{$0["entry_id"] as? String}
             let key="diagnostic."+code
-            let warningStatus:ProofStatus=["workflow_duplicate_conflict","workflow_ordinal_conflict"].contains(code) ? .contradictory:.incomplete
-            doc.nodes.append(GraphNode(id:id,kind:.evidence,name:key,localized:Localization.shared.catalog[key] != nil,status:warningStatus,facts:[Fact("field.diagnostic",code)],evidence:evidence))
+            let warningStatus:ProofStatus=["workflow_duplicate_conflict","workflow_ordinal_conflict"].contains(code) || warning["classification"] as? String == "reported_contradiction" ? .contradictory:.incomplete
+            var facts=[Fact("field.diagnostic",code)]
+            if let findingID=warning["finding_id"] as? String {
+                facts.append(Fact("workflow.finding_id",findingID))
+                facts.append(Fact("workflow.basis","workflow.claimsOnly",localized:true))
+                facts.append(Fact("workflow.assessment","workflow.producerConsistency",localized:true))
+                facts.append(Fact("workflow.classification","workflow.classification."+(warning["classification"] as? String ?? "missing_evidence"),localized:true))
+                if let fields=warning["fields"] as? String,!fields.isEmpty {facts.append(Fact("workflow.compared_fields",fields))}
+                for (scope,value) in (warning["reported_scope"] as? [String:String] ?? [:]).sorted(by:{$0.key<$1.key}).prefix(9) {facts.append(Fact("workflow."+scope,value))}
+                for (number,ref) in (warning["evidence"] as? [[String:String]] ?? []).prefix(2).enumerated() {
+                    for refKey in ["source_tool","source_id","event_id","record_sha256"] {if let value=ref[refKey] {facts.append(Fact("workflow.evidence."+refKey,String(number+1)+": "+value))}}
+                }
+                facts.append(Fact("workflow.actualViolation","status.unknown",localized:true))
+            }
+            doc.nodes.append(GraphNode(id:id,kind:.evidence,name:key,localized:Localization.shared.catalog[key] != nil,status:warningStatus,facts:facts,evidence:evidence))
             for ref in evidence where refs.contains(ref){doc.edges.append(GraphEdge(id,ref,"evidence",.incomplete,evidence:[ref]))}
         }
         try doc.validate()

@@ -19,6 +19,50 @@ WARNINGS = {
     "workflow_identity_unverified": "Behauptete Identität ungeprüft / Claimed identity unverified",
 }
 
+WARNINGS.update(
+    {
+        "workflow_revision_stale": "Veraltete Revision gemeldet / Stale revision reported",
+        "workflow_revision_mismatch": "Abweichende Revision gemeldet / Different revision reported",
+        "workflow_revision_unknown": "Revisionsbezug unbekannt / Revision relation unknown",
+        "workflow_return_binding_unknown": "Rückgabebezug unzureichend belegt / Return binding insufficiently evidenced",
+        "workflow_return_binding_mismatch": "Widersprüchlicher Rückgabebezug / Conflicting return binding",
+        "workflow_result_artifact_missing": "Ergebnisbeleg fehlt / Result artifact reference missing",
+        "workflow_control_point_missing": "Kontrollpunkt nicht ausreichend belegt / Control point insufficiently evidenced",
+        "workflow_stop_order_unknown": "Effektive Sperrreihenfolge unbekannt / Effective stop order unknown",
+        "workflow_dispatch_after_stop": "Versand nach gemeldeter Sperrbarriere / Dispatch after reported stop barrier",
+    }
+)
+
+
+def _finding_lines(report: dict[str, Any]) -> list[str]:
+    analysis = report.get("analysis", {})
+    lines = [
+        "Fachliche Hinweise / Workflow findings",
+        "Nur Konsistenz gemeldeter Fakten; tatsächlicher Verstoß und Gesamtauftrag bleiben ungeprüft.",
+        "Producer-claim consistency only; actual violations and project completion remain unverified.",
+    ]
+    for item in analysis.get("findings", []):
+        lines.append(WARNINGS.get(item["code"], item["code"]) + " · " + item["classification"])
+        lines.append("  " + item["finding_id"] + " · " + ", ".join(item["fields"]))
+        for ref in item["evidence_refs"]:
+            lines.append(
+                "  "
+                + ref["source_tool"]
+                + "/"
+                + ref["source_id"]
+                + "/"
+                + ref["event_id"]
+                + " · "
+                + ref["entry_id"]
+                + " · sha256:"
+                + ref["record_sha256"]
+            )
+    lines.append(f"Weitere Hinweise / Omitted findings: {analysis.get('findings_omitted', 0)}")
+    lines.append(
+        "Keine Hinweise ist kein Sicherheits- oder Vollständigkeitsnachweis. / No findings is not a safety or completeness proof."
+    )
+    return lines
+
 
 def render_workflow_text(report: dict[str, Any]) -> str:
     lines = [
@@ -32,6 +76,7 @@ def render_workflow_text(report: dict[str, Any]) -> str:
         lines.append(f"{event['event_type']} · {event['source_tool']} · {event['event_id']}")
         for key, value in event["binding"].items():
             lines.append(f"  {key}: {value}")
+    lines.extend(_finding_lines(report))
     for warning in report["warnings"]:
         lines.append("- " + WARNINGS.get(warning["code"], warning["code"]))
     lines.append(
@@ -66,6 +111,9 @@ def render_workflow_html(report: dict[str, Any]) -> str:
         "Observation only: no rights/budget approval, enforced stop or user acceptance.</p>"
         + "".join(events)
         + f"<ul>{warnings}</ul>"
+        + "<section id='workflow-findings'>"
+        + "".join("<p>" + escape(line) + "</p>" for line in _finding_lines(report))
+        + "</section>"
         + f"<p>{report['read']['events_omitted']} weitere Ereignisse nicht angezeigt / events omitted.</p>"
         + "<p>Gesamtabdeckung UNBEKANNT / Overall coverage UNKNOWN.</p></section>"
     )
