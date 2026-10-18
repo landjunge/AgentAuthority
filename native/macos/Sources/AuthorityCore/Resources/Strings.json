@@ -1222,5 +1222,177 @@
   "graph.filteredEmpty": {
     "de": "Keine Knoten für diese Suche, diesen Filter oder Kettenfokus. Suche und Filter prüfen oder eine andere Kette wählen.",
     "en": "No nodes for this search, filter or chain focus. Check search and filters or choose another chain."
+  },
+  "workflow.project_id": {
+    "de": "Projekt (gemeldet)",
+    "en": "Project (reported)"
+  },
+  "workflow.workflow_id": {
+    "de": "Gesamtauftrag (gemeldet)",
+    "en": "Workflow (reported)"
+  },
+  "workflow.original_task_id": {
+    "de": "Ursprünglicher Auftrag",
+    "en": "Original task"
+  },
+  "workflow.bridge_task_id": {
+    "de": "Bridge-Auftrag",
+    "en": "Bridge task"
+  },
+  "workflow.run_id": {
+    "de": "Lauf (gemeldet)",
+    "en": "Run (reported)"
+  },
+  "workflow.session_id": {
+    "de": "Sitzung (gemeldet)",
+    "en": "Session (reported)"
+  },
+  "workflow.principal_ref": {
+    "de": "Principal-Bezug (gemeldet)",
+    "en": "Principal reference (reported)"
+  },
+  "workflow.operator_scope": {
+    "de": "Betreiberbereich (gemeldet)",
+    "en": "Operator scope (reported)"
+  },
+  "workflow.handoff_revision": {
+    "de": "Handoff-Revision",
+    "en": "Handoff revision"
+  },
+  "workflow.source_revision": {
+    "de": "Quellrevision",
+    "en": "Source revision"
+  },
+  "workflow.request_hash": {
+    "de": "Anfragefingerprint",
+    "en": "Request fingerprint"
+  },
+  "workflow.source_hash": {
+    "de": "Quellfingerprint",
+    "en": "Source fingerprint"
+  },
+  "workflow.stop_state": {
+    "de": "Stoppsituation (gemeldet)",
+    "en": "Stop state (reported)"
+  },
+  "workflow.reserved_microusd": {
+    "de": "Reserviert (USD-Micro, gemeldet)",
+    "en": "Reserved (USD micro, reported)"
+  },
+  "workflow.spent_microusd": {
+    "de": "Ausgegeben (USD-Micro, gemeldet)",
+    "en": "Spent (USD micro, reported)"
+  },
+  "workflow.available_microusd": {
+    "de": "Verfügbar (USD-Micro, gemeldet)",
+    "en": "Available (USD micro, reported)"
+  },
+  "workflow.cost_kind": {
+    "de": "Kostenbelegart (gemeldet)",
+    "en": "Cost evidence kind (reported)"
+  },
+  "workflow.reported_status": {
+    "de": "Gemeldeter Stand",
+    "en": "Reported state"
+  },
+  "workflow.basis": {
+    "de": "Aussagegrenze",
+    "en": "Evidence scope"
+  },
+  "workflow.claimsOnly": {
+    "de": "Nur Produzentenmeldung; keine Rechte-/Budgetfreigabe oder Nutzerabnahme.",
+    "en": "Producer claims only; no rights/budget approval or user acceptance."
+  },
+  "workflow.thread_id": {
+    "de": "thread_id (gemeldet)",
+    "en": "thread_id (reported)"
+  },
+  "workflow.handoff_id": {
+    "de": "handoff_id (gemeldet)",
+    "en": "handoff_id (reported)"
+  },
+  "workflow.task_id": {
+    "de": "task_id (gemeldet)",
+    "en": "task_id (reported)"
+  },
+  "workflow.attempt_id": {
+    "de": "attempt_id (gemeldet)",
+    "en": "attempt_id (reported)"
+  },
+  "workflow.parent_task_id": {
+    "de": "parent_task_id (gemeldet)",
+    "en": "parent_task_id (reported)"
+  },
+  "workflow.subtask_id": {
+    "de": "subtask_id (gemeldet)",
+    "en": "subtask_id (reported)"
+  },
+  "workflow.return_id": {
+    "de": "return_id (gemeldet)",
+    "en": "return_id (reported)"
+  },
+  "workflow.recipient_id": {
+    "de": "recipient_id (gemeldet)",
+    "en": "recipient_id (reported)"
+  },
+  "workflow.source_ref": {
+    "de": "source_ref (gemeldet)",
+    "en": "source_ref (reported)"
+  },
+  "workflow.artifact_ref": {
+    "de": "artifact_ref (gemeldet)",
+    "en": "artifact_ref (reported)"
+  },
+  "workflow.task_revision": {
+    "de": "task_revision (gemeldet)",
+    "en": "task_revision (reported)"
+  },
+  "workflow.dispatch_seq": {
+    "de": "dispatch_seq (gemeldet)",
+    "en": "dispatch_seq (reported)"
+  },
+  "workflow.barrier_seq": {
+    "de": "barrier_seq (gemeldet)",
+    "en": "barrier_seq (reported)"
+  },
+  "diagnostic.workflow_sequence_gap": {
+    "de": "Gemeldete Reihenfolge hat eine Lücke",
+    "en": "Reported sequence has a gap"
+  },
+  "diagnostic.workflow_out_of_order": {
+    "de": "Ereignisse ungeordnet gelesen",
+    "en": "Events read out of order"
+  },
+  "diagnostic.workflow_order_unknown": {
+    "de": "Globale Reihenfolge unbekannt",
+    "en": "Global order unknown"
+  },
+  "diagnostic.workflow_duplicate_conflict": {
+    "de": "Widersprüchliche Ereigniskennung",
+    "en": "Conflicting event identifier"
+  },
+  "diagnostic.workflow_identity_unverified": {
+    "de": "Behauptete Identität ungeprüft",
+    "en": "Claimed identity unverified"
+  },
+  "diagnostic.workflow_prefix_unobserved": {
+    "de": "Früheres Segment nicht beobachtet",
+    "en": "Earlier segment not observed"
+  },
+  "diagnostic.workflow_chain_gap": {
+    "de": "Hashkettenbezug fehlt",
+    "en": "Hash-chain link missing"
+  },
+  "diagnostic.workflow_ordinal_conflict": {
+    "de": "Reihenfolge widersprüchlich",
+    "en": "Conflicting sequence"
+  },
+  "workflow.actor_claim": {
+    "de": "Agentenangabe (gemeldet)",
+    "en": "Actor claim (reported)"
+  },
+  "workflow.omitted_fields": {
+    "de": "Weitere Felder nur im CLI-Report",
+    "en": "Additional fields in CLI report only"
   }
 }

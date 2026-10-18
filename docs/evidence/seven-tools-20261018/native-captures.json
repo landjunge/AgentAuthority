@@ -1,0 +1,24 @@
+[
+  {
+    "language": "de",
+    "size": "1680x960",
+    "exit_code": 0,
+    "capture": "own native app view only",
+    "sha256": "eac7fe47fc15e332317dd4f331edc240558e61eb01a1737ab88c55c3912ed40b",
+    "fixture": "workflow-ui-report.json",
+    "synthetic_source": true,
+    "permissions_requested": false,
+    "live_agent_or_provider_called": false
+  },
+  {
+    "language": "en",
+    "size": "1150x730",
+    "exit_code": 0,
+    "capture": "own native app view only",
+    "sha256": "c57013e7ba383fe127d4cee6c8cd8c26d1fce23c9e783a54247186275f1f821d",
+    "fixture": "workflow-ui-report.json",
+    "synthetic_source": true,
+    "permissions_requested": false,
+    "live_agent_or_provider_called": false
+  }
+]

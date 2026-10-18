@@ -57,6 +57,37 @@ bundle includes Python 3.12 and targets macOS 12. Live Endpoint Security testing
 requires Apple-approved entitlement, signing, extension activation and the
 collector's own Full Disk Access. The development build cannot substitute these.
 
+## Workflow observations / Workflow-Beobachtung
+
+**English:** The current local preview adds a versioned, bounded workflow-metadata
+projection over selected existing task/audit/event records. The original neutral
+v1 remains unchanged. The native graph reads the explicit workflow-report wrapper,
+shows reported task/run/handoff/source references and retains unknown identity and
+external effect. It creates no new task queue/audit stream and grants no rights,
+secrets, budgets, stop authority or project acceptance. Identical events are
+counted once; conflicting, missing and unordered records stay visible. Actual
+limits, supported producer types and remaining live-adapter gaps are documented
+in [Workflow observations](docs/WORKFLOW-OBSERVATIONS.md).
+
+**Deutsch:** Die lokale Vorschau ergänzt eine versionierte, begrenzte Projektion
+vorhandener Workflow-Metadaten. Der neutrale v1-Vertrag bleibt erhalten. Graph und
+Inspector lesen den ausdrücklich neuen Workflow-Reportwrapper; Identität und
+externe Wirkung bleiben unbekannt. Keine neue Aufgabenwarteschlange/Auditwelt,
+keine Rechte-, Geheimnis- oder Budgetfreigabe und keine Nutzerabnahme. Duplikate
+zählen einmal; Konflikte und Lücken bleiben sichtbar. Das Repository ist privat;
+es gibt keinen öffentlich freigegebenen Download oder fertigen Webdienst.
+
+```sh
+agent-authority workflow-inspect --input /path/selected-metadata \
+  --source-tool kirabridge --source-id local-run --format json
+```
+
+Version **0.3.0a2** is still the local source preview; this change does not create a
+GitHub release or installed runtime upgrade. Python3.12 CLI and the macOS native
+development path are distinct from a released package. Existing bounded readers
+are already implemented; no new unrestricted archive intake is introduced.
+[Actual scoped evidence](docs/evidence/seven-tools-20261018/STATUS.md).
+
 ## Historical research baseline
 
 Experimental security lab: can **deterministic workflow-level state and information-flow enforcement** stop **some modeled** composition attacks that per-action authorization misses?
@@ -65,7 +96,7 @@ This is **not** a production system and **not** a proof of general agent safety.
 
 ## License
 
-**Source-available — all rights reserved.** The repository is public for review, research discussion, and security evaluation, but new material may not be copied, modified, distributed, deployed, or sold without prior written permission. Historical revisions published before the license-change commit remain available under the MIT License that applied to them. See [LICENSE](LICENSE) for the exact boundary and terms.
+**Source-available — all rights reserved.** The repository is currently **private**. Access for review, research discussion, or security evaluation requires an explicit invitation; but new material may not be copied, modified, distributed, deployed, or sold without prior written permission. Historical revisions published before the license-change commit remain available under the MIT License that applied to them. See [LICENSE](LICENSE) for the exact boundary and terms.
 
 ## Status
 

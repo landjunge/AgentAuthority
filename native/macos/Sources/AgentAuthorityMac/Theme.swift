@@ -6,9 +6,9 @@ enum Palette {
         hex(appearance.bestMatch(from:[.darkAqua,.aqua]) == .darkAqua ? dark:light)
     }}
     static func hex(_ s:String)->NSColor {let v=UInt64(s,radix:16) ?? 0;return NSColor(srgbRed:Double((v>>16)&255)/255,green:Double((v>>8)&255)/255,blue:Double(v&255)/255,alpha:1)}
-    // Original ThreadDesk style.css tokens; Light surfaces derived for Agent Authority.
-    static let background=adaptive("121316","f5f6f8"),surface=adaptive("1a1b1f","ffffff"),raised=adaptive("24262d","eceef2")
-    static let border=adaptive("2e3138","d8dce4"),accent=adaptive("b99cff","685091"),muted=adaptive("a4a9b4","5b6370")
+    // NetzwerkPunkt Bedienbasis 0.1 roles; native adaptive Light surfaces retained.
+    static let background=adaptive("121316","f5f6f8"),surface=adaptive("1a1c20","ffffff"),raised=adaptive("25282e","eceef2")
+    static let border=adaptive("353940","d8dce4"),accent=adaptive("edf0f4","172539"),muted=adaptive("afb6c1","5b6370")
     static let green=adaptive("7bdaa7","246943"),amber=adaptive("e4be70","805f15"),risk=adaptive("f49b9b","963737")
     // Additional warning hues are native system colors, alongside existing ThreadDesk tokens.
     // Proof colors and their meaning are deliberately unchanged.

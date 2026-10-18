@@ -1,4 +1,5 @@
 import Foundation
+import CoreFoundation
 
 public enum NodeKind: String, Codable, CaseIterable {
     case agent, identity, authority, delegation, process, action, evidence, task, entry, cluster
@@ -57,6 +58,8 @@ public struct GraphDocument: Codable {
     public var nodes: [GraphNode]
     public var edges: [GraphEdge]
     public var reportJSON: String?
+    public var reportSource: Bool?
+    public var isReportSource: Bool { reportSource == true || reportJSON != nil }
     public var completeRead: Bool?
     public var totalEntries: Int?
     public var reportedTaskCount: Int?
@@ -141,9 +144,26 @@ public enum DemoData {
 public enum ReportProjection {
     public static func decode(_ data: Data) throws -> GraphDocument {
         guard data.count<=8*1024*1024 else { throw ModelError.inputTooLarge }
-        guard let raw=try JSONSerialization.jsonObject(with:data) as? [String:Any],
-              raw["schema_version"] as? String == "agent-authority-observation-report-v1", raw["role"] as? String == "observer_only",
-              let source=raw["source"] as? [String:Any], let entries=raw["recent_entries"] as? [[String:Any]] else { throw ModelError.invalidReport }
+        guard let envelope=try JSONSerialization.jsonObject(with:data) as? [String:Any] else {throw ModelError.invalidReport}
+        var raw=envelope
+        var workflowEvents:[[String:Any]]=[]
+        if envelope["schema_version"] as? String == "agent-authority-workflow-report-v1" {
+            guard envelope["role"] as? String == "observer_only", let base=envelope["observation_report"] as? [String:Any],
+                  let events=envelope["events"] as? [[String:Any]],events.count<=100 else {throw ModelError.invalidReport}
+            raw=base;workflowEvents=events
+            var warnings=raw["warnings"] as? [[String:Any]] ?? []
+            for warning in envelope["warnings"] as? [[String:Any]] ?? [] {
+                guard let code=warning["code"] as? String,code.hasPrefix("workflow_"),code.count<=80 else {continue}
+                var projected:[String:Any]=["code":code,"evidence":[]]
+                if let entry=warning["entry_id"] as? String {projected["evidence"]=[["entry_id":entry]]}
+                warnings.append(projected)
+            }
+            raw["warnings"]=warnings
+            var summary=raw["summary"] as? [String:Any] ?? [:]
+            summary["structural_warning_count"]=warnings.count;raw["summary"]=summary
+        }
+        guard raw["schema_version"] as? String == "agent-authority-observation-report-v1",raw["role"] as? String == "observer_only",
+              let source=raw["source"] as? [String:Any],let entries=raw["recent_entries"] as? [[String:Any]] else {throw ModelError.invalidReport}
         var doc=GraphDocument(source:source["source_id"] as? String ?? "json-directory")
         doc.completeRead=source["complete_observed_read"] as? Bool
         doc.totalEntries=source["entries_read"] as? Int
@@ -151,7 +171,9 @@ public enum ReportProjection {
         doc.reportedWarningCount=(raw["summary"] as? [String:Any])?["structural_warning_count"] as? Int
         doc.omitted=(raw["display"] as? [String:Any])?["entries_omitted"] as? Int ?? 0
         doc.warnings=(raw["warnings"] as? [[String:Any]] ?? []).compactMap { $0["code"] as? String }
-        doc.reportJSON=String(data:data,encoding:.utf8)
+        // Workflow imports export the existing minimized GraphDocument, never arbitrary original extras.
+        doc.reportSource=true
+        doc.reportJSON=envelope["schema_version"] as? String == "agent-authority-workflow-report-v1" ? nil:String(data:data,encoding:.utf8)
         var refs: Set<String> = []
         for entry in entries {
             guard let id=entry["entry_id"] as? String, let ordinal=entry["ordinal"] as? Int, let kind=entry["reported_kind"] as? String,
@@ -162,6 +184,24 @@ public enum ReportProjection {
             refs.insert(id)
             doc.nodes.append(GraphNode(id:id,kind:.entry,name:"entry."+kind,localized:true,status:.reported,
                 facts:[Fact("field.actor",actor),Fact("field.ordinal",String(ordinal)),Fact("field.sha256",hash),Fact("field.identity","status.unknown",localized:true),Fact("field.effect","status.unknown",localized:true)],evidence:[id]))
+        }
+        for event in workflowEvents {
+            guard let id=event["entry_id"] as? String,let index=doc.nodes.firstIndex(where:{$0.id==id}),
+                  let binding=event["binding"] as? [String:Any] else {continue}
+            let allowed:Set<String>=["project_id","workflow_id","thread_id","handoff_id","handoff_revision","source_revision","source_ref","source_hash","request_hash","task_id","original_task_id","bridge_task_id","run_id","attempt_id","parent_task_id","subtask_id","return_id","recipient_id","session_id","principal_ref","operator_scope","actor_claim","task_revision","artifact_ref","dispatch_seq","barrier_seq","reserved_microusd","spent_microusd","available_microusd","cost_kind","stop_state","reported_status"]
+            let priority=["project_id","workflow_id","original_task_id","bridge_task_id","task_id","handoff_id","handoff_revision","source_revision","source_ref","source_hash","run_id","attempt_id","session_id","principal_ref","operator_scope","request_hash"]
+            let present=binding.keys.filter{allowed.contains($0)}
+            let selected=priority.filter{present.contains($0)}+present.filter{!priority.contains($0)}.sorted()
+            for key in selected.prefix(24) {
+                if let value=binding[key] as? String,value.count<=256 {doc.nodes[index].facts.append(Fact("workflow."+key,value))}
+                else if let value=binding[key] as? NSNumber,CFGetTypeID(value) != CFBooleanGetTypeID(),["i","q","s","l","I","Q","S","L"].contains(String(cString:value.objCType)),value.int64Value>=0 {
+                    doc.nodes[index].facts.append(Fact("workflow."+key,value.stringValue))
+                }
+            }
+            if selected.count>24 {doc.nodes[index].facts.append(Fact("workflow.omitted_fields",String(selected.count-24)))}
+            doc.nodes[index].facts.append(Fact("workflow.basis","workflow.claimsOnly",localized:true))
+            // Never promote a producer's actor/model/status or hash to verified proof.
+            doc.nodes[index].status = .reported
         }
         for task in raw["tasks"] as? [[String:Any]] ?? [] {
             guard let alias=task["task_alias"] as? String else { continue }
@@ -176,7 +216,8 @@ public enum ReportProjection {
             guard let code=warning["code"] as? String else{continue}
             let id="warning-\(index)",evidence=(warning["evidence"] as? [[String:Any]] ?? []).compactMap{$0["entry_id"] as? String}
             let key="diagnostic."+code
-            doc.nodes.append(GraphNode(id:id,kind:.evidence,name:key,localized:Localization.shared.catalog[key] != nil,status:.incomplete,facts:[Fact("field.diagnostic",code)],evidence:evidence))
+            let warningStatus:ProofStatus=["workflow_duplicate_conflict","workflow_ordinal_conflict"].contains(code) ? .contradictory:.incomplete
+            doc.nodes.append(GraphNode(id:id,kind:.evidence,name:key,localized:Localization.shared.catalog[key] != nil,status:warningStatus,facts:[Fact("field.diagnostic",code)],evidence:evidence))
             for ref in evidence where refs.contains(ref){doc.edges.append(GraphEdge(id,ref,"evidence",.incomplete,evidence:[ref]))}
         }
         try doc.validate()

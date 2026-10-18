@@ -141,7 +141,7 @@ final class MainPanelController:NSViewController,NSTableViewDataSource,NSTableVi
         criticalBanner.isHidden = !critical
         tableChainStatus=d.chainStatuses()
         heading.stringValue=L("nav."+state.page)
-        scope.stringValue=d.isDemo ? L("mode.sample"):(d.reportJSON != nil ? L("mode.product"):L("mode.live"))
+        scope.stringValue=d.isDemo ? L("mode.sample"):(d.isReportSource ? L("mode.product"):L("mode.live"))
         let agents=d.nodes.filter{$0.kind == .agent},delegations=d.edges.filter{$0.relation=="delegates"},actions=d.nodes.filter{$0.kind == .action}
         if d.isDemo {
             let statuses=d.chainStatuses(),good=actions.filter{statuses[$0.id] == .verified}.count
@@ -149,7 +149,7 @@ final class MainPanelController:NSViewController,NSTableViewDataSource,NSTableVi
             metrics[1].set("metric.delegations",String(delegations.count),L("metric.demo"))
             metrics[2].set("metric.chains",String(good),L("metric.sampleChains",["good":String(good),"missing":String(actions.count-good)]))
             metrics[3].set("metric.actions",String(actions.count),L("metric.demo"))
-        }else if d.reportJSON != nil {
+        }else if d.isReportSource {
             metrics[0].set("metric.reported",String(d.totalEntries ?? d.nodes.filter{$0.kind == .entry}.count),L("status.reported"))
             metrics[1].set("metric.tasks",String(d.reportedTaskCount ?? d.nodes.filter{$0.kind == .task}.count),L("basis.task"))
             metrics[2].set("metric.warnings",String(d.reportedWarningCount ?? d.warnings.count),L("metric.warnings"))
@@ -266,9 +266,9 @@ final class InspectorController:NSViewController {
             let text=NSTextView();text.isEditable=false;text.isSelectable=true;text.font = .monospacedSystemFont(ofSize:11,weight:.regular);text.backgroundColor=Palette.background
             let encoder=JSONEncoder();encoder.outputFormatting=[.prettyPrinted,.sortedKeys,.withoutEscapingSlashes]
             text.string=(try? encoder.encode(node)).flatMap{String(data:$0,encoding:.utf8)} ?? "{}"
-            text.textContainer?.widthTracksTextView=true;add(text,CGFloat(max(350,text.string.split(separator:"\n").count*16)));add(wrapping(L(state.document.isDemo ? "boundary.sample":state.document.reportJSON != nil ? "boundary.product":"boundary.live")),65)
+            text.textContainer?.widthTracksTextView=true;add(text,CGFloat(max(350,text.string.split(separator:"\n").count*16)));add(wrapping(L(state.document.isDemo ? "boundary.sample":state.document.isReportSource ? "boundary.product":"boundary.live")),65)
         }else{
-            let d=state.document;add(wrapping(L(d.isDemo ? "inspector.sampleExplanation":d.reportJSON != nil ? "inspector.productExplanation":"inspector.liveExplanation"),size:11),62)
+            let d=state.document;add(wrapping(L(d.isDemo ? "inspector.sampleExplanation":d.isReportSource ? "inspector.productExplanation":"inspector.liveExplanation"),size:11),62)
             add(label("inspector.selected",size:10,color:Palette.muted),22)
             for fact in node.facts {let v=wrapping(L(fact.labelKey)+": "+fact.text,size:11);v.toolTip=fact.text;add(v,fact.labelKey=="field.sha256" ? 50:32)}
             if !node.evidence.isEmpty{let v=wrapping(L("field.evidence")+": "+node.evidence.joined(separator:", "),size:11);add(v,32)}
@@ -280,7 +280,7 @@ final class InspectorController:NSViewController {
             let qualified=d.isDemo && d.chainStatuses()[state.chainAnchor] == .verified
             for key in ["inspector.signatures","inspector.binding","inspector.loss"]{add(wrapping(L(key)+": "+L(qualified ? "demo.synthetic":"status.unknown"),size:11),38)}
             add(label("inspector.boundary",size:11,weight:.medium),25)
-            add(wrapping(L(d.isDemo ? "boundary.sample":d.reportJSON != nil ? "boundary.product":"boundary.live"),size:11),65)
+            add(wrapping(L(d.isDemo ? "boundary.sample":d.isReportSource ? "boundary.product":"boundary.live"),size:11),65)
             if node.kind == .action{add(wrapping(L("boundary.durable"),size:11),35)}
         }
         scroll.documentView=doc;layoutDocument(width:view.bounds.width)

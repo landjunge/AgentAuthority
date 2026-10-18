@@ -247,3 +247,32 @@ def test_new_cli_keeps_old_v1_entry_path_and_produces_offline_wrapper(
     value = json.loads(capsys.readouterr().out)
     assert value["schema_version"] == "agent-authority-workflow-report-v1"
     assert value["observation_report"]["schema_version"] == "agent-authority-observation-report-v1"
+
+
+@pytest.mark.parametrize(
+    "tool,event_type",
+    [
+        ("threaddesk", "handoff.created"),
+        ("kirabridge", "task.completed"),
+        ("4allpass", "capability.granted"),
+        ("4allpass", "capability.denied"),
+        ("4allpass", "capability.revoked"),
+        ("tollgate", "budget.checked"),
+        ("gnom-hub-v1", "work.started"),
+        ("gnom-hub-v1", "agent.invoked"),
+        ("gnom-hub-v1", "delegation.created"),
+        ("gnom-hub-v1", "tool.intent"),
+        ("gnom-hub-v1", "tool.result"),
+        ("gnom-hub-v1", "work.finished"),
+        ("blockdesigner", "design.handoff"),
+    ],
+)
+def test_six_tool_source_matrix_and_actual_legacy_types_are_claims_only(
+    tmp_path: Path,
+    tool: str,
+    event_type: str,
+):
+    write(tmp_path, [event(source_tool=tool, event_type=event_type)])
+    value = build_workflow_report(read_workflow(tmp_path, "local-run", tool))
+    assert value["events"][0]["event_type"] == event_type
+    assert not value["rights_granted"] and value["identity"] == "UNBEKANNT"
