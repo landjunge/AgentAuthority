@@ -6,6 +6,14 @@
 </picture>
 
 
+## Aktueller Funktionsstand / Current capabilities
+
+**Deutsch:** Agent Authority ist eine Beobachtungs- und Analyseschicht. Die lokale Preview liest ausdrücklich ausgewählte JSON-Beobachtungen; ThreadDesk ist ein optionaler Adapter. Sie zeigt gemeldete Aufgabenaktivität, Warnungen und Belegreferenzen als Text, JSON oder offline lesbaren HTML-Bericht. Die native macOS-Oberfläche ergänzt Dashboard und Authority Graph. Agent Authority erteilt keine Freigaben, gibt keine Geheimnisse oder Budgets frei und stoppt keine Aufträge. Gemeldete Identitäten und Erfolge sind keine unabhängig bestätigten Nachweise.
+
+**English:** Agent Authority observes and analyses explicitly selected local JSON observations, with ThreadDesk as an optional adapter. It reports task activity, warnings and evidence references as text, JSON or an offline HTML report. The native macOS interface adds a dashboard and Authority Graph. It does not approve actions, release secrets or budgets, or stop work. Reported identities and success labels are not independent verification.
+
+Python 3.12+ is required for the local CLI. / Die lokale CLI benötigt Python 3.12 oder neuer. [Bedienung / Usage](docs/PRODUCT-PREVIEW.md) · [Eingabevertrag / Observation contract](docs/PRODUCT-OBSERVATION-CONTRACT.md) · [macOS](native/macos/README.md).
+
 ## Current product role
 
 Agent Authority is exclusively an **observer / monitor / analysis layer**, as
