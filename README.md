@@ -1,5 +1,11 @@
 # Agent Authority Lab
 
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/design/icons/dark/Agent-Authority-dark-128.png">
+  <img src="assets/design/icons/light/Agent-Authority-light-128.png" alt="Agent-Authority" width="96" height="96">
+</picture>
+
+
 ## Current product role
 
 Agent Authority is exclusively an **observer / monitor / analysis layer**, as
