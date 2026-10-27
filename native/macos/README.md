@@ -1,15 +1,17 @@
-# Agent Authority for macOS
+# Agent Authority für macOS
 
-Native observer application based on master `9eda80d` and the approved design.
-AppKit split window, compact dashboard, graph, inspector, evidence tables,
-DE/EN localization, read-only product input and a separate macOS test host.
-The Python product engine and historical lab remain unchanged.
+Native Beobachtungsanwendung auf Basis von master `9eda80d` und freigegebenem
+Entwurf. Geteiltes AppKit-Fenster, kompaktes Dashboard, Graph, Inspektor,
+Belegtabellen, deutsche/englische Lokalisierung, ausschließlich lesende
+Produkteingabe und gesonderter macOS-Testhost. Python-Produktengine und
+historisches Labor bleiben unverändert.
 
-## Build and open
+## Bauen und öffnen
 
-Requires Xcode / Swift 5.9 or newer and Python 3.12 for build tooling.
-The supplied runtime download is pinned for Intel Macs. The application target
-and native helpers use macOS 12; the embedded Intel Python runtime targets 10.15.
+Erforderlich sind Xcode/Swift 5.9 oder neuer und Python 3.12 für Bauwerkzeuge.
+Der bereitgestellte Laufzeitdownload ist auf Intel-Macs gepinnt. Anwendungsziel
+und native Helfer verwenden macOS 12; die eingebettete Intel-Python-Laufzeit
+zielt auf 10.15.
 
 ```sh
 cd native/macos
@@ -18,78 +20,90 @@ python3.12 scripts/build_app.py
 open "build/Agent Authority.app"
 ```
 
-The build directory is ignored by Git. It contains the app with a relocatable
-Python runtime, unchanged `agent_authority` modules, native process probe,
-controlled writer and compiled observer system extension. No pip installation,
-Terminal process or project checkout is required when using the built app.
-An explicit external Python 3.12+ interpreter may be selected in Settings.
+Das Bauverzeichnis ist von Git ausgeschlossen. Es enthält die Anwendung mit
+verschiebbarer Python-Laufzeit, unveränderten `agent_authority`-Modulen,
+nativer Prozessprobe, kontrolliertem Schreiber und kompilierter
+Beobachter-Systemerweiterung. Die gebaute Anwendung benötigt weder pip-
+Installation noch Terminalprozess oder Projektcheckout. Ein externer
+Python 3.12+-Interpreter kann ausdrücklich in den Einstellungen gewählt werden.
 
-The default build is **ad-hoc signed for local development**. It is not notarized
-and cannot activate an Endpoint Security collector. Privacy grants are tied to
-the executing signed component; rebuilding can require renewed user consent.
+Der Standardbuild ist **ad hoc für lokale Entwicklung signiert**. Er ist nicht
+notarisiert und kann keinen Endpoint-Security-Kollektor aktivieren.
+Datenschutzfreigaben sind an die ausführende signierte Komponente gebunden;
+erneutes Bauen kann eine neue Nutzerzustimmung erfordern.
 
-## Using real input
+## Reale Eingaben verwenden
 
-Choose a folder of `agent-authority-observation-v1` JSON files and its source ID.
-The app launches its own bounded reader process and displays the neutral report.
-It never writes the source. Source reads have a 30-second supervisor deadline,
-bounded output, cancellation, and the existing engine's independent input limits.
-The report's display truncation is shown separately from read completeness.
-You can also open a saved `agent-authority-observation-report-v1` JSON report.
+Einen Ordner mit `agent-authority-observation-v1`-JSON-Dateien und dessen
+Quellkennung wählen. Die Anwendung startet ihren eigenen begrenzten Leseprozess
+und zeigt den neutralen Bericht. Sie schreibt nie in die Quelle. Quellenlesen
+hat eine überwachte Frist von 30 Sekunden, begrenzte Ausgabe, Abbruchmöglichkeit
+und die unabhängigen Eingabegrenzen der vorhandenen Engine. Anzeigeverkürzungen
+im Bericht werden getrennt von der Vollständigkeit des Lesens angezeigt.
+Gespeicherte JSON-Berichte vom Typ `agent-authority-observation-report-v1`
+lassen sich ebenfalls öffnen.
 
-Meldungen are reported entries. They do not prove an agent, authority,
-delegation, completion or external effect. Structural warnings are selectable
-evidence nodes. The initial 50-agent sample is explicitly synthetic.
+Meldungen sind gemeldete Einträge. Sie beweisen weder Agenten, Befugnisse,
+Delegation, Abschluss noch externe Wirkung. Strukturelle Warnungen sind
+wählbare Belegknoten. Die anfängliche 50-Agenten-Probe ist ausdrücklich synthetisch.
 
-Graph modes: focused chain, compact agent overview, aggregated branches.
-Double-click a cluster to expand it. Incoming/outgoing group relationships and
-their evidence references remain in the model. Hover shows the full node facts.
-Selection preserves the contextual attribution chain; raw data is selectable.
-Large agent samples automatically aggregate above 80 agents. The graph is drawn
-on demand with visible-node clipping and spatial hit testing. No periodic
-animation or permanent GPU effect. Tables and inspector use overlay scrollers.
+Graphmodi: fokussierte Kette, kompakte Agentenübersicht, zusammengefasste Zweige.
+Ein Cluster wird per Doppelklick aufgeklappt. Ein-/ausgehende Gruppenbeziehungen
+und Belegreferenzen bleiben im Modell. Darüberfahren zeigt vollständige
+Knotenfakten. Die Auswahl erhält die zugehörige Zuordnungskette; Rohdaten sind
+markierbar. Große Proben werden oberhalb von 80 Agenten automatisch gruppiert.
+Der Graph wird bedarfsgesteuert mit Begrenzung auf sichtbare Knoten und
+räumlicher Trefferprüfung gezeichnet. Keine periodische Animation oder
+ständiger GPU-Effekt. Tabellen und Inspektor verwenden überlagerte Scrollleisten.
 
-## Localization
+## Lokalisierung
 
-`AuthorityCore/Resources/Strings.json` contains every owned UI phrase in German
-and English. Stable keys, complete catalogs and visible unknown-key markers
-follow the inspected ThreadDesk principle without importing ThreadDesk code,
-preferences, terminology or architecture. Language priority: explicit command
-argument / app selection, saved app preference, Agent Authority / locale environment,
-first supported macOS preferred language, then German. `C` / `POSIX` are skipped.
-Language and appearance can be switched in the app without restarting.
-System privacy dialogs remain owned and localized by macOS.
+`AuthorityCore/Resources/Strings.json` enthält alle eigenen UI-Texte auf Deutsch
+und Englisch. Stabile Schlüssel, vollständige Kataloge und sichtbare Marker für
+unbekannte Schlüssel folgen dem geprüften ThreadDesk-Prinzip, ohne dessen Code,
+Einstellungen, Terminologie oder Architektur zu importieren. Sprachpriorität:
+ausdrückliches Befehlsargument/Anwendungsauswahl, gespeicherte App-Einstellung,
+Agent-Authority-/Locale-Umgebung, erste unterstützte bevorzugte macOS-Sprache,
+danach Deutsch. `C`/`POSIX` werden übersprungen. Sprache und Erscheinungsbild
+lassen sich ohne Neustart umschalten. Systemdatenschutzdialoge werden weiterhin
+von macOS verantwortet und lokalisiert.
 
-## macOS test host and real external prerequisites
+## macOS-Testhost und reale externe Voraussetzungen
 
-The test host implements native folder selection, Accessibility checks/prompts,
-screen capture preflight/request, Apple Events consent per chosen target app,
-version-specific Full Disk Access settings links, and system extension activation
-through `OSSystemExtensionRequest`. It never changes TCC databases, resets
-permissions, disables SIP or launches the main app or its test writers as root.
-The local process probe records own-process instance metadata in the app context;
-it is not presented as an independent writer proof.
+Der Testhost implementiert native Ordnerauswahl, Bedienungshilfenprüfung/-abfrage,
+Vorprüfung/-anforderung der Bildschirmaufnahme, Apple-Events-Zustimmung je
+gewählter Zielanwendung, versionsbezogene Links zu Festplattenvollzugriff und
+Systemerweiterungsaktivierung über `OSSystemExtensionRequest`. Er verändert
+keine TCC-Datenbank, setzt keine Rechte zurück, deaktiviert SIP nicht und
+startet Hauptanwendung oder Testschreiber nicht als root. Die lokale Prozessprobe
+erfasst eigene Prozessinstanzmetadaten im Anwendungskontext; sie gilt nicht als
+unabhängiger Schreiberbeweis.
 
-The system extension uses only ES NOTIFY write/close/fork/exec/exit events.
-Its XPC interface has four fixed read/scope operations, bounded JSON, a finite
-scope lifetime and mutual kernel-enforced code-signature requirements available
-on macOS 12. No PID-based IPC authentication and no arbitrary root commands.
-Events omit paths, argv, environments and file content. Selected held file objects,
-owner UID, process start, PID version, boot context, lifecycle, kernel sequence
-gaps, nonmonotonic sequences and local buffer drops are kept separate.
+Die Systemerweiterung verwendet nur ES-NOTIFY-Ereignisse für Schreiben,
+Schließen, Fork, Exec und Exit. Ihre XPC-Schnittstelle hat vier feste
+Lese-/Bereichsoperationen, begrenztes JSON, endliche Bereichslebensdauer und
+gegenseitige, vom Kernel erzwungene Codesignaturanforderungen unter macOS 12.
+Keine PID-basierte IPC-Authentifizierung oder beliebige root-Befehle.
+Ereignisse enthalten keine Pfade, argv, Umgebungen oder Dateiinhalte.
+Gewählte gehaltene Dateiobjekte, Eigentümer-UID, Prozessstart, PID-Version,
+Bootkontext, Lebenszyklus, Kernelsequenzlücken, nicht monotone Folgen und lokale
+Pufferverluste bleiben getrennt.
 
-The seven launches implement the six controls: A writes, B idle, C writes another
-file, child writes, forged PID claim, and two sequential writers. The collector
-must actually connect. Qualification requires kernel instance/lifecycle matches,
-known loss controls and the expected write count. Missing prerequisites or
-events produce UNKNOWN; a mocked channel never supplies proof. Provider/model
-identity and durable file effects remain UNKNOWN even with successful controls.
-The resulting minimized events can be examined in the graph and exported.
+Sieben Starts setzen sechs Kontrollen um: A schreibt, B bleibt untätig,
+C schreibt eine andere Datei, Kindprozess schreibt, gefälschte PID-Behauptung und
+zwei aufeinanderfolgende Schreiber. Der Kollektor muss tatsächlich verbunden
+sein. Qualifikation benötigt passende Kernelinstanz-/Lebenszyklusbelege,
+bekannte Verlustkontrollen und die erwartete Schreibzahl. Fehlende
+Voraussetzungen oder Ereignisse ergeben UNKNOWN; ein nachgebildeter Kanal
+liefert keinen Beweis. Anbieter-/Modellidentität und dauerhafte Dateiwirkungen
+bleiben auch bei erfolgreichen Kontrollen UNKNOWN. Minimierte Ereignisse
+lassen sich im Graph untersuchen und exportieren.
 
-To activate the collector, an Apple-approved Endpoint Security entitlement,
-Developer ID identity and matching provisioning are required. This session had
-**zero valid signing identities**. No live privileged collector or writer battery
-was claimed or executed. Build with the real credentials once available:
+Zum Aktivieren sind eine Apple-genehmigte Endpoint-Security-Berechtigung,
+Developer-ID-Identität und passende Bereitstellungsprofile nötig. In der
+dokumentierten Sitzung gab es **keine gültige Signierungsidentität**. Kein
+privilegierter Live-Kollektor und keine Schreiberbatterie wurden als ausgeführt
+behauptet oder gestartet. Mit tatsächlich verfügbaren Zugangsdaten bauen:
 
 ```sh
 python3.12 scripts/build_app.py --sign "Developer ID Application: YOUR IDENTITY" \
@@ -97,29 +111,31 @@ python3.12 scripts/build_app.py --sign "Developer ID Application: YOUR IDENTITY"
   --collector-profile /path/collector.provisionprofile
 ```
 
-Install the signed app in `/Applications`, notarize the distribution through
-Apple's tooling, activate its extension and grant **the collector's own** Full
-Disk Access. The main app's grant is not a substitute. ES's actual initialization
-result distinguishes privilege, entitlement and TCC failures. These prerequisites
-cannot be manufactured by a build flag or ordinary user approval alone.
+Die signierte Anwendung unter `/Applications` installieren, die Distribution mit
+Apples Werkzeugen notarisieren, ihre Erweiterung aktivieren und **dem Kollektor
+selbst** Festplattenvollzugriff erteilen. Die Freigabe der Hauptanwendung ersetzt
+dies nicht. Das tatsächliche ES-Initialisierungsergebnis unterscheidet
+Privilegien-, Entitlement- und TCC-Fehler. Diese Voraussetzungen lassen sich
+nicht durch einen Buildschalter oder gewöhnliche Nutzerzustimmung allein erzeugen.
 
-Official sources: [Apple ES sample](https://developer.apple.com/documentation/endpointsecurity/monitoring-system-events-with-endpoint-security),
-[ES entitlement](https://developer.apple.com/documentation/bundleresources/entitlements/com.apple.developer.endpoint-security.client),
-[XPC peer requirement](https://developer.apple.com/documentation/xpc/xpc_connection_set_peer_code_signing_requirement),
-[SIP runtime boundaries](https://developer.apple.com/library/archive/documentation/Security/Conceptual/System_Integrity_Protection_Guide/RuntimeProtections/RuntimeProtections.html).
-API declarations were also checked in the installed Xcode 16 / SDK 15 headers.
+Offizielle Quellen: [Apple-ES-Beispiel](https://developer.apple.com/documentation/endpointsecurity/monitoring-system-events-with-endpoint-security),
+[ES-Berechtigung](https://developer.apple.com/documentation/bundleresources/entitlements/com.apple.developer.endpoint-security.client),
+[XPC-Gegenstellenanforderung](https://developer.apple.com/documentation/xpc/xpc_connection_set_peer_code_signing_requirement),
+[SIP-Laufzeitgrenzen](https://developer.apple.com/library/archive/documentation/Security/Conceptual/System_Integrity_Protection_Guide/RuntimeProtections/RuntimeProtections.html).
+API-Deklarationen wurden auch in installierten Xcode 16-/SDK 15-Headern geprüft.
 
-## Verification
+## Überprüfung
 
 ```sh
 swift test
 python3.12 scripts/check_sources.py
 ```
 
-Native view screenshots and smoke results are in `docs/native-macos-20261012`.
-Snapshot mode caches the app's own native view; it needs no screen-recording grant
-and does not capture other apps. It can render a 2560×1440 logical / 5120×2880 pixel
-view without changing the user's display settings:
+Native Bildschirmaufnahmen und Kurzprüfungen stehen unter
+`docs/native-macos-20261012`. Der Momentaufnahmemodus erfasst die eigene native
+Ansicht; er benötigt keine Bildschirmaufnahmefreigabe und erfasst keine anderen
+Anwendungen. Er kann 2560×1440 logische bzw. 5120×2880 Bildpunkte darstellen, ohne die
+Bildschirmeinstellungen des Nutzers zu verändern:
 
 ```sh
 "build/Agent Authority.app/Contents/MacOS/AgentAuthorityMac" \
@@ -127,37 +143,41 @@ view without changing the user's display settings:
   --snapshot /tmp/agent-authority-native-5k.png
 ```
 
-Actual UI checks were run on the R9 M380 / 2 GB host, running macOS 15.7.4.
-macOS 12 compatibility is checked through API availability and Mach-O deployment
-targets; an actual Monterey run is still needed. The local package is Intel;
-an Apple Silicon distribution needs a corresponding runtime and signing build.
+Tatsächliche UI-Prüfungen liefen auf einem R9-M380-/2-GB-Rechner unter macOS 15.7.4.
+macOS 12-Kompatibilität wird durch API-Verfügbarkeit und Mach-O-Zielversionen
+geprüft; ein echter Monterey-Lauf bleibt erforderlich. Das lokale Paket ist
+Intel; Apple-Silicon-Auslieferung benötigt entsprechende Laufzeit und Signierung.
 
-## Graph Back and separate warning demo
+## Zurücknavigation und getrennte Warndemonstration
 
-The visible Back button restores one previous focused view, including graph mode,
-chain anchor, selection, proof filter, search, expanded groups and the exact zoom
-and pan. Focus, mode, filter and group expansion record navigation; typing, zoom
-and pan alone do not. Restoration never records a new entry or fits the viewport.
-Replacing the source document clears history, including on refresh.
+Die sichtbare Zurückschaltfläche stellt eine vorige fokussierte Ansicht mit
+Graphmodus, Kettenanker, Auswahl, Belegfilter, Suche, aufgeklappten Gruppen und
+exaktem Zoom/Verschiebung wieder her. Fokus, Modus, Filter und Gruppenöffnung
+werden als Navigation erfasst; Texteingabe, Zoom und Verschiebung allein nicht.
+Wiederherstellung erzeugt weder neuen Eintrag noch automatische Ansichtsgröße.
+Austausch des Quelldokuments leert den Verlauf, auch bei Aktualisierung.
 
-Warnings are separate from `ProofStatus` and its unchanged palette. The clearly
-marked synthetic warning menu provides information, elevated attention, warning,
-critical, not assessable and an explicitly checked clear case. The Inspector
-shows reason, assessability, node/relationship, time, source and evidence references.
-Absent references remain unknown. Critical has a persistent selectable message.
-These fixtures are not part of engine reports or evidence exports. Imported
-reports and kernel observations have no warning evaluation and remain neutral
-not assessable; no production risk detection or safety assurance is implemented.
+Warnungen sind von `ProofStatus` und dessen unveränderter Palette getrennt.
+Das klar als synthetisch markierte Warnmenü bietet Information, erhöhte
+Aufmerksamkeit, Warnung, kritisch, nicht bewertbar und einen ausdrücklich
+geprüften unauffälligen Fall. Der Inspektor zeigt Grund, Bewertbarkeit,
+Knoten/Beziehung, Zeit, Quelle und Belegreferenzen. Fehlende Referenzen bleiben
+unbekannt. Kritische Meldungen bleiben dauerhaft auswählbar. Diese Testdaten
+sind kein Teil von Engine-Berichten oder Belegexporten. Importierte Berichte
+und Kernelbeobachtungen haben keine Warnbewertung und bleiben neutral/nicht
+bewertbar; keine produktive Risikoerkennung oder Sicherheitszusage implementiert.
 
-Only visible warning/critical node borders animate in local Core Animation layers
-(2.8/1.8 second legs, autoreversing). They stop offscreen or when the window is
-occluded/minimized. The graph has no animation render timer or repeated layout.
-The Warning pulses checkbox persists its choice; the official NSWorkspace Reduce
-Motion setting always overrides it. Static symbols, colors, labels and the critical
-message remain. Blue/orange use native system colors; existing ThreadDesk-derived
-amber/red and all proof colors remain unchanged.
+Nur sichtbare warnende/kritische Knotenränder animieren in lokalen Core-Animation-
+Ebenen: Hin-/Rückläufe mit 2,8/1,8 Sekunden. Außerhalb der Ansicht oder bei verdecktem/
+minimiertem Fenster stoppen sie. Der Graph hat keinen Animationszeichentimer und
+kein wiederholtes Layout. Die Einstellung für Warnpulse wird gespeichert;
+die offizielle NSWorkspace-Einstellung zur Bewegungsreduzierung hat stets
+Vorrang. Statische Symbole, Farben, Beschriftungen und kritische Meldung bleiben.
+Blau/Orange verwenden native Systemfarben; das vorhandene von ThreadDesk
+abgeleitete Bernstein/Rot und alle Belegfarben bleiben unverändert.
 
-In a logged-in graphical macOS session, run the actual-controller regressions:
+In einer angemeldeten grafischen macOS-Sitzung die Prüfungen des tatsächlichen
+Controllers ausführen:
 
 ```sh
 python3.12 scripts/check_ui_regressions.py \
@@ -165,43 +185,47 @@ python3.12 scripts/check_ui_regressions.py \
   --output /tmp/authority-ui-regression
 ```
 
-The runner checks DE 1680×960 and EN 1150×730, fails for any failed assertion,
-and starts no permission prompts or experiments. New unit tests cover history,
-assessability, synthetic/real separation and motion policy. Final results and
-inspected native captures are in `docs/native-ui-navigation-warnings-20261012`.
-`--reduce-motion` only forces reduction for capture diagnostics; it cannot disable
-the system setting. The real system preference was read, not changed in this task.
+Der Prüflauf untersucht Deutsch 1680×960 und Englisch 1150×730, scheitert an jeder
+fehlgeschlagenen Zusicherung und startet keine Berechtigungsdialoge oder
+Experimente. Neue Einheitstests prüfen Verlauf, Bewertbarkeit, Trennung
+synthetischer/realer Daten und Bewegungsregeln. Ergebnisse und geprüfte native
+Aufnahmen stehen unter `docs/native-ui-navigation-warnings-20261012`.
+`--reduce-motion` erzwingt nur Reduzierung für Aufnahmediagnostik; es kann die
+Systemeinstellung nicht ausschalten. Die tatsächliche Systemeinstellung wurde
+bei dieser Arbeit gelesen, nicht verändert.
 
-## Normal startup investigation
+## Untersuchung des normalen Starts
 
-The reported blank graph on normal review startup could not be reproduced in
-the subsequent controlled launches. The original failing process had already
-exited. A confirmed fix for that original symptom is therefore still open.
-Normal Launch Services starts without diagnostic arguments, sidebar interaction,
-and simultaneous operation with the older bundle were inspected through existing
-authorized Accessibility access and real WindowServer captures, separately from
-bitmap diagnostics. Results are in `docs/native-ui-start-fix-20261012`.
+Der beim normalen Prüfstart gemeldete leere Graph ließ sich bei späteren
+kontrollierten Starts nicht reproduzieren. Der ursprünglich fehlerhafte Prozess
+war bereits beendet; eine bestätigte Korrektur dieses ursprünglichen Symptoms
+bleibt offen. Normale Launch-Services-Starts ohne Diagnoseargumente,
+Seitenleistennavigation und gleichzeitiger Betrieb mit dem älteren Bundle wurden
+mit vorhandener autorisierter Bedienungshilfennutzung und echten WindowServer-
+Aufnahmen geprüft, getrennt von Bitmapdiagnostik. Ergebnisse:
+`docs/native-ui-start-fix-20261012`.
 
-New AppKit XCTest cases cover initial view loading and application startup without
-an explicit rebuild, sidebar navigation, distinct empty-source/filter messages,
-and passive diagnostics that must not load missing views. Existing Back and warning
-logic and proof colors are retained. Empty sources now have a distinct explanation;
-they never cause an automatic switch to synthetic data.
+Neue AppKit-XCTest-Fälle umfassen erstmaliges Laden und Anwendungsstart ohne
+ausdrücklichen Neuaufbau, Seitenleistennavigation, getrennte Meldungen für leere
+Quellen/Filter und passive Diagnostik, die fehlende Ansichten nicht laden darf.
+Vorhandene Zurück-/Warnlogik und Belegfarben bleiben erhalten. Leere Quellen
+haben eine eigene Erklärung und führen nie automatisch zu synthetischen Daten.
 
-A review build can identify itself visibly while retaining the same product:
+Ein Prüfbuild kann sich sichtbar kennzeichnen und dasselbe Produkt bleiben:
 
 ```sh
 python3.12 scripts/build_app.py --output build/navigation-warnings-review \
   --review-label startup-check-20261012
 ```
 
-To capture a future failing state, start the exact bundle with the optional
-`--normal-state-json /tmp/authority-live-state.json` argument. For 30 seconds the
-app passively records source, filters, graph mode, selection, geometry, viewport,
-draw count, history and animation state. It never rebuilds, lays out, fits,
-renders, changes preferences or terminates the app; diagnostic event traces go
-to stdout only with this argument. Without it no observer or event logging runs.
-The investigation also exercised actual menu actions, zoom, mouse pan and three
-Back steps; automation must wait for menu focus completion before sending its
-next zoom action. Static capture comparisons are not a claim of continuous manual
-visual testing of the running animation.
+Zur Erfassung eines künftig fehlerhaften Zustands das genaue Bundle mit dem
+optionalen Argument `--normal-state-json /tmp/authority-live-state.json` starten.
+Für 30 Sekunden zeichnet die Anwendung passiv Quelle, Filter, Graphmodus,
+Auswahl, Geometrie, Ansichtsbereich, Anzahl der Zeichenvorgänge, Verlauf und Animationszustand
+auf. Sie baut nicht neu, führt kein Layout/Anpassen/Rendern aus, ändert keine
+Einstellungen und beendet die Anwendung nicht. Diagnoseereignisse gehen nur
+mit diesem Argument nach stdout; ohne es laufen weder Beobachter noch
+Ereignisprotokollierung. Die Untersuchung erprobte auch echte Menüaktionen,
+Zoom, Mausverschiebung und drei Zurückschritte. Automatisierung muss vor der
+nächsten Zoomaktion auf den abgeschlossenen Menüfokus warten. Statische
+Aufnahmevergleiche behaupten keine durchgängige manuelle Sichtprüfung laufender Animationen.

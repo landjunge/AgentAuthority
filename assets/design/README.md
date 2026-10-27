@@ -1,7 +1,9 @@
-# Agent-Authority · Design assets
+# Agent Authority · Gestaltungsdateien
 
-Freigegebene Originale und Icon-Exporte vom 18.10.2026. / Approved originals and icon exports dated 2026-10-18.
+Freigegebene Originale und Icon-Exporte vom 18.10.2026.
 
-PNG: icons/light and icons/dark. Native containers where supplied: icons/windows and icons/macos. Originals: originals. SHA256SUMS is relative to this directory.
+PNG: `icons/light` und `icons/dark`. Bereitgestellte native Container liegen unter
+`icons/windows` und `icons/macos`, Originale unter `originals`.
+`SHA256SUMS` enthält auf dieses Verzeichnis bezogene Prüfsummen.
 
-Die Ablage allein belegt keine native Plattformabnahme. / Storage alone does not establish native-platform acceptance.
+Die Ablage allein belegt keine native Plattformabnahme.
