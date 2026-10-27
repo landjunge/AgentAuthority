@@ -5,33 +5,41 @@
   <img src="assets/design/icons/light/Agent-Authority-light-128.png" alt="Agent-Authority" width="96" height="96">
 </picture>
 
+## Aktueller Funktionsstand
 
-## Aktueller Funktionsstand / Current capabilities
+Agent Authority ist eine Beobachtungs- und Analyseschicht. Die lokale Vorschau
+liest ausdrücklich ausgewählte JSON-Beobachtungen; ThreadDesk ist ein optionaler
+Adapter. Sie zeigt gemeldete Aufgabenaktivität, Warnungen und Belegreferenzen als
+Text, JSON oder offline lesbaren HTML-Bericht. Die native macOS-Oberfläche ergänzt
+Dashboard und Authority Graph. Agent Authority erteilt keine Freigaben, gibt keine
+Geheimnisse oder Budgets frei und stoppt keine Aufträge. Gemeldete Identitäten und
+Erfolge sind keine unabhängig bestätigten Nachweise.
 
-**Deutsch:** Agent Authority ist eine Beobachtungs- und Analyseschicht. Die lokale Preview liest ausdrücklich ausgewählte JSON-Beobachtungen; ThreadDesk ist ein optionaler Adapter. Sie zeigt gemeldete Aufgabenaktivität, Warnungen und Belegreferenzen als Text, JSON oder offline lesbaren HTML-Bericht. Die native macOS-Oberfläche ergänzt Dashboard und Authority Graph. Agent Authority erteilt keine Freigaben, gibt keine Geheimnisse oder Budgets frei und stoppt keine Aufträge. Gemeldete Identitäten und Erfolge sind keine unabhängig bestätigten Nachweise.
+Die lokale CLI benötigt Python 3.12 oder neuer.
+[Bedienung](docs/PRODUCT-PREVIEW.md) ·
+[Eingabevertrag](docs/PRODUCT-OBSERVATION-CONTRACT.md) ·
+[macOS](native/macos/README.md).
 
-**English:** Agent Authority observes and analyses explicitly selected local JSON observations, with ThreadDesk as an optional adapter. It reports task activity, warnings and evidence references as text, JSON or an offline HTML report. The native macOS interface adds a dashboard and Authority Graph. It does not approve actions, release secrets or budgets, or stop work. Reported identities and success labels are not independent verification.
+## Aktuelle Produktrolle
 
-Python 3.12+ is required for the local CLI. / Die lokale CLI benötigt Python 3.12 oder neuer. [Bedienung / Usage](docs/PRODUCT-PREVIEW.md) · [Eingabevertrag / Observation contract](docs/PRODUCT-OBSERVATION-CONTRACT.md) · [macOS](native/macos/README.md).
+Agent Authority ist ausschließlich eine **Beobachtungs-, Überwachungs- und
+Analyseschicht**, wie in [KI-Zentrale-Entscheidung D-012](https://github.com/landjunge/KI-Zentralle/blob/main/DECISIONS.md#d-012--agent-authority-beobachtet-entscheidungen-bleiben-bei-den-zuständigen-tools)
+festgehalten. Es meldet Beobachtungen, Widersprüche, Risiken und fehlende Belege.
+Es erteilt oder entzieht keine Rechte, genehmigt keine Aktionen, gibt keine
+Geheimnisse oder Budgets frei und stoppt keine Aufträge.
 
-## Current product role
+Die unten beschriebenen ALLOW/DENY-, Gate- und IFC-Mechanismen sind
+**historische Experimente in einem künstlichen Labor**. Positive Ergebnisse,
+gemessene übersehene Fälle, Korrekturen und eingefrorene Spezifikationen bleiben
+Belege innerhalb ihres ursprünglichen Umfangs. Sie begründen weder eine
+Entscheidungsbefugnis des Produkts noch authentifizieren sie die Quellen der
+Beobachtungsvorschau. Der vorhandene [Praxis-/Forschungsabgleich](https://github.com/landjunge/KI-Zentralle/blob/main/docs/agent-authority/ABGLEICH-TESTS-UND-BEOBACHTER-RECHERCHE-2026-10-07.md)
+hält diese Unterschiede ausdrücklich fest.
 
-Agent Authority is exclusively an **observer / monitor / analysis layer**, as
-recorded in [KI-Zentrale decision D-012](https://github.com/landjunge/KI-Zentralle/blob/main/DECISIONS.md#d-012--agent-authority-beobachtet-entscheidungen-bleiben-bei-den-zuständigen-tools).
-It reports observations, contradictions, risks and missing evidence. It does not
-grant or revoke rights, approve actions, release secrets or budgets, or stop work.
+## Lokale Produktvorschau
 
-The ALLOW/DENY, gate and IFC mechanisms below are **historical fake-lab
-experiments**. Their positive results, measured misses, repairs and frozen specs
-remain evidence within their original scope; they do not establish product
-decision authority or authenticate the sources of the observer preview. The existing
-[practice/research reconciliation](https://github.com/landjunge/KI-Zentralle/blob/main/docs/agent-authority/ABGLEICH-TESTS-UND-BEOBACHTER-RECHERCHE-2026-10-07.md)
-keeps those distinctions explicit.
-
-## Local product preview
-
-The product accepts source-neutral local observations. ThreadDesk is an optional
-archive adapter, not the product contract:
+Das Produkt nimmt quellenneutrale lokale Beobachtungen entgegen. ThreadDesk ist
+ein optionaler Archivadapter und bestimmt nicht den Produktvertrag:
 
 ```sh
 python3.12 -m venv .venv
@@ -41,60 +49,59 @@ python3.12 -m venv .venv
 .venv/bin/agent-authority inspect --thread THREAD_ID --format html > report.html
 ```
 
-The [current observation contract](docs/PRODUCT-OBSERVATION-CONTRACT.md) defines
-the neutral input and report schemas. `--thread` selects the optional ThreadDesk
-adapter; only that adapter defaults to `~/.threaddesk`, with `--store PATH` as an override. The report cites the read entries, shows reported task activity
-and structural problems, and makes incomplete input visible. Stored actor,
-success and authentication labels do not establish identity, actual completion
-or effects. It writes no store, cache or report files and imports no historical
-enforcement lab. Exit 2 indicates incomplete input, never an action decision.
+Der [aktuelle Beobachtungsvertrag](docs/PRODUCT-OBSERVATION-CONTRACT.md) definiert
+die neutralen Eingabe- und Berichtsschemata. `--thread` wählt den optionalen
+ThreadDesk-Adapter; nur dieser verwendet standardmäßig `~/.threaddesk`, mit
+`--store PATH` als abweichender Vorgabe. Der Bericht zitiert gelesene Einträge,
+zeigt gemeldete Aufgabenaktivität und strukturelle Probleme und macht
+unvollständige Eingaben sichtbar. Gespeicherte Akteur-, Erfolgs- und
+Authentifizierungskennzeichnungen belegen weder Identität noch tatsächlichen
+Abschluss oder Wirkung. Die CLI schreibt keine Speicher-, Cache- oder
+Berichtsdateien und importiert kein historisches Durchsetzungslabor.
+Exitcode 2 zeigt unvollständige Eingaben an, niemals eine Aktionsentscheidung.
 
-[P10-01 contract](docs/P10-01-PRODUKTVERTRAG-20261011.md) and
-[product usage](docs/PRODUCT-PREVIEW.md) describe the bounded local preview.
-This is the start of the product phase; further UI and production deployment
-require their own concrete work. The historical research below retains its scope.
+[Vertrag P10-01](docs/P10-01-PRODUKTVERTRAG-20261011.md) und
+[Produktbedienung](docs/PRODUCT-PREVIEW.md) beschreiben diese begrenzte lokale
+Vorschau. Dies ist der Beginn der Produktphase; weitere Oberfläche und
+Produktivbetrieb benötigen eigene konkrete Arbeiten. Der Umfang der unten
+beschriebenen historischen Forschung bleibt erhalten.
 
-The HTML format provides a single offline browser report with task and warning
-tables and expandable entry evidence. Saving it is an explicit shell redirection;
-the command starts no server and opens no browser. Text/JSON and the source
-projection retain their existing semantics. The
-[P10-02 scope](docs/P10-02-BROWSERBERICHT-VERTRAG-20261011.md) describes this display.
+Das HTML-Format liefert einen einzelnen offline lesbaren Browserbericht mit
+Aufgaben-/Warntabellen und aufklappbaren Eintragsbelegen. Gespeichert wird durch
+ausdrückliche Shellumleitung; der Befehl startet keinen Server und öffnet keinen
+Browser. Text/JSON und Quellenprojektion behalten ihre bisherige Bedeutung.
+Der [Umfang von P10-02](docs/P10-02-BROWSERBERICHT-VERTRAG-20261011.md) beschreibt
+diese Darstellung.
 
-## Native macOS application
+## Native macOS-Anwendung
 
-The standalone [native application](native/macos/README.md) provides a compact
-dashboard, Authority Graph, evidence inspector, German/English localization and
-a separate macOS permission/test host. It consumes the unchanged neutral product
-report; reported entries do not become authenticated identities or effects.
-Its explicitly marked 50-agent sample is for UI exploration. The local Intel
-bundle includes Python 3.12 and targets macOS 12. Live Endpoint Security testing
-requires Apple-approved entitlement, signing, extension activation and the
-collector's own Full Disk Access. The development build cannot substitute these.
+Die eigenständige [native Anwendung](native/macos/README.md) bietet ein kompaktes
+Dashboard, Authority Graph, Beleginspektor, deutsche/englische Lokalisierung und
+einen gesonderten macOS-Berechtigungs-/Testhost. Sie verarbeitet den unveränderten
+neutralen Produktbericht; gemeldete Einträge werden dadurch nicht zu
+authentifizierten Identitäten oder Wirkungen. Die ausdrücklich gekennzeichnete
+50-Agenten-Probe dient der Oberflächenerkundung. Das lokale Intel-Bundle enthält
+Python 3.12 und zielt auf macOS 12. Live-Tests von Endpoint Security benötigen
+von Apple genehmigte Berechtigung, Signierung, Erweiterungsaktivierung und den
+eigenen Festplattenvollzugriff des Kollektors. Der Entwicklungsbuild ersetzt
+diese Voraussetzungen nicht.
 
-## Workflow observations / Workflow-Beobachtung
+## Workflow-Beobachtung
 
-**English:** The current local preview adds a versioned, bounded workflow-metadata
-projection over selected existing task/audit/event records. The original neutral
-v1 remains unchanged. The native graph reads the explicit workflow-report wrapper,
-shows reported task/run/handoff/source references and retains unknown identity and
-external effect. It creates no new task queue/audit stream and grants no rights,
-secrets, budgets, stop authority or project acceptance. Identical events are
-counted once; conflicting, missing and unordered records stay visible.
-[Scoped workflow findings](docs/WORKFLOW-WARNINGS.md) compare revision/return,
-artifact and declared control/stop evidence; conflicts remain reported claims,
-missing prerequisites remain unknown, and zero findings proves no global safety. Actual
-limits, supported producer types and remaining live-adapter gaps are documented
-in [Workflow observations](docs/WORKFLOW-OBSERVATIONS.md).
-
-**Deutsch:** Die lokale Vorschau ergänzt eine versionierte, begrenzte Projektion
-vorhandener Workflow-Metadaten. Der neutrale v1-Vertrag bleibt erhalten. Graph und
-Inspector lesen den ausdrücklich neuen Workflow-Reportwrapper; Identität und
-externe Wirkung bleiben unbekannt. Keine neue Aufgabenwarteschlange/Auditwelt,
-keine Rechte-, Geheimnis- oder Budgetfreigabe und keine Nutzerabnahme. Duplikate
-zählen einmal; Konflikte und Lücken bleiben sichtbar.
+Die lokale Vorschau ergänzt eine versionierte, begrenzte Projektion ausgewählter
+vorhandener Aufgaben-/Audit-/Ereignismetadaten. Der neutrale v1-Vertrag bleibt
+erhalten. Graph und Inspektor lesen den ausdrücklich neuen Workflow-Berichts-
+wrapper und zeigen gemeldete Aufgaben-, Lauf-, Übergabe- und Quellenreferenzen;
+Identität und externe Wirkung bleiben unbekannt. Es entstehen keine neue
+Aufgabenwarteschlange oder Auditwelt, keine Rechte-, Geheimnis-, Budget- oder
+Stoppbefugnis und keine Projektabnahme. Identische Ereignisse zählen einmal;
+widersprüchliche, fehlende oder ungeordnete Einträge bleiben sichtbar.
 [Begrenzte fachliche Hinweise](docs/WORKFLOW-WARNINGS.md) vergleichen Revisionen,
-Rückgaben, Artefakt- und gemeldete Kontroll-/Sperrbelege. Keine Hinweise bedeutet
-keine allgemeine Sicherheitsbestätigung. Das Repository ist privat;
+Rückgaben, Artefakte und gemeldete Kontroll-/Sperrbelege. Widersprüche bleiben
+gemeldete Behauptungen, fehlende Voraussetzungen bleiben unbekannt; keine
+Hinweise sind keine allgemeine Sicherheitsbestätigung. Tatsächliche Grenzen,
+unterstützte Erzeugertypen und offene Live-Adapterlücken stehen in der
+[Workflow-Beobachtung](docs/WORKFLOW-OBSERVATIONS.md). Das Repository ist privat;
 es gibt keinen öffentlich freigegebenen Download oder fertigen Webdienst.
 
 ```sh
@@ -102,129 +109,160 @@ agent-authority workflow-inspect --input /path/selected-metadata \
   --source-tool kirabridge --source-id local-run --format json
 ```
 
-Version **0.3.0a2** is still the local source preview; this change does not create a
-GitHub release or installed runtime upgrade. Python3.12 CLI and the macOS native
-development path are distinct from a released package. Existing bounded readers
-are already implemented; no new unrestricted archive intake is introduced.
-[Actual scoped evidence](docs/evidence/seven-tools-20261018/STATUS.md).
+Version **0.3.0a2** ist weiterhin die lokale Quellvorschau; diese Änderung erzeugt
+keinen GitHub-Release und aktualisiert keine installierte Laufzeit. Die
+Python-3.12-CLI und der native macOS-Entwicklungsweg sind von einem freigegebenen
+Paket zu unterscheiden. Begrenzte Leser sind bereits implementiert; es wird
+keine neue unbeschränkte Archivaufnahme eingeführt.
+[Tatsächliche begrenzte Belege](docs/evidence/seven-tools-20261018/STATUS.md).
 
-## Historical research baseline
+## Historische Forschungsgrundlage
 
-Experimental security lab: can **deterministic workflow-level state and information-flow enforcement** stop **some modeled** composition attacks that per-action authorization misses?
+Experimentelles Sicherheitslabor: Kann **deterministische Zustands- und
+Informationsflussdurchsetzung auf Workflowebene** **einige modellierte**
+Kompositionsangriffe stoppen, die eine Autorisierung einzelner Aktionen übersieht?
 
-This is **not** a production system and **not** a proof of general agent safety.
+Dies ist **kein** Produktivsystem und **kein** Beweis allgemeiner Agentensicherheit.
 
-## License
+## Lizenz
 
-**Source-available — all rights reserved.** The repository is currently **private**. Access for review, research discussion, or security evaluation requires an explicit invitation; but new material may not be copied, modified, distributed, deployed, or sold without prior written permission. Historical revisions published before the license-change commit remain available under the MIT License that applied to them. See [LICENSE](LICENSE) for the exact boundary and terms.
+**Quelltext einsehbar – alle Rechte vorbehalten.** Das Repository ist derzeit
+**privat**. Zugang für Prüfung, Forschungsdiskussion oder Sicherheitsbewertung
+benötigt eine ausdrückliche Einladung. Neues Material darf ohne vorherige
+schriftliche Erlaubnis nicht kopiert, verändert, verbreitet, eingesetzt oder
+verkauft werden. Vor dem Lizenzwechsel veröffentlichte historische Fassungen
+behalten die damals geltende MIT-Lizenz. Genaue Grenze und Bedingungen stehen
+in [LICENSE](LICENSE).
 
-[License history and third-party scope / Lizenzhistorie und Drittbestandteile](docs/LICENSE-HISTORY-AND-THIRD-PARTY.md) records the source pins and remaining distribution checks.
+Diese Erläuterung ist eine deutsche Zusammenfassung. Die operative LICENSE
+enthält bis zur Freigabe des vollständigen deutschen Entwurfs weiterhin das
+englische Original. Deutsch als Zielsprache ist entschieden; eine bereits
+maßgebliche deutsche Vertragsfassung wird hier nicht behauptet. Der frühere
+Vorschlag eines englischen Sprachvorrangs ist verworfen.
+
+[Die Lizenzhistorie und Drittbestandteile](docs/LICENSE-HISTORY-AND-THIRD-PARTY.md)
+dokumentiert Quellpins und offene Auslieferungsprüfungen.
 
 ## Status
 
-The original v0.2 specification remains frozen. Subsequent additive experiments are separately frozen and reviewed. They do not rewrite v0.2.
+Die ursprüngliche Spezifikation v0.2 bleibt eingefroren. Spätere ergänzende
+Experimente sind jeweils gesondert eingefroren und geprüft. Sie schreiben v0.2
+nicht um.
 
-| Layer | What | Notes |
-|---|---|---|
-| Phase 1 | v0.2–v0.5/I9 composition monitor | Completed experimental slices |
-| Phase 2 Exp 01 | Explicit IFC vs authority-only | Hypothesis SUPPORTED *inside the fake lab* |
-| Phase 2 Exp 02 | Communication Gate | Hypothesis SUPPORTED *inside the fake lab* |
-| Phase 2 Exp 03 | Modeled implicit / control-flow dependency | Hypothesis SUPPORTED *inside modeled control dependencies* |
-| Phase 2 repair | Value-id binding (no SENSITIVE→PUBLIC rebind) | Additive. Not Experiment 04. `docs/PHASE2-VALUE-ID-BINDING.md` |
-| Phase 1 repair | In-process `submit` lock + `INVALID_REQUEST` | `docs/PHASE1-SUBMIT-ATOMICITY.md` |
-| Phase 1 repair | FakeAdapter canonical path = repo key (T-19) | `docs/PHASE1-ADAPTER-IDENTITY.md` |
-| Phase 1 repair | Public `state()` is a snapshot; provenance frozen | `docs/PHASE1-STATE-ENCAPSULATION.md` |
-| Phase 1 repair | Workflow registry: capacity+reserve atomic; `finish()` is coordinator-only | `docs/PHASE1-WORKFLOW-LIFECYCLE-ATOMICITY.md` |
-| Tooling | Program-STOP numbers, PBT oracles, CI | Not Experiment 04. See `docs/RESEARCH-METHOD.md` §3.1 and `docs/PBT-ORACLE-v1.md` |
-| Tooling | Convergence battery protocol + catalog v1 | Additive. Not Experiment 04. `docs/CONVERGENCE-BATTERY-v1.md`, `docs/CONVERGENCE-ATTACK-CATALOG-v1.md` |
-| Tooling | Convergence battery v1 scores | `k = 1` MISSED (CB-01). Not refuted on this battery. **Not** SUPPORTED. `docs/CONVERGENCE-BATTERY-v1-RESULTS.md` |
-| Tooling | Real-case transfer study v1 | External battery (Codex) against `cb2dc55`. RC-01–RC-05 are measured misses, not broken tests. `docs/REAL-CASE-TRANSFER-STUDY-v1.md` |
+| Ebene | Gegenstand | Hinweise |
+| --- | --- | --- |
+| Phase 1 | Kompositionsmonitor v0.2–v0.5/I9 | Abgeschlossene experimentelle Teilschritte |
+| Phase 2 Exp 01 | Explizite IFC gegenüber reiner Autoritätsprüfung | Hypothese SUPPORTED *innerhalb des künstlichen Labors* |
+| Phase 2 Exp 02 | Kommunikationsschranke | Hypothese SUPPORTED *innerhalb des künstlichen Labors* |
+| Phase 2 Exp 03 | Modellierte implizite/Kontrollflussabhängigkeit | Hypothese SUPPORTED *innerhalb modellierter Kontrollabhängigkeiten* |
+| Korrektur Phase 2 | Wert-ID-Bindung, keine SENSITIVE→PUBLIC-Neubindung | Ergänzend. Kein Experiment 04. `docs/PHASE2-VALUE-ID-BINDING.md` |
+| Korrektur Phase 1 | Prozessinterne `submit`-Sperre und `INVALID_REQUEST` | `docs/PHASE1-SUBMIT-ATOMICITY.md` |
+| Korrektur Phase 1 | Kanonischer FakeAdapter-Pfad entspricht Repositoryschlüssel (T-19) | `docs/PHASE1-ADAPTER-IDENTITY.md` |
+| Korrektur Phase 1 | Öffentliches `state()` ist eine Momentaufnahme; Herkunft eingefroren | `docs/PHASE1-STATE-ENCAPSULATION.md` |
+| Korrektur Phase 1 | Workflowregister: Kapazität und Reservierung atomar; `finish()` nur durch Koordinator | `docs/PHASE1-WORKFLOW-LIFECYCLE-ATOMICITY.md` |
+| Werkzeuge | Programm-STOP-Zahlen, PBT-Orakel, CI | Kein Experiment 04. Siehe `docs/RESEARCH-METHOD.md` §3.1 und `docs/PBT-ORACLE-v1.md` |
+| Werkzeuge | Konvergenzprüfprotokoll und Katalog v1 | Ergänzend. Kein Experiment 04. `docs/CONVERGENCE-BATTERY-v1.md`, `docs/CONVERGENCE-ATTACK-CATALOG-v1.md` |
+| Werkzeuge | Ergebnisse der Konvergenzprüfung v1 | `k = 1` MISSED (CB-01). In dieser Prüfung nicht widerlegt. **Nicht** SUPPORTED. `docs/CONVERGENCE-BATTERY-v1-RESULTS.md` |
+| Werkzeuge | Übertragungsstudie realer Fälle v1 | Externe Prüfung (Codex) gegen `cb2dc55`. RC-01–RC-05 sind gemessene übersehene Fälle, keine defekten Tests. `docs/REAL-CASE-TRANSFER-STUDY-v1.md` |
 
-Latest verified suite is recorded in the most recent review. **PASS ≠ SUPPORTED.**
+Die zuletzt geprüfte Testsuite ist im jüngsten Review dokumentiert.
+**PASS ≠ SUPPORTED.** Grüne Tests zeigen Spezifikationskonformität innerhalb
+dieser künstlichen Welt. Siehe [Forschungsmethode](docs/RESEARCH-METHOD.md).
 
-**PASS ≠ SUPPORTED.** Green tests are spec conformance in this fake world. See [docs/RESEARCH-METHOD.md](docs/RESEARCH-METHOD.md).
+Das Labor ist von 4AllPass getrennt. Keine echten Zugangsdaten, Produktivsysteme
+oder Geheimnisse werden verwendet.
 
-The lab is separate from 4AllPass. No real credentials, production systems, or secrets.
+Der G3-Erzeuger hängt JSONL-Einträge des Phase-1-Authority-Event-Envelope an
+(`authority.requested` / `allowed` / `denied`). Außerhalb von pytest ist er
+standardmäßig an, unter pytest aus. `LAB_AUTHORITY_EVENTS=1` aktiviert ihn
+ausdrücklich; `0`, `false`, `off` oder `no` deaktivieren ihn in beiden Kontexten,
+unabhängig von Groß-/Kleinschreibung und umgebenden Leerzeichen. Fehlende, leere
+oder nur aus Leerzeichen bestehende Werte behalten den Kontextstandard;
+andere nicht leere Werte behalten das bisherige aktivierte Verhalten.
+Er schreibt niemals in eine ThreadDesk-Datenbank und ändert kein ALLOW/DENY des
+Labors. Dies ist kein Phase-2- oder externer Wirkungseventstrom. Exportierte
+Metadaten sind nicht automatisch frei von Geheimnissen; vollständige Schwärzung
+bleibt eine offene Grenze.
 
-The G3 producer appends Phase-1 Authority Event Envelope JSONL
-(`authority.requested` / `allowed` / `denied`). It is on by default outside pytest
-and off by default under pytest. `LAB_AUTHORITY_EVENTS=1` enables it explicitly;
-`0`, `false`, `off` or `no` disable it in either context, ignoring case and
-surrounding whitespace. Missing, empty or whitespace-only values retain the
-context default; other nonempty values retain their existing enabled behavior.
-It never writes a ThreadDesk database and does not change lab ALLOW/DENY.
-This is not a Phase-2 or external-effect event stream. Exported metadata is not
-automatically secret-free; complete redaction remains an open limitation.
+## P1: kontrollierter Beobachtungsversuch
 
-## P1: controlled observer attempt
-
-[P1 contract](docs/P1-CONTROLLED-RUN.md) and
-[measured results](docs/P1-CONTROLLED-RUN-RESULTS.md): one standalone research
-script, independent local target snapshot, **UNBEKANNT** for missing evidence.
-Historical enforcement is unchanged. A started CLI process is not a proven
-agent run; P1's recorded attempt has **zero proven agent runs**.
+[Vertrag P1](docs/P1-CONTROLLED-RUN.md) und
+[gemessene Ergebnisse](docs/P1-CONTROLLED-RUN-RESULTS.md): ein eigenständiges
+Forschungsskript, unabhängige lokale Zielmomentaufnahme, **UNBEKANNT** bei
+fehlenden Belegen. Historische Durchsetzung bleibt unverändert. Ein gestarteter
+CLI-Prozess ist kein nachgewiesener Agentenlauf; der dokumentierte P1-Versuch
+enthält **null nachgewiesene Agentenläufe**.
 
 ```bash
 .venv/bin/python scripts/p1_controlled_run.py --out /tmp/aa-p1-new-run --timeout 60
 ```
 
-The output directory must be new. Exit 2 means the agent run or reference
-comparison is unproven; inspect the separate observations, analysis and result.
-No raw CLI text is archived. This is not a complete execution audit or an
-implementation of the full six-case research panel.
+Das Ausgabeverzeichnis muss neu sein. Exitcode 2 bedeutet, dass Agentenlauf oder
+Referenzvergleich unbewiesen bleiben; die getrennten Beobachtungen, Analyse und
+Ergebnisse sind zu prüfen. Roher CLI-Text wird nicht archiviert. Dies ist kein
+vollständiges Ausführungsaudit und keine Umsetzung des vollständigen
+Forschungspanels mit sechs Fällen.
 
-Historical PR19 research and the PR17 service reference are inventoried in the
-[current research reconciliation](docs/RESEARCH-PR-ABGLEICH-20261011.md), with
-pinned original sources, reproduced integration conflicts and separate scopes.
+Historische PR19-Forschung und die PR17-Dienstreferenz sind im
+[aktuellen Forschungsabgleich](docs/RESEARCH-PR-ABGLEICH-20261011.md) inventarisiert,
+mit gepinnten Originalquellen, reproduzierten Integrationskonflikten und
+getrennten Geltungsbereichen.
 
-## Method (canonical)
+## Maßgebliche Methode
 
-- [docs/RESEARCH-METHOD.md](docs/RESEARCH-METHOD.md) — PASS vs hypothesis, cycle STOP, program-STOP, CI
-- [docs/CONVERGENCE-BATTERY-v1.md](docs/CONVERGENCE-BATTERY-v1.md) — program-STOP battery protocol
-- [docs/CONVERGENCE-ATTACK-CATALOG-v1.md](docs/CONVERGENCE-ATTACK-CATALOG-v1.md) — ten attacks; monitor-off frozen
-- [docs/CONVERGENCE-BATTERY-v1-RESULTS.md](docs/CONVERGENCE-BATTERY-v1-RESULTS.md) — scores; `k = 1`; not SUPPORTED
-- [docs/REAL-CASE-TRANSFER-STUDY-v1.md](docs/REAL-CASE-TRANSFER-STUDY-v1.md) — real-case transfer mappings; RC-01–RC-05 are known gaps
-- [docs/OBSERVATION-CASE-FINISH-LATE-EFFECT.md](docs/OBSERVATION-CASE-FINISH-LATE-EFFECT.md) — existing finish/late-effect evidence from the observer perspective; missing events remain explicit
-- [docs/realcase/v1/README.md](docs/realcase/v1/README.md) — archived ZIP + import prompt
-- [docs/PBT-ORACLE-v1.md](docs/PBT-ORACLE-v1.md) — Hypothesis contracts (not I9 default-deny)
-- [docs/THREAT-MODEL.md](docs/THREAT-MODEL.md)
-- [docs/OUT-OF-SCOPE-DEBT.md](docs/OUT-OF-SCOPE-DEBT.md)
-- [docs/EVALUATION-MATRIX.md](docs/EVALUATION-MATRIX.md)
-- [docs/ADR-002-research-method-and-review-semantics.md](docs/ADR-002-research-method-and-review-semantics.md)
-- [docs/ADR-001-I8-I9-action-boundary.md](docs/ADR-001-I8-I9-action-boundary.md) — historical I8/I9 conflict (unchanged)
+- [Forschungsmethode](docs/RESEARCH-METHOD.md) – PASS und Hypothese, Zyklus-STOP, Programm-STOP, CI
+- [Konvergenzprüfung v1](docs/CONVERGENCE-BATTERY-v1.md) – Programm-STOP-Prüfprotokoll
+- [Angriffskatalog v1](docs/CONVERGENCE-ATTACK-CATALOG-v1.md) – zehn Angriffe; Monitor-aus-Zustand eingefroren
+- [Ergebnisse v1](docs/CONVERGENCE-BATTERY-v1-RESULTS.md) – Ergebnisse; `k = 1`; nicht SUPPORTED
+- [Übertragungsstudie realer Fälle v1](docs/REAL-CASE-TRANSFER-STUDY-v1.md) – Zuordnungen realer Fälle; RC-01–RC-05 bleiben bekannte Lücken
+- [Beobachtung nach Abschluss](docs/OBSERVATION-CASE-FINISH-LATE-EFFECT.md) – vorhandene Abschluss-/Spätwirkungsbelege aus Beobachtersicht; fehlende Ereignisse bleiben ausdrücklich sichtbar
+- [Archiv realer Fälle v1](docs/realcase/v1/README.md) – archiviertes ZIP und Importprompt
+- [PBT-Orakel v1](docs/PBT-ORACLE-v1.md) – Hypothesis-Verträge, kein allgemeines I9-Verweigern
+- [Bedrohungsmodell](docs/THREAT-MODEL.md)
+- [Offene und bewusst ausgeschlossene Punkte](docs/OUT-OF-SCOPE-DEBT.md)
+- [Bewertungsmatrix](docs/EVALUATION-MATRIX.md)
+- [ADR-002](docs/ADR-002-research-method-and-review-semantics.md)
+- [ADR-001](docs/ADR-001-I8-I9-action-boundary.md) – historischer I8/I9-Konflikt, unverändert
 
-Historical files titled “Independent Verification” are **not** renamed. Going forward they are read as same-context adversarial / post-implementation verification, not external audits.
+Historische Dateien mit dem Titel „Independent Verification“ werden nicht
+umbenannt. Sie werden künftig als adversarielle Prüfung im selben Kontext bzw.
+Prüfung nach Umsetzung gelesen, nicht als externe Audits.
 
-## Research question
+## Forschungsfrage
 
-Can a workflow of individually authorized agent actions still create a forbidden cumulative outcome, and can a small deterministic composition monitor detect those cases without putting an LLM in the trusted core?
+Kann ein Workflow einzeln autorisierter Agentenaktionen weiterhin ein verbotenes
+Gesamtergebnis erzeugen, und kann ein kleiner deterministischer
+Kompositionsmonitor diese Fälle erkennen, ohne ein LLM in den vertrauenswürdigen
+Kern aufzunehmen?
 
-## Rules
+## Regeln
 
-- Use existing security primitives where possible.
-- No custom cryptography.
-- No custom capability format unless a concrete gap is demonstrated.
-- LLMs may propose actions but must not authorize them.
-- Tests are acceptance criteria and must not be weakened to fit an implementation.
-- A failed hypothesis is a valid research result.
-- Do not expand scope because a review said STOP; a new experiment needs a new frozen spec.
-- After every commit, **push** to `origin`. Local-only commits are not done (`scripts/install-git-hooks.sh`).
+- Vorhandene Sicherheitsbausteine verwenden, soweit möglich.
+- Keine eigene Kryptografie.
+- Kein eigenes Capability-Format ohne belegte konkrete Lücke.
+- LLMs dürfen Aktionen vorschlagen, aber nicht autorisieren.
+- Tests sind Abnahmekriterien und dürfen nicht zugunsten einer Implementierung abgeschwächt werden.
+- Eine gescheiterte Hypothese ist ein gültiges Forschungsergebnis.
+- Den Umfang nicht erweitern, weil ein Review STOP meldet; ein neues Experiment benötigt eine neue eingefrorene Spezifikation.
+- Nach jedem Commit zu `origin` **pushen**. Nur lokale Commits sind nicht abgeschlossen (`scripts/install-git-hooks.sh`).
 
-## Frozen sequence (Phase 1 origin)
+## Eingefrorene Reihenfolge am Ursprung von Phase 1
 
-1. Spec v0.1
-2. Composition Gate
-3. Technology decisions
-4. Prototype Spec v0.2
-5. Build deterministic prototype
-6. Test against frozen v0.2
-7. Additive slices v0.3–v0.5/I9 and Phase 2 experiments (each frozen separately)
+1. Spezifikation v0.1
+2. Kompositionsschranke
+3. Technologieentscheidungen
+4. Prototypspezifikation v0.2
+5. Deterministischen Prototyp bauen
+6. Gegen die eingefrorene v0.2 prüfen
+7. Ergänzende Teilschritte v0.3–v0.5/I9 und Phase-2-Experimente, jeweils gesondert eingefroren
 
-See `docs/` for the frozen design documents. Historical reviews keep their original titles and verdicts.
+Die eingefrorenen Entwurfsdokumente stehen unter `docs/`. Historische Reviews
+behalten ihre ursprünglichen Titel und Urteile.
 
-## v0.2 prototype (deterministic core)
+## Prototyp v0.2: deterministischer Kern
 
-Local composition monitor only. No LLM, no network, no real credentials.
+Ausschließlich lokaler Kompositionsmonitor. Kein LLM, Netzwerk oder echte
+Zugangsdaten.
 
 ```text
 ActionRequest → predict next WorkflowState → evaluate I1–I6
@@ -232,22 +270,25 @@ ActionRequest → predict next WorkflowState → evaluate I1–I6
   DENY:  leave state unchanged
 ```
 
-### Invariants
+### Invarianten
 
-| ID | Rule |
-|---|---|
+| ID | Regel |
+| --- | --- |
 | I1 | `action_count <= 100` |
-| I2 | unique written files `<= 10` |
-| I3 | `config/security-policy.json` is immutable |
+| I2 | Anzahl unterschiedlicher Dateien, in die geschrieben wurde, `<= 10` |
+| I3 | `config/security-policy.json` ist unveränderlich |
 | I4 | `delegation_depth <= 1` |
-| I5 | any `net.connect` destination is forbidden |
-| I6 | `repo.delete` / `release.publish` need `parameters.approval_token` |
+| I5 | Jedes `net.connect`-Ziel ist verboten |
+| I6 | `repo.delete` / `release.publish` benötigen `parameters.approval_token` |
 
-**Delegation convention:** root actor depth is 0. `root → A` is depth 1 (allowed). `A → B` is depth 2 (denied).
+**Delegationskonvention:** Der Wurzelakteur hat Tiefe 0. `root → A` hat Tiefe 1
+(erlaubt). `A → B` hat Tiefe 2 (verweigert).
 
-I4 only constrains the `delegate` action. Independent agents may still submit into the same `workflow_id` at depth 0 (required for the cross-agent accumulation tests). That is not a depth-chain.
+I4 begrenzt nur die Aktion `delegate`. Unabhängige Agenten können weiterhin in
+dieselbe `workflow_id` auf Tiefe 0 einreichen, wie für agentenübergreifende
+Akkumulationstests benötigt. Das ist keine Tiefenkette.
 
-### Run tests
+### Tests ausführen
 
 ```bash
 python3.12 -m venv .venv
@@ -256,60 +297,71 @@ python3.12 -m venv .venv
 # CI runs the same suite twice on Python 3.12 (see .github/workflows/test.yml)
 ```
 
-### What v0.2 does **not** prove
+### Was v0.2 nicht beweist
 
-- general agent safety
-- alignment or proof of intent
-- complete information-flow security
-- semantic code safety
-- enterprise readiness
-- that Biscuit, Cedar, or FIDES would help (not integrated)
+- allgemeine Agentensicherheit
+- Ausrichtung oder Absichtsnachweis
+- vollständige Informationsflusssicherheit
+- semantische Codesicherheit
+- Unternehmenseinsatzbereitschaft
+- einen Nutzen von Biscuit, Cedar oder FIDES; diese sind nicht integriert
 
-A STOP result on the research hypothesis is valid.
+Ein STOP zur Forschungshypothese ist gültig.
 
-## v0.3 (canonical artifact identity)
+## v0.3: kanonische Artefaktidentität
 
-Additive. Frozen v0.2 is unchanged. See `docs/PROTOTYPE-v0.3.md`.
+Ergänzend. Die eingefrorene v0.2 bleibt unverändert.
+Siehe `docs/PROTOTYPE-v0.3.md`.
 
-- Path aliases (`./`, `..`, `//`) collapse before I2/I3.
-- **I7:** `file.delete` of `tests/test_security.py` or anything under `tests/security/` needs `approval_token`.
+- Pfadaliase (`./`, `..`, `//`) werden vor I2/I3 normalisiert.
+- **I7:** `file.delete` für `tests/test_security.py` oder alles unter `tests/security/` benötigt `approval_token`.
 
-## v0.4 (I8 — mutation completeness)
+## v0.4: vollständige Mutationsprüfung I8
 
-Additive. Frozen v0.2 and v0.3 are unchanged. See `docs/PROTOTYPE-v0.4.md`.
+Ergänzend. Die eingefrorenen v0.2 und v0.3 bleiben unverändert.
+Siehe `docs/PROTOTYPE-v0.4.md`.
 
-- Mutating verbs on the protected policy other than `file.write` are DENY (I8). I3 is not relaxed.
-- Mutating verbs on security-test artifacts other than `file.delete` need `approval_token` (I8).
-- I7 identity matcher is the v0.3 list only (no filename heuristic).
-- Not in this slice: global default-deny, I2-on-delete, adapter key canonicalization.
+- Ändernde Verben auf der geschützten Richtlinie außer `file.write` werden durch I8 verweigert. I3 wird nicht gelockert.
+- Ändernde Verben auf Sicherheitstestartefakten außer `file.delete` benötigen nach I8 `approval_token`.
+- Der I7-Identitätsabgleich verwendet ausschließlich die v0.3-Liste, keine Dateinamenheuristik.
+- Nicht Teil dieses Schritts: allgemeines Verweigern, I2 beim Löschen, kanonischer Adapterschlüssel.
 
-## v0.5 (I9 — unknown action on protected identity)
+## v0.5: unbekannte Aktion auf geschützter Identität I9
 
-Additive. Frozen v0.2–v0.4 are unchanged. See `docs/PROTOTYPE-v0.5-I9.md`.
+Ergänzend. Die eingefrorenen v0.2–v0.4 bleiben unverändert.
+Siehe `docs/PROTOTYPE-v0.5-I9.md`.
 
-- Unknown action string + protected canonical identity → DENY `I9_UNKNOWN_ACTION_PROTECTED`.
-- Exact known/safe vocabulary only. No case folding, no alias interpretation, no LLM.
-- I9 does not globally deny unknown actions on ordinary resources.
-- `approval_token` does not authorize an unknown policy action.
+- Unbekannte Aktionszeichenfolge und geschützte kanonische Identität ergeben DENY `I9_UNKNOWN_ACTION_PROTECTED`.
+- Exaktes bekanntes/sicheres Vokabular. Keine Groß-/Kleinschreibungsanpassung, Aliasinterpretation oder LLM.
+- I9 verweigert nicht pauschal unbekannte Aktionen auf gewöhnlichen Ressourcen.
+- `approval_token` autorisiert keine unbekannte Richtlinienaktion.
 
-## Phase 2 (Experiment 01 — IFC composition)
+## Phase 2: Experiment 01, IFC-Komposition
 
-Additive and isolated under `lab/phase2/`. Frozen spec: `docs/PHASE2-EXPERIMENT-01.md`.
+Ergänzend und unter `lab/phase2/` isoliert.
+Eingefrorene Spezifikation: `docs/PHASE2-EXPERIMENT-01.md`.
 
-Does not amend Phase 1. No LLM. Two labels only (`PUBLIC` / `SENSITIVE`).
+Phase 1 bleibt unverändert. Kein LLM. Nur zwei Kennzeichnungen (`PUBLIC` / `SENSITIVE`).
 
-A/B: authority-only lets the READ→TRANSFER→EGRESS composition succeed; authority+IFC denies SENSITIVE external egress while PUBLIC egress by B remains ALLOW.
+A/B: Reine Autoritätsprüfung lässt READ→TRANSFER→EGRESS zu; Autoritätsprüfung mit
+IFC verweigert den externen SENSITIVE-Abfluss, während der PUBLIC-Abfluss durch
+B weiterhin ALLOW bleibt.
 
-## Phase 2 (Experiment 02 — Communication Gate)
+## Phase 2: Experiment 02, Kommunikationsschranke
 
-Additive. Frozen spec: `docs/PHASE2-EXPERIMENT-02-COMMUNICATION-GATE.md`. Experiment 01 is unchanged.
+Ergänzend. Eingefrorene Spezifikation:
+`docs/PHASE2-EXPERIMENT-02-COMMUNICATION-GATE.md`. Experiment 01 bleibt unverändert.
 
-Cross-agent transfer is `A → Communication Gate → B`. The gate evaluates metadata only (`evaluate_transfer`). No payload, tools, credentials, or policy writes.
+Die agentenübergreifende Übertragung ist `A → Communication Gate → B`.
+Die Schranke prüft nur Metadaten (`evaluate_transfer`). Keine Nutzdaten,
+Werkzeuge, Zugangsdaten oder Richtlinienänderungen.
 
-## Phase 2 (Experiment 03 — modeled implicit flow)
+## Phase 2: Experiment 03, modellierter impliziter Informationsfluss
 
-Additive. Frozen spec: `docs/PHASE2-EXPERIMENT-03-IMPLICIT-FLOW.md`. Experiments 01–02 unchanged.
+Ergänzend. Eingefrorene Spezifikation:
+`docs/PHASE2-EXPERIMENT-03-IMPLICIT-FLOW.md`. Experimente 01–02 bleiben unverändert.
 
-Explicit `derived_from` IFC is the baseline. Modeled `control_decide` + `created_under` inherit SENSITIVE across A’s state write so B’s egress can be denied without transferring C1. PUBLIC control-flow egress remains ALLOW. No payload DLP, no LLM.
-
-
+Explizites `derived_from`-IFC ist die Grundlage. Modelliertes `control_decide`
+und `created_under` vererben SENSITIVE über As Zustandsänderung, sodass Bs
+Abfluss ohne Übertragung von C1 verweigert werden kann. PUBLIC-Kontrollflussabfluss
+bleibt ALLOW. Keine Nutzdaten-DLP und kein LLM.
