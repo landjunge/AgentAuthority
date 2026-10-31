@@ -26,7 +26,7 @@ Agent Authority liest ausgewählte lokale Beobachtungen und macht Aufgabenaktivi
 
 Das Repository ist privat und benötigt eine Einladung. Es gibt kein veröffentlichtes Installationspaket und keinen fertigen Webdienst. Nutzung und Änderungen benötigen eine Erlaubnis gemäß [Lizenz](LICENSE).
 
-## Was heute vorhanden ist
+## Wobei Agent Authority dir hilft
 
 - **Beobachtungen lesen:** ausgewählte lokale JSON-Daten aufnehmen; ThreadDesk ist ein optionaler Leseadapter.
 - **Verläufe prüfen:** gemeldete Aufgaben, Rückgaben und strukturelle Warnungen anzeigen; Lücken und Konflikte bleiben sichtbar.
@@ -57,10 +57,10 @@ Die fünf Produkte bleiben eigenständig. Geplant ist ein gemeinsamer Ablauf mit
 
 Einzelne Schnittstellen sind vorhanden. Ein vollständig eingerichteter und geprüfter Ablauf aller fünf Produkte ist noch geplant. Freigaben bleiben beim zuständigen Werkzeug und beim Menschen. KiraBridge und Agent Authority benötigen Zugriff auf ihre privaten Repositorys.
 
-[Produktbedienung](docs/PRODUCT-PREVIEW.md) · [Workflow-Hinweise](docs/WORKFLOW-WARNINGS.md) · [macOS und Build](native/macos/README.md) · [Historische Forschung](docs/RESEARCH-BASELINE.md)
-
-## Lizenz und Mitwirkung
+## Lizenz
 
 [Source-available, alle Rechte vorbehalten](LICENSE). Repositoryzugriff allein erlaubt keine Nutzung, Änderung oder Weiterverteilung. Historische MIT-Lizenzrechte bleiben erhalten.
 
 Produktidee und Architektur: **Daniel Filipek (landjunge)**. KI unterstützt Implementierung und Dokumentation. Nachvollziehbare Reviews sind willkommen; Laborergebnisse behalten ihren begrenzten Forschungsumfang.
+
+[Produktbedienung](docs/PRODUCT-PREVIEW.md) · [Workflow-Hinweise](docs/WORKFLOW-WARNINGS.md) · [macOS und Build](native/macos/README.md) · [Historische Forschung](docs/RESEARCH-BASELINE.md)

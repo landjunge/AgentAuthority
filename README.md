@@ -26,7 +26,7 @@ Agent Authority reads selected local observations and shows task activity, contr
 
 The repository is private and requires an invitation. There is no published installation package or finished web service. Use and modifications require permission under the [license](LICENSE).
 
-## What is available today
+## What Agent Authority helps you do
 
 - **Read observations:** import selected local JSON data; ThreadDesk is an optional read adapter.
 - **Inspect activity:** show reported tasks, returns and structural warnings; gaps and conflicts stay visible.
@@ -57,10 +57,10 @@ The five products remain independent. The goal is a shared workflow with **KiraB
 
 Some interfaces already exist. A fully configured and verified workflow across all five products is still planned. Approvals stay with the responsible tool and the human. KiraBridge and Agent Authority require access to their private repositories.
 
-[Product usage](docs/PRODUCT-PREVIEW.md) · [Workflow findings](docs/WORKFLOW-WARNINGS.md) · [macOS and builds](native/macos/README.md) · [Historical research](docs/RESEARCH-BASELINE.md)
-
-## License and contributions
+## License
 
 [Source-available, all rights reserved](LICENSE). Repository access alone does not permit use, modification or redistribution. Historical MIT license rights remain intact.
 
 Product concept and architecture: **Daniel Filipek (landjunge)**. AI assists with implementation and documentation. Verifiable reviews are welcome; lab results retain their limited research scope.
+
+[Product usage](docs/PRODUCT-PREVIEW.md) · [Workflow findings](docs/WORKFLOW-WARNINGS.md) · [macOS and builds](native/macos/README.md) · [Historical research](docs/RESEARCH-BASELINE.md)
