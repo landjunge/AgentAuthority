@@ -125,6 +125,14 @@ Der Aufrufer muss **vorher** Principal-/Projektgrenzen prüfen. Der Helper fragt
 keine fremden Tasks ab, erzeugt keine neue Sequenz und ersetzt kein vorhandenes
 Audit. Daten lesen, projektiert ausgeben und erst bei ausdrücklichem Bedarf als
 begrenzten Snapshot sichern. Rückgabe-/Quelle-/Handoff-Revisionen bleiben getrennt.
+Eine mitgelieferte `bridge_task_id` muss zur ID des gerade projizierten Tasks
+passen. Sind `task_id` und `original_task_id` beide vorhanden, müssen sie dieselbe
+ursprüngliche ThreadDesk-Aufgabe bezeichnen. Widersprüche werden mit
+`workflow_task_binding_mismatch` abgelehnt, statt eine ID still zu ersetzen.
+Fehlende oder ungültige Core-Task-IDs ergeben `workflow_invalid_metadata`.
+Bei Folgeturns muss der Aufrufer die Bindung für den jeweiligen Core-Task liefern;
+die ID des ersten Turns ist kein Ersatz dafür. Diese Konsistenzprüfung bestätigt
+weder Identität noch Berechtigung und verändert keine übergebenen Metadaten.
 
 ### Wiederholung, Lücken, Rotation und Grenzen
 
@@ -185,7 +193,14 @@ secret-free. A whitelist is not universal DLP.
 
 `project_bridge_task` receives already authorized Store/audit/runtime metadata and
 persistent binding; the existing audit ID/sequence is supplied by the caller.
-It opens no database and writes no new stream. Known existing TollGate, 4AllPass
+It opens no database and writes no new stream.
+An explicitly supplied `bridge_task_id` must match the projected Core task ID;
+when both are supplied, `task_id` and `original_task_id` must identify the same
+original ThreadDesk task. Conflicts raise `workflow_task_binding_mismatch`;
+missing or invalid Core task IDs raise `workflow_invalid_metadata`. Continuation
+turns need their own matching Core task binding. Inputs remain unchanged; this
+consistency check does not authenticate a source or grant execution rights.
+Known existing TollGate, 4AllPass
 and Gnom Authority Envelope v1 types are supported, with unknown global order when
 legacy records lack an ordinal. BlockDesigner/ThreadDesk records use the explicit
 new metadata contract; no end-to-end live producer integration is claimed here.

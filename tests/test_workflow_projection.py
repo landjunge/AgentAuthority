@@ -250,6 +250,57 @@ def test_new_cli_keeps_old_v1_entry_path_and_produces_offline_wrapper(
 
 
 @pytest.mark.parametrize(
+    "binding",
+    [
+        {"bridge_task_id": "another-kb-task"},
+        {"bridge_task_id": None},
+        {"task_id": "thread:one", "original_task_id": "thread:two"},
+    ],
+)
+def test_bridge_export_rejects_conflicting_task_bindings(binding: dict[str, Any]):
+    task = {"id": "kb-task-1", "state": "completed"}
+    before = json.dumps([task, binding], sort_keys=True)
+    with pytest.raises(ReadIssue, match="^workflow_task_binding_mismatch$"):
+        project_bridge_task(task, binding, source_id="runtime", event_id="audit-1", ordinal=1)
+    assert json.dumps([task, binding], sort_keys=True) == before
+
+
+@pytest.mark.parametrize("task_id", [None, True, "", "/private/task"])
+def test_bridge_export_validates_task_identity(task_id: Any):
+    task = {"state": "completed"}
+    if task_id is not None:
+        task["id"] = task_id
+    with pytest.raises(ReadIssue, match="^workflow_invalid_metadata$"):
+        project_bridge_task(task, {}, source_id="runtime", event_id="audit-1", ordinal=1)
+
+
+def test_bridge_export_preserves_matching_original_and_bridge_bindings(tmp_path: Path):
+    task = {"id": "kb-task-1", "state": "completed", "args": {"secret": "PRIVATE"}}
+    binding = {
+        "task_id": "thread:original",
+        "original_task_id": "thread:original",
+        "bridge_task_id": "kb-task-1",
+        "handoff_id": "handoff-1",
+        "handoff_revision": 2,
+        "run_id": "run-1",
+        "reported_status": "accepted_by_user",
+    }
+    before = json.dumps([task, binding], sort_keys=True)
+    record = project_bridge_task(
+        task, binding, source_id="local-run", event_id="audit-1", ordinal=1
+    )
+    write(tmp_path, [record])
+    value = report(tmp_path)
+    observed = value["events"][0]["binding"]
+    for key in binding.keys() - {"reported_status"}:
+        assert observed[key] == binding[key]
+    assert observed["reported_status"] == "turn_completed"
+    assert not value["task_completion_proven"] and not value["rights_granted"]
+    assert "PRIVATE" not in json.dumps(value)
+    assert json.dumps([task, binding], sort_keys=True) == before
+
+
+@pytest.mark.parametrize(
     "tool,event_type",
     [
         ("threaddesk", "handoff.created"),

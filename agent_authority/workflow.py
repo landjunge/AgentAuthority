@@ -557,6 +557,15 @@ def project_bridge_task(
     event_type = states.get(task.get("state", ""))
     if event_type is None:
         raise ReadIssue("workflow_unknown_event_type")
+    bridge_task_id = _reference(task.get("id"))
+    if "bridge_task_id" in binding and binding["bridge_task_id"] != bridge_task_id:
+        raise ReadIssue("workflow_task_binding_mismatch")
+    if (
+        "task_id" in binding
+        and "original_task_id" in binding
+        and binding["task_id"] != binding["original_task_id"]
+    ):
+        raise ReadIssue("workflow_task_binding_mismatch")
     result: dict[str, Any] = {
         "schema_version": EVENT_SCHEMA,
         "source_tool": "kirabridge",
@@ -568,7 +577,7 @@ def project_bridge_task(
     for key in BINDINGS | INTEGERS | HASH_FIELDS | ENUMS.keys():
         if key in binding:
             result[key] = binding[key]
-    result["bridge_task_id"] = task["id"]
+    result["bridge_task_id"] = bridge_task_id
     if source_hash is not None:
         result["source_hash"] = source_hash
     updated = task.get("updated")
