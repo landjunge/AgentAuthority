@@ -1,22 +1,24 @@
-# Agent Authority Lab
+# AgentAuthority Lab
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="assets/design/icons/dark/Agent-Authority-dark-128.png">
   <img src="assets/design/icons/light/Agent-Authority-light-128.png" alt="Agent-Authority" width="96" height="96">
 </picture>
 
+<p align="center"><strong>Agent<span style="color:#6480b6">Authority</span></strong></p>
+
 
 ## Aktueller Funktionsstand / Current capabilities
 
-**Deutsch:** Agent Authority ist eine Beobachtungs- und Analyseschicht. Die lokale Preview liest ausdrücklich ausgewählte JSON-Beobachtungen; ThreadDesk ist ein optionaler Adapter. Sie zeigt gemeldete Aufgabenaktivität, Warnungen und Belegreferenzen als Text, JSON oder offline lesbaren HTML-Bericht. Die native macOS-Oberfläche ergänzt Dashboard und Authority Graph. Agent Authority erteilt keine Freigaben, gibt keine Geheimnisse oder Budgets frei und stoppt keine Aufträge. Gemeldete Identitäten und Erfolge sind keine unabhängig bestätigten Nachweise.
+**Deutsch:** AgentAuthority ist eine Beobachtungs- und Analyseschicht. Die lokale Preview liest ausdrücklich ausgewählte JSON-Beobachtungen; ThreadDesk ist ein optionaler Adapter. Sie zeigt gemeldete Aufgabenaktivität, Warnungen und Belegreferenzen als Text, JSON oder offline lesbaren HTML-Bericht. Die native macOS-Oberfläche ergänzt Dashboard und Authority Graph. AgentAuthority erteilt keine Freigaben, gibt keine Geheimnisse oder Budgets frei und stoppt keine Aufträge. Gemeldete Identitäten und Erfolge sind keine unabhängig bestätigten Nachweise.
 
-**English:** Agent Authority observes and analyses explicitly selected local JSON observations, with ThreadDesk as an optional adapter. It reports task activity, warnings and evidence references as text, JSON or an offline HTML report. The native macOS interface adds a dashboard and Authority Graph. It does not approve actions, release secrets or budgets, or stop work. Reported identities and success labels are not independent verification.
+**English:** AgentAuthority observes and analyses explicitly selected local JSON observations, with ThreadDesk as an optional adapter. It reports task activity, warnings and evidence references as text, JSON or an offline HTML report. The native macOS interface adds a dashboard and Authority Graph. It does not approve actions, release secrets or budgets, or stop work. Reported identities and success labels are not independent verification.
 
 Python 3.12+ is required for the local CLI. / Die lokale CLI benötigt Python 3.12 oder neuer. [Bedienung / Usage](docs/PRODUCT-PREVIEW.md) · [Eingabevertrag / Observation contract](docs/PRODUCT-OBSERVATION-CONTRACT.md) · [macOS](native/macos/README.md).
 
 ## Current product role
 
-Agent Authority is exclusively an **observer / monitor / analysis layer**, as
+AgentAuthority is exclusively an **observer / monitor / analysis layer**, as
 recorded in [KI-Zentrale decision D-012](https://github.com/landjunge/KI-Zentralle/blob/main/DECISIONS.md#d-012--agent-authority-beobachtet-entscheidungen-bleiben-bei-den-zuständigen-tools).
 It reports observations, contradictions, risks and missing evidence. It does not
 grant or revoke rights, approve actions, release secrets or budgets, or stop work.
