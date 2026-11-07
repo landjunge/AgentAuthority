@@ -5,7 +5,7 @@
   <img src="assets/design/icons/light/Agent-Authority-light-128.png" alt="Agent-Authority" width="96" height="96">
 </picture>
 
-<p align="center"><img src="assets/design/wordmarks/AgentAuthority-dark.svg" alt="AgentAuthority" width="352"></p>
+<p align="center"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/design/wordmarks/AgentAuthority-dark.svg"><img src="assets/design/wordmarks/AgentAuthority-light.svg" alt="AgentAuthority" width="352"></picture></p>
 
 
 ## Aktueller Funktionsstand / Current capabilities
