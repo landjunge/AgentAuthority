@@ -30,15 +30,17 @@
 
 **KiraBridge ist die zentrale Sprach- und Computersteuerung der NetzwerkPunkt-Werkzeugfamilie.** Auf dem eigenen Rechner kann die KI bei passenden Berechtigungen Programme öffnen, Fenster wechseln, Notizen schreiben, Text direkt eingeben und Tastenkombinationen ausführen. Daneben gibt es **ThreadDesk** für Projekte und Arbeitsstände, **4AllPass** für Zugänge und Schlüssel, **TollGate** für Nutzungsgrenzen und Budgets und **Agent Authority** für ausschließlich lesende Beobachtung und Nachweise. Diese Rollen sind bewusst getrennt: **Agent Authority führt keine Computerbefehle aus und erteilt keine Berechtigungen.** Die vollständige sprachgesteuerte Verbindung aller Werkzeuge ist ein Ausbauziel, keine bereits vollständig abgenommene Funktion.
 
-## Nachvollziehbarkeit und Barrierefreiheit
+## Sprachbedienung und nachvollziehbare Agentenaktivität
 
-Ein wichtiges Ziel der Familie ist es, Menschen mit Behinderungen oder eingeschränkter Mobilität die selbstständige Computerbedienung über natürliche Sprache zu erleichtern. Wer Aufträge spricht, muss verstehen können, welche Aktionen gemeldet werden, welcher Agent beteiligt ist und wo Unsicherheit bleibt. Agent Authority soll hierbei mit lesbaren Beobachtungen, Warnungen und Belegreferenzen Transparenz schaffen. Die Beobachtung eines Berichts ist jedoch kein Beweis, dass eine reale Computeraktion stattgefunden hat. Lokale Preview-Funktionen, optionale ThreadDesk-Anbindungen und geplante Ausbaustufen bleiben getrennt. Wir verbessern die Verständlichkeit und Zuverlässigkeit fortlaufend.
+**Die NetzwerkPunkt-Werkzeugfamilie verfolgt als Hauptziel die natürliche Sprachbedienung von Computern und KI-Werkzeugen für alle.** KiraBridge verbindet die Bedienung; Agent Authority sorgt in seiner getrennten Rolle dafür, dass gemeldete Agentenaktivitäten, Warnungen und Belegreferenzen lesbar und überprüfbar bleiben. Beobachtete Berichte sind kein Beweis für tatsächlich ausgeführte Computeraktionen und erteilen keine Freigaben.
+
+**Barrierefreiheit denken wir als wichtigen zusätzlichen Nutzen mit, nicht als alleinige Zielgruppe.** Gut verständliche Statusmeldungen unterstützen Menschen, denen Maus- oder Tastaturbedienung schwerfällt, ebenso wie alle anderen Nutzenden. Preview-Funktionen, optionale ThreadDesk-Anbindungen und geplante Integrationen bleiben klar unterschieden. Wir verbessern die Verständlichkeit und Zuverlässigkeit fortlaufend.
 
 ## NetzwerkPunkt family: shared voice interface, separate responsibilities
 
 **KiraBridge is the central voice and computer-control connection** for the NetzwerkPunkt family. Subject to permissions, it can open applications, switch windows, write notes, enter text directly and use shortcuts. **ThreadDesk** maintains projects and work history, **4AllPass** manages credentials and keys, **TollGate** handles usage limits and budgets, and **Agent Authority** provides read-only observations and evidence. Agent Authority does not execute computer commands or grant access. Fully integrated voice control across all tools is a development goal, not an already verified deployment.
 
-Making computers easier to use for people with disabilities or reduced mobility is an important motivation. When a user issues spoken requests, it matters that agent activity, warnings and evidence can be understood and reviewed. Agent Authority helps present reported activity, while distinguishing reports from independently verified real-world actions. Preview functionality, optional integrations and planned capabilities must not be conflated.
+**Natural-language control for everyone is the family's primary goal.** Accessibility is considered as an important additional benefit rather than an exclusive audience or the sole purpose. Clear agent reports, warnings and evidence are useful to all users, including people with disabilities or reduced mobility. Reported actions must not be confused with independently verified real-world results; preview capabilities, optional integrations and future plans remain distinct.
 
 ## Aktueller Funktionsstand / Current capabilities
 
