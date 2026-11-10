@@ -26,6 +26,8 @@
 
 <p align="center"><strong>Understand what your AI agents report.</strong><br>Nachvollziehen, was deine KI-Agenten melden.</p>
 
+**Teil der NetzwerkPunkt-Werkzeugfamilie:** KiraBridge verbindet ChatGPT mit den Werkzeugen auf deinem Rechner und ist der zentrale Weg für die Bedienung per Sprache oder Chat. Zur Familie gehören **KiraBridge** (Verbindung und Steuerung), **ThreadDesk** (Projekte und Arbeitsstände), **4AllPass** (Zugänge und Schlüssel), **TollGate** (Nutzungsgrenzen und Budgets) und **Agent Authority** (ausschließlich Beobachtung und Nachweise). Die Werkzeuge bleiben eigenständig. **Die Verbindung aller fünf Werkzeuge über Sprache ist unser gemeinsames Ausbauziel:** Vorhandene Anbindungen und geplante Funktionen werden jeweils getrennt dokumentiert, nicht als schon vollständig fertig dargestellt.
+
 ## Aktueller Funktionsstand / Current capabilities
 
 **Deutsch:** AgentAuthority ist eine Beobachtungs- und Analyseschicht. Die lokale Preview liest ausdrücklich ausgewählte JSON-Beobachtungen; ThreadDesk ist ein optionaler Adapter. Sie zeigt gemeldete Aufgabenaktivität, Warnungen und Belegreferenzen als Text, JSON oder offline lesbaren HTML-Bericht. Die native macOS-Oberfläche ergänzt Dashboard und Authority Graph. AgentAuthority erteilt keine Freigaben, gibt keine Geheimnisse oder Budgets frei und stoppt keine Aufträge. Gemeldete Identitäten und Erfolge sind keine unabhängig bestätigten Nachweise.
