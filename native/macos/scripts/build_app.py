@@ -159,11 +159,20 @@ def main():
         ignore=shutil.ignore_patterns("__pycache__"),
     )
     shutil.copy2(REPO / "LICENSE", resources / "LICENSE-AgentAuthority.txt")
+    shutil.copy2(
+        REPO / "assets/design/icons/macos/Agent-Authority-dark.icns",
+        resources / "AgentAuthority.icns",
+    )
+    # The packaged header resolves its original assets without a checkout or SwiftPM build path.
+    shutil.copytree(
+        ROOT / "Sources/AgentAuthorityMac/Resources/ProductHeader", resources / "ProductHeader"
+    )
     info = {
         "CFBundleIdentifier": BUNDLE_ID,
         "CFBundleName": "Agent Authority",
         "CFBundleDisplayName": "Agent Authority",
         "CFBundleExecutable": "AgentAuthorityMac",
+        "CFBundleIconFile": "AgentAuthority.icns",
         "CFBundlePackageType": "APPL",
         "CFBundleVersion": "1",
         "CFBundleShortVersionString": "0.1.0",

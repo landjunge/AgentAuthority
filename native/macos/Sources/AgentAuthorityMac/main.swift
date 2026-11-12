@@ -9,19 +9,31 @@ private final class AppWindow:NSWindow {
 final class AppDelegate:NSObject,NSApplicationDelegate,NSToolbarDelegate {
     let state=AppState(),bridge=EngineBridge(),host=PermissionHost()
     var window:NSWindow!,split:MainSplitController!,hostWindow:NSWindow?,settingsWindow:NSWindow?
+    let familySwitch = FamilySwitchClient()
+    var familyContent:FamilyContentController?
     var observer:NSObjectProtocol?
     func applicationDidFinishLaunching(_ notification:Notification){
+        // Only an identical installed executable is a duplicate; historical review bundles stay independent.
+        if Bundle.main.bundleURL.pathExtension == "app", Bundle.main.bundleIdentifier == "de.agentauthority.observer",
+           let existing = NSRunningApplication.runningApplications(withBundleIdentifier:"de.agentauthority.observer").first(where: {
+               $0.processIdentifier != ProcessInfo.processInfo.processIdentifier &&
+               $0.executableURL?.resolvingSymlinksInPath() == Bundle.main.executableURL?.resolvingSymlinksInPath()
+           }) {
+            existing.unhide(); existing.activate(options:[.activateAllWindows,.activateIgnoringOtherApps])
+            NSApp.terminate(nil); return
+        }
         if let lang=argument("--lang"){Localization.shared.choose(lang,persist:false)}
         if let count=argument("--demo-agents").flatMap(Int.init){state.document=DemoData.make(agents:count)}
         if let path=argument("--report"),let data=try? readBoundedReport(URL(fileURLWithPath:path)),let doc=try? ReportProjection.decode(data){state.document=doc;state.selected=doc.nodes.first?.id ?? "";state.graphMode=0}
         split=MainSplitController(state);window=AppWindow(contentRect:NSRect(x:0,y:0,width:1680,height:960),styleMask:[.titled,.closable,.miniaturizable,.resizable],backing:.buffered,defer:false)
-        window.title=windowTitle();window.subtitle=L("app.tagline");window.contentViewController=split;window.minSize=NSSize(width:1150,height:730);window.isReleasedWhenClosed=false
+        window.title=windowTitle();window.subtitle=L("app.tagline");window.identifier=NSUserInterfaceItemIdentifier("family.agent-authority.main");familyContent=FamilyContentController(split:split);window.contentViewController=familyContent;window.minSize=NSSize(width:1150,height:730);window.isReleasedWhenClosed=false
         let visible=NSScreen.main?.visibleFrame ?? NSRect(x:0,y:0,width:1800,height:1100)
         let preferred=NSSize(width:min(2300,max(1140,visible.width-70)),height:min(1260,max(700,visible.height-90)))
         window.setContentSize(preferred);window.center();window.tabbingMode = .disallowed
         if let size=argument("--size"){let parts=size.split(separator:"x").compactMap{Double($0)};if parts.count==2,parts[0]>=1140,parts[0]<=2560,parts[1]>=700,parts[1]<=1440{window.setContentSize(NSSize(width:parts[0],height:parts[1]))}}
         let toolbar=NSToolbar(identifier:"AgentAuthorityToolbar");toolbar.delegate=self;toolbar.displayMode = .iconOnly;window.toolbar=toolbar;window.toolbarStyle = .unifiedCompact
         if let size=argument("--size"){let parts=size.split(separator:"x").compactMap{Double($0)};if parts.count==2,parts[0]>=1140,parts[0]<=2560,parts[1]>=700,parts[1]<=1440{window.setContentSize(NSSize(width:parts[0],height:parts[1]))}}
+        familyContent?.header.products.onOpen = { [weak self] target in self?.switchFamilyProduct(target) }
         let theme=argument("--theme") ?? UserDefaults.standard.string(forKey:"appearance") ?? "system";setAppearance(theme)
         split.navigate={ [weak self] key in self?.navigate(key) };split.main.openSource={ [weak self] in self?.openSource() };split.main.export={ [weak self] in self?.exportReport() };split.main.refresh={ [weak self] in self?.refreshSource() };split.main.cancel={ [weak self] in self?.bridge.cancel() }
         host.onUpdate={ [weak self] in guard let self else{return};(self.hostWindow?.contentViewController as? HostController)?.reload()
@@ -36,6 +48,36 @@ final class AppDelegate:NSObject,NSApplicationDelegate,NSToolbarDelegate {
         if let directory=argument("--source"){state.inputURL=URL(fileURLWithPath:directory);state.sourceID=argument("--source-id") ?? "local-run";refreshSource()}
         if argument("--snapshot") != nil || argument("--smoke-json") != nil || argument("--bench-json") != nil || argument("--ui-regression-json") != nil {DispatchQueue.main.asyncAfter(deadline:.now()+1.2){self.diagnostics()}}
     }
+    func showMainWindow() {
+        guard let window else { return }
+        NSApp.unhide(nil)
+        if window.isMiniaturized { window.deminiaturize(nil) }
+        window.makeKeyAndOrderFront(nil); NSApp.activate(ignoringOtherApps:true)
+    }
+    // Hide preserves AppState, views and collector. Normal Close/Quit behavior is unchanged.
+    func hideForFamilySwitch() { NSApp.hide(nil) }
+    func applicationShouldHandleReopen(_ sender:NSApplication,hasVisibleWindows flag:Bool)->Bool {
+        showMainWindow(); return false
+    }
+    func switchFamilyProduct(_ target:String) {
+        guard window.attachedSheet == nil, NSApp.modalWindow == nil else {
+            familyContent?.header.showDetail(L("family.switchUnknown")); return
+        }
+        familyContent?.header.showDetail(L("family.switching"))
+        familySwitch.switchProduct(target) { [weak self] result in
+            switch result {
+            case .success: self?.familyContent?.header.showDetail(L("family.switched"))
+            case .failure(let error):
+                let key: String
+                switch error {
+                case FamilySwitchError.busy: key = "family.switchBusy"
+                case FamilySwitchError.unavailable: key = "family.switchUnavailable"
+                default: key = "family.switchUnknown"
+                }
+                self?.familyContent?.header.showDetail(L(key))
+            }
+        }
+    }
     func windowTitle()->String {
         guard let tag=Bundle.main.object(forInfoDictionaryKey:"AAReviewBuildLabel") as? String else{return L("app.name")}
         return L("app.name")+" · "+L("build.review",["label":tag])
@@ -43,7 +85,7 @@ final class AppDelegate:NSObject,NSApplicationDelegate,NSToolbarDelegate {
     func applicationShouldTerminateAfterLastWindowClosed(_ sender:NSApplication)->Bool{true}
     func applicationWillTerminate(_ notification:Notification){bridge.cancel();host.collector?.close()}
     func argument(_ name:String)->String?{let args=CommandLine.arguments;guard let i=args.firstIndex(of:name),args.indices.contains(i+1)else{return nil};return args[i+1]}
-    func localize(){window.title=windowTitle();window.subtitle=L("app.tagline");buildMenu();split.localize();(hostWindow?.contentViewController as? HostController)?.reload();if let settingsWindow{settingsWindow.contentViewController=makeSettings()};for item in window.toolbar?.items ?? []{item.label=L(item.itemIdentifier.rawValue)}}
+    func localize(){familyContent?.header.localize();window.title=windowTitle();window.subtitle=L("app.tagline");buildMenu();split.localize();(hostWindow?.contentViewController as? HostController)?.reload();if let settingsWindow{settingsWindow.contentViewController=makeSettings()};for item in window.toolbar?.items ?? []{item.label=L(item.itemIdentifier.rawValue)}}
     func buildMenu(){let root=NSMenu();let appMenu=NSMenu(),file=NSMenu(title:L("menu.file")),view=NSMenu(title:L("menu.view")),windows=NSMenu(title:L("menu.window")),help=NSMenu(title:L("menu.help"))
         func add(_ key:String,_ action:Selector,_ shortcut:String,_ menu:NSMenu){let i=NSMenuItem(title:L(key),action:action,keyEquivalent:shortcut);i.target=self;menu.addItem(i)}
         add("menu.about",#selector(about),"",appMenu);add("nav.settings",#selector(settings),",",appMenu);appMenu.addItem(.separator());add("menu.quit",#selector(quit),"q",appMenu)

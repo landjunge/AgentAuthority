@@ -1,7 +1,7 @@
 import AppKit
 import AuthorityCore
 
-final class LayoutView:SurfaceView {
+class LayoutView:SurfaceView {
     var arrange:((NSRect)->Void)?
     override func layout(){super.layout();arrange?(bounds)}
 }
@@ -43,7 +43,7 @@ final class SidebarController:NSViewController {
             host.frame=NSRect(x:10,y:max(446,r.height-84),width:r.width-20,height:30);settings.frame=NSRect(x:10,y:max(480,r.height-46),width:r.width-20,height:30)
         };updateSelection();view.needsLayout=true
     }
-    func updateSelection(){for b in buttons{let selected=b.identifier?.rawValue==state.page;b.contentTintColor=selected ? Palette.accent:Palette.muted;b.layer?.backgroundColor=(selected ? Palette.accent.withAlphaComponent(0.12):.clear).cgColor}}
+    func updateSelection(){for b in buttons{let selected=b.identifier?.rawValue==state.page;b.contentTintColor=selected ? Palette.accent:Palette.muted;b.layer?.backgroundColor=(selected ? Palette.brand.withAlphaComponent(0.12):.clear).cgColor}}
     @objc private func press(_ sender:NSButton){navigate?(sender.identifier?.rawValue ?? "graph")}
     @objc private func hostPressed(){navigate?("host")}
     @objc private func settingsPressed(){navigate?("settings")}
@@ -51,9 +51,9 @@ final class SidebarController:NSViewController {
 
 final class MetricView:SurfaceView {
     let title=label("metric.agents",size:11,color:Palette.muted),value=NSTextField(labelWithString:"—"),detail=NSTextField(labelWithString:"")
-    override init(frame:NSRect){super.init(frame:frame);rounded=7;value.font = .systemFont(ofSize:25,weight:.medium);detail.font = .systemFont(ofSize:10);detail.textColor=Palette.muted;detail.lineBreakMode = .byTruncatingTail;[title,value,detail].forEach{addSubview($0)}}
+    override init(frame:NSRect){super.init(frame:frame);rounded=7;value.font = .systemFont(ofSize:22,weight:.medium);detail.font = .systemFont(ofSize:10);detail.textColor=Palette.muted;detail.lineBreakMode = .byTruncatingTail;[title,value,detail].forEach{addSubview($0)}}
     required init?(coder:NSCoder){fatalError()}
-    override func layout(){super.layout();title.frame=NSRect(x:12,y:9,width:bounds.width-24,height:16);value.frame=NSRect(x:12,y:28,width:bounds.width-24,height:29);detail.frame=NSRect(x:12,y:61,width:bounds.width-24,height:16)}
+    override func layout(){super.layout();title.frame=NSRect(x:12,y:6,width:bounds.width-24,height:15);value.frame=NSRect(x:12,y:21,width:bounds.width-24,height:25);detail.frame=NSRect(x:12,y:47,width:bounds.width-24,height:14)}
     func set(_ key:String,_ number:String,_ caption:String){title.stringValue=L(key);value.stringValue=number;detail.stringValue=caption;toolTip=caption}
 }
 
@@ -114,14 +114,14 @@ final class MainPanelController:NSViewController,NSTableViewDataSource,NSTableVi
         (view as? LayoutView)?.arrange={ [weak self] r in guard let self else{return};let w=r.width-32
             self.heading.frame=NSRect(x:16,y:16,width:w-298,height:29);self.scope.frame=NSRect(x:16,y:48,width:w-298,height:16)
             open.frame=NSRect(x:r.width-282,y:20,width:142,height:25);reload.frame=NSRect(x:r.width-133,y:20,width:117,height:25)
-            for (i,m) in self.metrics.enumerated(){m.frame=NSRect(x:16+CGFloat(i)*(w+10)/4,y:77,width:(w-30)/4,height:86)}
-            self.coverage.frame=NSRect(x:16,y:171,width:w-180,height:17);save.frame=NSRect(x:r.width-188,y:168,width:172,height:24)
-            self.mode.frame=NSRect(x:16,y:199,width:228,height:25);self.filter.frame=NSRect(x:252,y:199,width:155,height:25);self.search.frame=NSRect(x:max(414,r.width-287),y:199,width:min(271,max(140,r.width-430)),height:25)
-            self.backButton.frame=NSRect(x:16,y:230,width:87,height:24)
-            self.warningCases.frame=NSRect(x:111,y:230,width:max(210,min(340,w-285)),height:25)
-            self.pulseButton.frame=NSRect(x:self.warningCases.frame.maxX+12,y:230,width:160,height:24)
-            self.criticalBanner.frame=NSRect(x:16,y:257,width:w,height:22)
-            let graphTop:CGFloat=self.criticalBanner.isHidden ? 258:282
+            for (i,m) in self.metrics.enumerated(){m.frame=NSRect(x:16+CGFloat(i)*(w+10)/4,y:69,width:(w-30)/4,height:66)}
+            self.coverage.frame=NSRect(x:16,y:143,width:w-180,height:17);save.frame=NSRect(x:r.width-188,y:140,width:172,height:24)
+            self.mode.frame=NSRect(x:16,y:171,width:228,height:25);self.filter.frame=NSRect(x:252,y:171,width:155,height:25);self.search.frame=NSRect(x:max(414,r.width-287),y:171,width:min(271,max(140,r.width-430)),height:25)
+            self.backButton.frame=NSRect(x:16,y:202,width:87,height:24)
+            self.warningCases.frame=NSRect(x:111,y:202,width:max(210,min(340,w-285)),height:25)
+            self.pulseButton.frame=NSRect(x:self.warningCases.frame.maxX+12,y:202,width:160,height:24)
+            self.criticalBanner.frame=NSRect(x:16,y:229,width:w,height:22)
+            let graphTop:CGFloat=self.criticalBanner.isHidden ? 230:254
             let available=max(150,r.height-graphTop-176)
             if self.canvas.agentOverview{self.canvas.useColumns(max(4,min(10,Int(w/164))),fit:self.fitAfterLayout)}
             let fitScale=min(1.15,max(0.15,(w-40)/self.canvas.layout.width))

@@ -6,7 +6,8 @@ on:
     paths: ['native/macos/**', '.github/workflows/native-macos.yml']
 jobs:
   native:
-    runs-on: macos-latest
+    # Native builds for this private repository run on the operator-owned Intel Mac.
+    runs-on: [self-hosted, macOS, X64]
     steps:
       - uses: actions/checkout@v7
       - uses: actions/setup-python@v7
