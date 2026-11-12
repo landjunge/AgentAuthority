@@ -172,5 +172,12 @@ final class FamilyDesignTests: XCTestCase {
         XCTAssertEqual(app.window.frame, frame)
         let cards = app.split.main.view.subviews.compactMap { $0 as? MetricView }
         XCTAssertEqual(cards.count, 4); XCTAssertTrue(cards.allSatisfy { $0.frame.height == 66 })
+        for size in [NSSize(width: 1120, height: 664), NSSize(width: 900, height: 600)] {
+            app.window.setFrame(NSRect(origin: NSPoint(x: 20, y: 40), size: size), display: true)
+            app.window.contentView?.layoutSubtreeIfNeeded()
+            XCTAssertEqual(app.window.frame.size, size, "family broker must be able to set the outer rectangle")
+            XCTAssertTrue(app.split.splitViewItems[2].isCollapsed)
+            XCTAssertGreaterThanOrEqual(app.split.main.canvas.bounds.height, 100)
+        }
     }
 }

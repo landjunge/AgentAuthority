@@ -215,6 +215,8 @@ Die fünf Bedienziele sind 44×44 Punkte, die Originalausschnitte 32 Punkte gro�
 Das Fenster erlaubt 900×600 äußere Punkte; unter 1150 Punkten Breite klappt der
 vorhandene Inspector ein. Seine bisherige manuelle Einklappwahl bleibt erhalten;
 bei schmaler Ansicht sind Navigation und Inspector wechselweise aufklappbar.
+`--size` beschreibt weiterhin die diagnostische Inhaltsgröße (ab 900×600), nicht
+den äußeren Brokerrahmen; der native Fenstermodus übernimmt das äußere Rechteck.
 Version und Status stehen in Hover- und Tastaturfokusdetails statt einer zusätzlichen
 Versionszeile. Wortmarkenfarben folgen `assets/design/wordmarks/AgentAuthority-*.svg`.
 DE/EN nutzt den bestehenden Katalog. Das Original-ICNS wird als `CFBundleIconFile`

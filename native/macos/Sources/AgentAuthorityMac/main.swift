@@ -32,9 +32,9 @@ final class AppDelegate:NSObject,NSApplicationDelegate,NSToolbarDelegate {
         let visible=NSScreen.main?.visibleFrame ?? NSRect(x:0,y:0,width:1800,height:1100)
         let preferred=NSSize(width:min(2300,max(1140,visible.width-70)),height:min(1260,max(700,visible.height-90)))
         window.setContentSize(preferred);window.center();window.tabbingMode = .disallowed
-        if let size=argument("--size"){let parts=size.split(separator:"x").compactMap{Double($0)};if parts.count==2,parts[0]>=1140,parts[0]<=2560,parts[1]>=700,parts[1]<=1440{window.setContentSize(NSSize(width:parts[0],height:parts[1]))}}
+        if let size=argument("--size"){let parts=size.split(separator:"x").compactMap{Double($0)};if parts.count==2,parts[0]>=900,parts[0]<=2560,parts[1]>=600,parts[1]<=1440{window.setContentSize(NSSize(width:parts[0],height:parts[1]))}}
         let toolbar=NSToolbar(identifier:"AgentAuthorityToolbar");toolbar.delegate=self;toolbar.displayMode = .iconOnly;window.toolbar=toolbar;window.toolbarStyle = .unifiedCompact
-        if let size=argument("--size"){let parts=size.split(separator:"x").compactMap{Double($0)};if parts.count==2,parts[0]>=1140,parts[0]<=2560,parts[1]>=700,parts[1]<=1440{window.setContentSize(NSSize(width:parts[0],height:parts[1]))}}
+        if let size=argument("--size"){let parts=size.split(separator:"x").compactMap{Double($0)};if parts.count==2,parts[0]>=900,parts[0]<=2560,parts[1]>=600,parts[1]<=1440{window.setContentSize(NSSize(width:parts[0],height:parts[1]))}}
         familyContent?.header.products.onOpen = { [weak self] target in self?.switchFamilyProduct(target) }
         let theme=argument("--theme") ?? UserDefaults.standard.string(forKey:"appearance") ?? "system";setAppearance(theme)
         split.navigate={ [weak self] key in self?.navigate(key) };split.main.openSource={ [weak self] in self?.openSource() };split.main.export={ [weak self] in self?.exportReport() };split.main.refresh={ [weak self] in self?.refreshSource() };split.main.cancel={ [weak self] in self?.bridge.cancel() }
