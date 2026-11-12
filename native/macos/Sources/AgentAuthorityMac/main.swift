@@ -15,10 +15,12 @@ final class AppDelegate:NSObject,NSApplicationDelegate,NSToolbarDelegate {
     func applicationDidFinishLaunching(_ notification:Notification){
         // Only an identical installed executable is a duplicate; historical review bundles stay independent.
         if Bundle.main.bundleURL.pathExtension == "app", Bundle.main.bundleIdentifier == "de.agentauthority.observer",
-           let existing = NSRunningApplication.runningApplications(withBundleIdentifier:"de.agentauthority.observer").first(where: {
-               $0.processIdentifier != ProcessInfo.processInfo.processIdentifier &&
-               $0.executableURL?.resolvingSymlinksInPath() == Bundle.main.executableURL?.resolvingSymlinksInPath()
-           }) {
+           let existing = (NSRunningApplication.runningApplications(withBundleIdentifier:"de.agentauthority.observer") + [.current])
+               .filter({ $0.executableURL?.resolvingSymlinksInPath() == Bundle.main.executableURL?.resolvingSymlinksInPath() })
+               .min(by: {
+                   let left = $0.launchDate ?? .distantFuture, right = $1.launchDate ?? .distantFuture
+                   return left == right ? $0.processIdentifier < $1.processIdentifier : left < right
+               }), existing.processIdentifier != ProcessInfo.processInfo.processIdentifier {
             existing.unhide(); existing.activate(options:[.activateAllWindows,.activateIgnoringOtherApps])
             NSApp.terminate(nil); return
         }
@@ -26,7 +28,7 @@ final class AppDelegate:NSObject,NSApplicationDelegate,NSToolbarDelegate {
         if let count=argument("--demo-agents").flatMap(Int.init){state.document=DemoData.make(agents:count)}
         if let path=argument("--report"),let data=try? readBoundedReport(URL(fileURLWithPath:path)),let doc=try? ReportProjection.decode(data){state.document=doc;state.selected=doc.nodes.first?.id ?? "";state.graphMode=0}
         split=MainSplitController(state);window=AppWindow(contentRect:NSRect(x:0,y:0,width:1680,height:960),styleMask:[.titled,.closable,.miniaturizable,.resizable],backing:.buffered,defer:false)
-        window.title=windowTitle();window.subtitle=L("app.tagline");window.identifier=NSUserInterfaceItemIdentifier("family.agent-authority.main");familyContent=FamilyContentController(split:split);window.contentViewController=familyContent;window.minSize=NSSize(width:1150,height:730);window.isReleasedWhenClosed=false
+        window.title=windowTitle();window.subtitle=L("app.tagline");window.identifier=NSUserInterfaceItemIdentifier("family.agent-authority.main");familyContent=FamilyContentController(split:split);window.contentViewController=familyContent;window.minSize=NSSize(width:900,height:600);window.isReleasedWhenClosed=false
         let visible=NSScreen.main?.visibleFrame ?? NSRect(x:0,y:0,width:1800,height:1100)
         let preferred=NSSize(width:min(2300,max(1140,visible.width-70)),height:min(1260,max(700,visible.height-90)))
         window.setContentSize(preferred);window.center();window.tabbingMode = .disallowed
@@ -117,7 +119,7 @@ final class AppDelegate:NSObject,NSApplicationDelegate,NSToolbarDelegate {
     @objc func exportReport(){let p=NSSavePanel();p.nameFieldStringValue="AgentAuthority-Evidence.json";p.title=L("export.title");guard p.runModal() == .OK,let url=p.url else{return};do{let data:Data;if let raw=state.document.reportJSON{data=Data(raw.utf8)}else{let encoder=JSONEncoder();encoder.outputFormatting=[.prettyPrinted,.sortedKeys];data=try encoder.encode(state.document)};try data.write(to:url,options:.atomic)}catch{showError("export.error")}}
     @objc func loadDemo(){state.document=DemoData.make();state.selected="agent-001";state.query="";state.filter=0;state.graphMode=2;state.inputURL=nil;state.expandedGroups=[];split.main.build();split.refresh();split.main.updateGraph(fit:true)}
     @objc func cancelRead(){bridge.cancel()}
-    @objc func toggleSidebar(){split.splitViewItems[0].isCollapsed.toggle()}
+    @objc func toggleSidebar(){split.toggleSidebar()}
     @objc func toggleInspector(){split.toggleInspector()}
     @objc func search(){split.main.focusSearch()}
     @objc func fit(){split.main.fitPressed()}

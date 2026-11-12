@@ -212,6 +212,9 @@ visual testing of the running animation.
 kein Webview-/SwiftUI-Umbau. Originale PNGs, Katalog und Manifest stammen aus dem
 ThreadDesk-Modul 1.2.0, Pin `cb4261cbd240834390e9ce24909f2ab5a01492d9`.
 Die fünf Bedienziele sind 44×44 Punkte, die Originalausschnitte 32 Punkte groß.
+Das Fenster erlaubt 900×600 äußere Punkte; unter 1150 Punkten Breite klappt der
+vorhandene Inspector ein. Seine bisherige manuelle Einklappwahl bleibt erhalten;
+bei schmaler Ansicht sind Navigation und Inspector wechselweise aufklappbar.
 Version und Status stehen in Hover- und Tastaturfokusdetails statt einer zusätzlichen
 Versionszeile. Wortmarkenfarben folgen `assets/design/wordmarks/AgentAuthority-*.svg`.
 DE/EN nutzt den bestehenden Katalog. Das Original-ICNS wird als `CFBundleIconFile`
@@ -229,7 +232,7 @@ Doppelklicks werden nicht als weitere Wechsel eingereiht. Der Broker setzt die �
 Bounds und zeigt/fokussiert das Ziel, bevor er andere registrierte Familienfenster verbirgt.
 AA selbst schließt, lädt oder startet beim Wechsel keine Produktoberfläche neu.
 Reopen verwendet das gespeicherte Hauptfenster statt `NSApp.mainWindow`;
-identische installierte Executables werden nicht als zweite laufende Instanz behalten.
+identische installierte Executables wählen bei konkurrierenden Starts deterministisch die ältere Instanz.
 Historische Bundles an anderen Pfaden bleiben getrennt. Sicherheitsdialoge blockieren
 den AA-Wechsel. 4AllPass-Sperrregeln und alle bisherigen Beobachtungsgrenzen bleiben erhalten.
 AA erhält keine Approve-/Stop-/Grant-Funktion. Alle 20 Produktwechsel und die gemeinsame

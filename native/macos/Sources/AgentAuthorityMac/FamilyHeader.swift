@@ -53,6 +53,7 @@ final class FamilyContentController: NSViewController {
         addChild(split); root.addSubview(header); root.addSubview(split.view)
         root.arrange = { [weak self] rect in
             guard let self else { return }
+            self.split.adaptToFamilyWidth(rect.width)
             self.header.frame = NSRect(x: 0, y: 0, width: rect.width, height: 64)
             self.split.view.frame = NSRect(x: 0, y: 64, width: rect.width, height: max(0, rect.height-64))
         }

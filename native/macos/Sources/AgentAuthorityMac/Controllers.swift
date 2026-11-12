@@ -318,6 +318,7 @@ final class InspectorController:NSViewController {
 final class MainSplitController:NSSplitViewController {
     let state:AppState;let sidebar:SidebarController;let main:MainPanelController;let inspector:InspectorController
     var navigate:((String)->Void)?
+    private var narrowFamilyWidth=false, inspectorCollapsedForWidth=false
     init(_ state:AppState){self.state=state;sidebar=SidebarController(state);main=MainPanelController(state);inspector=InspectorController(state);super.init(nibName:nil,bundle:nil)}
     required init?(coder:NSCoder){fatalError()}
     override func viewDidLoad(){super.viewDidLoad();let s=NSSplitViewItem(sidebarWithViewController:sidebar);s.minimumThickness=176;s.maximumThickness=220;s.preferredThicknessFraction=0.11;s.canCollapse=true
@@ -330,5 +331,26 @@ final class MainSplitController:NSSplitViewController {
     func select(_ id:String){if !state.document.trace(state.chainAnchor).contains(id){if state.graphMode==0{main.recordNavigation()};state.chainAnchor=id};state.selected=id;main.selectedUpdated();if state.graphMode==0{main.updateGraph(fit:false)};inspector.reload()}
     func refresh(){sidebar.reload();main.updateContent();inspector.reload()}
     func localize(){sidebar.reload();main.build();inspector.reload()}
-    func toggleInspector(){splitViewItems[2].isCollapsed.toggle()}
+    func adaptToFamilyWidth(_ width:CGFloat) {
+        let narrow = width < 1150
+        guard splitViewItems.count == 3, narrow != narrowFamilyWidth else { return }
+        narrowFamilyWidth = narrow
+        if narrow {
+            inspectorCollapsedForWidth = !splitViewItems[2].isCollapsed
+            if inspectorCollapsedForWidth { splitViewItems[2].isCollapsed = true }
+        } else if inspectorCollapsedForWidth {
+            splitViewItems[2].isCollapsed = false; inspectorCollapsedForWidth = false
+        }
+    }
+    func toggleSidebar() {
+        if narrowFamilyWidth && splitViewItems[0].isCollapsed {
+            splitViewItems[2].isCollapsed = true; inspectorCollapsedForWidth = false
+        }
+        splitViewItems[0].isCollapsed.toggle()
+    }
+    func toggleInspector() {
+        inspectorCollapsedForWidth = false
+        if narrowFamilyWidth && splitViewItems[2].isCollapsed { splitViewItems[0].isCollapsed = true }
+        splitViewItems[2].isCollapsed.toggle()
+    }
 }

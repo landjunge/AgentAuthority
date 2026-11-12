@@ -97,7 +97,7 @@ final class FamilyDesignTests: XCTestCase {
         let header = FamilyHeaderView()
         for lang in ["de", "en"] {
             Localization.shared.choose(lang, persist: false); header.localize()
-            for width: CGFloat in [1150, 1360, 1680] {
+            for width: CGFloat in [900, 1120, 1150, 1360, 1680] {
                 header.frame = NSRect(x: 0, y: 0, width: width, height: 64)
                 header.needsLayout = true; header.layoutSubtreeIfNeeded()
                 XCTAssertEqual(header.products.frame.midX, width/2, accuracy: 0.1)
@@ -111,6 +111,41 @@ final class FamilyDesignTests: XCTestCase {
                 }
             }
         }
+    }
+
+    func testSmallSharedOuterFrameKeepsExistingSplitViewsAndAllowsEitherSidePane() {
+        _ = NSApplication.shared
+        let split = MainSplitController(AppState())
+        let content = FamilyContentController(split: split)
+        let root = content.view
+        let originalMain = split.main.view
+        root.frame = NSRect(x: 0, y: 0, width: 1120, height: 600)
+        root.needsLayout = true; root.layoutSubtreeIfNeeded()
+        XCTAssertEqual(split.splitViewItems.count, 3)
+        XCTAssertTrue(split.splitViewItems[2].isCollapsed)
+        split.toggleInspector()
+        XCTAssertFalse(split.splitViewItems[2].isCollapsed)
+        XCTAssertTrue(split.splitViewItems[0].isCollapsed)
+        split.toggleSidebar()
+        XCTAssertFalse(split.splitViewItems[0].isCollapsed)
+        XCTAssertTrue(split.splitViewItems[2].isCollapsed)
+        root.frame.size.width = 1360; root.needsLayout = true; root.layoutSubtreeIfNeeded()
+        XCTAssertTrue(split.splitViewItems[2].isCollapsed, "manual choice must survive a size change")
+        XCTAssertTrue(split.main.view === originalMain)
+    }
+
+    func testOnlyAutomaticInspectorCollapseIsRestoredOnWidening() {
+        _ = NSApplication.shared
+        let split = MainSplitController(AppState())
+        _ = split.view
+        XCTAssertFalse(split.splitViewItems[2].isCollapsed)
+        split.adaptToFamilyWidth(1120)
+        XCTAssertTrue(split.splitViewItems[2].isCollapsed)
+        split.adaptToFamilyWidth(1360)
+        XCTAssertFalse(split.splitViewItems[2].isCollapsed)
+        split.toggleInspector()
+        split.adaptToFamilyWidth(1120); split.adaptToFamilyWidth(1360)
+        XCTAssertTrue(split.splitViewItems[2].isCollapsed)
     }
 
     func testHideAndReopenUseStoredMainWindowAndPreserveStateAndViews() throws {
