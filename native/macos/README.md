@@ -210,7 +210,7 @@ visual testing of the running animation.
 
 **Deutsch:** Der vorhandene AppKit-Renderer `ProductHeaderView` wird weiterverwendet;
 kein Webview-/SwiftUI-Umbau. Originale PNGs, Katalog und Manifest stammen aus dem
-ThreadDesk-Modul 1.2.0, Pin `cb4261cbd240834390e9ce24909f2ab5a01492d9`.
+ThreadDesk-Modul 1.2.1, Pin `9cec500ea66759cb025666557d980b0653b24a26`.
 Die fünf Bedienziele sind 44×44 Punkte, die Originalausschnitte 32 Punkte groß.
 Das Fenster erlaubt 900×600 äußere Punkte; unter 1150 Punkten Breite klappt der
 vorhandene Inspector ein. Seine bisherige manuelle Einklappwahl bleibt erhalten;

@@ -25,7 +25,7 @@ final class FamilyDesignTests: XCTestCase {
 
     func testBundledOriginalsMatchThePinnedSharedManifest() throws {
         let manifest = try XCTUnwrap(ProductHeaderAssetManifest.load())
-        XCTAssertEqual(manifest.version, "1.2.0")
+        XCTAssertEqual(manifest.version, "1.2.1")
         XCTAssertEqual(manifest.files.map(\.appId), FamilySwitchClient.productIDs)
         for asset in manifest.files {
             let url = try XCTUnwrap(productHeaderResourceURL(asset.file, extension: nil))
