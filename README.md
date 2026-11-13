@@ -152,7 +152,11 @@ This is **not** a production system and **not** a proof of general agent safety.
 
 ## License
 
-**Source-available — all rights reserved.** The repository is currently **private**. Access for review, research discussion, or security evaluation requires an explicit invitation; but new material may not be copied, modified, distributed, deployed, or sold without prior written permission. Historical revisions published before the license-change commit remain available under the MIT License that applied to them. See [LICENSE](LICENSE) for the exact boundary and terms.
+**Netzwerkpunkt Personal Use License 1.0 — custom source-available terms.**
+
+Private, non-business use is free, including installation, private modifications and private self-hosting. Internal business or professional use, resale and paid services require prior written permission or a separate license from the rightsholder. No general redistribution permission is granted.
+
+See the [full German license and English translation](LICENSE); the German text governs. This is not a standard open-source license and has not undergone legal review. Previously granted MIT rights for historical Agent Authority versions remain intact.
 
 ## Status
 
