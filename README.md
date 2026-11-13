@@ -107,6 +107,24 @@ bundle includes Python 3.12 and targets macOS 12. Live Endpoint Security testing
 requires Apple-approved entitlement, signing, extension activation and the
 collector's own Full Disk Access. The development build cannot substitute these.
 
+**Deutsch – Entwicklungsstand:** Der native AppKit-Header verwendet die fünf Originalicons
+(32 px in 44-Punkte-Zielen), die zweifarbige Wortmarke und direkt sichtbares DE/EN.
+Die drei Bereiche bleiben erhalten; Kennzahlenkarten sind 66 Punkte hoch. Der native
+Familienwechsel ruft ausschließlich den vorhandenen KiraBridge-CLI-Broker mit fester
+Produkt-ID und eigenem PID auf. Ein bestätigtes Fenster ist kein verbundener Peer.
+Fehlender Broker oder unklare Ergebnisse bleiben sichtbar unbestätigt, ohne automatische
+Wiederholung. Verbergen erhält die Instanz; normales Schließen/Beenden bleibt unverändert.
+Das ist Quell-/lokaler Buildstand, keine Behauptung einer veröffentlichten oder installierten Version.
+
+**English – development source:** The native AppKit header reuses the five original icons
+(32 px inside 44-point targets), the two-color wordmark and visible DE/EN controls.
+The three panes remain; metric cards are 66 points high. Native family switching calls
+only the existing KiraBridge CLI broker with a fixed product ID and this native process's
+PID. Window confirmation does not establish peer connectivity. Missing broker and uncertain
+outcomes remain visibly unconfirmed, without automatic retry. Hiding preserves the instance;
+normal Close/Quit behavior is unchanged. This is source/local-build status, not a published
+or installed upgrade. See the [native build and verification instructions](native/macos/README.md).
+
 ## Workflow observations / Workflow-Beobachtung
 
 **English:** The current local preview adds a versioned, bounded workflow-metadata

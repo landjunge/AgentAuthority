@@ -1,6 +1,6 @@
 # Agent Authority for macOS
 
-Native observer application based on master `9eda80d` and the approved design.
+Native observer application; the family-header change is based on master `23dd5f8`.
 AppKit split window, compact dashboard, graph, inspector, evidence tables,
 DE/EN localization, read-only product input and a separate macOS test host.
 The Python product engine and historical lab remain unchanged.
@@ -205,3 +205,76 @@ The investigation also exercised actual menu actions, zoom, mouse pan and three
 Back steps; automation must wait for menu focus completion before sending its
 next zoom action. Static capture comparisons are not a claim of continuous manual
 visual testing of the running animation.
+
+## Native family header and switching / Nativer Familienheader und Fensterwechsel
+
+**Deutsch:** Der vorhandene AppKit-Renderer `ProductHeaderView` wird weiterverwendet;
+kein Webview-/SwiftUI-Umbau. Originale PNGs, Katalog und Manifest stammen aus dem
+ThreadDesk-Modul 1.2.2, Pin `3822f99952b28650e0850b4bf95fcc9f9434cd91`.
+Die fünf Bedienziele sind 44×44 Punkte, die Originalausschnitte 32 Punkte groß.
+Das Fenster erlaubt 900×600 äußere Punkte; unter 1150 Punkten Breite klappt der
+vorhandene Inspector ein. Seine bisherige manuelle Einklappwahl bleibt erhalten;
+bei schmaler Ansicht sind Navigation und Inspector wechselweise aufklappbar.
+`--size` beschreibt weiterhin die diagnostische Inhaltsgröße (ab 900×600), nicht
+den äußeren Brokerrahmen; der native Fenstermodus übernimmt das äußere Rechteck.
+Version und Status stehen in Hover- und Tastaturfokusdetails statt einer zusätzlichen
+Versionszeile. Wortmarkenfarben folgen `assets/design/wordmarks/AgentAuthority-*.svg`.
+DE/EN nutzt den bestehenden Katalog. Das Original-ICNS wird als `CFBundleIconFile`
+in das lokale Bundle eingebunden; Dock-/Finder-Laufzeitabnahme ist separat.
+
+Der eigene native Host startet direkt, ohne Shell:
+`~/.local/bin/kirabridge --principal local family switch TARGET --source-pid EIGENER_NATIVE_PID`.
+Nur `kirabridge`, `threaddesk`, `4allpass`, `tollgate`, `agent-authority` sind zulässig.
+Die frische Bindung von PID/Startzeit/Installpfad/UID/NativeCaller und der erneute
+Effektpunktcheck gehören zum Broker. AA übergibt keine Browserpfade, URLs oder Kommandos.
+Erfolg erfordert Exit 0 und JSON mit `success:true`, passender `active_product`,
+endlichen `actual_outer_bounds` (positive Breite/Höhe) und `visible_family_windows:1`.
+Fehler, unvollständige Antworten und Zeitüberschreitungen sind unbestätigt; kein Blind-Replay.
+Doppelklicks werden nicht als weitere Wechsel eingereiht. Der Broker setzt die äußeren
+Bounds und zeigt/fokussiert das Ziel, bevor er andere registrierte Familienfenster verbirgt.
+AA selbst schließt, lädt oder startet beim Wechsel keine Produktoberfläche neu.
+Reopen verwendet das gespeicherte Hauptfenster statt `NSApp.mainWindow`;
+identische installierte Executables wählen bei konkurrierenden Starts deterministisch die ältere Instanz.
+Historische Bundles an anderen Pfaden bleiben getrennt. Sicherheitsdialoge blockieren
+den AA-Wechsel. 4AllPass-Sperrregeln und alle bisherigen Beobachtungsgrenzen bleiben erhalten.
+AA erhält keine Approve-/Stop-/Grant-Funktion. Alle 20 Produktwechsel und die gemeinsame
+Geometrie benötigen nach der Integration eine eigene native Abnahme.
+
+**English:** This reuses the existing AppKit renderer and pinned original assets, with
+32-point artwork, 44×44 targets, centered icons, original two-color wordmark and visible
+DE/EN. Version/status details are available on hover and keyboard focus. The original
+ICNS is embedded in the bundle. No framework migration or new icon motif is involved.
+The native host invokes the fixed broker argv above with its own PID, never a shell.
+Success requires the complete JSON evidence described above, not just exit 0. Failures,
+missing broker and unknown outcomes never become connectivity or automatic retries.
+The broker owns identity validation, equal outer bounds and show/focus/hide across the
+registered family. Reopen uses the stored main window; Hide preserves the state and
+collector, whereas normal Close/Quit is unchanged. An identical installed executable
+is not retained as a second running instance. No approval, stop or grant capability is
+added. Cross-product geometry, lifecycle and 4AllPass lock-policy acceptance remain
+integration gates, not claims from isolated AA tests.
+
+Local Intel build using an existing pinned Python runtime, without installing:
+
+```sh
+python3.12 native/macos/scripts/build_app.py \
+  --runtime-python /path/to/existing/standalone/python/bin/python3.12 \
+  --output native/macos/build/family-design-20261112
+```
+
+Bundle: `native/macos/build/family-design-20261112/Agent Authority.app`.
+Executable: `Contents/MacOS/AgentAuthorityMac`. Ad-hoc development signing does not
+qualify the Endpoint Security collector. No permission prompts/activation are needed
+for these synthetic UI checks:
+
+```sh
+swift test --package-path native/macos --filter 'FamilyDesignTests|StartupTests|InspectorFilterTests'
+python3.12 native/macos/scripts/check_sources.py
+python3.12 native/macos/scripts/check_ui_regressions.py \
+  --executable "native/macos/build/family-design-20261112/Agent Authority.app/Contents/MacOS/AgentAuthorityMac" \
+  --output /tmp/aa-family-ui-regression
+```
+
+The private repository's native CI job requires an operator-owned Intel macOS runner;
+it does not request a GitHub-hosted Mac. No runner installation or production app
+installation is performed by this source change.

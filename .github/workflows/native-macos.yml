@@ -4,9 +4,16 @@ on:
     paths: ['native/macos/**', '.github/workflows/native-macos.yml']
   pull_request:
     paths: ['native/macos/**', '.github/workflows/native-macos.yml']
+permissions:
+  contents: read
+concurrency:
+  group: native-macos-${{ github.event.pull_request.head.repo.full_name || github.repository }}-${{ github.head_ref || github.ref_name }}
+  cancel-in-progress: true
 jobs:
   native:
-    runs-on: macos-latest
+    # Public repository: standard hosted Intel runner; no operator-Mac service.
+    runs-on: macos-15-intel
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v7
       - uses: actions/setup-python@v7

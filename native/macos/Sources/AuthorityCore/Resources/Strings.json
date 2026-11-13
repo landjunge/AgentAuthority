@@ -1514,5 +1514,53 @@
   "workflow.claimsCompared": {
     "de": "Meldungen verglichen",
     "en": "Reports compared"
+  },
+  "family.products": {
+    "de": "Produkte",
+    "en": "Products"
+  },
+  "family.collectorConfirmed": {
+    "de": "Collector verbunden; Abdeckung begrenzt",
+    "en": "Collector connected; limited coverage"
+  },
+  "family.collectorError": {
+    "de": "Collectorfehler",
+    "en": "Collector error"
+  },
+  "family.unknown": {
+    "de": "Verbindungsstatus unbekannt",
+    "en": "Connection status unknown"
+  },
+  "family.version": {
+    "de": "Oberflächenversion {version}",
+    "en": "Interface version {version}"
+  },
+  "family.versionUnknown": {
+    "de": "Version unbekannt",
+    "en": "Version unknown"
+  },
+  "family.switching": {
+    "de": "Fensterwechsel wird geprüft …",
+    "en": "Checking window switch …"
+  },
+  "family.switched": {
+    "de": "Fensterwechsel bestätigt; Peerstatus unverändert",
+    "en": "Window switch confirmed; peer status unchanged"
+  },
+  "family.switchUnknown": {
+    "de": "Fensterwechsel nicht bestätigt. Sichtbarkeit prüfen; keine automatische Wiederholung.",
+    "en": "Window switch unconfirmed. Check visibility; no automatic retry."
+  },
+  "family.switchUnavailable": {
+    "de": "Nativer Fensterbroker nicht verfügbar. App über vorhandenen Starter öffnen.",
+    "en": "Native window broker unavailable. Use the existing app launcher."
+  },
+  "family.switchBusy": {
+    "de": "Ein Fensterwechsel läuft bereits.",
+    "en": "A window switch is already in progress."
+  },
+  "family.language": {
+    "de": "Oberflächensprache",
+    "en": "Interface language"
   }
 }
