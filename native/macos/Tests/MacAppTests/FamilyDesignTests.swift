@@ -5,6 +5,10 @@ import CryptoKit
 @testable import AgentAuthorityMac
 
 final class FamilyDesignTests: XCTestCase {
+    private func descendants(_ view: NSView) -> [NSView] {
+        [view] + view.subviews.flatMap(descendants)
+    }
+
     private func success(_ target: String = "threaddesk") -> [String: Any] {
         ["success": true, "active_product": target,
          "actual_outer_bounds": ["x": -1200, "y": 20, "width": 1150, "height": 730],
@@ -132,6 +136,42 @@ final class FamilyDesignTests: XCTestCase {
         root.frame.size.width = 1360; root.needsLayout = true; root.layoutSubtreeIfNeeded()
         XCTAssertTrue(split.splitViewItems[2].isCollapsed, "manual choice must survive a size change")
         XCTAssertTrue(split.main.view === originalMain)
+    }
+
+    func testMinimumOuterHeightKeepsCriticalActivityTableAccessible() throws {
+        _ = NSApplication.shared
+        let outerFrame = NSRect(x: 0, y: 0, width: 900, height: 600)
+        let contentFrame = NSWindow.contentRect(
+            forFrameRect: outerFrame,
+            styleMask: [.titled, .closable, .resizable]
+        )
+        let split = MainSplitController(AppState())
+        let content = FamilyContentController(split: split)
+        content.view.frame = NSRect(origin: .zero, size: contentFrame.size)
+        content.view.layoutSubtreeIfNeeded()
+        split.view.layoutSubtreeIfNeeded()
+        let main = split.main
+        main.view.layoutSubtreeIfNeeded()
+
+        let views = descendants(main.view)
+        let tableScroll = try XCTUnwrap(views.compactMap { $0 as? NSScrollView }
+            .first { $0.documentView is NSTableView })
+        let table = try XCTUnwrap(tableScroll.documentView as? NSTableView)
+        let activity = try XCTUnwrap(views.compactMap { $0 as? NSTextField }
+            .first { $0.stringValue == L("activity.title") })
+        let criticalBanner = try XCTUnwrap(views.compactMap { $0 as? NSButton }
+            .first { $0.title == L("warning.criticalMessage") })
+
+        XCTAssertEqual(outerFrame.height, 600, accuracy: 0.1)
+        XCTAssertLessThan(main.view.bounds.height, outerFrame.height - 64)
+        XCTAssertFalse(criticalBanner.isHidden)
+        XCTAssertGreaterThan(table.numberOfRows, 0)
+        XCTAssertGreaterThan(main.canvas.frame.height, 0)
+        XCTAssertGreaterThanOrEqual(tableScroll.frame.height, 62)
+        XCTAssertGreaterThanOrEqual(tableScroll.frame.minY, 0)
+        XCTAssertLessThanOrEqual(tableScroll.frame.maxY, main.view.bounds.maxY)
+        XCTAssertGreaterThanOrEqual(activity.frame.minY, 0)
+        XCTAssertLessThanOrEqual(activity.frame.maxY, main.view.bounds.maxY)
     }
 
     func testOnlyAutomaticInspectorCollapseIsRestoredOnWidening() {

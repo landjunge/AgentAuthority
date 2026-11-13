@@ -122,11 +122,12 @@ final class MainPanelController:NSViewController,NSTableViewDataSource,NSTableVi
             self.pulseButton.frame=NSRect(x:self.warningCases.frame.maxX+12,y:202,width:160,height:24)
             self.criticalBanner.frame=NSRect(x:16,y:229,width:w,height:22)
             let graphTop:CGFloat=self.criticalBanner.isHidden ? 230:254
-            let available=max(150,r.height-graphTop-176)
+            let available=max(0,r.height-graphTop-139)
             if self.canvas.agentOverview{self.canvas.useColumns(max(4,min(10,Int(w/164))),fit:self.fitAfterLayout)}
             let fitScale=min(1.15,max(0.15,(w-40)/self.canvas.layout.width))
             let preferred=max(195,self.canvas.layout.height*fitScale+50)
-            let graphHeight=min(available,preferred)
+            let preferredAvailable=max(150,r.height-graphTop-176)
+            let graphHeight=min(available,preferredAvailable,preferred)
             self.canvas.frame=NSRect(x:16,y:graphTop,width:w,height:graphHeight)
             let footer=graphTop+graphHeight+5
             self.zoomLabel.frame=NSRect(x:r.width-174,y:footer+4,width:46,height:18);minus.frame=NSRect(x:r.width-206,y:footer,width:27,height:24);plus.frame=NSRect(x:r.width-126,y:footer,width:27,height:24);fit.frame=NSRect(x:r.width-93,y:footer,width:77,height:24)
