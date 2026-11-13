@@ -174,6 +174,60 @@ final class FamilyDesignTests: XCTestCase {
         XCTAssertLessThanOrEqual(activity.frame.maxY, main.view.bounds.maxY)
     }
 
+    func testMinimumSupportedWindowKeepsInspectorAndSidebarSettingsAccessible() throws {
+        _ = NSApplication.shared
+        let outerFrame = NSRect(x: 0, y: 0, width: 900, height: 600)
+        let contentFrame = NSWindow.contentRect(
+            forFrameRect: outerFrame,
+            styleMask: [.titled, .closable, .resizable]
+        )
+        let split = MainSplitController(AppState())
+        let content = FamilyContentController(split: split)
+        content.view.frame = NSRect(origin: .zero, size: contentFrame.size)
+        content.view.layoutSubtreeIfNeeded()
+        split.view.layoutSubtreeIfNeeded()
+
+        XCTAssertEqual(content.header.frame.height, 64, accuracy: 0.1)
+        XCTAssertEqual(content.header.frame.width, contentFrame.width, accuracy: 0.1)
+        XCTAssertFalse(split.splitViewItems[0].isCollapsed)
+        XCTAssertTrue(split.splitViewItems[2].isCollapsed)
+
+        let sidebarViews = descendants(split.sidebar.view)
+        let sidebarScroll = try XCTUnwrap(sidebarViews.compactMap { $0 as? NSScrollView }.first)
+        let sidebarDocument = try XCTUnwrap(sidebarScroll.documentView)
+        let settings = try XCTUnwrap(descendants(sidebarDocument).compactMap { $0 as? NSButton }
+            .first { $0.title == L("nav.settings") })
+        XCTAssertTrue(sidebarScroll.hasVerticalScroller)
+        XCTAssertLessThanOrEqual(settings.frame.maxY, sidebarDocument.bounds.maxY)
+        let clip = sidebarScroll.contentView
+        let maxScrollY = max(0, sidebarDocument.bounds.height - clip.bounds.height)
+        clip.scroll(to: NSPoint(x: 0, y: maxScrollY))
+        sidebarScroll.reflectScrolledClipView(clip)
+        let visibleSettingsFrame = settings.convert(settings.bounds, to: clip)
+        XCTAssertTrue(clip.bounds.contains(visibleSettingsFrame))
+
+        split.toggleInspector()
+        content.view.layoutSubtreeIfNeeded()
+        split.view.layoutSubtreeIfNeeded()
+        XCTAssertTrue(split.splitViewItems[0].isCollapsed)
+        XCTAssertFalse(split.splitViewItems[2].isCollapsed)
+        let mainFrame = split.main.view.convert(split.main.view.bounds, to: split.splitView)
+        let inspectorFrame = split.inspector.view.convert(split.inspector.view.bounds, to: split.splitView)
+        XCTAssertGreaterThanOrEqual(mainFrame.width, 600)
+        XCTAssertGreaterThanOrEqual(inspectorFrame.width, 292)
+        XCTAssertGreaterThanOrEqual(mainFrame.minX, 0)
+        XCTAssertLessThanOrEqual(mainFrame.maxX, split.splitView.bounds.maxX)
+        XCTAssertLessThanOrEqual(inspectorFrame.maxX, split.splitView.bounds.maxX)
+        XCTAssertLessThanOrEqual(mainFrame.maxX, inspectorFrame.minX)
+
+        split.toggleSidebar()
+        split.view.layoutSubtreeIfNeeded()
+        XCTAssertFalse(split.splitViewItems[0].isCollapsed)
+        XCTAssertTrue(split.splitViewItems[2].isCollapsed)
+        XCTAssertLessThanOrEqual(split.sidebar.view.frame.maxX, split.splitView.bounds.maxX)
+        XCTAssertLessThanOrEqual(split.main.view.frame.maxX, split.splitView.bounds.maxX)
+    }
+
     func testOnlyAutomaticInspectorCollapseIsRestoredOnWidening() {
         _ = NSApplication.shared
         let split = MainSplitController(AppState())

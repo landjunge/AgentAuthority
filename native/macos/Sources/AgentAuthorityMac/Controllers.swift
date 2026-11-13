@@ -23,25 +23,32 @@ final class AppState {
 final class SidebarController:NSViewController {
     let state:AppState;var navigate:((String)->Void)?
     private var buttons:[NSButton]=[]
+    private var scroll:NSScrollView!
+    private var document:LayoutView!
     init(_ state:AppState){self.state=state;super.init(nibName:nil,bundle:nil)}
     required init?(coder:NSCoder){fatalError()}
-    override func loadView(){let root=LayoutView();root.color=Palette.surface;view=root;reload()}
-    func reload(){guard isViewLoaded else{return};view.subviews.forEach{$0.removeFromSuperview()};buttons=[]
-        let title=label("app.name",size:18,weight:.semibold);view.addSubview(title)
-        let subtitle=label("app.tagline",size:10,color:Palette.muted);view.addSubview(subtitle)
+    override func loadView(){let root=LayoutView();root.color=Palette.surface;view=root
+        scroll=NSScrollView();scroll.hasVerticalScroller=true;scroll.autohidesScrollers=false;scroll.scrollerStyle = .overlay;scroll.drawsBackground=false
+        document=LayoutView();document.color=Palette.surface;scroll.documentView=document;root.addSubview(scroll)
+        root.arrange={ [weak self] r in guard let self else{return};self.scroll.frame=r;self.document.frame=NSRect(x:0,y:0,width:r.width,height:max(508,r.height));self.document.needsLayout=true }
+        reload()
+    }
+    func reload(){guard isViewLoaded else{return};document.subviews.forEach{$0.removeFromSuperview()};buttons=[]
+        let title=label("app.name",size:18,weight:.semibold);document.addSubview(title)
+        let subtitle=label("app.tagline",size:10,color:Palette.muted);document.addSubview(subtitle)
         let keys=["overview","graph","agents","delegations","actions","evidence","findings"]
         let symbols=["square.grid.2x2","point.3.connected.trianglepath.dotted","person.crop.circle","link","cpu","doc.text.magnifyingglass","exclamationmark.triangle"]
-        for (i,key) in keys.enumerated(){let b=button("nav."+key,target:self,action:#selector(press(_:)),symbol:symbols[i]);b.identifier=NSUserInterfaceItemIdentifier(key);b.bezelStyle = .recessed;b.isBordered=false;b.alignment = .left;b.font = .systemFont(ofSize:12);b.wantsLayer=true;b.layer?.cornerRadius=5;buttons.append(b);view.addSubview(b)}
-        let scope=label("nav.scope",size:10,color:Palette.muted);view.addSubview(scope)
-        let source=wrapping(state.document.isDemo ? L("mode.demo"):state.document.source,size:11);view.addSubview(source)
-        let host=button("nav.host",target:self,action:#selector(hostPressed),symbol:"desktopcomputer");host.isBordered=false;host.alignment = .left;view.addSubview(host)
-        let settings=button("nav.settings",target:self,action:#selector(settingsPressed),symbol:"gearshape");settings.isBordered=false;settings.alignment = .left;view.addSubview(settings)
-        (view as? LayoutView)?.arrange={ [weak self] r in
+        for (i,key) in keys.enumerated(){let b=button("nav."+key,target:self,action:#selector(press(_:)),symbol:symbols[i]);b.identifier=NSUserInterfaceItemIdentifier(key);b.bezelStyle = .recessed;b.isBordered=false;b.alignment = .left;b.font = .systemFont(ofSize:12);b.wantsLayer=true;b.layer?.cornerRadius=5;buttons.append(b);document.addSubview(b)}
+        let scope=label("nav.scope",size:10,color:Palette.muted);document.addSubview(scope)
+        let source=wrapping(state.document.isDemo ? L("mode.demo"):state.document.source,size:11);document.addSubview(source)
+        let host=button("nav.host",target:self,action:#selector(hostPressed),symbol:"desktopcomputer");host.isBordered=false;host.alignment = .left;document.addSubview(host)
+        let settings=button("nav.settings",target:self,action:#selector(settingsPressed),symbol:"gearshape");settings.isBordered=false;settings.alignment = .left;document.addSubview(settings)
+        document.arrange={ [weak self] r in
             title.frame=NSRect(x:16,y:21,width:r.width-28,height:25);subtitle.frame=NSRect(x:16,y:49,width:r.width-28,height:18)
             for (i,b) in self?.buttons.enumerated() ?? [].enumerated(){b.frame=NSRect(x:10,y:88+CGFloat(i)*34,width:r.width-20,height:29)}
             scope.frame=NSRect(x:16,y:349,width:r.width-26,height:16);source.frame=NSRect(x:16,y:371,width:r.width-30,height:55)
-            host.frame=NSRect(x:10,y:max(446,r.height-84),width:r.width-20,height:30);settings.frame=NSRect(x:10,y:max(480,r.height-46),width:r.width-20,height:30)
-        };updateSelection();view.needsLayout=true
+            host.frame=NSRect(x:10,y:max(430,r.height-84),width:r.width-20,height:30);settings.frame=NSRect(x:10,y:max(464,r.height-46),width:r.width-20,height:30)
+        };updateSelection();document.needsLayout=true;view.needsLayout=true
     }
     func updateSelection(){for b in buttons{let selected=b.identifier?.rawValue==state.page;b.contentTintColor=selected ? Palette.accent:Palette.muted;b.layer?.backgroundColor=(selected ? Palette.brand.withAlphaComponent(0.12):.clear).cgColor}}
     @objc private func press(_ sender:NSButton){navigate?(sender.identifier?.rawValue ?? "graph")}
@@ -334,6 +341,13 @@ final class MainSplitController:NSSplitViewController {
     func localize(){sidebar.reload();main.build();inspector.reload()}
     func adaptToFamilyWidth(_ width:CGFloat) {
         let narrow = width < 1150
+        if splitViewItems.count == 3 {
+            let inspectorMinimum=splitViewItems[2].minimumThickness
+            let dividerBudget=2*splitView.dividerThickness
+            splitViewItems[1].minimumThickness = narrow
+                ? min(670,max(600,width-inspectorMinimum-dividerBudget))
+                : 670
+        }
         guard splitViewItems.count == 3, narrow != narrowFamilyWidth else { return }
         narrowFamilyWidth = narrow
         if narrow {
