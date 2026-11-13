@@ -228,7 +228,14 @@ class BuildProvenanceTests(unittest.TestCase):
                 manifest = args.output / "build-manifest.json"
                 manifest.write_text('{"engine_sha":"stale"}\n', encoding="utf-8")
 
-                def fail_after_app_mutation(build_args, *_):
+                def fail_after_app_mutation(
+                    build_args,
+                    *_,
+                    manifest=manifest,
+                    app=app,
+                    failure=failure,
+                    repo=repo,
+                ):
                     self.assertFalse(manifest.exists())
                     (app / "old-app-binary").write_text("partially replaced", encoding="utf-8")
                     if failure == "build":
