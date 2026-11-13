@@ -30,7 +30,7 @@
       "appId": "threaddesk",
       "file": "np-appbar-threaddesk-dark-256.png",
       "source": "assets/design/icons/dark/ThreadDesk-dark-256.png",
-      "sourceRepository": "threaddesk",
+      "sourceRepository": "ThreadDesk",
       "sourcePin": "40fac387582700ce56c42b856dfe2405f942c012",
       "sha256": "37acc1808d685b19a17ad6aa50919304877c44730afe3c105771508cb00e12a7",
       "dimensions": [
@@ -78,7 +78,7 @@
       "appId": "tollgate",
       "file": "np-appbar-tollgate-dark-256.png",
       "source": "assets/design/icons/dark/TollGate-dark-256.png",
-      "sourceRepository": "tollgate",
+      "sourceRepository": "TollGate",
       "sourcePin": "6676bcfc69f85e77fec6192bc51ad8f9c0b26740",
       "sha256": "98e90b668ed712361a05ae16efaa0768f6abd71e4bde40d9ece9ca59b018aed5",
       "dimensions": [
@@ -102,7 +102,7 @@
       "appId": "agent-authority",
       "file": "np-appbar-agent-authority-dark-256.png",
       "source": "assets/design/icons/dark/Agent-Authority-dark-256.png",
-      "sourceRepository": "agent-authority-lab",
+      "sourceRepository": "AgentAuthority",
       "sourcePin": "75fb14e99a50b967b8624191f0178963c433fbd9",
       "sha256": "ddbde6d384d6e78bb727f5d68552c1f18c46db1535f885c91a11b8ac5da7bbe9",
       "dimensions": [
