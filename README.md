@@ -174,6 +174,8 @@ This is **not** a production system and **not** a proof of general agent safety.
 
 **English:** This public repository uses the **Netzwerkpunkt Personal Use License 1.0**. See [LICENSE](LICENSE) for the license text.
 
+Historical revisions published before the license-change commit remain available under the MIT License that applied to them.
+
 ## Status
 
 The original v0.2 specification remains frozen. Subsequent additive experiments are separately frozen and reviewed. They do not rewrite v0.2.
