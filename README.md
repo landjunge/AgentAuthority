@@ -170,7 +170,11 @@ This is **not** a production system and **not** a proof of general agent safety.
 
 ## License
 
-**Source-available — all rights reserved.** The repository is currently **private**. Access for review, research discussion, or security evaluation requires an explicit invitation; but new material may not be copied, modified, distributed, deployed, or sold without prior written permission. Historical revisions published before the license-change commit remain available under the MIT License that applied to them. See [LICENSE](LICENSE) for the exact boundary and terms.
+**Deutsch:** Dieses öffentliche Repository verwendet die **Netzwerkpunkt Personal Use License 1.0**. Der Lizenztext steht in [LICENSE](LICENSE).
+
+**English:** This public repository uses the **Netzwerkpunkt Personal Use License 1.0**. See [LICENSE](LICENSE) for the license text.
+
+Historical revisions published before the license-change commit remain available under the MIT License that applied to them.
 
 ## Status
 
