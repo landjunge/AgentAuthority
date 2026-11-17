@@ -1,14 +1,6 @@
 <!-- README-LANGUAGES -->
 <p align="center"><a href="README.md">English</a> &nbsp;|&nbsp; <strong>Deutsch</strong></p>
 
-# AgentAuthority – Deutsch
-
-[English README](README.md) · [Releases](https://github.com/landjunge/AgentAuthority/releases)
-
-## Downloads
-
-Die fünf vorgesehenen Installer sind noch nicht als geprüfte Installationsdateien nachgewiesen. Die grauen Felder sind keine Download-Links.
-
 <p align="center">
   <img src="assets/readme/normalized/Agent-Authority-large.svg" alt="Agent Authority" width="256" height="256">
 </p>
@@ -41,5 +33,7 @@ Die fünf vorgesehenen Installer sind noch nicht als geprüfte Installationsdate
 </p>
 <p align="center"><a href="https://github.com/landjunge/AgentAuthority/archive/refs/heads/master.zip">Quellcode herunterladen / Download source ZIP</a></p>
 <!-- AUTO-DOWNLOADS:END -->
+
+Die fünf vorgesehenen Installer sind noch nicht als geprüfte Installationsdateien nachgewiesen. Die grauen Felder sind keine Download-Links.
 
 Die ausführliche deutsch- und englischsprachige Projektdokumentation steht in der [Haupt-README](README.md). Die Quellcode-Datei ist kein nativer Installer.
