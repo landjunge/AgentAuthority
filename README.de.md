@@ -37,3 +37,9 @@
 Die fünf vorgesehenen Installer sind noch nicht als geprüfte Installationsdateien nachgewiesen. Die grauen Felder sind keine Download-Links.
 
 Die ausführliche deutsch- und englischsprachige Projektdokumentation steht in der [Haupt-README](README.md). Die Quellcode-Datei ist kein nativer Installer.
+
+## Lizenz
+
+Dieses öffentliche Repository verwendet die **Netzwerkpunkt Personal Use License 1.0**. Der Lizenztext steht in [LICENSE](LICENSE).
+
+Frühere Revisionen, die vor dem Lizenzwechsel veröffentlicht wurden, bleiben unter der MIT-Lizenz verfügbar, die für sie galt.
