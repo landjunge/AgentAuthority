@@ -108,14 +108,10 @@ class LicenseRegressionTests(unittest.TestCase):
             (nested / "package.json").write_text(
                 json.dumps({"name": "x", "license": "SEE LICENSE IN ../../LICENSE"})
             )
-            self.assertTrue(
-                [p for p in CHECK.check_package_json(root) if "Paketordner" in p]
-            )
+            self.assertTrue([p for p in CHECK.check_package_json(root) if "Paketordner" in p])
             conf = root / "src-tauri" / "tauri.conf.json"
             conf.parent.mkdir()
-            conf.write_text(
-                json.dumps({"bundle": {"license": "MIT", "licenseFile": "../LICENSE"}})
-            )
+            conf.write_text(json.dumps({"bundle": {"license": "MIT", "licenseFile": "../LICENSE"}}))
             self.assertTrue([p for p in CHECK.check_tauri(root) if "bundle.license" in p])
 
     def test_repository_names_are_matched_case_insensitively(self):
