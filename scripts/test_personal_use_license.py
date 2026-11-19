@@ -118,6 +118,14 @@ class LicenseRegressionTests(unittest.TestCase):
             )
             self.assertTrue([p for p in CHECK.check_tauri(root) if "bundle.license" in p])
 
+    def test_repository_names_are_matched_case_insensitively(self):
+        import os
+        from unittest import mock
+
+        for name in ("landjunge/AgentAuthority", "landjunge/agent-authority-lab"):
+            with self.subTest(name=name), mock.patch.dict(os.environ, {"GITHUB_REPOSITORY": name}):
+                self.assertEqual(CHECK.detect_product(None), "agent-authority")
+
 
 if __name__ == "__main__":
     unittest.main()
