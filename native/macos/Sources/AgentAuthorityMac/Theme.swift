@@ -9,6 +9,9 @@ enum Palette {
     // NetzwerkPunkt Bedienbasis 0.1 roles; native adaptive Light surfaces retained.
     static let background=adaptive("121316","f5f6f8"),surface=adaptive("1a1c20","ffffff"),raised=adaptive("25282e","eceef2")
     static let border=adaptive("353940","d8dce4"),accent=adaptive("edf0f4","172539"),muted=adaptive("afb6c1","5b6370")
+    static let decoration = border.withAlphaComponent(0.35)
+    static let wordmark = adaptive("ffffff", "17191f")
+    static let brand = hex("3b78fc")
     static let green=adaptive("7bdaa7","246943"),amber=adaptive("e4be70","805f15"),risk=adaptive("f49b9b","963737")
     // Additional warning hues are native system colors, alongside existing ThreadDesk tokens.
     // Proof colors and their meaning are deliberately unchanged.
@@ -41,5 +44,5 @@ class SurfaceView:NSView {
     var rounded:CGFloat=0
     override var isFlipped:Bool{true}
     override var wantsDefaultClipping:Bool{true}
-    override func draw(_ dirtyRect:NSRect){color.setFill();NSBezierPath(roundedRect:bounds,xRadius:rounded,yRadius:rounded).fill();if rounded>0{Palette.border.setStroke();let p=NSBezierPath(roundedRect:bounds.insetBy(dx:0.5,dy:0.5),xRadius:rounded,yRadius:rounded);p.lineWidth=1;p.stroke()}}
+    override func draw(_ dirtyRect:NSRect){color.setFill();NSBezierPath(roundedRect:bounds,xRadius:rounded,yRadius:rounded).fill();if rounded>0{Palette.decoration.setStroke();let p=NSBezierPath(roundedRect:bounds.insetBy(dx:0.5,dy:0.5),xRadius:rounded,yRadius:rounded);p.lineWidth=1;p.stroke()}}
 }

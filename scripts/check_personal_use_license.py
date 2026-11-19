@@ -169,6 +169,9 @@ def check_package_json(repo: Path) -> list[str]:
             continue
         if license_field.startswith("SEE LICENSE IN "):
             target = (path.parent / license_field.removeprefix("SEE LICENSE IN ")).resolve()
+            if not target.is_relative_to(path.parent.resolve()):
+                problems.append(f"{rel}: die Lizenzdatei muss im Paketordner liegen")
+                continue
             if expected is not None and (not target.is_file() or target.read_bytes() != expected):
                 problems.append(f"{rel}: {target.name} stimmt nicht mit der Stamm-LICENSE überein")
     return problems
@@ -189,6 +192,11 @@ def check_tauri(repo: Path) -> list[str]:
             problems.append(
                 f"{rel}: bundle.licenseFile oder bundle.license muss Personal Use 1.0 sein"
             )
+        if license_id and not ok_id:
+            # A valid license file must not mask a conflicting explicit identifier.
+            problems.append(f"{rel}: bundle.license {license_id!r} ist nicht Personal Use 1.0")
+        if license_file and not ok_file:
+            problems.append(f"{rel}: bundle.licenseFile muss LICENSE nennen")
         cargo = conf.parent / "Cargo.toml"
         if cargo.is_file() and not re.search(
             r'(?m)^license-file\s*=\s*".*LICENSE"', cargo.read_text(encoding="utf-8")

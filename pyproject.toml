@@ -12,6 +12,10 @@ requires-python = ">=3.12"
 authors = [{ name = "landjunge" }]
 dependencies = []
 
+[project.urls]
+Repository = "https://github.com/landjunge/AgentAuthority"
+Issues = "https://github.com/landjunge/AgentAuthority/issues"
+
 [project.scripts]
 agent-authority = "agent_authority.cli:main"
 

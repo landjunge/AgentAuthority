@@ -28,7 +28,7 @@ class LicenseRegressionTests(unittest.TestCase):
                 ("LicenseRef-Netzwerkpunkt-Commercial-2.0", False),
                 (CHECK.ALLOWED_LICENSE_REF + "-changed", False),
                 ("LicenseRef-Netzwerkpunkt-Personal-Use-2.0", False),
-                ("SEE LICENSE IN ../../LICENSE", True),
+                ("SEE LICENSE IN ../../LICENSE", False),
                 ("SEE LICENSE IN LICENSE", False),
             ]:
                 with self.subTest(value=value):
@@ -96,6 +96,27 @@ class LicenseRegressionTests(unittest.TestCase):
                         self.assertIn(proof, text)
                         recipe.write_text(text.replace(proof, "REMOVED_PRODUCT_INCLUSION"))
                         self.assertTrue(CHECK.check_packagers(root))
+
+    def test_nested_package_must_carry_its_own_license_and_tauri_identifier_is_checked(self):
+        import json
+
+        with tempfile.TemporaryDirectory() as t:
+            root = Path(t)
+            (root / "LICENSE").write_text(CHECK.LICENSE_TITLE + "\n")
+            nested = root / "packages" / "x"
+            nested.mkdir(parents=True)
+            (nested / "package.json").write_text(
+                json.dumps({"name": "x", "license": "SEE LICENSE IN ../../LICENSE"})
+            )
+            self.assertTrue(
+                [p for p in CHECK.check_package_json(root) if "Paketordner" in p]
+            )
+            conf = root / "src-tauri" / "tauri.conf.json"
+            conf.parent.mkdir()
+            conf.write_text(
+                json.dumps({"bundle": {"license": "MIT", "licenseFile": "../LICENSE"}})
+            )
+            self.assertTrue([p for p in CHECK.check_tauri(root) if "bundle.license" in p])
 
 
 if __name__ == "__main__":

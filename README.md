@@ -1,5 +1,8 @@
 <!-- readme-header-v1: Kopf nach ThreadDesk docs/contracts/readme-header-v1.md. Nicht von Hand umgestalten; scripts/readme_header.py apply/check verwenden. -->
 
+<!-- README-LANGUAGES -->
+<p align="center"><strong>English</strong> &nbsp;|&nbsp; <a href="README.de.md">Deutsch</a></p>
+
 <p align="center">
   <img src="assets/readme/normalized/Agent-Authority-large.svg" alt="Agent Authority" width="256" height="256">
 </p>
@@ -7,21 +10,30 @@
 <p align="center">
   <a href="https://github.com/landjunge/KiraBridge#readme" title="KiraBridge"><img src="assets/readme/normalized/KiraBridge-small.svg" alt="KiraBridge" width="48" height="48"></a>
   &nbsp;
-  <a href="https://github.com/landjunge/threaddesk#readme" title="ThreadDesk"><img src="assets/readme/normalized/ThreadDesk-small.svg" alt="ThreadDesk" width="48" height="48"></a>
+  <a href="https://github.com/landjunge/ThreadDesk#readme" title="ThreadDesk"><img src="assets/readme/normalized/ThreadDesk-small.svg" alt="ThreadDesk" width="48" height="48"></a>
   &nbsp;
   <a href="https://github.com/landjunge/4AllPass#readme" title="4AllPass"><img src="assets/readme/normalized/4AllPass-small.svg" alt="4AllPass" width="48" height="48"></a>
   &nbsp;
-  <a href="https://github.com/landjunge/tollgate#readme" title="TollGate"><img src="assets/readme/normalized/TollGate-small.svg" alt="TollGate" width="48" height="48"></a>
+  <a href="https://github.com/landjunge/TollGate#readme" title="TollGate"><img src="assets/readme/normalized/TollGate-small.svg" alt="TollGate" width="48" height="48"></a>
   &nbsp;
-  <a href="https://github.com/landjunge/blockdesign#readme" title="BlockDesign"><img src="assets/readme/normalized/BlockDesign-small.svg" alt="BlockDesign" width="48" height="48"></a>
+  <a href="https://github.com/landjunge/BlockDesign#readme" title="BlockDesign"><img src="assets/readme/normalized/BlockDesign-small.svg" alt="BlockDesign" width="48" height="48"></a>
 </p>
 
 <p align="center"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/design/wordmarks/AgentAuthority-dark.svg"><img src="assets/design/wordmarks/AgentAuthority-light.svg" alt="Agent Authority" width="352"></picture></p>
 
 <!-- AUTO-DOWNLOADS:START -->
 <p align="center">
-  <a href="https://github.com/landjunge/agent-authority-lab/archive/refs/heads/master.zip" title="agent-authority-lab-master.zip herunterladen / download"><img src="assets/readme/download-source.svg" alt="Download Quellcode / Source ZIP · 0.3.0a2" width="190" height="52"></a>
+  <img src="assets/readme/download-macos-apple-silicon.svg" alt="macOS Apple Silicon: In Vorbereitung / Coming soon" width="190" height="52">
+  &nbsp;
+  <img src="assets/readme/download-macos-intel.svg" alt="macOS Intel: In Vorbereitung / Coming soon" width="190" height="52">
+  &nbsp;
+  <img src="assets/readme/download-windows.svg" alt="Windows: In Vorbereitung / Coming soon" width="190" height="52">
+  &nbsp;
+  <img src="assets/readme/download-linux-desktop.svg" alt="Linux Desktop: In Vorbereitung / Coming soon" width="190" height="52">
+  &nbsp;
+  <img src="assets/readme/download-debian-server.svg" alt="Debian Server: In Vorbereitung / Coming soon" width="190" height="52">
 </p>
+<p align="center"><a href="https://github.com/landjunge/AgentAuthority/archive/refs/heads/master.zip">Quellcode herunterladen / Download source ZIP</a></p>
 <!-- AUTO-DOWNLOADS:END -->
 
 <p align="center"><strong>Understand what your AI agents report.</strong><br>Nachvollziehen, was deine KI-Agenten melden.</p>
@@ -107,6 +119,24 @@ bundle includes Python 3.12 and targets macOS 12. Live Endpoint Security testing
 requires Apple-approved entitlement, signing, extension activation and the
 collector's own Full Disk Access. The development build cannot substitute these.
 
+**Deutsch – Entwicklungsstand:** Der native AppKit-Header verwendet die fünf Originalicons
+(32 px in 44-Punkte-Zielen), die zweifarbige Wortmarke und direkt sichtbares DE/EN.
+Die drei Bereiche bleiben erhalten; Kennzahlenkarten sind 66 Punkte hoch. Der native
+Familienwechsel ruft ausschließlich den vorhandenen KiraBridge-CLI-Broker mit fester
+Produkt-ID und eigenem PID auf. Ein bestätigtes Fenster ist kein verbundener Peer.
+Fehlender Broker oder unklare Ergebnisse bleiben sichtbar unbestätigt, ohne automatische
+Wiederholung. Verbergen erhält die Instanz; normales Schließen/Beenden bleibt unverändert.
+Das ist Quell-/lokaler Buildstand, keine Behauptung einer veröffentlichten oder installierten Version.
+
+**English – development source:** The native AppKit header reuses the five original icons
+(32 px inside 44-point targets), the two-color wordmark and visible DE/EN controls.
+The three panes remain; metric cards are 66 points high. Native family switching calls
+only the existing KiraBridge CLI broker with a fixed product ID and this native process's
+PID. Window confirmation does not establish peer connectivity. Missing broker and uncertain
+outcomes remain visibly unconfirmed, without automatic retry. Hiding preserves the instance;
+normal Close/Quit behavior is unchanged. This is source/local-build status, not a published
+or installed upgrade. See the [native build and verification instructions](native/macos/README.md).
+
 ## Workflow observations / Workflow-Beobachtung
 
 **English:** The current local preview adds a versioned, bounded workflow-metadata
@@ -152,11 +182,11 @@ This is **not** a production system and **not** a proof of general agent safety.
 
 ## License
 
-**Netzwerkpunkt Personal Use License 1.0 — custom source-available terms.**
+**Deutsch:** Dieses öffentliche Repository verwendet die **Netzwerkpunkt Personal Use License 1.0**. Der Lizenztext steht in [LICENSE](LICENSE).
 
-Private, non-business use is free, including installation, private modifications and private self-hosting. Internal business or professional use, resale and paid services require prior written permission or a separate license from the rightsholder. No general redistribution permission is granted.
+**English:** This public repository uses the **Netzwerkpunkt Personal Use License 1.0**. See [LICENSE](LICENSE) for the license text.
 
-See the [full German license and English translation](LICENSE); the German text governs. This is not a standard open-source license and has not undergone legal review. Previously granted MIT rights for historical Agent Authority versions remain intact.
+Historical revisions published before the license-change commit remain available under the MIT License that applied to them.
 
 ## Status
 
