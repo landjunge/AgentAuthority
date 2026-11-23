@@ -1,7 +1,7 @@
 import AppKit
 import AuthorityCore
 
-final class LayoutView:SurfaceView {
+class LayoutView:SurfaceView {
     var arrange:((NSRect)->Void)?
     override func layout(){super.layout();arrange?(bounds)}
 }
@@ -23,27 +23,34 @@ final class AppState {
 final class SidebarController:NSViewController {
     let state:AppState;var navigate:((String)->Void)?
     private var buttons:[NSButton]=[]
+    private var scroll:NSScrollView!
+    private var document:LayoutView!
     init(_ state:AppState){self.state=state;super.init(nibName:nil,bundle:nil)}
     required init?(coder:NSCoder){fatalError()}
-    override func loadView(){let root=LayoutView();root.color=Palette.surface;view=root;reload()}
-    func reload(){guard isViewLoaded else{return};view.subviews.forEach{$0.removeFromSuperview()};buttons=[]
-        let title=label("app.name",size:18,weight:.semibold);view.addSubview(title)
-        let subtitle=label("app.tagline",size:10,color:Palette.muted);view.addSubview(subtitle)
+    override func loadView(){let root=LayoutView();root.color=Palette.surface;view=root
+        scroll=NSScrollView();scroll.hasVerticalScroller=true;scroll.autohidesScrollers=false;scroll.scrollerStyle = .overlay;scroll.drawsBackground=false
+        document=LayoutView();document.color=Palette.surface;scroll.documentView=document;root.addSubview(scroll)
+        root.arrange={ [weak self] r in guard let self else{return};self.scroll.frame=r;self.document.frame=NSRect(x:0,y:0,width:r.width,height:max(508,r.height));self.document.needsLayout=true }
+        reload()
+    }
+    func reload(){guard isViewLoaded else{return};document.subviews.forEach{$0.removeFromSuperview()};buttons=[]
+        let title=label("app.name",size:18,weight:.semibold);document.addSubview(title)
+        let subtitle=label("app.tagline",size:10,color:Palette.muted);document.addSubview(subtitle)
         let keys=["overview","graph","agents","delegations","actions","evidence","findings"]
         let symbols=["square.grid.2x2","point.3.connected.trianglepath.dotted","person.crop.circle","link","cpu","doc.text.magnifyingglass","exclamationmark.triangle"]
-        for (i,key) in keys.enumerated(){let b=button("nav."+key,target:self,action:#selector(press(_:)),symbol:symbols[i]);b.identifier=NSUserInterfaceItemIdentifier(key);b.bezelStyle = .recessed;b.isBordered=false;b.alignment = .left;b.font = .systemFont(ofSize:12);b.wantsLayer=true;b.layer?.cornerRadius=5;buttons.append(b);view.addSubview(b)}
-        let scope=label("nav.scope",size:10,color:Palette.muted);view.addSubview(scope)
-        let source=wrapping(state.document.isDemo ? L("mode.demo"):state.document.source,size:11);view.addSubview(source)
-        let host=button("nav.host",target:self,action:#selector(hostPressed),symbol:"desktopcomputer");host.isBordered=false;host.alignment = .left;view.addSubview(host)
-        let settings=button("nav.settings",target:self,action:#selector(settingsPressed),symbol:"gearshape");settings.isBordered=false;settings.alignment = .left;view.addSubview(settings)
-        (view as? LayoutView)?.arrange={ [weak self] r in
+        for (i,key) in keys.enumerated(){let b=button("nav."+key,target:self,action:#selector(press(_:)),symbol:symbols[i]);b.identifier=NSUserInterfaceItemIdentifier(key);b.bezelStyle = .recessed;b.isBordered=false;b.alignment = .left;b.font = .systemFont(ofSize:12);b.wantsLayer=true;b.layer?.cornerRadius=5;buttons.append(b);document.addSubview(b)}
+        let scope=label("nav.scope",size:10,color:Palette.muted);document.addSubview(scope)
+        let source=wrapping(state.document.isDemo ? L("mode.demo"):state.document.source,size:11);document.addSubview(source)
+        let host=button("nav.host",target:self,action:#selector(hostPressed),symbol:"desktopcomputer");host.isBordered=false;host.alignment = .left;document.addSubview(host)
+        let settings=button("nav.settings",target:self,action:#selector(settingsPressed),symbol:"gearshape");settings.isBordered=false;settings.alignment = .left;document.addSubview(settings)
+        document.arrange={ [weak self] r in
             title.frame=NSRect(x:16,y:21,width:r.width-28,height:25);subtitle.frame=NSRect(x:16,y:49,width:r.width-28,height:18)
             for (i,b) in self?.buttons.enumerated() ?? [].enumerated(){b.frame=NSRect(x:10,y:88+CGFloat(i)*34,width:r.width-20,height:29)}
             scope.frame=NSRect(x:16,y:349,width:r.width-26,height:16);source.frame=NSRect(x:16,y:371,width:r.width-30,height:55)
-            host.frame=NSRect(x:10,y:max(446,r.height-84),width:r.width-20,height:30);settings.frame=NSRect(x:10,y:max(480,r.height-46),width:r.width-20,height:30)
-        };updateSelection();view.needsLayout=true
+            host.frame=NSRect(x:10,y:max(430,r.height-84),width:r.width-20,height:30);settings.frame=NSRect(x:10,y:max(464,r.height-46),width:r.width-20,height:30)
+        };updateSelection();document.needsLayout=true;view.needsLayout=true
     }
-    func updateSelection(){for b in buttons{let selected=b.identifier?.rawValue==state.page;b.contentTintColor=selected ? Palette.accent:Palette.muted;b.layer?.backgroundColor=(selected ? Palette.accent.withAlphaComponent(0.12):.clear).cgColor}}
+    func updateSelection(){for b in buttons{let selected=b.identifier?.rawValue==state.page;b.contentTintColor=selected ? Palette.accent:Palette.muted;b.layer?.backgroundColor=(selected ? Palette.brand.withAlphaComponent(0.12):.clear).cgColor}}
     @objc private func press(_ sender:NSButton){navigate?(sender.identifier?.rawValue ?? "graph")}
     @objc private func hostPressed(){navigate?("host")}
     @objc private func settingsPressed(){navigate?("settings")}
@@ -51,9 +58,9 @@ final class SidebarController:NSViewController {
 
 final class MetricView:SurfaceView {
     let title=label("metric.agents",size:11,color:Palette.muted),value=NSTextField(labelWithString:"—"),detail=NSTextField(labelWithString:"")
-    override init(frame:NSRect){super.init(frame:frame);rounded=7;value.font = .systemFont(ofSize:25,weight:.medium);detail.font = .systemFont(ofSize:10);detail.textColor=Palette.muted;detail.lineBreakMode = .byTruncatingTail;[title,value,detail].forEach{addSubview($0)}}
+    override init(frame:NSRect){super.init(frame:frame);rounded=7;value.font = .systemFont(ofSize:22,weight:.medium);detail.font = .systemFont(ofSize:10);detail.textColor=Palette.muted;detail.lineBreakMode = .byTruncatingTail;[title,value,detail].forEach{addSubview($0)}}
     required init?(coder:NSCoder){fatalError()}
-    override func layout(){super.layout();title.frame=NSRect(x:12,y:9,width:bounds.width-24,height:16);value.frame=NSRect(x:12,y:28,width:bounds.width-24,height:29);detail.frame=NSRect(x:12,y:61,width:bounds.width-24,height:16)}
+    override func layout(){super.layout();title.frame=NSRect(x:12,y:6,width:bounds.width-24,height:15);value.frame=NSRect(x:12,y:21,width:bounds.width-24,height:25);detail.frame=NSRect(x:12,y:47,width:bounds.width-24,height:14)}
     func set(_ key:String,_ number:String,_ caption:String){title.stringValue=L(key);value.stringValue=number;detail.stringValue=caption;toolTip=caption}
 }
 
@@ -114,19 +121,20 @@ final class MainPanelController:NSViewController,NSTableViewDataSource,NSTableVi
         (view as? LayoutView)?.arrange={ [weak self] r in guard let self else{return};let w=r.width-32
             self.heading.frame=NSRect(x:16,y:16,width:w-298,height:29);self.scope.frame=NSRect(x:16,y:48,width:w-298,height:16)
             open.frame=NSRect(x:r.width-282,y:20,width:142,height:25);reload.frame=NSRect(x:r.width-133,y:20,width:117,height:25)
-            for (i,m) in self.metrics.enumerated(){m.frame=NSRect(x:16+CGFloat(i)*(w+10)/4,y:77,width:(w-30)/4,height:86)}
-            self.coverage.frame=NSRect(x:16,y:171,width:w-180,height:17);save.frame=NSRect(x:r.width-188,y:168,width:172,height:24)
-            self.mode.frame=NSRect(x:16,y:199,width:228,height:25);self.filter.frame=NSRect(x:252,y:199,width:155,height:25);self.search.frame=NSRect(x:max(414,r.width-287),y:199,width:min(271,max(140,r.width-430)),height:25)
-            self.backButton.frame=NSRect(x:16,y:230,width:87,height:24)
-            self.warningCases.frame=NSRect(x:111,y:230,width:max(210,min(340,w-285)),height:25)
-            self.pulseButton.frame=NSRect(x:self.warningCases.frame.maxX+12,y:230,width:160,height:24)
-            self.criticalBanner.frame=NSRect(x:16,y:257,width:w,height:22)
-            let graphTop:CGFloat=self.criticalBanner.isHidden ? 258:282
-            let available=max(150,r.height-graphTop-176)
+            for (i,m) in self.metrics.enumerated(){m.frame=NSRect(x:16+CGFloat(i)*(w+10)/4,y:69,width:(w-30)/4,height:66)}
+            self.coverage.frame=NSRect(x:16,y:143,width:w-180,height:17);save.frame=NSRect(x:r.width-188,y:140,width:172,height:24)
+            self.mode.frame=NSRect(x:16,y:171,width:228,height:25);self.filter.frame=NSRect(x:252,y:171,width:155,height:25);self.search.frame=NSRect(x:max(414,r.width-287),y:171,width:min(271,max(140,r.width-430)),height:25)
+            self.backButton.frame=NSRect(x:16,y:202,width:87,height:24)
+            self.warningCases.frame=NSRect(x:111,y:202,width:max(210,min(340,w-285)),height:25)
+            self.pulseButton.frame=NSRect(x:self.warningCases.frame.maxX+12,y:202,width:160,height:24)
+            self.criticalBanner.frame=NSRect(x:16,y:229,width:w,height:22)
+            let graphTop:CGFloat=self.criticalBanner.isHidden ? 230:254
+            let available=max(0,r.height-graphTop-139)
             if self.canvas.agentOverview{self.canvas.useColumns(max(4,min(10,Int(w/164))),fit:self.fitAfterLayout)}
             let fitScale=min(1.15,max(0.15,(w-40)/self.canvas.layout.width))
             let preferred=max(195,self.canvas.layout.height*fitScale+50)
-            let graphHeight=min(available,preferred)
+            let preferredAvailable=max(150,r.height-graphTop-176)
+            let graphHeight=min(available,preferredAvailable,preferred)
             self.canvas.frame=NSRect(x:16,y:graphTop,width:w,height:graphHeight)
             let footer=graphTop+graphHeight+5
             self.zoomLabel.frame=NSRect(x:r.width-174,y:footer+4,width:46,height:18);minus.frame=NSRect(x:r.width-206,y:footer,width:27,height:24);plus.frame=NSRect(x:r.width-126,y:footer,width:27,height:24);fit.frame=NSRect(x:r.width-93,y:footer,width:77,height:24)
@@ -318,6 +326,7 @@ final class InspectorController:NSViewController {
 final class MainSplitController:NSSplitViewController {
     let state:AppState;let sidebar:SidebarController;let main:MainPanelController;let inspector:InspectorController
     var navigate:((String)->Void)?
+    private var narrowFamilyWidth=false, inspectorCollapsedForWidth=false
     init(_ state:AppState){self.state=state;sidebar=SidebarController(state);main=MainPanelController(state);inspector=InspectorController(state);super.init(nibName:nil,bundle:nil)}
     required init?(coder:NSCoder){fatalError()}
     override func viewDidLoad(){super.viewDidLoad();let s=NSSplitViewItem(sidebarWithViewController:sidebar);s.minimumThickness=176;s.maximumThickness=220;s.preferredThicknessFraction=0.11;s.canCollapse=true
@@ -330,5 +339,33 @@ final class MainSplitController:NSSplitViewController {
     func select(_ id:String){if !state.document.trace(state.chainAnchor).contains(id){if state.graphMode==0{main.recordNavigation()};state.chainAnchor=id};state.selected=id;main.selectedUpdated();if state.graphMode==0{main.updateGraph(fit:false)};inspector.reload()}
     func refresh(){sidebar.reload();main.updateContent();inspector.reload()}
     func localize(){sidebar.reload();main.build();inspector.reload()}
-    func toggleInspector(){splitViewItems[2].isCollapsed.toggle()}
+    func adaptToFamilyWidth(_ width:CGFloat) {
+        let narrow = width < 1150
+        if splitViewItems.count == 3 {
+            let inspectorMinimum=splitViewItems[2].minimumThickness
+            let dividerBudget=2*splitView.dividerThickness
+            splitViewItems[1].minimumThickness = narrow
+                ? min(670,max(600,width-inspectorMinimum-dividerBudget))
+                : 670
+        }
+        guard splitViewItems.count == 3, narrow != narrowFamilyWidth else { return }
+        narrowFamilyWidth = narrow
+        if narrow {
+            inspectorCollapsedForWidth = !splitViewItems[2].isCollapsed
+            if inspectorCollapsedForWidth { splitViewItems[2].isCollapsed = true }
+        } else if inspectorCollapsedForWidth {
+            splitViewItems[2].isCollapsed = false; inspectorCollapsedForWidth = false
+        }
+    }
+    func toggleSidebar() {
+        if narrowFamilyWidth && splitViewItems[0].isCollapsed {
+            splitViewItems[2].isCollapsed = true; inspectorCollapsedForWidth = false
+        }
+        splitViewItems[0].isCollapsed.toggle()
+    }
+    func toggleInspector() {
+        inspectorCollapsedForWidth = false
+        if narrowFamilyWidth && splitViewItems[2].isCollapsed { splitViewItems[0].isCollapsed = true }
+        splitViewItems[2].isCollapsed.toggle()
+    }
 }

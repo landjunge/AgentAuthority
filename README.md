@@ -1,5 +1,8 @@
 <!-- readme-header-v1: Kopf nach ThreadDesk docs/contracts/readme-header-v1.md. Nicht von Hand umgestalten; scripts/readme_header.py apply/check verwenden. -->
 
+<!-- README-LANGUAGES -->
+<p align="center"><strong>English</strong> &nbsp;|&nbsp; <a href="README.de.md">Deutsch</a></p>
+
 <p align="center">
   <img src="assets/readme/normalized/Agent-Authority-large.svg" alt="Agent Authority" width="256" height="256">
 </p>
@@ -7,24 +10,49 @@
 <p align="center">
   <a href="https://github.com/landjunge/KiraBridge#readme" title="KiraBridge"><img src="assets/readme/normalized/KiraBridge-small.svg" alt="KiraBridge" width="48" height="48"></a>
   &nbsp;
-  <a href="https://github.com/landjunge/threaddesk#readme" title="ThreadDesk"><img src="assets/readme/normalized/ThreadDesk-small.svg" alt="ThreadDesk" width="48" height="48"></a>
+  <a href="https://github.com/landjunge/ThreadDesk#readme" title="ThreadDesk"><img src="assets/readme/normalized/ThreadDesk-small.svg" alt="ThreadDesk" width="48" height="48"></a>
   &nbsp;
   <a href="https://github.com/landjunge/4AllPass#readme" title="4AllPass"><img src="assets/readme/normalized/4AllPass-small.svg" alt="4AllPass" width="48" height="48"></a>
   &nbsp;
-  <a href="https://github.com/landjunge/tollgate#readme" title="TollGate"><img src="assets/readme/normalized/TollGate-small.svg" alt="TollGate" width="48" height="48"></a>
+  <a href="https://github.com/landjunge/TollGate#readme" title="TollGate"><img src="assets/readme/normalized/TollGate-small.svg" alt="TollGate" width="48" height="48"></a>
   &nbsp;
-  <a href="https://github.com/landjunge/blockdesign#readme" title="BlockDesign"><img src="assets/readme/normalized/BlockDesign-small.svg" alt="BlockDesign" width="48" height="48"></a>
+  <a href="https://github.com/landjunge/BlockDesign#readme" title="BlockDesign"><img src="assets/readme/normalized/BlockDesign-small.svg" alt="BlockDesign" width="48" height="48"></a>
 </p>
 
 <p align="center"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/design/wordmarks/AgentAuthority-dark.svg"><img src="assets/design/wordmarks/AgentAuthority-light.svg" alt="Agent Authority" width="352"></picture></p>
 
 <!-- AUTO-DOWNLOADS:START -->
 <p align="center">
-  <a href="https://github.com/landjunge/agent-authority-lab/archive/refs/heads/master.zip" title="agent-authority-lab-master.zip herunterladen / download"><img src="assets/readme/download-source.svg" alt="Download Quellcode / Source ZIP · 0.3.0a2" width="190" height="52"></a>
+  <img src="assets/readme/download-macos-apple-silicon.svg" alt="macOS Apple Silicon: In Vorbereitung / Coming soon" width="190" height="52">
+  &nbsp;
+  <img src="assets/readme/download-macos-intel.svg" alt="macOS Intel: In Vorbereitung / Coming soon" width="190" height="52">
+  &nbsp;
+  <img src="assets/readme/download-windows.svg" alt="Windows: In Vorbereitung / Coming soon" width="190" height="52">
+  &nbsp;
+  <img src="assets/readme/download-linux-desktop.svg" alt="Linux Desktop: In Vorbereitung / Coming soon" width="190" height="52">
+  &nbsp;
+  <img src="assets/readme/download-debian-server.svg" alt="Debian Server: In Vorbereitung / Coming soon" width="190" height="52">
 </p>
+<p align="center"><a href="https://github.com/landjunge/AgentAuthority/archive/refs/heads/master.zip">Quellcode herunterladen / Download source ZIP</a></p>
 <!-- AUTO-DOWNLOADS:END -->
 
 <p align="center"><strong>Understand what your AI agents report.</strong><br>Nachvollziehen, was deine KI-Agenten melden.</p>
+
+## NetzwerkPunkt: gemeinsame Sprachbedienung, getrennte Verantwortung
+
+**KiraBridge ist die zentrale Sprach- und Computersteuerung der NetzwerkPunkt-Werkzeugfamilie.** Auf dem eigenen Rechner kann die KI bei passenden Berechtigungen Programme öffnen, Fenster wechseln, Notizen schreiben, Text direkt eingeben und Tastenkombinationen ausführen. Daneben gibt es **ThreadDesk** für Projekte und Arbeitsstände, **4AllPass** für Zugänge und Schlüssel, **TollGate** für Nutzungsgrenzen und Budgets und **Agent Authority** für ausschließlich lesende Beobachtung und Nachweise. Diese Rollen sind bewusst getrennt: **Agent Authority führt keine Computerbefehle aus und erteilt keine Berechtigungen.** Die vollständige sprachgesteuerte Verbindung aller Werkzeuge ist ein Ausbauziel, keine bereits vollständig abgenommene Funktion.
+
+## Sprachbedienung und nachvollziehbare Agentenaktivität
+
+**Die NetzwerkPunkt-Werkzeugfamilie verfolgt als Hauptziel die natürliche Sprachbedienung von Computern und KI-Werkzeugen für alle.** KiraBridge verbindet die Bedienung; Agent Authority sorgt in seiner getrennten Rolle dafür, dass gemeldete Agentenaktivitäten, Warnungen und Belegreferenzen lesbar und überprüfbar bleiben. Beobachtete Berichte sind kein Beweis für tatsächlich ausgeführte Computeraktionen und erteilen keine Freigaben.
+
+**Barrierefreiheit denken wir als wichtigen zusätzlichen Nutzen mit, nicht als alleinige Zielgruppe.** Gut verständliche Statusmeldungen unterstützen Menschen, denen Maus- oder Tastaturbedienung schwerfällt, ebenso wie alle anderen Nutzenden. Preview-Funktionen, optionale ThreadDesk-Anbindungen und geplante Integrationen bleiben klar unterschieden. Wir verbessern die Verständlichkeit und Zuverlässigkeit fortlaufend.
+
+## NetzwerkPunkt family: shared voice interface, separate responsibilities
+
+**KiraBridge is the central voice and computer-control connection** for the NetzwerkPunkt family. Subject to permissions, it can open applications, switch windows, write notes, enter text directly and use shortcuts. **ThreadDesk** maintains projects and work history, **4AllPass** manages credentials and keys, **TollGate** handles usage limits and budgets, and **Agent Authority** provides read-only observations and evidence. Agent Authority does not execute computer commands or grant access. Fully integrated voice control across all tools is a development goal, not an already verified deployment.
+
+**Natural-language control for everyone is the family's primary goal.** Accessibility is considered as an important additional benefit rather than an exclusive audience or the sole purpose. Clear agent reports, warnings and evidence are useful to all users, including people with disabilities or reduced mobility. Reported actions must not be confused with independently verified real-world results; preview capabilities, optional integrations and future plans remain distinct.
 
 ## Aktueller Funktionsstand / Current capabilities
 
@@ -91,6 +119,24 @@ bundle includes Python 3.12 and targets macOS 12. Live Endpoint Security testing
 requires Apple-approved entitlement, signing, extension activation and the
 collector's own Full Disk Access. The development build cannot substitute these.
 
+**Deutsch – Entwicklungsstand:** Der native AppKit-Header verwendet die fünf Originalicons
+(32 px in 44-Punkte-Zielen), die zweifarbige Wortmarke und direkt sichtbares DE/EN.
+Die drei Bereiche bleiben erhalten; Kennzahlenkarten sind 66 Punkte hoch. Der native
+Familienwechsel ruft ausschließlich den vorhandenen KiraBridge-CLI-Broker mit fester
+Produkt-ID und eigenem PID auf. Ein bestätigtes Fenster ist kein verbundener Peer.
+Fehlender Broker oder unklare Ergebnisse bleiben sichtbar unbestätigt, ohne automatische
+Wiederholung. Verbergen erhält die Instanz; normales Schließen/Beenden bleibt unverändert.
+Das ist Quell-/lokaler Buildstand, keine Behauptung einer veröffentlichten oder installierten Version.
+
+**English – development source:** The native AppKit header reuses the five original icons
+(32 px inside 44-point targets), the two-color wordmark and visible DE/EN controls.
+The three panes remain; metric cards are 66 points high. Native family switching calls
+only the existing KiraBridge CLI broker with a fixed product ID and this native process's
+PID. Window confirmation does not establish peer connectivity. Missing broker and uncertain
+outcomes remain visibly unconfirmed, without automatic retry. Hiding preserves the instance;
+normal Close/Quit behavior is unchanged. This is source/local-build status, not a published
+or installed upgrade. See the [native build and verification instructions](native/macos/README.md).
+
 ## Workflow observations / Workflow-Beobachtung
 
 **English:** The current local preview adds a versioned, bounded workflow-metadata
@@ -136,7 +182,11 @@ This is **not** a production system and **not** a proof of general agent safety.
 
 ## License
 
-**Source-available — all rights reserved.** The repository is currently **private**. Access for review, research discussion, or security evaluation requires an explicit invitation; but new material may not be copied, modified, distributed, deployed, or sold without prior written permission. Historical revisions published before the license-change commit remain available under the MIT License that applied to them. See [LICENSE](LICENSE) for the exact boundary and terms.
+**Deutsch:** Dieses öffentliche Repository verwendet die **Netzwerkpunkt Personal Use License 1.0**. Der Lizenztext steht in [LICENSE](LICENSE).
+
+**English:** This public repository uses the **Netzwerkpunkt Personal Use License 1.0**. See [LICENSE](LICENSE) for the license text.
+
+Historical revisions published before the license-change commit remain available under the MIT License that applied to them.
 
 ## Status
 

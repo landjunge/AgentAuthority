@@ -1,0 +1,7 @@
+{
+  "repository": "ThreadDesk",
+  "commit": "3822f99952b28650e0850b4bf95fcc9f9434cd91",
+  "bundle_version": "1.2.2",
+  "renderer": "native AppKit adaptation of existing ProductHeaderView@4a81b02ba0ea78ba210c8dbc1a40c5dfd5ee3378",
+  "assets": "Original PNG bytes and art rectangles from shared catalog; 32px art / 44px targets; version in hover and keyboard-focus details only"
+}

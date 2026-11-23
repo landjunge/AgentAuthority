@@ -1,0 +1,277 @@
+import AppKit
+import AuthorityCore
+import XCTest
+import CryptoKit
+@testable import AgentAuthorityMac
+
+final class FamilyDesignTests: XCTestCase {
+    private func descendants(_ view: NSView) -> [NSView] {
+        [view] + view.subviews.flatMap(descendants)
+    }
+
+    private func success(_ target: String = "threaddesk") -> [String: Any] {
+        ["success": true, "active_product": target,
+         "actual_outer_bounds": ["x": -1200, "y": 20, "width": 1150, "height": 730],
+         "visible_family_windows": 1]
+    }
+    private func data(_ object: [String: Any]) throws -> Data { try JSONSerialization.data(withJSONObject: object) }
+
+    func testFixedNativeArgumentsRejectPathsCommandsAndUnknownProducts() throws {
+        for target in FamilySwitchClient.productIDs {
+            XCTAssertEqual(try FamilySwitchClient.arguments(target: target, sourcePID: 123),
+                ["--principal", "local", "family", "switch", target, "--source-pid", "123"])
+        }
+        for target in ["", "https://example.invalid", "threaddesk; open x", "/Applications/X.app", "unknown"] {
+            XCTAssertThrowsError(try FamilySwitchClient.arguments(target: target, sourcePID: 123))
+        }
+        XCTAssertThrowsError(try FamilySwitchClient.arguments(target: "tollgate", sourcePID: 0))
+    }
+
+    func testBundledOriginalsMatchThePinnedSharedManifest() throws {
+        let manifest = try XCTUnwrap(ProductHeaderAssetManifest.load())
+        XCTAssertEqual(manifest.version, "1.2.2")
+        XCTAssertEqual(manifest.files.map(\.appId), FamilySwitchClient.productIDs)
+        for asset in manifest.files {
+            let url = try XCTUnwrap(productHeaderResourceURL(asset.file, extension: nil))
+            let digest = SHA256.hash(data: try Data(contentsOf: url)).map { String(format: "%02x", $0) }.joined()
+            XCTAssertEqual(digest, asset.sha256)
+            XCTAssertEqual(asset.viewport.count, 4)
+        }
+    }
+
+    func testSuccessRequiresMatchingProductRealBoundsAndExactlyOneVisibleWindow() throws {
+        XCTAssertNoThrow(try FamilySwitchClient.validateReply(data(success()), exitStatus: 0, target: "threaddesk"))
+        var invalid: [[String: Any]] = [[:], ["ok": true], ["success": true]]
+        for (key, value) in [("success", 1 as Any), ("active_product", "tollgate" as Any),
+                             ("visible_family_windows", 2 as Any), ("visible_family_windows", true as Any),
+                             ("execution_outcome_unknown", true as Any), ("error", ["code": "FAILED"] as Any)] {
+            var row = success(); row[key] = value; invalid.append(row)
+        }
+        for bounds in [["x": 0, "y": 0, "width": 0, "height": 730] as [String: Any],
+                       ["x": 0, "y": 0, "width": true, "height": 730],
+                       ["x": "0", "y": 0, "width": 1150, "height": 730], ["width": 1150, "height": 730]] {
+            var row = success(); row["actual_outer_bounds"] = bounds; invalid.append(row)
+        }
+        for row in invalid {
+            XCTAssertThrowsError(try FamilySwitchClient.validateReply(data(row), exitStatus: 0, target: "threaddesk"))
+        }
+        XCTAssertThrowsError(try FamilySwitchClient.validateReply(data(success()), exitStatus: 1, target: "threaddesk"))
+        XCTAssertThrowsError(try FamilySwitchClient.validateReply(Data("done".utf8), exitStatus: 0, target: "threaddesk"))
+        XCTAssertThrowsError(try FamilySwitchClient.validateReply(Data(repeating: 32, count: 65537), exitStatus: 0, target: "threaddesk"))
+    }
+
+    func testNativeCallerPIDAndDoubleClickDoNotCreateTwoEffects() throws {
+        let entered = expectation(description: "transport"), completed = expectation(description: "reply")
+        let release = DispatchSemaphore(value: 0)
+        let reply = try data(success())
+        let client = FamilySwitchClient { url, argv in
+            XCTAssertEqual(url, FamilySwitchClient.executableURL)
+            XCTAssertEqual(argv, try FamilySwitchClient.arguments(target: "threaddesk", sourcePID: ProcessInfo.processInfo.processIdentifier))
+            entered.fulfill(); _ = release.wait(timeout: .now() + 3); return (reply, 0)
+        }
+        client.switchProduct("threaddesk") { result in
+            if case .failure = result { XCTFail("valid broker evidence rejected") }; completed.fulfill()
+        }
+        client.switchProduct("tollgate") { result in
+            guard case .failure(FamilySwitchError.busy) = result else { XCTFail("duplicate effect admitted"); return }
+        }
+        wait(for: [entered], timeout: 2); release.signal(); wait(for: [completed], timeout: 2)
+    }
+
+    func testMissingBrokerAndUnknownReplyNeverBecomeSuccessOrAutoRetry() throws {
+        for unavailable in [true, false] {
+            let done = expectation(description: "failed switch")
+            var calls = 0
+            let client = FamilySwitchClient { _, _ in
+                calls += 1
+                if unavailable { throw FamilySwitchError.unavailable }
+                return (Data("{\"success\":false,\"execution_outcome_unknown\":true}".utf8), 1)
+            }
+            client.switchProduct("threaddesk") { result in
+                if case .success = result { XCTFail("failure became success") }; done.fulfill()
+            }
+            wait(for: [done], timeout: 2); XCTAssertEqual(calls, 1)
+        }
+    }
+
+    func testHeaderRemainsCenteredAndOriginalButtonsStay44PointsInBothLanguages() throws {
+        _ = NSApplication.shared
+        let saved = Localization.shared.preference
+        defer { Localization.shared.choose(saved, persist: false) }
+        let header = FamilyHeaderView()
+        for lang in ["de", "en"] {
+            Localization.shared.choose(lang, persist: false); header.localize()
+            for width: CGFloat in [900, 1120, 1150, 1360, 1680] {
+                header.frame = NSRect(x: 0, y: 0, width: width, height: 64)
+                header.needsLayout = true; header.layoutSubtreeIfNeeded()
+                XCTAssertEqual(header.products.frame.midX, width/2, accuracy: 0.1)
+                XCTAssertLessThan(header.wordmark.frame.maxX, header.products.frame.minX)
+                XCTAssertGreaterThan(header.language.frame.minX, header.products.frame.maxX)
+                XCTAssertEqual(header.products.arrangedSubviews.count, 5)
+                for button in header.products.arrangedSubviews {
+                    XCTAssertEqual(button.frame.width, 44, accuracy: 0.1)
+                    XCTAssertEqual(button.frame.height, 44, accuracy: 0.1)
+                    XCTAssertTrue((button as? NSButton)?.toolTip?.contains("·") == true)
+                }
+            }
+        }
+    }
+
+    func testSmallSharedOuterFrameKeepsExistingSplitViewsAndAllowsEitherSidePane() {
+        _ = NSApplication.shared
+        let split = MainSplitController(AppState())
+        let content = FamilyContentController(split: split)
+        let root = content.view
+        let originalMain = split.main.view
+        root.frame = NSRect(x: 0, y: 0, width: 1120, height: 600)
+        root.needsLayout = true; root.layoutSubtreeIfNeeded()
+        XCTAssertEqual(split.splitViewItems.count, 3)
+        XCTAssertTrue(split.splitViewItems[2].isCollapsed)
+        split.toggleInspector()
+        XCTAssertFalse(split.splitViewItems[2].isCollapsed)
+        XCTAssertTrue(split.splitViewItems[0].isCollapsed)
+        split.toggleSidebar()
+        XCTAssertFalse(split.splitViewItems[0].isCollapsed)
+        XCTAssertTrue(split.splitViewItems[2].isCollapsed)
+        root.frame.size.width = 1360; root.needsLayout = true; root.layoutSubtreeIfNeeded()
+        XCTAssertTrue(split.splitViewItems[2].isCollapsed, "manual choice must survive a size change")
+        XCTAssertTrue(split.main.view === originalMain)
+    }
+
+    func testMinimumOuterHeightKeepsCriticalActivityTableAccessible() throws {
+        _ = NSApplication.shared
+        let outerFrame = NSRect(x: 0, y: 0, width: 900, height: 600)
+        let contentFrame = NSWindow.contentRect(
+            forFrameRect: outerFrame,
+            styleMask: [.titled, .closable, .resizable]
+        )
+        let split = MainSplitController(AppState())
+        let content = FamilyContentController(split: split)
+        content.view.frame = NSRect(origin: .zero, size: contentFrame.size)
+        content.view.layoutSubtreeIfNeeded()
+        split.view.layoutSubtreeIfNeeded()
+        let main = split.main
+        main.view.layoutSubtreeIfNeeded()
+
+        let views = descendants(main.view)
+        let tableScroll = try XCTUnwrap(views.compactMap { $0 as? NSScrollView }
+            .first { $0.documentView is NSTableView })
+        let table = try XCTUnwrap(tableScroll.documentView as? NSTableView)
+        let activity = try XCTUnwrap(views.compactMap { $0 as? NSTextField }
+            .first { $0.stringValue == L("activity.title") })
+        let criticalBanner = try XCTUnwrap(views.compactMap { $0 as? NSButton }
+            .first { $0.title == L("warning.criticalMessage") })
+
+        XCTAssertEqual(outerFrame.height, 600, accuracy: 0.1)
+        XCTAssertLessThan(main.view.bounds.height, outerFrame.height - 64)
+        XCTAssertFalse(criticalBanner.isHidden)
+        XCTAssertGreaterThan(table.numberOfRows, 0)
+        XCTAssertGreaterThan(main.canvas.frame.height, 0)
+        XCTAssertGreaterThanOrEqual(tableScroll.frame.height, 62)
+        XCTAssertGreaterThanOrEqual(tableScroll.frame.minY, 0)
+        XCTAssertLessThanOrEqual(tableScroll.frame.maxY, main.view.bounds.maxY)
+        XCTAssertGreaterThanOrEqual(activity.frame.minY, 0)
+        XCTAssertLessThanOrEqual(activity.frame.maxY, main.view.bounds.maxY)
+    }
+
+    func testMinimumSupportedWindowKeepsInspectorAndSidebarSettingsAccessible() throws {
+        _ = NSApplication.shared
+        let outerFrame = NSRect(x: 0, y: 0, width: 900, height: 600)
+        let contentFrame = NSWindow.contentRect(
+            forFrameRect: outerFrame,
+            styleMask: [.titled, .closable, .resizable]
+        )
+        let split = MainSplitController(AppState())
+        let content = FamilyContentController(split: split)
+        content.view.frame = NSRect(origin: .zero, size: contentFrame.size)
+        content.view.layoutSubtreeIfNeeded()
+        split.view.layoutSubtreeIfNeeded()
+
+        XCTAssertEqual(content.header.frame.height, 64, accuracy: 0.1)
+        XCTAssertEqual(content.header.frame.width, contentFrame.width, accuracy: 0.1)
+        XCTAssertFalse(split.splitViewItems[0].isCollapsed)
+        XCTAssertTrue(split.splitViewItems[2].isCollapsed)
+
+        let sidebarViews = descendants(split.sidebar.view)
+        let sidebarScroll = try XCTUnwrap(sidebarViews.compactMap { $0 as? NSScrollView }.first)
+        let sidebarDocument = try XCTUnwrap(sidebarScroll.documentView)
+        let settings = try XCTUnwrap(descendants(sidebarDocument).compactMap { $0 as? NSButton }
+            .first { $0.title == L("nav.settings") })
+        XCTAssertTrue(sidebarScroll.hasVerticalScroller)
+        XCTAssertLessThanOrEqual(settings.frame.maxY, sidebarDocument.bounds.maxY)
+        let clip = sidebarScroll.contentView
+        let maxScrollY = max(0, sidebarDocument.bounds.height - clip.bounds.height)
+        clip.scroll(to: NSPoint(x: 0, y: maxScrollY))
+        sidebarScroll.reflectScrolledClipView(clip)
+        let visibleSettingsFrame = settings.convert(settings.bounds, to: clip)
+        XCTAssertTrue(clip.bounds.contains(visibleSettingsFrame))
+
+        split.toggleInspector()
+        content.view.layoutSubtreeIfNeeded()
+        split.view.layoutSubtreeIfNeeded()
+        XCTAssertTrue(split.splitViewItems[0].isCollapsed)
+        XCTAssertFalse(split.splitViewItems[2].isCollapsed)
+        let mainFrame = split.main.view.convert(split.main.view.bounds, to: split.splitView)
+        let inspectorFrame = split.inspector.view.convert(split.inspector.view.bounds, to: split.splitView)
+        XCTAssertGreaterThanOrEqual(mainFrame.width, 600)
+        XCTAssertGreaterThanOrEqual(inspectorFrame.width, 292)
+        XCTAssertGreaterThanOrEqual(mainFrame.minX, 0)
+        XCTAssertLessThanOrEqual(mainFrame.maxX, split.splitView.bounds.maxX)
+        XCTAssertLessThanOrEqual(inspectorFrame.maxX, split.splitView.bounds.maxX)
+        XCTAssertLessThanOrEqual(mainFrame.maxX, inspectorFrame.minX)
+
+        split.toggleSidebar()
+        split.view.layoutSubtreeIfNeeded()
+        XCTAssertFalse(split.splitViewItems[0].isCollapsed)
+        XCTAssertTrue(split.splitViewItems[2].isCollapsed)
+        XCTAssertLessThanOrEqual(split.sidebar.view.frame.maxX, split.splitView.bounds.maxX)
+        XCTAssertLessThanOrEqual(split.main.view.frame.maxX, split.splitView.bounds.maxX)
+    }
+
+    func testOnlyAutomaticInspectorCollapseIsRestoredOnWidening() {
+        _ = NSApplication.shared
+        let split = MainSplitController(AppState())
+        _ = split.view
+        XCTAssertFalse(split.splitViewItems[2].isCollapsed)
+        split.adaptToFamilyWidth(1120)
+        XCTAssertTrue(split.splitViewItems[2].isCollapsed)
+        split.adaptToFamilyWidth(1360)
+        XCTAssertFalse(split.splitViewItems[2].isCollapsed)
+        split.toggleInspector()
+        split.adaptToFamilyWidth(1120); split.adaptToFamilyWidth(1360)
+        XCTAssertTrue(split.splitViewItems[2].isCollapsed)
+    }
+
+    func testHideAndReopenUseStoredMainWindowAndPreserveStateAndViews() throws {
+        _ = NSApplication.shared
+        let app = AppDelegate()
+        app.applicationDidFinishLaunching(Notification(name: NSApplication.didFinishLaunchingNotification))
+        defer { app.window.orderOut(nil); app.settingsWindow?.orderOut(nil)
+            if let observer = app.observer { NotificationCenter.default.removeObserver(observer) } }
+        let canvas = app.split.main.canvas, document = app.state.document
+        app.state.query = "held-filter"; app.state.selected = "agent-007"; app.state.expandedGroups = ["group"]
+        canvas.scale = 0.75; canvas.offset = NSPoint(x: 31, y: 19)
+        let frame = app.window.frame
+        app.settings()
+        app.hideForFamilySwitch()
+        XCTAssertTrue(app.applicationShouldTerminateAfterLastWindowClosed(NSApp))
+        XCTAssertFalse(app.applicationShouldHandleReopen(NSApp, hasVisibleWindows: false))
+        XCTAssertTrue(app.window.isVisible)
+        XCTAssertTrue(app.window.contentViewController === app.familyContent)
+        XCTAssertTrue(app.split.main.canvas === canvas)
+        XCTAssertEqual(app.state.document.nodes.count, document.nodes.count)
+        XCTAssertEqual(app.state.query, "held-filter"); XCTAssertEqual(app.state.selected, "agent-007")
+        XCTAssertEqual(app.state.expandedGroups, ["group"])
+        XCTAssertEqual(canvas.scale, 0.75); XCTAssertEqual(canvas.offset, NSPoint(x: 31, y: 19))
+        XCTAssertEqual(app.window.frame, frame)
+        let cards = app.split.main.view.subviews.compactMap { $0 as? MetricView }
+        XCTAssertEqual(cards.count, 4); XCTAssertTrue(cards.allSatisfy { $0.frame.height == 66 })
+        for size in [NSSize(width: 1120, height: 664), NSSize(width: 900, height: 600)] {
+            app.window.setFrame(NSRect(origin: NSPoint(x: 20, y: 40), size: size), display: true)
+            app.window.contentView?.layoutSubtreeIfNeeded()
+            XCTAssertEqual(app.window.frame.size, size, "family broker must be able to set the outer rectangle")
+            XCTAssertTrue(app.split.splitViewItems[2].isCollapsed)
+            XCTAssertGreaterThanOrEqual(app.split.main.canvas.bounds.height, 100)
+        }
+    }
+}

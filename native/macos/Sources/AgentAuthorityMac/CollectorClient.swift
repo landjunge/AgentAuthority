@@ -18,7 +18,16 @@ final class CollectorClient {
             DispatchQueue.main.async{guard self?.closed==false else{return};completion(result)}
         }
     }
-    func status(_ completion:@escaping(Result<[String:Any],Error>)->Void){send(["command":"status"],completion:completion)}
+    func status(_ completion:@escaping(Result<[String:Any],Error>)->Void){
+        send(["command":"status"]){result in
+            // This authenticated collector status is UI metadata, not complete activity coverage.
+            let state:String
+            switch result {case .success(let status):state = status["es_result"] as? Int == 0 ? "confirmed" : "error"
+            case .failure:state = "unknown"}
+            NotificationCenter.default.post(name:Notification.Name("AgentAuthorityCollectorStatus"),object:nil,userInfo:["state":state])
+            completion(result)
+        }
+    }
     func begin(dev:UInt64,inode:UInt64,_ completion:@escaping(Result<[String:Any],Error>)->Void){send(["command":"scope","dev":dev,"inode":inode],completion:completion)}
     func events(_ completion:@escaping(Result<[String:Any],Error>)->Void){send(["command":"events"],completion:completion)}
     func end(_ completion:@escaping(Result<[String:Any],Error>)->Void){send(["command":"end"],completion:completion)}
