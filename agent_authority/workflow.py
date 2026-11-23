@@ -175,7 +175,6 @@ KIND_MAP = {
     "handoff.created": "handoff",
     "return.received": "result",
     "dispatch.attempted": "progress",
-    UPDATE_EVENT: "result",
 }
 
 
@@ -425,7 +424,11 @@ def read_workflow(path: Path, source_id: str, source_tool: str) -> WorkflowRead:
             index,
             KIND_MAP.get(claim.event_type, "system"),
             claim.source_tool,
-            (str(dict(claim.binding)["task_id"]) if "task_id" in dict(claim.binding) else None),
+            # An update can name a task without contributing to its neutral task summary.
+            str(task_id)
+            if claim.event_type != UPDATE_EVENT
+            and (task_id := dict(claim.binding).get("task_id")) is not None
+            else None,
             claim.file_sha256,
         )
         for index, claim in enumerate(values, 1)

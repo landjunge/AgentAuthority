@@ -79,6 +79,9 @@ Providerantworten, Authheader, `args`, Prompts, Volltexte, Schlüssel, rohe Logs
 beliebige Zusatzfelder werden nicht in Berichte übernommen. Eine Positivliste ist
 keine allgemeine DLP-Garantie: der autorisierte Exporter muss sicherstellen, dass
 auch seine ausgewählten Identitäts-/Referenzfelder kein Geheimnis enthalten.
+Das gilt auch für typisierte Update-Angaben. Eine dort gemeldete Auftrags-ID
+bleibt im Workflow-Bericht sichtbar. Die neutrale Aufgabenübersicht zählt
+Update-Beobachtungen getrennt von Aufgabenergebnissen.
 
 ### Bedienung und vorhandene Zustände wiederverwenden
 
@@ -181,7 +184,10 @@ never establish identity. Completed Bridge turns are reported as turns, not
 project acceptance. Imported billing/stop claims remain reported observations.
 No credentials, prompts, full replies/arguments or arbitrary log fields enter the
 projection; the trusted exporter still must keep its chosen opaque references
-secret-free. A whitelist is not universal DLP.
+secret-free. A whitelist is not universal DLP. This includes references in
+typed update evidence. A reported task ID remains visible in the workflow
+report. The neutral task summary counts update observations separately from
+task results.
 
 `project_bridge_task` receives already authorized Store/audit/runtime metadata and
 persistent binding; the existing audit ID/sequence is supplied by the caller.

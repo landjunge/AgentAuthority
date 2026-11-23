@@ -97,6 +97,33 @@ def test_unknown_and_absent_facts_have_no_derived_result(tmp_path):
     assert not value["task_completion_proven"]
 
 
+def test_update_does_not_count_as_a_result_for_its_reported_task(tmp_path):
+    def task_event(number, event_type):
+        row = event(number)
+        row.pop("update_evidence")
+        return {**row, "event_type": event_type, "task_id": "task-1"}
+
+    claim = task_event(1, "task.accepted")
+    update = {**event(2, source={"commit": SOURCE}), "task_id": "task-1"}
+    pending = report(tmp_path, claim, update)
+    assert pending["events"][1]["binding"]["task_id"] == "task-1"
+    assert pending["events"][1]["update_evidence"]["facts"]["source"]["claims"]["commit"] == SOURCE
+    assert pending["read"]["workflow_evidence_complete"] is True
+    neutral = pending["observation_report"]
+    assert neutral["summary"]["reported_kind_counts"] == {"claimed": 1, "system": 1}
+    assert neutral["summary"]["claims_without_later_result_in_read_entries"] == 1
+    assert neutral["tasks"][0]["last_reported_kind"] == "claimed"
+    assert neutral["tasks"][0]["claim_without_later_result"] is True
+
+    completed = report(tmp_path, claim, update, task_event(3, "task.completed"))
+    neutral = completed["observation_report"]
+    assert neutral["summary"]["reported_kind_counts"]["result"] == 1
+    assert neutral["summary"]["claims_without_later_result_in_read_entries"] == 0
+    assert neutral["tasks"][0]["last_reported_kind"] == "result"
+    assert neutral["tasks"][0]["claim_without_later_result"] is False
+    assert completed["task_completion_proven"] is False
+
+
 def test_same_terminal_check_conflict_is_visible_without_selecting_a_winner(tmp_path):
     same_check = {"commit": SOURCE, "run_ref": "gha-check-1-attempt-1"}
     value = report(
