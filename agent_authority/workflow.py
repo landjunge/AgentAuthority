@@ -27,6 +27,12 @@ from agent_authority.file_reader import (
 )
 from agent_authority.observations import TOKEN, Diagnostic, Entry, Snapshot, Source
 from agent_authority.report import build_report
+from agent_authority.update_evidence import (
+    UPDATE_EVENT,
+    UpdateEvidence,
+    ci_conflicts,
+    parse_update_evidence,
+)
 from agent_authority.workflow_rules import analyze_workflow_claims
 
 EVENT_SCHEMA = "agent-authority-workflow-event-v1"
@@ -116,6 +122,7 @@ EVENT_TYPES = frozenset(
         "job.unknown",
         "design.handoff",
         "design.delivered",
+        UPDATE_EVENT,
     }
 )
 INTEGERS = frozenset(
@@ -187,9 +194,10 @@ class WorkflowClaim:
     event_hash: str | None = None
     previous_event_hash: str | None = None
     identity_claimed: bool = False
+    update_evidence: UpdateEvidence | None = None
 
     def projection(self) -> dict[str, Any]:
-        return {
+        result = {
             "event_id": self.event_id,
             "source_tool": self.source_tool,
             "source_id": self.source_id,
@@ -205,6 +213,9 @@ class WorkflowClaim:
             "identity_authenticated": False,
             "effect_verified": False,
         }
+        if self.update_evidence is not None:
+            result["update_evidence"] = self.update_evidence.projection()
+        return result
 
 
 def _reference(value: Any) -> str:
@@ -236,6 +247,9 @@ def project_record(
     event_type = _reference(record.get("event_type"))
     if event_type not in EVENT_TYPES:
         raise ReadIssue("workflow_unknown_event_type")
+    update_evidence = (
+        parse_update_evidence(record.get("update_evidence")) if event_type == UPDATE_EVENT else None
+    )
     ordinal = _integer(record["ordinal"]) if "ordinal" in record else None
     timestamp = record.get("timestamp")
     if timestamp is not None:
@@ -291,6 +305,7 @@ def project_record(
         event_hash,
         previous,
         record.get("source_authenticated") is True,
+        update_evidence,
     )
 
 
@@ -409,7 +424,11 @@ def read_workflow(path: Path, source_id: str, source_tool: str) -> WorkflowRead:
             index,
             KIND_MAP.get(claim.event_type, "system"),
             claim.source_tool,
-            (str(dict(claim.binding)["task_id"]) if "task_id" in dict(claim.binding) else None),
+            # An update can name a task without contributing to its neutral task summary.
+            str(task_id)
+            if claim.event_type != UPDATE_EVENT
+            and (task_id := dict(claim.binding).get("task_id")) is not None
+            else None,
             claim.file_sha256,
         )
         for index, claim in enumerate(values, 1)
@@ -505,7 +524,7 @@ def build_workflow_report(read: WorkflowRead, limit: int = 20) -> dict[str, Any]
         read.claims, limit, complete_selected_read=complete and not warnings
     )
     base["source"]["complete_observed_read"] = complete and not warnings
-    return {
+    result = {
         "schema_version": REPORT_SCHEMA,
         "role": "observer_only",
         "source_authenticated": False,
@@ -530,6 +549,16 @@ def build_workflow_report(read: WorkflowRead, limit: int = 20) -> dict[str, Any]
         "stop_enforced": False,
         "task_completion_proven": False,
     }
+    updates = [
+        (claim.event_id, claim.update_evidence)
+        for claim in read.claims
+        if claim.update_evidence is not None
+    ]
+    if updates:
+        conflicts, omitted = ci_conflicts(updates, limit)
+        result["update_ci_conflicts"] = conflicts
+        result["update_ci_conflicts_omitted"] = omitted
+    return result
 
 
 def project_bridge_task(
