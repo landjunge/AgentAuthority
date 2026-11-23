@@ -1,0 +1,81 @@
+{
+  "schema": "status-v1",
+  "product": "Agent Authority",
+  "repo": {
+    "name": "landjunge/AgentAuthority",
+    "visibility": "public",
+    "default_branch": "master"
+  },
+  "observed_at": "2026-11-23T22:11:04Z",
+  "plan": "BIGPLAN-BAUPLAN-20261108",
+  "main_pin": {
+    "commit": "86f151a05735e66cb527319246cb0dfa2f0bbd9f",
+    "committed_at": "2026-11-23T20:52:45Z"
+  },
+  "source_version": "0.3.0a2",
+  "releases": [],
+  "installed": {
+    "mac": {
+      "state": "installed",
+      "observed_at": "2026-11-23T22:11:04Z",
+      "entries": [
+        {
+          "kind": "app",
+          "path": "~/Applications/Agent Authority.app",
+          "version": "0.1.0",
+          "source_commit": "unknown",
+          "note": "Info.plist: CFBundleVersion 1."
+        }
+      ]
+    },
+    "windows": "unknown",
+    "linux": "unknown"
+  },
+  "server": {
+    "source": "systemctl show agent-authority-browser.service (Debian)",
+    "observed_at": "2026-11-23T22:11:04Z",
+    "components": [
+      {
+        "name": "agent-authority-browser",
+        "unit": "agent-authority-browser.service",
+        "state": "active",
+        "version": "unknown",
+        "source_commit": "unknown",
+        "exposure": "unknown",
+        "note": "LoadState=loaded, ActiveState=active, SubState=running."
+      }
+    ]
+  },
+  "open_packages": [
+    {
+      "id": "BP-AA-01",
+      "title": "Beobachtung der Remote-Kette",
+      "status": "open",
+      "note": "Abhängigkeit im Bauplan: Entscheidung E3 und BP-REMOTE-03. Die Update-Beobachtung aus PR #62 ist integriert."
+    },
+    {
+      "id": "BP-TRUTH-01",
+      "title": "Ist-Stand-Register (diese Datei)",
+      "status": "in-progress"
+    },
+    {
+      "id": "BP-DOC-01",
+      "title": "READMEs und Lizenzen, Angaben aus STATUS.json",
+      "status": "open"
+    },
+    {
+      "id": "BP-DESIGN-01",
+      "title": "gemeinsames Designsystem",
+      "status": "open"
+    },
+    {
+      "id": "BP-HYG-01",
+      "title": "Arbeitsstände und Worktrees aufräumen",
+      "status": "open"
+    }
+  ],
+  "notes": [
+    "Die Quellversion am Pin stammt aus agent_authority/__init__.py. Die installierte Mac-App meldet ihre eigene Bundle-Version.",
+    "Die Paketzuordnung bezieht sich auf BIGPLAN-BAUPLAN-20261108. Für Status 'open' fehlt ein Abschlussbeleg im Register."
+  ]
+}
