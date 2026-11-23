@@ -2,33 +2,38 @@
   "schema": "status-v1",
   "product": "Agent Authority",
   "repo": {
-    "name": "landjunge/agent-authority-lab",
-    "visibility": "private",
+    "name": "landjunge/AgentAuthority",
+    "visibility": "public",
     "default_branch": "master"
   },
-  "observed_at": "2026-11-09T06:54:45Z",
+  "observed_at": "2026-11-23T22:11:04Z",
   "plan": "BIGPLAN-BAUPLAN-20261108",
   "main_pin": {
-    "commit": "73fe139c21081bd4de63b3f2bc5815d94d810fb5",
-    "committed_at": "2026-11-08T13:05:03Z"
+    "commit": "86f151a05735e66cb527319246cb0dfa2f0bbd9f",
+    "committed_at": "2026-11-23T20:52:45Z"
   },
   "source_version": "0.3.0a2",
   "releases": [],
   "installed": {
     "mac": {
-      "state": "not-installed",
-      "observed_at": "2026-11-09T06:54:45Z",
-      "checked_paths": [
-        "/Applications/Agent Authority.app",
-        "~/Applications/Agent Authority.app"
+      "state": "installed",
+      "observed_at": "2026-11-23T22:11:04Z",
+      "entries": [
+        {
+          "kind": "app",
+          "path": "~/Applications/Agent Authority.app",
+          "version": "0.1.0",
+          "source_commit": "unknown",
+          "note": "Info.plist: CFBundleVersion 1."
+        }
       ]
     },
     "windows": "unknown",
     "linux": "unknown"
   },
   "server": {
-    "source": "ops/netcup.json (KiraBridge, BP-OPS-01)",
-    "observed_at": "2026-11-08T16:59:45Z",
+    "source": "systemctl show agent-authority-browser.service (Debian)",
+    "observed_at": "2026-11-23T22:11:04Z",
     "components": [
       {
         "name": "agent-authority-browser",
@@ -36,8 +41,8 @@
         "state": "active",
         "version": "unknown",
         "source_commit": "unknown",
-        "exposure": "Unix-Socket hinter dem gemeinsamen Reverse-Proxy (Pfad /agent-authority/)",
-        "note": "Release-Verzeichnis account-4da5fa818b7b590711d5, kein Git-Commit im Inventar"
+        "exposure": "unknown",
+        "note": "LoadState=loaded, ActiveState=active, SubState=running."
       }
     ]
   },
@@ -46,7 +51,7 @@
       "id": "BP-AA-01",
       "title": "Beobachtung der Remote-Kette",
       "status": "open",
-      "note": "haengt an Entscheidung E3 und BP-REMOTE-03"
+      "note": "Abhängigkeit im Bauplan: Entscheidung E3 und BP-REMOTE-03. Die Update-Beobachtung aus PR #62 ist integriert."
     },
     {
       "id": "BP-TRUTH-01",
@@ -70,7 +75,7 @@
     }
   ],
   "notes": [
-    "Standardbranch ist master. Es gibt keine GitHub-Releases.",
-    "Status 'open' heisst: laut Bauplan offen, in diesem Register kein Abschlussbeleg."
+    "Die Quellversion am Pin stammt aus agent_authority/__init__.py. Die installierte Mac-App meldet ihre eigene Bundle-Version.",
+    "Die Paketzuordnung bezieht sich auf BIGPLAN-BAUPLAN-20261108. Für Status 'open' fehlt ein Abschlussbeleg im Register."
   ]
 }
