@@ -412,7 +412,11 @@ def test_late_tool_creates_only_after_end_and_release(tmp_path):
         assert p1.probe(tmp_path / "target") is False
         (tmp_path / "post.observe").write_bytes(b"")
         deadline = time.monotonic() + 3
-        while time.monotonic() < deadline and p1.probe(tmp_path / "target") is not True:
+        # The target can be visible before the child writes its creation receipt.
+        while time.monotonic() < deadline:
+            sample = time.monotonic_ns()
+            if p1.reference(tmp_path, (sample, sample))["target_present"] is True:
+                break
             time.sleep(0.02)
         assert p1.probe(tmp_path / "target") is True
     finally:
